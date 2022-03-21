@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-hotel">
+      <rect width="20" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="hotel" clip-path="url(#clip-hotel)">
+    <rect width="20" height="20" fill="#fff"/>
+    <path id="Path_7" data-name="Path 7" d="M5.262,9.4A2.392,2.392,0,1,0,2.87,7.012,2.4,2.4,0,0,0,5.262,9.4Zm11-4.784H9.089a.48.48,0,0,0-.478.478v5.262h-6.7V2.228a.478.478,0,0,0-.478-.478H.478A.478.478,0,0,0,0,2.228V14.667a.479.479,0,0,0,.478.478h.957a.479.479,0,0,0,.478-.478V13.231H17.222v1.435a.478.478,0,0,0,.478.478h.957a.478.478,0,0,0,.478-.478V7.491A2.854,2.854,0,0,0,16.265,4.62Z" transform="translate(0.432 2.302)" fill="#caccd3"/>
+  </g>
+</svg>
