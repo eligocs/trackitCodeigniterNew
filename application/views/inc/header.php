@@ -10,9 +10,10 @@
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
       <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+     
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+     <!--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"> -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link href="<?php echo base_url();?>site/assets/css/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
       <!-- <link href="<?php // echo base_url();?>site/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
       <link href="<?php echo base_url();?>site/assets/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
@@ -58,7 +59,7 @@
                <!-- BEGIN LOGO -->
                <div class="page-logo">
                   <a href="<?php echo site_url();?>">
-                  <img src="<?php echo site_url(); ?>site/images/trackv2-logo.png" alt="Trackitineray software" class="img-responsive logo-top">
+                  <img src="<?php echo site_url()  . 'site/images/' . getLogo() ?>" alt="Trackitineray software" class="img-responsive logo-top">
                   </a>
                   <div class="menu-toggler sidebar-toggler">
                      <!-- <span></span> -->
@@ -91,7 +92,7 @@
             <div class='header_target_section'>
                <a href="<?php echo base_url("incentive"); ?>" title="Go to incentive page">
                   <div class="progress" style="max-width:100%; min-width:250px;">
-                     <span class="target"><span style="color:#6200ff;">Booked: <?php echo $mbooked; ?></span> / <span style="color:red;">Target: <?php echo $mtarget; ?> </span></span>
+                     <span class="target"><span >Booked: <?php echo $mbooked; ?></span> / <span>Target: <?php echo $mtarget; ?> </span></span>
                      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
                         aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentage; ?>%">
                      </div>
@@ -130,90 +131,8 @@
                   </div>
                </a>
             </div>
-            <?php }	?>
-            <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-            <style>
-               .header_target_section .progress {
-               line-height: 20px;
-               color: #000;
-               font-size: 12px;
-               font-weight: 700;
-               font-family: "Open Sans",sans-serif !important;
-               height: 20px;    background: #fff8dc;}	
-               span.target {
-               position: absolute;
-               left: 0;
-               right: 0;
-               margin: auto;
-               text-align: center;
-               }
-               .header_target_section .progress-bar-success {background-color: #25b759;     background-size: 20px 20px !important;}					
-               .marq_h{
-               font-size: 18px;
-               top: 20%;
-               right: 10%;
-               position: absolute;
-               animation:blinkingText 3s infinite;
-               font-family: Orbitron;
-               }
-               @keyframes blinkingText{
-               0%{     color: #fde100;    }
-               49%{    color: #fde100; }
-               50%{    color: transparent; }
-               99%{    color:transparent;  }
-               100%{   color: #fde100;    }
-               }
-               .header_target_section{
-               font-size: 18px;
-               top: 30%;
-               right: 10%;
-               position: absolute;
-               font-family: Orbitron;
-               color: #fde100;
-               }
-               .clock {
-               position: absolute;
-               top: 50%;
-               left: 50%;
-               transform: translateX(-50%) translateY(-50%);
-               /* color: #17D4FE; */
-			   color: white;
-               font-size: 30px;
-               font-family: Orbitron;
-               letter-spacing: 7px;
-               }
-               .header_team-leader-name {
-               position: absolute;
-               left: 240px;
-               top: 10px;
-               color: #fff;
-               font-family: "Open Sans",sans-serif !important;
-               }
-               .header_team-leader-name span {color: yellow;}
-               @media(max-width:1400px){
-               .clock {font-size: 20px;}
-               }
-               .swal-overlay {
-               background-color: rgba(43, 165, 137, 0.45);
-               }
-               .swal-button {
-               padding: 7px 19px;
-               border-radius: 2px;
-               background-color: #4962B3;
-               font-size: 12px;
-               border: 1px solid #3e549a;
-               text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
-               }
-
-               .swal-modal {
-               background-color: rgba(63,255,106,0.69);
-               border: 3px solid white;
-               }
-               
-               .datetimepicker .datetimepicker-minutes span{
-    width: 50px !important;
-}
-            </style>
+            <?php }	?> 
+             
             <script>
                function showTime(){
                	var date = new Date();
