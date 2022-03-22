@@ -1,5 +1,5 @@
 <style>
-tbody.appendCategory tr td:first-child input {
+tbody tr td:first-child input {
     pointer-events:none;
 }
 button#bElim {

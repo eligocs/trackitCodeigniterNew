@@ -14,7 +14,7 @@ function IterarCamposEdit(t, n) {
 
 function FijModoNormal(t) {
     $(t).parent().find("#bAcep").hide(), $(t).parent().find("#bCanc").hide(), $(t).parent().find("#bEdit").show(), 
-    $(t).parent().find("#bElim").show(), $(t).parents("tr").attr("id", "");
+    /* $(t).parent().find("#bElim").show(), */ $(t).parents("tr").attr("id", "");
 }
 
 function FijModoEdit(t) {
