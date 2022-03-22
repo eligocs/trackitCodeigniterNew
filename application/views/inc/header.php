@@ -124,7 +124,7 @@
             <div class='header_target_section'>
                <a href="<?php echo base_url("incentive"); ?>" title="Go to incentive page">
                   <div class="progress" style="max-width:100%; min-width:250px;">
-                     <span class="target"><span style="color:#6200ff;">Booked: <?php echo $mbooked; ?></span> / <span style="color:red;">Target: <?php echo $mtarget; ?> </span></span>
+                     <span class="target"><span  >Booked: <?php echo $mbooked; ?></span> / <span  >Target: <?php echo $mtarget; ?> </span></span>
                      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
                         aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentage; ?>%">
                      </div>
