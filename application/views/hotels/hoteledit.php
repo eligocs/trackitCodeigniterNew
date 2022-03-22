@@ -1,3 +1,4 @@
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<?php $message = $this->session->flashdata('success'); 
@@ -118,6 +119,44 @@
 						</div>
 					</div>
 				</div>
+<?php
+/* if(!empty($hotel->room_category)){ 
+	$cats = explode(',',$hotel->room_category); 
+	foreach( $cats as $cat ){
+		var_dump($cat); 
+		if($cat->room_cat_id == $cat){
+	}
+}
+} */
+	?>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label">Room Category*</label>
+							<select name="room_category[]" class="form-control cat select2" multiple> 
+								<?php $room_cats = get_room_categories();
+									if($room_cats){
+										if(!empty($hotel->room_category)){ 
+											$cats = explode(',',$hotel->room_category); 
+											foreach( $room_cats as $cat ){ 
+												foreach( $cats as $catsingle ){	
+													if($cat->room_cat_id == $catsingle){
+														$Selected_ = 'selected';
+													}else{
+														$Selected_ = '';
+													}
+													echo '<option '.$Selected_.' value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
+												}
+											}
+										}else{
+											foreach( $room_cats as $cat ){ 
+												echo '<option value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
+											}
+										}
+									}
+								?> 
+							</select> 
+						</div>
+					</div>
 				
 				<div class="clearfix"></div>
 				<hr>
@@ -136,9 +175,12 @@
 <!-- Modal -->
  </div>
 
-
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($){
+
+	jQuery('.select2').select2();
+
 	  jQuery.validator.addMethod("multiemail", function (value, element) {
         if (this.optional(element)) {
             return true;

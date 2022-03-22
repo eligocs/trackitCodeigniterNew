@@ -1351,6 +1351,13 @@
 		$res = $ci->global_model->getdata("room_category", $where);
 		return $res;
 	}
+	
+	function get_room_cat_name($id){
+		$ci = & get_instance();
+		$where = array( "del_status" => 0 ,'room_cat_id' =>$id );
+		$res = $ci->global_model->getdata("room_category", $where);
+		return $res;
+	}
 
 	/*
 	* Get Seasons
@@ -2924,6 +2931,18 @@
 			return  $res[0]->t_start_date;
 		}else{
 			return false;
+		}
+	}
+
+	//GET Room Price
+	function get_room_rate_( $room, $hotel, $plan, $single_season ){
+		$ci =& get_instance(); 
+		$q = $ci->db->query("SELECT * FROM `room_rates` WHERE room = '{$room}' and hotel = '{$hotel}' and plan = '{$plan}' and season = '{$single_season}' AND delstatus = 0 ");
+		$res = $q->result();
+		if( isset( $res[0]->price ) ){
+			return  $res[0]->price;
+		}else{
+			return 0;
 		}
 	}
 	

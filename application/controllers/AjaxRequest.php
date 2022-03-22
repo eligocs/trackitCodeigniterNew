@@ -229,6 +229,109 @@ class AjaxRequest extends CI_Controller {
 			die(json_encode($res));
 		}
 	}
+	//edit hotel
+	public function hotellistCat(){
+		ob_start();
+		$seasons = get_all_seasons();
+		$hotel_id = $this->input->post("hotel",TRUE);
+		$meals_plans = get_all_mealplans(); 
+
+		if(!empty($seasons)){ 
+			foreach( $seasons as $season ){
+				 
+				echo '<h3>'.$season->season_name.'</h3>'; ?>
+					<table
+						class="table table-bordered table-striped table-hover table-condensed  text-center DyanmicTable"
+						id="">
+						<thead>
+							<tr>
+								<th class="text-center">
+									Room Category
+								</th>
+								<?php
+								if(!empty($meals_plans)){ 
+									foreach( $meals_plans as $meal ){ ?>
+									<th class="text-center">
+										<?php echo $meal->name ?? ''; ?>
+									</th>
+									<?php } ?>
+								<?php } ?>
+								<th class="text-center">
+									Ext. Matt.
+								</th>
+								<th class="text-center">
+									Ext. Matt. (Child) 
+								</th>
+
+								<th class="text-center"> 
+								</th>
+							</tr>
+					</thead>
+				<tbody  data-season='<?php echo $season->id; ?>'>
+				<?php
+				if( isset($hotel_id) && !empty($hotel_id)  ){
+					$result = $this->hotel_model->get_hotel_byid( $hotel_id ); 
+						if($result ){  
+							$cats = explode(',',$result[0]->room_category);  
+							if(!empty($result[0]->room_category)){
+								foreach( $cats as $cat ){	
+									$h_cat = get_room_cat_name($cat);
+									if($h_cat){
+										echo '<tr>';
+										echo '<td value="'. $h_cat[0]->room_cat_id . '">' . $h_cat[0]->room_cat_name . '</td>';	
+										if($meals_plans){
+											foreach($meals_plans as $plan){ 
+												$price_val = get_room_rate_($h_cat[0]->room_cat_id,$hotel_id,$plan->id,$season->id);
+												echo '<td data-room="'.$h_cat[0]->room_cat_id.'" data-hotel="'.$hotel_id.'" data-plan="'.$plan->id.'">'.$price_val.'</td>';
+											}
+											$price_val_em = get_room_rate_($h_cat[0]->room_cat_id,$hotel_id,'em',$season->id);
+											$price_val_emc = get_room_rate_($h_cat[0]->room_cat_id,$hotel_id,'emc',$season->id);
+											echo '<td data-room="'.$h_cat[0]->room_cat_id.'" data-hotel="'.$hotel_id.'" data-plan="em">'.$price_val_em.'</td>';
+											echo '<td data-room="'.$h_cat[0]->room_cat_id.'" data-hotel="'.$hotel_id.'" data-plan="emc">'.$price_val_emc.'</td>';
+										}				                                                                                                                   
+										echo '</tr>';
+									}
+								}	
+							}else{ ?>
+								<tr >
+									<td colspan='8'>
+										<span>Hotel room category not found !!! <a target='_blank' href='<?php echo 'edit/'.$hotel_id ?>'>Add</a></span>
+									</td>
+								</tr> 
+							<?php } 	
+					} 
+				} ?>
+				</tbody>
+
+			</table>
+				<?php
+
+			}
+		}
+		$contents = ob_get_clean();
+		echo $contents;
+		die;
+	}
+
+	// add room rates
+	public function saveroomRates(){
+		$alldata = $this->input->post("allData",TRUE); 
+		if(!empty($alldata) ){
+			foreach($alldata as $detail){
+				if($detail['room']){
+					$data = [
+						'price' => (float)$detail['price'],
+						'plan' => $detail['plan'],
+						'hotel' => $detail['hotel'],
+						'room' => $detail['room'],
+						'season' => $detail['season'],
+					]; 
+					$result = $this->global_model->saveroomRates( $data ); 
+				}
+			}
+			echo 'Price added successfully'; 
+		}
+	}
 	
 	//delete hotel 
 	public function ajax_deleteHotel(){

@@ -1,3 +1,11 @@
+<style>
+tbody.appendCategory tr td:first-child input {
+    pointer-events:none;
+}
+button#bElim {
+    display: none;
+}
+</style>
 <div class="page-container customer_content">
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -8,6 +16,7 @@
                         title="Back">Back</a>
                 </div>
             </div>
+
             <div class="second_custom_card">
                 <form role="form" id="addHotelRoomRate" action="<?php echo base_url( "hotels/add_room_rates" ); ?>"
                     method="post">
@@ -48,7 +57,7 @@
                     <div class="col-md-3">
                         <div id="hotel_list">
                             <div class='form-group'><label>Hotel*:</label><select disabled name='hotel'
-                                    class='form-control hotel'>
+                                    class='form-control hotelForRates'>
                                     <option value="">Select Hotel</option>
                                 </select></div>
                         </div>
@@ -63,10 +72,10 @@
 
                     <!--Start field Reaper -->
                     <div class="mt-repeater-rates">
-                        <div data-repeater-list="hotel_rates_meta">
-                            <div data-repeater-item class="mt-repeater-rates-item">
+                        <div data-rep eater-list="hotel_rates_meta">
+                            <div data-repe ater-item class="mt-repeater-rates-item">
                                 <div class="row single_rate_section">
-                                    <div class="col-md-3 mt-repeater-rates-input">
+                                    <!-- <div class="col-md-3 mt-repeater-rates-input">
                                         <div class="form-group">
                                             <label class="control-label">Room Category*</label>
                                             <select name="room_cat_id" required class="form-control roomcat">
@@ -80,9 +89,19 @@
 										?>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="mt-innerrepeater-hotel inner_hotel_repeater col-md-9">
+
+                                    <div class="col-md-12 mt-repeater-rates-input hide_seasons" style='display:none;'>
+                       
+
+                                        <div class="table-responsive col-md-10 appendCategory">
+                                             
+                                        </div>
+
+                                     
+                                    </div>
+                                    <!-- <div class="mt-innerrepeater-hotel inner_hotel_repeater col-md-9">
                                         <div data-repeater-list="rates_inner_meta" class="clearfix hotel_inner">
                                             <div data-repeater-item class="mt-innerrepeater-hotel-item">
                                                 <div class="col-md-3 mt-innerrepeater-hotel-input">
@@ -172,30 +191,31 @@
                                                 class="clearfix btn btn-success">
                                                 <i class="fa fa-plus"></i> Add New Season</a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!--End inner repeater-->
 
-                                    <div class="col-md-1">
+                                    <!-- <div class="col-md-1">
                                         <a href="javascript:;" data-repeater-delete
                                             class="btn btn-danger mt-repeater-rates-delete mt-repeater-del-left mt-repeater-btn-inline">
                                             <i class="fa fa-close"></i>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
-                        <a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add margin_left_15">
-                            <i class="fa fa-plus"></i> Add new</a>
+                        <!-- <a href="javascript:;" data-repeater-create
+                            class="btn btn-success mt-repeater-add margin_left_15">
+                            <i class="fa fa-plus"></i> Add new</a> -->
                     </div>
                     <!--End field Reaper -->
 
 
-                    <div class="col-md-12 text-left">
+                   <!--  <div class="col-md-12 text-left">
                         <hr>
                         <div class="margiv-top-10">
                             <button type="submit" class="btn green uppercase add_hotel">Add Hotel Room Rates</button>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="clearfix"></div>
                 </form>
             </div>
@@ -205,10 +225,16 @@
     </div>
     <!-- Modal -->
 </div>
-
+<script src="<?php echo base_url()?>site/assets/js/seteditable.js"></script>
 <script type="text/javascript">
 /* Hotel Exclusion repeater */
+
+
+
 jQuery(document).ready(function($) {
+
+
+
     FormRepeater.init();
 });
 var FormRepeater = function() {
@@ -288,7 +314,7 @@ jQuery(document).ready(function($) {
             $(".state").removeAttr("disabled");
             $(".state").html(data);
             $(".city").html("<option value=''>Select City</option>");
-            $(".hotel").html("<option value=''>Select hotel</option>");
+            $(".hotelForRates").html("<option value=''>Select hotel</option>");
         }).error(function() {
             $(".bef_send").hide();
             $("#state_list").html("Error! Please try again later!");
@@ -310,7 +336,7 @@ jQuery(document).ready(function($) {
             $(".bef_send").hide();
             $(".city").removeAttr("disabled");
             $(".city").html(data);
-            $(".hotel").html("<option value=''>Select hotel</option>");
+            $(".hotelForRates").html("<option value=''>Select hotel</option>");
         }).error(function() {
             $(".bef_send").hide();
             $("#city_list").html("Error! Please try again later!");
@@ -331,11 +357,36 @@ jQuery(document).ready(function($) {
             }
         }).done(function(data) {
             $(".bef_send").hide();
-            $(".hotel").removeAttr("disabled");
-            $(".hotel").html(data);
+            $(".hotelForRates").removeAttr("disabled");
+            $(".hotelForRates").html(data);
         }).error(function() {
             $(".bef_send").hide();
-            $(".hotel").html("Error! Please try again later!");
+            $(".hotelForRates").html("Error! Please try again later!");
+        });
+    });
+
+    $(document).on('change', 'select.hotelForRates', function() {
+        var selecthotel = $(".hotelForRates option:selected").val();
+        var _this = $(this);
+        _this.parent().append(
+            '<p class="bef_send"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('AjaxRequest/hotellistCat'); ?>",
+            data: {
+                hotel: selecthotel
+            }
+        }).done(function(data) {
+            $(".bef_send").hide();
+            $(".hotelForRates").removeAttr("disabled");
+            $(".appendCategory").html(data);
+            $(".hide_seasons").show();
+            $('.DyanmicTable').SetEditable({
+                $addButton: $('#addNewRow')
+            });
+        }).error(function() {
+            $(".bef_send").hide();
+            $(".hotelForRates").html("Error! Please try again later!");
         });
     });
 

@@ -832,5 +832,31 @@ class Global_Model extends CI_Model
 		$q = $this->db->get();
 		return $q->result();
 	}
+
+	public function saveroomRates($data){
+		$query = $this->db->select('*');
+		$this->db->from('room_rates') ;
+		$this->db->where('plan' , $data['plan']);
+		$this->db->where('hotel' , $data['hotel']);
+		$this->db->where('room' , $data['room']);
+		$this->db->where('season' , $data['season']);
+		$query = $this->db->get();  
+		if(!empty($query->result())){ 
+			$newData = array(
+				'price' => $data['price'],
+			); 
+			$this->db->where( 'plan' , $data['plan'] ); 
+			$this->db->where( 'hotel' , $data['hotel'] ); 
+			$this->db->where( 'room' , $data['room'] ); 
+			$this->db->where( 'season' , $data['season'] ); 
+			$this->db->update('room_rates' , $newData);
+		}else{  
+			$res = $this->db->insert('room_rates', $data); 
+		}
+		return $res;
+	}
+	
+
+
 }
 ?>

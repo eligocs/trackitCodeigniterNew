@@ -135,7 +135,7 @@ class Hotels extends CI_Controller {
 			$website 	= strip_tags($this->input->post('website'));
 			$address 	= strip_tags($this->input->post('address'));
 			$country	= strip_tags($this->input->post('country'));
-				
+			$room_category 		= strip_tags(implode(',',$this->input->post('room_category')));
 				
 			$update_data= array(
 				'country_id'	=> $country,
@@ -147,6 +147,7 @@ class Hotels extends CI_Controller {
 				'hotel_email'	=> $email,
 				'hotel_contact'	=> $contact,
 				'hotel_website'	=> $website,
+				'room_category'	=> $room_category,
 			);
 			
 		}else{
