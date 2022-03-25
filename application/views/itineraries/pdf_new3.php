@@ -447,10 +447,10 @@ if (!empty($itinerary)) {
                             <tr>
                                 <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;">Hotel Category
                                 </th>
-                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;">2 Star</th>
-                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;">3 Star</th>
-                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;">4 Star</th>
-                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;">5 Star</th>
+                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;"><?= totalHotelCategory()[0]->hotel_category_name ?></th>
+                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;"><?= totalHotelCategory()[1]->hotel_category_name ?></th>
+                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;"><?= totalHotelCategory()[2]->hotel_category_name ?></th>
+                                <th style="padding:5px; border: 1px solid #c6c1c1; text-align: left;"><?= totalHotelCategory()[3]->hotel_category_name ?></th>
                             </tr>
                         </thead>
                         <tbody>

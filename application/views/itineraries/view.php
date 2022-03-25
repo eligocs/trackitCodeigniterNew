@@ -847,19 +847,19 @@
                     </p>
                 </div>
                 <div class='standard  form-group col-md-2'>
-                    <label><strong>2 Star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[standard_rates]" type="number" class='form-control'></input>
                 </div>
                 <div class='deluxe form-group col-md-2'>
-                    <label><strong>3 Star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[deluxe_rates]" type="number" class='form-control'></input>
                 </div>
                 <div class='super_deluxe form-group col-md-2'>
-                    <label><strong>4 Star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[super_deluxe_rates]" type="number" class='form-control'></input>
                 </div>
                 <div class='luxury form-group col-md-2'>
-                    <label><strong>5 Star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[luxury_rates]" type="number" class='form-control'></input>
                 </div>
                 <!--div class='form-group col-md-2' >
@@ -883,47 +883,47 @@
                 <!--perperson rate meta -->
                 <div class="col-md-10 perperson_section" style="display: none;">
                     <div class='standard  form-group col-md-3'>
-                        <label><strong>2 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[standard_rates]" type="number" class='form-control'
                             placeholder="Deluxe Per/Person Cost"></input>
                     </div>
                     <div class='deluxe form-group col-md-3'>
-                        <label><strong>3 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[deluxe_rates]" type="number" class='form-control'
                             placeholder="Super Deluxe Per/Person Cost"></input>
                     </div>
                     <div class='super_deluxe form-group col-md-3'>
-                        <label><strong>4 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[super_deluxe_rates]" type="number" class='form-control'
                             placeholder="Luxury Per/Person Cost"></input>
                     </div>
                     <div class='luxury form-group col-md-3'>
-                        <label><strong>5 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[luxury_rates]" type="number" class='form-control'
                             placeholder="Super Deluxe Per/Person Cost"></input>
                     </div>
                     <div class="clearfix"></div>
                     <!--child rate-->
                     <div class='standard  form-group col-md-3'>
-                        <label><strong class="red">2 Star (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_standard_rates]" type="number" class='form-control'
                             placeholder="Deluxe Per/child Cost"></input>
                     </div>
                     <div class='deluxe form-group col-md-3'>
-                        <label><strong class="red">3 Star  (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[1]->hotel_category_name ?>  (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_deluxe_rates]" type="number" class='form-control'
                             placeholder="Super Deluxe Per/child Cost"></input>
                     </div>
                     <div class='super_deluxe form-group col-md-3'>
-                        <label><strong class="red">4 Star (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_super_deluxe_rates]" type="number" class='form-control'
                             placeholder="Luxury Per/child Cost"></input>
                     </div>
                     <div class='luxury form-group col-md-3'>
-                        <label><strong class="red">5 Star (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_luxury_rates]" type="number" class='form-control'
                             placeholder="Super Deluxe Per/child Cost"></input>
@@ -1021,22 +1021,22 @@
                     </p>
                 </div>
                 <div class='standard  form-group col-md-2'>
-                    <label><strong>2 Star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[standard_rates]" type="number" class='form-control'
                         value="<?php echo isset($get_rate_meta["standard_rates"]) ? $get_rate_meta["standard_rates"] : 0; ?>"></input>
                 </div>
                 <div class='deluxe form-group col-md-2'>
-                    <label><strong>3 Star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[deluxe_rates]" type="number" class='form-control'
                         value="<?php echo isset($get_rate_meta["deluxe_rates"]) ? $get_rate_meta["deluxe_rates"] : 0; ?>"></input>
                 </div>
                 <div class='super_deluxe form-group col-md-2'>
-                    <label><strong>4 star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[super_deluxe_rates]" type="number" class='form-control'
                         value="<?php echo isset($get_rate_meta["super_deluxe_rates"]) ? $get_rate_meta["super_deluxe_rates"] : 0; ?>"></input>
                 </div>
                 <div class='luxury form-group col-md-2'>
-                    <label><strong>5 Star:</strong></label>
+                    <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                     <input required name="rate_meta[luxury_rates]" type="number" class='form-control'
                         value="<?php echo isset($get_rate_meta["luxury_rates"]) ? $get_rate_meta["luxury_rates"] : 0; ?>"></input>
                 </div>
@@ -1066,51 +1066,51 @@
                 <div class="col-md-12 perperson_section"
                     style="display: <?php echo !empty( $check_perperson ) ? "block" : "none"; ?>">
                     <div class='standard  form-group col-md-3'>
-                        <label><strong>2 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[standard_rates]" type="number" class='form-control'
                             value="<?php echo $s_pp; ?>" placeholder="Deluxe Per/Person Cost"></input>
                     </div>
                     <div class='deluxe form-group col-md-3'>
-                        <label><strong>3 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[deluxe_rates]" type="number" value="<?php echo $d_pp; ?>"
                             class='form-control' placeholder="Super Deluxe Per/Person Cost"></input>
                     </div>
                     <div class='super_deluxe form-group col-md-3'>
-                        <label><strong>4 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[super_deluxe_rates]" type="number"
                             value="<?php echo $sd_pp; ?>" class='form-control'
                             placeholder="Luxury Per/Person Cost"></input>
                     </div>
                     <div class='luxury form-group col-md-3'>
-                        <label><strong>5 Star (Per/Person):</strong></label>
+                        <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/Person):</strong></label>
                         <input name="per_person_ratemeta[luxury_rates]" type="number" value="<?php echo $l_pp; ?>"
                             class='form-control' placeholder="Super Deluxe Per/Person Cost"></input>
                     </div>
                     <div class="clearfix"></div>
                     <!--child rate-->
                     <div class='standard  form-group col-md-3'>
-                        <label><strong class="red">2 Star (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_standard_rates]" type="number"
                             value="<?php echo $child_s_pp; ?>" class='form-control'
                             placeholder="Deluxe Per/child Cost"></input>
                     </div>
                     <div class='deluxe form-group col-md-3'>
-                        <label><strong class="red">3 Star (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[1]->hotel_category_name ?> (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_deluxe_rates]" type="number"
                             value="<?php echo $child_d_pp; ?>" class='form-control'
                             placeholder="Super Deluxe Per/child Cost"></input>
                     </div>
                     <div class='super_deluxe form-group col-md-3'>
-                        <label><strong class="red">4 Star (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_super_deluxe_rates]" type="number"
                             value="<?php echo $child_sd_pp; ?>" class='form-control'
                             placeholder="Luxury Per/child Cost"></input>
                     </div>
                     <div class='luxury form-group col-md-3'>
-                        <label><strong class="red">5 Star (Per/child):</strong><span
+                        <label><strong class="red"><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/child):</strong><span
                                 style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                         <input name="per_person_ratemeta[child_luxury_rates]" type="number"
                             value="<?php echo $child_l_pp; ?>" class='form-control'
@@ -1170,10 +1170,10 @@
                                     style="color: red; font-size: 22px;">Old Price</strong></p>
                         </tr>
                         <tr>
-                            <th> 2 Star</th>
-                            <th> 3 Star</th>
-                            <th> 4 Star</th>
-                            <th>5 Star</th>
+                            <th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
+                            <th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
+                            <th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
+                            <th><?= totalHotelCategory()[3]->hotel_category_name ?></th>
                             <th> Agent Margin(%)</th>
                         </tr>
                     </thead>
@@ -1283,25 +1283,25 @@
                 </div>
                 <div class='update_price_customprice' style="display: none;">
                     <div class='standard  form-group col-md-2'>
-                        <label><strong>2 Star:</strong></label>
+                        <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
                         <input name="standard_rates" type="number"
                             <?php if( !in_array("Standard", $dis_hotel_category_a ) ){ echo "readonly"; }else{ echo "required"; } ?>
                             class='form-control'></input>
                     </div>
                     <div class='deluxe form-group col-md-2'>
-                        <label><strong>3 Star:</strong></label>
+                        <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                         <input
                             <?php if( !in_array("Deluxe", $dis_hotel_category_a ) ){ echo "readonly"; }else{ echo "required"; } ?>
                             name="deluxe_rates" type="number" class='form-control'></input>
                     </div>
                     <div class='super_deluxe form-group col-md-2'>
-                        <label><strong>4 Star:</strong></label>
+                        <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                         <input
                             <?php if( !in_array("Super Deluxe", $dis_hotel_category_a ) ){ echo "readonly"; }else{ echo "required"; } ?>
                             name="super_deluxe_rates" type="number" class='form-control'></input>
                     </div>
                     <div class='luxury form-group col-md-2'>
-                        <label><strong>5 Star:</strong></label>
+                        <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                         <input
                             <?php if( !in_array("Luxury", $dis_hotel_category_a ) ){ echo "readonly"; }else{ echo "required"; } ?>
                             name="luxury_rates" type="number" class='form-control'></input>
@@ -2144,10 +2144,10 @@
                                 <thead class="thead-default">
                                     <tr class="thead-inverse">
                                         <th> Hotel Category</th>
-                                        <th> 2 Star</th>
-                                        <th> 3 Star</th>
-                                        <th> 4 Star</th>
-                                        <th> 5 Star</th>
+                                        <th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
+                                        <th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
+                                        <th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
+                                        <th> <?= totalHotelCategory()[3]->hotel_category_name ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -2705,14 +2705,14 @@
                                                 discount</label><br>
                                             <label><input name="hotel_cat_dis[]" required type="checkbox"
                                                     value="Standard"> <span class="cr"><i
-                                                        class="cr-icon glyphicon glyphicon-ok"></i></span><strong>2 Star</strong></label><br>
+                                                        class="cr-icon glyphicon glyphicon-ok"></i></span><strong><?= totalHotelCategory()[0]->hotel_category_name ?></strong></label><br>
                                             <label><input name="hotel_cat_dis[]" required type="checkbox"
                                                     value="Deluxe"> <span class="cr"><i
-                                                        class="cr-icon glyphicon glyphicon-ok"></i></span><strong>3 Star
+                                                        class="cr-icon glyphicon glyphicon-ok"></i></span><strong><?= totalHotelCategory()[1]->hotel_category_name ?>
                                                     </strong></label><br>
                                             <label><input name="hotel_cat_dis[]" required type="checkbox"
                                                     value="Super Deluxe"> <span class="cr"><i
-                                                        class="cr-icon glyphicon glyphicon-ok"></i></span><strong>4 Star</strong></label><br>
+                                                        class="cr-icon glyphicon glyphicon-ok"></i></span><strong><?= totalHotelCategory()[2]->hotel_category_name ?></strong></label><br>
                                             <label><input type="checkbox" required name="hotel_cat_dis[]"
                                                     value="Luxury"> <span class="cr"><i
                                                         class="cr-icon glyphicon glyphicon-ok"></i></span><strong>5
@@ -2883,10 +2883,10 @@
                                                         </p>
                                                     </tr>
                                                     <tr>
-                                                        <th> 2 Star</th>
-                                                        <th> 3 Star</th>
-                                                        <th> 4 Star</th>
-                                                        <th> 5 Star</th>
+                                                        <th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
+                                                        <th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
+                                                        <th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
+                                                        <th> <?= totalHotelCategory()[3]->hotel_category_name ?></th>
                                                         <th> Agent Margin (%) </th>
                                                     </tr>
                                                 </thead>

@@ -806,16 +806,16 @@
 														<input required type="text" name='hotel_location' class='form-control' placeholder="Eg. Shimla/Manali">
 													</div>
 													<div class='mt-repeater-hotel-input standard   col-md-2' >
-														<label><strong>2 Star:</strong></label>
+														<label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
 														<textarea name="hotel_standard" required class='form-control'></textarea>
 													</div>
 													
 													<div class='mt-repeater-hotel-input deluxe   col-md-2' >
-														<label><strong>3 Star:</strong></label>
+														<label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
 														<textarea name="hotel_deluxe" required class='form-control'></textarea>
 													</div>
 													<div class='mt-repeater-hotel-input super_deluxe   col-md-2' >
-														<label><strong>4 Star:</strong></label>
+														<label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
 														<textarea name="hotel_super_deluxe" required class='form-control'></textarea>
 													</div>
 													<div class='mt-repeater-hotel-input luxury   col-md-2' >
@@ -840,20 +840,20 @@
 													<p class="text-center"><strong style="font-size: 22px;">Rates: </strong></p>
 												</div>
 												<div class='mt-repeater-hotel-input standard  form-group col-md-3' >
-													<label><strong>2 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
 													<input required name="rate_meta[standard_rates]" type="number" class='form-control'></input>
 												</div>
 												
 												<div class='mt-repeater-hotel-input deluxe   col-md-3' >
-													<label><strong>3 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
 													<input required name="rate_meta[deluxe_rates]" type="number" class='form-control'></input>
 												</div>
 												<div class='mt-repeater-hotel-input super_deluxe   col-md-3' >
-													<label><strong>4 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
 													<input required name="rate_meta[super_deluxe_rates]" type="number" class='form-control'></input>
 												</div>
 												<div class='mt-repeater-hotel-input luxury   col-md-3' >
-													<label><strong>5 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
 													<input required name="rate_meta[luxury_rates]" type="number" class='form-control'></input>
 												</div>
 											</div> <!-- row -->
@@ -864,19 +864,19 @@
 													<p class="text-center"><strong style="font-size: 22px;">Rates: </strong><span class="red"> ( Filled by Manager only )</span></p>
 												</div>
 												<div class='mt-repeater-hotel-input deluxe   col-md-3' >
-													<label><strong>2 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
 													<input disabled type="number" class='form-control'></input>
 												</div>
 												<div class='mt-repeater-hotel-input super_deluxe  col-md-3' >
-													<label><strong>3 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
 													<input disabled type="number" class='form-control'></input>
 												</div>
 												<div class='mt-repeater-hotel-input luxury   col-md-3' >
-													<label><strong>4 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
 													<input disabled type="number" class='form-control'></input>
 												</div>
 												<div class='mt-repeater-hotel-input standard    col-md-3' >
-													<label><strong>5 Star:</strong></label>
+													<label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
 													<input disabled type="number" class='form-control'></input>
 												</div>
 											</div> <!-- row -->
