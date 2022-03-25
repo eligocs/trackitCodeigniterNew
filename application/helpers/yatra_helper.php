@@ -3049,3 +3049,22 @@
 		
 		}
 	}
+
+/* hotel category name */
+	function totalHotelCategory(){
+		$ci =& get_instance();
+		$ci->db->select('*');
+        $ci->db->from('hotel_category');
+		$ci->db->where('del_status', 0);
+       	$query = $ci->db->get();
+		$res = $query->result();
+		
+		if($res){
+			$result = $res;
+		}else{
+			$result = false;
+		}
+		return $result;
+		
+
+	}
