@@ -684,23 +684,23 @@
 																	<input required type="text" name='hotel_location' value="<?php if(isset($hotel_meta[$i]["hotel_location"]) ) echo $hotel_meta[$i]["hotel_location"]; ?>" class='form-control' placeholder="Eg. Shimla/Manali">
 																</div>
 																<div class='mt-repeater-hotel-input standard  form-group col-md-2' >
-																	<label><strong>2 Star:</strong></label>
+																	<label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
 																	<textarea name="hotel_standard" required class='form-control'><?php if(isset($hotel_meta[$i]["hotel_standard"]) ) echo $hotel_meta[$i]["hotel_standard"]; ?>
 																	</textarea>
 																</div>
 																
 																<div class='mt-repeater-hotel-input deluxe form-group col-md-2' >
-																	<label><strong>3 Star:</strong></label>
+																	<label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
 																	<textarea name="hotel_deluxe" required class='form-control'><?php if(isset($hotel_meta[$i]["hotel_deluxe"]) ) echo $hotel_meta[$i]["hotel_deluxe"]; ?>
 																	</textarea>
 																</div>
 																<div class='mt-repeater-hotel-input super_deluxe form-group col-md-2' >
-																	<label><strong>4 Star:</strong></label>
+																	<label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
 																	<textarea name="hotel_super_deluxe" required class='form-control'><?php if(isset($hotel_meta[$i]["hotel_super_deluxe"]) ) echo $hotel_meta[$i]["hotel_super_deluxe"]; ?>
 																	</textarea>
 																</div>
 																<div class='mt-repeater-hotel-input luxury form-group col-md-2' >
-																	<label><strong>5 Star:</strong></label>
+																	<label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
 																	<textarea name="hotel_luxury" required class='form-control'><?php if(isset($hotel_meta[$i]["hotel_luxury"]) ) echo $hotel_meta[$i]["hotel_luxury"]; ?>
 																	</textarea>
 																</div>
@@ -719,20 +719,20 @@
 																<input required type="text" name='hotel_location' class='form-control' placeholder="Eg. Shimla/Manali">
 															</div>
 															<div class='mt-repeater-hotel-input standard   col-md-2' >
-																<label><strong>2 Star:</strong></label>
+																<label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
 																<textarea name="hotel_standard" required class='form-control'></textarea>
 															</div>
 															
 															<div class='mt-repeater-hotel-input deluxe   col-md-2' >
-																<label><strong>3 Star:</strong></label>
+																<label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
 																<textarea name="hotel_deluxe" required class='form-control'></textarea>
 															</div>
 															<div class='mt-repeater-hotel-input super_deluxe   col-md-2' >
-																<label><strong>4 Star:</strong></label>
+																<label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
 																<textarea name="hotel_super_deluxe" required class='form-control'></textarea>
 															</div>
 															<div class='mt-repeater-hotel-input luxury   col-md-2' >
-																<label><strong>5 Star:</strong></label>
+																<label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
 																<textarea name="hotel_luxury" required class='form-control'></textarea>
 															</div>
 															<div class="mt-repeater-hotel-input col-md-1">

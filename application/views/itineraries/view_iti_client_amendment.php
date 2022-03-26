@@ -467,10 +467,10 @@
 										<thead class="thead-default">
 											<tr>
 												<th class="thead-inverse"> <strong>Hotel <span>Category</span></strong></th>
-												<th class="thead-inverse"> <strong>2 Star</strong></th>
-												<th class="thead-inverse"> <strong>3 Star</strong></th>
-												<th class="thead-inverse"> <strong>4 Star</strong></th>
-												<th class="thead-inverse"> <strong>5 Star</strong></th>
+												<th class="thead-inverse"> <strong><?= totalHotelCategory()[0]->hotel_category_name ?></strong></th>
+												<th class="thead-inverse"> <strong><?= totalHotelCategory()[1]->hotel_category_name ?></strong></th>
+												<th class="thead-inverse"> <strong><?= totalHotelCategory()[2]->hotel_category_name ?></strong></th>
+												<th class="thead-inverse"> <strong><?= totalHotelCategory()[3]->hotel_category_name ?></strong></th>
 											</tr>
 										</thead>
 										<tbody>
