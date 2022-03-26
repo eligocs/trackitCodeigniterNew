@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class hotel_category_model extends CI_Model{
+class HotelCategoryModel extends CI_Model{
 	
 	/* datatable filter varibles for hotels */
 	public $table = 'hotel_category';

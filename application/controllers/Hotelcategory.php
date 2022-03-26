@@ -6,7 +6,7 @@ class Hotelcategory extends CI_Controller
     {
         parent::__Construct();
         validate_login();
-        $this->load->model("hotel_category_model");
+        $this->load->model("HotelCategoryModel");
     }
 
 
@@ -14,7 +14,7 @@ class Hotelcategory extends CI_Controller
     {
         $user = $this->session->userdata('logged_in');
         if ($user['role'] == '99') {
-            $data['categories'] = $this->hotel_category_model->getAllCategory();
+            $data['categories'] = $this->HotelCategoryModel->getAllCategory();
             $this->load->view('inc/header');
             $this->load->view('inc/sidebar');
             $this->load->view('hotels/hotelcategory', $data);
@@ -33,7 +33,7 @@ class Hotelcategory extends CI_Controller
             $update_data = array(
                 'hotel_category_name'        => $_POST['hotel_category'],
             );
-            $check_category_exist = $this->hotel_category_model->is_category_name_exists("hotel_category", "hotel_category_name", $_POST['hotel_category'], $_POST['id']);   
+            $check_category_exist = $this->HotelCategoryModel->is_category_name_exists("hotel_category", "hotel_category_name", $_POST['hotel_category'], $_POST['id']);   
             if ($check_category_exist) {
                 $this->session->set_flashdata('error',"Hotel Category name already exists.");
                 redirect("hotelcategory");
@@ -53,7 +53,7 @@ class Hotelcategory extends CI_Controller
             $insert_data = array(
                 'hotel_category_name'        => $_POST['hotel_category'],
             );
-            $check_category_exist = $this->hotel_category_model->is_category_name_exists("hotel_category", "hotel_category_name", $_POST['hotel_category']);  
+            $check_category_exist = $this->HotelCategoryModel->is_category_name_exists("hotel_category", "hotel_category_name", $_POST['hotel_category']);  
             if ($check_category_exist) {
                 $this->session->set_flashdata('error',"Hotel Category name already exists.");
 					redirect("hotelcategory");
@@ -79,7 +79,7 @@ class Hotelcategory extends CI_Controller
         $data = '';
         if ($user['role'] == '99') {
             if (!empty($id)) {
-                $categories['category'] = $this->hotel_category_model->geteditCategory($id);
+                $categories['category'] = $this->HotelCategoryModel->geteditCategory($id);
             }
             $this->load->view('inc/header');
             $this->load->view('inc/sidebar');
