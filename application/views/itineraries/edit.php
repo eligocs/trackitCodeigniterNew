@@ -125,7 +125,7 @@
                                 <div class="form-body">
                                     <ul id="clickable_steps" class="nav nav-pills nav-justified  steps <?php echo $add_pub_class; ?>">
                                         <li>
-                                            <a href="#tab4" data-toggle="tab" class="step">
+                                            <a href="#tab1" data-toggle="tab" class="step">
                                                 <span class="number"> 1 </span>
                                                 <span class="desc">
                                                     <i class="fa fa-check"></i> Package Overview </span>
