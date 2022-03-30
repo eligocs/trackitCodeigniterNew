@@ -2111,6 +2111,31 @@ jQuery(document).ready(function($) {
         $(".modal").hide();
         $("#continue_package, #clone_current_iti").addClass("disabledBtn");
     });
+
+
+
+      $(document).on("click", ".delete_iti_permanent", function() {
+        var id = $(this).attr("data-id");
+        if (confirm("Are you sure?")) {
+            $.ajax({
+                url: "<?php echo base_url(); ?>" + "itineraries/delete_iti_permanently?id=" +
+                    id,
+                type: "GET",
+                data: id,
+                dataType: 'json',
+                cache: false,
+                success: function(r) {
+                    if (r.status = true) {
+                        location.reload();
+                        //console.log("ok" + r.msg);
+                        //console.log(r.msg);
+                    } else {
+                        alert("Error! Please try again.");
+                    }
+                }
+            });
+        }
+    });
 });
 </script>
 <script type="text/javascript">

@@ -22,9 +22,7 @@ jQuery(document).ready(function($) {
         pm_iti_bar_chart();
     });
 
-    //Call charts
-    pm_iti_bar_chart();
-    pm_leads_bar_chart();
+
 
     //Itineraries Bar Chart
     function pm_iti_bar_chart() {

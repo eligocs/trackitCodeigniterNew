@@ -453,6 +453,22 @@
 			return false;
 		}
 	}
+
+	/*
+	 * Get accounts
+	*/
+	
+	function is_accounts() {
+		$ci = & get_instance();
+		$user_data = $ci->session->userdata('logged_in');
+		$role =  $user_data['role']; 
+		
+		if ( isset($role) && !empty($role) && $role == 93 ) {
+			return  $role;
+		}else{
+			return false;
+		}
+	}
 	
 	/*
 	* Check if agent is TEAMLEADER table: teamleaders

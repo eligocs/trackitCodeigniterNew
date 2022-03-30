@@ -122,6 +122,10 @@
 		if( ( $segment_one == "dashboard" || $current_url == base_url() ) && is_admin_or_manager()){ ?>
 			<script src="<?php echo base_url();?>site/assets/dist/echarts-all.js" type="text/javascript"></script>
 			<script src="<?php echo base_url();?>site/assets/chart/admin_chart.js" type="text/javascript"></script>
+			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/index.js" type="text/javascript"></script>
+			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/percent.js" type="text/javascript"></script>
+			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/Animated.js" type="text/javascript"></script>
+			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/funelchart.js" type="text/javascript"></script>
 			<!-- <script src="<?php echo base_url();?>site/assets/echarts-en.min.js" type="text/javascript"></script> -->
 			<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"> </script> -->
 			<!-- <script src="<?php echo base_url();?>site/assets/js/echarts/echarts.js" type="text/javascript"></script>
@@ -129,11 +133,18 @@
 			<?php 
 		}
 		?>
+
 		<!-------------------- sales Dashboard Chart ------------------------------------>
 		<?php
 		if(($segment_one == "dashboard" || $current_url == base_url() ) && is_salesteam() ){ ?>
 			<script src="<?php echo base_url();?>site/assets/dist/echarts-all.js" type="text/javascript"></script>
 			<script src="<?php echo base_url();?>site/assets/chart/sales_chart.js" type="text/javascript"></script>
+		<?php } ?>
+
+
+		<?php
+		if(($segment_one == "dashboard" || $current_url == base_url() ) && (is_accounts() ||   is_admin())){ ?>
+			<script src="<?php echo base_url();?>site/assets/js/calander.js" type="text/javascript"></script>
 		<?php } ?>
 		
 		<!--desktop notifications script 103.97.231.30 -->
