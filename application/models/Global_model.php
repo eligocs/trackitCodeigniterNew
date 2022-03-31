@@ -11,11 +11,6 @@ class Global_Model extends CI_Model
 	public function insert_data($tablename, $data_array) {
         if ( $this->db->insert($tablename, $data_array) ) {
             $id = $this->db->insert_id();
-			$error = $this->db->error(); // Has keys 'code' and 'message'
-			echo "<BR><BR>";
-			print_r($error);
-			echo "<BR><BR>";
-die;
 			$result = $id;
         } else {
             $result = false;
