@@ -10,7 +10,7 @@
 					<a class="btn btn-success" href="<?php echo site_url("marketing/add"); ?>" title="add user">Add Marketing User</a>
 				</div>
 			</div>
-			<div class="cat_wise_filter second_custom_card">
+			<div class="cat_wise_filter custom_card">
 				<!--check if no area assign to service and sales team ; -->
 				<?php if( ( $user_role == 96 || $user_role == 97 ) &&  !$check_assign_area ){ 
 					echo "<p>No area assign to you.Please Contact your manager.</p>";
@@ -24,58 +24,56 @@
 				<?php if( !is_salesteam() && !is_serviceteam() ){ ?>
 				<!--Filter-->
 				<form role="form" id="filter_frm" method="post">
-					<div class="col-md-3">
-					<label class="control-label">State </label>
-						<div class="form-group">
-							<select name='state' class='form-control' id='state'>
-								<option value="">Select State</option>
-								<?php $state_list = get_indian_state_list(); 
-									if( $state_list ){
-										foreach($state_list as $state){
-											echo '<option value="' . $state->id .'">'.$state->name.'</option>';
-										}
-									} ?>
-							</select>	
+					<div class="row">
+						<div class="col-md-3">
+							<label class="control-label">State </label>
+							<div class="form-group">
+								<select name='state' class='form-control' id='state'>
+									<option value="">Select State</option>
+									<?php $state_list = get_indian_state_list(); 
+										if( $state_list ){
+											foreach($state_list as $state){
+												echo '<option value="' . $state->id .'">'.$state->name.'</option>';
+											}
+										} ?>
+								</select>	
+							</div>
 						</div>
-					</div>
-					<div class="col-md-3">	
-						<div class="form-group">
-							<label class="control-label">Choose Category*</label>
-							<select required name="cat" class="form-control" id="all_cat_list">
-								<option value="">Select Category</option>
-								<?php if(!empty($categories)) { ?>
-								<?php foreach($categories as $cat){?>
-									<option value="<?php echo $cat->id;?>"><?php echo $cat->category_name;?></option>
-								<?php }	?>
-								<?php } ?>
-							</select>
+						<div class="col-md-3">	
+							<div class="form-group">
+								<label class="control-label">Choose Category*</label>
+								<select required name="cat" class="form-control" id="all_cat_list">
+									<option value="">Select Category</option>
+									<?php if(!empty($categories)) { ?>
+									<?php foreach($categories as $cat){?>
+										<option value="<?php echo $cat->id;?>"><?php echo $cat->category_name;?></option>
+									<?php }	?>
+									<?php } ?>
+								</select>
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-3">	
-						<div class="form-group">
-							<label class="control-label">Date Range</label>
-							<input type="text" class="form-control" autocomplete="off" id="daterange" name="dateRange" value="" />
+						<div class="col-md-3">	
+							<div class="form-group">
+								<label class="control-label">Date Range</label>
+								<input type="text" class="form-control" autocomplete="off" id="daterange" name="dateRange" value="" />
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-3 margin-top-15 padding-tb-10">	
-						<div class="margiv-top-10">
-							<button type="submit" class="btn green uppercase add_user">Filter</button>
-							<a href="javascript:void(0);" class="btn green uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
+						<div class="col-md-3">	
+							<label class="control-label d-block" for="">&nbsp;</label>
+							<button type="submit" class="btn green uppercase add_user mt-1">Filter</button>
+							<!-- <label class="control-label d-block" for="">&nbsp;</label> -->
+							<a href="javascript:void(0);" class="btn green uppercase reset_filter mt-1"><i class="fa fa-refresh"></i> Reset</a>
 						</div>
+						<input type="hidden" id="stateID" value="" />
+						<input type="hidden" id="cityID" value="" />
+						<input type="hidden" id="catID" value="" />
+						<input type="hidden" name="date_from" id="date_from" value="" >
+						<input type="hidden" name="date_to" id="date_to" value="">
+						
+						<?php $todayStatus = isset( $_GET["todayStatus"] ) && !empty( $_GET["todayStatus"] ) ? $_GET["todayStatus"] : "";	?>
+						<input type="hidden" id="todayStatus" value="<?php echo $todayStatus; ?>" />
 					</div>
-					<input type="hidden" id="stateID" value="" />
-					<input type="hidden" id="cityID" value="" />
-					<input type="hidden" id="catID" value="" />
-					<input type="hidden" name="date_from" id="date_from" value="" >
-					<input type="hidden" name="date_to" id="date_to" value="">
-					
-					<?php $todayStatus = isset( $_GET["todayStatus"] ) && !empty( $_GET["todayStatus"] ) ? $_GET["todayStatus"] : "";	?>
-					<input type="hidden" id="todayStatus" value="<?php echo $todayStatus; ?>" />
-			
 				</form>	
-				<div class="clearfix"></div>
 				<div class="res"></div>
 			</div>
 			<!--End Filter-->
@@ -83,24 +81,24 @@
 			<hr class="clearfix" />
 			<div class="custom_card">
 				<div class="upload_user_section">
-					<form class="" action="<?php echo base_url(); ?>marketing/import_marketing_users" method="post" name="upload_excel" enctype="multipart/form-data">
+					<form class="" action="<?php echo base_url(); ?>marketing/import_marketing_users" method="post"  name="upload_excel" enctype="multipart/form-data">
 							<!-- File Button -->
 							<div class="col-md-4">	
-							<div class="form-group">
-								<label class="control-label" for="filebutton">Select Csv File</label>
-								<div class="d_inline_block">
-									<input required type="file" name="file" id="file" class="input-large">
+								<div class="form-group">
+									<label class="control-label" for="filebutton">Select Csv File</label>
+									<div class="d_inline_block">
+										<input required type="file" name="file" id="file" class="input-large">
+									</div>
 								</div>
-							</div>
 							</div>
 							<div class="col-md-4">	
-							<!-- Button -->
-							<div class="form-group">
-								<label class="control-label" for="singlebutton">Import User</label>
-								<div class="d_inline_block">
-									<button type="submit" id="submit" name="Import" class="btn green uppercase button-loading" data-loading-text="Loading...">Import</button>
+								<!-- Button -->
+								<div class="form-group">
+									<label class="control-label" for="singlebutton">Import User</label>
+									<div class="d_inline_block">
+										<button type="submit" id="submit" name="Import" class="btn green uppercase button-loading" data-loading-text="Loading...">Import</button>
+									</div>
 								</div>
-							</div>
 							</div>
 					</form>
 				</div>

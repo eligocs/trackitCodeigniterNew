@@ -73,18 +73,20 @@
 		<?php } ?>
 	<!--------------------Popup THOUGHT OF THE DAY end------------>
 		
-		
+	</div><!-- main_page_container End -->
+
 		<!-- BEGIN FOOTER -->
-            <div class="page-footer container">
+            <div class="page-footer">
                 <div class="page-footer-inner"> <?php echo date("Y"); ?> &copy; Develop By
                     <a target="_blank" href="http://eligocs.com">Eligocs</a></div>
+					<div class="footer_text">Footer</div>
 					<div class="text-right text-white">Page rendered in <strong>{elapsed_time}</strong> seconds</div>
                 <div class="scroll-to-top">
                     <i class="icon-arrow-up"></i>
                 </div>
             </div>
             <!-- END FOOTER -->
-        </div>
+		
 		<?php 
 			$segment_one =  $this->uri->segment(1);
 			$current_url = base_url(uri_string());
@@ -143,6 +145,46 @@
 		<?php } ?>
 		
         <script src="<?php echo base_url();?>site/assets/js/custom.js" type="text/javascript"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
+
+
+			<script>
+               function showTime(){
+               	var date = new Date();
+               	var h = date.getHours(); // 0 - 23
+               	var m = date.getMinutes(); // 0 - 59
+               	var s = date.getSeconds(); // 0 - 59
+               	var day = date.getDay(); // 0 - 6
+               	var session = "AM";
+               	
+               	var weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
+               
+               	
+               	if(h >= 12) session = "PM";
+               	
+               	if(h == 0){
+               		h = 12;
+               	}
+               	
+               	if(h > 12){
+               		h = h - 12;
+               	}
+               	
+               	h = (h < 10) ? "0" + h : h;
+               	m = (m < 10) ? "0" + m : m;
+               	s = (s < 10) ? "0" + s : s;
+               	
+               	var time = weekday + "  " + h + ":" + m + ":" + s + " " + session;
+               	document.getElementById("MyClockDisplay").innerText = time;
+               	document.getElementById("MyClockDisplay").textContent = time;
+               	
+               	setTimeout(showTime, 1000);
+               	
+               }
+               showTime();
+            </script>
+
+
     </body>
 </html>

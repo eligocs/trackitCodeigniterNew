@@ -1,47 +1,48 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<!-- BEGIN SAMPLE TABLE PORTLET-->
-		<?php $message = $this->session->flashdata('success'); 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-users"></i>All Closed Itineraries
+			<!-- BEGIN SAMPLE TABLE PORTLET-->
+			<?php $message = $this->session->flashdata('success'); 
+			if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+			?>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-users"></i>All Closed Itineraries
+					</div>
+				</div>
+			</div>	
+			<div class="portlet box blue">
+				<div class="portlet-body">
+					<div class="table-responsive">
+						<table id="itinerary" class="table table-striped display">
+							<thead>
+								<tr>
+									<th> # </th>
+									<th> Iti ID </th>
+									<th> Iti Type </th>
+									<th> Lead ID </th>
+									<th> Name </th>
+									<th> Package Name</th>
+									<th> Tra. Date</th>
+									<th> Booking Date</th>
+									<th> Action </th>
+								</tr>
+							</thead>
+							<tbody>
+							<div class="loader"></div>
+							<div id="res"></div>
+								<!--DataTable Goes here-->
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>	
-			<div class="portlet-body">
-				<div class="table-responsive second_custom_card">
-					<table id="itinerary" class="table table-striped display">
-						<thead>
-							<tr>
-								<th> # </th>
-								<th> Iti ID </th>
-								<th> Iti Type </th>
-								<th> Lead ID </th>
-								<th> Name </th>
-								<th> Package Name</th>
-								<th> Tra. Date</th>
-								<th> Booking Date</th>
-								<th> Action </th>
-							</tr>
-						</thead>
-						<tbody>
-						<div class="loader"></div>
-						<div id="res"></div>
-							<!--DataTable Goes here-->
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		
 		</div>
 	</div>
-	<!-- END CONTENT BODY -->
 </div>
+</div>
+	<!-- END CONTENT BODY -->
 <script type="text/javascript">
 var table;
 $(document).ready(function() {

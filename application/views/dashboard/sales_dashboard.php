@@ -9,6 +9,7 @@
 	$this_month = date("Y-m");
 ?>
 <!-- BEGIN CONTENT User Role: 96 -->
+<div class="page-container">
 <div class="page-content-wrapper sales_team_dashboard">
     <!-- BEGIN CONTENT BODY -->
     <div class="page-content">

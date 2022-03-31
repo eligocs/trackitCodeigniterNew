@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="page-content-wrapper">
-        <div class="page-content">
+        <div class="page-content p-3">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
             if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
@@ -15,7 +15,7 @@
                   if( !empty( $rev_link ) ){
                   ?>
                     <div class="pull-right">
-                        <button class="btn btn-success margin_top_4" onclick="copy_rev_link()">Copy Review Link</button>
+                        <button class="btn btn-success float-end" onclick="copy_rev_link()">Copy Review Link</button>
                         <strong id="altPassTemp" class='hide'><?php echo $rev_link; ?></strong>
                     </div>
                     <?php } ?>
@@ -33,89 +33,67 @@
             }
             ?>
             <!--sort by agent -->
-            <div class="row margin-bottom-25 second_custom_card">
-                <?php if( $user_role == 99 || $user_role == 98 ){ ?>
-                <div class="col-md-3">
-                    <?php $sales_team_agents = get_all_sales_team_agents(); ?>
-                    <div class="form-group">
-                        <label for="sales_user_id">Select Sales Team User:</label>
-                        <select required class="form-control" id='sales_user_id' name="user_id">
-                            <option value="">All Users</option>
-                            <?php foreach( $sales_team_agents as $user ){ ?>
-                            <option value="<?php echo $user->user_id; ?>">
-                                <?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?>
-                            </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <?php } ?>
+            <div class="margin-bottom-25 custom_card">
                 <!--start filter section-->
-                <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible">
-                    <div class="marginBottom <?php echo $hideClass; ?> col-md-3">
-                        <div class="actions custom_filter">
-                            <label>Filter: </label>
-                            <!--Calender-->
-                            <input type="text" autocomplete="off" class="form-control d_block" id="daterange"
-                                name="dateRange" value="" required />
-
-
-                            <!-- <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default btn-primary custom_active">
-									<input type="radio" name="filter" value="9" id="all" />All</label>
-                                <label class="btn btn-default btn-success custom_active"><input type="radio"
-                                        name="filter" value="9" id="approved" />Booking Date</label>
-                                <label title="Travel Date" class="btn btn-default btn-danger custom_active"><input
-                                        type="radio" name="filter" value="travel_date" id="travel_date" />Travel
-                                    Date</label>
-                                <label title="Travel Date" class="btn btn-default btn-danger custom_active"><input
-                                        type="radio" name="filter" value="travel_end_date"
-                                        id="travel_end_date" />Checkout</label>
-                            </div> -->
-                            <!--End-->
-                            <input type="hidden" name="date_from" id="date_from"
-                                data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"]; }else { echo $first_day_this_month; } ?>"
-                                value="">
-                            <input type="hidden" name="date_to" id="date_to"
-                                data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"]; }else{ echo $last_day_this_month; } ?>"
-                                value="">
-                            <input type="hidden" name="filter_val" id="filter_val"
-                                value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "9"; } ?>">
-                            <input type="hidden" name="todayStatus" id="todayStatus"
-                                value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
-
+                <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible mb-0">
+                    <?php if( $user_role == 99 || $user_role == 98 ){ ?>
+                    <div class="row">
+                        <div class="col-md-3 my-2">
+                            <?php $sales_team_agents = get_all_sales_team_agents(); ?>
+                            <div class="form-group">
+                                <label class="control-label" for="sales_user_id">Select Sales Team User:</label>
+                                <select required class="form-control" id='sales_user_id' name="user_id">
+                                    <option value="">All Users</option>
+                                    <?php foreach( $sales_team_agents as $user ){ ?>
+                                    <option value="<?php echo $user->user_id; ?>">
+                                        <?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?>
+                                    </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="filter_box">
-                            <label for="">&nbsp;</label>
-                            <select class="form-control" name="filtername" id="">
-                                <option  value="9" id="all">All</option>
-                                <option  value="9" id="approved">Approved</option>
-                                <option  value="travel_date" id="travel_date">Travel Date</option>
-                                <option  value="travel_end_date" id="travel_end_date">Checkout</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="" class="d_block">&nbsp;</label>
-                        <input type="submit" class="btn btn-success" value="Filter">
-                        <?php if( $user_role == 99 || $user_role == 98 ){ ?>
-                                <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
-                                    class="btn btn-danger pull-right export_btn"><i class="fa fa-file-excel"></i>
-                                    Export</a>
                         <?php } ?>
+                        <div class="<?php echo $hideClass; ?> col-md-3 my-2">
+                            <div class="actions custom_filter">
+                                <label class="control-label">Filter: </label>
+                                <!--Calender-->
+                                <input type="text" autocomplete="off" class="form-control d_block" id="daterange"
+                                    name="dateRange" value="" required />
+                                <input type="hidden" name="date_from" id="date_from"
+                                    data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"]; }else { echo $first_day_this_month; } ?>"
+                                    value="">
+                                <input type="hidden" name="date_to" id="date_to"
+                                    data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"]; }else{ echo $last_day_this_month; } ?>"
+                                    value="">
+                                <input type="hidden" name="filter_val" id="filter_val"
+                                    value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "9"; } ?>">
+                                <input type="hidden" name="todayStatus" id="todayStatus"
+                                    value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 my-2">
+                            <div class="filter_box">
+                                <label class="control-label" for="">&nbsp;</label>
+                                <select class="form-control" name="filtername" id="">
+                                    <option  value="9" id="all">All</option>
+                                    <option  value="9" id="approved">Approved</option>
+                                    <option  value="travel_date" id="travel_date">Travel Date</option>
+                                    <option  value="travel_end_date" id="travel_end_date">Checkout</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 my-2">
+                            <label class="control-label d-block" for="">&nbsp;</label>
+                            <input type="submit" class="btn btn-success" value="Filter">
+                            <?php if( $user_role == 99 || $user_role == 98 ){ ?>
+                                    <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
+                                        class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
+                                        Export</a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </form>
-                <!--End filter section-->
-                <!-- <?php// if( $user_role == 99 || $user_role == 98 ){ ?>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <a href="<?php// echo base_url("export/export_itinerary_fiter_data");?>"
-                            class="btn btn-danger pull-right export_btn"><i class="fa fa-file-excel"></i> Export</a>
-                    </div>
-                </div>
-                <?php// } ?> -->
             </div>
             <div class="clearfix"></div>
             <div class="spinner_load" style="display: none;">
