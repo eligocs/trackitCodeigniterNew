@@ -8,106 +8,13 @@ $today_date = date('Y-m-d');
 //This Month
 $this_month = date("Y-m");
 ?>
-<?php $todAy = date("Y-m-d"); ?>
-<style>
-.element:-ms-fullscreen p {
-    visibility: visible;
-}
 
-.element:fullscreen {
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-}
-
-#chartdiv {
-    width: 50%;
-    height: 300px;
-}
-
-#chartdiv {
-    width: 530px;
-    height: 450px;
-    font-size: 11px;
-    border: 1px solid #eee;
-    float: left;
-}
-
-.quick-nav-chart {
-    top: 123px;
-    position: absolute;
-    z-index: 10103;
-    right: 0;
-    height: 60px;
-    width: 60px;
-    border-radius: 50% !important;
-    overflow: hidden;
-    white-space: nowrap;
-    color: transparent;
-    
-}
-</style>
-
-<div class="page-content-wrapper sales_team_dashboard">
-    <!-- BEGIN CONTENT BODY -->
-    <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
-        <div class="theme-panel hidden-xs hidden-sm">
-            <div class="toggler"> </div>
-            <div class="toggler-close"> </div>
-            <div class="theme-options">
-                <div class="theme-option theme-colors clearfix">
-                    <span> THEME COLOR </span>
-                    <ul id="theme_color_listing">
-                        <li class="color-default current tooltips" data-style="default" data-container="body"
-                            data-original-title="Default"> </li>
-                        <li class="color-darkblue tooltips" data-style="theme_dark" data-container="body"
-                            data-original-title="Theme Dark"> </li>
-                        <li class="color-blue tooltips" data-style="theme_light" data-container="body"
-                            data-original-title="Theme Light"> </li>
-                    </ul>
-                </div>
-                <div class="th_response"></div>
-            </div>
-        </div>
-        <!------->
-        <nav class="quick-nav">
-            <a class="quick-nav-trigger" href="javascript: void(0)">
-                <span aria-hidden="true"></span>
-            </a>
-            <ul class="sidebar-buttons">
-                <li><button class="btn" id="btn_load_payment_followup"><i class="fa fa-money"></i> Payment Follow
-                        Up</button></li>
-                <li><button class="btn" id="btn_load_ad_payment_followup"><i class="fa fa-money"></i> Advance Payment
-                        Follow Up</button></li>
-                <li><button class="btn" id="btn_load_balance_payment_followup"><i class="fa fa-money"></i> Balance
-                        Payment Follow Up</button></li>
-                <li><button class="btn" id="btn_load_travel_followup"><i class="fa fa-clock-o"></i> Travel Dates
-                        Follow</button></li>
-            </ul>
-            <span aria-hidden="true" class="quick-nav-bg"></span>
-        </nav>
-        <!-- chart  -->
-        <div class="quick-nav-chart">
-            <a id="quick-nav-triggered" type="submit">
-                <img class="modal-target" src="<?php echo base_url();?>site/images/chart-icon.svg" alt="">
-            </a>
-        </div>
-
-
-        <!-- BEGIN PAGE BAR -->
-        <div class="page-bar">
-            <ul class="page-breadcrumb">
-                <li>
-                    <a href="<?php echo base_url(); ?>">Home</a>
-                    <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <span>Dashboard</span>
-                </li>
-            </ul>
-
-
+    <style>
+      #chartdiv {
+        width: 100%;
+        height: 500px;
+      }
+	</style>
 
 <?php $todAy = date("Y-m-d"); ?>
     <div class="page-container">
@@ -895,120 +802,95 @@ $this_month = date("Y-m");
                         </div>
                     </div>
                 </div>
+                <div class="clearfix"></div>
+                <!-- END CONTENT BODY -->
+                <?php $get_agents = get_all_sales_team_agents(); ?>
+                <!--Chart Section-->
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="custom_title">
+                            <i class="fa fa-bar-chart" style="font-size:18px;"></i>
+                            <span class="caption-subject bold uppercase">Statistics</span>
+                        </div>
+                    </div>
+                    <div class="row portlet-body">
+                        <div class="col-md-6">
+                            <div class="titile_section row">
+                                <h3>ITINERARIES GRAPH</h3>
+                                <div class="form-group col-lg-6 my-3">
+                                    <label for="sel1">Select Agent:</label>
+                                    <select class="form-control" id="agent_graph">
+                                        <option value="">All Agents</option>
+                                        <?php
+                                        if ($get_agents) {
+                                            foreach ($get_agents as $agent) {
+                                                echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-6 my-3">
+                                    <label for="sel1">Select Date:</label>
+                                    <input type="text" autocomplete="off" class="form-control daterange dateHide" id="daterangelead" name="daterangelead" value="" />
+                                </div>
+                            </div>
+                            <div class="portlet-body card-padding">
+                                <div id="pieChart" style="height:500px; padding:10px;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="titile_section row">
+                                <h3>LEADS GRAPH</h3>
+                                <div class="form-group col-lg-6 my-3">
+                                    <label for="sel1">Select Agent:</label>
+                                    <select class="form-control" id="agent_graph_lead">
+                                        <option value="">All Agents</option>
+                                        <?php
+                                        if ($get_agents) {
+                                            foreach ($get_agents as $agent) {
+                                                echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-6 my-3">
+                                    <label for="sel1">Select Date:</label>
+                                    <input type="text" autocomplete="off" class="form-control daterange dateHide" id="leadsDate" name="daterangelead" value="" />
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div id="main" style="height: 400px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
             </div>
+            <!--End Chart Section-->
         </div>
-        <div class="clearfix"></div>
-        <!-- END CONTENT BODY -->
-        <?php $get_agents = get_all_sales_team_agents(); ?>
-       
-        <hr>
-        <br>
-        <br>
-        <br>
-        <br>
+    <!-- end page-content-wrapper -->
     </div>
     <!-- End page-container -->
 <!-- END QUICK SIDEBAR -->
 </div>
 </div>
-<!-- ITINERARIES FOLLOW UP -->
-<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel2">PAYMENT FOLLOW UP</h4>
-            </div>
-            <div class="col-md-12 column" id="iti_folloup_cal_section">
-                <div id='calendar_payment_followup' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-
-<!-- Pending advance payment ITINERARIES FOLLOW UP -->
-<div class="modal right fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel4">ADVANCE PAYMENT PENDING FOLLOW UP</h4>
-            </div>
-            <div class="col-md-12 column">
-                <div id='calendar_advance_payment_followup' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-
-<!-- Pending payment ITINERARIES FOLLOW UP -->
-<div class="modal right fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel5">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel5">PAYMENT PENDING FOLLOW UP AFTER ADVANCE RECIEVED</h4>
-            </div>
-            <div class="col-md-12 column">
-                <div id='calendar_bal_payment_followup' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-
-<!-- Travel Dates -->
-<div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel3">Travel Dates</h4>
-            </div>
-            <div class="col-md-12 column" id="travel_cal_section">
-                <div id='calendar_travel_dates' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-<!-- END CONTAINER -->
-
-
-<!-- CHARTS -->
-<div class="modal right fade" id="myModa20" tabindex="-1" role="dialog" aria-labelledby="myModalLabe20">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabe20"></h4><i class="fa fa-bar-chart" style="font-size:18px;"></i>
-                        <span class="caption-subject bold uppercase">Statistics</span></h4>
-            </div>
-            <div class="col-md-12 column" id="travel_cal_section">
-                <div id='chart_sections' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-<!-- END CONTAINER -->
+<!-- END Main container-fluid -->
 <!--angular js-->
-<script>
-    $(document).ready(function($) {
-    $(".dateHide").val('');
-    });
-/* var url = "<?php echo base_url("angular/admin_dashboard"); ?>";
-   var app = angular.module('myApp', []);
-   app.controller('dashboardCtrl', function($scope, $http) {
-   	    console.info('error'); 
-   
-   	$http.get(url)
-   	.then(function(response) {
-   		console.log( response.data.total_agents );
-   		$scope.total_agents = response.data.total_agents;
-   	});
-   }); */
 
-</script>
+
+    <script>
+            /* var url = "<?php echo base_url("angular/admin_dashboard"); ?>";
+        var app = angular.module('myApp', []);
+        app.controller('dashboardCtrl', function($scope, $http) {
+                console.info('error'); 
+        
+            $http.get(url)
+            .then(function(response) {
+                console.log( response.data.total_agents );
+                $scope.total_agents = response.data.total_agents;
+            });
+        }); */
+    </script>
