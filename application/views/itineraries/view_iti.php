@@ -260,10 +260,10 @@
                                 <thead class="thead-default">
                                     <tr class="thead-inverse">
                                         <th> Hotel Category</th>
-                                        <th> 2 Star</th>
-                                        <th> 3 Star</th>
-                                        <th> 4 Star</th>
-                                        <th> 5 Star</th>
+                                        <th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
+                                        <th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
+                                        <th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
+                                        <th> <?= totalHotelCategory()[3]->hotel_category_name ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -2110,6 +2110,31 @@ jQuery(document).ready(function($) {
     $(document).on("click", ".close", function() {
         $(".modal").hide();
         $("#continue_package, #clone_current_iti").addClass("disabledBtn");
+    });
+
+
+
+      $(document).on("click", ".delete_iti_permanent", function() {
+        var id = $(this).attr("data-id");
+        if (confirm("Are you sure?")) {
+            $.ajax({
+                url: "<?php echo base_url(); ?>" + "itineraries/delete_iti_permanently?id=" +
+                    id,
+                type: "GET",
+                data: id,
+                dataType: 'json',
+                cache: false,
+                success: function(r) {
+                    if (r.status = true) {
+                        location.reload();
+                        //console.log("ok" + r.msg);
+                        //console.log(r.msg);
+                    } else {
+                        alert("Error! Please try again.");
+                    }
+                }
+            });
+        }
     });
 });
 </script>

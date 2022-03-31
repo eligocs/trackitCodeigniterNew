@@ -453,6 +453,22 @@
 			return false;
 		}
 	}
+
+	/*
+	 * Get accounts
+	*/
+	
+	function is_accounts() {
+		$ci = & get_instance();
+		$user_data = $ci->session->userdata('logged_in');
+		$role =  $user_data['role']; 
+		
+		if ( isset($role) && !empty($role) && $role == 93 ) {
+			return  $role;
+		}else{
+			return false;
+		}
+	}
 	
 	/*
 	* Check if agent is TEAMLEADER table: teamleaders
@@ -3048,4 +3064,23 @@
 			return 0;
 		
 		}
+	}
+
+/* hotel category name */
+	function totalHotelCategory(){
+		$ci =& get_instance();
+		$ci->db->select('*');
+        $ci->db->from('hotel_category');
+		$ci->db->where('del_status', 0);
+       	$query = $ci->db->get();
+		$res = $query->result();
+		
+		if($res){
+			$result = $res;
+		}else{
+			$result = false;
+		}
+		return $result;
+		
+
 	}

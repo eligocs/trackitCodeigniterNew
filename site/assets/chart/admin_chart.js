@@ -1,235 +1,208 @@
-jQuery(document).ready(function($) {
-    $(".dateHide").val('');
-    //filter on  date change function
-    $("#daterangelead").change(function() {
-        // $(".chart-pie-simple").html('')
-        leads_date_filter();
-    });
-    //filter on  date change function leads
-    $("#leadsDate").change(function() {
-        // $("#main").html('')
-        hm_leads_chart();
-    });
+//leads filter 
+function leads_date_filter() {
+    var selectedDate = $('#daterangelead').val();
+    var BASE_URL = $("#base_url").val();
+    var agent_id = $("#agent_graph").val();
+    $.ajax({
+        url: BASE_URL + "dashboard/leadsFilter",
+        method: "POST",
+        dataType: 'json',
+        data: {
+            selectedDate: selectedDate,
+            agent_id: agent_id
+        },
+        success: function(data) {
+            console.log(data);
 
-
-    //Leads //on agent change
-    $("#agent_graph").change(function() {
-        leads_date_filter();
-    });
-
-       //on agent change
-       $("#agent_graph_lead").change(function() {
-        hm_leads_chart();
-    });
-
-
-    // call to date filter
-    leads_date_filter();
-    hm_leads_chart();
-
-    //leads filter 
-    function leads_date_filter() {
-        var selectedDate = $('#daterangelead').val();
-        var BASE_URL = $("#base_url").val();
-        var agent_id = $("#agent_graph").val();
-        $.ajax({
-            url: BASE_URL + "dashboard/leadsFilter",
-            method: "POST",
-            dataType: 'json',
-            data: { selectedDate: selectedDate,
-                    agent_id: agent_id },
-            success: function(data) {
-                console.log(data);
-                
-                //init chart
-                var myChart = echarts.init(document.getElementById('pieChart'));
-                var idx = 1;
-                pieChartOption = {
-                    timeline: {
-                        show: false,
-                        data: [
-                            '2013-07-01',
-                        ],
+            //init chart
+            var myChart = echarts.init(document.getElementById('pieChart'));
+            var idx = 1;
+            pieChartOption = {
+                timeline: {
+                    show: false,
+                    data: [
+                        '2013-07-01',
+                    ],
+                },
+                options: [{
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
                     },
-                    options: [{
-                        tooltip: {
-                            trigger: 'item',
-                            formatter: "{a} <br/>{b} : {c} ({d}%)"
-                        },
-                        legend: {
-                            data: data.name,
-                        },
-                        toolbox: {
-                            show: true,
-                            feature: {
-                                dataView: {
-                                    show: true,
-                                    readOnly: false
-                                },
-                                magicType: {
-                                    show: true,
-                                    type: ['pie', 'funnel'],
-                                    option: {
-                                        funnel: {
-                                            x: '25%',
-                                            width: '50%',
-                                            funnelAlign: 'left',
-                                            max: 1700
-                                        }
-                                    }
-                                },
-                                restore: {
-                                    show: true
-                                },
-                                saveAsImage: {
-                                    show: true
-                                }
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            center: ['50%', '55%'],
-                            radius: '70%',
-                            data: data.totalNo,
-                        }]
-                    }]
-                };
-                myChart.setOption(pieChartOption);
-            },
-            error: function(e) {
-                var myChart = echarts.init(document.getElementById('pieChart'));
-                var idx = 1;
-                pieChartOption = {
-                    timeline: {
-                        show: false,
-                        data: [
-                            '2013-07-01',
-                        ],
+                    legend: {
+                        data: data.name,
                     },
-                    options: [{
-                        tooltip: {
-                            trigger: 'item',
-                            formatter: "{a} <br/>{b} : {c} ({d}%)"
-                        },
-                        toolbox: {
-                            show: true,
-                            feature: {
-                                dataView: {
-                                    show: true,
-                                    readOnly: false
-                                },
-                                magicType: {
-                                    show: true,
-                                    type: ['pie', 'funnel'],
-                                    option: {
-                                        funnel: {
-                                            x: '25%',
-                                            width: '50%',
-                                            funnelAlign: 'left',
-                                            max: 1700
-                                        }
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            dataView: {
+                                show: true,
+                                readOnly: false
+                            },
+                            magicType: {
+                                show: true,
+                                type: ['pie', 'funnel'],
+                                option: {
+                                    funnel: {
+                                        x: '25%',
+                                        width: '50%',
+                                        funnelAlign: 'left',
+                                        max: 1700
                                     }
-                                },
-                                restore: {
-                                    show: true
-                                },
-                                saveAsImage: {
-                                    show: true
                                 }
+                            },
+                            restore: {
+                                show: true
+                            },
+                            saveAsImage: {
+                                show: true
                             }
-                        },
-                        series: [{
-                            type: 'pie',
-                            center: ['50%', '55%'],
-                            radius: '70%',
-                            data: [{
-                                value: 1,
-                                name: 'Data Not Found'
-                            }],
-                        }]
-                    }]
-                };
-                myChart.setOption(pieChartOption);
-            }
-        })
-    }
-
-    //lead by working type
-    function hm_leads_chart() {
-        var selectedDate = $('#leadsDate').val();
-        var BASE_URL = $("#base_url").val();
-        var agent_id = $("#agent_graph_lead").val();
-        $.ajax({
-            url: BASE_URL + "dashboard/leadsFilterByType",
-            method: "POST",
-            dataType: 'json',
-            data: { selectedDate: selectedDate,
-                agent_id: agent_id },
-            success: function(res) {
-                //init chart
-                var myChart = echarts.init(document.getElementById('main'));
-                var idx = 1;
-                pieChartOption = {
-                    timeline: {
-                        show: false,
-                        data: [
-                            '2013-07-01',
-                        ],
+                        }
                     },
-                    options: [{
-                        tooltip: {
-                            trigger: 'item',
-                            formatter: "{a} <br/>{b} : {c} ({d}%)"
-                        },
-                        legend: {
-                            data: res.name,
-                        },
-                        toolbox: {
-                            show: true,
-                            feature: {
-                                dataView: {
-                                    show: true,
-                                    readOnly: false
-                                },
-                                magicType: {
-                                    show: true,
-                                    type: ['pie', 'funnel'],
-                                    option: {
-                                        funnel: {
-                                            x: '25%',
-                                            width: '50%',
-                                            funnelAlign: 'left',
-                                            max: 1700
-                                        }
-                                    }
-                                },
-                                restore: {
-                                    show: true
-                                },
-                                saveAsImage: {
-                                    show: true
-                                }
-                            }
-                        },
-                        series: [{
-                            type: 'pie',
-                            center: ['50%', '60%'],
-                            radius: ['45%', '75%'],
-                            avoidLabelOverlap: false,
-                            data: res.totalNo,
-                        }]
+                    series: [{
+                        type: 'pie',
+                        center: ['50%', '55%'],
+                        radius: '70%',
+                        data: data.totalNo,
                     }]
-                };
-                myChart.setOption(pieChartOption);
+                }]
+            };
+            myChart.setOption(pieChartOption);
+        },
+        error: function(e) {
+            var myChart = echarts.init(document.getElementById('pieChart'));
+            var idx = 1;
+            pieChartOption = {
+                timeline: {
+                    show: false,
+                    data: [
+                        '2013-07-01',
+                    ],
+                },
+                options: [{
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            dataView: {
+                                show: true,
+                                readOnly: false
+                            },
+                            magicType: {
+                                show: true,
+                                type: ['pie', 'funnel'],
+                                option: {
+                                    funnel: {
+                                        x: '25%',
+                                        width: '50%',
+                                        funnelAlign: 'left',
+                                        max: 1700
+                                    }
+                                }
+                            },
+                            restore: {
+                                show: true
+                            },
+                            saveAsImage: {
+                                show: true
+                            }
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        center: ['50%', '55%'],
+                        radius: '70%',
+                        data: [{
+                            value: 1,
+                            name: 'Data Not Found'
+                        }],
+                    }]
+                }]
+            };
+            myChart.setOption(pieChartOption);
+        }
+    })
+}
 
-            },
-            error: function(e) {
-                console.log("err");
-            }
-        });
-    }
+//lead by working type
+function hm_leads_chart() {
+    var selectedDate = $('#leadsDate').val();
+    var BASE_URL = $("#base_url").val();
+    var agent_id = $("#agent_graph_lead").val();
+    $.ajax({
+        url: BASE_URL + "dashboard/leadsFilterByType",
+        method: "POST",
+        dataType: 'json',
+        data: {
+            selectedDate: selectedDate,
+            agent_id: agent_id
+        },
+        success: function(res) {
+            //init chart
+            var myChart = echarts.init(document.getElementById('main'));
+            var idx = 1;
+            pieChartOption = {
+                timeline: {
+                    show: false,
+                    data: [
+                        '2013-07-01',
+                    ],
+                },
+                options: [{
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        data: res.name,
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            dataView: {
+                                show: true,
+                                readOnly: false
+                            },
+                            magicType: {
+                                show: true,
+                                type: ['pie', 'funnel'],
+                                option: {
+                                    funnel: {
+                                        x: '25%',
+                                        width: '50%',
+                                        funnelAlign: 'left',
+                                        max: 1700
+                                    }
+                                }
+                            },
+                            restore: {
+                                show: true
+                            },
+                            saveAsImage: {
+                                show: true
+                            }
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        center: ['50%', '60%'],
+                        radius: ['45%', '75%'],
+                        avoidLabelOverlap: false,
+                        data: res.totalNo,
+                    }]
+                }]
+            };
+            myChart.setOption(pieChartOption);
 
-});
+        },
+        error: function(e) {
+            console.log("err");
+        }
+    });
+}
 
 
 

@@ -2135,5 +2135,67 @@ class Dashboard extends CI_Controller {
 		}
 		die(json_encode( $res ));
 	}
+
+
+	public function getDataByworkingType(){
+		// dump($_POST['selectedDate']);die;
+		$date = $_POST['selectedDate'];
+		if(!empty($date)){
+			$explodeDate = explode('-', $date);
+			$initDate = $explodeDate[0];
+			$secDate = $explodeDate[1];
+			
+			$custom_where_con ='DATE(created) BETWEEN "'. date('Y-m-d 00:00:01', strtotime($initDate)). '" and "'. date('Y-m-d 00:59:59', strtotime($secDate)).'"';
+			$where = array( "del_status" => 0);
+			$data['value'] = $this->global_model->count_all("customers_inquery", );
+			$data['category'] = "New Leads";
+
+			$custom_where ='DATE(added) BETWEEN "'. date('Y-m-d 00:00:01', strtotime($initDate)). '" and "'. date('Y-m-d 00:59:59', strtotime($secDate)).'"';
+		
+			$whereEmailCount =  array( 'parent_iti_id' =>  0, 'is_amendment' =>  0, 'email_count !=' => 0);
+			$quotation_sent['value'] = $this->global_model->count_all("itinerary", $whereEmailCount, "", $custom_where);
+			$quotation_sent['category'] = "Quotation Sent";
+
+			$approveditiWhere =  array( 'iti_status' => 9, 'del_status' => 0);
+			$approvediti['value'] = $this->global_model->count_all("itinerary", $approveditiWhere, "", $custom_where);
+			$approvediti['category'] = "Approved Itinerary";
+
+			$closeditiWhere =  array( 'iti_status' => 9, 'del_status' => 0, 'iti_close_status' => 1);
+			$closediti['value'] = $this->global_model->count_all("itinerary", $closeditiWhere, "", $custom_where);
+			$closediti['category'] = "Converted";			
+
+		}else{
+
+			$where = array( "del_status" => 0 );
+			$data['value'] = $this->global_model->count_all("customers_inquery", $where);
+			$data['category'] = "New Leads";
+			
+			$whereEmailCount =  array( 'parent_iti_id' =>  0, 'is_amendment' =>  0, 'email_count !=' => 0);
+			$quotation_sent['value'] = $this->global_model->count_all("itinerary", $whereEmailCount);
+			$quotation_sent['category'] = "Quotation Sent";
+	
+			$approveditiWhere =  array( 'iti_status' => 9, 'del_status' => 0);
+			$approvediti['value'] = $this->global_model->count_all("itinerary", $approveditiWhere);
+			$approvediti['category'] = "Approved Itinerary";
+	
+			$closeditiWhere =  array( 'iti_status' => 9, 'del_status' => 0, 'iti_close_status' => 1);
+			$closediti['value'] = $this->global_model->count_all("itinerary", $closeditiWhere,);
+			$closediti['category'] = "Converted";
+		}
+	
+		$res = [$data, $quotation_sent, $approvediti, $closediti];
+		$res1 = array('res' => true, 'msg'=> 'success','totaldata' => $res);
+		die(json_encode( $res1 ));
+		
+	}
+
+	public function renderModel(){
+		ob_start();
+		$response = $this->load->view('dashboard/admin_chart',  TRUE);
+		$response =  ob_get_clean();
+		echo $response;
+		die();
+		 
+	 }
 	
 }

@@ -758,6 +758,8 @@ class Hotels extends CI_Controller {
 			die();
 		}
 	}
+
+
 	
 }	
 

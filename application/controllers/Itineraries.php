@@ -1662,6 +1662,7 @@ class Itineraries extends CI_Controller {
 	}
 	//delete draft iti
 	public function delete_iti_permanently(){
+		dump("dsfjsdklf");die;
 		$id = $this->input->get('id');
 		$where = array( "iti_id" => $id );
 		$result = $this->global_model->delete_data( "itinerary", $where );

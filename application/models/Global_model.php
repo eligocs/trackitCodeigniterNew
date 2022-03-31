@@ -407,12 +407,16 @@ class Global_Model extends CI_Model
 	}
 	
 	//Count data
-	public function count_all( $table_name, $where = array(), $like = array() ){
+	public function count_all( $table_name, $where = array(), $like = array(), $custom_where = null){
 		if (!empty($where)) {
 			foreach($where as $key => $value){
 				$this->db->where( $key, $value );
 			}
         }
+
+		if( $custom_where ){
+			$this->db->where( $custom_where );
+		}
 		
 		if( !empty( $like ) ){
 			foreach($like as $key => $value){

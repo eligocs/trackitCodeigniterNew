@@ -1,4 +1,4 @@
-<!DOCTYPE html/>
+<!DOCTYPE html />
 <!--[if !IE]><!-->
 <html lang="en">
    <!--<![endif]-->

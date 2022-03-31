@@ -280,10 +280,10 @@
 								<thead class="thead-default">
 									<tr class="thead-inverse">
 										<th> Hotel Category</th>
-										<th> 2 Star</th>
-										<th> 3  Star</th>
-										<th> 4 Star</th>
-										<th> 5 Star</th>
+										<th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
+										<th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
+										<th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
+										<th> <?= totalHotelCategory()[3]->hotel_category_name ?></th>
 									</tr>
 								</thead>
 								<tbody>

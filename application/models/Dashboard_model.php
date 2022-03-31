@@ -563,9 +563,11 @@ class Dashboard_Model extends CI_Model{
 					$this->db->where('agent_id', $agent_id);
 				}
 				$customers_inquery_get = $this->db->get('customers_inquery')->num_rows();
+				if($customers_inquery_get != 0){
 				$customers_inquery_Data['value'] = $customers_inquery_get;
 				$customers_inquery_Data['name'] = $value->name;
 				$customers_inquery[] = $customers_inquery_Data;
+				}
 		}
 		return $customers_inquery;
 	}

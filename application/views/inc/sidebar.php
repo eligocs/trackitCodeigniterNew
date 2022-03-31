@@ -638,6 +638,12 @@
                          </a>
                      </li>
                      <li class="nav-item  ">
+                         <a href="<?php echo site_url("hotelcategory"); ?>" class="nav-link ">
+                             <i class="icon-list"></i>
+                             <span class="title">Hotels Category</span>
+                         </a>
+                     </li>
+                     <li class="nav-item  ">
                          <a href="<?php echo site_url("hotels/viewroomcategory"); ?>" class="nav-link ">
                             <i class="fa-solid fa-tents"></i>
                              <span class="title">View Room Category</span>
