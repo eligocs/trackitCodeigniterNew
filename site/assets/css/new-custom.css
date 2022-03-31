@@ -1,0 +1,208 @@
+
+/* -------------------- */
+/*---- utility Css ---- */
+/* -------------------- */
+
+.white_space_fix{
+    white-space: nowrap !important;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+/* ----------------------------- */
+/* ---- page-common-header  ---- */
+/* ----------------------------- */
+.page-header.navbar{
+    background-color: #fff !important;
+}
+
+.page-common-header .page-header.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    background: #ffc107 !important;
+}
+
+.navbar .header_target_section{
+    display: block
+}
+
+.page-header.navbar .page-logo{
+    left: 8px;
+}
+
+span.username.username-hide-on-mobile {
+    color: #f44336 !important;
+}
+
+.page-header-inner .menu-toggler.sidebar-toggler{
+    background: transparent;
+}
+
+.page-sidebar .sidebar-toggler, 
+.page-sidebar-closed.page-sidebar-fixed 
+.page-sidebar:hover .sidebar-toggler{
+    margin: 0;
+}
+
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+    margin: 15px 0;
+}
+
+.page-header-inner>*{
+    display: block;
+}
+
+.top-menu{
+    display: block;
+}
+
+
+/* --------------------------- */
+/* --- main_page_container --- */
+/* --------------------------- */
+.main_page_container{
+    margin-top: 50px;
+}
+
+
+
+/* ----------------------------------- */
+/* page-sidebar-wrapper / page-sidebar */
+/* ----------------------------------- */
+.page-sidebar-wrapper {
+    flex: 0 0 250px;
+    margin-top: 30px;
+}
+
+.collapse:not(.show) {
+    display: block;
+}
+
+/* -------------------------------------------- */
+/* --- page-container / page-content-wraper --- */
+/* -------------------------------------------- */
+.page-content-wrapper .page-content{
+    margin-left: 0;
+}
+
+.page-container {
+    width: calc(100% - 251px);
+}
+
+.hide{
+    display: none;
+}
+
+.page-container .page-content-wrapper .page-content {
+    padding: 10px;
+}
+
+
+/*--- Show Modal --- */
+.modal.in{
+    opacity: 1 !important;
+}
+
+/* all button and <a> css in page content */
+.page-content  .btn, .page-content a{
+    font-size: 12px;
+    border-radius: 2px !important;
+}
+
+
+/* protlet box Caption  */
+.portlet-title .caption{
+    font-size: 16px !important;
+}
+
+/* table-responsive and table css */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #fff !important;
+}
+
+.table-responsive{
+    margin-bottom: 0;
+}
+
+/* ----------------------------------- */
+/* ---- Forms (lables and inputs) ---- */
+/* ----------------------------------- */
+.form-control{
+    border: 1px solid #cbc9c9;
+    height: 36px !important;
+    padding: 4px 4px 4px 11px!important;
+    font-size: 15px;
+    color: #2a2727;
+}
+
+label.control-label {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.form-control::placeholder { 
+    color: #938f8f;
+    font-size: 13px;
+    font-weight: 300;  
+}
+
+select.form-control{
+    padding-top: 6px !important;
+}
+
+select.form-control option{
+    color: #2a2727;
+    font-size: 15px;
+}
+
+select.form-control:required:invalid {
+    color: #938f8f;
+    font-size: 13px;
+    font-weight: 300;  
+  }
+  
+  .error{
+    margin-bottom: 3px;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+
+  /* ------------------------------------------------ */
+  /* ---- Add/Edit Packages and Itinerary form Wizard */
+  /* ------------------------------------------------ */
+  #itiForm_form .nav li.active{
+      margin: 0 auto;
+      text-align: center;
+  }
+
+  .form-wizard div#bar{
+      left: 0;
+  }
+
+
+/* -------------------- */
+/* --- page-footer --- */
+/* -------------------- */
+.footer_text{
+    font-size: 30px;
+}
+
+.page-footer {
+    position: relative;
+    z-index: 999;
+    background: #fff;
+    margin-bottom: 20px;
+    width: calc(100% - 288px);
+    left: 268px;
+    margin-top: 11px;
+}
+
+
+
+

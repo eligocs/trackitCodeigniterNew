@@ -22,18 +22,19 @@
                 </div>
             </div>
             <div class="portlet-body custom_card">
-                <form role="form" id="addCat" method="post"
-                    action="<?php echo site_url("customers/updatecustomertype/" ); ?>">
-                    <div class="form-group col-md-4">
-                        <label class="control-label">Customer Type*</label>
-                        <input type="text" name="customer_type" placeholder="Customer Type. eg: Travel Partner"
-                            class="form-control"
-                            value="<?php echo isset( $customer_type[0]->name ) ? $customer_type[0]->name : set_value('customer_type'); ?>" />
-                    </div>
-                    <div class="clearfix margiv-top-10">
-                        <input type="hidden" name="id"
-                            value="<?php echo isset( $customer_type[0]->id ) ? $customer_type[0]->id : set_value('id'); ?>">
-                        <button type="submit" class="btn green uppercase add_agent margin_left_15">Add Category</button>
+                <form class="mb-0" role="form" id="addCat" method="post" action="<?php echo site_url("customers/updatecustomertype/" ); ?>">
+                    <div class="row">
+                        <div class="form-group col-md-4 my-2">
+                            <label class="control-label">Customer Type*</label>
+                            <input type="text" name="customer_type" placeholder="Customer Type. eg: Travel Partner"
+                                class="form-control"
+                                value="<?php echo isset( $customer_type[0]->name ) ? $customer_type[0]->name : set_value('customer_type'); ?>" />
+                        </div>
+                        <div class="col-md-12 my-2">
+                            <input type="hidden" name="id"
+                                value="<?php echo isset( $customer_type[0]->id ) ? $customer_type[0]->id : set_value('id'); ?>">
+                            <button type="submit" class="btn green uppercase add_agent">Add Category</button>
+                        </div>
                     </div>
                 </form>
                 <div class="clearfix"></div>

@@ -64,21 +64,22 @@
                                 <div class="actions custom_filter">
                                     <div class="row">
                                         <!--Calender-->
-                                        <div class="col-md-3"> <label>Filter: </label>
-                                            <input type="text" autocomplete="off" class="form-control" id="daterange"
+                                        <div class="col-md-3"> 
+                                            <label class="control-label">Filter: </label>
+                                            <input placehoder="Select Date" type="text" autocomplete="off" class="form-control" id="daterange"
                                                 name="dateRange" value="" required />
                                         </div>
                                         <!--End-->
                                         <div class="col-md-3">
-                                            <label>Itinerary Type: </label>
-                                            <select name="iti_type" class="form-control" id="iti_type">
-                                                <option value="">All</option>
+                                            <label class="control-label">Itinerary Type: </label>
+                                            <select name="iti_type" class="form-control" id="iti_type" required>
+                                                <option value="" selected disabled>All</option>
                                                 <option value="1">Holidays</option>
                                                 <option value="2">Accommodation</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>&nbsp; </label>
+                                            <label class="control-label">&nbsp; </label>
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-default btn-primary custom_active"><input
                                                         type="radio" name="filter" value="all" id="all" />All</label>
@@ -115,22 +116,24 @@
                                 <div class="actions custom_filter">
                                     <div class="row">
                                         <!--Calender-->
-                                        <div class="col-md-3"> <label>Filter: </label>
-                                            <input type="text" autocomplete="off" class="form-control" id="daterange"
+                                        <div class="col-md-3"> 
+                                            <label class="control-label">Filter: </label>
+                                            <input placeholder="Select Date" type="text" autocomplete="off" class="form-control" id="daterange"
                                                 name="dateRange" value="" required />
                                         </div>
                                         <!--End-->
                                         <div class="col-md-3">
-                                        <label for="">Itinerary Type:</label>
-                                            <select name="iti_type" class="form-control" id="iti_type">
-                                                <option value="">All</option>
+                                            <label class="control-label" for="">Itinerary Type:</label>
+                                            <select name="iti_type" class="form-control" id="iti_type" required>
+                                                <option value="" selected disabled>All</option>
                                                 <option value="1">Holidays</option>
                                                 <option value="2">Accommodation</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3">
-                                           <label for="">&nbsp;</label>
-                                           <select name="filterselcted" id="" class="form-control">
+                                           <label class="control-label" for="">Itinerary Status:</label>
+                                           <select name="filterselcted" id="" class="form-control" required>
+                                               <option value="" selected disabled>Select Iti Status</option>
                                               <option  value="all" >All</option>
                                               <option  value="draft" >Draft</option>
                                               <option  value="hold" >Hold</option>
@@ -182,8 +185,8 @@
 
                                         </div>
                                         <div class="col-md-3">
-                                           <label for="">&nbsp;</label>
-                                          <input type="submit" class="btn btn-success d_block" value="Filter">
+                                           <label class="control-label" for="">&nbsp;</label>
+                                          <input type="submit" class="btn btn-success d-block mt-1" value="Filter">
                                         </div>
                                     </div>
                                     <!-- row -->
@@ -199,7 +202,7 @@
                     <div class="row clearfix">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="sales_user_id">Select Sales Team User:</label>
+                                <label class="control-label" for="sales_user_id">Select Sales Team User:</label>
                                 <select required class="form-control select_user" id='sales_user_id' name="user_id">
                                     <option value="">All Users</option>
                                     <?php foreach( $sales_team_agents as $user ){ ?>
@@ -212,22 +215,22 @@
                         </div>
                         <!--export button for admin and manager-->
                         <div class="col-md-9">
-                            <label for="" class="d_block">&nbsp;</label>
-                            <div class="dropdown pull-right action_menu">
-                                <button class="btn btn_blue_outline dropdown-toggle" type="button" data-toggle="dropdown">Action
-                                <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
+                            <label class="control-label d-block" for="">&nbsp;</label>
+                            <div class="dropdown float-end action_menu">
+                                <a class="btn btn_blue_outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Action
+                                <span class="caret"></span></a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <!-- dropdown-item -->
                                     <li>
-                                       <a href="<?php echo site_url("customers") . "/?todayStatus={$todAy}"; ?>" ><i class="fa fa-users"></i> Today's Lead</a>
+                                       <a class="dropdown-item" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}"; ?>" ><i class="fa fa-users"></i> Today's Lead</a>
                                     </li>
                                     <!-- dropdown-item -->
                                     <li>
-                                        <a href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>"><i class="fa fa-phone"></i> Today Call Picked</a>
+                                        <a class="dropdown-item" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>"><i class="fa fa-phone"></i> Today Call Picked</a>
                                     </li>
                                     <!-- dropdown-item -->
                                     <li>
-                                       <a href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>"><i class="fa fa-phone"></i> Today Call Not Picked</a>
+                                       <a class="dropdown-item" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>"><i class="fa fa-phone"></i> Today Call Not Picked</a>
                                     </li>
                                 </ul>
                             </div>
@@ -240,6 +243,7 @@
                             <a href="<?php// echo site_url("customers") . "/?todayStatus={$todAy}"; ?>"
                                 class="btn btn-info pull-right"><i class="fa fa-users"></i> Today's Lead</a> -->
                         </div>
+                        
                     </div>
                     <?php }else if( is_teamleader() ){
                   $team_members = is_teamleader(); ?>

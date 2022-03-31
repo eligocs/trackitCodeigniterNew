@@ -14,77 +14,81 @@
             </div>
          </div>
          <!--Filter-->
-         <div class="cat_wise_filter second_custom_card">
-            <form role="form" id="filter_frm" method="post">
-               <div class="col-md-4">
-                  <label class="control-label">State</label>
-                  <div class="form-group">
-                     <select name='state' class='form-control' id='stateID'>
-                        <option value="">All States</option>
-                        <?php $state_list = get_indian_state_list(); 
-                           if( $state_list ){
-                           	foreach($state_list as $state){
-                           		echo '<option value="'.$state->id.'">'.$state->name.'</option>';
-                           	}
-                           } ?>
-                     </select>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <label class="control-label">Package Category </label>
-                  <div class="form-group">
-                     <select name="p_cat_id" id="cat_id" class="form-control">
-                        <option value="">All Package Category</option>
-                        <?php 
-                           $cats = get_package_categories();
-                           if( $cats ){
-                           foreach($cats as $cat){
-                           	echo '<option value = "'.$cat->p_cat_id .'" >'.$cat->package_cat_name.'</option>';
-                           	}
-                           }
-                           ?>
-                     </select>
-                  </div>
-               </div>
-               <div class="col-md-4 margin-top-15">
-                  <div class="margin-top-10">
-                     <button type="submit" class="btn green uppercase add_user">Filter</button>
-                     <a href="javascript:void(0);" class="btn green uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
-                  </div>
-               </div>
+         <div class="cat_wise_filter custom_card">
+            <form class="mb-0" role="form" id="filter_frm" method="post">
+				<div class="row">
+					<div class="col-md-4 my-2">
+						<label class="control-label">State</label>
+						<div class="form-group">
+							<select name='state' class='form-control' id='stateID'>
+								<option value="">All States</option>
+								<?php $state_list = get_indian_state_list(); 
+								if( $state_list ){
+									foreach($state_list as $state){
+										echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+									}
+								} ?>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4 my-2">
+						<label class="control-label">Package Category </label>
+						<div class="form-group">
+							<select name="p_cat_id" id="cat_id" class="form-control">
+								<option value="">All Package Category</option>
+								<?php 
+								$cats = get_package_categories();
+								if( $cats ){
+								foreach($cats as $cat){
+									echo '<option value = "'.$cat->p_cat_id .'" >'.$cat->package_cat_name.'</option>';
+									}
+								}
+								?>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4 my-2">
+						<label class="control-label d-block" for="">&nbsp;</label>
+						<button type="submit" class="btn green uppercase add_user">Filter</button>
+						<a href="javascript:void(0);" class="btn green uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
+					</div>
+			   </div>
             </form>
-            <div class="clearfix"></div>
             <div class="res"></div>
          </div>
+
          <hr>
-         <div class="portlet-body">
-            <div class="table-responsive custom_card">
-               <table id="packages" class="table table-striped display">
-                  <thead>
-                     <tr>
-                        <th> # </th>
-                        <th> Package ID </th>
-                        <th> Package Name </th>
-                        <th> State </th>
-                        <th> Category </th>
-                        <th> Publish Status</th>
-                        <th> Package Created</th>
-                        <th> Action </th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <div class="loader"></div>
-                     <div id="res"></div>
-                     <!--DataTable Goes here-->
-                  </tbody>
-               </table>
-            </div>
-         </div>
+		 <div class="portlet box blue">
+			<div class="portlet-body">
+				<div class="table-responsive">
+				<table id="packages" class="table table-striped display">
+					<thead>
+						<tr>
+							<th> # </th>
+							<th> Package ID </th>
+							<th> Package Name </th>
+							<th> State </th>
+							<th> Category </th>
+							<th> Publish Status</th>
+							<th> Package Created</th>
+							<th> Action </th>
+						</tr>
+					</thead>
+					<tbody>
+						<div class="loader"></div>
+						<div id="res"></div>
+						<!--DataTable Goes here-->
+					</tbody>
+				</table>
+				</div>
+			</div>
+		 </div>
       </div>
    </div>
 </div>
 <!-- END CONTENT BODY -->
 </div>
+
 <div id="myModal" class="modal" role="dialog"></div>
 <!-- Modal -->
 <script type="text/javascript">
