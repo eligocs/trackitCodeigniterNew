@@ -68,6 +68,42 @@ function funel_chart() {
     });
 };
 
+
+
+//leads filter 
+function leads_date_filter() {
+    var selectedDate = $('#daterangelead').val();
+    var BASE_URL = $("#base_url").val();
+    var agent_id = $("#agent_graph").val();
+    $.ajax({
+        url: BASE_URL + "dashboard/leadsFilter",
+        method: "POST",
+        dataType: 'json',
+        data: {
+            selectedDate: selectedDate,
+            agent_id: agent_id
+        },
+        success: function(data) {
+            var chart = am4core.create("pieChart1", am4charts.PieChart);
+
+            chart.data = data.totalNo;
+
+            var pieSeries = chart.series.push(new am4charts.PieSeries());
+            pieSeries.dataFields.value = "value";
+            pieSeries.dataFields.category = "name";
+
+            /* remove logo */
+            let eles = document.querySelectorAll("[aria-labelledby$=-title]");
+            eles.forEach((ele) => {
+                ele.style.visibility = "hidden";
+            })
+
+
+        }
+    })
+};
+
+
 $(document).on("click", '#quick-nav-triggered', function(e) {
     e.preventDefault();
 

@@ -1,39 +1,56 @@
  <!--Chart Section-->
  <?php $get_agents = get_all_sales_team_agents(); ?>
- <div class="col-md-12 padding_zero">
-     <div class="portlet light portlet-fit bordered">
-         <div class="portlet-title">
-             <div class="custom_title">
-                 <i class="fa fa-bar-chart" style="font-size:18px;"></i>
-                 <span class="caption-subject bold uppercase">Statistics</span>
+ <div class="row">
+     <div class="col-md-6">
+         <div class="titile_section">
+             <h3 class="col-md-6 row">Itineraries</h3>
+             <div class="row">
+                <div class="col-md-6">
+                    <label for="sel1">Select Agent:</label>
+                    <select class="form-control" id="agent_graph">
+                        <option value="">All Agents</option>
+                        <?php
+                                if ($get_agents) {
+                                    foreach ($get_agents as $agent) {
+                                        echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
+                                    }
+                                }
+                                ?>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="sel1">Select Date:</label>
+                    <input type="text" autocomplete="off" class="form-control daterange dateHide" id="daterangelead"
+                        name="daterangelead" value="" />
+                </div>
              </div>
          </div>
-         <div class="col-md-6">
+         <div class="portlet-body card-padding chart-container">
+             <div id="pieChart1" style="height:500px; padding:10px;"></div>
+         </div>
+     </div>
+     <div class="col-md-6">
+         <div class="col-md-12">
              <div class="titile_section">
-                 <h3 class="col-lg-12">ITINERARIES GRAPH</h3>
-                 <div class="form-group col-lg-6">
-                     <label for="sel1">Select Agent:</label>
-                     <select class="form-control" id="agent_graph">
-                         <option value="">All Agents</option>
-                         <?php
-                            if ($get_agents) {
-                                foreach ($get_agents as $agent) {
-                                    echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
-                                }
-                            }
-                            ?>
-                     </select>
+                 <h3 class="col-md-12">Leads</h3>
+                 <div class="col-md-6">
                  </div>
-                 <div class="form-group col-lg-6 pull-right">
-                     <label for="sel1">Select Date:</label>
-                     <input type="text" autocomplete="off" class="form-control daterange dateHide" id="daterangelead"
-                         name="daterangelead" value="" />
+                 <div class="form-group col-md-6">
+                     <label for="sel1">Select1 Date:</label>
+                     <input type="text" autocomplete="off" class="form-control daterange dateHide"
+                         id="daterangeLeadsfilter" name="daterangelead" value="" />
                  </div>
              </div>
              <div class="portlet-body card-padding">
-                 <div id="pieChart" style="height:500px; padding:10px;"></div>
+                 <div id="chartdiv" class="element"></div>
+                 <div id="legend"></div>
+                 <button onclick="var el = document.getElementById('chartdiv'); el.requestFullscreen();">
+                     Go Full Screen!
+                 </button></p>
              </div>
          </div>
+     </div>
+     <div class="row">
          <div class="col-md-6">
              <div class="titile_section">
                  <h3 class="col-lg-12">LEADS GRAPH</h3>
@@ -50,7 +67,7 @@
                             ?>
                      </select>
                  </div>
-                 <div class="form-group col-lg-6 pull-right">
+                 <div class="form-group col-md-6 pull-right">
                      <label for="sel1">Select Date:</label>
                      <input type="text" autocomplete="off" class="form-control daterange dateHide" id="leadsDate"
                          name="daterangelead" value="" />
@@ -62,37 +79,12 @@
          </div>
      </div>
  </div>
- <div class="clearfix"></div>
- <div class="col-md-12 padding_zero">
-     <div class="portlet light portlet-fit bordered">
-         <div class="col-md-12">
-             <div class="titile_section">
-                 <h3 class="col-lg-12">LEADS GRAPH</h3>
-                 <div class="form-group col-lg-9">
-                     <label for="sel1">Select1 Date:</label>
-                     <input type="text" autocomplete="off" class="form-control daterange dateHide"
-                         id="daterangeLeadsfilter" name="daterangelead" value="" />
-                 </div>
-             </div>
-             <div class="portlet-body card-padding">
-                 <div id="chartdiv" class="element"></div>
-                 <div id="legend"></div>
-                 <button onclick="var el = document.getElementById('chartdiv'); el.requestFullscreen();">
-                     Go Full Screen!
-                 </button></p>
-             </div>
-         </div>
-     </div>
- </div>
- <div class="clearfix"></div>
-
  <script>
 $(document).ready(function() {
     // call to date filter
     leads_date_filter();
     hm_leads_chart();
     funel_chart();
-
 });
 
 //filter on  date change function

@@ -9,8 +9,6 @@ $today_date = date('Y-m-d');
 $this_month = date("Y-m");
 ?>
 
-        width: 100%;
-        height: 500px;
 <style>
 #chartdiv {
     width: 100%;
@@ -993,13 +991,20 @@ $this_month = date("Y-m");
 
 <!-- CHARTS -->
 <div class="modal right fade" id="myModa20" tabindex="-1" role="dialog" aria-labelledby="myModalLabe20">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabe20"></h4><i class="fa fa-bar-chart" style="font-size:18px;"></i>
-                <span class="caption-subject bold uppercase">Statistics</span></h4>
+                <h4 class="modal-title" id="myModalLabe20"></h4> <div class="col-md-12">
+         <div class="portlet-title">
+             <div class="custom_title" id="float_this">
+                 <i class="fa fa-bar-chart" style="font-size:18px;"></i>
+                 <span class="caption-subject bold uppercase">Statistics</span>
+             </div>
+         </div>
+     </div>
+               </h4>
             </div>
             <div class="col-md-12 column" id="travel_cal_section">
                 <div id='chart_sections' class='calender_dashboard'></div>
@@ -1010,15 +1015,8 @@ $this_month = date("Y-m");
 
 
 <script>
-/* var url = "<?php echo base_url("angular/admin_dashboard"); ?>";
-        var app = angular.module('myApp', []);
-        app.controller('dashboardCtrl', function($scope, $http) {
-                console.info('error'); 
-        
-            $http.get(url)
-            .then(function(response) {
-                console.log( response.data.total_agents );
-                $scope.total_agents = response.data.total_agents;
-            });
-        }); */
+    $(function(){
+         $('#float_this').css('float','right'),
+         $('#float_this').css( { marginRight : "50px" } );
+     });
 </script>

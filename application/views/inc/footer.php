@@ -123,10 +123,10 @@
 		<?php 
 		if( ( $segment_one == "dashboard" || $current_url == base_url() ) && is_admin_or_manager()){ ?>
 			<script src="<?php echo base_url();?>site/assets/dist/echarts-all.js" type="text/javascript"></script>
-			<script src="<?php echo base_url();?>site/assets/chart/admin_chart.js" type="text/javascript"></script>
 			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/index.js" type="text/javascript"></script>
 			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/percent.js" type="text/javascript"></script>
 			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/Animated.js" type="text/javascript"></script>
+			<script src="<?php echo base_url();?>site/assets/chart/admin_chart.js" type="text/javascript"></script>
 			<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/funelchart.js" type="text/javascript"></script>
 			<!-- <script src="<?php echo base_url();?>site/assets/echarts-en.min.js" type="text/javascript"></script> -->
 			<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"> </script> -->
@@ -193,7 +193,7 @@
                	setTimeout(showTime, 1000);
                	
                }
-               showTime();
+            //    showTime();
             </script>
 
 
