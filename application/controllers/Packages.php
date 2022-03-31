@@ -291,6 +291,7 @@ class Packages extends CI_Controller {
 	
 	//add Package
 	public function addPackage(){
+		$date=  date("Y-m-d");
 		$user = $this->session->userdata('logged_in');
 		$role = $user['role'];
 		$inc_meta	 = $this->input->post('inc_meta');
@@ -373,7 +374,7 @@ class Packages extends CI_Controller {
 					);
 				break;
 				case 4:
-					$currentDate = $date;
+					$currentDate = date("Y-m-d");
 					$hotel_meta				= serialize($this->input->post('hotel_meta'));
 					$hotel_note_meta		= serialize($this->input->post('hotel_note_meta'));
 					
@@ -383,7 +384,7 @@ class Packages extends CI_Controller {
 					);
 				break;
 			}
-			
+			// dump($_POST);die;
 			//update data
 			$where = array('temp_key' => $unique_id );
 			$get_data = $this->global_model->getdata("packages", $where);

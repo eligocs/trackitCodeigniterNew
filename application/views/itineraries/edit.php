@@ -1155,7 +1155,7 @@
                                                     <i class="fa fa-plus"></i> Add Hotel</a>
                                                 <?php $rates_meta = unserialize($iti->rates_meta);
                                                 //if ( is_admin_or_manager()  ){ 
-                                                if ($user_role == 99 || is_manager() || is_super_manager() || is_sales_manager()) {
+                                                if ($user_role == 99 || is_manager() || is_super_manager() || is_sales_manager() ||  is_salesteam()) {
                                                 ?>
                                                     <!--Rate Meta-->
                                                     <div class="row">
@@ -1276,7 +1276,7 @@
                                                     <div class="row">
                                                         <div class='mt-repeater-hotel-input form-group col-md-12'>
                                                             <p class="text-center"><strong style="font-size: 22px;">Rates:
-                                                                </strong><span class="red"> ( Only Manager Edit Price)</span>
+                                                                </strong><span class="red"></span>
                                                             </p>
                                                         </div>
                                                         <div class='mt-repeater-hotel-input standard  form-group col-md-3'>

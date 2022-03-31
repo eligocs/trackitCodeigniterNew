@@ -47,7 +47,7 @@
 									<a href="#tab7" data-toggle="tab" class="step">
 										<span class="number"> 7 </span>
 										<span class="desc">
-											<i class="fa fa-check"></i> Submit Itineray </span>
+											<i class="fa fa-check"></i> Submit Package </span>
 									</a>
 								</li>
 							</ul>
@@ -443,7 +443,7 @@
 								</div>
 								<div class="tab-pane" id="tab7">
 									<div class="verify_msg">
-										<p>You can review your inputs by clicking on Back Button. To save this itinerary Click on Submit Button.</p>
+										<p>You can review your inputs by clicking on Back Button. To save this Package Click on Submit Button.</p>
 									</div>
 								
 								</div>
