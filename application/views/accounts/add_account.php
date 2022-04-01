@@ -32,9 +32,9 @@
 
             <?php $show_bank =  isset( $account_listing[0]->account_type ) && $account_listing[0]->account_type == "bank" ? "dis_block" : "hide_div"; ?>
             <div class="portlet-body custom_card">
-                <div class="row">
-                    <form id="addAcc_frm">
-                        <div class="col-md-4">
+                <form id="addAcc_frm">
+                    <div class="row">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Account Name*</label>
                                 <input type="text" placeholder="Account Name" name="account_name" class="form-control"
@@ -43,7 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Account Type*</label>
                                 <select name="account_type" class="form-control account_type" required="required">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 showon_bank <?php echo $show_bank; ?>">
+                        <div class="col-md-4 my-2 showon_bank <?php echo $show_bank; ?>">
                             <div class="form-group">
                                 <label class="control-label">Acount Number*</label>
                                 <input type="number" placeholder="Account Number" name="account_number"
@@ -68,7 +68,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 showon_bank <?php echo $show_bank; ?>">
+                        <div class="col-md-4 my-2 showon_bank <?php echo $show_bank; ?>">
                             <div class="form-group">
                                 <label class="control-label">IFSC Code*</label>
                                 <input type="text" placeholder="IFSC Code" name="ifsc_code" class="form-control"
@@ -77,7 +77,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Address*</label>
                                 <textarea placeholder="Address" name="address" class="form-control"
@@ -89,7 +89,7 @@
                         <?php if(isset( $account_listing[0]->id ) ) {
 						$check_status = $account_listing[0]->acc_status == 1 ? "checked" : "";
 						?>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Black Listed ?</label>
                                 <input type="checkbox" name="acc_status" <?php echo $check_status; ?>
@@ -98,26 +98,27 @@
                         </div>
                         <?php } ?>
                         <div class="clearfix"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-sm-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Remarks</label>
                                 <textarea placeholder="Remarks" name="remarks" class="form-control"
                                     required="required"><?php echo isset( $account_listing[0]->remarks ) ? $account_listing[0]->remarks : ""; ?></textarea>
 
                             </div>
+                        </div>
+                    </div> <!-- row close -->
+                    <div class="clearfix"></div>
+                    <div class="col-md-12">
+                        <div class="mt-sm-3 my-2 account_btn">
+                            <input type="hidden" name="id"
+                                value="<?php echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
+                            <button type="submit" class="btn green uppercase add_Bank">Add
+                                Account</button>
 
                         </div>
-
-                </div> <!-- row close -->
-                <div class="clearfix"></div>
-                <div class="margiv-top-10">
-                    <input type="hidden" name="id"
-                        value="<?php echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
-                    <button type="submit" class="btn green uppercase add_Bank margin_left_15">Add Account</button>
-
-                </div>
-                <div class="clearfix"></div>
-                <div id="res"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div id="res"></div>
                 </form>
             </div><!-- portlet body -->
         </div> <!-- portlet -->
@@ -162,7 +163,7 @@ jQuery(document).ready(function($) {
                 beforeSend: function() {
                     resp.html(
                         '<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>'
-                        );
+                    );
                 },
                 success: function(res) {
                     if (res.status == true) {

@@ -53,8 +53,9 @@
      <div class="row">
          <div class="col-md-6">
              <div class="titile_section">
-                 <h3 class="col-lg-12">LEADS GRAPH</h3>
-                 <div class="form-group col-lg-6">
+                 <h3 class="col-lg-6">Leads</h3>
+                 <div class="row">
+                 <div class="form-group col-md-6">
                      <label for="sel1">Select Agent:</label>
                      <select class="form-control" id="agent_graph_lead">
                          <option value="">All Agents</option>
@@ -67,10 +68,11 @@
                             ?>
                      </select>
                  </div>
-                 <div class="form-group col-md-6 pull-right">
+                 <div class="form-group col-md-6">
                      <label for="sel1">Select Date:</label>
                      <input type="text" autocomplete="off" class="form-control daterange dateHide" id="leadsDate"
                          name="daterangelead" value="" />
+                 </div>
                  </div>
              </div>
              <div class="portlet-body">

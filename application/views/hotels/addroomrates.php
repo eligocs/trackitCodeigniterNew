@@ -1,7 +1,8 @@
 <style>
 tbody tr td:first-child input {
-    pointer-events:none;
+    pointer-events: none;
 }
+
 button#bElim {
     display: none;
 }
@@ -21,45 +22,47 @@ button#bElim {
                 <form role="form" id="addHotelRoomRate" action="<?php echo base_url( "hotels/add_room_rates" ); ?>"
                     method="post">
                     <?php //echo get_country_name(101);	?>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="control-label">Select Country*</label>
-                            <select name="country" class="form-control country">
-                                <option value="">Choose Country</option>
-                                <?php $country = get_country_list();
+                    <div class="row">
+                        <div class="col-md-3 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Select Country*</label>
+                                <select name="country" class="form-control country">
+                                    <option value="">Choose Country</option>
+                                    <?php $country = get_country_list();
 							if($country){
 								foreach( $country as $c ){
 									echo '<option value="'. $c->id . '">' . $c->name . '</option>';
 								}
 							}
 							?>
-                            </select>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div id="state_list">
-                            <div class='form-group'><label>State*:</label><select disabled name='state'
-                                    class='form-control state'>
-                                    <option value="">Select state</option>
-                                </select></div>
+                        <div class="col-md-3 my-2">
+                            <div id="state_list">
+                                <div class='form-group'><label class="control-label">State*:</label><select disabled name='state'
+                                        class='form-control state'>
+                                        <option value="">Select state</option>
+                                    </select></div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-3">
-                        <div id="city_list">
-                            <div class='form-group'><label>City*:</label><select disabled name='city'
-                                    class='form-control city'>
-                                    <option value="">Select City</option>
-                                </select></div>
+                        <div class="col-md-3 my-2">
+                            <div id="city_list">
+                                <div class='form-group'><label class="control-label">City*:</label><select disabled name='city'
+                                        class='form-control city'>
+                                        <option value="">Select City</option>
+                                    </select></div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-3">
-                        <div id="hotel_list">
-                            <div class='form-group'><label>Hotel*:</label><select disabled name='hotel'
-                                    class='form-control hotelForRates'>
-                                    <option value="">Select Hotel</option>
-                                </select></div>
+                        <div class="col-md-3 my-2">
+                            <div id="hotel_list">
+                                <div class='form-group'><label class="control-label">Hotel*:</label><select disabled name='hotel'
+                                        class='form-control hotelForRates'>
+                                        <option value="">Select Hotel</option>
+                                    </select></div>
+                            </div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -93,13 +96,13 @@ button#bElim {
 
 
                                     <div class="col-md-12 mt-repeater-rates-input hide_seasons" style='display:none;'>
-                       
+
 
                                         <div class="table-responsive col-md-10 appendCategory">
-                                             
+
                                         </div>
 
-                                     
+
                                     </div>
                                     <!-- <div class="mt-innerrepeater-hotel inner_hotel_repeater col-md-9">
                                         <div data-repeater-list="rates_inner_meta" class="clearfix hotel_inner">
@@ -210,7 +213,7 @@ button#bElim {
                     <!--End field Reaper -->
 
 
-                   <!--  <div class="col-md-12 text-left">
+                    <!--  <div class="col-md-12 text-left">
                         <hr>
                         <div class="margiv-top-10">
                             <button type="submit" class="btn green uppercase add_hotel">Add Hotel Room Rates</button>

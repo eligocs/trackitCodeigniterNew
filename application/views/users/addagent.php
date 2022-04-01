@@ -8,9 +8,9 @@
                         <a class="btn btn-success" href="<?php echo site_url("agents"); ?>" title="Back">Back</a>
                     </div>
                 </div>
-                <div class="portlet-body second_custom_card">
+                <div class="portlet-body second_custom_card row">
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">First Name*</label>
                             <input required type="text" name="first_name" placeholder="First Name" class="form-control"
@@ -18,14 +18,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Last Name</label>
                             <input type="text" placeholder="Last Name" name="last_name" class="form-control" value="" />
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">User Name*</label><span
                                 style='font-size: 11px; color: red;'>(Allowed Characters: a-z,A-Z,0-9,_@#$.)</span>
@@ -34,14 +34,14 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">User Password*</label>
                             <input id="PaSS" type="password" placeholder="Enter your password" name="password"
                                 class="form-control" value="" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Confirm Password*</label>
                             <input type="password" placeholder="Confirm password" name="c_password" class="form-control"
@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Alternate Password*</label><span
                                 style='font-size: 11px; color: red;'> (Accessible by manager/admin)</span>
@@ -59,14 +59,14 @@
                     </div>
                     <div class="clearfix"></div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Email*</label>
                             <input type="email" placeholder="Email" name="email" class="form-control" value="" />
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Office Timing*</label>
                             <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012"
@@ -81,7 +81,7 @@
                     </div>
 
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Mobile Number*</label>
                             <input type="text" placeholder="Mobile" maxlength="12" name="mobile" class="form-control"
@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Gender*</label><br>
                             <input required name="gender" value="male" type="radio" id="male"><label
@@ -100,7 +100,7 @@
                     </div>
 
                     <?php $get_all_users_role = get_all_users_role(); ?>
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">User Role*</label>
                             <?php if( is_admin()){ ?>
@@ -131,7 +131,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">User Status*</label>
                             <select required name="user_status" class="form-control">
@@ -142,7 +142,7 @@
                     </div>
                     <div class="clearfix"></div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Mobile Number For Login*</label><span
                                 style='font-size: 11px; color: red;'> (Visible for manager/admin only.)</span>
@@ -152,7 +152,7 @@
                     </div>
 
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 my-2">
                         <div class="form-group">
                             <label class="control-label">Website</label>
                             <input type="text" placeholder="Mobile" name="website" class="form-control"
@@ -163,7 +163,7 @@
 
                     <div class="clearfix"></div>
                     <hr>
-                    <div class="col-md-12">
+                    <div class="col-md-12 my-2">
                         <div class="margiv-top-10">
                             <input type="hidden" name="added_by" value="<?php echo $user_id; ?>">
                             <button type="submit" class="btn green uppercase add_agent">Add Agent</button>

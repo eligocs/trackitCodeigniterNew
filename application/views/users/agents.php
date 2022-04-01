@@ -25,6 +25,7 @@
                                 value="">
                     <div class="filter_section text-center">
                         <div id="filter"></div>
+                        <div class="row">
                         <input type="hidden" id="ustatus" value="<?php echo $ustatus; ?>">
                         <div class="col-md-offset-2 col-md-4">
                             <label><strong>Select User By Status:</strong></label>
@@ -49,10 +50,11 @@
                         } ?>
                             </select>
                         </div>
+                        <div class="col-md-2">
+                            <label for="" class="d_block">&nbsp;</label>
+                            <input type="submit" class="btn btn-success" value="Filter">
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <label for="" class="d_block">&nbsp;</label>
-                        <input type="submit" class="btn btn-success" value="Filter">
                     </div>
                 </form>
                 <div class="clearfix"></div>

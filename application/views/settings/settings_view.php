@@ -29,7 +29,7 @@
 											
 										</ul>
 									</div>
-									<div class="portlet-body">
+									<div class="portlet-body offset-1">
 										<div class="tab-content">
 											<!-- PERSONAL INFO TAB -->
 											<div class="tab-pane active" id="tab_1_1">

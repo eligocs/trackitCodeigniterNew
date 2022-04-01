@@ -66,10 +66,10 @@
 
             <div class="portlet-body custom_card">
                 <?php if( $get_all_booked_iti ){ ?>
-                <div class="row">
-                    <form id="addAcc_frm">
+                <form id="addAcc_frm">
+                    <div class="row">
                         <!--IF NEW CUSTOMER ACCOUNT BOOKED ITI ID -->
-                        <div class="col-md-offset-4 col-md-6">
+                        <div class="col-md-offset-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Booked Lead ID*</label>
                                 <select name="customer_id" class="form-control" required id="select_iti_id">
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Name*</label>
                                 <input type="text" placeholder="Customer Name" name="customer_name" class="form-control"
@@ -92,7 +92,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Email*</label>
                                 <input type="email" placeholder="Customer Email" name="customer_email"
@@ -100,7 +100,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Contact*</label>
                                 <input type="text" placeholder="Customer Contact" name="customer_contact"
@@ -109,7 +109,7 @@
                         </div>
 
                         <div class="clearfix"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">TOTAL PACKAGE COST</label>
                                 <input type="text" disabled placeholder="Total Package cost" name="total_package_cost"
@@ -119,7 +119,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Enter Amount*</label>
                                 <input type="number" id='amount' placeholder="Enter Amount" name="amount" min="10"
@@ -129,7 +129,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Link Expire Date*</label>
                                 <input type="text" id='expire_date' placeholder="Enter Link Expire Date"
@@ -138,18 +138,19 @@
                                     required="required" />
                             </div>
                         </div>
-
-                        <div class="clearfix"></div>
-                        
+                        <div class="col-md-12">
                         <div class="margiv-top-10">
-                            <button type="submit" class="btn green uppercase add_Bank margin-top-20 margin_left_15">Generate Payement Link</button>
+                            <button type="submit"
+                                class="btn green uppercase add_Bank margin-top-20">Generate Payement
+                                Link</button>
                             <input type='hidden' name='id'
                                 value='<?php echo isset( $payment_link[0]->id ) ? $payment_link[0]->id : ""?>'>
                         </div>
+                        </div>
                         <div class="clearfix"></div>
                         <div id="res"></div>
-                    </form>
-                </div>
+                    </div>
+                </form>
 
                 <?php }else{ ?>
                 <!--if no booked itineray found-->
@@ -229,7 +230,7 @@ jQuery(document).ready(function($) {
                 beforeSend: function() {
                     resp.html(
                         '<p class="alert alert-info"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>'
-                        );
+                    );
                 },
                 success: function(res) {
                     if (res.status == true) {

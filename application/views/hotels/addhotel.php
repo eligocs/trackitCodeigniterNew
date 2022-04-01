@@ -1,6 +1,10 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-
+<style>
+   .fileinput .thumbnail {
+  border: 2px dashed;
+}
+</style>
 <div class="page-container customer_content">
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -17,7 +21,7 @@
                 <div class="portlet-body second_custom_card">
                     <div class="row">
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Country*</label>
                                 <select name="country" class="form-control country">
@@ -33,7 +37,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div id="state_list">
                                 <div class='form-group'><label>State*:</label><select disabled name='state'
                                         class='form-control state'>
@@ -42,7 +46,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div id="city_list">
                                 <div class='form-group'><label>City*:</label><select name='city' disabled
                                         class='form-control city'>
@@ -53,7 +57,7 @@
 
 
                         <div class="clearfix"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Category*</label>
                                 <select name="category" class="form-control cat">
@@ -70,14 +74,14 @@
                         </div>
 
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Name*</label>
                                 <input type="text" placeholder="Hotel Name" name="name" class="form-control" value="" />
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Email*</label>
                                 <input type="text"
@@ -86,7 +90,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Address*</label>
                                 <textarea name="address" class="form-control"
@@ -94,7 +98,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Contact Number*</label>
                                 <input type="text" placeholder="Hotel Phone Number" name="contact" class="form-control"
@@ -102,7 +106,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Website</label>
                                 <input type="text" placeholder="Website Link" name="website" class="form-control"
@@ -110,7 +114,7 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
                                     <img alt="" class="img-responsive" src="" />

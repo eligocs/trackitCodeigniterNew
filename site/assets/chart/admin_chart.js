@@ -128,81 +128,81 @@ function leads_date_filter() {
 }
 
 //lead by working type
-function hm_leads_chart() {
-    var selectedDate = $('#leadsDate').val();
-    var BASE_URL = $("#base_url").val();
-    var agent_id = $("#agent_graph_lead").val();
-    $.ajax({
-        url: BASE_URL + "dashboard/leadsFilterByType",
-        method: "POST",
-        dataType: 'json',
-        data: {
-            selectedDate: selectedDate,
-            agent_id: agent_id
-        },
-        success: function(res) {
-            //init chart
-            var myChart = echarts.init(document.getElementById('main'));
-            var idx = 1;
-            pieChartOption = {
-                timeline: {
-                    show: false,
-                    data: [
-                        '2013-07-01',
-                    ],
-                },
-                options: [{
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    },
-                    legend: {
-                        data: res.name,
-                    },
-                    toolbox: {
-                        show: true,
-                        feature: {
-                            dataView: {
-                                show: true,
-                                readOnly: false
-                            },
-                            magicType: {
-                                show: true,
-                                type: ['pie', 'funnel'],
-                                option: {
-                                    funnel: {
-                                        x: '25%',
-                                        width: '50%',
-                                        funnelAlign: 'left',
-                                        max: 1700
-                                    }
-                                }
-                            },
-                            restore: {
-                                show: true
-                            },
-                            saveAsImage: {
-                                show: true
-                            }
-                        }
-                    },
-                    series: [{
-                        type: 'pie',
-                        center: ['50%', '60%'],
-                        radius: ['45%', '75%'],
-                        avoidLabelOverlap: false,
-                        data: res.totalNo,
-                    }]
-                }]
-            };
-            myChart.setOption(pieChartOption);
+// function hm_leads_chart() {
+//     var selectedDate = $('#leadsDate').val();
+//     var BASE_URL = $("#base_url").val();
+//     var agent_id = $("#agent_graph_lead").val();
+//     $.ajax({
+//         url: BASE_URL + "dashboard/leadsFilterByType",
+//         method: "POST",
+//         dataType: 'json',
+//         data: {
+//             selectedDate: selectedDate,
+//             agent_id: agent_id
+//         },
+//         success: function(res) {
+//             //init chart
+//             var myChart = echarts.init(document.getElementById('main'));
+//             var idx = 1;
+//             pieChartOption = {
+//                 timeline: {
+//                     show: false,
+//                     data: [
+//                         '2013-07-01',
+//                     ],
+//                 },
+//                 options: [{
+//                     tooltip: {
+//                         trigger: 'item',
+//                         formatter: "{a} <br/>{b} : {c} ({d}%)"
+//                     },
+//                     legend: {
+//                         data: res.name,
+//                     },
+//                     toolbox: {
+//                         show: true,
+//                         feature: {
+//                             dataView: {
+//                                 show: true,
+//                                 readOnly: false
+//                             },
+//                             magicType: {
+//                                 show: true,
+//                                 type: ['pie', 'funnel'],
+//                                 option: {
+//                                     funnel: {
+//                                         x: '25%',
+//                                         width: '50%',
+//                                         funnelAlign: 'left',
+//                                         max: 1700
+//                                     }
+//                                 }
+//                             },
+//                             restore: {
+//                                 show: true
+//                             },
+//                             saveAsImage: {
+//                                 show: true
+//                             }
+//                         }
+//                     },
+//                     series: [{
+//                         type: 'pie',
+//                         center: ['50%', '60%'],
+//                         radius: ['45%', '75%'],
+//                         avoidLabelOverlap: false,
+//                         data: res.totalNo,
+//                     }]
+//                 }]
+//             };
+//             myChart.setOption(pieChartOption);
 
-        },
-        error: function(e) {
-            console.log("err");
-        }
-    });
-}
+//         },
+//         error: function(e) {
+//             console.log("err");
+//         }
+//     });
+// }
 
 
 

@@ -14,6 +14,14 @@ $this_month = date("Y-m");
     width: 100%;
     height: 500px;
 }
+.quick-nav-chart {
+    /* position: fixed;
+    z-index: 10103;
+    top: 126px;
+    right: 10px;
+     margin-top: -230px; 
+    pointer-events: none; */
+}
 </style>
 
 <?php $todAy = date("Y-m-d"); ?>
@@ -925,10 +933,10 @@ $this_month = date("Y-m");
 <!-- END Main container-fluid -->
 <!-- ITINERARIES FOLLOW UP -->
 <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel2">PAYMENT FOLLOW UP</h4>
             </div>
@@ -941,10 +949,10 @@ $this_month = date("Y-m");
 
 <!-- Pending advance payment ITINERARIES FOLLOW UP -->
 <div class="modal right fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel4">ADVANCE PAYMENT PENDING FOLLOW UP</h4>
             </div>
@@ -957,10 +965,10 @@ $this_month = date("Y-m");
 
 <!-- Pending payment ITINERARIES FOLLOW UP -->
 <div class="modal right fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel5">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel5">PAYMENT PENDING FOLLOW UP AFTER ADVANCE RECIEVED</h4>
             </div>
@@ -973,10 +981,10 @@ $this_month = date("Y-m");
 
 <!-- Travel Dates -->
 <div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel3">Travel Dates</h4>
             </div>
@@ -994,7 +1002,7 @@ $this_month = date("Y-m");
     <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabe20"></h4> <div class="col-md-12">
          <div class="portlet-title">

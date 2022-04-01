@@ -14164,7 +14164,7 @@ body[ng-controller] .modal {
     background: 0 0;
     margin: 1px 0 0;
     float: right;
-    display: inline-block;
+    /* display: inline-block; */
     border: 0
 }
 

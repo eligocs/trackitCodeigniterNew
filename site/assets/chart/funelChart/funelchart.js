@@ -38,6 +38,7 @@ function funel_chart() {
             marker.cornerRadius(12, 12, 12, 12);
             marker.strokeWidth = 2;
             marker.strokeOpacity = 1;
+            chart.legend.position = "right";
             chart.legend.itemContainers.template.tooltipText = "{value}";
             chart.legend.valueLabels.template.disabled = true;
 
@@ -92,6 +93,19 @@ function leads_date_filter() {
             pieSeries.dataFields.value = "value";
             pieSeries.dataFields.category = "name";
 
+
+            chart.legend = new am4charts.Legend();
+            chart.legend.useDefaultMarker = true;
+            var marker = chart.legend.markers.template.children.getIndex(0);
+            marker.cornerRadius(12, 12, 12, 12);
+            marker.strokeWidth = 2;
+            marker.strokeOpacity = 1;
+            // chart.legend.position = "left";
+            chart.legend.itemContainers.template.tooltipText = "{value}";
+            chart.legend.valueLabels.template.disabled = true;
+
+
+
             /* remove logo */
             let eles = document.querySelectorAll("[aria-labelledby$=-title]");
             eles.forEach((ele) => {
@@ -102,6 +116,68 @@ function leads_date_filter() {
         }
     })
 };
+
+
+
+function hm_leads_chart() {
+    var selectedDate = $('#leadsDate').val();
+    var BASE_URL = $("#base_url").val();
+    var agent_id = $("#agent_graph_lead").val();
+    $.ajax({
+        url: BASE_URL + "dashboard/leadsFilterByType",
+        method: "POST",
+        dataType: 'json',
+        data: {
+            selectedDate: selectedDate,
+            agent_id: agent_id
+        },
+        success: function(res) {
+
+            am4core.useTheme(am4themes_animated);
+
+            // Create chart instance
+            var chart = am4core.create("main", am4charts.PieChart);
+
+            // Add data
+            chart.data = res.totalNo;
+
+            // Add and configure Series
+            var pieSeries = chart.series.push(new am4charts.PieSeries());
+            pieSeries.dataFields.value = "value";
+            pieSeries.dataFields.category = "name";
+            pieSeries.innerRadius = am4core.percent(50);
+            pieSeries.ticks.template.disabled = true;
+            pieSeries.labels.template.disabled = true;
+
+            let rgm = new am4core.RadialGradientModifier();
+            rgm.brightnesses.push(-0.8, -0.8, -0.5, 0, -0.5);
+            pieSeries.slices.template.fillModifier = rgm;
+            pieSeries.slices.template.strokeModifier = rgm;
+            pieSeries.slices.template.strokeOpacity = 0.4;
+            pieSeries.slices.template.strokeWidth = 0;
+
+            chart.legend = new am4charts.Legend();
+            chart.legend.useDefaultMarker = true;
+            var marker = chart.legend.markers.template.children.getIndex(0);
+            marker.cornerRadius(12, 12, 12, 12);
+            marker.strokeWidth = 2;
+            marker.strokeOpacity = 1;
+            chart.legend.position = "right";
+            chart.legend.itemContainers.template.tooltipText = "{value}";
+            chart.legend.valueLabels.template.disabled = true;
+
+            /* remove logo */
+            let eles = document.querySelectorAll("[aria-labelledby$=-title]");
+            eles.forEach((ele) => {
+                ele.style.visibility = "hidden";
+            })
+
+        },
+        error: function(e) {
+            console.log("err");
+        }
+    });
+}
 
 
 $(document).on("click", '#quick-nav-triggered', function(e) {
