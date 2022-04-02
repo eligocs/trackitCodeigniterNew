@@ -3171,6 +3171,23 @@ function calculateAgetnDiscountPer($rate_meta, $percentageValue){
 	
 }
 
+	function get_agent_discount_price($iti){
+		$ci =& get_instance();
+		$ci->db->select('*');
+        $ci->db->from('itinerary');
+		$ci->db->where('iti_id', $iti);
+		// $ci->db->where('discount_agent_update !=', 1);
+       	$query = $ci->db->get();
+		$res = $query->row();
+		if($res){
+			$result = $res->discount_agent_update;
+		}else{
+			$result = false;
+		}
+		return $result;
+	
+}
+
 
 
 	

@@ -15,7 +15,6 @@
             ?>
             <?php if( !empty($itinerary[0] ) ){ 
                 $iti = $itinerary[0];
-                dump(check_agent_discount_price_set( $iti->iti_id));	
                 $doc_path =  base_url() . 'site/assets/client_docs/';
                 $is_amendment = $amendment_note = "";
                 $get_rate_meta = unserialize( $iti->rates_meta );
@@ -2775,10 +2774,11 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Discount price Self Update</h4>
+                                <h4 class="modal-title">Discount price Self Update % </h4>
                             </div>
                             <div class="modal-body">
                                 <form id="selfPriceForm">
+                                <?=   !empty(get_agent_discount_price($iti->iti_id)) ? '<strong>Old Discount% : </strong>'. get_agent_discount_price($iti->iti_id) : ''; ?>
                                         <select  name="agent_discount_Value" class="form-control">
                                             <option value="">Select</option>
                                             <?php 
@@ -2788,7 +2788,7 @@
                                                 $disc_per = !empty(agentDiscount()) ? agentDiscount() : '';
                                             // }
                                                 for( $i=1 ; $i <= $disc_per ; $i++ ){
-                                                    echo "<option value='{$i}'>{$i}</option>";
+                                                    echo "<option value='{$i}'>{$i}%</option>";
                                                 }
                                             ?>
                                         </select>
