@@ -26,6 +26,9 @@
 											<li class="">
 												<a href="#tab_1_3" data-toggle="tab">Login System Settings</a>
 											</li>
+											<li class="">
+												<a href="#tab_1_4" data-toggle="tab">Agent Discount Settings</a>
+											</li>
 											
 										</ul>
 									</div>
@@ -296,6 +299,45 @@
 												<div id="res_login"></div>
 												</div>	
 											</div><!--end login info setting-->	
+											<div class="tab-pane" id="tab_1_4">
+												<h4 class="uppercase text-center">Agent Discount Price: </h4>
+												<form role="form" class="form-horizontal form-bordered" id="updateAgentDiscount">
+													<?php
+														$s_login_data_setting = unserialize( $settings[0]->standard_login); 
+														$activated = isset( $s_login_data_setting['activated'] ) && !empty($s_login_data_setting['activated']) ? 1 : 0;
+														$time = isset($s_login_data_setting['time']) && !empty( $s_login_data_setting['time'] ) ? $s_login_data_setting['time'] : 0;
+														$roles = isset($s_login_data_setting['role']) && !empty( $s_login_data_setting['role'] ) ? $s_login_data_setting['role'] : 0;
+													?>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="control-label col-md-3">Select Discount Price:</label>
+														<select  name="agent_discount" class="form-control">
+                                           			 		<option value="">Select</option>
+															<?php 
+																for( $i=1 ; $i <=50 ; $i++ ){
+																	echo "<option value='{$i}'>{$i}</option>";
+																}
+															?>
+                                       				 	</select>
+													</div>
+													<hr>
+													<div class="form-group">
+														<div class="form-actions">
+															<div class="row">
+																<div class="col-md-offset-2 col-md-10">
+																	<input type="hidden" name="inp[id]" value="<?php if($settings!= NULL){ echo $settings[0]->id; }?>"/>	
+																	<input type="hidden" name="type" value="<?php if($settings!= NULL){ echo "Update"; } else { echo "Add";}?>"/>
+																	<button type="submit" class="btn green">
+																		<i class="fa fa-check"></i> Update</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</form>
+												<div class="clearfix"></div>
+												<div id="res_price"></div>
+												</div>	
+											</div><!--end login info setting-->	
 										</div>
 										</div>
 									</div>
@@ -428,6 +470,45 @@ jQuery(document).ready(function($) {
 			}	
 		}
 	});	
+
+
+	$("#updateAgentDiscount").validate({
+		submitHandler: function(form) {
+			var ajaxReq;
+			var response = $("#res_price");
+			var formData = $("#updateAgentDiscount").serializeArray();
+			if (confirm("Are you sure to save changes ?")) {
+				if (ajaxReq) {
+					ajaxReq.abort();
+				}
+				ajaxReq = jQuery.ajax({
+					type: "POST",
+					url: "<?php echo base_url(); ?>" + "Settings/updateAgentDiscount",
+					dataType: 'json',
+					data: formData,
+					beforeSend: function(){
+						response.show().html('<p class="alert alert-info"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+					},
+					success: function(res) {
+						if (res.status == true){
+							response.html('<div class="alert alert-success"><strong>Success! </strong>'+res.msg+'</div>');
+							//console.log("done");
+							//location.reload();
+							// setTimeout(function() { response.fadeOut('fast'); }, 2000); // <-- time in milliseconds
+						}else{
+							response.html('<div class="alert alert-danger"><strong>Error! </strong>'+res.msg+'</div>');
+							//console.log("error");
+						}
+					},
+					error: function(){
+						response.html('<div class="alert alert-danger"><strong>Error! </strong>Please Try again later! </div>');
+					}
+				});
+			}	
+		}
+	});	
+
+
 	//tax field filter
 	$(".numberFilter").on('keyup keypress', function(e){
 		if(this.value.length==3) return false;

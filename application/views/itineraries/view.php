@@ -13,17 +13,18 @@
             <?php $message = $this->session->flashdata('success');
             if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
             ?>
-            <?php if( !empty($itinerary[0] ) ){ 			
-            $iti = $itinerary[0];
-            $doc_path =  base_url() . 'site/assets/client_docs/';
-            $is_amendment = $amendment_note = "";
-            $get_rate_meta = unserialize( $iti->rates_meta );
-            
-            //show amendment note if revised itinerary
-            if( $iti->is_amendment == 2 ){ 
-            	$is_amendment = "<h3 class='text-center red'>REVISED ITINERARY</h3>";
-            	$amendment_cmt = $this->global_model->getdata( "iti_amendment_temp", array( "iti_id" => $iti->iti_id ) );
-            	$amendment_note = !empty( $amendment_cmt ) ? "<p class='red'>Amendment: {$amendment_cmt[0]->review_comment}</p>" : "";
+            <?php if( !empty($itinerary[0] ) ){ 
+                $iti = $itinerary[0];
+                dump(check_agent_discount_price_set( $iti->iti_id));	
+                $doc_path =  base_url() . 'site/assets/client_docs/';
+                $is_amendment = $amendment_note = "";
+                $get_rate_meta = unserialize( $iti->rates_meta );
+                
+                //show amendment note if revised itinerary
+                if( $iti->is_amendment == 2 ){ 
+                    $is_amendment = "<h3 class='text-center red'>REVISED ITINERARY</h3>";
+                    $amendment_cmt = $this->global_model->getdata( "iti_amendment_temp", array( "iti_id" => $iti->iti_id ) );
+                    $amendment_note = !empty( $amendment_cmt ) ? "<p class='red'>Amendment: {$amendment_cmt[0]->review_comment}</p>" : "";
             } 
             
             $terms = get_terms_condition();
@@ -2625,7 +2626,7 @@
                 <p class="text-center"><strong class="alert alert-info">Waiting for price update from
                         manager..</strong>
                 </p>
-                <?php }else if( $user_role == 96 && ( $iti->pending_price == "0" || (  $iti->iti_status == 6 && get_iti_booking_status( $iti->	iti_id ) == 3 )  ) ) { ?>
+                <?php }else if( $user_role == 96 && ( $iti->pending_price == "0" || (  $iti->iti_status == 6 && get_iti_booking_status( $iti->iti_id ) == 3 )  ) ) { ?>
                 <p class="text-center">
                     <!--a class="btn btn-success" data-iti_id="<?php echo $iti->iti_id; ?>" data-temp_key="<?php echo $iti->temp_key; ?>" href="#" data-agent_id="<?php echo $iti->agent_id; ?>" id="send_price_request" title="Sent Price request for manager">Sent Price Request To Manager</a-->
                     <a class="btn btn-success" data-iti_id="<?php echo $iti->iti_id; ?>"
@@ -2688,13 +2689,26 @@
                 <?php if( ($user_role == 96 || $user_role == 99) && !empty( $get_rate_meta ) && $iti->email_count > 0 && $iti->discount_rate_request == 0 && $iti->iti_status == 0 && $countPrice < 6 ){ ?>
                 <span class="btn btn-green reqPrice_update" title="Request For Update Price">Request Manager To
                     Update Price</span>
+                <?php 
+                if($iti->discount_rate_request ==  0){
+                    if(check_agent_discount_price_set($iti->iti_id) == true){
+                        ?>
+                    <span class="btn btn-green self_update_error" title="Request For Update Price">Self Update Price</span>
+                    <?php
+                    }else{
+                        ?>
+                    <span class="btn btn-green self_update" title="Request For Update Price">Self Update Price</span>
+                        <?php
+                    }
+                }
+                ?>
                 <!-- Modal Discount Price itinerary-->
                 <!-- The Modal -->
                 <div class="modal fade" id="update_priceModal" role="dialog">
                     <div class="modal-dialog modal-lg2">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">Request for discount price</h4>
                             </div>
                             <div class="modal-body">
@@ -2749,6 +2763,60 @@
                                     <button type="submit" id="reqDis_btn" class="btn btn-default">Send</button>
                                     <div id="priceRes"></div>
                                 </form>
+                            </div>
+                            <!--div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div-->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="update_self" role="dialog">
+                    <div class="modal-dialog modal-lg2">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Discount price Self Update</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="selfPriceForm">
+                                        <select  name="agent_discount_Value" class="form-control">
+                                            <option value="">Select</option>
+                                            <?php 
+                                            // if(check_agent_discount_price_set( $iti->iti_id)){
+                                            //     $disc_per = check_agent_discount_price_set( $iti->iti_id);
+                                            // }else{
+                                                $disc_per = !empty(agentDiscount()) ? agentDiscount() : '';
+                                            // }
+                                                for( $i=1 ; $i <= $disc_per ; $i++ ){
+                                                    echo "<option value='{$i}'>{$i}</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    <input type="hidden" name="self_update" value="1">
+                                    <input type="hidden" name="iti_id" value="<?php echo $iti->iti_id; ?>">
+                                    <input type="hidden" name="temp_key" value="<?php echo $iti->temp_key; ?>">
+                                    <input type="hidden" name="agent_id" value="<?php echo $iti->agent_id; ?>">
+                                    <button type="submit" id="reqDis_btn" class="btn btn-primary my-2">Submit</button>
+                                    <div id="priceRes"></div>
+                                </form>
+                            </div>
+                            <!--div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div-->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="self_update_error" role="dialog">
+                    <div class="modal-dialog modal-lg2">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                     
+                            <h6>Your  price update limit reached , request discount price from manager!</h6> 
+                            <span class="btn btn-green reqPrice_update" title="Request For Update Price">Request Manager To
+                            Update Price</span>
                             </div>
                             <!--div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -3004,6 +3072,11 @@
     </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+
 <!-- END CONTENT BODY -->
 </div>
 <!-- Modal -->
@@ -3717,6 +3790,13 @@ jQuery(document).ready(function($) {
     //open price modal reqPriceForm
     $(".reqPrice_update").click(function() {
         $("#update_priceModal").modal('show');
+        $("#self_update_error").modal('hide');
+    });
+    $(".self_update").click(function() {
+        $("#update_self").modal('show');
+    });
+    $(".self_update_error").click(function() {
+        $("#self_update_error").modal('show');
     });
     $("#reqPriceForm").validate({
         submitHandler: function(form) {
@@ -3741,8 +3821,50 @@ jQuery(document).ready(function($) {
                         resp.html(
                             '<div class="alert alert-success"><strong>Success! </strong>' +
                             res.msg + '</div>');
-                        //console.log(res.msg);
+                        console.log(res.msg);
                         location.reload();
+                    } else {
+                        resp.html(
+                            '<div class="alert alert-danger"><strong>Error! </strong>' +
+                            res.msg + '</div>');
+                        console.log("error");
+                    }
+                },
+                error: function(e) {
+                    //console.log(e);
+                    resp.html(
+                        '<div class="alert alert-danger"><strong>Error!</strong> Please Try again later! </div>'
+                    );
+                }
+            });
+        }
+    });
+
+    $("#selfPriceForm").validate({
+        submitHandler: function(form) {
+            var ajaxReq;
+            var resp = $("#priceRes");
+            var formData = $("#selfPriceForm").serializeArray();
+            if (ajaxReq) {
+                ajaxReq.abort();
+            }
+            ajaxReq = $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('itineraries/updateDiscountPriceReq'); ?>",
+                dataType: 'json',
+                data: formData,
+                beforeSend: function() {
+                    resp.html(
+                        "<div class='alert alert-info'><strong>Please wait</strong> sending mail.....</div>"
+                    );
+                },
+                success: function(res) {
+                    if (res.status == true) {
+                        resp.html(
+                            '<div class="alert alert-success"><strong>Success! </strong>' +
+                            res.msg + '</div>');
+                        //console.log(res.msg);
+                        // location.reload();
                     } else {
                         resp.html(
                             '<div class="alert alert-danger"><strong>Error! </strong>' +

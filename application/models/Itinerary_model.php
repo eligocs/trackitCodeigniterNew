@@ -747,6 +747,8 @@ class Itinerary_model extends CI_Model{
 		$this->db->order_by("h.hotel_name", "ASC");
         return $this->db->get()->result_array();
 	}
+
+
 	
 }
 ?>

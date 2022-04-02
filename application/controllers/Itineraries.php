@@ -3091,8 +3091,40 @@ class Itineraries extends CI_Controller {
 		$agent_id		= $this->input->post("agent_id", true);
 		$agent_username = get_user_name( trim($agent_id) );
 		$h_cat 			= $this->input->post("hotel_cat_dis", true);
-		$send_request_to 	= $this->input->post('send_request_to'); //2=team leader , 1 = manager
+		$send_request_to 	= $this->input->post('send_request_to'); 
 		
+		// price update by sales
+		if(!empty($_POST['self_update'])){
+			$update_data["discount_rate_request"] = 4;
+			$up_self_data = array(
+				'self_update'	 	=> $_POST['self_update'],
+				'discount_agent_update'	 	=> $_POST['agent_discount_Value'],
+			);
+			$where = array( "iti_id" => $iti_id, "del_status" => 0, "temp_key" => $temp_key );
+			$update_data = $this->global_model->update_data( "itinerary", $where, $up_self_data ); 
+			$get_data = $this->global_model->getdata("itinerary", $where);
+			$rate_meta = unserialize($get_data[0]->rates_meta);
+			$percentageValue = $_POST['agent_discount_Value'];
+			
+			$set_discount = calculateAgetnDiscountPer($rate_meta, $percentageValue );
+			$insert_data = array(
+				'iti_id'			 	=> $iti_id,
+				'standard_rates'	 	=> $set_discount['standard_rates'],
+				'deluxe_rates'		 	=> $set_discount['deluxe_rates'],
+				'super_deluxe_rates' 	=> $set_discount['super_deluxe_rates'],
+				'luxury_rates'		 	=> $set_discount['luxury_rates'],
+				'agent_id'			 	=> $agent_id,
+			);
+
+			//insert data to price discount table
+			$insert = $this->global_model->insert_data("itinerary_discount_price_data", $insert_data );
+			if( $insert ){
+			$res = array('status' => true, 'msg' => "Discount Update successfully.");
+			}else{
+				$res = array('status' => false, 'msg' => "Discount  not  Update sent.");
+			}
+			
+		}else{
 		//check for teamleader if exists
 		$team_leader = get_teamleader_user_id();
 		//if teamleader exits 2 =teamleader
@@ -3100,12 +3132,14 @@ class Itineraries extends CI_Controller {
 			$teamleader_email = get_user_email($team_leader);
 			$hotel_cat	= !empty( $h_cat ) ? implode( ", ",  (array)$h_cat) : "";
 			$where = array( "iti_id" => $iti_id, "del_status" => 0, "temp_key" => $temp_key );
+			$self_update = !empty($_POST['send_request_to']) ? $_POST['send_request_to'] : '0';
 			
 			/* //update Discount status */
 			$up_data = array(
 				'discount_rate_request'	 	=> 3,
 				'dis_hotel_cat'			 	=> $hotel_cat,
 				"pending_price_date" 		=> current_datetime(),
+				"self_update" 		=> $self_update,
 			);
 			
 			$update_data = $this->global_model->update_data( "itinerary", $where, $up_data ); 
@@ -3214,6 +3248,7 @@ class Itineraries extends CI_Controller {
 				$res = array('status' => false, 'msg' => "Discount request not sent.");
 			}
 		}	
+	}
 		die( json_encode($res) );
 	}	
 	

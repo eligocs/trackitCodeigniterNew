@@ -696,6 +696,22 @@
 		}
 		return $return;
 	}
+
+
+	/*
+	 * Get Agent Discount
+	*/
+	function agentDiscount() {
+		$ci = & get_instance();
+		$where = array();
+		$res = $ci->global_model->getdata("settings", $where, "agent_discount");
+		if( $res ){
+			$return = $res;
+		}else{
+			$return = false;
+		}
+		return $return;
+	}
 	
 	/*
 	 * check if online payments are enabled
@@ -3084,3 +3100,77 @@
 		
 
 	}
+
+
+
+
+	/* calculate total profit Per */
+function calculateAgetnDiscountPer($rate_meta, $percentageValue){
+	$ci = &get_instance();
+	if(!empty($rate_meta['standard_rates'] && $percentageValue)){
+		$percentage = $percentageValue;
+		$totalWidth = $rate_meta['standard_rates'];
+		$standard_rates = ($percentage / 100) * $totalWidth;
+	}
+	if(!empty($rate_meta['deluxe_rates'] && $percentageValue)){
+		$percentage = $percentageValue;
+		$totalWidth = $rate_meta['deluxe_rates'];
+		$deluxe_rates = ($percentage / 100) * $totalWidth;
+	}
+	if(!empty($rate_meta['super_deluxe_rates'] && $percentageValue)){
+		$percentage = $percentageValue;
+		$totalWidth = $rate_meta['super_deluxe_rates'];
+		$super_deluxe_rates = ($percentage / 100) * $totalWidth;
+	}
+	if(!empty($rate_meta['luxury_rates'] && $percentageValue)){
+		$percentage = $percentageValue;
+		$totalWidth = $rate_meta['luxury_rates'];
+		$luxury_rates = ($percentage / 100) * $totalWidth;
+	}
+	$value = [];
+	$value["standard_rates"] = $standard_rates;
+	$value["deluxe_rates"] = $deluxe_rates;
+	$value["super_deluxe_rates"] = $super_deluxe_rates;
+	$value["luxury_rates"] =  $luxury_rates;
+	return $value;
+
+
+		// $standard_rates, 
+		// $deluxe_rates, $super_deluxe_rates, $luxury_rates;
+
+	// $withoutMrg = !empty(total_Sales_without_tax()) ? total_Sales_without_tax() : '';
+	// $totalExpenses = !empty(total_expens()) ? total_expens() : '';
+	// $calculateTotal  = $withoutMrg - $totalExpenses;
+	// $calculateTotalPer = ($calculateTotal / $withoutMrg) * 100;
+	// return $calculateTotalPer;
+	// if(!empty($calculateTotalPer)){
+	// 	return $calculateTotalPer;
+	// }else{
+	// 	$calculateTotalPer;
+	// }
+
+}
+
+
+	function check_agent_discount_price_set($iti){
+		$ci =& get_instance();
+		$ci->db->select('*');
+        $ci->db->from('itinerary');
+		$ci->db->where('iti_id', $iti);
+		// $ci->db->where('discount_agent_update !=', 1);
+       	$query = $ci->db->get();
+		$result = $query->row();
+		$disc_per = !empty(agentDiscount()) ? agentDiscount() : '';
+		$res  = $result->discount_agent_update >= $disc_per;
+		if($res){
+			$result = $res;
+		}else{
+			$result = false;
+		}
+		return $result;
+	
+}
+
+
+
+	

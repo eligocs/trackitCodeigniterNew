@@ -186,6 +186,25 @@ class Settings extends CI_Controller {
 		}	
 		die(json_encode($res));
 	}
+
+	//Ajax request update Agent Discount Price
+	public function updateAgentDiscount(){
+		$agent_discount = $this->input->post( 'agent_discount');
+		if( !empty( $agent_discount ) ){
+			$data = array(
+					"agent_discount" 	=> $this->input->post( 'agent_discount')
+				);	
+			$result = $this->settings_model->update_data("settings", $data);
+			if( $result){
+				$res = array('status' => true, 'msg' => "Agent s Discount Price  updated Successfully!");
+			}else{
+				$res = array('status' => false, 'msg' => "Please Try Again ! cannot be updated");
+			}
+		}else{
+			$res = array('status' => false, 'msg' => "All Fields required");
+		}	
+		die(json_encode($res));
+	}
 }	
 
 ?>
