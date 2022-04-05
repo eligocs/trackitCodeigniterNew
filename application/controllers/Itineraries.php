@@ -607,6 +607,12 @@ class Itineraries extends CI_Controller {
 				}else{
 					$temp_t_d = $iti->t_start_date;
 				}	
+				if(empty(checked_profit_and_loss_calculate($iti->iti_id)) && checked_All_Amount_is_recived($iti->iti_id) == 0){
+					$book_btn = "<div class='portlet-title'>
+					<div class='text-center margin-bottom-20 margin-top-15'><a  href='#'
+							class='btn green uppercase clculateMargin' data-id='{$iti_id}'>Calculate Margin</a></div>
+				</div>";
+				}
 				
 				$row = array();
 				$row[] = $no;
@@ -616,6 +622,7 @@ class Itineraries extends CI_Controller {
 				$row[] = $iti->customer_name;
 				$row[] = $iti->customer_contact;
 				$row[] = $iti->package_name . $l_pro_status;
+				$row[] = $book_btn;
 				
 				//Check temp travel date if publish_status != "draft" iti_type = 1 Itinerary , 2 = accommodation
 				/* if( $iti->publish_status != "draft" && $iti->iti_type == 1 ){
@@ -743,6 +750,13 @@ class Itineraries extends CI_Controller {
 							if( !$check_vtf_status ){
 								$book_btn .= "<a  title='Add details Volvo/Train/Flight' href='" . site_url("vehiclesbooking/addbookingdetails/{$iti_id}?type=volvo") . "' class='btn {$v_class}' ><i class='fa fa-plane' aria-hidden='true'></i>&nbsp; Book VTF</a>";
 							}
+							
+							if(empty(checked_profit_and_loss_calculate($iti->iti_id))){
+								$book_btn .= "<div class='portlet-title'>
+								<div class='text-center margin-bottom-20 margin-top-15'><a  href='#'
+										class='btn green uppercase clculateMargin' data-id='{$iti_id}'>Calculate Margin</a></div>
+							</div>";
+							}
 						}
 						
 						$row[] = $btnview . $rev_btn_service . $book_btn;
@@ -856,6 +870,13 @@ class Itineraries extends CI_Controller {
 					//$btn_view .= "<a title='client view' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view </a>";
 					
 					$btn_view_receipt = "<a title='Create New Receipt' target='_blank' href=" . site_url("accounts/create_receipt/{$iti->customer_id}") . " class='btn btn-success' ><i class='fa fa-file-alt'></i> New Receipt </a>";
+				}
+
+				if(empty(checked_profit_and_loss_calculate($iti->iti_id))){
+					$btn_view .= "<div class='portlet-title'>
+					<div class='text-center margin-bottom-20 margin-top-15'><a  href='#'
+							class='btn green uppercase clculateMargin' data-id='{$iti_id}'>Calculate Margin</a></div>
+				</div>";
 				}
 				
 				//check if itinerary invoice generate or not 1 = done, 0 = pending

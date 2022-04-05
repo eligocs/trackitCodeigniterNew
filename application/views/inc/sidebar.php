@@ -25,20 +25,20 @@
                      <span class="title">Dashboard</span>
                      <span class="arrow"></span>
                  </a>
-                 <!-- <ul class="sub-menu">
-							<li class="nav-item">
-								<a href="<?php echo site_url("dashboard"); ?>" class="nav-link ">
-									<i class="icon-home"></i>
-									<span class="title">My Dashboard</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="<?php echo site_url("dashboard/user_dashboard"); ?>" class="nav-link ">
-									<i class="icon-user"></i>
-									<span class="title">User Dashboard</span>
-								</a>
-							</li>
-						</ul> -->
+                <ul class="sub-menu">
+					<li class="nav-item">
+						<a href="<?php echo site_url("dashboard"); ?>" class="nav-link ">
+							<i class="icon-home"></i>
+							<span class="title">My Dashboard</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?php echo site_url("dashboard/user_dashboard"); ?>" class="nav-link ">
+							<i class="icon-user"></i>
+							<span class="title">User Dashboard</span>
+						</a>
+					</li>
+				</ul> 
              </li>
 
              <!--li class="nav-item  <?php if( $menu_name == "flipbook" ){ echo 'active'; }?>">
@@ -355,6 +355,12 @@
                      </li>
                  </ul>
              </li>
+             <li class="nav-item  ">
+                 <a href="<?php echo site_url("profit"); ?>" class="nav-link ">
+                     <i class="fa fa-clock-o" aria-hidden="true"></i>
+                     <span class="title">Profit and Loss</span>
+                 </a>
+            </li>
 
 
              <!--li class="nav-item <?php if( $menu_name == "hotelbooking" ){ echo 'active'; }?> ">
@@ -1341,6 +1347,12 @@
                      </li>
                  </ul>
              </li>
+             <li class="nav-item  ">
+                <a href="<?php echo site_url("profit"); ?>" class="nav-link ">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <span class="title">Profit and Loss</span>
+                </a>
+            </li>
              <div class='sidebar_heading'>
                  <span> Configuration</span>
              </div>
@@ -1785,6 +1797,7 @@
                      </li>
                  </ul>
              </li>
+             
              <div class='sidebar_heading'>
                  <span> Configuration</span>
              </div>
@@ -2265,6 +2278,12 @@
                 </li--> 
             </ul>
          </li><!--end ledger menu-->
+         <li class="nav-item  ">
+                 <a href="<?php echo site_url("profit"); ?>" class="nav-link ">
+                     <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <span class="title">Profit and Loss</span>
+                 </a>
+            </li>
 
          <div class='sidebar_heading'>
              <span> Configuration </span>

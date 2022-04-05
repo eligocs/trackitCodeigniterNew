@@ -157,3 +157,142 @@ jQuery(document).ready(function() {
     });
 
 });
+
+
+
+
+/**********
+ * 
+ * **
+ * clculateMargin
+ * *******
+ * *********************
+ * ********************* */
+$(document).on("click", '.clculateMargin', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Profit/renderModel',
+
+        cache: true,
+        dataType: "html",
+        async: false,
+        data: {
+            id: id
+        },
+        success: function(res) {
+            $(".id").html(res);
+
+        },
+        error: function(e) {
+            alert("error");
+
+        }
+    });
+    $('.margianModel').modal('show');
+    $('.iti_id').val(id);
+});
+
+$(document).on("click", '.totalexpen', function(e) {
+    $("#subtotal").val('');
+    var without = $(".witoutGst").val();
+    var cab = $(".calCab").val() ? $(".calCab").val() : 0;
+    var hotel = $(".calhotel").val() ? $(".calhotel").val() : 0;
+    var train = $(".caltrain").val() ? $(".caltrain").val() : 0;
+    var volvo = $(".calvolvo").val() ? $(".calvolvo").val() : 0;
+    var other = $(".calother").val() ? $(".calother").val() : 0;
+    var flight = $(".calflight").val() ? $(".calflight").val() : 0;
+    if (cab != '' || hotel != '' || train != '' || volvo != '' || other != '' || flight != '') {
+        var totalCost = parseInt(cab) + parseInt(hotel) + parseInt(train) + parseInt(volvo) +
+            parseInt(other) + parseInt(flight);
+        var totalsubvalue = $(".subtotal").val(totalCost);
+        if (totalsubvalue != '') {
+            $('.stormrg').removeClass('disabled');
+            if (without >= totalCost) {
+                var cla_prof_los = parseInt(without) - parseInt(totalCost);
+                $(".profitval").val(Math.abs(cla_prof_los));
+                var profitper = Math.round((cla_prof_los / without) * 100);
+                $(".prrofit_per").val(Math.abs(profitper));
+                $('.is_loss_profit').val(1);
+                $('.profitvalue').show();
+                $('.profitper').show();
+                $('.profit').show();
+                $('.profitin_per').show();
+                $('.loss').hide();
+                $('.lossin_per').hide();
+            } else if (without < totalCost) {
+                var cla_prof_los_per = parseInt(totalCost) - parseInt(without);
+                $(".profitval").val(Math.abs(cla_prof_los_per));
+                var profitper = Math.round((cla_prof_los_per / totalCost) * 100);
+                $(".prrofit_per").val(Math.abs(profitper));
+                $('.is_loss_profit').val(2);
+                $('.profitvalue').show();
+                $('.profitper').show();
+                $('.profit').hide();
+                $('.profitin_per').hide();
+                $('.loss').show();
+                $('.lossin_per').show();
+            }
+        }
+    } else {
+        alert("Please Enter Any one Field!");
+    }
+})
+
+/* store data */
+$(document).on("click", '.stormrg', function(e) {
+    e.preventDefault();
+    var formData = $(".storeMargin").serializeArray();
+    console.log(formData);
+    ajaxReq = $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Profit/calculate_profit_loss',
+        dataType: 'json',
+        data: formData,
+        success: function(res) {
+            if (res.status == true) {
+                alert(res.msg);
+                location.reload();
+            } else {
+                alert(res.msg);
+            }
+        },
+        error: function(e) {
+
+        }
+    });
+})
+
+
+
+
+/* edit margian */
+$(document).on("click", '.editMargin', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var type = "edit";
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Profit/renderModel',
+
+        cache: true,
+        dataType: "html",
+        async: false,
+        data: {
+            id: id,
+            type: type
+
+        },
+        success: function(res) {
+            $(".id").html(res);
+
+        },
+        error: function(e) {
+            alert("Error");
+
+        }
+    });
+    $('.margianModel').modal('show');
+    $('.iti_id').val(id);
+});

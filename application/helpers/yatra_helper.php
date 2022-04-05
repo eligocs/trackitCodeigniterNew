@@ -3134,21 +3134,6 @@ function calculateAgetnDiscountPer($rate_meta, $percentageValue){
 	$value["luxury_rates"] =  $luxury_rates;
 	return $value;
 
-
-		// $standard_rates, 
-		// $deluxe_rates, $super_deluxe_rates, $luxury_rates;
-
-	// $withoutMrg = !empty(total_Sales_without_tax()) ? total_Sales_without_tax() : '';
-	// $totalExpenses = !empty(total_expens()) ? total_expens() : '';
-	// $calculateTotal  = $withoutMrg - $totalExpenses;
-	// $calculateTotalPer = ($calculateTotal / $withoutMrg) * 100;
-	// return $calculateTotalPer;
-	// if(!empty($calculateTotalPer)){
-	// 	return $calculateTotalPer;
-	// }else{
-	// 	$calculateTotalPer;
-	// }
-
 }
 
 
@@ -3186,6 +3171,307 @@ function calculateAgetnDiscountPer($rate_meta, $percentageValue){
 		}
 		return $result;
 	
+}
+
+
+
+
+
+
+	/* tour get Total balance amount */
+	function get_total_balance_amount( $iti_id ) {
+		$tour_balance = '';
+	   if(!empty($iti_id) ){
+		   $ci = & get_instance();
+		   $total_balance_amount  = $ci->global_model->getdata( "iti_payment_details", array("iti_id" => trim($iti_id)), "total_balance_amount" );
+		   $tour_balance = $total_balance_amount;
+		   return $tour_balance;
+	   }else{
+		   return $tour_balance;
+	   }	
+   }
+   
+   
+	   function calculate_total_reverse_margin( $amount, $percentage ){
+	   if(!empty($amount && $percentage)){
+		   $reverse_margin = $percentage / 100;
+		   $reverse_margin	 = $reverse_margin + 1;
+		   $p_cost_n = $amount / $reverse_margin ;
+		   return $p_cost_n;
+	   }else{
+		   return '';
+	   }
+   }
+   
+   /* checked profit and loss calculate or not */
+   function checked_profit_and_loss_calculate($iti_id){
+	   if(!empty($iti_id)){
+		   $ci =& get_instance();
+		   $ci->db->select('*'); 
+		   $ci->db->from('profi_loss_table'); 
+		   $ci->db->where('iti_id', $iti_id ); 
+		   $q = $ci->db->get();
+		   $res = $q->row(); 
+		   if( $res ){
+			   return $res;
+		   }
+		   return 0;
+	   }
+
+   } 
+   
+   
+   /* checked profit and loss calculate or not */
+   function checked_All_Amount_is_recived($iti_id){
+	   if(!empty($iti_id)){
+		   $ci =& get_instance();
+		   $ci->db->select('total_balance_amount'); 
+		   $ci->db->from('iti_payment_details'); 
+		   $ci->db->where('iti_id', $iti_id ); 
+		   $q = $ci->db->get();
+		   $res = $q->row(); 
+		   if( $res ){;
+			   return $res;
+		   }
+		   return 0;
+	   }
+
+   } 
+   
+   
+   
+
+/*********
+* 
+* 
+* 
+*calculate Total Profit per and Value 
+* 
+* 
+* 
+* 
+* 
+* 
+* **************
+*/
+/* calculate total profit */
+function TotalProfit()
+{
+   $ci = &get_instance();
+   $ci->db->select('total_margin_cost');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 1);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->total_margin_cost;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+}
+
+/*  total sale  without */
+
+function  total_Sales_without_tax(){
+   $ci = &get_instance();
+   $ci->db->select('withoutMrg');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 1);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->withoutMrg;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+
+}
+
+
+/* total sale with tax */
+function  total_Sales_with_tax(){
+   $ci = &get_instance();
+   $ci->db->select('sellingPrice');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 1);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->sellingPrice;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+
+}
+
+
+/* total expens */
+function  total_expens(){
+   $ci = &get_instance();
+   $ci->db->select('total_cost');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 1);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->total_cost;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+
+}
+/* calculate total profit Per */
+function calculateTotalProfit(){
+   $calculateTotalPer = 0;
+   $ci = &get_instance();
+   $withoutMrg = !empty(total_Sales_without_tax()) ? total_Sales_without_tax() : '';
+   $totalExpenses = !empty(total_expens()) ? total_expens() : '';
+   $calculateTotal  = $withoutMrg - $totalExpenses;
+   $calculateTotalPer = ($calculateTotal / $withoutMrg) * 100;
+   return $calculateTotalPer;
+   if(!empty($calculateTotalPer)){
+	   return $calculateTotalPer;
+   }else{
+	   $calculateTotalPer;
+   }
+
+}
+
+
+/*******************
+* *****
+* *****
+* ****
+* ***
+* ****
+* *calculate total lose value and percentage
+* *
+* *
+* *
+* *
+* *******
+*/
+
+function TotalLoss()
+{
+   $ci = &get_instance();
+   $ci->db->select('total_margin_cost');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 2);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->total_margin_cost;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+}
+
+/*  total sale  without */
+
+function  total_Sales_without_tax_loss(){
+   $ci = &get_instance();
+   $ci->db->select('withoutMrg');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 2);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->withoutMrg;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+
+}
+
+
+/* total sale with tax */
+function  total_Sales_with_tax_loss(){
+   $ci = &get_instance();
+   $ci->db->select('sellingPrice');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 2);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->sellingPrice;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+
+}
+
+
+/* total expens */
+function  total_expens_loss(){
+   $ci = &get_instance();
+   $ci->db->select('total_cost');
+   $ci->db->from('profi_loss_table');
+   $ci->db->where('is_loss_profit', 2);
+   $q = $ci->db->get();
+   $resdata = $q->result();
+   $data = [];
+   foreach ($resdata as $res){
+	   $data[] = $res->total_cost;
+   }
+   if ($data) {
+	   return array_sum($data);
+   }
+   return 0;
+
+}
+
+/* calculate total loss */
+function calculateTotalloss(){
+   $calculateTotalPer = 0;
+   $ci = &get_instance();
+   $withoutMrg = !empty(total_Sales_without_tax_loss()) ? total_Sales_without_tax_loss() : '';
+   $totalExpenses = !empty(total_expens_loss()) ? total_expens_loss() : '';
+   $calculateTotal = $totalExpenses - $withoutMrg;
+   $calculateTotalPer = ($calculateTotal / $totalExpenses) * 100;
+   if(!empty($calculateTotalPer)){
+	   return $calculateTotalPer;
+   }else{
+	   $calculateTotalPer;
+   }
+
+}
+
+
+
+/* get last discount prices */
+function get_last_discountPrice($iti_id){
+   if(!empty($iti_id)){
+	   $ci = &get_instance();
+	   $data = $ci->db->order_by('id',"desc")
+	   ->limit(1)
+	   ->where('iti_id', $iti_id)
+	   ->where('price_status', 0)
+	   ->get('itinerary_discount_price_data')
+	   ->row();
+	   return $data;
+   }
 }
 
 

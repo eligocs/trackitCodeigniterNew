@@ -1,4 +1,5 @@
-<?php $todAy = date("Y-m-d"); ?>
+<?php $todAy = date("Y-m-d");
+ ?>
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -271,6 +272,7 @@
                                 <th> Customer Name </th>
                                 <th> Contact</th>
                                 <th> Package Name </th>
+                                <th> Calculates Margin</th>
                                 <th> Temp. T/Date</th>
                                 <th> Travel Date</th>
                                 <th> Action </th>
@@ -291,6 +293,7 @@
                                 <th> Customer Name </th>
                                 <th> Contact</th>
                                 <th> Package Name </th>
+                                <th> Calculates Margin</th>
                                 <th> Temp. T/Date</th>
                                 <th> Travel Date</th>
                                 <th> Publish Status</th>
