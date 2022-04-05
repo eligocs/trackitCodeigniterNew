@@ -49,30 +49,9 @@ $this_month = date("Y-m");
                 </div>
             </div>
             <!-- BEGIN PAGE BAR -->
-            <!------->
-            <nav class="quick-nav">
-                <a class="quick-nav-trigger" href="javascript: void(0)">
-                    <span aria-hidden="true"></span>
-                </a>
-                <ul class="sidebar-buttons">
-                    <li><button class="btn" id="btn_load_payment_followup"><i class="fa fa-money"></i> Payment Follow
-                            Up</button></li>
-                    <li><button class="btn" id="btn_load_ad_payment_followup"><i class="fa fa-money"></i> Advance
-                            Payment
-                            Follow Up</button></li>
-                    <li><button class="btn" id="btn_load_balance_payment_followup"><i class="fa fa-money"></i> Balance
-                            Payment Follow Up</button></li>
-                    <li><button class="btn" id="btn_load_travel_followup"><i class="fa fa-clock-o"></i> Travel Dates
-                            Follow</button></li>
-                </ul>
-                <span aria-hidden="true" class="quick-nav-bg"></span>
-            </nav>
-            <!-- chart  -->
-            <div class="quick-nav-chart">
-                <a id="quick-nav-triggered" type="submit">
-                    <img class="modal-target" src="<?php echo base_url();?>site/images/chart-icon.svg" alt="">
-                </a>
-            </div>
+            <?php
+             $this->load->view('dashboard\followupnav');
+            ?>
             <div class="page-bar px-3">
                 <ul class="page-breadcrumb">
                     <li>
@@ -931,95 +910,7 @@ $this_month = date("Y-m");
 </div>
 </div>
 <!-- END Main container-fluid -->
-<!-- ITINERARIES FOLLOW UP -->
-<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog modal-fullscreen" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel2">PAYMENT FOLLOW UP</h4>
-            </div>
-            <div class="col-md-12 column" id="iti_folloup_cal_section">
-                <div id='calendar_payment_followup' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
 
-<!-- Pending advance payment ITINERARIES FOLLOW UP -->
-<div class="modal right fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4">
-    <div class="modal-dialog modal-fullscreen" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel4">ADVANCE PAYMENT PENDING FOLLOW UP</h4>
-            </div>
-            <div class="col-md-12 column">
-                <div id='calendar_advance_payment_followup' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-
-<!-- Pending payment ITINERARIES FOLLOW UP -->
-<div class="modal right fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel5">
-    <div class="modal-dialog modal-fullscreen" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel5">PAYMENT PENDING FOLLOW UP AFTER ADVANCE RECIEVED</h4>
-            </div>
-            <div class="col-md-12 column">
-                <div id='calendar_bal_payment_followup' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-
-<!-- Travel Dates -->
-<div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
-    <div class="modal-dialog modal-fullscreen" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel3">Travel Dates</h4>
-            </div>
-            <div class="col-md-12 column" id="travel_cal_section">
-                <div id='calendar_travel_dates' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
-<!-- END CONTAINER -->
-
-
-<!-- CHARTS -->
-<div class="modal right fade" id="myModa20" tabindex="-1" role="dialog" aria-labelledby="myModalLabe20">
-    <div class="modal-dialog modal-fullscreen" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabe20"></h4> <div class="col-md-12">
-         <div class="portlet-title">
-             <div class="custom_title" id="float_this">
-                 <i class="fa fa-bar-chart" style="font-size:18px;"></i>
-                 <span class="caption-subject bold uppercase">Statistics</span>
-             </div>
-         </div>
-     </div>
-               </h4>
-            </div>
-            <div class="col-md-12 column" id="travel_cal_section">
-                <div id='chart_sections' class='calender_dashboard'></div>
-            </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
 
 
 <script>

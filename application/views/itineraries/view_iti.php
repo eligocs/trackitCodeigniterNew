@@ -488,6 +488,7 @@
                 <div class="custom_card">
                     <div class="tour_des bg_white outline_none">
                         <ul class="list-group">
+                            <div class="row">
                             <li class="col-md-4">
                                 <div class=" list-group-item"><strong> Itinerary Id: </strong><span
                                         class="badge badge-success"> <?php echo $iti->iti_id; ?></p> </span></div>
@@ -538,6 +539,7 @@
                                 <div class=" list-group-item"><strong>Comment: </strong> <span
                                         class="badge badge-success"><?php echo $lead_note; ?></span></div>
                             </li>
+                            </div>
                             <?php } ?>
                         </ul>
                         <div class="clearfix"></div>
@@ -631,7 +633,7 @@
                //Count All Child Itineraries
                //clone button
                if( $countChildIti < 6  && $iti->iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" && $book_status != 3 ){
-               	$dupBtn = "<a title='Duplicate Itinerary' href=" . site_url("itineraries/duplicate/{$iti->iti_id}") . " class='btn btn-success duplicateItiBtn' ><i class='fa fa-files-o' aria-hidden='true'></i></a>"; ?>
+               	$dupBtn = "<a title='Duplicate Itinerary' href=" . site_url("itineraries/duplicate/{$iti->iti_id}") . " class='btn btn-success duplicateItiBtn' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>"; ?>
                 <!-- Modal Duplicate Itinerary-->
                 <div id="duplicatePakcageModal" class="modal" role="dialog">
                     <div class="modal-dialog">
@@ -740,20 +742,20 @@
                	
                	//Show duplicate button for child itinerary
                 	if( !empty( $parent_iti ) && $countChildIti < 6 ){
-               		$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti_id}&parent_iti_id={$parent_iti}" ) ." class='btn btn-success child_clone'><i class='fa fa-files-o' aria-hidden='true'></i></a>";
+               		$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti_id}&parent_iti_id={$parent_iti}" ) ." class='btn btn-success child_clone'><i class='fa-solid fa-copy'></i> Duplicate Itinerary </a> ";
                	}	 
                	
                	//if price is updated remove edit for agent
                	if( ($c_iti->pending_price == 2 || $c_iti->pending_price == 4) && $user_role == 96 ){
-               		$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+               		$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa fa-pencil' aria-hidden='true'></i> Edit</a>";
                	}else{
-               		$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+               		$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i> Edit</a>";
                	}
                	
                	$btn_view = "<a title='View' target='_blank' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
                	// $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
                	// $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
-               	$btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/pdf/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a>";
+               	$btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/pdf/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-file-pdf'></i></a>";
                
                	if( !empty( $c_iti->client_comment_status ) && $c_iti->client_comment_status == 1 ){
                		$btncmt = "<a data-id={$iti_id} data-key={$key} title='Client Comment' href='javascript:void(0)' class='btn btn-success ajax_iti_status red'><span class='blink'><i class='fa fa fa-comment-o' aria-hidden='true'></i>  New Comment</span></a>";
@@ -763,7 +765,7 @@
                	if( $pub_status == "publish" || $pub_status == "price pending" ){
                		//delete itinerary button only for admin
                		if( ( is_admin() || is_manager() ) && !empty( $parent_iti ) && ( $last_followUp_iti != $iti_id ) ){ 
-               			$row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
+               			$row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa-solid fa-trash-can'></i></a>";
                		}
                		//echo "<td>{$btn_edit} {$btn_view} {$row_delete} {$it_status}{$dupBtn}</td>";
                	}
@@ -841,11 +843,14 @@
                   	$view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
                   	
                   	if( $countChildIti < 6 ){
-                  		$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success child_clone' ><i class='fa fa-files-o' aria-hidden='true'></i></a>";
+                  		$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success child_clone' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>";
                   	}
                   }
                   ?>
                     <!--if amendment is done show old itinerary-->
+                    <div class="mb-3">
+                        Status: <strong class="success_pill"><?php echo $lead_status ?></strong>
+                    </div>
                     <?php if( !empty( $old_itineraries ) && $iti->is_amendment != 0 ){ 
                   $old_count = 1;
                   foreach( $old_itineraries as $old_iti ){ ?>
@@ -860,9 +865,9 @@
                         title="View Quotation"><i class='fa fa-eye' aria-hidden='true'></i> View Quotation</a>
                     <!-- get_iti_booking_status( $iti->iti_id )  != 3 -->
                     <?php if( empty($iti_status) && $iti->email_count > 0 && $iti->publish_status == "publish"  ){ ?>
-                    <a class="btn btn-danger" href="#" id="add_call_btn" title="Back">Add Call Info</a>
+                    <a class="btn btn-danger" href="#" id="add_call_btn" title="Back"><i class="fa-solid fa-phone"></i> Add Call Info</a>
                     <?php } ?>
-                    <strong class="success_pill"><?php echo $lead_status ?></strong>
+                    
                     <!--show duplicate button if parent iti -->
                     <?php echo $dupBtn; ?>
                     <?php echo $lFollow; ?>
@@ -1000,50 +1005,18 @@
                                             <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
                                             <span class="sr-only">Loading...</span>
                                         </div>
+                                    <div class="row">
                                         <div class="form-group col-md-3">
                                             <!--agent margin-->
                                             <label for="usr">Package Category<span style="color:red;"> *</span>:</label>
                                             <?php echo package_category_select_html( $iti->iti_id ); ?>
-                                            <?php /*
-                                    <select required class="form-control" name="approved_package_category">
-                                    	<option value="">Select package category</option>
-                                    	<?php if($get_iti_package_category){
-                                       $get_price_by_cat = get_iti_last_price_before_booking( $iti->iti_id );
-                                       $disabled_d  = isset($get_price_by_cat["standard_rates"]) ? $get_price_by_cat["standard_rates"] : 0;
-                                       $disabled_sd = isset($get_price_by_cat["deluxe_rates"]) ? $get_price_by_cat["deluxe_rates"] : 0;
-                                       $disabled_l  = isset($get_price_by_cat["super_deluxe_rates"]) ? $get_price_by_cat["super_deluxe_rates"] : 0;
-                                       $disabled_sl = isset($get_price_by_cat["luxury_rates"])? $get_price_by_cat["luxury_rates"] : 0;
-                                       foreach( $get_iti_package_category as $book_cat ){
-                                       	$disabled = "disabled";
-                                       	$dp = 0;
-                                       	if( !empty( $disabled_d ) && strtolower( trim($book_cat->name) ) == strtolower("Deluxe") ){
-                                       		$dp = $disabled_d;
-                                       		$disabled = "";
-                                       	}else if( !empty( $disabled_sd ) && strtolower( trim($book_cat->name) ) == strtolower("Super Deluxe") ){
-                                       		$dp = $disabled_sd;
-                                       		$disabled = "";
-                                       	}else if( !empty( $disabled_l ) && strtolower( trim($book_cat->name) ) == strtolower("Luxury") ){
-                                       		$dp = $disabled_l;
-                                       		$disabled = "";
-                                       	}else if( !empty( $disabled_sl ) && strtolower( trim($book_cat->name) ) == strtolower("Super Luxury") ){
-                                       		$dp = $disabled_sl;
-                                       		$disabled = "";
-                                       	}
-                                       	echo "<option {$disabled} data-price='{$dp}' value='{$book_cat->name}'>{$book_cat->name}</option>";
-                                       }
-                                       } ?>
-                                            </select> */ ?>
                                         </div>
                                         <?php $get_tax = get_tax();
-                                 $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
-                                        <!--div class="form-group col-md-2">
-                                 <label for="usr">Package Cost<span style="color:red;"> *</span>:</label>
-                                 <input type="number" required name="before_gst_final_amount" class="form-control" data-tax="<?php //echo $tax; ?>" id="fnl_amount" placeholder="Total Package Cost" />
-                                 </div-->
+                                         $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
                                         <div class="form-group col-md-2">
-                                 <label for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
-                                 <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
-                                 </div>
+                                            <label for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
+                                            <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
+                                        </div>
                                         <div class="form-group col-md-3">
                                             <label class=""><strong>Package Type*:</strong></label>
                                             <select required name="package_type_iti" class="form-control">
@@ -1082,9 +1055,9 @@
                                                 class="input-group form-control transaction_date" id="transaction_date"
                                                 type="text" value="" name="transaction_date" />
                                         </div>
-                                        <div class="clearfix"></div>
+                                        </div>
                                         <!--Payment Details -->
-                                        <div id="due_payment_section">
+                                        <div id="due_payment_section" class="row">
                                             <div class="form-group col-md-6">
                                                 <label class=""><strong>Second Installment Amount:</strong></label>
                                                 <input type="text" readonly id="next_pay_balance"
@@ -1125,87 +1098,92 @@
                                                     name="final_payment_date" />
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label class=""><strong>Total Balance Remaining:</strong></label>
-                                            <input type="text" required readonly id="balance_pay" name="total_balance"
-                                                placeholder="" class="form-control" value="">
-                                        </div>
-                                        <div class="form-group col-md-6" id="ttravel_date">
-                                            <label class=""><strong>Travel Date*:</strong></label>
-                                            <input readonly required data-date-format="yyyy-mm-dd"
-                                                class="input-group form-control" id="travel_date"
-                                                type="text" value="" name="travel_date" />
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="form-group2">
-                                                <label class=" "><strong>Bank Name*:</strong></label>
-                                                <input required class="form-control" id="bank_name" type="text"
-                                                    placeholder="eg: HDFC, ICIC" name="bank_name" value="">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class=""><strong>Total Balance Remaining:</strong></label>
+                                                <input type="text" required readonly id="balance_pay" name="total_balance"
+                                                    placeholder="" class="form-control" value="">
                                             </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="usr">Please Enter Approval Note:<span style="color:red;">
-                                                    *</span>:</label>
-                                            <textarea required class="form-control"
-                                                placeholder="Please Enter Approval Note"
-                                                name="iti_note_booked"></textarea>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <!--upload aadhar card section-->
-                                        <div class="form-group col-md-6">
-                                            <div class="form-group2">
-                                                <label class=" "><strong>Client Aadhar Card:</strong> <span
-                                                        class="red">(Max size 2 MB) </span></label>
-                                                <input class="form-control" id="client_aadhar_card" type="file"
-                                                    name="client_aadhar_card">
+                                            <div class="form-group col-md-6" id="ttravel_date">
+                                                <label class=""><strong>Travel Date*:</strong></label>
+                                                <input readonly required data-date-format="yyyy-mm-dd"
+                                                    class="input-group form-control" id="travel_date"
+                                                    type="text" value="" name="travel_date" />
                                             </div>
-                                            <img id="client_aadhar_card_priview" style="display: none;" width="100"
-                                                height="100" />
-                                        </div>
-                                        <!--end upload aadhar card section-->
-                                        <!--upload aadhar Payment card section-->
-                                        <div class="form-group col-md-6">
-                                            <div class="form-group2">
-                                                <label class=" "><strong>Payment Screenshot*:</strong> <span
-                                                        class="red">(Max size 2 MB) </span></label>
-                                                <input required class="form-control" id="payment_screenshot" type="file"
-                                                    name="payment_screenshot">
-                                            </div>
-                                            <img id="payment_screenshot_priview" style="display: none;" width="100"
-                                                height="100" />
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="col-md-12 other_docs margin-bottom-20">
-                                            <a href="javascript:;" id="add_other_docs_btn"
-                                                class="btn btn-success mt-repeater-add addrep">
-                                                <i class="fa fa-plus"></i> Add Other Docs</a><span class="red"
-                                                style="font-size: 10px;"> Please upload only ( jpg|jpeg|png|pdf ) files
-                                                and not more than 2MB.</span>
-                                            <div class="other_docs_sec" style="display:none;">
-                                                <div class="col-md-4">
-                                                    <div class="form-group2">
-                                                        <label class=" "><strong>Other Documents:</strong></label>
-                                                        <input class="form-control" required type="file"
-                                                            name="iti_clients_docs[]">
-                                                    </div>
+                                            <div class="form-group col-md-6">
+                                                <div class="form-group2">
+                                                    <label class=" "><strong>Bank Name*:</strong></label>
+                                                    <input required class="form-control" id="bank_name" type="text"
+                                                        placeholder="eg: HDFC, ICIC" name="bank_name" value="">
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label class=" "><strong>Document Title:</strong></label>
-                                                    <input class="form-control" required type="text"
-                                                        name="doc_comment[]">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="usr">Please Enter Approval Note:<span style="color:red;">
+                                                        *</span>:</label>
+                                                <textarea required class="form-control"
+                                                    placeholder="Please Enter Approval Note"
+                                                    name="iti_note_booked"></textarea>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <!--upload aadhar card section-->
+                                            <div class="form-group col-md-6">
+                                                <div class="form-group2">
+                                                    <label class=" "><strong>Client Aadhar Card:</strong> <span
+                                                            class="red">(Max size 2 MB) </span></label>
+                                                    <input class="form-control" id="client_aadhar_card" type="file"
+                                                        name="client_aadhar_card">
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="mt-repeater-input margin-top-20">
-                                                        <a href="javascript:;" data-repeater-delete
-                                                            class="btn btn-danger del_upload"
-                                                            style="position:relative;">
-                                                            <i class="fa fa-close"></i> Delete</a>
+                                                <img id="client_aadhar_card_priview" style="display: none;" width="100"
+                                                    height="100" />
+                                            </div>
+                                            <!--end upload aadhar card section-->
+                                            <!--upload aadhar Payment card section-->
+                                            <div class="form-group col-md-6">
+                                                <div class="form-group2">
+                                                    <label class=" "><strong>Payment Screenshot*:</strong> <span
+                                                            class="red">(Max size 2 MB) </span></label>
+                                                    <input required class="form-control" id="payment_screenshot" type="file"
+                                                        name="payment_screenshot">
+                                                </div>
+                                                <img id="payment_screenshot_priview" style="display: none;" width="100"
+                                                    height="100" />
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-md-12 other_docs margin-bottom-20">
+                                                <a href="javascript:;" id="add_other_docs_btn"
+                                                    class="btn btn-success mt-repeater-add addrep">
+                                                    <i class="fa fa-plus"></i> Add Other Docs</a><span class="red"
+                                                    style="font-size: 10px;"> Please upload only ( jpg|jpeg|png|pdf ) files
+                                                    and not more than 2MB.</span>
+                                                <div class="other_docs_sec" style="display:none;">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group2">
+                                                            <label class=" "><strong>Other Documents:</strong></label>
+                                                            <input class="form-control" required type="file"
+                                                                name="iti_clients_docs[]">
+                                                        </div>
                                                     </div>
+                                                    <div class="col-md-4">
+                                                        <label class=" "><strong>Document Title:</strong></label>
+                                                        <input class="form-control" required type="text"
+                                                            name="doc_comment[]">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="mt-repeater-input margin-top-20">
+                                                            <a href="javascript:;" data-repeater-delete
+                                                                class="btn btn-danger del_upload"
+                                                                style="position:relative;">
+                                                                <i class="fa fa-close"></i> Delete</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </div>
-                                            <div class="clearfix"></div>
                                         </div>
+
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

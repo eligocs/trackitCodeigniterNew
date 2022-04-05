@@ -33,16 +33,19 @@ $this_month = date("Y-m");
          <button class="btn blue sidebar-button btn-side-1" data-toggle="modal" data-target="#myModal1"><i class="fa fa-users"></i> Lead Follow Up</button>
          <button class="btn blue sidebar-button btn-side-2" data-toggle="modal" data-target="#myModal2"><i class="fa fa-map"></i> Holiday Follow Up</button>
          </div-->
-        <nav class="quick-nav">
+        <!-- <nav class="quick-nav">
             <a class="quick-nav-trigger" href="javascript: void(0)">
                 <span aria-hidden="true"></span>
             </a>
             <ul class="sidebar-buttons">
                 <li><button class="btn sidebar-button btn-side-1 cal_toggle_btn" data-target="myModal1"><i class="fa fa-users"></i> Lead Follow Up</button></li>
-                <!--li><button class="btn sidebar-button btn-side-2 cal_toggle_btn" data-target="myModal2"><i class="fa fa-map"></i> Holiday Follow Up</button></li-->
+                li><button class="btn sidebar-button btn-side-2 cal_toggle_btn" data-target="myModal2"><i class="fa fa-map"></i> Holiday Follow Up</button></li
             </ul>
             <span aria-hidden="true" class="quick-nav-bg"></span>
-        </nav>
+        </nav> -->
+        <?php
+             $this->load->view('dashboard\followupnav');
+        ?>
         <div class="quick-nav-overlay"></div>
         <!-- BEGIN PAGE BAR -->
         <div class="page-bar">
@@ -1853,7 +1856,7 @@ $this_month = date("Y-m");
 </div>
 </div><!-- END CONTAINER -->
 <!-- CUSTOMER FOLLOW UP -->
-<div class="modal right fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+<!-- <div class="modal right fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1866,10 +1869,8 @@ $this_month = date("Y-m");
                 </div>
             </div>
         </div>
-        <!-- modal-content -->
     </div>
-    <!-- modal-dialog -->
-</div>
+</div> -->
 <!-- modal -->
 <!-- ITINERARIES FOLLOW UP -->
 <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">

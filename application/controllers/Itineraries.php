@@ -637,7 +637,7 @@ class Itineraries extends CI_Controller {
 				
 				$btnview = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
 				
-				 $btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf/{$iti_id}/{$key}") . " class='btn_pdf' ><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a>";
+				 $btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf/{$iti_id}/{$key}") . " class='btn_pdf' ><i class='fa-solid fa-file-pdf'></i></a>";
 				//  $btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf1/{$iti_id}/{$key}") . " class='btn_pdf' ><i class='fa fa-file-pdf-o' aria-hidden='true'></i>Pdf layout2</a>";
 				$btn_view = "";
 				// $btn_view = "<a title='client view' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
@@ -654,7 +654,7 @@ class Itineraries extends CI_Controller {
 						$btn_view .= "<a data-customer_id='{$iti->customer_id}' data-iti_id='{$iti_id}' title='Duplicate Accommodation' href=" . site_url("itineraries/duplicate/{$iti_id}") . " class='btn btn-success child_clone' ><i class='fa fa-files-o' aria-hidden='true'></i></a>";
 					}else{
 						$btn_view .= "<a data-customer_id='{$iti->customer_id}' data-iti_id='{$iti_id}' title='Duplicate Itinerary' href=" . site_url(	"itineraries/duplicate/{$iti_id}") . " class='btn_duplicate duplicateItiBtn' >
-						<i class='fa fa-files-o' aria-hidden='true'></i></a>";
+						<i class='fa-solid fa-copy'></i></a>";
 					}	
 				}	
 				

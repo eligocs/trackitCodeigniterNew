@@ -103,8 +103,8 @@ div#quotation_type_section,
                 </div>
                 <!--customer details-->
                 <div class="customer-details custom_card margin-bottom-20">
-                    <div class=" ">
-                        <h3 class='font_size_18'>Lead Info</h3>
+                    <h3 class='font_size_18'>Lead Info</h3>
+                    <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Lead Id:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo $customer->customer_id; ?></div>
@@ -705,7 +705,7 @@ div#quotation_type_section,
                                             <!--panel_section end-->
                                             <div class="clearfix"></div>
                                             <div id="customer_info_panel">
-                                                <div class="clearfix"></div>
+                                                <div class="row">
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Whatsapp Number:</label>
@@ -925,6 +925,7 @@ div#quotation_type_section,
                                                             <option value="Non-Veg">Non-Veg</option>
                                                         </select>
                                                     </div>
+                                                </div>
                                                 </div>
                                             </div>
                                             <!--End customer info Section-->

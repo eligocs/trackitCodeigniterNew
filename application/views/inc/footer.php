@@ -1,4 +1,112 @@
 	<!-----------------Popup THOUGHT OF THE DAY----------------------->
+	<!-- ITINERARIES FOLLOW UP -->
+	<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+					<div class="modal-dialog modal-fullscreen" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+										aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel2">PAYMENT FOLLOW UP</h4>
+							</div>
+							<div class="col-md-12 column" id="iti_folloup_cal_section">
+								<div id='calendar_payment_followup' class='calender_dashboard'></div>
+							</div>
+						</div><!-- modal-content -->
+					</div><!-- modal-dialog -->
+				</div><!-- modal -->
+
+				<!-- Pending advance payment ITINERARIES FOLLOW UP -->
+				<div class="modal right fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4">
+					<div class="modal-dialog modal-fullscreen" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+										aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel4">ADVANCE PAYMENT PENDING FOLLOW UP</h4>
+							</div>
+							<div class="col-md-12 column">
+								<div id='calendar_advance_payment_followup' class='calender_dashboard'></div>
+							</div>
+						</div><!-- modal-content -->
+					</div><!-- modal-dialog -->
+				</div><!-- modal -->
+
+				<!-- Pending payment ITINERARIES FOLLOW UP -->
+				<div class="modal right fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel5">
+					<div class="modal-dialog modal-fullscreen" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+										aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel5">PAYMENT PENDING FOLLOW UP AFTER ADVANCE RECIEVED</h4>
+							</div>
+							<div class="col-md-12 column">
+								<div id='calendar_bal_payment_followup' class='calender_dashboard'></div>
+							</div>
+						</div><!-- modal-content -->
+					</div><!-- modal-dialog -->
+				</div><!-- modal -->
+
+				<!-- Travel Dates -->
+				<div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+					<div class="modal-dialog modal-fullscreen" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+										aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel3">Travel Dates</h4>
+							</div>
+							<div class="col-md-12 column" id="travel_cal_section">
+								<div id='calendar_travel_dates' class='calender_dashboard'></div>
+							</div>
+						</div><!-- modal-content -->
+					</div><!-- modal-dialog -->
+				</div><!-- modal -->
+				<!-- END CONTAINER -->
+
+
+				<!-- CHARTS -->
+				<div class="modal right fade" id="myModa20" tabindex="-1" role="dialog" aria-labelledby="myModalLabe20">
+						<div class="modal-dialog modal-fullscreen" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+											aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabe20"></h4> <div class="col-md-12">
+							<div class="portlet-title">
+								<div class="custom_title" id="float_this">
+									<i class="fa fa-bar-chart" style="font-size:18px;"></i>
+									<span class="caption-subject bold uppercase">Statistics</span>
+								</div>
+							</div>
+						</div>
+							</h4>
+							</div>
+							<div class="col-md-12 column" id="travel_cal_section">
+								<div id='chart_sections' class='calender_dashboard'></div>
+							</div>
+						</div><!-- modal-content -->
+					</div><!-- modal-dialog -->
+				</div><!-- modal -->
+
+				<!-- CUSTOMER FOLLOW UP -->
+				<div class="modal right fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+					<div class="modal-dialog modal-fullscreen" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel2">CUSTOMER FOLLOW UP</h4>
+							</div>
+							<div class="modal-body">
+								<div class="col-md-12 column calander-section" id="customer_folloup_cal_section">
+									<div id='calendar_customer_followup' class='calender_dashboard'></div>
+								</div>
+							</div>
+						</div>
+						<!-- modal-content -->
+					</div>
+					<!-- modal-dialog -->
+				</div>
 		<?php if( !empty( get_thought_of_day() ) ){ ?>
 			<a class="btn green btn-outline sbold thought-btn" id="checkTODbtn" data-toggle="modal" href="#thoughtOfDayPopup"> Latest Update </a>
 			<div class="modal fade " id="thoughtOfDayPopup" tabindex="-1" role="basic" aria-hidden="true" >
@@ -19,7 +127,10 @@
 				</div>
 				<!-- /.modal-dialog -->
 			</div>
+
+
 			
+							
 			<?php 
 			//check time
 			if( ((int) date('H')) >= 11 ){ ?>
@@ -79,7 +190,7 @@
             <div class="page-footer">
                 <div class="page-footer-inner"> <?php echo date("Y"); ?> &copy; Develop By
                     <a target="_blank" href="http://eligocs.com">Eligocs</a></div>
-					<div class="footer_text">Footer</div>
+					<!-- <div class="footer_text">Footer</div> -->
 					<div class="text-right">Page rendered in <strong>{elapsed_time}</strong> seconds</div>
                 <div class="scroll-to-top">
                     <i class="icon-arrow-up"></i>

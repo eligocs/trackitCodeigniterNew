@@ -33,17 +33,19 @@
                 <div class="th_response"></div>
             </div>
         </div>
-        <nav class="quick-nav">
+        <!-- <nav class="quick-nav">
             <a class="quick-nav-trigger" href="javascript: void(0)">
                 <span aria-hidden="true"></span>
             </a>
             <ul class="sidebar-buttons">
                 <li><button class="btn sidebar-button btn-side-1 cal_toggle_btn" data-target="myModal1"><i
                             class="fa fa-users"></i> Lead Follow Up</button></li>
-                <!--li><button class="btn sidebar-button btn-side-2 cal_toggle_btn" data-target="myModal2"><i class="fa fa-map"></i> Holiday Follow Up</button></li-->
             </ul>
             <span aria-hidden="true" class="quick-nav-bg"></span>
-        </nav>
+        </nav> -->
+        <?php
+            $this->load->view('dashboard\followupnav');
+        ?>
         <div class="quick-nav-overlay"></div>
         <!-- END PAGE BAR -->
         <div class="page-bar">
@@ -1429,7 +1431,7 @@
 <!-- END CONTAINER -->
 
 
-<div class="modal right fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+<!-- <div class="modal right fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1442,9 +1444,9 @@
                     <div id='calendar_customer_followup' class='calender_dashboard'></div>
                 </div>
             </div>
-        </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-</div><!-- modal -->
+        </div>
+    </div>
+</div> -->
 
 
 

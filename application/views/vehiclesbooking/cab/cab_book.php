@@ -20,10 +20,12 @@
 		<div class="custom_card">
 		<div class="tour_info text-left">
 			<h1 class="text-center">Tour Info</h1>
-			<div class="col-md-4 note note-success"><?php echo "<strong>Cab Category:</strong>  " . get_car_name($iti->cab_category); ?></div>
-			<div class="col-md-4 note note-success"><?php echo "<strong>Total Travellers:</strong> " . $total_tra ."<br>"; ?></div> 
-			<div class="col-md-4 note note-success"><?php echo "<strong>Package Routing: </strong> " . $iti->package_routing ."<br>"; ?></div>
-			<div class="col-md-4 note note-success"><?php echo "<strong>Itinerary Id:</strong>  " . $iti->iti_id ; ?></div>
+			<div class="row">
+				<div class="col-md-4 note note-success"><?php echo "<strong>Cab Category:</strong>  " . get_car_name($iti->cab_category); ?></div>
+				<div class="col-md-4 note note-success"><?php echo "<strong>Total Travellers:</strong> " . $total_tra ."<br>"; ?></div> 
+				<div class="col-md-4 note note-success"><?php echo "<strong>Package Routing: </strong> " . $iti->package_routing ."<br>"; ?></div>
+				<div class="col-md-4 note note-success"><?php echo "<strong>Itinerary Id:</strong>  " . $iti->iti_id ; ?></div>
+			</div>
 		</div>	
 		<div class="clearfix"></div>
 		</div>
@@ -80,6 +82,7 @@
 			<!--End hotel booking if any-->
 		
 		<form class="form-horizontal" role="form" id="BookCab">
+		<div class="row">
 			<div class="col-md-4">
 			<div class="form-group2">
 				<label class="">Select Vehicle*</label>
@@ -206,6 +209,7 @@
 					<button type="submit" data-click_val="9" class="btn green uppercase add_hotel bookbtn">Save and Exit</button>
 					<button type="submit" data-click_val="8" class="btn green uppercase save_and_continue bookbtn">Save and Continue</button>
 				</div>
+				</div
 				
 				<div class="clearfix"></div>
 				<div id="addresEd"></div>	

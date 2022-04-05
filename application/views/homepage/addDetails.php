@@ -24,13 +24,14 @@
                                             <div class="tab-pane active" id="tab_1_1">
                                                 <form role="form" class="form-horizontal form-bordered" method="post"
                                                     action="<?php echo base_url('homepage/update_Info') ?>">
-                                                    <div class="col-md-9">
+                                                    <div class="row">
+                                                    <!-- <div class="col-md-6"> -->
                                                         <h4>Hompage Info: </h4>
                                                         <?php $val=$data[0]; //dump($val);die; ?>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Logo Update:</label>
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Logo Update:</label>
                                                             <div class="row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-9">
                                                                     <input type="text" readonly class="form-control"
                                                                         name="logo_url"
                                                                         value="<?php if(isset($val->logo_url) && !empty($val->logo_url)){echo $val->logo_url; } ?>" />
@@ -40,112 +41,92 @@
                                                                         data-toggle="modal" href="#draggable"> Add Logo
                                                                     </a>
                                                                 </div>
+                                                            </div>
                                                                 <input type="hidden" class="form-control" name="id"
                                                                     value="<?php if(isset($val->id) && !empty($val->id)){echo $val->id; } ?>" />
 
-                                                            </div>
                                                         </div>
-
-
-
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Fav icon Update:</label>
+                                                        
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Fav icon Update:</label>
                                                             <div class="row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-9">
                                                                     <input type="text" readonly class="form-control"
-                                                                        name="favicon"
-                                                                        value="<?php if(isset($val->favicon) && !empty($val->favicon)){echo $val->favicon; } ?>" />
+                                                                    name="favicon"
+                                                                    value="<?php if(isset($val->favicon) && !empty($val->favicon)){echo $val->favicon; } ?>" />
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <a class="btn btn_blue_outline"
-                                                                        data-toggle="modal" href="#draggable1"> Add Icon
+                                                                    data-toggle="modal" href="#draggable1"> Add Icon
                                                                     </a>
                                                                 </div>
-                                                                <input type="hidden" class="form-control" name="id"
-                                                                    value="<?php if(isset($val->id) && !empty($val->id)){echo $val->id; } ?>" />
-
                                                             </div>
+                                                            <input type="hidden" class="form-control" name="id"
+                                                            value="<?php if(isset($val->id) && !empty($val->id)){echo $val->id; } ?>" />
+                                                            
                                                         </div>
-
-
-
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Video url*:</label>
-                                                            <div class="col-md-9">
+                                                    
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Video url*:</label>
                                                                 <input type="text" class="form-control" name="video_url"
-                                                                    value="<?php if(isset($val->video_url) && !empty($val->video_url)){echo $val->video_url; } ?>" />
-                                                            </div>
+                                                                value="<?php if(isset($val->video_url) && !empty($val->video_url)){echo $val->video_url; } ?>" />
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Review Api
-                                                                Key:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Review Api
+                                                            Key:</label>
                                                                 <input type="text" class="form-control" name="api_key"
-                                                                    value="<?php if(isset($val->api_key) && !empty($val->api_key)){echo $val->api_key; } ?>" />
-                                                            </div>
+                                                                value="<?php if(isset($val->api_key) && !empty($val->api_key)){echo $val->api_key; } ?>" />
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Address:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Address:</label>
                                                                 <input type="text" class="form-control" name="address"
-                                                                    value="<?php if(isset($val->address) && !empty($val->address)){echo $val->address; } ?>" />
-                                                            </div>
+                                                                value="<?php if(isset($val->address) && !empty($val->address)){echo $val->address; } ?>" />
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Contact No:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Contact No:</label>
                                                                 <input type="text" class="form-control"
                                                                     name="contact_no"
                                                                     value="<?php if(isset($val->contact_no) && !empty($val->contact_no)){echo $val->contact_no; } ?>" />
-                                                            </div>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Website:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Website:</label>
                                                                 <input type="text" class="form-control" name="website"
                                                                     value="<?php if(isset($val->website) && !empty($val->website)){echo $val->website; } ?>" />
-                                                            </div>
                                                         </div>
                                                         <?php $counter= !empty($val->counter) ?  unserialize($val->counter) : '' ;  ?>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Counter1:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Counter1:</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="counter[count1]"
-                                                                    value="<?php if(isset($counter['count1']) && !empty($counter['count1'])){echo $counter['count1'];} ?>" />
-                                                            </div>
+                                                                name="counter[count1]"
+                                                                value="<?php if(isset($counter['count1']) && !empty($counter['count1'])){echo $counter['count1'];} ?>" />
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Counter2:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Counter2:</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="counter[count2]"
-                                                                    value="<?php if(isset($counter['count2']) && !empty($counter['count2'])){echo $counter['count2'];} ?>" />
-                                                            </div>
+                                                                name="counter[count2]"
+                                                                value="<?php if(isset($counter['count2']) && !empty($counter['count2'])){echo $counter['count2'];} ?>" />
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Counter3:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Counter3:</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="counter[count3]"
-                                                                    value="<?php if(isset($counter['count3']) && !empty($counter['count3'])){echo $counter['count3'];} ?>" />
-                                                            </div>
+                                                                name="counter[count3]"
+                                                                value="<?php if(isset($counter['count3']) && !empty($counter['count3'])){echo $counter['count3'];} ?>" />
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label col-md-3">Counter4:</label>
-                                                            <div class="col-md-9">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Counter4:</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="counter[count4]"
-                                                                    value="<?php if(isset($counter['count4']) && !empty($counter['count4'])){echo $counter['count4'];} ?>" />
-                                                            </div>
+                                                                name="counter[count4]"
+                                                                value="<?php if(isset($counter['count4']) && !empty($counter['count4'])){echo $counter['count4'];} ?>" />
                                                         </div>
+                                                    </div>
                                                         <hr>
-                                                        <div class="form-group">
+                                                        <div class="form-group my-2">
                                                             <div class="col-md-9">
-                                                                <input type="submit" class="btn btn " value="Save" />
+                                                                <input type="submit" class="btn btn-primary" value="Save" />
                                                             </div>
                                                         </div>
+                                                    </div>
                                                     </div>
                                                 </form>
                                                 <div class="clearfix"></div>

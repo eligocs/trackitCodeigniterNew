@@ -37,7 +37,11 @@
 						<!--Cancel BOOKING -->
 						<?php if( $role == 99 || $role == 98 || $role == 97  ){ ?>
 							<div class="">
-								<a href="javascript: void(0)" id="cancle_pre_booking" data-id = "<?php echo $cab_booking->id; ?>" class="btn btn-danger" title="click to Cancel Booking"><i class="fa fa-close" aria-hidden="true"></i> Cancel Booking</a>	
+								<a href="javascript: void(0)" id="cancle_pre_booking" data-id = "<?php echo $cab_booking->id; ?>" class="btn btn-danger" title="click to Cancel Booking"><i class="fa fa-close" aria-hidden="true"></i> Cancel Booking</a>
+								<?php 
+						if( $cab_booking->email_count > 0 ){
+							echo "<a title='Click to Approve Hotel Booking' href=" . site_url("confirm/cabbooking?booking_id=". base64_url_encode($cab_booking->id) . "&iti_id=" . base64_url_encode($cab_booking->iti_id) . "&status=" . base64_url_encode(9)) . " target='_blank' class='btn btn-success' ><i class='fa fa fa-check' aria-hidden='true'></i> Confirm Booking</a>";
+						}?>
 							</div>
 						<?php } ?>
 					<?php } ?>
