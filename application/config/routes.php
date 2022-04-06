@@ -53,3 +53,8 @@ $route['default_controller'] = 'homepage';
 $route['404_override'] = 'Pagenotfound';
 $route['translate_uri_dashes'] = FALSE;
 $route['promotion'] = 'promotion/article';
+
+
+
+$route['api/user/register'] = 'api/users/register';
+$route['api/user/login'] = 'api/users/login';

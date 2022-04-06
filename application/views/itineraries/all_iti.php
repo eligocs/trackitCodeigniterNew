@@ -272,7 +272,6 @@
                                 <th> Customer Name </th>
                                 <th> Contact</th>
                                 <th> Package Name </th>
-                                <!-- <th> Calculates Margin</th> -->
                                 <th> Temp. T/Date</th>
                                 <th> Travel Date</th>
                                 <th> Action </th>
@@ -293,7 +292,6 @@
                                 <th> Customer Name </th>
                                 <th> Contact</th>
                                 <th> Package Name </th>
-                                <!-- <th> Calculates Margin</th> -->
                                 <th> Temp. T/Date</th>
                                 <th> Travel Date</th>
                                 <th> Publish Status</th>
