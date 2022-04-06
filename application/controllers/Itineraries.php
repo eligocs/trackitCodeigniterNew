@@ -607,12 +607,12 @@ class Itineraries extends CI_Controller {
 				}else{
 					$temp_t_d = $iti->t_start_date;
 				}	
-				if(empty(checked_profit_and_loss_calculate($iti->iti_id)) && checked_All_Amount_is_recived($iti->iti_id) == 0){
-					$book_btn = "<div class='portlet-title'>
-					<div class='text-center margin-bottom-20 margin-top-15'><a  href='#'
-							class='btn green uppercase clculateMargin' data-id='{$iti_id}'>Calculate Margin</a></div>
-				</div>";
-				}
+				// if(empty(checked_profit_and_loss_calculate($iti->iti_id)) && checked_All_Amount_is_recived($iti->iti_id)->total_balance_amount == 0){
+				// 	$book_btn = "<div class='portlet-title'>
+				// 	<div class='text-center margin-bottom-20 margin-top-15'><a  href='#'
+				// 			class='btn green uppercase clculateMargin' data-id='{$iti_id}'>Calculate Margin</a></div>
+				// </div>";
+				// }
 				
 				$row = array();
 				$row[] = $no;
@@ -751,7 +751,7 @@ class Itineraries extends CI_Controller {
 								$book_btn .= "<a  title='Add details Volvo/Train/Flight' href='" . site_url("vehiclesbooking/addbookingdetails/{$iti_id}?type=volvo") . "' class='btn {$v_class}' ><i class='fa fa-plane' aria-hidden='true'></i>&nbsp; Book VTF</a>";
 							}
 							
-							if(empty(checked_profit_and_loss_calculate($iti->iti_id))){
+							if(empty(checked_profit_and_loss_calculate($iti->iti_id)) && checked_All_Amount_is_recived($iti->iti_id)->total_balance_amount == 0){
 								$book_btn .= "<div class='portlet-title'>
 								<div class='text-center margin-bottom-20 margin-top-15'><a  href='#'
 										class='btn green uppercase clculateMargin' data-id='{$iti_id}'>Calculate Margin</a></div>
@@ -872,7 +872,7 @@ class Itineraries extends CI_Controller {
 					$btn_view_receipt = "<a title='Create New Receipt' target='_blank' href=" . site_url("accounts/create_receipt/{$iti->customer_id}") . " class='btn btn-success' ><i class='fa fa-file-alt'></i> New Receipt </a>";
 				}
 
-				if(empty(checked_profit_and_loss_calculate($iti->iti_id))){
+				if(empty(checked_profit_and_loss_calculate($iti->iti_id)) && checked_All_Amount_is_recived($iti->iti_id)->total_balance_amount == 0){
 					$btn_view .= "<div class='portlet-title'>
 					<div class='text-center margin-bottom-20 margin-top-15'><a  href='#'
 							class='btn green uppercase clculateMargin' data-id='{$iti_id}'>Calculate Margin</a></div>
