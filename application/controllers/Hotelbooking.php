@@ -167,7 +167,7 @@ class Hotelbooking extends CI_Controller {
 				$city = get_city_name($hotel_book->city_id);
 				$booking_status = $hotel_book->booking_status;
 				if( $booking_status == 9 ){
-					$status = "<a data-id={$hotel_book->id} title='Hotel Booking Approved' href='javascript:void(0)' class='btn btn-success ajax_booking_status'><i class='fa fa fa-thumbs-o-up' aria-hidden='true'></i> &nbsp; Approved</a>";
+					$status = "<a data-id={$hotel_book->id} title='Hotel Booking Approved' href='javascript:void(0)' class='btn btn-success ajax_booking_status'><i class='fa-solid fa-thumbs-up'></i> &nbsp; Approved</a>";
 				}elseif( $booking_status == 8 ){
 					$status = "<a data-id={$booking_id} title='Hotel Booking Declined' href='javascript:void(0)' class='btn btn-danger ajax_booking_status'><i class='fa fa fa-times' aria-hidden='true'></i> &nbsp; Declined</a>";
 				}elseif( $booking_status == 7 ){

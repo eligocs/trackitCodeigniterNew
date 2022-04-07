@@ -1,371 +1,323 @@
 <?php if( $hotel_booking[0] ){ ?>
+<!-- page-container -->
 <div class="page-container">
+    <!-- page-content-wrapper -->
     <div class="page-content-wrapper">
         <div class="page-content">
             <?php $hotel_book = $hotel_booking[0];  ?>
-            <div class="portlet box blue">
-                <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-users"></i>Hotel Name:
-                        <strong><?php echo get_hotel_name($hotel_book->hotel_id); ?></strong></div>
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption"><i class="fa fa-users"></i>Hotel Name:
+                            <strong><?php echo get_hotel_name($hotel_book->hotel_id); ?></strong></div>
 
-                    <a class="btn btn-success" href="<?php echo site_url("hotelbooking"); ?>" title="Back">Back</a>
-                </div>
-            </div>
-			<div class="custom_card">
-
-            <form class="form-horizontal2" role="form" id="addHotelRoomRate">
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Select State*</label>
-                        <select required name="state_id" class="form-control state" id='state'>
-                            <option value="">Select state</option>
-                            <?php $state_list = get_indian_state_list(); 
-					if( $state_list ){
-						foreach($state_list as $state){
-							$selected = isset($hotel_book->state_id) && $state->id == $hotel_book->state_id ? "selected=selected" : "";
-							echo '<option value="'.$state->id.'" '. $selected .' >'.$state->name.'</option>';
-						}
-					} ?>
-                        </select>
+                        <a class="btn btn-success" href="<?php echo site_url("hotelbooking"); ?>" title="Back">Back</a>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Select City*</label>
-                        <select required name="hotelcity" class="form-control city">
-                            <option value="">Select City</option>
-                            <?php $cities = get_city_list($hotel_book->state_id);
-					if($cities){
-						foreach( $cities as $city ){ ?>
-                            <option value="<?php echo $city->id;?>" <?php if ($city->id == $hotel_book->city_id ) { ?>
-                                selected="selected" <?php } ?>> <?php echo $city->name ; ?></option>
-                            <?php }
-					}
-					?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Select Hotel*</label>
-                        <select required name="hotel" class="form-control" id="hotels_list">
-                            <option value="">Select Hotel</option>
-                            <?php $hotels = get_hotel_list( $hotel_book->city_id );
-					if($hotels){
-						foreach( $hotels as $hotel ){
-							$h_id = $hotel->id ;
-							$selected = isset($hotel_book->hotel_id) && $h_id == $hotel_book->hotel_id ? "selected=selected" : "";
-							$h_name = $hotel->hotel_name;
-							$city = get_city_name($hotel->city_id);
-							$cat = get_hotel_cat_name($hotel->hotel_category);
-							$printD = "{$h_name}  {$cat}  AT ( {$city} )";
-							echo '<option value="'. $hotel->id . '" '. $selected .' >' . $printD .' </option>';
-						}
-					}else{
-						echo '<option value="">No hotel found! Contact your admin.</option>';
-					}
-					?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Room Category*</label>
-                        <select required name="room_type" class="form-control">
-                            <option value="">Select Category</option>
-                            <?php $roomcat = get_room_categories();
-					if($roomcat){
-						foreach( $roomcat as $rcat ){
-							$c_id = $rcat->room_cat_id ;
-							$selected = isset($hotel_book->room_type) && $c_id == $hotel_book->room_type ? "selected=selected" : "";
-							echo '<option value="'. $rcat->room_cat_id . '" '. $selected .' >' . $rcat->room_cat_name . '</option>';
-						}
-					}else{
-						echo '<option value="">No category found! Contact your admin.</option>';
-					}
-					?>
-                        </select>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="">Invoice Id*: </label>
-                        <div class="clearfix"></div>
-                        <input type="text" class="form-control" required name="invoice_id"
-                            value="<?php echo isset($hotel_book->invoice_id) ? $hotel_book->invoice_id : ""; ?>">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="">Total Guest*: </label>
-                        <div class="clearfix"></div>
-                        <input type="text" id="total_tral" class="form-control" required name="total_travellers"
-                            value="<?php echo isset($hotel_book->total_travellers) ? $hotel_book->total_travellers : ""; ?>">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="">Booking Date*: </label>
-                        <div class="clearfix"></div>
-                        <div class="input-group input-daterange">
-                            <input readonly required type="text" class="form-control" name="check_in"
-                                value="<?php echo isset($hotel_book->check_in) ? $hotel_book->check_in : ""; ?>"
-                                id="check_in">
-                            <span class="input-group-addon hotel_addon"> to </span>
-                            <input readonly required type="text" class="form-control" name="check_out"
-                                value="<?php echo isset($hotel_book->check_out) ? $hotel_book->check_out : ""; ?>"
-                                id="check_out">
-                        </div>
-                    </div>
-                </div>
-                <?php 
-				$check_in 	=  $hotel_book->check_in; 
-				$check_out 	=  $hotel_book->check_out;
-				$date1 		=	 new DateTime($check_in);
-				$t_date2 	=  new DateTime($check_out);
-				$total_nights =  $t_date2->diff($date1)->format("%a"); 
-			?>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="">Total Nights:</label>
-                        <input readonly type="text" id="total_nights" class="form-control"
-                            value="<?php echo $total_nights; ?>">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="">Meal Plan *</label>
-                        <?php $mealPlans = get_all_mealplans();
-				if($mealPlans){ ?>
-                        <select name="meal_plan" required class="form-control">
-                            <option value="">Choose Meal Plan</option>
-                            <?php foreach( $mealPlans as $mp ){
-								$m_id = $mp->id ;
-								$selected = isset($hotel_book->meal_plan) && $m_id == $hotel_book->meal_plan ? "selected=selected" : "";
-								echo '<option value="'. $mp->id . '" '. $selected .' >' . $mp->name . '</option>';
-							} ?>
-                        </select>
-                        <?php }else{ ?>
-                        <input type="text" required readonly class="form-control"
-                            placeholder="You need to add meal plan to proceed." value="">
-                        <a href="<?php echo base_url("hotels/addmealplan"); ?>" title="Add Meal Plan"> Click here to add
-                            Meal Plan</a>
-                        <?php } ?>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Inclusion: </label>
-                        <textarea type="text" name="inclusion" placeholder="Inclusion"
-                            class="form-control"><?php echo isset($hotel_book->inclusion) ? $hotel_book->inclusion : ""; ?></textarea>
-                    </div>
-                </div>
-
-                <?php 
-						/* Calculate total cost */
-						$total_rooms 	= $hotel_book->total_rooms;
-						$room_rate 		= $hotel_book->room_cost;
-						$total_room_cost_pernight = $total_rooms * $room_rate;
-						$extra_bed 			= $hotel_book->extra_bed;
-						$extra_bed_cost 	= !empty($hotel_book->extra_bed_cost) ? $hotel_book->extra_bed_cost : 0;
-						$extra_bed_cost_per_night = $extra_bed * $extra_bed_cost;
-					?>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class=" ">Room Rate(Per/room)*: </label>
-                        <input type="text" required placeholder="Room Rate" name="room_rates"
-                            class="form-control room_rates clearfield price_input"
-                            value="<?php echo isset($hotel_book->room_cost) ? $hotel_book->room_cost : ""; ?>" />
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Total Room Cost for 1 Night*: </label>
-                        <div class="form-group2">
-                            <input class="form-control total_room_rates clearfield" readonly required type="text"
-                                name="total_room_rates" value="<?php echo $total_room_cost_pernight; ?>"
-                                id="total_room_rates">
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Total Rooms*: </label>
-                        <select required name="total_rooms" class="form-control total_rooms clearfield">
-                            <option value=''>Select Rooms</option>
-                            <?php for( $i=1 ; $i<=15; $i++ ){
-							$selected = isset($hotel_book->total_rooms) && $total_rooms == $i ? "selected=selected" : "";
-							echo '<option value="' . $i . '" '. $selected .' > '. $i . '</option>';
-						} ?>
-                        </select>
-                        <?php $extra_bed_check = !empty($hotel_book->extra_bed ) ? "checked=checked" : ""; ?>
-                        <?php $without_extra_bed_check = !empty($hotel_book->without_extra_bed_cost ) ? "checked=checked" : ""; ?>
-                        <label for="extra_bed_check"><input type="checkbox" <?php echo $extra_bed_check; ?>
-                                id="extra_bed_check" name="extra_bed_check" value="Yes"> Click Here to Add extra
-                            bed.</label>
-                        <label for="without_extra_bed_check"><input type="checkbox"
-                                <?php echo $without_extra_bed_check; ?> id="without_extra_bed_check" value="Yes"> Click
-                            Here to Without extra bed.</label>
-                    </div>
-                </div>
-                <div class="col-md-9">
-
-
-                    <?php $display = !empty($hotel_book->extra_bed ) ? "block" : "none"; ?>
-                    <div class="extra_bed_section" style="display: <?php echo $display; ?>">
-                        <!--extra bed cost section-->
-                        <div class="col-md-4">
-
-                            <label class="">Extra Bed Rate (Per/bed)*: </label>
-                            <input required type="text" id="extra_bed_rate" name="extra_bed_rate"
-                                placeholder="Extra Bed Charges"
-                                class="form-control extra_bed_rate clearfield price_input"
-                                value="<?php echo isset($hotel_book->extra_bed_cost) ? $hotel_book->extra_bed_cost : 0; ?>" />
-
-                        </div>
-
-                        <div class="col-md-4">
-
-                            <label class="">Extra Bed*: </label>
-                            <select required name="extra_bed" class="form-control extra_bed clearfield">
-                                <option value="">Select Extra Bed</option>
-                                <?php $extra_bed = isset($hotel_book->extra_bed) ? $hotel_book->extra_bed : 0;
-								for(  $eb = 1; $eb <= $total_rooms ; $eb++ ){
-									$selected = isset($hotel_book->extra_bed) && $extra_bed == $eb ? "selected=selected" : "";
-									echo '<option value="' . $eb . '" '. $selected .' > '. $eb . '</option>';
-								}
-							?>
-                            </select>
-
-                        </div>
-                        <div class="col-md-4">
-                            <label>Total Bed Cost for 1 Night*: </label>
-                            <div class="form-group2">
-                                <input class="form-control clearfield" type="text" name="total_ex_bed_rate"
-                                    value="<?php echo $extra_bed_cost_per_night; ?>" id="total_ex_bed_rate" readonly />
+                <div class="custom_card">
+                    <form class="form-horizontal2" role="form" id="addHotelRoomRate">
+                        <div class="row">
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Select State*</label>
+                                    <select required name="state_id" class="form-control state" id='state'>
+                                        <option value="">Select state</option>
+                                        <?php $state_list = get_indian_state_list(); 
+                                        if( $state_list ){
+                                            foreach($state_list as $state){
+                                                $selected = isset($hotel_book->state_id) && $state->id == $hotel_book->state_id ? "selected=selected" : "";
+                                                echo '<option value="'.$state->id.'" '. $selected .' >'.$state->name.'</option>';
+                                            }
+                                            } ?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <!--Without Extra bed cost section-->
-                    <?php $display_w = !empty($hotel_book->without_extra_bed_cost ) ? "block" : "none"; ?>
-                    <div class="without_extra_bed_section" style="display: <?php echo $display_w; ?>">
-
-
-                        <?php 
-						/* Calculate total cost */
-						$without_extra_bed 				= $hotel_book->without_extra_bed;
-						$without_extra_bed_cost 		= $hotel_book->without_extra_bed_cost;
-						//Without extra bed default: 1 for old entries
-						$w_extra_bed 		= !empty($hotel_book->without_extra_bed) ? $hotel_book->without_extra_bed : 1;
-						$without_extra_bed_cost = !empty($hotel_book->without_extra_bed_cost) ? $hotel_book->without_extra_bed_cost * $w_extra_bed : 0;
-						$without_bed_cost_per_night = $w_extra_bed * $without_extra_bed_cost;
-					?>
-
-                        <div class="col-md-4">
-                            <label class=" ">Without Extra Bed Cost (Per/without extra bed)*: </label>
-                            <input required type="number" id="without_extra_bed_rate" name="without_extra_bed_cost"
-                                placeholder="Without Extra Bed Charges"
-                                class="form-control without_extra_bed_rate clearfield price_input"
-                                value="<?php echo !empty( $hotel_book->without_extra_bed_cost) ? $hotel_book->without_extra_bed_cost : 0; ?>" />
-                        </div>
-
-                        <div class="col-md-4">
-                            <label class=" ">Without Extra Bed*: </label>
-                            <select required name="without_extra_bed" class="form-control withour_extra_bed clearfield">
-                                <option value="">Select</option>
-                                <?php $without_extra_bed = isset($hotel_book->without_extra_bed ) ? $hotel_book->without_extra_bed : 0;
-								for(  $eb = 1; $eb <= 20 ; $eb++ ){
-									$selected = isset($hotel_book->without_extra_bed) && $without_extra_bed == $eb ? "selected=selected" : "";
-									echo '<option value="' . $eb . '" '. $selected .' > '. $eb . '</option>';
-								}
-								?>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>Total Without Extra Bed Cost per/night*: </label>
-                            <div class="form-group">
-                                <input class="form-control clearfield" type="text" name="total_without_ex_bed_rate"
-                                    value="<?php echo $without_bed_cost_per_night; ?>" id="total_without_ex_bed_rate"
-                                    readonly />
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Select City*</label>
+                                    <select required name="hotelcity" class="form-control city">
+                                        <option value="">Select City</option>
+                                        <?php $cities = get_city_list($hotel_book->state_id);
+                                        if($cities){
+                                            foreach( $cities as $city ){ ?>
+                                                <option value="<?php echo $city->id;?>" <?php if ($city->id == $hotel_book->city_id ) { ?>
+                                                    selected="selected" <?php } ?>> <?php echo $city->name ; ?></option>
+                                                <?php }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Select Hotel*</label>
+                                    <select required name="hotel" class="form-control" id="hotels_list">
+                                        <option value="">Select Hotel</option>
+                                        <?php $hotels = get_hotel_list( $hotel_book->city_id );
+                                if($hotels){
+                                    foreach( $hotels as $hotel ){
+                                        $h_id = $hotel->id ;
+                                        $selected = isset($hotel_book->hotel_id) && $h_id == $hotel_book->hotel_id ? "selected=selected" : "";
+                                        $h_name = $hotel->hotel_name;
+                                        $city = get_city_name($hotel->city_id);
+                                        $cat = get_hotel_cat_name($hotel->hotel_category);
+                                        $printD = "{$h_name}  {$cat}  AT ( {$city} )";
+                                        echo '<option value="'. $hotel->id . '" '. $selected .' >' . $printD .' </option>';
+                                    }
+                                }else{
+                                    echo '<option value="">No hotel found! Contact your admin.</option>';
+                                }
+                                ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Room Category*</label>
+                                    <select required name="room_type" class="form-control">
+                                        <option value="">Select Category</option>
+                                        <?php $roomcat = get_room_categories();
+                                        if($roomcat){
+                                            foreach( $roomcat as $rcat ){
+                                                $c_id = $rcat->room_cat_id ;
+                                                $selected = isset($hotel_book->room_type) && $c_id == $hotel_book->room_type ? "selected=selected" : "";
+                                                echo '<option value="'. $rcat->room_cat_id . '" '. $selected .' >' . $rcat->room_cat_name . '</option>';
+                                            }
+                                        }else{
+                                            echo '<option value="">No category found! Contact your admin.</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Invoice Id*: </label>
+                                    <input type="text" class="form-control" required name="invoice_id"
+                                        value="<?php echo isset($hotel_book->invoice_id) ? $hotel_book->invoice_id : ""; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Total Guest*: </label>
+                                    <input type="text" id="total_tral" class="form-control" required name="total_travellers"
+                                        value="<?php echo isset($hotel_book->total_travellers) ? $hotel_book->total_travellers : ""; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Booking Date*: </label>
+                                    <div class="input-group input-daterange">
+                                        <input readonly required type="text" class="form-control" name="check_in"
+                                            value="<?php echo isset($hotel_book->check_in) ? $hotel_book->check_in : ""; ?>"
+                                            id="check_in">
+                                        <span class="input-group-addon hotel_addon"> to </span>
+                                        <input readonly required type="text" class="form-control" name="check_out"
+                                            value="<?php echo isset($hotel_book->check_out) ? $hotel_book->check_out : ""; ?>"
+                                            id="check_out">
+                                    </div>
+                                </div>
+                            </div>
+                            <?php 
+                            $check_in 	=  $hotel_book->check_in; 
+                            $check_out 	=  $hotel_book->check_out;
+                            $date1 		=	 new DateTime($check_in);
+                            $t_date2 	=  new DateTime($check_out);
+                            $total_nights =  $t_date2->diff($date1)->format("%a"); 
+                            ?>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Total Nights:</label>
+                                    <input readonly type="text" id="total_nights" class="form-control"
+                                        value="<?php echo $total_nights; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Meal Plan *</label>
+                                    <?php $mealPlans = get_all_mealplans();
+                                    if($mealPlans){ ?>
+                                    <select name="meal_plan" required class="form-control">
+                                        <option value="">Choose Meal Plan</option>
+                                        <?php foreach( $mealPlans as $mp ){
+                                            $m_id = $mp->id ;
+                                            $selected = isset($hotel_book->meal_plan) && $m_id == $hotel_book->meal_plan ? "selected=selected" : "";
+                                            echo '<option value="'. $mp->id . '" '. $selected .' >' . $mp->name . '</option>';
+                                        } ?>
+                                    </select>
+                                    <?php }else{ ?>
+                                    <input type="text" required readonly class="form-control"
+                                        placeholder="You need to add meal plan to proceed." value="">
+                                    <a href="<?php echo base_url("hotels/addmealplan"); ?>" title="Add Meal Plan"> Click here to add
+                                        Meal Plan</a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Inclusion: </label>
+                                    <textarea type="text" name="inclusion" placeholder="Inclusion"
+                                        class="form-control"><?php echo isset($hotel_book->inclusion) ? $hotel_book->inclusion : ""; ?>
+                                    </textarea>
+                                </div>
+                            </div>
+                            <?php 
+                                    /* Calculate total cost */
+                                    $total_rooms 	= $hotel_book->total_rooms;
+                                    $room_rate 		= $hotel_book->room_cost;
+                                    $total_room_cost_pernight = $total_rooms * $room_rate;
+                                    $extra_bed 			= $hotel_book->extra_bed;
+                                    $extra_bed_cost 	= !empty($hotel_book->extra_bed_cost) ? $hotel_book->extra_bed_cost : 0;
+                                    $extra_bed_cost_per_night = $extra_bed * $extra_bed_cost;
+                            ?>
+
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Room Rate(Per/room)*: </label>
+                                    <input type="text" required placeholder="Room Rate" name="room_rates"
+                                        class="form-control room_rates clearfield price_input"
+                                        value="<?php echo isset($hotel_book->room_cost) ? $hotel_book->room_cost : ""; ?>" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Total Room Cost for 1 Night*: </label>
+                                    <div class="form-group2">
+                                        <input class="form-control total_room_rates clearfield" readonly required type="text"
+                                            name="total_room_rates" value="<?php echo $total_room_cost_pernight; ?>"
+                                            id="total_room_rates">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Total Rooms*: </label>
+                                    <select required name="total_rooms" class="form-control total_rooms clearfield">
+                                        <option value=''>Select Rooms</option>
+                                        <?php for( $i=1 ; $i<=15; $i++ ){
+                                        $selected = isset($hotel_book->total_rooms) && $total_rooms == $i ? "selected=selected" : "";
+                                        echo '<option value="' . $i . '" '. $selected .' > '. $i . '</option>';
+                                    } ?>
+                                    </select>
+                                    <?php $extra_bed_check = !empty($hotel_book->extra_bed ) ? "checked=checked" : ""; ?>
+                                    <?php $without_extra_bed_check = !empty($hotel_book->without_extra_bed_cost ) ? "checked=checked" : ""; ?>
+                                    <label class="control-label" for="extra_bed_check">
+                                        <input type="checkbox" <?php echo $extra_bed_check; ?> id="extra_bed_check" name="extra_bed_check" value="Yes"> Click Here to Add extra bed.
+                                    </label>
+                                    <label class="control-label" for="without_extra_bed_check">
+                                        <input type="checkbox" <?php echo $without_extra_bed_check; ?> id="without_extra_bed_check" value="Yes"> Click Here to Without extra bed.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <?php $display = !empty($hotel_book->extra_bed ) ? "block" : "none"; ?>
+                                <div class="extra_bed_section row" style="display: <?php echo $display; ?>">
+                                    <!--extra bed cost section-->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Extra Bed Rate (Per/bed)*: </label>
+                                            <input required type="text" id="extra_bed_rate" name="extra_bed_rate" placeholder="Extra Bed Charges" class="form-control extra_bed_rate clearfield price_input" value="<?php echo isset($hotel_book->extra_bed_cost) ? $hotel_book->extra_bed_cost : 0; ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Extra Bed*: </label>
+                                            <select required name="extra_bed" class="form-control extra_bed clearfield">
+                                                <option value="">Select Extra Bed</option>
+                                                <?php $extra_bed = isset($hotel_book->extra_bed) ? $hotel_book->extra_bed : 0; for(  $eb = 1; $eb <= $total_rooms ; $eb++ ){ $selected = isset($hotel_book->extra_bed) && $extra_bed == $eb ? "selected=selected" : ""; echo '<option value="' . $eb . '" '. $selected .' > '. $eb . '</option>'; 
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group2">
+                                            <label class="control-label">Total Bed Cost for 1 Night*: </label>
+                                            <input class="form-control clearfield" type="text" name="total_ex_bed_rate" value="<?php echo $extra_bed_cost_per_night; ?>" id="total_ex_bed_rate" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Without Extra bed cost section-->
+                                <?php $display_w = !empty($hotel_book->without_extra_bed_cost ) ? "block" : "none"; ?>
+                                <div class="without_extra_bed_section row" style="display: <?php echo $display_w; ?>">
+                                    <?php 
+                                    /* Calculate total cost */
+                                    $without_extra_bed 				= $hotel_book->without_extra_bed;
+                                    $without_extra_bed_cost 		= $hotel_book->without_extra_bed_cost;
+                                    //Without extra bed default: 1 for old entries
+                                    $w_extra_bed 		= !empty($hotel_book->without_extra_bed) ? $hotel_book->without_extra_bed : 1;
+                                    $without_extra_bed_cost = !empty($hotel_book->without_extra_bed_cost) ? $hotel_book->without_extra_bed_cost * $w_extra_bed : 0;
+                                    $without_bed_cost_per_night = $w_extra_bed * $without_extra_bed_cost;
+                                    ?>
+
+                                    <div class="col-md-4 my-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Without Extra Bed Cost (Per/without extra bed)*: </label>
+                                            <input required type="number" id="without_extra_bed_rate" name="without_extra_bed_cost" placeholder="Without Extra Bed Charges" class="form-control without_extra_bed_rate clearfield price_input" value="<?php echo !empty( $hotel_book->without_extra_bed_cost) ? $hotel_book->without_extra_bed_cost : 0; ?>" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 my-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Without Extra Bed*: </label>
+                                            <select required name="without_extra_bed" class="form-control withour_extra_bed clearfield">
+                                                <option value="">Select</option>
+                                                <?php $without_extra_bed = isset($hotel_book->without_extra_bed ) ? $hotel_book->without_extra_bed : 0; for(  $eb = 1; $eb <= 20 ; $eb++ ){ $selected = isset($hotel_book->without_extra_bed) && $without_extra_bed == $eb ? "selected=selected" : ""; echo '<option value="' . $eb . '" '. $selected .' > '. $eb . '</option>'; 
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 my-2">
+                                        <label class="control-label">Total Without Extra Bed Cost per/night*: </label>
+                                        <div class="form-group">
+                                            <input class="form-control clearfield" type="text" name="total_without_ex_bed_rate" value="<?php echo $without_bed_cost_per_night; ?>" id="total_without_ex_bed_rate" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End Without Extra bed cost section-->
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label"><strong>Inclusion Charges:</strong></label>
+                                    <input class="form-control price_input" id="extra_charges" type="number" placeholder="eg: 100" name="extra_charges" value="<?php echo isset($hotel_book->inclusion_cost) ? $hotel_book->inclusion_cost : 0; ?>" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label"><strong>Hotel Tax:</strong></label>
+                                    <input class="form-control price_input" id="hotel_tax" type="number" placeholder="eg: 100" name="hotel_tax" value="<?php echo isset($hotel_book->hotel_tax) ? $hotel_book->hotel_tax : 0; ?>" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <label class="control-label"><strong>Total Cost*:</strong></label>
+                                <a href="javascript: void(0)" id="calculate_cost">Calculate</a>
+                                <input readonly class="form-control clearfield price_input" id="total_cost" type="number"
+                                    name="total_cost"
+                                    value="<?php echo isset($hotel_book->total_cost) ? $hotel_book->total_cost : ""; ?>">
+                            </div>
+                            <input type="hidden" name="id" id="hotel_book_id" value="<?php echo $hotel_book->id; ?>">
+                            <input type="hidden" id="iti_id" value="<?php echo $hotel_book->iti_id; ?>">
+                            <div class="col-md-12 my-2">
+                                <!--CHECK IF PENDING REQUEST APPROVED BY GM-->
+                                <?php /* if( ( is_gm() || is_admin ) && $hotel_book->is_approved_by_gm == 1 ){ ?>
+                                <input type="hidden" name='approve_pending' value="1">
+                                <button type="submit" class="btn green uppercase add_hotel">Update And Approve Quotation</button>
+                                <?php }else{ ?>
+                                <button type="submit" class="btn green uppercase add_hotel">Update</button>
+                                <?php } */ ?>
+                                <button type="submit" class="btn green uppercase add_hotel">Update</button>
+                            </div>
+                            <div id="addresEd"></div>
                         </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <!--End Without Extra bed cost section-->
-
+                    </form>
                 </div>
-
-
-                <div class="clearfix"></div>
-
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class=" "><strong>Inclusion Charges:</strong></label>
-                        <input class="form-control price_input" id="extra_charges" type="number" placeholder="eg: 100"
-                            name="extra_charges"
-                            value="<?php echo isset($hotel_book->inclusion_cost) ? $hotel_book->inclusion_cost : 0; ?>" />
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label class=" "><strong>Hotel Tax:</strong></label>
-                        <input class="form-control price_input" id="hotel_tax" type="number" placeholder="eg: 100"
-                            name="hotel_tax"
-                            value="<?php echo isset($hotel_book->hotel_tax) ? $hotel_book->hotel_tax : 0; ?>" />
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <label class=""><strong>Total Cost*:</strong></label>
-                    <a href="javascript: void(0)" id="calculate_cost">Calculate</a>
-                    <input readonly class="form-control clearfield price_input" id="total_cost" type="number"
-                        name="total_cost"
-                        value="<?php echo isset($hotel_book->total_cost) ? $hotel_book->total_cost : ""; ?>">
-                </div>
-                <div class="clearfix"></div>
-
-                <hr>
-                <input type="hidden" name="id" id="hotel_book_id" value="<?php echo $hotel_book->id; ?>">
-                <input type="hidden" id="iti_id" value="<?php echo $hotel_book->iti_id; ?>">
-                <div class="margiv-top-10 col-md-12">
-                    <!--CHECK IF PENDING REQUEST APPROVED BY GM-->
-                    <?php /* if( ( is_gm() || is_admin ) && $hotel_book->is_approved_by_gm == 1 ){ ?>
-                    <input type="hidden" name='approve_pending' value="1">
-                    <button type="submit" class="btn green uppercase add_hotel">Update And Approve Quotation</button>
-                    <?php }else{ ?>
-                    <button type="submit" class="btn green uppercase add_hotel">Update</button>
-                    <?php } */ ?>
-                    <button type="submit" class="btn green uppercase add_hotel">Update</button>
-                </div>
-                <div class="clearfix"></div>
-                <div id="addresEd"></div>
-            </form>
-			</div>
-
             <?php }else{
-	redirect(404);
-} ?>
+                redirect(404);
+            } ?>
         </div>
-    </div>
-    <!-- END CONTENT BODY -->
+    </div> 
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
 <script type="text/javascript">
 /* Calculate Total Cost for Hotel Booking */
 jQuery(document).ready(function($) {

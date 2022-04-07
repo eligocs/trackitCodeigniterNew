@@ -141,7 +141,7 @@ padding-top: 10px;}
 }
 
 label.control-label {
-    font-size: 15px;
+    font-size: 13px;
     margin-bottom: 6px;
 }
 
@@ -170,6 +170,11 @@ select.form-control:required:invalid {
     margin-bottom: 3px;
     font-weight: 400;
     font-size: 12px;
+  }
+
+  /* edit hotel bookings extra bed */
+  .without_extra_bed_section .col-md-4, .extra_bed_section .col-md-4{
+      display: block !important;
   }
 
 
