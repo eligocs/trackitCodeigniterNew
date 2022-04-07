@@ -75,7 +75,7 @@
 
                     <?php } ?>
                     <?php $pay_recieved = get_iti_pay_receive_percentage($pay->iti_id); ?>
-                    <?php if( $pay_recieved >= 50  && $pay->iti_close_status == 0 && !$refund_exist ){ ?>
+                    <?php if( $pay_recieved >= 50  && $pay->iti_close_status == 0 && !$refund_exist && !empty(checked_profit_and_loss_calculate($pay->iti_id)) ){ ?>
                     <div class="close_iti text-right">
                         <a href="javascript: void(0)" id="update_closeStatus"
                             data-customer_id="<?php echo $pay->customer_id; ?>"
