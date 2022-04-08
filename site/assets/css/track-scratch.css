@@ -12807,7 +12807,7 @@ th>.mt-radio.mt-radio-single {
     margin-bottom: 15px;
     cursor: pointer;
     font-size: 14px;
-    webkit-transition: all .3s;
+    -webkit-transition: all .3s;
     -moz-transition: all .3s;
     -ms-transition: all .3s;
     -o-transition: all .3s;
@@ -36172,7 +36172,7 @@ section.well.details-package {
 }
 
 .itinerary-blocks:hover .hover_section {
-    \
+  
     /* transition: all 0.3s ease; */
 }
 
@@ -36199,18 +36199,20 @@ section.well.details-package {
 }
 
 h3.package-details-heading {
-    background: #eb3e79;
+    background: #5e72e4;
     color: #ffffff;
-    margin-bottom: 0;
-    margin-top: 0;
     line-height: 200%;
     text-align: center;
     position: relative;
-    width: 190px;
+    width: fit-content;
     top: -29px;
     left: -15px;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 3px;
+    font-size: 13px;
+    display: block;
+    margin: 0 auto;
+    padding: 4px 10px;
+    font-weight: 500;
 }
 
 p.package-details-sub-heading {
@@ -36611,7 +36613,7 @@ table {
 }
 
 .progress {
-    height: 15px;
+    height: 8px;
 }
 
 .help-block-error.valid {
@@ -36687,17 +36689,17 @@ ul#theme_color_listing li.current {
 }
 
 .hotel_repeater .mt-innerrepeater-hotel-item:nth-child(even) {
-    padding: 10px 0 !important;
+    /* padding: 10px 0 !important;
     margin: 15px 15px;
     border: 1px solid #eae6e6;
-    background: #f3f3f3;
+    background: #f3f3f3; */
 }
 
 .hotel_repeater .mt-innerrepeater-hotel-item:nth-child(odd) {
-    background: #f9f9f9;
+    /* background: #f9f9f9;
     padding: 10px 0 !important;
     margin: 15px 15px;
-    border: 1px solid #eae6e6;
+    border: 1px solid #eae6e6; */
 }
 
 .clearfix {
@@ -36909,9 +36911,6 @@ ul#theme_color_listing li.current {
 
 /* .dashboard-stat .details{   position: relative;} */
 
-.dashboard-stat .visual {
-    /* display: none; */
-}
 
 .dashboard-stat {
     margin-bottom: 0;
@@ -36926,11 +36925,7 @@ ul#theme_color_listing li.current {
         background-image: linear-gradient(135deg, #4daae7 0%, #6e73cb 100%); */
 }
 
-.details {
-    /* position: absolute; */
-    /* top: 50%; */
-    /* transform: translateY(-50%); */
-}
+
 
 .hotelbooking-page tr.total-cost td {
     vertical-align: middle;
@@ -37677,7 +37672,6 @@ input[type=checkbox] {
     border-left-width: 0;
     border-top-width: 0;
     border-bottom-width: 0;
-    height: 48px;
 }
 
 .table-responsive table td:last-child {
@@ -38325,7 +38319,7 @@ body.default:before {
     position: absolute;
     z-index: 0;
     width: 100%;
-    top: 46px;
+    top: 51px;
     border-radius: 15px !important;
 }
 
@@ -38345,7 +38339,8 @@ body.default:before {
 }
 
 .progress-bar-success {
-    background-color: 596cff;
+    /* background-color: #596cff; */
+    background-color: #4bd800;
 }
 
 .customer-details>div>div {
