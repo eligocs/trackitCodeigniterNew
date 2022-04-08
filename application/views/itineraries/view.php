@@ -2904,8 +2904,9 @@
                                        $old_per = isset($dis_arr->agent_price) ? $dis_arr->agent_price : $iti->agent_price;
                                        ?>
                                         <!--hide if discount data exists-->
-                                        <?php if( empty($dis_arr) && $iti->iti_package_type !== "Fixed Departure" ){ 
-                                       /*
+                                        <?php 
+                                        if( empty($dis_arr) && $iti->iti_package_type !== "Fixed Departure" ){ 
+                                       
                                        ?>
                                         <div class="col-md-6">
                                             <label for="inp_inc_price">Add Margin In Base Price (%):</label>
@@ -2918,10 +2919,10 @@
                                              } ?>
                                             </select>
                                         </div>
-                                        */
-                                        ?>
-                                        <?php /* ?>
-                                        <div class="form-group col-md-12">
+                                        
+                                    
+                                        <?php  ?>
+                                       <!-- <div class="form-group col-md-12">
                                             <label for="incPriceByAgent">Add Margin In Base Price
                                                 <input type='checkbox' id='incPriceByAgent' required name="chkmarg"
                                                     class='form-control'>
@@ -2932,15 +2933,15 @@
                                                     <label for="inp_inc_price">Increase Price (%):</label>
                                                     <select name="inp_inc_price" id="inp_inc_price" class="form-control"
                                                         data-old_percentage="<?php echo !empty($old_per) ? $old_per : 0; ?>">
-                                                        <!--option value="0">No Margin</option-->
+                                                        <option value="0">No Margin</option>
                                                         <?php for($bp = 10 ; $bp<=100 ; $bp++ ){
                                                    echo "<option value={$bp}>{$bp}%</option>";
                                                    } ?>
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        */ ?>
+                                        </div>-->
+                                        
                                         <?php } ?>
                                         <div class="table-responsive showonPchange1 col-md-12" id='a_price_table'>
                                             <table class="table table-striped table-hover">
