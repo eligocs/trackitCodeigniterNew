@@ -112,7 +112,7 @@ class Login extends CI_Controller {
 						'last_login' 			=> date('Y-m-d h:i:s A'),
 						'login_ip' 				=> get_user_ip(),
 						'login_request' 		=>  "0",
-						'login_request_date' 	=>  "0000-00-00 00:00:00",
+						'login_request_date' 	=>  date('Y-m-d h:i:s'),
 					);
 					
 					if ( $this->global_model->update_data('users', array('user_id' => $row->user_id ), $loginData ) ) {

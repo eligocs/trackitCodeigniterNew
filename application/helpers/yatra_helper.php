@@ -3462,6 +3462,7 @@ function calculateTotalloss(){
 
 /* get last discount prices */
 function get_last_discountPrice($iti_id){
+	$data = '';
    if(!empty($iti_id)){
 	   $ci = &get_instance();
 	   $data = $ci->db->order_by('id',"desc")
@@ -3471,7 +3472,29 @@ function get_last_discountPrice($iti_id){
 	   ->get('itinerary_discount_price_data')
 	   ->row();
 	   return $data;
+   }else{
+	return $data;
    }
+}
+
+
+function is_amendment_of_revised($iti_id){
+	$res = '';
+	if(!empty($iti_id)){
+		$ci =& get_instance();
+		$ci->db->select('*'); 
+		$ci->db->from('itinerary'); 
+		$ci->db->where('iti_id', $iti_id ); 
+		$ci->db->where('is_amendment !=',  NULL ); 
+		$q = $ci->db->get();
+		$res = $q->row(); 
+		if( $res ){
+			return $res;
+		}
+		return $res;
+	}
+
+
 }
 
 

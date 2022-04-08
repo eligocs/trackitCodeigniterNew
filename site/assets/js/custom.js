@@ -271,6 +271,7 @@ $(document).on("click", '.stormrg', function(e) {
 $(document).on("click", '.editMargin', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
+    var itiid = $(this).data('itiid');
     var type = "edit";
     $.ajax({
         type: "POST",
@@ -281,7 +282,8 @@ $(document).on("click", '.editMargin', function(e) {
         async: false,
         data: {
             id: id,
-            type: type
+            type: type,
+            itiid: itiid
 
         },
         success: function(res) {

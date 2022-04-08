@@ -25,8 +25,8 @@ class Profit extends CI_Controller {
     /* Store  profit And Loss */
 	public function calculate_profit_loss()
 	{
-		$user = $this->session->userdata('logged_in');
-		$user_id = $user["user_id"];
+
+
 		if (!empty($_POST['is_loss_profit'])) {
 			$totalExpenses = $_POST['cab_price'] + $_POST['hotel_price'] + $_POST['volvo_price']  + $_POST['flight_price'] + $_POST['train_price'] + $_POST['other_price'];
 			if ($_POST['is_loss_profit'] == 1) {
@@ -39,7 +39,7 @@ class Profit extends CI_Controller {
 			if (!empty($_POST['editIti'])) {
 				$where_key = array('id' => $_POST['editIti']);
 				$update = array(
-					'iti_id' => $_POST['iti_id'],
+					// 'iti_id' => $_POST['iti_id'],
 					'cab_price' => $_POST['cab_price'],
 					'sellingPrice' => $_POST['sellingPrice'],
 					'withoutMrg' => $_POST['withoutMrg'],
@@ -121,7 +121,7 @@ class Profit extends CI_Controller {
 				$btn_view = "<a target='_blank' title='View' href=" . iti_view_link($profitData->iti_id) . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
 				$btn_view .= "
 				<a  href='#'
-						class='btn green uppercase editMargin' data-id='{$profitData->id}'>Edit Margin</a>";
+						class='btn green uppercase editMargin' data-id='{$profitData->id}' data-itiid='{$profitData->iti_id}'>Edit Margin</a>";
 			 	$row[] = $btn_view;
 				$data[] = $row;
             }
@@ -137,13 +137,23 @@ class Profit extends CI_Controller {
 
 /* show model*/
 	public function renderModel(){
-	   // dump($_Post);die;
-		if(!empty($_POST['type'])){
-			$this->db->select('*'); 
-			$this->db->from('profi_loss_table'); 
-			$this->db->where('id', $_POST['id'] ); 
-			$q = $this->db->get();
-			$data['data'] = $q->row(); 
+
+		if(!empty($_POST['type'] && $_POST['itiid'])){
+			$isAmnd_rev = is_amendment_of_revised($_POST['itiid']);
+			if(!empty($isAmnd_rev)){
+				$this->db->select('*'); 
+				$this->db->from('profi_loss_table'); 
+				$this->db->where('id', $_POST['id'] ); 
+				$q = $this->db->get();
+				$data['dataEdit'] = $q->row();
+				$data['data'] = $isAmnd_rev;
+			}else{
+				$this->db->select('*'); 
+				$this->db->from('profi_loss_table'); 
+				$this->db->where('id', $_POST['id'] ); 
+				$q = $this->db->get();
+				$data['dataEdit'] = $q->row(); 
+			}
 		}else{
 			$this->db->select('*'); 
 			$this->db->from('itinerary'); 

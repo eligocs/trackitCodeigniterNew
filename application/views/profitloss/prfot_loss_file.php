@@ -69,8 +69,8 @@
                             <thead>
                                 <tr>
                                     <th>Total Tenover</th>
-                                    <th>Gross Loss Amount</th>
-                                    <th>Gross Loss Percent:</th>
+                                    <th>Gross Profit Amount</th>
+                                    <th>Gross Profit Percent:</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,7 +132,7 @@ var table;
 		"serverSide": true, //Feature control DataTables' server-side processing mode.
 		"order": [], //Initial no order.
 		language: {
-			// search: "<strong>Search By Itinerary/Customer ID:</strong>",
+			search: "<strong>Search By Itinerary/Customer ID:</strong>",
 			searchPlaceholder: "Search..."
 		},
 		// Load data for the table's content from an Ajax source
