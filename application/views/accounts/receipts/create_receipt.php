@@ -124,15 +124,12 @@
                                 <textarea placeholder="Remarks" name="narration" class="form-control"></textarea>
                             </div>
                         </div>
-                    </div> <!-- row close -->
-                    <div class="clearfix"></div>
-                    <div class="mt-sm-3">
-                        <input type="hidden" name="customer_id"
-                            value="<?php echo isset( $get_customer_account[0]->lead_id ) && !empty( $get_customer_account[0]->lead_id ) ? $get_customer_account[0]->lead_id : "";?>">
-                        <button type="submit" class="btn green uppercase add_Bank">Generate
-                            Receipt</button>
-                    </div>
-                    <div class="clearfix"></div>
+                        <div class="col-md-12 my-2">
+                            <input type="hidden" name="customer_id" value="<?php echo isset( $get_customer_account[0]->lead_id ) && !empty( $get_customer_account[0]->lead_id ) ? $get_customer_account[0]->lead_id : "";?>">
+                            <button type="submit" class="btn green uppercase add_Bank">Generate Receipt</button>
+                        </div>
+                    </div> 
+                    <!-- row close -->
                     <div id="res"></div>
 
                 </form>

@@ -38,38 +38,36 @@
 					</tbody>
             	</table>
 			   </div>
-            <br/></br/>
-            <div class="custom_card">
+
 				<?php
 				if (isset($responseParamList) && count($responseParamList)>0 )
 				{ 
 				?>
 				
-				<div class="portlet box blue">
+				<div class="portlet box blue mt-5">
 					<div class="portlet-title">
-						<div class="caption">
-							<h2 class="status_query_response">Response of status query:</h2>
-						</div>
+						<h3 class="custom_title">Response of status query:</h3>
 					</div>
 				</div>
-				<table  class='table table_payments_status table-striped' style="border: 1px solid nopadding" border="0">
-				<tbody>
-					<?php
-						foreach($responseParamList as $paramName => $paramValue) {
-						?>
-					<tr >
-						<td><label><?php echo $paramName?></label></td>
-						<td><?php echo $paramValue?></td>
-					</tr>
-					<?php
-						}
-						?>
-				</tbody>
-				</table>
+				<div class="custom_card">
+					<table  class='table table_payments_status table-striped' style="border: 1px solid nopadding" border="0">
+						<tbody>
+							<?php
+								foreach($responseParamList as $paramName => $paramValue) {
+								?>
+							<tr >
+								<td><label><?php echo $paramName?></label></td>
+								<td><?php echo $paramValue?></td>
+							</tr>
+							<?php
+								}
+								?>
+						</tbody>
+					</table>
+				</div>
 				<?php
 				}
 				?>
-			</div>
          </form>
       </div>
    </div>

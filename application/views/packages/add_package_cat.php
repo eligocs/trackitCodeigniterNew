@@ -3,34 +3,31 @@
         <div class="page-content">
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Create Package Category
+                    <div class="caption">
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>Create Package Category
                     </div>
                     <a class="btn btn-success pull-right" href="<?php echo site_url("packages/viewCategory"); ?>"
-                        title="Back">Back</a>
+                        title="Back">Back
+                    </a>
                 </div>
             </div>
 			<div class="second_custom_card">
-				<form id="addCat">
-					<div class="portlet-body form">
-
-						<div class="form-group">
-							<label class="control-label">Package Category Name
-								<span class="required"> * </span>
-							</label>
-							<input type="text" required class="form-control" name="package_cat_name" value=""
-								placeholder="Category Name" />
-
-						</div>
-						<div class="margiv-top-10">
-							<button type="submit" id="SubmitForm" class="btn green uppercase add_category">Add
-								Category</button>
+				<form id="addCat" class="mb-0">
+					<div class="portlet-body form row">
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Package Category Name <span class="required"> * </span> </label>
+                                <input type="text" required class="form-control" name="package_cat_name" value="" placeholder="Category Name" />
+                            </div>
+                        </div>
+						<div class="col-md-9 my-2">
+							<button type="submit" id="SubmitForm" class="btn green uppercase add_category">Add Category</button>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 				</form>
 			</div>
             <div id="res"></div>
-
             <!-- END CONTENT BODY -->
         </div>
         <!-- Modal -->

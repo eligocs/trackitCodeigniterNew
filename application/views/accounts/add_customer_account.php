@@ -180,6 +180,7 @@
                                     required="required" />
                             </div>
                         </div>
+                        
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Address*</label>
@@ -234,14 +235,13 @@
                         </div>
 
                         <?php } ?>
-
-                    </div>
-                    <div class="mt-sm-3">
-                        <input type="hidden" name="id"
-                            value="<?php echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
-                        <input type="hidden" name="customer_id" value="">
-                        <input type="hidden" name="new_cus_id" value="" class="new_cus_id">
-                        <button type="submit" class="btn green uppercase add_Bank">Update Account</button>
+                        <div class="col-md-12 my-2">
+                            <input type="hidden" name="id"
+                                value="<?php echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
+                            <input type="hidden" name="customer_id" value="">
+                            <input type="hidden" name="new_cus_id" value="" class="new_cus_id">
+                            <button type="submit" class="btn green uppercase add_Bank">Update Account</button>
+                        </div>
                     </div>
             </div> <!-- row close -->
             <div class="clearfix"></div>

@@ -21,14 +21,17 @@
                      <div class="actions custom_filter">
                         <div class="row">
                            <!--Calender-->
-                           <div class=" col-md-4">	
-                              <strong>Select Transactions Date: </strong><br>
-                              <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+                           <div class=" col-md-4 my-2">	
+                              <div class="form-group">
+                                 <label for="" class="control-label"><strong>Select Transactions Date: </strong></label>
+                                 <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+                              </div>
                            </div>
-                           <div class="col-md-4">
+                           <div class="col-md-4 my-2">
                               <div class="filter_box">
-                                 <label for="" class="d_block margin_bottom_0">&nbsp;</label>
-                                 <select class="form-control" name="" id="">
+                                 <label for="" class="control-label">&nbsp;</label>
+                                 <select class="form-control" name="" id="" required>
+                                    <option value="" selected disabled>Select Transaction Type</option>
                                     <option name="filter" value="all" id="all">All</option>
                                     <option name="filter" value="1" id="approved">Success</option>
                                     <option name="filter" value="fail" id="">Success</option>
@@ -45,8 +48,8 @@
                               <input type="hidden" name="date_to" id="date_to" value="">
                               
                            </div>
-                           <div class="col-md-3">
-                              <label for="" class="d_block margin_bottom_0">&nbsp;</label>
+                           <div class="col-md-3 my-2">
+                              <label for="" class="control-label d-block">&nbsp;</label>
                               <input type="submit" class="btn btn-success" value="Filter">
                            </div>
                         </div>

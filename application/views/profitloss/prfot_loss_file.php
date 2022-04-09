@@ -1,138 +1,152 @@
-<style>
-
-
-</style>
-
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
 		 <!-- BEGIN SAMPLE TABLE PORTLET-->
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-cogs"></i>All Profit And Loss
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-cogs"></i>All Profit And Loss
+					</div>
 				</div>
-			</div>
-			<div class="col-md-3 my-2">
-                            <label class="control-label d-block" for="">&nbsp;</label>
-                            <input type="submit" class="btn btn-success" value="Filter">
-                            <?php
-							//  if( $user_role == 99 || $user_role == 98 ){ ?>
-                                    <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
-                                        class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
-                                        Export</a>
-                            <?php
-						//  } ?>
-                        </div>
-			<div class="portlet-body">
-				<div class="table-responsive margin-top-15">
-					<table id="profit_loss" class="table table-striped display white_space_fix">
-						<thead>
-							<tr>
-								<th> # </th>
-								<th> Iti Id</th>
-								<th> Customer Name</th>
-								<th> Agent Name</th>
-								<th> Selling Price</th>
-								<th> Total Expenses </th>
-								<th> Total Profit/loss  </th>
-								<th> Total Profit/Loss Percent <i class="fas fa-percent    "></i> </th>
-								<th> Is Profit Or Loss </th>
-								<th> View </th>
-							</tr>
-						</thead>
-						<tbody>
-							<!--DataTable goes here-->
-						</tbody>
-					</table>
-					<!--<div class="row">-->
-						<?php
-					//	if(!empty(TotalProfit())){
+				<div class="portlet-body">
+					<!-- form Filter -->
+					<form action="">
+						<div class="row">
+							<div class="col-md-3 my-2">
+								<div class="form-group">
+									<label for="" class="control-label"><strong>Filter:</strong></label>
+									<input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+								</div>
+							</div>
+							<div class="col-md-3 my-2">
+								<label for="" class="control-label"><strong>Itinerary Type: </strong></label>
+								<select name="" class="form-control">
+									<option value="">All</option>
+									<option value="1">Holidays</option>
+									<option value="2">Accommodation</option>
+								</select>
+							</div>
+							<div class="col-md-3 my-2">
+								<label class="control-label d-block" for="">&nbsp;</label>
+								<input type="submit" class="btn btn-success" value="Filter">
+								<?php
+								//  if( $user_role == 99 || $user_role == 98 ){ ?>
+								<a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
+									class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
+									Export</a>
+								<?php
+								//  } ?>
+							</div>
+						</div>
+					</form>
+					<!-- End Form filter -->
+					<div class="table-responsive margin-top-15">
+						<table id="profit_loss" class="table table-striped display white_space_fix">
+							<thead>
+								<tr>
+									<th> # </th>
+									<th> Iti Id</th>
+									<th> Customer Name</th>
+									<th> Agent Name</th>
+									<th> Selling Price</th>
+									<th> Total Expenses </th>
+									<th> Total Profit/loss  </th>
+									<th> Total Profit/Loss Percent <i class="fas fa-percent    "></i> </th>
+									<th> Is Profit Or Loss </th>
+									<th> View </th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--DataTable goes here-->
+							</tbody>
+						</table>
+							<!--<div class="row">-->
+								<?php
+							//	if(!empty(TotalProfit())){
+									?>
+							<!--	<div class="col-md-6">-->
+							<!--		<span class="profit_"><strong> Total Tenover:</strong> <?= round(total_Sales_without_tax(), 2); ?></span> &nbsp;&nbsp;&nbsp;-->
+							<!--		<span class="profit_"><strong> Gross Profit Amount:</strong> <?= TotalProfit(); ?></span> &nbsp;&nbsp;&nbsp;-->
+							<!--		<span class="profit_"><strong> Gross Profit Percent:</strong> <?= round(calculateTotalProfit(), 2); ?>%</span>-->
+							<!--	</div>-->
+								<?php
+							//	}
+							//	if(!empty(TotalLoss())){
+								?>
+							<!--	<div class="col-md-6">-->
+							<!--	    <span class="profit_"><strong> Total Tenover:</strong> <?= round(total_Sales_without_tax_loss(), 2); ?></span> &nbsp;&nbsp;&nbsp;-->
+							<!--		<span class="loss_"><strong> Gross Loss Amount:</strong> <?= TotalLoss(); ?></span> &nbsp;&nbsp;&nbsp;-->
+							<!--		<span class="loss_"><strong> Gross Loss Percent:</strong> <?= round(calculateTotalloss(), 2); ?>%</span>-->
+							<!--	</div>-->
+							<?php
+								//}
 							?>
-					<!--	<div class="col-md-6">-->
-					<!--		<span class="profit_"><strong> Total Tenover:</strong> <?= round(total_Sales_without_tax(), 2); ?></span> &nbsp;&nbsp;&nbsp;-->
-					<!--		<span class="profit_"><strong> Gross Profit Amount:</strong> <?= TotalProfit(); ?></span> &nbsp;&nbsp;&nbsp;-->
-					<!--		<span class="profit_"><strong> Gross Profit Percent:</strong> <?= round(calculateTotalProfit(), 2); ?>%</span>-->
-					<!--	</div>-->
-						<?php
-					//	}
-					//	if(!empty(TotalLoss())){
-					    ?>
-					<!--	<div class="col-md-6">-->
-					<!--	    <span class="profit_"><strong> Total Tenover:</strong> <?= round(total_Sales_without_tax_loss(), 2); ?></span> &nbsp;&nbsp;&nbsp;-->
-					<!--		<span class="loss_"><strong> Gross Loss Amount:</strong> <?= TotalLoss(); ?></span> &nbsp;&nbsp;&nbsp;-->
-					<!--		<span class="loss_"><strong> Gross Loss Percent:</strong> <?= round(calculateTotalloss(), 2); ?>%</span>-->
-					<!--	</div>-->
-    					<?php
-    						//}
-						?>
-					<!--</div>-->
+					</div>
 				</div>
-				
+					
 				<!--==== Profit and Loss Section ====-->
-                <div>
-                    <!--Profit Table Start-->
-                    <?php
-                    if(!empty(TotalProfit())){
-                    ?>
-                    <div class="table-responsive">
-                        <table class="table table-striped display white_space_fix dataTable no-footer loss_profit_table">
-                            <thead>
-                                <tr>
-                                    <th>Total Tenover</th>
-                                    <th>Gross Profit Amount</th>
-                                    <th>Gross Profit Percent:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><?= round(total_Sales_without_tax(), 2); ?></td>
-                                    <td><?= TotalProfit(); ?></td>
-                                    <td><?= round(calculateTotalProfit(), 2); ?>%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!--Profit Table End-->
-                    <?php
-                        }
-                    if(!empty(TotalLoss())){
-                    ?>
-                    <!--Loss Table Start-->
-                    <div class="table-responsive">
-                        <table class="table table-striped display white_space_fix dataTable no-footer loss_profit_table">
-                            <thead>
-                                <tr>
-                                    <th>Total Tenover</th>
-                                    <th>Gross Profit Amount</th>
-                                    <th>Gross Profit Percent:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><?= round(total_Sales_without_tax_loss(), 2); ?></td>
-                                    <td><?= TotalLoss(); ?></td>
-                                    <td><?= round(calculateTotalloss(), 2); ?>%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <?php
-                    }
-                    ?>
-                    <!--Loss Table End-->
-                </div>
-                <!--==== Profit and Loss Section End ====-->
-        </div>
-		</div>
-		
+				<div>
+					<!--Profit Table Start-->
+					<?php
+					if(!empty(TotalProfit())){
+					?>
+					<div class="table-responsive">
+						<table class="table table-striped display white_space_fix dataTable no-footer loss_profit_table">
+							<thead>
+								<tr>
+									<th>Total Tenover</th>
+									<th>Gross Profit Amount</th>
+									<th>Gross Profit Percent:</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?= round(total_Sales_without_tax(), 2); ?></td>
+									<td><?= TotalProfit(); ?></td>
+									<td><?= round(calculateTotalProfit(), 2); ?>%</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--Profit Table End-->
+					<?php
+						}
+					if(!empty(TotalLoss())){
+					?>
+					<!--Loss Table Start-->
+					<div class="table-responsive">
+						<table class="table table-striped display white_space_fix dataTable no-footer loss_profit_table">
+							<thead>
+								<tr>
+									<th>Total Tenover</th>
+									<th>Gross Profit Amount</th>
+									<th>Gross Profit Percent:</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><?= round(total_Sales_without_tax_loss(), 2); ?></td>
+									<td><?= TotalLoss(); ?></td>
+									<td><?= round(calculateTotalloss(), 2); ?>%</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<?php
+					}
+					?>
+					<!--Loss Table End-->
+				</div>
+				<!--==== Profit and Loss Section End ====-->
+			</div>
 		</div>
 	</div>
-	<!-- END CONTENT BODY -->
 </div>
-<!-- Modal -->
+<!-- End page-container -->
 
- 
+
+
+<!-- Modal --> 
 <script type="text/javascript">
 $(document).ready(function() {
 var table;

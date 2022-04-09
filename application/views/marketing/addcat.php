@@ -3,31 +3,35 @@
 		<div class="page-content">
 			<form role="form" id="addCat" method="post">
 			<div class="portlet box blue">
-			<div class="portlet-title">
+				<div class="portlet-title">
 					<div class="caption"><i class="fa fa-user"></i>Add Category</div>
 					<a class="btn btn-success" href="<?php echo site_url("marketing/viewcat"); ?>" title="Back">Back</a>
 				</div>
 			</div>
 			<div class="portlet-body custom_card">
-				<div class="form-group col-md-4">
-					<label class="control-label">Category Name*</label>
-					<input  required type="text" name="category_name" placeholder="Category Name" class="form-control" value="" /> </div>
-				
-				<div class="clearfix col-md-4">
-					<!--input type="hidden" name="added_by" value="<?php //echo $user_id; ?>"-->
-					<button type="submit" class="btn green uppercase add_agent">Add Category</button>
+				<div class="row">
+					<div class="col-md-4 my-2">
+						<div class="form-group">
+							<label class="control-label">Category Name*</label>
+							<input  required type="text" name="category_name" placeholder="Category Name" class="form-control" value="" /> 
+						</div>
+					</div>
+					<div class="col-md-12 my-2">
+						<!--input type="hidden" name="added_by" value="<?php //echo $user_id; ?>"-->
+						<button type="submit" class="btn green uppercase add_agent">Add Category</button>
+					</div>
 				</div>
-			</form>
-				<div class="clearfix"></div>
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
-			
-			<div id="addresEd"></div>		
-		</div>
-	<!-- END CONTENT BODY -->
+				</form>
+			</div>
+			<!--End portlet body -->
+		</div> <!-- portlet -->
+		<div id="addresEd"></div>		
 	</div>
+	<!-- END page-content-wrapper -->
+</div>
+<!-- End page-container -->
+
 <!-- Modal -->
- </div>
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	var form = $("#addCat");

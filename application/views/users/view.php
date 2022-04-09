@@ -59,147 +59,148 @@
                                 </td>
                                 <td>
                                     <?php echo $agent->in_time;?><strong> To </strong><?php echo $agent->out_time;?>
+                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Mobile Number:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php echo $agent->mobile; ?></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Mobile Number For Login:</strong>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><strong><?php echo $agent->mobile_otp; ?></strong></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Gender:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php echo $agent->gender; ?></div>
+                                </td>
+                            </tr>
+                            <?php	
+                            if($agent->user_type == 99){
+                                $agent_type = "Administrator";
+                            }elseif($agent->user_type == 98){
+                                $agent_type = get_manager_type( $agent->is_super_manager );
+                                /* 	if(   $agent->is_super_manager == 1 ){
+                                        $agent_type = "Super Manager";
+                                    }else if( $agent->is_super_manager == 2 ){
+                                        $agent_type = "Leads Manager";
+                                    }else{
+                                        $agent_type = get_role_name($agent->user_type);
+                                    } */
+                            }else{
+                                $agent_type = get_role_name($agent->user_type);
+                            }
+                            
+                            ?>
+                            <?php if( is_admin() && $agent->user_type == 98 ){ 
+                            $checked = isset( $agent->is_super_manager ) && $agent->is_super_manager == 1 ? "checked" : ""; 
+                            $checked_leads = isset( $agent->is_super_manager ) && $agent->is_super_manager == 2 ? "checked" : ""; 
+                            $checked_sales = isset( $agent->is_super_manager ) && $agent->is_super_manager == 3 ? "checked" : ""; 
+                            $checked_acc = isset( $agent->is_super_manager ) && $agent->is_super_manager == 4 ? "checked" : ""; 
+                            $checked_gm = isset( $agent->is_super_manager ) && $agent->is_super_manager == 5 ? "checked" : ""; 
+                            $checked_none = isset( $agent->is_super_manager ) && $agent->is_super_manager == 0 ? "checked" : ""; 
+                            $val_m = isset( $agent->is_super_manager ) && $agent->is_super_manager==1 ? 0 : 1; ?>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Is Super Manager:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr manager_roles">
+                                        <!--label class='mt-checkbox'> 
+                                            <input <?php //echo $checked; ?> type='checkbox' value='<?php //echo $val_m; ?>' data-user_id =<?php //echo $agent->user_id; ?> id='isSuper_manager' class='form-control'>
+                                            <span class="chk_is_manager"></span>
+                                            </label-->
+                                        <label class='mt-radio5'>
+                                            <input type='radio' <?php echo $checked_gm; ?> value='5' id='isSuper_manager6'
+                                                title="General Manager" name="change_status"
+                                                class=' isSuper_manager'><strong>GM</strong>
+                                        </label> &nbsp;&nbsp;
+                                        <label class='mt-radio1'>
+                                            <input type='radio' <?php echo $checked; ?> value='1' id='isSuper_manager'
+                                                title="Super Manager" name="change_status" class=' isSuper_manager'>
+                                            <strong>Super Manager</strong>
+                                        </label>&nbsp;&nbsp;
+                                        <label class='mt-radio2'>
+                                            <input type='radio' <?php echo $checked_leads; ?> value='2' id='isSuper_manager2'
+                                                title="Leads Manager" name="change_status"
+                                                class=' isSuper_manager'><strong>Leads Manager</strong>
+                                        </label>&nbsp;&nbsp;
+                                        <label class='mt-radio3'>
+                                            <input type='radio' <?php echo $checked_sales; ?> value='3' id='isSuper_manager4'
+                                                title="Sales Manager" name="change_status"
+                                                class=' isSuper_manager'><strong>Sales Manager</strong>
+                                        </label>&nbsp;&nbsp;
+                                            <!--label class='mt-radio5'>
+                                            <input type='radio' <?php echo $checked_acc; ?> value='4' id='isSuper_manager5' title="Account Manager" name="change_status" class='form-control isSuper_manager'><strong>Account Manager</strong>
+                                            </label-->
+                                        <label class='mt-radio2'>
+                                            <input type='radio' <?php echo $checked_none; ?> value='0' id='isSuper_manager3'
+                                                title="Manager" name="change_status"
+                                                class=' isSuper_manager'><strong>Manager</strong>
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Pin: </strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><span
+                                            id="altPassTemp"><?php echo $agent->alt_pass; ?></span>
+                                        <?php if( !empty( $agent->alt_pass ) ){ ?>
+                                        <button class="btn btn_blue_outline margin_left_15" onclick="copy_alt_pass()">Copy</button>
+                                        <?php } ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>User Role:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr green"><strong><?php echo $agent_type; ?></strong></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Added By:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php echo get_user_name($agent->added_by); ?></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>User Status:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php echo $agent->user_status; ?></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Website:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php echo $agent->website; ?></div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>Mobile Number:</strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr"><?php echo $agent->mobile; ?></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>Mobile Number For Login:</strong>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr"><strong><?php echo $agent->mobile_otp; ?></strong></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>Gender:</strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr"><?php echo $agent->gender; ?></div>
-                        </td>
-                    </tr>
-                    <?php	
-				if($agent->user_type == 99){
-					$agent_type = "Administrator";
-				}elseif($agent->user_type == 98){
-					$agent_type = get_manager_type( $agent->is_super_manager );
-					/* 	if(   $agent->is_super_manager == 1 ){
-							$agent_type = "Super Manager";
-						}else if( $agent->is_super_manager == 2 ){
-							$agent_type = "Leads Manager";
-						}else{
-							$agent_type = get_role_name($agent->user_type);
-						} */
-				}else{
-					$agent_type = get_role_name($agent->user_type);
-				}
-				
-				?>
-                    <?php if( is_admin() && $agent->user_type == 98 ){ 
-				$checked = isset( $agent->is_super_manager ) && $agent->is_super_manager == 1 ? "checked" : ""; 
-				$checked_leads = isset( $agent->is_super_manager ) && $agent->is_super_manager == 2 ? "checked" : ""; 
-				$checked_sales = isset( $agent->is_super_manager ) && $agent->is_super_manager == 3 ? "checked" : ""; 
-				$checked_acc = isset( $agent->is_super_manager ) && $agent->is_super_manager == 4 ? "checked" : ""; 
-				$checked_gm = isset( $agent->is_super_manager ) && $agent->is_super_manager == 5 ? "checked" : ""; 
-				$checked_none = isset( $agent->is_super_manager ) && $agent->is_super_manager == 0 ? "checked" : ""; 
-				$val_m = isset( $agent->is_super_manager ) && $agent->is_super_manager==1 ? 0 : 1; ?>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>Is Super Manager:</strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr manager_roles">
-                                <!--label class='mt-checkbox'> 
-                                    <input <?php //echo $checked; ?> type='checkbox' value='<?php //echo $val_m; ?>' data-user_id =<?php //echo $agent->user_id; ?> id='isSuper_manager' class='form-control'>
-                                    <span class="chk_is_manager"></span>
-                                    </label-->
-                                <label class='mt-radio5'>
-                                    <input type='radio' <?php echo $checked_gm; ?> value='5' id='isSuper_manager6'
-                                        title="General Manager" name="change_status"
-                                        class=' isSuper_manager'><strong>GM</strong>
-                                </label> &nbsp;&nbsp;
-                                <label class='mt-radio1'>
-                                    <input type='radio' <?php echo $checked; ?> value='1' id='isSuper_manager'
-                                        title="Super Manager" name="change_status" class=' isSuper_manager'>
-                                    <strong>Super Manager</strong>
-                                </label>&nbsp;&nbsp;
-                                <label class='mt-radio2'>
-                                    <input type='radio' <?php echo $checked_leads; ?> value='2' id='isSuper_manager2'
-                                        title="Leads Manager" name="change_status"
-                                        class=' isSuper_manager'><strong>Leads Manager</strong>
-                                </label>&nbsp;&nbsp;
-                                <label class='mt-radio3'>
-                                    <input type='radio' <?php echo $checked_sales; ?> value='3' id='isSuper_manager4'
-                                        title="Sales Manager" name="change_status"
-                                        class=' isSuper_manager'><strong>Sales Manager</strong>
-                                </label>&nbsp;&nbsp;
-                                    <!--label class='mt-radio5'>
-                                    <input type='radio' <?php echo $checked_acc; ?> value='4' id='isSuper_manager5' title="Account Manager" name="change_status" class='form-control isSuper_manager'><strong>Account Manager</strong>
-                                    </label-->
-                                <label class='mt-radio2'>
-                                    <input type='radio' <?php echo $checked_none; ?> value='0' id='isSuper_manager3'
-                                        title="Manager" name="change_status"
-                                        class=' isSuper_manager'><strong>Manager</strong>
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>Pin: </strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr"><span
-                                    id="altPassTemp"><?php echo $agent->alt_pass; ?></span>
-                                <?php if( !empty( $agent->alt_pass ) ){ ?>
-                                <button class="btn btn_blue_outline margin_left_15" onclick="copy_alt_pass()">Copy</button>
-                                <?php } ?>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php } ?>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>User Role:</strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr green"><strong><?php echo $agent_type; ?></strong></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>Added By:</strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr"><?php echo get_user_name($agent->added_by); ?></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>User Status:</strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr"><?php echo $agent->user_status; ?></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="20%">
-                            <div class="col-mdd-2 form_vl border_right_none"><strong>Website:</strong></div>
-                        </td>
-                        <td>
-                            <div class="col-mdd-10 form_vr"><?php echo $agent->website; ?></div>
-                        </td>
-                    </tr>
-                    </table>
                     <div class="text-center">
                         <input type="hidden" value="<?php echo $agent->user_id; ?>" name="user_id" id="user_id_v">
                         <a title='Edit User' href="<?php echo site_url("agents/editagent/{$agent->user_id}"); ?>"
@@ -210,6 +211,7 @@
         </div>
     </div>
 </div>
+
 <div class="loader"></div>
 <?php }else{
    redirect(404);

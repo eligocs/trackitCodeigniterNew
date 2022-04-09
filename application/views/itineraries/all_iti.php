@@ -50,21 +50,21 @@
                             <div class="actions custom_filter"> 
                                 <div class="row">
                                     <!--Calender-->
-                                    <div class="col-md-3"> <strong>Filter: </strong><br>
-                                        <input type="text" autocomplete="off" class="form-control" id="daterange"
-                                            name="dateRange" value="" required />
+                                    <div class="col-md-3 my-2"> 
+                                        <label for="" class="control-label"><strong>Filter: </strong></label>
+                                        <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
                                     </div>
                                     <!--End-->
-                                    <div class="col-md-3">
-                                        <strong>Itinerary Type: </strong><br>
+                                    <div class="col-md-3 my-2">
+                                        <label for="" class="control-label"><strong>Itinerary Type: </strong></label>
                                         <select name="iti_type" class="form-control" id="iti_type">
                                             <option value="">All</option>
                                             <option value="1">Holidays</option>
                                             <option value="2">Accommodation</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label class="d_block margin_bottom_0" for="">&nbsp;</label>
+                                    <div class="col-md-3 my-2">
+                                        <label class="control-label" for="">&nbsp;</label>
                                         <select class="form-control" name="" id="">
                                             <option name="filter" value="all" id="all">All</option>
                                             <option name="filter" value="9" id="approved">Approved</option>
@@ -95,8 +95,8 @@
                                         <input type="hidden" name="todayStatus" id="todayStatus"
                                             value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
                                     </div>
-                                    <div class="col-md-3">
-                                        <label class="d_block margin_bottom_0" for="">&nbsp;</label>
+                                    <div class="col-md-3 my-2">
+                                        <label class="control-label" for="">&nbsp;</label>
                                         <input type="submit" class="btn btn-success" value="Filter">
                                     </div>
                                 </div>

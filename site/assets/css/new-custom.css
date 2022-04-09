@@ -197,6 +197,14 @@ select.form-control:required:invalid {
       display: block !important;
   }
 
+  /* select2 */
+  .select2 {
+      width: 100% !important;
+  }
+  
+  .input-group-addon{
+      margin: 5px !important;
+  }
 
   /* ------------------------------------------------ */
   /* ---- Add/Edit Packages and Itinerary form Wizard */
@@ -214,6 +222,10 @@ select.form-control:required:invalid {
   .form-wizard h3 {
     font-size: 15px;
     font-weight: 500;
+}
+
+.form-wizard .steps>li>a.step .desc{
+    white-space: nowrap;
 }
 
 /* -------------------- */

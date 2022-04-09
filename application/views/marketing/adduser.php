@@ -9,120 +9,118 @@
 					</div>
 				</div>
 			<div class="custom_card">
-				<div class="col-md-4">	
-					<div class="form-group">
-						<label class="control-label">Choose Category*</label>
-						<?php if(!empty($row)) {
-								?>
-						<select required name="cat_id" class="form-control">
-							<option value="">Select Category</option>
-							<?php foreach($row as $cat){?>
-								<option value="<?php echo $cat->id;?>"><?php echo $cat->category_name;?></option>
-							<?php }	?>
-								
-						</select>
-						<?php } else {?>
-							</br><span>No category found ! Please <a href="<?php echo site_url("marketing/addcat");?>">Click Here to Add category</a></span>
-						<?php }?>
-					</div>
-				</div>		
-				<div class="col-md-4">	
-					<div class="form-group">
-						<label class="control-label">Full Name*</label>
-						<input  type="text" required placeholder="Full Name" name="name" class="form-control" value="" /> 
-					</div>
-				</div>
-				
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="control-label">Email Id*</label>
-						<input type="text" required placeholder="Email Id" name="email_id" class="form-control" value="" /> 
-					</div>
-				</div>
-				<div class="clearfix"></div>3
+				<div class="row">
+					<div class="col-md-4 my-2">	
+						<div class="form-group">
+							<label class="control-label">Choose Category*</label>
+							<?php if(!empty($row)) {
+									?>
+							<select required name="cat_id" class="form-control">
+								<option value="">Select Category</option>
+								<?php foreach($row as $cat){?>
+									<option value="<?php echo $cat->id;?>"><?php echo $cat->category_name;?></option>
+								<?php }	?>
+									
+							</select>
+							<?php } else {?>
+								</br><span>No category found ! Please <a href="<?php echo site_url("marketing/addcat");?>">Click Here to Add category</a></span>
+							<?php }?>
+						</div>
+					</div>	
 
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="control-label">Contact Number*</label>
-						<input type="text" required placeholder="Contact Number" name="contact_number" class="form-control" value="" /> 
-					</div>
-				</div>
-				
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="control-label">Whats App Number</label>
-						<input  type="text"  placeholder="Whats App Number" name="whats_app_number" class="form-control" value="" /> 
-					</div>
-				</div>
-				
-				<div class="col-md-4">
-					<div class="form-group">
-						<label class="control-label">Business Name*</label>
-						<input  type="text" required placeholder="Business Name" name="company_name" class="form-control" value="" /> 
-					</div>
-				</div>
-
-				<div class="clearfix"></div>
-				
-				<div class="col-md-3">
-					<label class="control-label">Address( State )</label>
-					<div class="form-group">
-						<?php $state_list = get_indian_state_list(); 
-						if( $state_list ){
-							echo "<select name='state' class='form-control' id='state'>";
-								echo '<option value="">Select State</option>';
-								foreach($state_list as $state){
-									echo '<option value="'.$state->id.'">'.$state->name.'</option>';
-								}
-							echo "</select>";
-						}else{ ?>
-							<input type="text" placeholder="State Name" name="state" class="form-control" value="" /> 
-						<?php } ?>	
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<div id ="city_list">
-						<div class='form-group'>
-						<label>City:</label>
-						<select name='city' disabled class='form-control city'>
-							<option value="">Select City</option>
-						</select>
+					<div class="col-md-4 my-2">	
+						<div class="form-group">
+							<label class="control-label">Full Name*</label>
+							<input  type="text" required placeholder="Full Name" name="name" class="form-control" value="" /> 
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<label class="control-label">Place</label>
-					<div class="form-group">
-						<input  type="text" id="place" placeholder="Place" name="place" class="form-control" value="" /> 
+					
+					<div class="col-md-4 my-2">
+						<div class="form-group">
+							<label class="control-label">Email Id*</label>
+							<input type="text" required placeholder="Email Id" name="email_id" class="form-control" value="" /> 
+						</div>
 					</div>
-				</div>
+					<div class="col-md-3 my-2">
+						<div class="form-group">
+							<label class="control-label">Contact Number*</label>
+							<input type="text" required placeholder="Contact Number" name="contact_number" class="form-control" value="" /> 
+						</div>
+					</div>
+					
+					<div class="col-md-3 my-2">
+						<div class="form-group">
+							<label class="control-label">Whats App Number</label>
+							<input  type="text"  placeholder="Whats App Number" name="whats_app_number" class="form-control" value="" /> 
+						</div>
+					</div>
+					
+					<div class="col-md-3 my-2">
+						<div class="form-group">
+							<label class="control-label">Business Name*</label>
+							<input  type="text" required placeholder="Business Name" name="company_name" class="form-control" value="" /> 
+						</div>
+					</div>
+					
+					<div class="col-md-3 my-2">
+						<label class="control-label">Address( State )</label>
+						<div class="form-group">
+							<?php $state_list = get_indian_state_list(); 
+							if( $state_list ){
+								echo "<select name='state' class='form-control' id='state'>";
+									echo '<option value="">Select State</option>';
+									foreach($state_list as $state){
+										echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+									}
+								echo "</select>";
+							}else{ ?>
+								<input type="text" placeholder="State Name" name="state" class="form-control" value="" /> 
+							<?php } ?>	
+						</div>
+					</div>
+
+					<div class="col-md-3 my-2">
+						<div id ="city_list">
+							<div class='form-group'>
+							<label>City:</label>
+							<select name='city' disabled class='form-control city'>
+								<option value="">Select City</option>
+							</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3 my-2">
+						<label class="control-label">Place</label>
+						<div class="form-group">
+							<input  type="text" id="place" placeholder="Place" name="place" class="form-control" value="" /> 
+						</div>
+					</div>
+					
+					<div class="col-md-3 my-2">
+						<label class="control-label">Website</label>
+						<div class="form-group">
+							<input  type="url" id="website" placeholder="website" name="website" class="form-control" value="" /> 
+						</div>
+					</div>
 				
-				<div class="col-md-3">
-					<label class="control-label">Website</label>
-					<div class="form-group">
-						<input  type="url" id="website" placeholder="website" name="website" class="form-control" value="" /> 
-					</div>
+					<div class="col-md-12 my-2">
+						<div class="margiv-top-10">
+							<button type="submit" class="btn green uppercase add_user">Add User</button>
+						</div>
+					</div>	
 				</div>
-			
-				<div class="clearfix"></div>
-				<hr>
-				<div class="col-md-12">
-					<div class="margiv-top-10">
-						<button type="submit" class="btn green uppercase add_user">Add User</button>
-					</div>
-				</div>	
 				</form>
-				<div class="clearfix"></div>
 				<div id="addresEd"></div>		
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
-			
-		</div>
-	<!-- END CONTENT BODY -->
+			</div>
+		</div> 
+		<!--End portlet -->
 	</div>
+	<!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+
 <!-- Modal -->
- </div>
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	//Email id validation

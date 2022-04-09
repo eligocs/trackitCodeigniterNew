@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="" id="form_wizard_1">
-				<div class="portlet-body form">
+				<div class="portlet-body form custom_card">
 					<form id="itiForm_form">
 						<div class="form-horizontal" id="itiForm_form">
 							<!--end Section Customer Section-->

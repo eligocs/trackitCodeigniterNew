@@ -82,8 +82,9 @@
 			<div class="custom_card">
 				<div class="upload_user_section">
 					<form class="" action="<?php echo base_url(); ?>marketing/import_marketing_users" method="post"  name="upload_excel" enctype="multipart/form-data">
-							<!-- File Button -->
-							<div class="col-md-4">	
+						<!-- File Button -->
+						<div class="row">
+							<div class="col-md-6">	
 								<div class="form-group">
 									<label class="control-label" for="filebutton">Select Csv File</label>
 									<div class="d_inline_block">
@@ -91,15 +92,16 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">	
-								<!-- Button -->
-								<div class="form-group">
+							<!-- Button -->
+							<div class="col-md-6">	
+								<div class="form-group float-end">
 									<label class="control-label" for="singlebutton">Import User</label>
 									<div class="d_inline_block">
 										<button type="submit" id="submit" name="Import" class="btn green uppercase button-loading" data-loading-text="Loading...">Import</button>
 									</div>
 								</div>
 							</div>
+						</div>
 					</form>
 				</div>
 				<?php } ?>

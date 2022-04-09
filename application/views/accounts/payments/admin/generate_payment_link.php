@@ -69,7 +69,7 @@
                 <form id="addAcc_frm">
                     <div class="row">
                         <!--IF NEW CUSTOMER ACCOUNT BOOKED ITI ID -->
-                        <div class="col-md-offset-4 col-md-6 my-2">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Booked Lead ID*</label>
                                 <select name="customer_id" class="form-control" required id="select_iti_id">
@@ -83,7 +83,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Name*</label>
@@ -108,7 +108,6 @@
                             </div>
                         </div>
 
-                        <div class="clearfix"></div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">TOTAL PACKAGE COST</label>
@@ -138,16 +137,10 @@
                                     required="required" />
                             </div>
                         </div>
-                        <div class="col-md-12">
-                        <div class="margiv-top-10">
-                            <button type="submit"
-                                class="btn green uppercase add_Bank margin-top-20">Generate Payement
-                                Link</button>
-                            <input type='hidden' name='id'
-                                value='<?php echo isset( $payment_link[0]->id ) ? $payment_link[0]->id : ""?>'>
+                        <div class="col-md-12 my-2">
+                            <button type="submit" class="btn green uppercase add_Bank margin-top-20">Generate Payement Link</button>
+                            <input type='hidden' name='id' value='<?php echo isset( $payment_link[0]->id ) ? $payment_link[0]->id : ""?>'>
                         </div>
-                        </div>
-                        <div class="clearfix"></div>
                         <div id="res"></div>
                     </div>
                 </form>
