@@ -23,39 +23,32 @@
 											<!-- PERSONAL INFO TAB -->
 											<div class="tab-pane active" id="tab_1_1">
 												<form role="form" class="form-horizontal form-bordered" id="update_sms_settings">
-												<p>Please enter auth details of <a target="_blank" href="https://control.msg91.com/">msg91</a> api.</p>
-												<div class="col-md-9">
-													<div class="form-group">
-														<label class="control-label col-md-3">Auth Key:</label>
-														<div class="col-md-9">
+													<p>Please enter auth details of <a target="_blank" href="https://control.msg91.com/">msg91</a> api.</p>
+													<div class="row">
+														<label class="control-label col-md-3 col-lg-2 text-md-end my-2">Auth Key:</label>
+														<div class="col-md-9 col-lg-10 my-2">
 															<input type="text" class="form-control" name="auth_key" value="<?php if($sms_settings!= NULL){ echo $sms_settings[0]->auth_key; }?>"/>
-														</div>	
-													</div>	
-													<div class="form-group">
-														<label class="control-label col-md-3">Sender Id:</label>
-														<div class="col-md-9">
+														</div>
+														<label class="control-label col-md-3 col-lg-2 text-md-end my-2">Sender Id:</label>
+														<div class="col-md-9 col-lg-10 my-2">
 															<input type="text" class="form-control" name="sender_id" value="<?php if($sms_settings!= NULL){ echo $sms_settings[0]->sender_id; }?>"/>
-														</div>	
-													</div>	
-													<hr>
-													<div class="form-group">
-														<div class="form-actions">
-															<div class="row">
-																<div class="col-md-offset-2 col-md-10">
+														</div>
+														<div class="col-md-12">
+															<div class="form-group">
+																<div class="form-actions">
 																	<input type="hidden" name="id" value="<?php if($sms_settings!= NULL){ echo $sms_settings[0]->id; }?>"/>	
 																	<input type="hidden" name="type" value="<?php if($sms_settings!= NULL){ echo "Update"; } else { echo "Add";}?>"/>
 																	<button type="submit" class="btn green">
-																		<i class="fa fa-check"></i> Submit</button>
+																		<i class="fa fa-check"></i> Submit
+																	</button>
 																</div>
 															</div>
 														</div>
-													</div>
 													</div>
 												</form>
 												<div class="clearfix"></div>
 												<div id="res"></div>
 											</div>
-										
 										</div>
 									</div>
 								</div>
@@ -66,12 +59,11 @@
 				</div>
 			</div>
 		</div>
-		<!-- END CONTENT BODY -->
+		<!-- END page-content -->
 	</div>
-	<!-- END CONTENT -->
-
+	<!-- END page-content-wrapper -->
 </div>
-
+<!-- End page-container -->
 
 <script type="text/javascript">
 

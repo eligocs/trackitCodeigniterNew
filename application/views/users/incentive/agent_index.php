@@ -11,21 +11,23 @@
 				</div>
 			</div>
 			<?php $sales_team_agents = get_all_sales_team_agents(); ?>
-				<div class="row clearfix custom_card">
-					<form id="frmInsentivecal" class="margin_bottom_0 margin-top-10">
+			<!-- custom_card -->
+			<div class="custom_card">
+				<form id="frmInsentivecal" class="margin_bottom_0 margin-top-10">
+					<div class="row">
 					
-						<div class="col-md-offset-3 col-md-3">
-							<div class="form-group margin_bottom_0">
-								<label for="daterange">Select Month*:</label>
-								<input type="text" required autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
-							</div> 
+						<div class="col-md-3">
+								<div class="form-group margin_bottom_0">
+									<label class="control-label" for="daterange">Select Month*:</label>
+									<input type="text" required autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+								</div> 
 						</div>
-						
+							
 						<?php if( is_teamleader() ){
 							$team_members = is_teamleader(); ?>
 							<div class="col-md-3">
 								<div class="form-group">
-									<label for="sales_user_id">Select Team Member*:</label>
+									<label class="control-label" for="sales_user_id">Select Team Member*:</label>
 									<select required class="form-control select_user" id='sales_user_id' name="user_id">
 										<option value="">Select Team Member</option>
 										<?php if( $team_members ){
@@ -38,20 +40,18 @@
 								</div> 
 							</div>
 						<?php } ?>
-						
+							
 						<div class="col-md-3">
-						<div class="form-group">
-							<br>
-							<input type="submit" class="btn btn-success" value="Generate Incentive">
-							<input type="hidden" id="datefrom" name="datefrom" value="<?php echo date("Y-m"); ?>" >
+							<div class="form-group">
+								<input type="submit" class="btn btn-success" value="Generate Incentive">
+								<input type="hidden" id="datefrom" name="datefrom" value="<?php echo date("Y-m"); ?>" >
+							</div>
 						</div>
-						</div>
-						<div class="clearfix"></div>
 						<div class="processing"></div>
-					</form>	
-				</div>	
-				<div class="clearfix"></div>
-				<hr>
+					</div>
+				</form>	
+			</div>
+			
 			<div class="portlet-body">
 				<div class='agent_info_section custom_card' style="display:none;">
 					<!--theme 1-->
@@ -114,12 +114,14 @@
 				</div>
 			</div>
 		</div>
-		
-		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
 </div>
-<!-- Modal -->
+<!-- END page-container -->
+
+
+
+	<!-- Modal -->
 
 <style>
 .congrats {
