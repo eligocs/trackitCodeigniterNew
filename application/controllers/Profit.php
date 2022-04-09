@@ -92,6 +92,7 @@ class Profit extends CI_Controller {
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
 		$role = $user['role'];
+		
 		$list = $this->Profit_model->get_datatables();
         $data = array();
 		$no = $_POST['start'];

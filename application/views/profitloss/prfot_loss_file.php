@@ -13,6 +13,17 @@
 					<i class="fa fa-cogs"></i>All Profit And Loss
 				</div>
 			</div>
+			<div class="col-md-3 my-2">
+                            <label class="control-label d-block" for="">&nbsp;</label>
+                            <input type="submit" class="btn btn-success" value="Filter">
+                            <?php
+							//  if( $user_role == 99 || $user_role == 98 ){ ?>
+                                    <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
+                                        class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
+                                        Export</a>
+                            <?php
+						//  } ?>
+                        </div>
 			<div class="portlet-body">
 				<div class="table-responsive margin-top-15">
 					<table id="profit_loss" class="table table-striped display white_space_fix">

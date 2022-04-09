@@ -3498,5 +3498,25 @@ function is_amendment_of_revised($iti_id){
 }
 
 
+/* booking date*/
+function getBookingDate($iti_id){
+	$res = '';
+	if(!empty($iti_id)){
+		$ci =& get_instance();
+		$ci->db->select('iti_decline_approved_date'); 
+		$ci->db->from('itinerary'); 
+		$ci->db->where('iti_id', $iti_id ); 
+		$q = $ci->db->get();
+		$res = $q->row(); 
+		dump($res);
+		if( $res ){
+			return $res;
+		}
+		return $res;
+	}
+
+}
+
+
 
 	
