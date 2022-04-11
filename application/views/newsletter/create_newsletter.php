@@ -89,40 +89,40 @@ div#mails-db {
 							</div>
 
 							<!-- h2 class="text-center"><strong>Create Newsletter</strong></h2 -->
-							<div class="form-group col-md-12">
-								<label for="subject"><strong>Subject:</strong></label>
+							<div class="form-group col-md-12 my-2">
+								<label class="control-label" for="subject"><strong>Subject:</strong></label>
 								<input required type="text" class="form-control" id="subject"
 									placeholder="Enter subject" name="subject">
 							</div>
 							<div class="letter hide">
-								<div class="form-group col-md-12">
+								<div class="form-group col-md-12 my-2">
 									<label for="youtube_link"><strong>Youtube Link:</strong></label>
 									<input type="url" class="form-control" id="youtube"
 										placeholder="Enter youtube video link" name="youtube_link">
 								</div>
 
-								<div class="form-group col-md-12">
+								<div class="form-group col-md-12 my-2">
 									<label for="body"><strong>Newsletter Body:</strong></label>
 									<textarea name="template"
 										id="template"><?php if($templates!= NULL){ echo htmlspecialchars_decode($templates[0]->template); }?></textarea>
 								</div>
 
 							</div>
-							<div class="form-group imagetemp hide col-md-12">
+							<div class="form-group imagetemp hide col-md-12 my-2">
 								<label for="body"><strong>Image Body:</strong></label>
 								<textarea id="summernote_1" name="imagetemplate"></textarea>
 							</div>
-							<div class="form-group texttemp hide col-md-12">
+							<div class="form-group texttemp hide col-md-12 my-2">
 								<label for="body"><strong>Text Template Body:</strong></label>
 								<textarea id="summernote_3" name="texttemplate"></textarea>
 							</div>
 							<!--get marketing users by marketing category -->
-							<div class="clearfix cat_wise_filter">
+							<div class="cat_wise_filter row">
 								<!--Get customers added by current agent if sales team-->
 								<?php if( isset( $user_role ) && $user_role == 96  ){ ?>
-								<div class="col-md-3">
+								<div class="col-md-3 my-2">
 									<div class="form-group">
-										<label class="control-label">Choose Category*</label>
+										<label class="control-label"><strong>Choose Category*</strong></label>
 										<select required name="cat" class="form-control" id="mak_cat">
 											<option value="">Select Category</option>
 											<option value="closed_lead">Closed Leads</option>
@@ -134,9 +134,9 @@ div#mails-db {
 								<input type="hidden" value="" name="state" id="state" />
 								<input type="hidden" value="" name="city" id="cityID" />
 								<?php }else{ ?>
-								<div class="col-md-3">
+								<div class="col-md-3 my-2">
 									<div class="form-group">
-										<label class="control-label">Choose Category*</label>
+										<label class="control-label"><strong>Choose Category*</strong></label>
 										<select required name="cat" class="form-control" id="mak_cat">
 											<option value="">Select Category</option>
 											<option value="closed_lead">Closed Leads</option>
@@ -179,9 +179,9 @@ div#mails-db {
 									</div>
 								</div>
 								<?php } ?>
-								<div class="col-md-3">
+								<div class="col-md-3 my-2">
 									<div class="">
-										<label for="" class="d_block">&nbsp;</label>
+										<label for="" class="control-label d-block">&nbsp;</label>
 										<a href="javascript:void(0);"
 											class="btn green uppercase get_marketing_users">Get
 											Customers</a>
@@ -199,7 +199,7 @@ div#mails-db {
 							<div class="clearfix" id="customer_listing"></div>
 							<div id='emails_res'></div>
 							<div class="form-actions">
-								<div class="row">
+								<div class="row my-2">
 									<div class="col-md-10">
 										<button type="submit" class="btn green">
 											<i class="fa fa-check"></i> Send Newsletter </button>
