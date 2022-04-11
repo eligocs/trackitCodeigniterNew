@@ -838,6 +838,131 @@ class Export extends CI_Controller {
 			return false;
 		}	
 	}
+
+/* profit loss export */
+
+	public function export_profit_loss(){
+		$this->load->model("Profit_model");
+		$user = $this->session->userdata('logged_in');
+		$user_id = $user['user_id'];
+		$role = $user['role'];
+		if( $role == '99' || $role == '98' ){
+			if( isset( $_GET['d_from'] ) && isset( $_GET["filter"] ) && isset( $_GET['end'] ) ){
+				//Check todayStatus
+				$todayStatus	= isset( $_GET['todayStatus'] ) && !empty( $_GET['todayStatus'] ) ? $_GET['todayStatus'] : "";
+				$date_from		= isset( $_GET['d_from'] ) && !empty( $_GET['d_from'] ) ? $_GET['d_from'] : "";
+				$date_to		= isset( $_GET['end'] ) && !empty( $_GET['end'] ) ? $_GET['end'] : "";
+				
+				$date_range_export = !empty( $todayStatus ) ? $todayStatus : "{$date_from} to {$date_to}"; 
+				// todayStatus not exists
+				if( empty( $todayStatus ) ){
+					//Check for valid date
+					$date_from_valid 	= check_valid_date( $_GET['d_from'], "Y-m-d" );
+					$date_end_valid 	= check_valid_date( $_GET['end'], "Y-m-d" );
+					//Check if date valid
+					
+					if(  empty( $_GET['d_from'] ) || empty( $_GET['end'] )  )	{
+						$this->session->set_flashdata('error',"You need to select date range filter to export data.");
+						redirect( "profit" );
+						die();
+					}else if( $date_from_valid && $date_end_valid ){
+						$get_days = get_days_difference( $_GET['d_from'], $_GET['end'] );
+						//If days differnce greater than 90 redirect user
+						if( $get_days > 90 ){
+							$this->session->set_flashdata('error',"You can export only three month data.");
+							redirect( "profit" );
+							die();
+						}
+					}
+				}
+				
+						
+						//get itineraries by agent
+						if( isset( $_GET['agent_id'] ) && !empty( $_GET['agent_id'] ) ){
+							$where["agent_id"] = $_GET['agent_id'];
+						}
+						// dump($where);die;
+						$agent_user_name = isset($_GET['agent_id']) && !empty( $_GET['agent_id'] ) ? get_user_name( $_GET['agent_id'] ) : "All Agents";
+						$allData = $this->export_model->export_profit_lose_data( $where );
+						// dump($allData);die;
+						if( $allData ){
+							$dataToExports = [];
+							$i = 1;
+							foreach ($allData as $data) {
+								
+								if( $data->is_loss_profit == 1 ){
+									$l_pro_status = "Profit ";
+								}else if($data->is_loss_profit == 2 ){
+									$l_pro_status = "Loss";
+								}
+
+							$arrangeData['Sr. No'] 				= $i;
+							$arrangeData['Iti Id'] 				= trim($data->iti_id);
+							$arrangeData['Agent']				= get_user_name( trim($data->agent_id) );
+							$arrangeData['Lead Id']				= trim($data->cust_id);
+							$arrangeData['Selling Price'] 		= trim($data->sellingPrice);
+							$arrangeData['Cost Without Margin']	= trim($data->withoutMrg);
+							$arrangeData['Total Profit/Loss'] 			= trim($data->total_margin_cost);
+							$arrangeData['Total Profit/Loss Per'] 		= trim($data->total_margin_per). "%";
+							$arrangeData['Total Cost'] 		= trim($data->total_cost);
+							$arrangeData['Cab Price'] 	= trim($data->cab_price);
+							$arrangeData['Hotel Price'] 		= trim($data->hotel_price);
+							$arrangeData['Volvo Price']		= trim($data->volvo_price);
+							$arrangeData['Flight  Price']			= trim($data->flight_price);
+							$arrangeData['Train Price']		= trim($data->train_price);
+							$arrangeData['Other Price']	= trim($data->other_price);
+							$arrangeData['IS Profit Of Loss']		= $l_pro_status;		
+							$dataToExports[] 					= $arrangeData;
+							
+							$i++;
+							//Unset array in each row
+							unset($arrangeData);
+						}
+						
+						// set header
+						$filename = "itinerary_{$date_range_export}_data_{$agent_user_name}.xls";
+						header("Content-Type: application/vnd.ms-excel");
+						header("Content-Disposition: attachment; filename=\"$filename\"");
+						$ex = $this->_exportExcelData($dataToExports);
+						
+						//if export sent message to admin
+						if( $ex ){
+							//Get user info
+							$super_manager_email 	= 'hem@eligocs.com';
+							$admin_email 			= 'hem@eligocs.com';
+							$user_name 				= get_user_name( $user_id );
+							$user_link 				= "<a class='btn btn-success' target='_blank' href=" . site_url("agents/view/{$user_id}") . " title='View'>Click to view user details</a>";
+							$subject = "Data Export Successfully <Trackitinerary.org>";
+							
+							$msg = "Profit loses  data export successfully by <strong>{$user_name}</strong> <br>";
+							$msg .= "Data export {$date_range_export} of {$agent_user_name} </strong> agent. <br>";
+							$msg .= "Data export {$date_range_export} of {$agent_user_name} </strong> agent. <br>";
+							$msg .= "{$user_link}";
+							
+							//Send mail if not admin
+							if( is_manager() ){
+								if( is_super_manager() ){
+									sendEmail($admin_email, $subject, $msg);
+								}else{
+									sendEmail($super_manager_email, $subject, $msg, $admin_email);
+								}	
+							}
+							
+							$this->session->set_flashdata('success',"Data Exported successfully.");
+						}
+				}else{
+					$this->session->set_flashdata('error',"No data found.");
+					redirect("profit");	
+				}
+			}else{
+				$this->session->set_flashdata('error',"Please select date range to export data.");
+				redirect("profit");	
+			}	
+			die();
+		}else{
+			redirect(404);
+		}
+	}
 }	
 
 ?>

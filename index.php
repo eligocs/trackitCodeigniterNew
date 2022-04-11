@@ -18,6 +18,10 @@ if ($maintenance){
 if ( function_exists( 'date_default_timezone_set' ) ) {
     date_default_timezone_set('Asia/Kolkata');
 }
+error_reporting(1);
+ini_set('display_errors', 1); ## to debug your maintenance view
+// error_reporting();
+//         ini_set('display_errors', 1); ## to debug your maintenance view
 
 /**
  * CodeIgniter

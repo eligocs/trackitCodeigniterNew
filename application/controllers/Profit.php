@@ -25,10 +25,15 @@ class Profit extends CI_Controller {
     /* Store  profit And Loss */
 	public function calculate_profit_loss()
 	{
-
-
+		$cabPrice 	= 	!empty($_POST['cab_price']) ?  $_POST['cab_price']: 0;
+		$hotelPrice = 	!empty($_POST['hotel_price']) ?  $_POST['hotel_price'] : 0;
+		$volvoPrice =  	!empty($_POST['volvo_price']) ? $_POST['volvo_price'] : 0;
+		$flightPrice =  !empty($_POST['flight_price']) ? $_POST['flight_price']: 0;
+		$trainPrice = 	!empty($_POST['train_price']) ? $_POST['train_price'] : 0;
+		$otherPrice = 	!empty($_POST['other_price'] ) ? $_POST['other_price'] : 0;
 		if (!empty($_POST['is_loss_profit'])) {
-			$totalExpenses = $_POST['cab_price'] + $_POST['hotel_price'] + $_POST['volvo_price']  + $_POST['flight_price'] + $_POST['train_price'] + $_POST['other_price'];
+			// $totalExpenses = $_POST['cab_price'] + $_POST['hotel_price'] + $_POST['volvo_price']  + $_POST['flight_price'] + $_POST['train_price'] + $_POST['other_price'];
+			$totalExpenses = $cabPrice + $hotelPrice + $volvoPrice  + $flightPrice + $trainPrice + $otherPrice;
 			if ($_POST['is_loss_profit'] == 1) {
 				$calculateTotal  = $_POST['withoutMrg'] - $totalExpenses;
 				$calculateTotalPer = ($calculateTotal / $_POST['withoutMrg']) * 100;
@@ -39,7 +44,6 @@ class Profit extends CI_Controller {
 			if (!empty($_POST['editIti'])) {
 				$where_key = array('id' => $_POST['editIti']);
 				$update = array(
-					// 'iti_id' => $_POST['iti_id'],
 					'cab_price' => $_POST['cab_price'],
 					'sellingPrice' => $_POST['sellingPrice'],
 					'withoutMrg' => $_POST['withoutMrg'],
@@ -74,6 +78,7 @@ class Profit extends CI_Controller {
 					'is_loss_profit' => $_POST['is_loss_profit'],
 					'cust_id' => $_POST['cust_id'],
 					'agent_id' => $_POST['agent_id'],
+					'iti_decline_approved_date' => $_POST['iti_decline_approved_date'],
 				);
 				$insert = $this->global_model->insert_data('profi_loss_table', $insert_data);
 				if($insert){
@@ -137,34 +142,33 @@ class Profit extends CI_Controller {
 	}
 
 /* show model*/
-	public function renderModel(){
-
-		if(!empty($_POST['type'] && $_POST['itiid'])){
-			$isAmnd_rev = is_amendment_of_revised($_POST['itiid']);
-			if(!empty($isAmnd_rev)){
-				$this->db->select('*'); 
-				$this->db->from('profi_loss_table'); 
-				$this->db->where('id', $_POST['id'] ); 
-				$q = $this->db->get();
-				$data['dataEdit'] = $q->row();
-				$data['data'] = $isAmnd_rev;
-			}else{
-				$this->db->select('*'); 
-				$this->db->from('profi_loss_table'); 
-				$this->db->where('id', $_POST['id'] ); 
-				$q = $this->db->get();
-				$data['dataEdit'] = $q->row(); 
-			}
+public function renderModel(){
+	if(!empty($_POST['type'] && $_POST['itiid'])){
+		$isAmnd_rev = is_amendment_of_revised($_POST['itiid']);
+		if(!empty($isAmnd_rev)){
+			$this->db->select('*'); 
+			$this->db->from('profi_loss_table'); 
+			$this->db->where('id', $_POST['id'] ); 
+			$q = $this->db->get();
+			$data['dataEdit'] = $q->row();
+			$data['data'] = $isAmnd_rev;
 		}else{
 			$this->db->select('*'); 
-			$this->db->from('itinerary'); 
-			$this->db->where('iti_id', $_POST['id'] ); 
+			$this->db->from('profi_loss_table'); 
+			$this->db->where('id', $_POST['id'] ); 
 			$q = $this->db->get();
-			$data['data'] = $q->row(); 
+			$data['dataEdit'] = $q->row(); 
 		}
-		$response = $this->load->view('profitloss/model', $data, TRUE);
-		echo $response;
-		
+	}else{
+		$this->db->select('*'); 
+		$this->db->from('itinerary'); 
+		$this->db->where('iti_id', $_POST['id'] ); 
+		$q = $this->db->get();
+		$data['data'] = $q->row(); 
 	}
+	$response = $this->load->view('profitloss/model', $data, TRUE);
+	echo $response;
+	
+}
 }
 ?>

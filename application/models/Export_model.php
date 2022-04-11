@@ -558,5 +558,35 @@ class Export_model extends CI_Model{
 		}
 		return false;
 	}
+
+
+
+
+
+	//datatable view all Itinerary
+	public function export_profit_lose_data($where){
+		$user = $this->session->userdata('logged_in');
+		$role = $user['role'];
+		$date_from 	 = $_GET['d_from'];
+		$date_end 	 = $_GET['end'];
+		
+		$this->db->select('*'); 
+		$this->db->from('profi_loss_table');
+		if(!empty($date_from) && !empty($date_end) ){
+			$d_from 	= date('Y-m-d', strtotime($date_from));
+			$d_to	 	= date('Y-m-d H:i:s', strtotime($date_end . "23:59:59"));
+			$this->db->where("iti_decline_approved_date >=", $d_from );
+			$this->db->where("iti_decline_approved_date <=", $d_to );
+		}
+		
+		if (!empty($where)) {
+			foreach($where as $key => $value){
+				$this->db->where( $key, $value );
+			}
+        }
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 ?>

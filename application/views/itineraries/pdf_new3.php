@@ -480,7 +480,9 @@ if (!empty($itinerary)) {
             <div class="page_break"></div>
             <?php
             }
+            if($iti->iti_type == 1){
             ?>
+
 
             <div class="page" style="padding: 0 16px; margin: 40px 0;">
                 <fieldset style="border: 2px solid #ff0000; border-radius: 6px;">
@@ -518,7 +520,7 @@ if (!empty($itinerary)) {
                                             $hotel_standard =  !empty($hotel_meta[$i]["hotel_standard"]) ? $hotel_meta[$i]["hotel_standard"] : '---';
                                             $hotel_deluxe =  !empty($hotel_meta[$i]["hotel_deluxe"]) ? $hotel_meta[$i]["hotel_deluxe"] : '---';
                                             $hotel_super_deluxe =  !empty($hotel_meta[$i]["hotel_super_deluxe"]) ? $hotel_meta[$i]["hotel_super_deluxe"] : '---';
-                                            $hotel_luxury =  !empty($hotel_meta[$i]["hotel_luxury"]) ? $hotel_meta[$i]["hotel_luxury"] : '---';
+                                            $hotel_luxury =  !empty($hotel_meta[$i]["hotel_luxury"]) ? $hotel_meta[$i]["hotel_luxury"] : '---';                                          
                                     ?>
                                 <tr>
                                     <td style="padding: 5px; border: 1px solid #c6c1c1; text-align: left;">
@@ -646,7 +648,416 @@ if (!empty($itinerary)) {
                     </div>
                 </fieldset>
             </div>
+            <?php
+            }else{
+            ?>
+             <div class="page" style="padding: 0 16px; margin: 40px 0;">
+                <fieldset style="border: 2px solid #ff0000; border-radius: 6px;">
+                    <legend>
+                        <h3 style="color: #ff0000; margin: 0; ">Hotel Details <img style="width: 20px; height: 20px;"
+                                src="<?= $hotel_base64 ?>">
+                        </h3>
+                    </legend>
 
+                    <?php //Insert Rate meta if price is empty
+				
+				$hotel_meta = unserialize($iti->hotel_meta); 
+				$check_hotel_cat = array();
+				$check_hotel_cat = !empty($hotel_meta) ? array_column($hotel_meta, "hotel_inner_meta" ) : "";
+				
+				//Get all category
+				$all_hotel_cats = [];
+				foreach( $check_hotel_cat as $date => $array ) {
+					$all_hotel_cats = array_merge($all_hotel_cats, array_column($array, "hotel_category"));
+				}
+				
+				/* echo "<pre>";
+					print_r( $all_hotel_cats );
+				echo "</pre>"; */
+				
+				$is_standard	= !empty($all_hotel_cats) && in_array("Standard", $all_hotel_cats) ? TRUE : FALSE;
+				$is_deluxe		= !empty($all_hotel_cats) && in_array("Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
+				$is_s_deluxe 	= !empty($all_hotel_cats) && in_array("Super Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
+				$is_luxury 		= !empty($all_hotel_cats) && in_array("Luxury", $all_hotel_cats ) ? TRUE : FALSE; 
+					
+					
+
+					$standard_html = "";
+					$deluxe_html = "";
+					$super_deluxe_html = "";
+					$luxury_html = "";
+					//print_r( $hotel_meta );
+					if( !empty( $hotel_meta ) ){
+						$count_hotel = count( $hotel_meta ); 
+							/* print_r( $hotel_meta ); */
+							if( $count_hotel > 0 ){
+								for ( $i = 0; $i < $count_hotel; $i++ ) {
+									
+									$hotel_location = $hotel_meta[$i]["hotel_location"];
+									$check_in 		= $hotel_meta[$i]["check_in"];
+									$check_out 		= $hotel_meta[$i]["check_out"];
+									$total_room 	= $hotel_meta[$i]["total_room"];
+									$total_nights 	= $hotel_meta[$i]["total_nights"];
+									$extra_bed 		= !empty( $hotel_meta[$i]['extra_bed'] ) ? " + <strong>" . $hotel_meta[$i]['extra_bed'] . " </strong> Extra Bed" : "";
+									
+									$hotel_inner_meta = $hotel_meta[$i]["hotel_inner_meta"];
+									//Fetch hotel inner meta
+									$count_innermeta = count( $hotel_inner_meta );
+									//print_r($hotel_inner_meta);
+									
+									if( !empty( $count_innermeta ) ){
+										for( $ii = 0 ; $ii < $count_innermeta ; $ii++ ){
+											$hotel_category	= $hotel_inner_meta[$ii]["hotel_category"];
+											$room_category 	= $hotel_inner_meta[$ii]["room_category"];
+											$hotel_name 	= $hotel_inner_meta[$ii]["hotel_name"];
+											$meal_plan 		= $hotel_inner_meta[$ii]["meal_plan"];
+											
+											//hotel details html category wise
+											switch( $hotel_category ){
+												case "Standard":
+													$standard_html .= "<tr>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_location}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>Deluxe</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_in}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_out}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_name}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$room_category}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$meal_plan}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_room}{$extra_bed}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_nights}</td>
+													</tr>";
+												break;
+												case "Deluxe":
+													$deluxe_html .= "<tr>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_location}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>Super Deluxe</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_in}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_out}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_name}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$room_category}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$meal_plan}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_room}{$extra_bed}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_nights}</td>
+													</tr>";
+												break;
+												case "Super Deluxe":
+													$super_deluxe_html .= "<tr>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_location}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>Luxury</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_in}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_out}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_name}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$room_category}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$meal_plan}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_room}{$extra_bed}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_nights}</td>
+													</tr>";
+												break;
+												case "Luxury":
+													$luxury_html .= "<tr>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_location}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>Super Luxury</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_in}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$check_out}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$hotel_name}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$room_category}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$meal_plan}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_room}{$extra_bed}</td>
+														<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>{$total_nights}</td>
+													</tr>";
+												break;
+												default:
+													continue2;
+												break;
+											}
+										}
+									}
+									
+									
+								}
+								if( $is_standard ) {
+									echo "<div class='portlet-body'><div class='well well-sm'><h3>Deluxe</h3></div>";
+									echo "<div class='table-responsive'><table style='border-collapse: collapse; width: 100%; font-size: 15px; box-sizing: border-box;'><tr>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>City</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check In</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check Out</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Plan</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>N/T</th>
+									</tr>";
+									echo $standard_html . "</table></div></div>";
+								}
+								if( $is_deluxe ){
+									echo "<div class='portlet-body'><div class='well well-sm'><h3>Super Deluxe</h3></div>";
+									echo "<div class='table-responsive'><table style='border-collapse: collapse; width: 100%; font-size: 15px; box-sizing: border-box;'><tr>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>City</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check In</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check Out</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Plan</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>N/T</th>
+									</tr>";
+									echo $deluxe_html . "</table></div></div>";
+								}
+								if( $is_s_deluxe ){
+									echo "<div class='portlet-body'><div class='well well-sm'><h3>Luxury</h3></div>";
+									echo "<div class='table-responsive'><table style='border-collapse: collapse; width: 100%; font-size: 15px; box-sizing: border-box;'><tr>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>City</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check In</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check Out</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Plan</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>N/T</th>
+									</tr>";
+									echo $super_deluxe_html . "</table></div></div>";
+								}
+								if( $is_luxury ){
+									echo "<div class='portlet-body'><div class='well well-sm'><h3>Super Luxury</h3></div>";
+									echo "<div class='table-responsive'><table style='border-collapse: collapse; width: 100%; font-size: 15px; box-sizing: border-box;'><tr>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>City</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check In</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Check Out</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room Category</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Plan</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>Room</th>
+										<th style='padding:5px; border: 1px solid #c6c1c1;'>N/T</th>
+									</tr>";
+									echo $luxury_html . "</table></div></div>";
+								}
+							} ?>
+
+                    <?php } ?>
+                    </fieldset>
+                </div>
+                <div class="page" style="padding: 0 16px; margin: 40px 0;">
+                <fieldset style="border: 2px solid #ff0000; border-radius: 6px;">
+                    <legend>
+                        <h3 style="color: #ff0000; margin: 0; "> Hotel Rates <img style="width: 20px; height: 20px;"
+                                src="<?= $hotel_base64 ?>">
+                        </h3>
+                    </legend>
+
+                <!-- Rate Meta -->
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table style='border-collapse: collapse; width: 100%; font-size: 15px; box-sizing: border-box;'>
+                            <tr>
+                                <th style='padding:5px; border: 1px solid #c6c1c1;'>Hotel Category</th>
+                                <th style='padding:5px; border: 1px solid #c6c1c1;'>Deluxe</th>
+                                <th style='padding:5px; border: 1px solid #c6c1c1;'>Super Deluxe</th>
+                                <th style='padding:5px; border: 1px solid #c6c1c1;'>Luxury</th>
+                                <th style='padding:5px; border: 1px solid #c6c1c1;'>Super Luxury</th>
+                            </tr>
+
+                            <?php
+                            //Rate meta
+                            $rate_meta = 	isset($iti->rates_meta) && !empty( $iti->rates_meta ) ? unserialize( $iti->rates_meta ) : "";
+                            $strike_class = !empty( $discountPriceData ) ? "strikeLine" : " ";
+                            //$strike_class_final = !empty( $iti->final_amount ) ? "strikeLine" : "";
+                            $strike_class_final = !empty( $iti->final_amount ) && $iti->iti_status == 9 ? "strikeLine" : "";
+                            //print_r( $rate_meta );
+                            $iti_close_status = $iti->iti_close_status;
+                            //print_r( $rate_meta );
+                            if( empty($iti_close_status) ){
+                            if( !empty( $rate_meta ) ){
+                                if( $iti->pending_price == 4 ){
+                                    echo "<tr><td  colspan=5 class='red'>Awaiting price verfication from super manager.</td></tr>"; 
+                                }else{
+                                    $agent_price_percentage = !empty($iti->agent_price) ? $iti->agent_price : 0;
+                                    //get per person price
+                                    $per_person_ratemeta 	= unserialize($iti->per_person_ratemeta);
+                                    //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
+                                    $inc_gst = "";
+                                    
+                                    $below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "(Below BP.)" : "";
+                                    $bbp_css = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "bbptr" : "";
+                                    
+                                    $agent_sp = $agent_dp = $agent_sdp = $agent_lp = "";
+                                    //if percentage exists
+                                    if( $agent_price_percentage ){
+                                        $as_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . ($per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
+                                        $ad_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . ($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
+                                        $asd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . ($per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
+                                        $al_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . ($per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage/100)  . " Per/Person" : "";
+
+                                        //child rates
+                                        $achild_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " .  number_format( $per_person_ratemeta["child_standard_rates"]  + $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage/100  ) . "/- Per Child" : "";
+                                        
+                                        $achild_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                        
+                                        $achild_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                        
+                                        $achild_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " .   number_format( $per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";													
+                                        
+                                        $astandard_rates = !empty( $rate_meta["standard_rates"]) ? number_format($rate_meta["standard_rates"] + $rate_meta["standard_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $adeluxe_rates = !empty( $rate_meta["deluxe_rates"]) ? number_format($rate_meta["deluxe_rates"] + $rate_meta["deluxe_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $asuper_deluxe_rates = !empty( $rate_meta["super_deluxe_rates"]) ? number_format($rate_meta["super_deluxe_rates"] + $rate_meta["super_deluxe_rates"] * $agent_price_percentage / 100  ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        $arate_luxry = !empty( $rate_meta["luxury_rates"]) ? number_format($rate_meta["luxury_rates"] + $rate_meta["luxury_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $agent_sp = "<br><strong class='aprice'> AP( " . $astandard_rates . "</strong> <br> {$as_pp} <br> {$achild_s_pp} )";
+                                        $agent_dp = "<br><strong class='aprice'> AP( " . $adeluxe_rates . "</strong> <br> {$ad_pp} <br> {$achild_d_pp} )";
+                                        $agent_sdp = "<br><strong class='aprice'> AP( " . $asuper_deluxe_rates . "</strong> <br> {$asd_pp} <br> {$achild_sd_pp} )";
+                                        $agent_lp = "<br><strong class='aprice'> AP( " . $arate_luxry . "</strong> <br> {$al_pp} <br> {$achild_l_pp} )";
+                                    }
+                                    
+                                    $s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
+                                    $d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
+                                    $sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
+                                    $l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
+                                    
+                                    //child rates
+                                    $child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
+                                    $child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
+                                    $child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
+                                    $child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
+                                    
+                                    $s_rates = isset( $rate_meta["standard_rates"] ) && !empty( $rate_meta["standard_rates"]) ? $rate_meta["standard_rates"] : 0;
+                                    $d_rates = isset( $rate_meta["deluxe_rates"] ) && !empty( $rate_meta["deluxe_rates"]) ? $rate_meta["deluxe_rates"] : 0;
+                                    $sd_rates = isset( $rate_meta["super_deluxe_rates"] ) && !empty( $rate_meta["super_deluxe_rates"]) ? $rate_meta["super_deluxe_rates"] : 0;
+                                    $l_rates = isset( $rate_meta["luxury_rates"] ) && !empty( $rate_meta["luxury_rates"]) ? $rate_meta["luxury_rates"] : 0;
+                                    
+                                    $standard_rates = !empty( $s_rates ) ? number_format($s_rates) . "/- {$inc_gst}" : "------";
+                                    $deluxe_rates = !empty( $d_rates ) ? number_format($d_rates) . "/- {$inc_gst}" : "-----";
+                                    $super_deluxe_rates = !empty( $sd_rates ) ? number_format($sd_rates) . "/- {$inc_gst}" : "------";
+                                    $rate_luxry = !empty( $l_rates ) ? number_format($l_rates) . "/- {$inc_gst}" : "-----";
+                                    
+                                    echo "<tr class='{$strike_class} {$strike_class_final} {$bbp_css}'><td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>Price {$below_base_price}</td>
+                                        <td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>		
+                                            <strong> BP( " . $standard_rates . "</strong> <br> {$s_pp} <br> {$child_s_pp} )
+                                            {$agent_sp}
+                                        </td>
+                                        <td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>
+                                            <strong>BP( " . $deluxe_rates . "</strong> <br> {$d_pp}<br> {$child_d_pp} )
+                                            {$agent_dp}
+                                        </td>
+                                        <td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>
+                                            <strong>BP( " . $super_deluxe_rates . "</strong> <br> {$sd_pp}<br> {$child_sd_pp} )
+                                            {$agent_sdp}
+                                        </td>
+                                        <td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>
+                                            <strong>BP(  " . $rate_luxry . "</strong> <br> {$l_pp}<br> {$child_l_pp} )
+                                            {$agent_lp}
+                                        </td></tr>";
+                                            
+                                    if( !empty( $discountPriceData ) ){
+                                        foreach( $discountPriceData as $price ){
+                                            $agent_price_percentage = !empty($price->agent_price) ? $price->agent_price : 0;
+                                            $sent_status = $price->sent_status;
+                                            //get per person price
+                                            $per_person_ratemeta 	= unserialize($price->per_person_ratemeta);
+                                            //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
+                                            $inc_gst = "";
+                                            
+                                            $below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "(Below BP.)" : "";
+                                            $bbp_css = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "bbptr" : "";
+                                            
+                                            $agent_sp = $agent_dp = $agent_sdp = $agent_lp = "";
+                                            //if percentage exists
+                                            if( $agent_price_percentage ){
+                                                $ad_s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"] ) ? "RS. " . number_format( $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
+                                                $ad_d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
+                                                $ad_sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage/100) . "/- Per Person" : "";
+                                                $ad_l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
+                                                
+                                                //child rates
+                                                $ad_child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_standard_rates"] +  $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                                $ad_child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage/100) . "/- Per Child" : "";
+                                                $ad_child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                                $ad_child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";			
+                                                
+                                                //get rates
+                                                $ad_s_price = !empty( $price->standard_rates) ? number_format($price->standard_rates + $price->standard_rates * $agent_price_percentage/100 ) . "/- {$inc_gst} <br> {$ad_s_pp} <br> {$ad_child_s_pp}" : "<strong class='red'>On Request</strong>";
+                                                
+                                                $ad_d_price = !empty( $price->deluxe_rates) ? number_format($price->deluxe_rates + $price->deluxe_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_d_pp} <br> {$ad_child_d_pp}" : "<strong class='red'>On Request</strong>";
+                                                
+                                                $ad_sd_price = !empty( $price->super_deluxe_rates) ? number_format($price->super_deluxe_rates + $price->super_deluxe_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_sd_pp} <br> {$ad_child_sd_pp}"  : "<strong class='red'>On Request</strong>";
+                                                
+                                                $ad_l_price = !empty( $price->luxury_rates) ? number_format($price->luxury_rates + $price->luxury_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_l_pp} <br> {$ad_child_l_pp}"  : "<strong class='red'>On Request</strong>";
+                                                
+                                                $agent_sp = "<br><strong class='aprice'> AP( " . $ad_s_price . "</strong>)";
+                                                $agent_dp = "<br><strong class='aprice'>  AP( " . $ad_d_price . "</strong>)";
+                                                $agent_sdp = "<br><strong class='aprice'> AP( " . $ad_sd_price . "</strong>)";
+                                                $agent_lp = "<br><strong class='aprice'>  AP( " . $ad_l_price . "</strong>)";
+                                            }
+                                            
+                                            $s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"] ) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
+                                            $d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
+                                            $sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
+                                            $l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
+                                                
+                                            //child rates
+                                            $child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
+                                            $child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
+                                            $child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
+                                            $child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
+                                            
+                                            $s_price = !empty( $price->standard_rates) ? number_format($price->standard_rates) . "/- {$inc_gst} <br> {$s_pp} <br> {$child_s_pp}" : "<strong class='red'>N/A</strong>";
+                                            $d_price = !empty( $price->deluxe_rates) ? number_format($price->deluxe_rates) . "/- {$inc_gst} <br> {$d_pp} <br> {$child_d_pp}" : "<strong class='red'>N/A</strong>";
+                                            $sd_price = !empty( $price->super_deluxe_rates) ? number_format($price->super_deluxe_rates) . "/- {$inc_gst} <br> {$sd_pp} <br> {$child_sd_pp}"  : "<strong class='red'>N/A</strong>";
+                                            $l_price = !empty( $price->luxury_rates) ? number_format($price->luxury_rates) . "/- {$inc_gst} <br> {$l_pp} <br> {$child_l_pp}"  : "<strong class='red'>N/A</strong>";
+                                            
+                                            $sr = isset( $price->standard_rates ) && !empty( $price->standard_rates ) ? $price->standard_rates : 0;
+                                            $dr = isset( $price->deluxe_rates ) && !empty( $price->deluxe_rates ) ? $price->deluxe_rates : 0;
+                                            $sdr = isset( $price->super_deluxe_rates ) && !empty( $price->super_deluxe_rates ) ? $price->super_deluxe_rates : 0;
+                                            $lr = isset( $price->luxury_rates ) && !empty( $price->luxury_rates ) ? $price->luxury_rates : 0;
+                                    
+                                            //Calculate Total Cost
+                                            $total_cost_after_dis = $sr + $dr + $sdr + $lr;
+                                            
+                                            $count_price = count( $discountPriceData );
+                                            $strike_class = ($price !== end($discountPriceData) && $count_price > 1 ) ? "strikeLine" : "";
+                                            
+                                            //echo "<tr class='$strike_class'><td>Price</td><td><strong>" . $s_price . "</strong></td>";
+                                            //echo "<td><strong>" . $d_price . "</strong></td>";
+                                            //echo "<td><strong>" . $sd_price . "</strong></td>";
+                                            //echo "<td><strong>" . $l_price . "</strong></td></tr>";
+                                            
+                                            echo "<tr class='{$strike_class} {$strike_class_final} {$bbp_css}'><td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>Price {$below_base_price}</td>
+                                            <td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>BP( <strong>" . $s_price . "</strong>) {$agent_sp} </td>";
+                                            echo "<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>BP(<strong>" . $d_price . "</strong>) {$agent_dp} </td>";
+                                            echo "<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>BP(<strong>" . $sd_price . "</strong>) {$agent_sdp} </td>";
+                                            echo "<td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>BP(<strong>" . $l_price . "</strong>) {$agent_lp} </td></tr>";
+                                        }
+                                    }
+                                }			
+                            }else{
+                                echo "<tr><td><strong class='red'>Price</strong></td>
+                                        <td>
+                                            <strong class='red'> Coming Soon </strong>
+                                        </td>
+                                        <td>
+                                            <strong class='red'> Coming Soon</strong>
+                                        </td>
+                                        <td>
+                                            <strong class='red'> Coming Soon </strong>
+                                        </td>
+                                        <td>
+                                            <strong class='red'> Coming Soon </strong>
+                                        </td></tr>";
+                            } 
+                            } 
+                            ?>
+                        </table>
+                    </div>
+                </div>
+                </fieldset>
+            </div>
+                <?php 
+}
+?>
             <div class="page_break"></div>
             <?php
             $hotel_note_meta = unserialize($iti->hotel_note_meta);

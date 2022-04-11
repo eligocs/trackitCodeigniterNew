@@ -27,7 +27,7 @@
 <?php
 $tax  = !empty(get_tax()) ? get_tax() : '';
 $iti = $data;
-// $dataEdit = !empty($dataEditEdit) ? $dataEditEdit : (!empty($dataEdit) ? $dataEdit : '');
+// dump($iti);die;
 
 $f_cost =  !empty($iti->final_amount)  && $iti->iti_status == 9  && get_iti_booking_status($iti->iti_id) == 0  ? $iti->final_amount :
  (!empty($dataEdit->sellingPrice) ? $dataEdit->sellingPrice : '');
@@ -44,21 +44,22 @@ $f_cost =  !empty($iti->final_amount)  && $iti->iti_status == 9  && get_iti_book
 <form class="storeMargin">
     <input type="hidden" value="<?= calculate_total_reverse_margin($f_cost, $tax) ?>" class="witoutGst">
     <input type="hidden" name="sellingPrice" value="<?= $f_cost ?>" id="sp">
+    <input type="hidden" name="iti_decline_approved_date" value="<?= $iti->iti_decline_approved_date ?>" id="iti_decline_approved_date">
     <input type="hidden" id="editIti" name="editIti" value="<?= !empty($dataEdit->id) ?  $dataEdit->id : '' ?>">
-    <input type="hidden" id="cust_id" name="cust_id" value="<?= !empty($dataEdit->customer_id) ?  $dataEdit->customer_id : '' ?>">
-    <input type="hidden" id="agent_id" name="agent_id" value="<?= !empty($dataEdit->agent_id) ?  $dataEdit->agent_id : '' ?>">
+    <input type="hidden" id="cust_id" name="cust_id" value="<?= !empty($dataEdit->customer_id) ?  $dataEdit->customer_id : (!empty($iti->customer_id) ? $iti->customer_id : ''); ?>">
+    <input type="hidden" id="agent_id" name="agent_id" value="<?= !empty($dataEdit->agent_id) ?  $dataEdit->agent_id : (!empty($iti->agent_id) ? $iti->agent_id : ''); ?>">
     <input type="hidden" name="withoutMrg" value="<?= calculate_total_reverse_margin($f_cost, $tax) ?>" id="sp">
     <div class="row">
         <div class="form-group col-md-6 my-2">
             <label for="email">Cab:</label>
             <input type="number" value="<?= !empty($dataEdit->cab_price) ?  $dataEdit->cab_price : '' ?>" class="form-control calCab"  name="cab_price">
         </div>
-        <!--CC Email Address-->
+
         <div class="form-group col-md-6 my-2">
             <label for="cc_email">Hotel:</label>
             <input type="number" value="<?= !empty($dataEdit->hotel_price) ?  $dataEdit->hotel_price : '' ?>" class="form-control calhotel"  name="hotel_price">
         </div>
-        <!--BCC Email Address-->
+
         <div class="form-group col-md-6 my-2">
             <label for="bcc_email">Volvo:</label>
             <input type="number" value="<?= !empty($dataEdit->volvo_price) ?  $dataEdit->volvo_price : '' ?>" class="form-control calvolvo"  name="volvo_price">
@@ -76,7 +77,7 @@ $f_cost =  !empty($iti->final_amount)  && $iti->iti_status == 9  && get_iti_book
             <input type="number" value="<?= !empty($dataEdit->other_price) ?  $dataEdit->other_price : '' ?>" class="form-control calother"  name="other_price">
         </div>
         <div class="form-group col-md-6 my-2">
-            <!-- <span style="color:red"> Clike Calculate After Enter Rates *</span><br> -->
+
             <label for="sub">Total Expenses:<a href="#" class="totalexpen"> calculate </a></label>
             <input type="number" required class="form-control subtotal"  name="total_cost" value="<?= !empty($dataEdit->total_cost) ?  $dataEdit->total_cost : '' ?>" readonly>
         </div>
@@ -100,3 +101,4 @@ $f_cost =  !empty($iti->final_amount)  && $iti->iti_status == 9  && get_iti_book
     <hr>
     <button type="submit" class="btn btn-success disabled stormrg">Store Margin</button>
 </form>
+

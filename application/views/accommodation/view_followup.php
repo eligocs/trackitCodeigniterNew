@@ -131,7 +131,8 @@
                 </div>
                 <div class="portlet-body">
                     <h2 class="red margin_zero" style="font-size: 18px;">Rejected Itinerary</h2>
-                    <p class="red" style="margin-top: 14px;">Reason: <strong><?php echo $iti->iti_reject_comment; ?></strong></p>
+                    <p class="red" style="margin-top: 14px;">Reason:
+                        <strong><?php echo $iti->iti_reject_comment; ?></strong></p>
                 </div>
             </div>
             <?php } ?>
@@ -201,8 +202,8 @@
                     <div class="portlet-title">
                         <h3 class="custom_title">Hotel Details</h3>
                     </div>
-                   
-                        <?php //Insert Rate meta if price is empty
+
+                    <?php //Insert Rate meta if price is empty
 				
 				$hotel_meta = unserialize($iti->hotel_meta); 
 				$check_hotel_cat = array();
@@ -380,9 +381,9 @@
 								}
 							} ?>
 
-                        <?php } ?>
+                    <?php } ?>
                 </div>
-                
+
             </div>
             <div class="portlet box blue margin-top-50">
                 <div class="portlet-title">
@@ -594,7 +595,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="custom_card">
                 <div class="tour_des bg_white outline_none">
                     <ul class="list-group">
@@ -666,28 +667,28 @@
                     <h4 class="custom_title">Advance Received Details</h4>
                 </div>
                 <div class="portlet-body row">
-                        <div class="tour_des">
-                            <div class="col-md-3">
-                                <p><strong>Total Cost: </strong> <?php echo iti_final_cost($iti->iti_id); ?></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p><strong>Advance Received: </strong>
-                                    <?php echo number_format($pay_detail->advance_recieved); ?></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p><strong>Booking Date: </strong>
-                                    <?php echo !empty( $pay_detail->booking_date ) ? display_month_name( $pay_detail->booking_date ) : ""; ?>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p><strong>Balance: </strong>
-                                    <?php echo number_format($pay_detail->total_balance_amount) . " /-"; ?></p>
-                            </div>
+                    <div class="tour_des">
+                        <div class="col-md-3">
+                            <p><strong>Total Cost: </strong> <?php echo iti_final_cost($iti->iti_id); ?></p>
                         </div>
-                        <!--show payment screenshot details-->
+                        <div class="col-md-3">
+                            <p><strong>Advance Received: </strong>
+                                <?php echo number_format($pay_detail->advance_recieved); ?></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Booking Date: </strong>
+                                <?php echo !empty( $pay_detail->booking_date ) ? display_month_name( $pay_detail->booking_date ) : ""; ?>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Balance: </strong>
+                                <?php echo number_format($pay_detail->total_balance_amount) . " /-"; ?></p>
+                        </div>
+                    </div>
+                    <!--show payment screenshot details-->
 
-                        <!-- client_aadhar_card payment_screenshot -->
-                        <?php $doc_path =  base_url() .'site/assets/client_docs/';
+                    <!-- client_aadhar_card payment_screenshot -->
+                    <?php $doc_path =  base_url() .'site/assets/client_docs/';
 								$aadhar_card_img = !empty( $pay_detail->client_aadhar_card ) ? $pay_detail->client_aadhar_card : "";
 								$payment_screenshot = !empty( $pay_detail->payment_screenshot ) ? $pay_detail->payment_screenshot : "";
 							?>
@@ -707,8 +708,9 @@
                     <div class="col-md-4">
                         <h3>Payment Screenshot</h3>
                         <?php if($payment_screenshot){ ?>
-                        <a target="_blank" href="<?php echo $doc_path . $payment_screenshot; ?>" class="example-image-link"
-                            data-lightbox="example-set" data-title="Client Payment Screenshot.">
+                        <a target="_blank" href="<?php echo $doc_path . $payment_screenshot; ?>"
+                            class="example-image-link" data-lightbox="example-set"
+                            data-title="Client Payment Screenshot.">
                             <img src="<?php echo $doc_path . $payment_screenshot; ?>" width="150" height="150"
                                 class="image-responsive">
                         </a>
@@ -880,7 +882,7 @@
                                         <textarea required class="form-control" rows="3"
                                             name="agent_comment"></textarea>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <input type="hidden" name="iti_id" value="<?php echo $iti->iti_id; ?>">
                                         <input type="submit" class='btn btn-green' id="clone_current_iti"
@@ -998,7 +1000,7 @@
 					}
 				} ?><div class="clearfix"></div>
 
-				
+
             <div class="inquery_section custom_card">
                 <!--show amendment button for sales team and manager-->
                 <?php 

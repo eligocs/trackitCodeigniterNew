@@ -2591,7 +2591,7 @@
             </div>
             <hr>
             <div class="custom_card">
-
+            Regards
                 <?php
                   $agent_id = $iti->agent_id;
                   $user_info = get_user_info($agent_id);
