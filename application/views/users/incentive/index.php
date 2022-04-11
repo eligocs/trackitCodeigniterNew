@@ -21,12 +21,12 @@
                 </div>
             </div>
             <?php $sales_team_agents = get_all_sales_team_agents(); ?>
-            <div class="row clearfix custom_card" style="padding-top:32px;">
+            <div class="second_custom_card">
                 <form id="frmInsentivecal">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 my-2">
                             <div class="form-group">
-                                <label for="sales_user_id">Select Sales Team User:</label>
+                                <label class="control-label" for="sales_user_id">Select Sales Team User:</label>
                                 <select required class="form-control select_user" id='sales_user_id' name="user_id">
                                     <option value="">Select User</option>
                                     <?php foreach( $sales_team_agents as $user ){ ?>
@@ -37,26 +37,26 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 my-2">
                             <div class="form-group">
-                                <label for="daterange">Select Month*:</label>
+                                <label class="control-label" for="daterange">Select Month*:</label>
                                 <input type="text" required autocomplete="off" class="form-control" id="daterange"
                                     name="dateRange" value="" required />
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 my-2">
                             <div class="form-group">
-                                <label for="" class="d_block">&nbsp;</label>
+                                <label class="control-label d-block" for="" >&nbsp;</label>
                                 <input type="submit" class="btn btn-success" value="Generate Incentive">
                                 <input type="hidden" id="datefrom" name="datefrom" value="<?php echo date("Y-m"); ?>">
                             </div>
                         </div>
-
-                        <div class="col-md-3">
+                        <div class="col-md-3 my-2">
                             <div class="form-group">
-                                <br>
-                                <a href="javascript:void(0)" class="btn btn-danger pull-right export_btn"><i
-                                        class="fa fa-file-excel"></i> Export All Agents Incentive</a>
+                                <label for="" class="control-label d-block">&nbsp;</label>
+                                <a href="javascript:void(0)" class="btn btn-danger pull-right export_btn">
+                                    <i class="fa fa-file-excel"></i> Export All Agents Incentive
+                                </a>
                             </div>
                         </div>
                     </div>

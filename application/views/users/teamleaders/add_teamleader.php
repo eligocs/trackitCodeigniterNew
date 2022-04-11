@@ -21,7 +21,7 @@ select#state {
 				}else{ ?>
                 <form role="form" id="frm_user_area">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div id="city_list">
                                 <div class="form-group-2">
                                     <label class="control-label">Team Name*</label>
@@ -31,7 +31,7 @@ select#state {
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group-2">
                                 <label class="control-label">Select Team Leader*</label>
                                 <select name="leader_id" id="leader_id" required class="form-control">
@@ -46,22 +46,18 @@ select#state {
                             <div id="error_msg"> </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group-2">
-                                <label class="control-label">Assign agents*</label><span
-                                    style="font-size: 12px; color: red;"> (Ctr + click) for multi select</span>
-                                <select name="assign_agents[]" required multiple class="form-control"
-                                    id="assign_agents">
+                                <label class="control-label">Assign agents*</label>
+                                <select name="assign_agents[]" required multiple class="form-control" id="assign_agents">
                                     <option>Please select team leader first</option>
                                 </select>
+                                <span style="font-size: 12px; color: red;"> (Ctr + click) for multi select</span>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
 
-                        <div class="col-md-12 margin-top-30">
-                            <div class="margiv-top-10">
-                                <button type="submit" class="btn green uppercase add_agent">Add Team</button>
-                            </div>
+                        <div class="col-md-12 my-2">
+                            <button type="submit" class="btn green uppercase add_agent">Add Team</button>
                         </div>
                     </div>
                 </form>

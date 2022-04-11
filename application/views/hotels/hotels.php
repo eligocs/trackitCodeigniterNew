@@ -2,15 +2,12 @@
 	<div class="page-content-wrapper">
 		<div class="page-content">
 		 <!-- BEGIN SAMPLE TABLE PORTLET-->
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-cogs"></i>All Hotels
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption"> <i class="fa fa-cogs"></i>All Hotels </div>
+					<a class="btn btn-success" href="<?php echo site_url("hotels/add"); ?>" title="add hotel">Add Hotel</a>
 				</div>
-				
-				<a class="btn btn-success" href="<?php echo site_url("hotels/add"); ?>" title="add hotel">Add Hotel</a>
-			</div>
-		</div>	
+			</div>	
 			<!--Show success message if hotel edit/add -->
 			<?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
@@ -22,8 +19,8 @@
 			<div class="portlet-body">
 				<div class="marginBottom second_custom_card">
 					<!--start filter section-->
-					<form id="form-filter" class="form-horizontal clearfix margin_bottom_0">
-						<div class="actions custom_filter pull-right form-inline">
+					<form id="form-filter" class="form-horizontal clearfix mb-0">
+						<div class="actions custom_filter form-inline">
 							<!--strong>Filter: </strong-->
 							<div class="btn-group" data-toggle="buttons">
 								<!--label class="control-label">Select State*</label-->
@@ -56,13 +53,12 @@
 								</select>
 							</div>	
 							<!--End-->
-						<input type="hidden" id="city_id" value="" />
-						<input type="hidden" id="hotel_cat" value="all" />
-						<input type="submit" class="btn btn-success" value="Filter">
-						<input type="button" class="btn btn-success clearFilter" value="Clear Filter">
+							<input type="hidden" id="city_id" value="" />
+							<input type="hidden" id="hotel_cat" value="all" />
+							<input type="submit" class="btn btn-success" value="Filter">
+							<input type="button" class="btn btn-success clearFilter" value="Clear Filter">
 						</div>
 					</form><!--End filter section-->
-					<div class="clearfix"></div>
 				</div> 
 				<div class="table-responsive custom_card">
 					<table id="hotels" class="table table-striped display white_space_fix">
@@ -87,11 +83,12 @@
 				</div>
 			</div>
 		</div>
-		
-		</div>
 	</div>
-	<!-- END CONTENT BODY -->
 </div>
+<!-- END page-container -->
+
+
+
 <!-- Modal -->
  <script type="text/javascript">
  jQuery(document).ready(function($){

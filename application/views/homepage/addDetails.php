@@ -14,12 +14,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="portlet light ">
-
                                     <div class="portlet-body">
                                         <div class="tab-content">
-                                            <?php $message = $this->session->flashdata('success'); 
-										if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }									?>
-
+                                        <?php $message = $this->session->flashdata('success'); if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }									?>
                                             <!-- PERSONAL INFO TAB -->
                                             <div class="tab-pane active" id="tab_1_1">
                                                 <form role="form" class="form-horizontal form-bordered" method="post"
@@ -71,22 +68,23 @@
                                                                 <input type="text" class="form-control" name="video_url"
                                                                 value="<?php if(isset($val->video_url) && !empty($val->video_url)){echo $val->video_url; } ?>" />
                                                         </div>
+
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Review Api
                                                             Key:</label>
                                                                 <input type="text" class="form-control" name="api_key"
                                                                 value="<?php if(isset($val->api_key) && !empty($val->api_key)){echo $val->api_key; } ?>" />
                                                         </div>
+
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Address:</label>
                                                                 <input type="text" class="form-control" name="address"
                                                                 value="<?php if(isset($val->address) && !empty($val->address)){echo $val->address; } ?>" />
                                                         </div>
+
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Contact No:</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="contact_no"
-                                                                    value="<?php if(isset($val->contact_no) && !empty($val->contact_no)){echo $val->contact_no; } ?>" />
+                                                                <input type="text" class="form-control" name="contact_no" value="<?php if(isset($val->contact_no) && !empty($val->contact_no)){echo $val->contact_no; } ?>" />
                                                         </div>
 
                                                         <div class="form-group col-md-6 my-2">
@@ -94,6 +92,7 @@
                                                                 <input type="text" class="form-control" name="website"
                                                                     value="<?php if(isset($val->website) && !empty($val->website)){echo $val->website; } ?>" />
                                                         </div>
+
                                                         <?php $counter= !empty($val->counter) ?  unserialize($val->counter) : '' ;  ?>
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Counter1:</label>
@@ -101,18 +100,21 @@
                                                                 name="counter[count1]"
                                                                 value="<?php if(isset($counter['count1']) && !empty($counter['count1'])){echo $counter['count1'];} ?>" />
                                                         </div>
+
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Counter2:</label>
                                                                 <input type="text" class="form-control"
                                                                 name="counter[count2]"
                                                                 value="<?php if(isset($counter['count2']) && !empty($counter['count2'])){echo $counter['count2'];} ?>" />
                                                         </div>
+
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Counter3:</label>
                                                                 <input type="text" class="form-control"
                                                                 name="counter[count3]"
                                                                 value="<?php if(isset($counter['count3']) && !empty($counter['count3'])){echo $counter['count3'];} ?>" />
                                                         </div>
+
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Counter4:</label>
                                                                 <input type="text" class="form-control"
@@ -120,7 +122,6 @@
                                                                 value="<?php if(isset($counter['count4']) && !empty($counter['count4'])){echo $counter['count4'];} ?>" />
                                                         </div>
                                                     </div>
-                                                        <hr>
                                                         <div class="form-group my-2">
                                                             <div class="col-md-9">
                                                                 <input type="submit" class="btn btn-primary" value="Save" />
@@ -129,9 +130,7 @@
                                                     </div>
                                                     </div>
                                                 </form>
-                                                <div class="clearfix"></div>
                                                 <div id="res_cmp"></div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -252,7 +251,6 @@
 
 </div>
 <!-- END CONTENT BODY -->
-</div>
 
 <script type="text/javascript">
 $uploadCrop = $('#upload-demo').croppie({

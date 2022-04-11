@@ -27,10 +27,9 @@
 
                         <div class="col-md-4 my-2">
                             <div class="form-group">
-                                <label class="control-label">User Name*</label><span
-                                    style='font-size: 11px; color: red;'>(Allowed Characters: a-z,A-Z,0-9,_@#$.)</span>
-                                <input type="text" placeholder="User Name! Should be Unique" name="user_name"
-                                    class="form-control" value="" />
+                                <label class="control-label">User Name*</label>
+                                <input type="text" placeholder="User Name! Should be Unique" name="user_name" class="form-control" value="" />
+                                <span style='font-size: 11px; color: red;'>(Allowed Characters: a-z,A-Z,0-9,_@#$.)</span>
                             </div>
                         </div>
                         
@@ -52,10 +51,9 @@
 
                         <div class="col-md-4 my-2">
                             <div class="form-group">
-                                <label class="control-label">Alternate Password*</label><span
-                                    style='font-size: 11px; color: red;'> (Accessible by manager/admin)</span>
-                                <input id="" type="text" placeholder="Enter alternate password" name="alt_pass"
-                                    class="form-control alt_pass" value="" />
+                                <label class="control-label">Alternate Password*</label>
+                                <input id="" type="text" placeholder="Enter alternate password" name="alt_pass" class="form-control alt_pass" value="" />
+                                <span style='font-size: 11px; color: red;'> (Accessible by manager/admin)</span>
                             </div>
                         </div>
                         
@@ -142,13 +140,11 @@
                             </div>
                         </div>
                         
-
                         <div class="col-md-4 my-2">
                             <div class="form-group">
-                                <label class="control-label">Mobile Number For Login*</label><span
-                                    style='font-size: 11px; color: red;'> (Visible for manager/admin only.)</span>
-                                <input type="text" placeholder="Mobile number for login otp. Should be unique."
-                                    maxlength="10" name="mobile_otp" class="form-control numberf" value="" />
+                                <label class="control-label">Mobile Number For Login*</label>
+                                <input type="text" placeholder="Mobile number for login otp. Should be unique." maxlength="10" name="mobile_otp" class="form-control numberf" value="" />
+                                <span style='font-size: 11px; color: red;'> (Visible for manager/admin only.)</span>
                             </div>
                         </div>
 
@@ -162,10 +158,8 @@
                         </div>
 
                         <div class="col-md-12 my-2">
-                            <div class="margiv-top-10">
-                                <input type="hidden" name="added_by" value="<?php echo $user_id; ?>">
-                                <button type="submit" class="btn green uppercase add_agent">Add Agent</button>
-                            </div>
+                            <input type="hidden" name="added_by" value="<?php echo $user_id; ?>">
+                            <button type="submit" class="btn green uppercase add_agent">Add Agent</button>
                         </div>
                     </div>
                 </form>
