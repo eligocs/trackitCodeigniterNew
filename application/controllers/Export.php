@@ -846,7 +846,7 @@ class Export extends CI_Controller {
 		$user = $this->session->userdata('logged_in');
 		$user_id = $user['user_id'];
 		$role = $user['role'];
-		if( $role == '99' || $role == '98' ){
+		if( $role == '99' || $role == '98' || $role == '93'){
 			if( isset( $_GET['d_from'] ) && isset( $_GET["filter"] ) && isset( $_GET['end'] ) ){
 				//Check todayStatus
 				$todayStatus	= isset( $_GET['todayStatus'] ) && !empty( $_GET['todayStatus'] ) ? $_GET['todayStatus'] : "";
