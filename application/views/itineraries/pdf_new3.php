@@ -82,8 +82,8 @@ if (!empty($itinerary)) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0"> -->
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0">
     <title>PDF</title>
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo site_url()  . 'site/images/' . favicon() ?>" />
 
@@ -147,6 +147,14 @@ if (!empty($itinerary)) {
     .strikeLine {
         text-decoration: line-through !important;
     }
+
+
+    @font-face {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    src: url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+  }
     </style>
 
 </head>
@@ -285,7 +293,7 @@ if (!empty($itinerary)) {
                             for ($i = 0; $i < $count_day; $i++) {
                     ?>
                 <div class="tour_day" style="padding: 0 16px; margin: 50px 0;">
-                    <fieldset style="border: 1px solid gray; border-radius: 6px; position: relative;">
+                    <fieldset style="border: 2px solid #ff0000; border-radius: 6px; position: relative;">
                         <legend style="position: absolute; top: -18px; background: #fff; padding: 0 12px;"><span
                                 style="font-size: 24px;">Day</span>
                             <span
@@ -319,9 +327,9 @@ if (!empty($itinerary)) {
                         <?php } ?>
 
                         <p style="margin: 12px 0;font-size: 16px;font-weight: bold;color: #ff0000;">
-                            Meal Plan : <span style="color: #000; font-weight: 500; font-size: 14px;  font-family: cursive;">
+                            Meal Plan : <span style="color: #000; font-weight: 500; font-size: 14px; margin-left: 8px;">
                                 <?= $tourData[$i]['meal_plan']; ?></span></p>
-                        <p style="font-size: 14px; margin: 0; line-height: 20px;"><?= $tourData[$i]['tour_des']; ?>
+                        <p style="font-size: 16px; margin: 0; line-height: 30px;"><?= $tourData[$i]['tour_des']; ?>
                         </p>
                         <?php
                                         $hot_destination = "";
@@ -331,7 +339,7 @@ if (!empty($itinerary)) {
                                         ?>
                         <div style="margin-top: 14px; ">
                             <p class="attractions"
-                                style="display: inline-block; color: #ff0000; margin: 10px 0 0px; font-size: 16px; line-height:16px; font-weight: bold;">
+                                style="display: inline-block; color: #ff0000; margin: 10px 0 0px; font-size: 16px; font-weight: bold;">
                                 Attractions :</p>
                             <?php
                                                 foreach ($htd as $key =>$t) {
@@ -1435,14 +1443,14 @@ if (!empty($itinerary)) {
                             <tr>
 
                                 <th
-                                    style="    font-family: Montserrat, sans-serif;  padding: 5px; font-weight: 500; border: 1px solid #c6c1c1; text-align: left;">
+                                    style=" font-family:georgia;padding: 5px; font-weight: 500; border: 1px solid #c6c1c1; text-align: left;">
                                     Bank Name</th>
                                 <td style="padding: 5px; border: 1px solid #c6c1c1; text-align: left;"><?= $b_name ?>
                                 </td>
                             </tr>
                             <tr>
                                 <th
-                                    style=" font-family: Montserrat, sans-serif; padding: 5px; font-weight: 500; border: 1px solid #c6c1c1; text-align: left;">
+                                    style="padding: 5px; font-weight: 500; border: 1px solid #c6c1c1; text-align: left;">
                                     Payee Name</th>
                                 <td style="padding: 5px; border: 1px solid #c6c1c1; text-align: left;">
                                     <?= $payee_name ?>
@@ -1703,5 +1711,6 @@ if (!empty($itinerary)) {
 
 </html>
 <?php
+// $dompdf->setBasePath(realpath(APPLICATION_PATH . "/path/fonts.css"));
 }
 ?>

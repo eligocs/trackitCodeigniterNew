@@ -720,22 +720,22 @@
                         </div>
 
                         <div class='standard  form-group col-md-2'>
-                            <label><strong>Deluxe:</strong></label>
+                            <label><strong>2 Star:</strong></label>
                             <input <?php echo $st_req; ?> name="rate_meta[standard_rates]" type="number"
                                 class='form-control'></input>
                         </div>
                         <div class='deluxe form-group col-md-2'>
-                            <label><strong>Super Deluxe:</strong></label>
+                            <label><strong>3 Star:</strong></label>
                             <input <?php echo $d_req; ?> name="rate_meta[deluxe_rates]" type="number"
                                 class='form-control'></input>
                         </div>
                         <div class='super_deluxe form-group col-md-2'>
-                            <label><strong>Luxury:</strong></label>
+                            <label><strong>4 Star:</strong></label>
                             <input <?php echo $sd_req; ?>name="rate_meta[super_deluxe_rates]" type="number"
                                 class='form-control'></input>
                         </div>
                         <div class='luxury form-group col-md-2'>
-                            <label><strong>Super Luxury:</strong></label>
+                            <label><strong>5 Star:</strong></label>
                             <input <?php echo $l_req; ?> name="rate_meta[luxury_rates]" type="number"
                                 class='form-control'></input>
                         </div>
@@ -764,23 +764,23 @@
                         <!--perperson rate meta -->
                         <div class="col-md-12 perperson_section" style="display: none;">
                             <div class='standard  form-group col-md-3'>
-                                <label><strong>Deluxe (Per/Person):</strong></label>
+                                <label><strong>2 Star (Per/Person):</strong></label>
                                 <input <?php echo $st_req; ?> name="per_person_ratemeta[standard_rates]" type="number"
                                     class='form-control' placeholder="Deluxe Per/Person Cost"></input>
                             </div>
 
                             <div class='deluxe form-group col-md-3'>
-                                <label><strong>Super Deluxe (Per/Person):</strong></label>
+                                <label><strong>3 Star (Per/Person):</strong></label>
                                 <input <?php echo $d_req; ?> name="per_person_ratemeta[deluxe_rates]" type="number"
                                     class='form-control' placeholder="Super Deluxe Per/Person Cost"></input>
                             </div>
                             <div class='super_deluxe form-group col-md-3'>
-                                <label><strong>Luxury (Per/Person):</strong></label>
+                                <label><strong>4 Star (Per/Person):</strong></label>
                                 <input <?php echo $sd_req; ?> name="per_person_ratemeta[super_deluxe_rates]" type="number"
                                     class='form-control' placeholder="Luxury Per/Person Cost"></input>
                             </div>
                             <div class='luxury form-group col-md-3'>
-                                <label><strong>Super Luxury (Per/Person):</strong></label>
+                                <label><strong>5 Star (Per/Person):</strong></label>
                                 <input <?php echo $l_req; ?> name="per_person_ratemeta[luxury_rates]" type="number"
                                     class='form-control' placeholder="Super Deluxe Per/Person Cost"></input>
                             </div>
@@ -788,26 +788,26 @@
                             <div class="clearfix"></div>
                             <!--child rate-->
                             <div class='standard  form-group col-md-3'>
-                                <label><strong class="red">Deluxe (Per/child):</strong><span
+                                <label><strong class="red">2 Star (Per/child):</strong><span
                                         style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                                 <input <?php echo $st_req; ?> name="per_person_ratemeta[child_standard_rates]" type="number"
                                     class='form-control' placeholder="Deluxe Per/child Cost"></input>
                             </div>
 
                             <div class='deluxe form-group col-md-3'>
-                                <label><strong class="red">Super Deluxe (Per/child):</strong><span
+                                <label><strong class="red">3 Star (Per/child):</strong><span
                                         style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                                 <input <?php echo $d_req; ?> name="per_person_ratemeta[child_deluxe_rates]" type="number"
                                     class='form-control' placeholder="Super Deluxe Per/child Cost"></input>
                             </div>
                             <div class='super_deluxe form-group col-md-3'>
-                                <label><strong class="red">Luxury (Per/child):</strong><span
+                                <label><strong class="red">4 Star (Per/child):</strong><span
                                         style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                                 <input <?php echo $sd_req; ?> name="per_person_ratemeta[child_super_deluxe_rates]"
                                     type="number" class='form-control' placeholder="Luxury Per/child Cost"></input>
                             </div>
                             <div class='luxury form-group col-md-3'>
-                                <label><strong class="red">Super Luxury (Per/child):</strong><span
+                                <label><strong class="red">5 Star (Per/child):</strong><span
                                         style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                                 <input <?php echo $l_req; ?> name="per_person_ratemeta[child_luxury_rates]" type="number"
                                     class='form-control' placeholder="Super Deluxe Per/child Cost"></input>
@@ -909,24 +909,24 @@
                             </strong></p>
                     </div>
                     <div class='standard  form-group col-md-2'>
-                        <label><strong>Deluxe:</strong></label>
+                        <label><strong>2 Star:</strong></label>
                         <input <?php echo $st_req; ?> name="rate_meta[standard_rates]" type="number"
                             class='form-control'
                             value="<?php echo isset($get_rate_meta["standard_rates"]) ? $get_rate_meta["standard_rates"] : 0; ?>"></input>
                     </div>
                     <div class='deluxe form-group col-md-2'>
-                        <label><strong>Super Deluxe:</strong></label>
+                        <label><strong>3 Star:</strong></label>
                         <input <?php echo $d_req; ?> name="rate_meta[deluxe_rates]" type="number" class='form-control'
                             value="<?php echo isset($get_rate_meta["deluxe_rates"]) ? $get_rate_meta["deluxe_rates"] : 0; ?>"></input>
                     </div>
                     <div class='super_deluxe form-group col-md-2'>
-                        <label><strong>Luxury:</strong></label>
+                        <label><strong>4 Star:</strong></label>
                         <input <?php echo $sd_req; ?> name="rate_meta[super_deluxe_rates]" type="number"
                             class='form-control'
                             value="<?php echo isset($get_rate_meta["super_deluxe_rates"]) ? $get_rate_meta["super_deluxe_rates"] : 0; ?>"></input>
                     </div>
                     <div class='luxury form-group col-md-2'>
-                        <label><strong>Super Luxury:</strong></label>
+                        <label><strong>5 Star:</strong></label>
                         <input <?php echo $l_req; ?> name="rate_meta[luxury_rates]" type="number" class='form-control'
                             value="<?php echo isset($get_rate_meta["luxury_rates"]) ? $get_rate_meta["luxury_rates"] : 0; ?>"></input>
                     </div>
@@ -963,26 +963,26 @@
                     <div class="col-md-12 perperson_section"
                         style="display: <?php echo !empty( $check_perperson ) ? "block" : "none"; ?>">
                         <div class='standard  form-group col-md-3'>
-                            <label><strong>Deluxe (Per/Person):</strong></label>
+                            <label><strong>2 Star (Per/Person):</strong></label>
                             <input <?php echo $st_req; ?> name="per_person_ratemeta[standard_rates]" type="number"
                                 class='form-control' value="<?php echo $s_pp; ?>"
                                 placeholder="Deluxe Per/Person Cost"></input>
                         </div>
 
                         <div class='deluxe form-group col-md-3'>
-                            <label><strong>Super Deluxe (Per/Person):</strong></label>
+                            <label><strong>3 Star (Per/Person):</strong></label>
                             <input <?php echo $d_req; ?> name="per_person_ratemeta[deluxe_rates]" type="number"
                                 value="<?php echo $d_pp; ?>" class='form-control'
                                 placeholder="Super Deluxe Per/Person Cost"></input>
                         </div>
                         <div class='super_deluxe form-group col-md-3'>
-                            <label><strong>Luxury (Per/Person):</strong></label>
+                            <label><strong>4 Star (Per/Person):</strong></label>
                             <input <?php echo $sd_req; ?> name="per_person_ratemeta[super_deluxe_rates]" type="number"
                                 value="<?php echo $sd_pp; ?>" class='form-control'
                                 placeholder="Luxury Per/Person Cost"></input>
                         </div>
                         <div class='luxury form-group col-md-3'>
-                            <label><strong>Super Luxury (Per/Person):</strong></label>
+                            <label><strong>5 Star (Per/Person):</strong></label>
                             <input <?php echo $l_req; ?> name="per_person_ratemeta[luxury_rates]" type="number"
                                 value="<?php echo $l_pp; ?>" class='form-control'
                                 placeholder="Super Deluxe Per/Person Cost"></input>
@@ -991,7 +991,7 @@
                         <!--child rates-->
                         <!--child rate-->
                         <div class='standard  form-group col-md-3'>
-                            <label><strong class="red">Deluxe (Per/child):</strong><span
+                            <label><strong class="red">2 Star (Per/child):</strong><span
                                     style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                             <input <?php echo $st_req; ?> name="per_person_ratemeta[child_standard_rates]" type="number"
                                 class='form-control' placeholder="Deluxe Per/child Cost"
@@ -999,21 +999,21 @@
                         </div>
 
                         <div class='deluxe form-group col-md-3'>
-                            <label><strong class="red">Super Deluxe (Per/child):</strong><span
+                            <label><strong class="red">3 Star (Per/child):</strong><span
                                     style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                             <input <?php echo $d_req; ?> name="per_person_ratemeta[child_deluxe_rates]" type="number"
                                 class='form-control' placeholder="Super Deluxe Per/child Cost"
                                 value="<?php echo $child_d_pp; ?>"></input>
                         </div>
                         <div class='super_deluxe form-group col-md-3'>
-                            <label><strong class="red">Luxury (Per/child):</strong><span
+                            <label><strong class="red">4 Star (Per/child):</strong><span
                                     style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                             <input <?php echo $sd_req; ?> name="per_person_ratemeta[child_super_deluxe_rates]"
                                 type="number" class='form-control' placeholder="Luxury Per/child Cost"
                                 value="<?php echo $child_sd_pp; ?>"></input>
                         </div>
                         <div class='luxury form-group col-md-3'>
-                            <label><strong class="red">Super Luxury (Per/child):</strong><span
+                            <label><strong class="red">5 Star (Per/child):</strong><span
                                     style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
                             <input <?php echo $l_req; ?> name="per_person_ratemeta[child_luxury_rates]" type="number"
                                 class='form-control' placeholder="Super Deluxe Per/child Cost"
@@ -1075,10 +1075,10 @@
                                 </p>
                             </tr>
                             <tr>
-                                <th> Deluxe</th>
-                                <th> Super Deluxe</th>
-                                <th> Luxury</th>
-                                <th> Super Luxury</th>
+                                <th> 2 Star</th>
+                                <th> 3 Star</th>
+                                <th> 4 Star</th>
+                                <th> 5 Star</th>
                                 <th> Agent Margin(%)</th>
                             </tr>
                         </thead>
@@ -1798,7 +1798,7 @@
                                                     case "Standard":
                                                         $standard_html .= "<tr>
                                                             <td>{$hotel_location}</td>
-                                                            <td>Deluxe</td>
+                                                            <td>2 Star</td>
                                                             <td>{$check_in}</td>
                                                             <td>{$check_out}</td>
                                                             <td>{$hotel_name}</td>
@@ -1811,7 +1811,7 @@
                                                     case "Deluxe":
                                                         $deluxe_html .= "<tr>
                                                             <td>{$hotel_location}</td>
-                                                            <td>Super Deluxe</td>
+                                                            <td>53Star</td>
                                                             <td>{$check_in}</td>
                                                             <td>{$check_out}</td>
                                                             <td>{$hotel_name}</td>
@@ -1824,7 +1824,7 @@
                                                     case "Super Deluxe":
                                                         $super_deluxe_html .= "<tr>
                                                             <td>{$hotel_location}</td>
-                                                            <td>Luxury</td>
+                                                            <td>4 Star</td>
                                                             <td>{$check_in}</td>
                                                             <td>{$check_out}</td>
                                                             <td>{$hotel_name}</td>
@@ -1837,7 +1837,7 @@
                                                     case "Luxury":
                                                         $luxury_html .= "<tr>
                                                             <td>{$hotel_location}</td>
-                                                            <td>Super Luxury</td>
+                                                            <td>5 Star</td>
                                                             <td>{$check_in}</td>
                                                             <td>{$check_out}</td>
                                                             <td>{$hotel_name}</td>
@@ -1865,19 +1865,19 @@
                                     $is_luxury 		= in_array("Luxury", array_column($hotel_meta, 'hotel_category')) ? TRUE : FALSE; */
                                     
                                     if( $is_standard ) {
-                                        echo "<div class='well well-sm'><h3>Deluxe</h3></div>";
+                                        echo "<div class='well well-sm'><h3>2 Star</h3></div>";
                                         echo $table_start . $standard_html . "</table>";
                                     }
                                     if( $is_deluxe ){
-                                        echo "<div class='well well-sm'><h3>Super Deluxe</h3></div>";
+                                        echo "<div class='well well-sm'><h3>3 Star</h3></div>";
                                         echo $table_start . $deluxe_html . "</table>";
                                     }
                                     if( $is_s_deluxe ){
-                                        echo "<div class='well well-sm'><h3>Luxury</h3></div>";
+                                        echo "<div class='well well-sm'><h3>4 Star</h3></div>";
                                         echo $table_start . $super_deluxe_html . "</table>";
                                     }
                                     if( $is_luxury ){
-                                        echo "<div class='well well-sm'><h3>Super Luxury</h3></div>";
+                                        echo "<div class='well well-sm'><h3>5 Star</h3></div>";
                                         echo $table_start . $luxury_html . "</table>";
                                     }
                                 } ?>
@@ -1896,10 +1896,10 @@
                                 <table class='table table-bordered'>
                                     <tr>
                                         <th>Hotel Category</th>
-                                        <th>Deluxe</th>
-                                        <th>Super Deluxe</th>
-                                        <th>Luxury</th>
-                                        <th>Super Luxury</th>
+                                        <th>2 Star</th>
+                                        <th>3 Star</th>
+                                        <th>4 Star</th>
+                                        <th>5 Star</th>
                                     </tr>
                                     <?php
                                     //Rate meta
@@ -2521,18 +2521,18 @@
 
                                                 <label><input <?php echo $st_req; ?> name="hotel_cat_dis[]" required
                                                         type="checkbox" value="Standard"> <span class="cr"><i
-                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>Deluxe</strong></label><br>
+                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>2 Star</strong></label><br>
                                                 <label><input <?php echo $d_req; ?> name="hotel_cat_dis[]" required
                                                         type="checkbox" value="Deluxe"> <span class="cr"><i
-                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>Super
-                                                        Deluxe</strong></label><br>
+                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>3 Star
+                                                        </strong></label><br>
                                                 <label><input <?php echo $sd_req; ?> name="hotel_cat_dis[]" required
                                                         type="checkbox" value="Super Deluxe"> <span class="cr"><i
-                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>Luxury</strong></label><br>
+                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>4 Star</strong></label><br>
                                                 <label><input <?php echo $l_req; ?> type="checkbox" required
                                                         name="hotel_cat_dis[]" value="Luxury"> <span class="cr"><i
-                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>Super
-                                                        Luxury</strong></label>
+                                                            class="cr-icon glyphicon glyphicon-ok"></i></span><strong>5 Star
+                                                        </strong></label>
                                             </div>
                                         </div>
 
@@ -2715,8 +2715,9 @@
 															?>
 
                                             <!--hide if discount data exists-->
-                                            <?php if( empty($dis_arr) && $iti->iti_package_type !== "Fixed Departure" ){ 
-															/*
+                                            <?php 
+                                            // if( empty($dis_arr) ){ 
+															
 															?>
                                             <div class="col-md-6">
                                                 <label for="inp_inc_price">Add Margin In Base Price (%):</label>
@@ -2725,12 +2726,14 @@
                                                     required name="agnem">
                                                     <!--option value="0">No Margin</option-->
                                                     <option value="">Select Margin</option>
-                                                    <?php for($bp = 2 ; $bp<=20 ; $bp++ ){
+                                                    <?php for($bp =  9; $bp<=25 ; $bp++ ){
 																				echo "<option value={$bp}>{$bp}%</option>";
 																			} ?>
                                                 </select>
                                             </div>
-                                            */ ?>
+                                            <?php
+                                        //  } ?>
+                                            
                                             <?php /* ?>
                                             <div class="form-group col-md-12">
                                                 <label for="incPriceByAgent">Add Margin In Base Price
@@ -2753,7 +2756,6 @@
                                                 </div>
                                             </div>
                                             */ ?>
-                                            <?php } ?>
                                             <div class="table-responsive showonPchange1 col-md-12" id='a_price_table'>
                                                 <table class="table table-striped table-hover">
                                                     <thead class="thead-default">
@@ -2763,10 +2765,10 @@
                                                             </p>
                                                         </tr>
                                                         <tr>
-                                                            <th> Deluxe</th>
-                                                            <th> Super Deluxe</th>
-                                                            <th> Luxury</th>
-                                                            <th> Super Luxury</th>
+                                                            <th> 2 Star</th>
+                                                            <th> 3 Star</th>
+                                                            <th> 4 Star</th>
+                                                            <th> 5 Star </th>
                                                             <th> Agent Margin (%) </th>
                                                         </tr>
                                                     </thead>

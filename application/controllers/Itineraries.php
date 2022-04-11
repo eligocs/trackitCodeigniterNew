@@ -1520,15 +1520,21 @@ class Itineraries extends CI_Controller {
 					$hotel_note_meta		= serialize( $this->input->post('hotel_note_meta', TRUE) );
 					//if( $role == 99 || $role == 98 ){
 					if ( $role == 99 || is_cost_manager() || is_super_manager() || is_sales_manager() || is_salesteam()){
-						$hotel_rate_meta		= serialize($this->input->post('rate_meta', TRUE));
+						$chekeRate = [];
+						foreach($this->input->post('rate_meta') as $key => $ratemeta ){
+						    if($ratemeta){
+						        $chekeRate[$key] = $ratemeta;
+						    }
+						} 
+						// $hotel_rate_meta		= serialize($this->input->post('rate_meta', TRUE));
 						$rate_comment			= isset( $_POST['rate_comment'] ) ? $_POST['rate_comment'] : "";
 						$per_person_ratemeta	= isset( $_POST['per_person_ratemeta'] ) ? serialize($this->input->post('per_person_ratemeta')) : "";
 						$step_data = array(
 							'hotel_meta'			=> $hotel_meta,
 							'hotel_note_meta'		=> $hotel_note_meta,
-							'rates_meta'			=> $hotel_rate_meta,
+							'rates_meta'			=> !empty($chekeRate) && (count($chekeRate) >  0) ? serialize($this->input->post('rate_meta', TRUE)) : '',
 							'rate_comment'			=> $rate_comment,
-							'pending_price'			=> 2,
+							'pending_price'			=> !empty($chekeRate) && (count($chekeRate) >  0) ? '2' : '0',
 							'per_person_ratemeta'	=> $per_person_ratemeta,
 						);
 					}else{
@@ -3465,6 +3471,7 @@ class Itineraries extends CI_Controller {
 				$this->pdf->loadHtml($html);
 				$this->pdf->setPaper('A4', 'Portrait');
 				$this->pdf->render();
+				
 
 				//Get customer info
 				$itidata = $data['itinerary'];

@@ -262,6 +262,61 @@
                 </div>
                 <?php } ?>
                 <div class="table-responsive">
+
+                <table id="itinerary2" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Iti ID </th>
+                        <th> Type </th>
+                        <th> Number of Person </th>
+                      
+                        <th> Package Name </th>
+                        <th> Temp. T/Date</th>
+                        <th> Travel Date</th>
+                        <th> Action </th>
+                        <th> Sent Status</th>
+                        <th> Publish Status</th>
+                        <?php //if( $user_role != 96 ){ ?>
+                        <th> Agent </th>
+                        <?php //} ?>
+                        <th> Iti status </th>
+                    </tr>
+
+                    <tr>
+                        <td> # </td>
+                        <td> #89786 
+                                <div class="other_info">
+
+                                <span title="Lead Id" class="badge bg-secondary my-2"> Lead ID : 4545</span>
+    <div title="Client Name" class="fw-bold my-1"> Rahul CHOUKOTIYA </div>
+    <span title="Itinerary Id" class="badge bg-primary iti_id m-0"> <span class="">Iti ID : </span> 5677</span>
+    <span title="Holiday Type" class="badge bg-success"> Holiday </span>
+    <span title="Phone Number" class="badge bg-warning"> <a href="tel:+8989281754" class="text-white">8989281754</a></span>
+                                </div>
+
+
+
+                        </td>
+                        <td> Holidays </td>
+                      
+                        <td> 2 <i class="fa-solid fa-baby"></i> </td>
+                      
+                        <td> Shimla Manali Tour Chandigarh Shimla 2 Days Manali 3 Days Dropping Chandigarh </td>
+                        <td> Temp. T/Date</td>
+                        <td> Travel Date</td>
+                        <td> Action </td>
+                        <td> Publish Status</td>
+                        <?php //if( $user_role != 96 ){ ?>
+                        <td> Agent </td>
+                        <?php //} ?>
+                        <td> Iti status </td>
+                    </tr>
+                </thead>             
+
+                </table>
+
+
                     <table id="itinerary" class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -283,6 +338,8 @@
                                 <th> Iti status </th>
                             </tr>
                         </thead>
+
+
                         <tfoot>
                             <tr>
                                 <th> # </th>
@@ -302,8 +359,11 @@
                                 <?php //} ?>
                                 <th> Iti status </th>
                             </tr>
+                           
                         </tfoot>
                         <tbody>
+                            
+
                             <div class="loader"></div>
                             <div id="res"></div>
                             <!--DataTable Goes here-->

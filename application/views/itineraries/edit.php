@@ -1505,7 +1505,7 @@
                                           $below_base_price = isset($per_person_ratemeta["below_base_price"]) && $per_person_ratemeta["below_base_price"] == 1 ? 1 : 0; ?>
                                        <div class='mt-repeater-hotel-input luxury form-group col-md-6'>
                                           <label><strong>Rate Comment*:</strong></label>
-                                          <textarea required name="rate_comment"
+                                          <textarea  name="rate_comment"
                                              class='form-control'><?php if (isset($iti->rate_comment)) echo $iti->rate_comment; ?></textarea>
                                        </div>
                                        <!--div class='form-group col-md-2' >

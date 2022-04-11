@@ -373,7 +373,7 @@ class Promotion extends CI_Controller {
 			$data['itinerary'] 			= $this->global_model->getdata( 'itinerary', $where );
 			
 			//get view folder
-			$view_file = !empty( $data['itinerary'] ) && $data['itinerary'][0]->iti_type == 2  ? "accommodation/pdf_new3" : "itineraries/pdf_new3";
+			$view_file = !empty( $data['itinerary'] ) && $data['itinerary'][0]->iti_type == 2  ? "itineraries/pdf_new3" : "itineraries/pdf_new3";
 			
 			
 				$this->load->view($view_file, $data);
