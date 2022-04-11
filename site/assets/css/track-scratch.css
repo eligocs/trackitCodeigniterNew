@@ -4447,7 +4447,7 @@ a:hover {
 
 hr {
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #827979;
     border-bottom: 0
 }
 
@@ -37357,8 +37357,8 @@ td .dropdown-menu {
 }
 
 input[type=checkbox] {
-    max-width: 20px !important;
-    border: none;
+    /* max-width: 20px !important;
+    border: none; */
 }
 
 

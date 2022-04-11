@@ -1,67 +1,60 @@
-<style>.input-large {
-    width: 400px !important;
-}</style>
 <div class="page-container customer_content">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-	
 			<?php $message = $this->session->flashdata('error'); 
 			if($message){ echo '<span class="help-block help-block-error1 red">'.$message.'</span>';} ?>
-			
-				<div class="portlet box blue">
-					<div class="portlet-title">
-						<div class="caption">
-							<i class="icon-plus"></i>Add Season
-						</div>
-						<a class="btn btn-success" href="<?php echo site_url("hotels/seasons"); ?>" title="Back">Back</a>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="icon-plus"></i>Add Season
 					</div>
+					<a class="btn btn-success" href="<?php echo site_url("hotels/seasons"); ?>" title="Back">Back</a>
 				</div>
+			</div>
 			<form role="form" id="addSeason" method="post" action="<?php echo site_url("hotels/saveseason"); ?>">
-				<div class="portlet-body">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label class="control-label">Season Name*</label>
-							<input type="text" required placeholder="Season Name. eg: Mid Season etc." name="inp[season_name]" class="form-control" value=""/> 
-						</div>
-					</div>
-					<div class="clearfix"></div>
-					<div class="col-md-6">
-						<label class="control-label">Season Dates*</label>
-						<div class="mt-repeater">
-							<div data-repeater-list="season_date_meta">
-								<div data-repeater-item class="mt-repeater-item mt-overflow">
-								<div class="mt-repeater-cell">
-									<div class="input-group input-large input-daterange mmt-repeater-input-inline">
-										<input readonly required type="text" class="form-control season_from" name="season_from" value="" >
-										<span class="input-group-addon hotel_addon"> to </span>
-										<input readonly required type="text" class="form-control season_to" name="season_to" value=""  > 
-									</div>
-									<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
-										<i class="fa fa-close"></i>
-									</a>
-								</div>
-								</div>
+				<div class="portlet-body custom_card">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label">Season Name*</label>
+								<input type="text" required placeholder="Season Name. eg: Mid Season etc." name="inp[season_name]" class="form-control" value=""/> 
 							</div>
-							<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-							<i class="fa fa-plus"></i> Add new</a>
-							
 						</div>
-					</div>
-				</div> <!-- row -->
-				<div class="clearfix"></div>
-				<hr>
-				<div class="margiv-top-10">
-					<button type="submit" class="btn green uppercase add_roomcategory">Add Season</button>
+						<div class="col-md-8">
+							<label class="control-label">Season Dates*</label>
+							<div class="mt-repeater">
+								<div data-repeater-list="season_date_meta">
+									<div data-repeater-item class="mt-repeater-item mt-overflow">
+										<div class="mt-repeater-cell">
+											<div class="input-group input-daterange mmt-repeater-input-inline">
+												<input readonly required type="text" class="form-control season_from" name="season_from" value="" >
+												<span class="input-group-addon hotel_addon"> to </span>
+												<input readonly required type="text" class="form-control season_to" name="season_to" value=""  > 
+											</div>
+											<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
+												<i class="fa fa-close"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
+								<i class="fa fa-plus"></i> Add new</a>
+							</div>
+						</div>
+						<div class="col-md-12 my-2">
+							<button type="submit" class="btn green uppercase add_roomcategory">Add Season</button>
+						</div>
+					</div> 
 				</div>
+				<!--End portlet body -->
 			</form>
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
-		</div>
+		</div> <!-- portlet -->
+	</div>
 	<!-- END CONTENT BODY -->
 </div>
+
+
 <!-- Modal -->
- </div>
 <script>
 jQuery(document).ready(function($){
 	//Get First and Last Date of year

@@ -13,36 +13,35 @@
             <div class="portlet-body second_custom_card">
                 <form role="form" id="addTranspoter">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Transporter Name*:</label>
                                 <input type="text" required placeholder="Transporter Name" name="trans_name"
                                     class="form-control" value="" />
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Contact Number*:</label>
                                 <input type="number" required placeholder="Contact Number" name="trans_contact"
                                     class="form-control" value="" />
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Email Address*:</label>
                                 <input type="email" required placeholder="Transpoter Email" name="trans_email"
                                     class="form-control" value="" />
                             </div>
                         </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Transporter Address:</label>
                                 <textarea placeholder="Transpoter address" name="trans_address"
                                     class="form-control"></textarea>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Vehicles*:</label><span
                                     style="font-size: 10px; font-weight: bold;"> Press CTRL key to select multiple
@@ -60,24 +59,22 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="col-md-10">
-                        <div class="margiv-top-10">
+                        <div class="col-md-12 my-2">
                             <button type="submit" class="btn green uppercase add_trans">Add Transpoter</button>
                         </div>
                     </div>
-
                 </form>
-                <div class="clearfix"></div>
-            </div><!-- portlet body -->
-        </div> <!-- portlet -->
+            </div>
+            <!-- End Portlet-body -->
+        </div> 
+        <!-- End page-content -->
         <div id="addresEd"></div>
     </div>
-    <!-- END CONTENT BODY -->
+    <!-- END page-content-wrapper -->
 </div>
-<!-- Modal -->
-</div>
+<!-- End page-container -->
+
+
 <script type="text/javascript">
 jQuery(document).ready(function($) {
     var ajaxReq;

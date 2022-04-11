@@ -43,6 +43,30 @@
                         if (!empty($get_customer_info)) {  ?>
                         
                      <p class="package-details-sub-heading">Customer Details</p>
+
+                     <table>
+                        <tr>
+                           <th>Customer Name</th>
+                           <td>Abhijeet</td>
+                           <th>Contact</th>
+                           <td>9578547854</td>
+                           <th>Customer Email</th>
+                           <td>Demo@gamil.com</td>
+                           <th>Travel Date</th>
+                           <td>02 / 04 / 2022</td>
+                        </tr>
+                        <tr>
+                           <th>Package Type</th>
+                           <td>Honeymoon Package</td>
+                           <th>Destination</th>
+                           <td>Shimla & Manali</td>
+                           <th>Meal Plan</th>
+                           <td>Breakfast & Dinner</td>
+                           <th>Hotel Category</th>
+                           <td>deluxe</td>
+                        </tr>
+                     </table>
+
                      <section class="well bg_white overflow_visible section_customer_details row">
                         <label class="col-md-2 border_right_none">Customer Name:</label>
                         <div class="col-md-2 border_right_none">

@@ -15,208 +15,207 @@
                 </div>
             </div>
             <form role="form" id="editHotel" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="form-group col-md-3 my-2">
-                        <label class="control-label">Hotel Name*:</label>
-                        <input type="text" placeholder="Hotel Name" name="name" class="form-control"
-                            value="<?php echo $hotel->hotel_name; ?>" />
-                    </div>
-                    <div class="form-group col-md-3 my-2">
-                        <label class="control-label">Hotel Country*: </label>
-                        <select name="country" class="form-control country">
-                            <option value="">Select Country</option>
-                            <?php $country = get_country_list();
-						if($country){ 
-							foreach( $country as $c ){ ?>
-                            <option value="<?php echo $c->id;?>" <?php if ($c->id == $hotel->country_id ) { ?>
-                                selected="selected" <?php } ?>> <?php echo $c->name ; ?></option>
-                            <?php }
-						}
-						?>
-                        </select>
-                    </div>
-                    <div id="state_list" class="col-md-3 my-2">
-                        <div class="form-group">
-                            <label class="control-label">Hotel State*: </label>
-                            <select name="state" class="form-control state">
-                                <option value="">Select State</option>
-                                <?php $states = get_state_list($hotel->country_id);
-							if($states){
-								foreach( $states as $state ){ ?>
-                                <option value="<?php echo $state->id;?>" <?php if ($state->id == $hotel->state_id ) { ?>
-                                    selected="selected" <?php } ?>> <?php echo $state->name ; ?></option>
+                <div class="custom_card">
+                    <div class="row">
+                        <div class="form-group col-md-3 my-2">
+                            <label class="control-label">Hotel Name*:</label>
+                            <input type="text" placeholder="Hotel Name" name="name" class="form-control"
+                                value="<?php echo $hotel->hotel_name; ?>" />
+                        </div>
+                        <div class="form-group col-md-3 my-2">
+                            <label class="control-label">Hotel Country*: </label>
+                            <select name="country" class="form-control country">
+                                <option value="">Select Country</option>
+                                <?php $country = get_country_list();
+                            if($country){ 
+                                foreach( $country as $c ){ ?>
+                                <option value="<?php echo $c->id;?>" <?php if ($c->id == $hotel->country_id ) { ?>
+                                    selected="selected" <?php } ?>> <?php echo $c->name ; ?></option>
                                 <?php }
-							}
-							?>
+                            }
+                            ?>
                             </select>
                         </div>
-                    </div>
-                    <div id="city_list" class="col-md-3 my-2">
-                        <div class="form-group">
-                            <label class="control-label">Hotel City*: </label>
-                            <select name="city" class="form-control city">
-                                <option value="">Select City</option>
-                                <?php $cities = get_city_list($hotel->state_id);
-							if($cities){
-								foreach( $cities as $city ){ ?>
-                                <option value="<?php echo $city->id;?>" <?php if ($city->id == $hotel->city_id ) { ?>
-                                    selected="selected" <?php } ?>> <?php echo $city->name ; ?></option>
+                        <div id="state_list" class="col-md-3 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Hotel State*: </label>
+                                <select name="state" class="form-control state">
+                                    <option value="">Select State</option>
+                                    <?php $states = get_state_list($hotel->country_id);
+                                if($states){
+                                    foreach( $states as $state ){ ?>
+                                    <option value="<?php echo $state->id;?>" <?php if ($state->id == $hotel->state_id ) { ?>
+                                        selected="selected" <?php } ?>> <?php echo $state->name ; ?></option>
+                                    <?php }
+                                }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="city_list" class="col-md-3 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Hotel City*: </label>
+                                <select name="city" class="form-control city">
+                                    <option value="">Select City</option>
+                                    <?php $cities = get_city_list($hotel->state_id);
+                                if($cities){
+                                    foreach( $cities as $city ){ ?>
+                                    <option value="<?php echo $city->id;?>" <?php if ($city->id == $hotel->city_id ) { ?>
+                                        selected="selected" <?php } ?>> <?php echo $city->name ; ?></option>
 
+                                    <?php }
+                                }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 my-2">
+                            <label class="control-label">Hotel Category*</label>
+                            <select name="category" class="form-control cat">
+                                <option value="">Select Category</option>
+                                <?php $hotels_cat = hotel_categories();
+                            if($hotels_cat){
+                                foreach( $hotels_cat as $cat ){ ?>
+                                <option value="<?php echo $cat->star_id;?>"
+                                    <?php if ($hotel->hotel_category == $cat->star_id ) { ?> selected="selected" <?php } ?>>
+                                    <?php echo $cat->name ; ?></option>
                                 <?php }
-							}
-							?>
+                            }
+                            ?>
                             </select>
+
+                        </div>
+
+                        <div class="form-group col-md-3 my-2">
+                            <label class="control-label">Hotel Email*</label>
+                            <input id="mulit_email" type="text"
+                                placeholder="Email for multi email.eg: hotel@test.com,hotel2@test.com" name="email"
+                                class="form-control" value="<?php echo $hotel->hotel_email; ?>" />
+                        </div>
+                        <div class="form-group col-md-3 my-2">
+                            <label class="control-label">Hotel Address*</label>
+                            <textarea name="address" class="form-control"
+                                placeholder="Hotel Full Address"><?php echo $hotel->hotel_address; ?></textarea>
+                        </div>
+
+                        <div class="form-group col-md-3 my-2">
+                            <label class="control-label">Hotel Contact Number*</label>
+                            <input type="text" placeholder="Hotel Phone Number" name="contact" class="form-control"
+                                value="<?php echo $hotel->hotel_contact; ?>" />
+                        </div>
+                        <div class="form-group col-md-3 my-2">
+                            <label class="control-label">Hotel Website</label>
+                            <input type="text" placeholder="Website Link" name="website" class="form-control"
+                                value="<?php echo $hotel->hotel_website; ?>" />
+                        </div>
+                        <div class="col-md-3 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Room Category*</label>
+                                <select name="room_category[]" class="form-control cat select2" multiple>
+                                    <?php $room_cats = get_room_categories();
+                                        if($room_cats){
+                                            if(!empty($hotel->room_category)){ 
+                                                $cats = explode(',',$hotel->room_category); 
+                                                foreach( $room_cats as $cat ){ 
+                                                    foreach( $cats as $catsingle ){	
+                                                        if($cat->room_cat_id == $catsingle){
+                                                            $Selected_ = 'selected';
+                                                        }else{
+                                                            $Selected_ = '';
+                                                        }
+                                                        echo '<option '.$Selected_.' value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
+                                                    }
+                                                }
+                                            }else{
+                                                foreach( $room_cats as $cat ){ 
+                                                    echo '<option value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
+                                                }
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-3 my-2">
-                        <label class="control-label">Hotel Category*</label>
-                        <select name="category" class="form-control cat">
-                            <option value="">Select Category</option>
-                            <?php $hotels_cat = hotel_categories();
-						if($hotels_cat){
-							foreach( $hotels_cat as $cat ){ ?>
-                            <option value="<?php echo $cat->star_id;?>"
-                                <?php if ($hotel->hotel_category == $cat->star_id ) { ?> selected="selected" <?php } ?>>
-                                <?php echo $cat->name ; ?></option>
-                            <?php }
-						}
-						?>
-                        </select>
-
-                    </div>
-
-                    <div class="form-group col-md-3 my-2">
-                        <label class="control-label">Hotel Email*</label>
-                        <input id="mulit_email" type="text"
-                            placeholder="Email for multi email.eg: hotel@test.com,hotel2@test.com" name="email"
-                            class="form-control" value="<?php echo $hotel->hotel_email; ?>" />
-                    </div>
-                    <div class="form-group col-md-3 my-2">
-                        <label class="control-label">Hotel Address*</label>
-                        <textarea name="address" class="form-control"
-                            placeholder="Hotel Full Address"><?php echo $hotel->hotel_address; ?></textarea>
-                    </div>
-
-                    <div class="form-group col-md-3 my-2">
-                        <label class="control-label">Hotel Contact Number*</label>
-                        <input type="text" placeholder="Hotel Phone Number" name="contact" class="form-control"
-                            value="<?php echo $hotel->hotel_contact; ?>" />
-                    </div>
-                    <div class="form-group col-md-3 my-2">
-                        <label class="control-label">Hotel Website</label>
-                        <input type="text" placeholder="Website Link" name="website" class="form-control"
-                            value="<?php echo $hotel->hotel_website; ?>" />
-                    </div>
-                    <div class="col-md-3 my-2">
-                        <div class="form-group">
-                            <label class="control-label">Room Category*</label>
-                            <select name="room_category[]" class="form-control cat select2" multiple>
-                                <?php $room_cats = get_room_categories();
-									if($room_cats){
-										if(!empty($hotel->room_category)){ 
-											$cats = explode(',',$hotel->room_category); 
-											foreach( $room_cats as $cat ){ 
-												foreach( $cats as $catsingle ){	
-													if($cat->room_cat_id == $catsingle){
-														$Selected_ = 'selected';
-													}else{
-														$Selected_ = '';
-													}
-													echo '<option '.$Selected_.' value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
-												}
-											}
-										}else{
-											foreach( $room_cats as $cat ){ 
-												echo '<option value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
-											}
-										}
-									}
-								?>
-                            </select>
+                    <div class="row">
+                        <div class="form-group col-md-6 my-2">
+                            <label class="control-label">Upload Hotel Image (optional)</label>
+                            <div class="form-group">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 100%; height: 150px;">
+                                        <?php $h_image = site_url() . 'site/images/hotels/' . $hotel->hotel_image; ?>
+                                        <img alt="" class="img-responsive editSlide-image" src="<?php echo $h_image; ?>" />
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail"
+                                        style="max-width: 200px; max-height: 150px;"> </div>
+                                    <div>
+                                        <span class="btn default btn-file">
+                                            <span class="fileinput-newa"> Click here to add/change hotel image </span>
+                                            <span class="fileinput-existss"> </span>
+                                            <input id="image_url" type="file" name="image_url" value=""> </span>
+                                        <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="label label-danger">NOTE! </span>&nbsp;&nbsp;&nbsp;
+                                    <span class='red'> Image size not bigger then 2 MB and dimensions(650px X 250px).</span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                            /* if(!empty($hotel->room_category)){ 
+                                $cats = explode(',',$hotel->room_category); 
+                                foreach( $cats as $cat ){
+                                    var_dump($cat); 
+                                    if($cat->room_cat_id == $cat){
+                                }
+                            }
+                            } */
+                        ?>
+                            <!-- <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Room Category*</label>
+                                    <select name="room_category[]" class="form-control cat select2" multiple>
+                                        <?php $room_cats = get_room_categories();
+                                            if($room_cats){
+                                                if(!empty($hotel->room_category)){ 
+                                                    $cats = explode(',',$hotel->room_category); 
+                                                    foreach( $room_cats as $cat ){ 
+                                                        foreach( $cats as $catsingle ){	
+                                                            if($cat->room_cat_id == $catsingle){
+                                                                $Selected_ = 'selected';
+                                                            }else{
+                                                                $Selected_ = '';
+                                                            }
+                                                            echo '<option '.$Selected_.' value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
+                                                        }
+                                                    }
+                                                }else{
+                                                    foreach( $room_cats as $cat ){ 
+                                                        echo '<option value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div> -->
+                        <div class="col-md-12 my-2">
+                            <input type="hidden" name="id" id="hotel_id" value="<?php echo $hotel->id;?>" />
+                            <button type="submit" class="btn green uppercase edit_hotel">Update Hotel</button>
                         </div>
                     </div>
                 </div>
-        <div class="row">
-        <div class="form-group col-md-3">
-            <label class="control-label">Upload Hotel Image (optional)</label>
-            <div class="form-group">
-                <div class="fileinput fileinput-new" data-provides="fileinput">
-                    <div class="fileinput-new thumbnail" style="width: 100%; height: 150px;">
-                        <?php $h_image = site_url() . 'site/images/hotels/' . $hotel->hotel_image; ?>
-                        <img alt="" class="img-responsive editSlide-image" src="<?php echo $h_image; ?>" />
-                    </div>
-                    <div class="fileinput-preview fileinput-exists thumbnail"
-                        style="max-width: 200px; max-height: 150px;"> </div>
-                    <div>
-                        <span class="btn default btn-file">
-                            <span class="fileinput-newa"> Click here to add/change hotel image </span>
-                            <span class="fileinput-existss"> </span>
-                            <input id="image_url" type="file" name="image_url" value=""> </span>
-                        <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove
-                        </a>
-                    </div>
-                </div>
-                <div class="clearfix margin-top-10">
-                    <span class="label label-danger">NOTE! </span>&nbsp;&nbsp;&nbsp;
-                    <span class='red'> Image size not bigger then 2 MB and dimensions(650px X 250px).</span>
-                </div>
-            </div>
+            </form>
+            <div id="editHotelRes"></div>
+            <?php }else{
+                    echo "Invalid Hotel id";
+                }?>
         </div>
-        <?php
-/* if(!empty($hotel->room_category)){ 
-	$cats = explode(',',$hotel->room_category); 
-	foreach( $cats as $cat ){
-		var_dump($cat); 
-		if($cat->room_cat_id == $cat){
-	}
-}
-} */
-	?>
-        <!-- <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Room Category*</label>
-                            <select name="room_category[]" class="form-control cat select2" multiple>
-                                <?php $room_cats = get_room_categories();
-									if($room_cats){
-										if(!empty($hotel->room_category)){ 
-											$cats = explode(',',$hotel->room_category); 
-											foreach( $room_cats as $cat ){ 
-												foreach( $cats as $catsingle ){	
-													if($cat->room_cat_id == $catsingle){
-														$Selected_ = 'selected';
-													}else{
-														$Selected_ = '';
-													}
-													echo '<option '.$Selected_.' value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
-												}
-											}
-										}else{
-											foreach( $room_cats as $cat ){ 
-												echo '<option value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
-											}
-										}
-									}
-								?>
-                            </select>
-                        </div>
-                    </div> -->
     </div>
-    <div class="clearfix"></div>
-    <hr>
-    <div class="margiv-top-10">
-        <input type="hidden" name="id" id="hotel_id" value="<?php echo $hotel->id;?>" />
-        <button type="submit" class="btn green uppercase edit_hotel">Update Hotel</button>
-    </div>
-    </form>
-    <div id="editHotelRes"></div>
-    <?php }else{
-			echo "Invalid Hotel id";
-		}?>
 </div>
-<!-- END CONTENT BODY -->
-</div>
-<!-- Modal -->
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">

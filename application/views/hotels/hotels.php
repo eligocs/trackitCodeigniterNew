@@ -22,41 +22,47 @@
 					<form id="form-filter" class="form-horizontal clearfix mb-0">
 						<div class="actions custom_filter form-inline">
 							<!--strong>Filter: </strong-->
-							<div class="btn-group" data-toggle="buttons">
+							<div class="row" data-toggle="buttons">
 								<!--label class="control-label">Select State*</label-->
-								<select title="Select State" data-toggle="tooltip" required name="state" class="form-control state">
-									<option value="">Choose state</option>
-									<?php $states = get_indian_state_list();
-									if($states){
-										foreach( $states as $s ){
-											echo '<option value="'. $s->id . '">' . $s->name . '</option>';
+								<div class="col-md-3">
+									<select title="Select State" data-toggle="tooltip" required name="state" class="form-control state">
+										<option value="">Choose state</option>
+										<?php $states = get_indian_state_list();
+										if($states){
+											foreach( $states as $s ){
+												echo '<option value="'. $s->id . '">' . $s->name . '</option>';
+											}
 										}
-									}
-									?>
-								</select>
-								
+										?>
+									</select>
+								</div>
 								<!--label class="control-label">Select City*</label-->
-								<select required title="Select City." data-toggle="tooltip" name="city" class="form-control city">
-									<option value="">Select City</option>
-								</select>
-								
+								<div class="col-md-3">
+									<select required title="Select City." data-toggle="tooltip" name="city" class="form-control city">
+										<option value="">Select City</option>
+									</select>
+								</div>
 								<!--label class="control-label">Select Hotel Category*</label-->
-								<select required title="Select Hotel Category"  name="hotel_cat" class="form-control hotel_cat">
-									<option value="all">All category</option>
-									<?php $h_category = hotel_categories();
-									if($h_category){
-										foreach( $h_category as $cat ){
-											echo '<option value="'. $cat->id . '">' . $cat->name . '</option>';
+								<div class="col-md-3">
+									<select required title="Select Hotel Category"  name="hotel_cat" class="form-control hotel_cat">
+										<option value="all">All category</option>
+										<?php $h_category = hotel_categories();
+										if($h_category){
+											foreach( $h_category as $cat ){
+												echo '<option value="'. $cat->id . '">' . $cat->name . '</option>';
+											}
 										}
-									}
-									?>
-								</select>
+										?>
+									</select>
+								</div>
+								<!--End-->
+								<div class="col-md-3">
+									<input type="hidden" id="city_id" value="" />
+									<input type="hidden" id="hotel_cat" value="all" />
+									<input type="submit" class="btn btn-success" value="Filter">
+									<input type="button" class="btn btn-success clearFilter" value="Clear Filter">
+								</div>
 							</div>	
-							<!--End-->
-							<input type="hidden" id="city_id" value="" />
-							<input type="hidden" id="hotel_cat" value="all" />
-							<input type="submit" class="btn btn-success" value="Filter">
-							<input type="button" class="btn btn-success clearFilter" value="Clear Filter">
 						</div>
 					</form><!--End filter section-->
 				</div> 

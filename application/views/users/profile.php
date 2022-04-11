@@ -1,7 +1,5 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>site/assets/css/croppie.css">
 	<script src="<?php echo base_url(); ?>site/assets/js/croppie.js"></script>
-
-
 	<?php $user_profile = get_user_info(); ?>
 	<?php if( !empty( $user_profile ) ){ ?>
 	<?php $u_data = $user_profile[0]; ?>
@@ -32,7 +30,8 @@
 	                            <!-- END SIDEBAR USERPIC -->
 	                            <!-- SIDEBAR USER TITLE -->
 	                            <div class="profile-usertitle">
-	                                <div class="profile-usertitle-name"> Name: <strong>
+	                                <div class="profile-usertitle-name"> Name: 
+										<strong>
 	                                        <?php echo !empty( $u_data->first_name ) ? ucfirst($u_data->first_name) ." ". ucfirst($u_data->last_name): ucfirst($u_data->user_name); ?>
 	                                    </strong></div>
 	                                <div class="profile-usertitle-name">Email:
@@ -41,28 +40,27 @@
 	                                        <div class="profile-usertitle-name">Mobile:
 	                                            <strong><?php echo $u_data->mobile; ?></strong>
 	                                            <div>
-
-
 	                                                <div class="profile-usertitle-job">
 	                                                    <strong class="red">
 	                                                        <?php if($u_data->user_type == 99){
-										echo $u_data->is_super_admin == 1 ? "Super Admin" : "Administrator";
-									}elseif($u_data->user_type == 98){
-										$agent_type = get_manager_type( $u_data->is_super_manager );
-										/* if(   $u_data->is_super_manager == 1 ){
-											$agent_type = "Super Manager";
-										}else if( $u_data->is_super_manager == 2 ){
-											$agent_type = "Leads Manager";
-										}else{
-											$agent_type = get_role_name($u_data->user_type);
-										} */
-										echo $agent_type; 
-										//echo $u_data->is_super_manager == 1 ? "Super Manager" : "Manager";
-										//echo $u_data->is_super_manager == 1 ? "Super Manager" : $u_data->is_super_manager == 2 ? "Leads Manager" : "Manager";
-									}else{
-										echo get_role_name($u_data->user_type);
-									}
-								 ?> </strong>
+																echo $u_data->is_super_admin == 1 ? "Super Admin" : "Administrator";
+																}elseif($u_data->user_type == 98){
+																	$agent_type = get_manager_type( $u_data->is_super_manager );
+																	/* if(   $u_data->is_super_manager == 1 ){
+																		$agent_type = "Super Manager";
+																	}else if( $u_data->is_super_manager == 2 ){
+																		$agent_type = "Leads Manager";
+																	}else{
+																		$agent_type = get_role_name($u_data->user_type);
+																	} */
+																	echo $agent_type; 
+																	//echo $u_data->is_super_manager == 1 ? "Super Manager" : "Manager";
+																	//echo $u_data->is_super_manager == 1 ? "Super Manager" : $u_data->is_super_manager == 2 ? "Leads Manager" : "Manager";
+																}else{
+																	echo get_role_name($u_data->user_type);
+																}
+															?> 
+														</strong>
 	                                                </div>
 	                                            </div>
 	                                        </div>

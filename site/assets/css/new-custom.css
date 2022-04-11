@@ -192,6 +192,12 @@ select.form-control:required:invalid {
     font-size: 12px;
   }
 
+  /* check box */
+  .form-check-input {
+      height: 16px;
+      width: 16px;
+    }
+
   /* edit hotel bookings extra bed */
   .without_extra_bed_section .col-md-4, .extra_bed_section .col-md-4{
       display: block !important;

@@ -2,11 +2,11 @@
     <div class="page-content-wrapper">
         <div class="page-content">
             <?php 
-		$message = $this->session->flashdata('success'); 
-		$err = $this->session->flashdata('error'); 
-		if($err){ echo '<span class="help-block help-block-error1 red">'.$err.'</span>';} 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
+                $message = $this->session->flashdata('success'); 
+                $err = $this->session->flashdata('error'); 
+                if($err){ echo '<span class="help-block help-block-error1 red">'.$err.'</span>';} 
+                if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+            ?>
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <div class="portlet box blue">
                 <div class="portlet-title">
@@ -30,33 +30,32 @@
                             <tbody>
                                 <!--Get data-->
                                 <?php 
-                        if (!empty($categories)) {
-                            foreach ($categories as $key => $value) {
-                                $key = $key+1;
-									echo "<tr><td>{$key}</td>
-										<td>{$value->hotel_category_name}</td>
-									<td><a href=" . site_url("Hotelcategory/addcategory/{$value->id}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
-									
-									//Show delete button if season greater than four
-									 if( $key > 4 ){
-										echo "<a href='javascript:void(0)' data-id='{$value->id}' class='btn btn-danger ajax_delete_category'>Delete</a></td></tr>";
-									} 
-								}
-							}else{
-								echo "<tr><td colspan=4><p style='color:red;'>No Data Found.</p></td></tr>";
-							} ?>
+                                if (!empty($categories)) {
+                                    foreach ($categories as $key => $value) {
+                                        $key = $key+1;
+                                            echo "<tr><td>{$key}</td>
+                                                <td>{$value->hotel_category_name}</td>
+                                            <td><a href=" . site_url("Hotelcategory/addcategory/{$value->id}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+                                            
+                                            //Show delete button if season greater than four
+                                            if( $key > 4 ){
+                                                echo "<a href='javascript:void(0)' data-id='{$value->id}' class='btn btn_trash ajax_delete_category'><i class='fa-solid fa-trash'></i></a></td></tr>";
+                                            } 
+                                        }
+                                    }else{
+                                        echo "<tr><td colspan=4><p style='color:red;'>No Data Found.</p></td></tr>";
+                                    } ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <!-- END CONTENT BODY -->
 </div>
-<!-- Modal -->
 
+
+<!-- Modal -->
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $(document).on("click", ".ajax_delete_category", function () {

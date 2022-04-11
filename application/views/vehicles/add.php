@@ -10,52 +10,47 @@
 				</div>
 			</div>	
 			<div class="portlet-body custom_card">
-			<form role="form" id="addVehicles">
-			<div class="row">
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Vehicle Name*</label>
-					<input type="text" required placeholder="Cab Name" name="inp[car_name]" class="form-control" value=""/> 
-				</div>
-				</div>
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Max Person*</label>
-					<select name="inp[max_person]" class="form-control" required >
-						<option value="">Select Max Person</option>
-						<?php for($i = 2 ; $i<= 40; $i++ ){
-							echo "<option value={$i}>{$i}</option>";
-						} ?>
-					</select>
-				</div>
-				</div>
-				
-				<div class="clearfix"></div>
-				
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Rate per/day*</label>
-					<input type="number" required placeholder="Vehicle Rate per/day" name="inp[car_rate]" class="form-control price_input" value=""/> 
-				</div>
-				</div>
+				<form role="form" id="addVehicles">
+					<div class="row">
+						<div class="col-md-6 my-2">
+							<div class="form-group">
+								<label class="control-label">Vehicle Name*</label>
+								<input type="text" required placeholder="Cab Name" name="inp[car_name]" class="form-control" value=""/> 
+							</div>
+						</div>
+
+						<div class="col-md-6 my-2">
+							<div class="form-group">
+								<label class="control-label">Max Person*</label>
+								<select name="inp[max_person]" class="form-control" required >
+									<option value="">Select Max Person</option>
+									<?php for($i = 2 ; $i<= 40; $i++ ){
+										echo "<option value={$i}>{$i}</option>";
+									} ?>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-6 my-2">
+							<div class="form-group">
+								<label class="control-label">Rate per/day*</label>
+								<input type="number" required placeholder="Vehicle Rate per/day" name="inp[car_rate]" class="form-control price_input" value=""/> 
+							</div>
+						</div>
+						<div class="col-md-12 my-2">
+							<button type="submit" class="btn green uppercase add_vehicle">Add Vehicle</button>
+						</div>
+					</div>
+				</form>
+				<div id="addresEd"></div>		
 			</div>
-			<div class="clearfix"></div>
-				<div class="col-md-10">
-				<div class="margiv-top-10">
-					<button type="submit" class="btn green uppercase add_vehicle">Add Vehicle</button>
-				</div>
-				</div>
-				
-			</form>
-			<div class="clearfix"></div>
-			<div id="addresEd"></div>		
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
 		</div>
-	<!-- END CONTENT BODY -->
 	</div>
+	<!-- END CONTENT BODY -->
+</div>
+
+
 <!-- Modal -->
- </div>
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	
