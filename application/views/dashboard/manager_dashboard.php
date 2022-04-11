@@ -46,7 +46,7 @@ $this_month = date("Y-m");
                     <span aria-hidden="true" class="quick-nav-bg"></span>
                 </nav> -->
                 <?php
-                    $this->load->view('dashboard\followupnav');
+                    $this->load->view('dashboard/followupnav');
                 ?>
             <div class="quick-nav-overlay"></div>
             <!-- BEGIN PAGE BAR -->

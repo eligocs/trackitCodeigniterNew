@@ -50,7 +50,7 @@ $this_month = date("Y-m");
             </div>
             <!-- BEGIN PAGE BAR -->
             <?php
-             $this->load->view('dashboard\followupnav');
+             $this->load->view('dashboard/followupnav');
             ?>
             <div class="page-bar px-3">
                 <ul class="page-breadcrumb">
