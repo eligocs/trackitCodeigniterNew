@@ -47,12 +47,13 @@
                      ?>
                         <!--start filter section-->
                         <form id="form-filter" class=" form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
-                            <div class="actions custom_filter"> 
+                            <div class="actions custom_filter">
                                 <div class="row">
                                     <!--Calender-->
-                                    <div class="col-md-3 my-2"> 
+                                    <div class="col-md-3 my-2">
                                         <label for="" class="control-label"><strong>Filter: </strong></label>
-                                        <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+                                        <input type="text" autocomplete="off" class="form-control" id="daterange"
+                                            name="dateRange" value="" required />
                                     </div>
                                     <!--End-->
                                     <div class="col-md-3 my-2">
@@ -126,17 +127,17 @@
                                         <div class="filter_box">
                                             <label>&nbsp; </label>
                                             <select name="filtername" class="form-control">
-                                                <option  value="all">All</option>
-                                                <option  value="draft" >Draft</option>
-                                                <option  value="hold" >Hold</option>
-                                                <option  value="pending" >Working</option>
-                                                <option  value="notwork" >Not Process</option>
-                                                <option  value="7" >Declined</option>
-                                                <option  value="9" >Approved</option>
-                                                <option  value="travel_date" >TD</option>
-                                                <option  value="temp_travel_date" >TTD                                               </option>
-                                                <option  value="revised" >Amendment</option>
-                                                <option  value="agent_margen_20" >
+                                                <option value="all">All</option>
+                                                <option value="draft">Draft</option>
+                                                <option value="hold">Hold</option>
+                                                <option value="pending">Working</option>
+                                                <option value="notwork">Not Process</option>
+                                                <option value="7">Declined</option>
+                                                <option value="9">Approved</option>
+                                                <option value="travel_date">TD</option>
+                                                <option value="temp_travel_date">TTD </option>
+                                                <option value="revised">Amendment</option>
+                                                <option value="agent_margen_20">
                                                     AM>=20%</option>
                                             </select>
                                         </div>
@@ -220,15 +221,19 @@
                     <label for="" class="d_block">&nbsp;</label>
                     <div class="dropdown pull-right action_menu">
                         <button class="btn btn_blue_outline dropdown-toggle" type="button" data-toggle="dropdown">Action
-                        <span class="caret"></span></button>
+                            <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <!-- dropdown-item -->
                             <li>
-                                <a href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>"><i class="fa fa-envelope"></i> Today Revised Quotation Sent</a>
+                                <a
+                                    href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>"><i
+                                        class="fa fa-envelope"></i> Today Revised Quotation Sent</a>
                             </li>
                             <!-- dropdown-item -->
                             <li>
-                                 <a href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>"><i class="fa fa-envelope"></i> Today Sent Quotation</a>
+                                <a
+                                    href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>"><i
+                                        class="fa fa-envelope"></i> Today Sent Quotation</a>
                             </li>
                             <!-- dropdown-item -->
                         </ul>
@@ -263,59 +268,74 @@
                 <?php } ?>
                 <div class="table-responsive">
 
-                <table id="itinerary2" class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th> # </th>
-                        <th> Iti ID </th>
-                        <th> Type </th>
-                        <th> Number of Person </th>
-                      
-                        <th> Package Name </th>
-                        <th> Temp. T/Date</th>
-                        <th> Travel Date</th>
-                        <th> Action </th>
-                        <th> Sent Status</th>
-                        <th> Publish Status</th>
-                        <?php //if( $user_role != 96 ){ ?>
-                        <th> Agent </th>
-                        <?php //} ?>
-                        <th> Iti status </th>
-                    </tr>
+                    <table id="itinerary2" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                               
+                                <th> Iti Info </th>
+                                <th> Travellers </th>
+                                <th> Package Name </th>                             
+                                <th> Travel Date</th>
+                                <th> Sent Status</th>                                
+                    
+                                <th>Created on </th>
+                                <th> Action </th>
+                            </tr>
 
-                    <tr>
-                        <td> # </td>
-                        <td> #89786 
-                                <div class="other_info">
+                            <tr>
+                                
+                                <td>
+                                    <span title="Lead Id" class="badge bg-light text-dark me-2"> Lead ID : 4545</span>
+                                    <div title="Client Name" class="fw-bold my-3"> Rahul CHOUKOTIYA </div>
+                                    <div class="other_info d-flex">
+                                        <!-- <span title="Itinerary Id" class="badge bg-primary iti_id mx-1"> 
+                                           Iti ID : 5677
+                                        </span> -->
+                                        <span title="Holiday Type" class="badge bg-success me-2"> Holiday </span>
+                                        <span title="Phone Number" class="badge bg-primary me-2"> 
+                                            <a href="tel:+8989281754" class="text-white">8989281754</a>
+                                        </span>
+                                    </div>
+                                </td>
 
-                                <span title="Lead Id" class="badge bg-secondary my-2"> Lead ID : 4545</span>
-    <div title="Client Name" class="fw-bold my-1"> Rahul CHOUKOTIYA </div>
-    <span title="Itinerary Id" class="badge bg-primary iti_id m-0"> <span class="">Iti ID : </span> 5677</span>
-    <span title="Holiday Type" class="badge bg-success"> Holiday </span>
-    <span title="Phone Number" class="badge bg-warning"> <a href="tel:+8989281754" class="text-white">8989281754</a></span>
+
+                                <td >
+                                    <div class="d-flex">
+                                <span   class="badge bg-light text-dark me-1 my-1 fs-7" title="Adult">
+                                      2 <i class="fa-solid fa-user text-black-50" ></i>
+                                </span>      
+                                <span   class="badge bg-light text-dark me-1 my-1 fs-7" title="Children">
+                                      1 <i class="fa-solid fa-child text-black-50" ></i>
+                                 </span>
+                                <span  class="badge bg-light text-dark me-1 my-1 fs-7" title="Baby">     
+                                    3 <i class="fa-solid fa-baby text-black-50" ></i>
+                                </span>
                                 </div>
+                                </td>
 
+                                <td> Shimla Manali Tour Chandigarh Shimla 2 Days Manali 3 Days Dropping Chandigarh </td>
+                               
+                                <td> 13/09/2022
+                                 <span   class="badge bg-light text-dark me-1 my-1 fs-7">
+                                    assigned to : Rajani Sharma
+                                </span>   
 
+                                </td>
+                                <td> Not Send/ 1 Times Sent</td>
+                             
+                                
+                                <td> 12 Jan 2022 </td>
+                                <td> 
+                                <a href="" class="btn btn-success optionToggleBtn">View</a>
+                                <div class="optionTogglePanel" style="display: none;"><a title="Edit" href="http://192.168.1.10/trackitCodeigniterNew/itineraries/edit/87/nvZCYZK4_20211120_1637386288" class="btn_pencil"><i class="fa fa-pencil" aria-hidden="true"></i></a><a target="_blank" title="View" href="http://192.168.1.10/trackitCodeigniterNew/itineraries/view_iti/87/nvZCYZK4_20211120_1637386288" class="btn_eye"><i class="fa fa-eye" aria-hidden="true"></i></a><a target="_blank" title="View Pdf" href="http://192.168.1.10/trackitCodeigniterNew/itineraries/pdf/87/nvZCYZK4_20211120_1637386288" class="btn_pdf"><i class="fa-solid fa-file-pdf"></i></a><a data-id="87" title="Delete Itinerary" href="javascript:void(0)" class="btn_trash ajax_delete_iti"><i class="fa fa-trash-o" aria-hidden="true"></i></a><a title="itinerary declined" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"></i></a></div>
+                                </td>
+                            </tr>
+                        </thead>
 
-                        </td>
-                        <td> Holidays </td>
-                      
-                        <td> 2 <i class="fa-solid fa-baby"></i> </td>
-                      
-                        <td> Shimla Manali Tour Chandigarh Shimla 2 Days Manali 3 Days Dropping Chandigarh </td>
-                        <td> Temp. T/Date</td>
-                        <td> Travel Date</td>
-                        <td> Action </td>
-                        <td> Publish Status</td>
-                        <?php //if( $user_role != 96 ){ ?>
-                        <td> Agent </td>
-                        <?php //} ?>
-                        <td> Iti status </td>
-                    </tr>
-                </thead>             
+                    </table>
+                        </div>
 
-                </table>
-
+                    <div class="table-responsive">
 
                     <table id="itinerary" class="table table-striped table-hover">
                         <thead>
@@ -359,10 +379,10 @@
                                 <?php //} ?>
                                 <th> Iti status </th>
                             </tr>
-                           
+
                         </tfoot>
                         <tbody>
-                            
+
 
                             <div class="loader"></div>
                             <div id="res"></div>
@@ -892,6 +912,8 @@ jQuery(document).ready(function($) {
     $(document).on("click", '.child_clone', function() {
         return confirm('Are you sure to create duplicate itinerary ?');
     });
+
+   
 
 });
 </script>

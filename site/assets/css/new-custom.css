@@ -254,3 +254,5 @@ select.form-control:required:invalid {
 
 
 
+.badge>a{font-size:inherit;}
+.fs-7 {font-size: 0.8rem!important;}

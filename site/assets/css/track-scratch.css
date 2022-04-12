@@ -5645,7 +5645,7 @@ li [class^=icon-].icon-large {
     border: 0
 }
 
-.badge {
+/* .badge {
     font-size: 11px !important;
     font-weight: 300;
     height: 18px;
@@ -5657,7 +5657,7 @@ li [class^=icon-].icon-large {
     text-shadow: none !important;
     text-align: center;
     vertical-align: middle
-}
+} */
 
 .badge.badge-roundless {
     -webkit-border-radius: 0 !important;
@@ -35280,10 +35280,10 @@ table#reviews .form-control {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
-
+/* 
 .text-white {
     color: #fff !important;
-}
+} */
 
 .dropdown-menu>li>a:hover {
     background: #337ab7 !important;
@@ -36464,10 +36464,10 @@ div#comments p {
 }
 
 table {
-    word-wrap: break-word !important;
+    /* word-wrap: break-word !important;
     word-break: break-all !important;
     color: #0d3048;
-    white-space: normal;
+    white-space: normal; */
 }
 
 .old-comments .well {
@@ -36549,9 +36549,9 @@ table {
     margin: 0;
 }
 
-.badge {
+/* .badge {
     font-size: 13px !important;
-}
+} */
 
 .view_call_info .tour_des ul.list-group {
     padding: 0;
@@ -37767,8 +37767,8 @@ table.dataTable.order-column.hover tbody tr:hover>.sorting_1 {
 /* --table-responsive action button Css-- */
 
 .table-responsive tr td a {
-    margin-right: 6px;
-    padding: 4px;
+    /* margin-right: 6px;
+    padding: 4px; */
 }
 
 
@@ -38831,3 +38831,4 @@ li.nav-item {
     /* width: 100%; */
     /* margin-top: 28px; */
 }
+
