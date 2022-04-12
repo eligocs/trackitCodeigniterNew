@@ -263,7 +263,7 @@ class Newsletters extends CI_Controller {
 								$name = !empty( $company_name ) ? $company_name : $customer->$name_key;
 								
 								$email = $customer->$email_key;
-								$res_html .= "<div class='all_mails'><input id='emaillist_{$list_id}'  class='form-control cus_emails' name='customer_email[]' type='checkbox' value='{$email}' /><label for='emaillist_{$list_id}'>{$email}< {$name} ></label></div>";
+								$res_html .= "<div class='all_mails'><input id='emaillist_{$list_id}'  class='form-check-input cus_emails' name='customer_email[]' type='checkbox' value='{$email}' /><label for='emaillist_{$list_id}'>{$email}< {$name} ></label></div>";
 								$list_id++;
 							} 
 							$res_html .= "</div>
@@ -540,7 +540,7 @@ class Newsletters extends CI_Controller {
 			$list_id = 100;
 			foreach( $customer_emails as $customer ){
 				$email = $customer->customer_email;
-				$res_data .= "<div class='all_mails'><input id='emaillist_{$list_id}'  class='form-control cus_emails' name='customer_email[]' type='checkbox' value='{$email}' /><label for='emaillist_{$list_id}'>{$email}</label></div>";
+				$res_data .= "<div class='all_mails'><input id='emaillist_{$list_id}'  class='form-check-input cus_emails' name='customer_email[]' type='checkbox' value='{$email}' /><label for='emaillist_{$list_id}'>{$email}</label></div>";
 				$list_id++;
 			}
 			$res = array( "status" => true, "data" => $res_data );
@@ -578,7 +578,7 @@ class Newsletters extends CI_Controller {
 			$list_id = 100;
 			foreach( $customer_emails as $customer ){
 				$email = $customer->customer_email;
-				$res_data .= "<div class='all_mails'><input id='emaillist_{$list_id}'  class='form-control cus_emails' name='customer_email[]' type='checkbox' value='{$email}' /><label for='emaillist_{$list_id}'>{$email}</label></div>";
+				$res_data .= "<div class='all_mails'><input id='emaillist_{$list_id}'  class='form-check-input cus_emails' name='customer_email[]' type='checkbox' value='{$email}' /><label for='emaillist_{$list_id}'>{$email}</label></div>";
 				$list_id++;
 			}
 			$res = array( "status" => true, "data" => $res_data );

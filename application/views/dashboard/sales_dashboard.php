@@ -133,13 +133,13 @@
 
             <?php $todAy = date("Y-m-d"); ?>
             <div class="todayssection">
-                <div class="portlet-body">
+                <div class="portlet-body row">
                     <div class="col-md-4 col-lg-3">
                         <div class="callCountBlock">
                             <a class="dashboard-stat dashboard-stat-v2 blue"
                                 href="<?php echo site_url("customers") . "/?todayStatus={$todAy}"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-chart-column"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -156,7 +156,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 green"
                                 href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-phone-volume"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -173,7 +173,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 purple"
                                 href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-phone-slash"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -190,7 +190,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 blue"
                                 href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=8"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-user-xmark text-danger"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -207,7 +207,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 purple"
                                 href="<?php echo site_url("customers"). "/?todayStatus={$todAy}&leadStatus=unwork"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-xmark"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -227,13 +227,13 @@
                         class="btn btn_blue_outline pulse view_all_stat_btn "><i class="fa fa-angle-down"></i> View All
                         Stats</button>
                 </div>
-                <div id="todays_full_stats" style="display: none;">
+                <div id="todays_full_stats" class="row" style="display: none;">
                     <div class="col-md-4 col-lg-3">
                         <div class="callCountBlock">
                             <a class="dashboard-stat dashboard-stat-v2 green"
                                 href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-envelope-circle-check"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -251,7 +251,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 blue"
                                 href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=pending"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-spinner"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -268,7 +268,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 green"
                                 href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=9"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-thumbs-up"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -285,7 +285,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 purple"
                                 href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=7"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-file-circle-xmark"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -302,7 +302,7 @@
                             <a class="dashboard-stat dashboard-stat-v2 blue"
                                 href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentRevised&quotation=true"; ?>">
                                 <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
+                                    <i class="fa-solid fa-repeat"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -317,13 +317,13 @@
 
                     <!-- <div class="clearfix"></div> -->
                     <!---------------------------------Revised section ---------------------------->
-                    <div class="today_revised_section">
+                    <div class="today_revised_section row">
                         <div class="col-md-4 col-lg-3">
                             <div class="callCountBlock">
                                 <a class="dashboard-stat dashboard-stat-v2 purple"
                                     href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>">
                                     <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
+                                        <i class="fa-solid fa-repeat"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
@@ -341,7 +341,7 @@
                                 <a class="dashboard-stat dashboard-stat-v2 blue"
                                     href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revApproved"; ?>">
                                     <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
+                                        <i class="fa-solid fa-spell-check"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
@@ -359,7 +359,7 @@
                                 <a class="dashboard-stat dashboard-stat-v2 purple"
                                     href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revDecline"; ?>">
                                     <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
+                                        <i class="fa-solid fa-file-circle-exclamation"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
@@ -376,7 +376,7 @@
                                 <a class="dashboard-stat dashboard-stat-v2 blue"
                                     href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=revDeclineLeads"; ?>">
                                     <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
+                                        <i class="fa-solid fa-file-signature"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
@@ -420,7 +420,7 @@
                             </div>
                             <div class="panel-body padding-0">
                                 <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="tab1primary">
+                                    <div class="tab-pane  in active" id="tab1primary">
                                         <table class="table table-hover d-table table-fixed">
                                             <tr>
                                                 <th>Name</th>
@@ -453,7 +453,7 @@
                                             <?php } ?>
                                         </table>
                                     </div>
-                                    <div class="tab-pane fade" id="tab2primary">
+                                    <div class="tab-pane " id="tab2primary">
                                         <table class="table table-hover d-table table-fixed">
                                             <tr>
                                                 <th>Sr.</th>
@@ -514,7 +514,7 @@
                             <div class="panel-body padding-0">
                                 <div class="dashboard-scroll">
                                     <div class="tab-content">
-                                        <div class="tab-pane fade in active" id="tab2">
+                                        <div class="tab-pane  in active" id="tab2">
                                             <table class="table table-hover d-table table-fixed">
                                                 <tr>
                                                     <th>Name</th>
@@ -548,7 +548,7 @@
                                                 <?php } ?>
                                             </table>
                                         </div>
-                                        <div class="tab-pane fade" id="tab3">
+                                        <div class="tab-pane " id="tab3">
                                             <table class="table table-bordered table-striped d-table table-fixed">
                                                 <thead>
                                                     <tr>
@@ -623,7 +623,7 @@
                                 <div class="panel-body padding-0">
                                     <div class="dashboard-scroll">
                                         <div class="tab-content">
-                                            <div class="tab-pane fade in active" id="tab4">
+                                            <div class="tab-pane  in active" id="tab4">
                                                 <table class="table table-bordered table-striped d-table">
                                                     <tr>
                                                         <th>Name</th>
@@ -661,7 +661,7 @@
                                                 <button type="button" class="btn btn_blue_outline view_table_data"><i
                                                         class="fa fa-angle-down"></i> View All</button>
                                             </div>
-                                            <div class="tab-pane fade" id="tab5">
+                                            <div class="tab-pane " id="tab5">
                                                 <table class="table table-bordered table-striped d-table table-fixed">
                                                     <table class="table table-bordered table-striped d-table">
                                                         <tr>
@@ -757,7 +757,7 @@
                                 <div class="panel-body padding-0">
                                     <div class="dashboard-scroll">
                                         <div class="tab-content">
-                                            <div class="tab-pane fade in active" id="tab6">
+                                            <div class="tab-pane  in active" id="tab6">
                                                 <table class="table table-bordered table-striped d-table">
                                                     <tr>
                                                         <th>Package Name</th>
@@ -798,7 +798,7 @@
                                                 <button type="button" class="btn btn_blue_outline view_table_data"><i
                                                         class="fa fa-angle-down"></i> View All</button>
                                             </div>
-                                            <div class="tab-pane fade" id="tab7">
+                                            <div class="tab-pane " id="tab7">
                                                 <table class="table table-bordered table-striped d-table">
                                                     <tr>
                                                         <th>Package Name</th>

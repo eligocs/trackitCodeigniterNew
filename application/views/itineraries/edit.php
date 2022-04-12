@@ -482,43 +482,34 @@
                                  <!-- flight and train booking section -->
                                  <div class="row mt-5">
                                     <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label">Flight Details</label>
-                                          <div>
-                                             <label class='mt-checkbox'>
-                                             <input type='checkbox' <?php if (isset($iti->is_flight) && $iti->is_flight  == 1) { echo "checked"; } ?> name="is_flight" id='flight_ck' class='input-group form-control' value="1"><span></span>
-                                             </label>
-                                          </div>
+                                       <div class="form-check">
+                                          <label class="form-check-label ms-1">Flight Details</label>
+                                          <input type='checkbox' <?php if (isset($iti->is_flight) && $iti->is_flight  == 1) { echo "checked"; } ?> name="is_flight" id='flight_ck' class='form-check-input' value="1"><span></span>
                                        </div>
                                     </div>
+
                                     <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Train Details</label>
-                                          <div class="col-md-8">
-                                             <label class='mt-checkbox'>
-                                             <input type='checkbox' <?php if (isset($iti->is_train) && $iti->is_train  == 1) {
-                                                echo "checked";
-                                                } ?> name="is_train" id='train_ck'
-                                                class='input-group form-control'
-                                                value="1"><span></span>
-                                             </label>
-                                          </div>
+                                       <div class="form-check">
+                                          <label class="form-check-label ms-1">Train Details</label>
+                                          <input type='checkbox' <?php if (isset($iti->is_train) && $iti->is_train  == 1) { echo "checked"; } ?> name="is_train" id='train_ck' class='form-check-input' value="1">
+                                          <span></span>
                                        </div>
                                     </div>
                                  </div>
+
                                  <!--Flight Section-->
                                  <?php $flight = !empty($flight_details[0]) ? $flight_details[0] : ''; ?>
                                  <section
-                                    class="overflow_visible bg_white position_relative margin-top-30 margin-bottom-40 row well details-package padding-0"
+                                    class="overflow_visible bg_white position_relative mt-5 px-3 pb-3 border details-package"
                                     id="flight_section"
                                     <?php if (isset($iti->is_flight) && $iti->is_flight  == 1) {
                                        echo "style='display: block;'";
                                        } ?>>
-                                    <div class="form_ft_caption">
-                                       <h3 class="text-center">Flight Details</h3>
+                                    <div>
+                                       <h4 class="custom_title">Flight Details</h4>
                                     </div>
-                                    <div class="text-center form_ft_btns  margin_top_n40">
-                                       <div class="btn-group flight_train_btns margin-bottom-40"
+                                    <div class="text-center form_ft_btns mb-4">
+                                       <div class="btn-group flight_train_btns"
                                           data-toggle="buttons">
                                           <label class="btn btn-default  custom_active <?php if (isset($flight->trip_type) && $flight->trip_type  == "oneway" || empty($flight)) {
                                              echo "active";
@@ -536,238 +527,160 @@
                                              class="trip_r" value="round" />Round Trip</label>
                                        </div>
                                     </div>
-                                    <p></p>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Flight Name
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                size="16" type="text"
-                                                value="<?php if (isset($flight->flight_name)) {
-                                                   echo $flight->flight_name;
-                                                   } ?>"
-                                                name="flight_name"
-                                                placeholder="Jet Airways,SpiceJet etc" />
+                                    <!-- form inputs start -->
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Flight Name <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($flight->flight_name)) { echo $flight->flight_name; } ?>" name="flight_name" placeholder="Jet Airways,SpiceJet etc" />
+                                             </div>
+                                          </div>
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">No. of Passengers
+                                             <span class="required"> * </span>
+                                             </label>
+                                             <div class="col-md-8">
+                                             <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($flight->total_passengers)) { echo $flight->total_passengers; } ?>" name="passengers" />
+                                             </div>
+                                          </div>
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Departure City
+                                             <span class="required"> * </span>
+                                             </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" placeholder="Mumbai,Shimla etc" size="16" type="text" value="<?php if (isset($flight->dep_city)) { echo $flight->dep_city; } ?>" name="dep_city" />
+                                             </div>
+                                          </div>
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Arrival city
+                                             <span class="required"> * </span>
+                                             </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" placeholder="Mumbai,Shimla etc" size="16" type="text" value="<?php if (isset($flight->arr_city)) { echo $flight->arr_city; } ?>" name="arr_city" />
+                                             </div>
+                                          </div>
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Departure Date & Time
+                                             <span class="required"> * </span>
+                                             </label>
+                                             <div class="col-md-8">
+                                                <input required readonly class="input-group form-control flight_dateTime" size="16" type="text" value="<?php if (isset($flight->dep_date)) { echo $flight->dep_date; } ?>" name="dep_date" />
+                                             </div>
+                                          </div>
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Arrival Date & Time
+                                             <span class="required"> * </span>
+                                             </label>
+                                             <div class="col-md-8">
+                                                <input required readonly class="input-group form-control flight_dateTime" size="16" type="text" value="<?php if (isset($flight->arr_time)) { echo $flight->arr_time; } ?>" name="arr_time" />
+                                             </div>
+                                          </div>
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Class <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <select required name="f_class" class="form-control">
+                                                   <option value="">Choose Class</option>
+                                                   <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Economy") {
+                                                      echo "selected";
+                                                      } ?> value="Economy">Economy</option>
+                                                   <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Premium Economy") {
+                                                      echo "selected";
+                                                      } ?> value="Premium Economy">Premium Economy
+                                                   </option>
+                                                   <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Business") {
+                                                      echo "selected";
+                                                      } ?> value="Business">Business</option>
+                                                </select>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Price <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" size="16" placeholder="10000 etc." type="number" value="<?php if (isset($flight->flight_price)) { echo $flight->flight_price; } ?>" name="flight_cost" />
+                                             </div>
+                                          </div>
+                                          <div class="form-group my-2 return_flight_name" style="<?php if (isset ($flight->return_flight_name)) { ?> display:block <?php } ?>">
+                                             <div class="row">
+                                                <label class="control-label col-md-4 text-end"> Return Flight Name <span class="required"> * </span> </label>
+                                                <div class="col-md-8">
+                                                   <input class="input-group form-control" type="text" id="return_f_name" value="<?php if (isset($flight->return_flight_name)) {  echo $flight->return_flight_name; } ?>" name="return_flight_name" placeholder="Jet Airways,SpiceJet etc" />
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="form-group my-2 f_h_return_date"
+                                             style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
+                                             <div class="row">
+                                                <label class="control-label col-md-4 text-end">Return Date & Time <span class="required"> * </span> </label>
+                                                <div class="col-md-8">
+                                                   <!--<input readonly-->
+                                                   <!--    <?php if (isset($flight->return_date) && empty($flight->return_date)) {
+                                                      echo "disabled";
+                                                      } ?>-->
+                                                   <!--    class="input-group form-control <?php if (isset($flight->return_arr_date) && !empty($flight->return_arr_date)) {
+                                                      echo "flight_dateTime";
+                                                      } ?>"-->
+                                                   <!--    size="16" type="text"-->
+                                                   <!--    value="<?php if (isset($flight->return_date)) {
+                                                      echo $flight->return_date;
+                                                      } ?>"-->
+                                                   <!--    name="return_date" id="return_date" />-->
+                                                   <input class="input-group form-control flight_dateTime" size="16" type="text" value="<?php if (isset($flight->return_date)) { echo $flight->return_date; } ?>" name="return_date" id="return_date" />
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="form-group my-2 f_h_return_arr_date"
+                                             style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
+                                             <div class="row">
+                                                <label class="control-label col-md-4 text-end">Return Arrival Date & Time <span class="required"> * </span> </label>
+                                                <div class="col-md-8">
+                                                      <input <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
+                                                         echo "disabled";
+                                                         } ?> class="input-group form-control flight_dateTime
+                                                         size=" 16" type="text" value="<?php if (isset($flight->return_arr_date)) {
+                                                            echo $flight->return_arr_date;
+                                                            } ?>"
+                                                         name="return_arr_date" id="return_arr_date" />
+                                                      <!--<input readonly-->
+                                                      <!--    <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
+                                                         echo "disabled";
+                                                         } ?>-->
+                                                      <!--    class="input-group form-control <?php if (isset($flight->return_arr_date) && !empty($flight->return_arr_date)) {
+                                                         echo "flight_dateTime";
+                                                         } ?>"-->
+                                                      <!--    size="16" type="text"-->
+                                                      <!--    value="<?php if (isset($flight->return_arr_date)) {
+                                                         echo $flight->return_arr_date;
+                                                         } ?>"-->
+                                                      <!--    name="return_arr_date" id="return_arr_date" />-->
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="form-group row my-2">
+                                             <label class="control-label col-md-4 text-end">Other Details </label>
+                                             <div class="col-md-8">
+                                                <textarea required class="input-group form-control" name="flight_other_details"><?php if (isset($flight->flight_other_details)) { echo $flight->flight_other_details; } ?></textarea>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">No. of Passengers
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                size="16" type="text"
-                                                value="<?php if (isset($flight->total_passengers)) {
-                                                   echo $flight->total_passengers;
-                                                   } ?>"
-                                                name="passengers" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Departure City
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                placeholder="Mumbai,Shimla etc" size="16"
-                                                type="text"
-                                                value="<?php if (isset($flight->dep_city)) {
-                                                   echo $flight->dep_city;
-                                                   } ?>"
-                                                name="dep_city" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Arrival city
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                placeholder="Mumbai,Shimla etc" size="16"
-                                                type="text"
-                                                value="<?php if (isset($flight->arr_city)) {
-                                                   echo $flight->arr_city;
-                                                   } ?>"
-                                                name="arr_city" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Departure Date & Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required readonly
-                                                class="input-group form-control flight_dateTime"
-                                                size="16" type="text"
-                                                value="<?php if (isset($flight->dep_date)) {
-                                                   echo $flight->dep_date;
-                                                   } ?>"
-                                                name="dep_date" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Arrival Date & Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required readonly
-                                                class="input-group form-control flight_dateTime"
-                                                size="16" type="text"
-                                                value="<?php if (isset($flight->arr_time)) {
-                                                   echo $flight->arr_time;
-                                                   } ?>"
-                                                name="arr_time" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Class
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <select required name="f_class" class="form-control">
-                                                <option value="">Choose Class</option>
-                                                <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Economy") {
-                                                   echo "selected";
-                                                   } ?> value="Economy">Economy</option>
-                                                <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Premium Economy") {
-                                                   echo "selected";
-                                                   } ?> value="Premium Economy">Premium Economy
-                                                </option>
-                                                <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Business") {
-                                                   echo "selected";
-                                                   } ?> value="Business">Business</option>
-                                             </select>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Price
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                size="16" placeholder="10000 etc." type="number"
-                                                value="<?php if (isset($flight->flight_price)) {
-                                                   echo $flight->flight_price;
-                                                   } ?>"
-                                                name="flight_cost" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6 return_flight_name"
-                                       style="<?php if (isset($flight->return_flight_name)) { ?> display:block <?php } ?>">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4"> Return Flight Name
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input class="input-group form-control" type="text"
-                                                id="return_f_name" value="<?php if (isset($flight->return_flight_name)) {  echo $flight->return_flight_name;
-                                                   } ?>" name="return_flight_name"
-                                                placeholder="Jet Airways,SpiceJet etc" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6 f_h_return_date"
-                                       style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Return Date & Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <!--<input readonly-->
-                                             <!--    <?php if (isset($flight->return_date) && empty($flight->return_date)) {
-                                                echo "disabled";
-                                                } ?>-->
-                                             <!--    class="input-group form-control <?php if (isset($flight->return_arr_date) && !empty($flight->return_arr_date)) {
-                                                echo "flight_dateTime";
-                                                } ?>"-->
-                                             <!--    size="16" type="text"-->
-                                             <!--    value="<?php if (isset($flight->return_date)) {
-                                                echo $flight->return_date;
-                                                } ?>"-->
-                                             <!--    name="return_date" id="return_date" />-->
-                                             <input class="input-group form-control flight_dateTime"
-                                                size="16" type="text"
-                                                value="<?php if (isset($flight->return_date)) {
-                                                   echo $flight->return_date;
-                                                   } ?>"
-                                                name="return_date" id="return_date" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6 f_h_return_arr_date"
-                                       style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Return Arrival Date &
-                                          Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
-                                                echo "disabled";
-                                                } ?> class="input-group form-control flight_dateTime
-                                                size=" 16" type="text" value="<?php if (isset($flight->return_arr_date)) {
-                                                   echo $flight->return_arr_date;
-                                                   } ?>"
-                                                name="return_arr_date" id="return_arr_date" />
-                                             <!--<input readonly-->
-                                             <!--    <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
-                                                echo "disabled";
-                                                } ?>-->
-                                             <!--    class="input-group form-control <?php if (isset($flight->return_arr_date) && !empty($flight->return_arr_date)) {
-                                                echo "flight_dateTime";
-                                                } ?>"-->
-                                             <!--    size="16" type="text"-->
-                                             <!--    value="<?php if (isset($flight->return_arr_date)) {
-                                                echo $flight->return_arr_date;
-                                                } ?>"-->
-                                             <!--    name="return_arr_date" id="return_arr_date" />-->
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Other Details
-                                          </label>
-                                          <div class="col-md-8">
-                                             <textarea required class="input-group form-control"
-                                                name="flight_other_details"><?php if (isset($flight->flight_other_details)) {
-                                                echo $flight->flight_other_details;
-                                                } ?></textarea>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <!-- End form Inputs -->
                                  </section>
                                  <!--End Flight Section-->
                                  <!--Train Section-->
                                  <?php $train =  !empty($train_details[0]) ?  $train_details[0] : ''; ?>
                                  <section
-                                    class="padding-0 bg_white well row details-package position_relative margin-top-30 overflow_visible"
+                                    class="px-3 pb-3 border bg_white details-package position_relative mt-5 overflow_visible"
                                     id="train_section"
                                     <?php if (isset($iti->is_train) && $iti->is_train  == 1) {
                                        echo "style='display: block;'";
                                        } ?>>
-                                    <div class="form_ft_caption">
-                                       <h3>Train Details</h3>
+                                    <div>
+                                       <h4 class="custom_title">Train Details</h4>
                                     </div>
-                                    <div class="text-center form_ft_btns margin_top_n40">
+                                    <div class="text-center form_ft_btns">
                                        <div class="btn-group flight_train_btns margin-bottom-40"
                                           data-toggle="buttons">
                                           <label class="btn btn-default custom_active <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "oneway" || empty($train)) {
@@ -786,231 +699,153 @@
                                              class="t_trip_r" value="round" />Round Trip</label>
                                        </div>
                                     </div>
-                                    <p></p>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Train Name
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                size="16" type="text"
-                                                value="<?php if (isset($train->train_name)) {
-                                                   echo $train->train_name;
-                                                   } ?>"
-                                                name="train_name"
-                                                placeholder="Adi Duronto Express, Arunachal Express etc" />
+                                    <!-- form inputs start -->
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="row form-group my-2">
+                                             <label class="control-label col-md-4 text-end">Train Name <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($train->train_name)) { echo $train->train_name; } ?>" name="train_name" placeholder="Adi Duronto Express, Arunachal Express etc" />
+                                             </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                             <label class="control-label col-md-4 text-end">Train Number <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($train->train_number)) { echo $train->train_number; } ?>" name="train_number" placeholder="11050, 11052 etc" />
+                                             </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                             <label class="control-label col-md-4 text-end">No. of Passengers <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($train->t_passengers)) { echo $train->t_passengers; } ?>" name="t_passengers" />
+                                             </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                             <label class="control-label col-md-4 text-end">Departure City <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" placeholder="Mumbai,Shimla etc" size="16" type="text" value="<?php if (isset($train->t_dep_city)) { echo $train->t_dep_city; } ?>" name="t_dep_city" />
+                                             </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                             <label class="control-label col-md-4 text-end">Arrival city <span class="required"> * </span> </label>
+                                             <div class="col-md-8">
+                                                <input required class="input-group form-control" placeholder="Mumbai,Shimla etc" size="16" type="text" value="<?php if (isset($train->t_arr_city)) { echo $train->t_arr_city; } ?>" name="t_arr_city" />
+                                             </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                             <label class="control-label col-md-4 text-end">Departure Date & Time
+                                             <span class="required"> * </span>
+                                             </label>
+                                             <div class="col-md-8">
+                                                <input required readonly class="input-group form-control train_dateTime" size="16" type="text" value="<?php if (isset($train->t_dep_date)) { echo $train->t_dep_date; } ?>" name="t_dep_date" />
+                                             </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                                <label class="control-label col-md-4 text-end">Arrival Time & Time
+                                                <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-8">
+                                                   <input required readonly
+                                                      class="input-group form-control train_dateTime"
+                                                      size="16" type="text"
+                                                      value="<?php if (isset($train->t_arr_time)) {
+                                                         echo $train->t_arr_time;
+                                                         } ?>"
+                                                      name="t_arr_time" />
+                                                </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="row form-group my-2">
+                                                <label class="control-label col-md-4 text-end">Class
+                                                <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-8">
+                                                   <select required name="t_class" class="form-control">
+                                                      <option value="">Choose Class</option>
+                                                      <option <?php if (isset($train->train_class) && $train->train_class  == "1AC") {
+                                                         echo "selected";
+                                                         } ?> value="1AC">1AC</option>
+                                                      <option <?php if (isset($train->train_class) && $train->train_class  == "2AC") {
+                                                         echo "selected";
+                                                         } ?> value="2AC">2AC</option>
+                                                      <option <?php if (isset($train->train_class) && $train->train_class  == "3AC") {
+                                                         echo "selected";
+                                                         } ?> value="3AC">3AC</option>
+                                                      <option <?php if (isset($train->train_class) && $train->train_class  == "Sleeper class") {
+                                                         echo "selected";
+                                                         } ?> value="Sleeper class">Sleeper class
+                                                      </option>
+                                                   </select>
+                                                </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                                <label class="control-label col-md-4 text-end">Price
+                                                <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-8">
+                                                   <input required class="input-group form-control"
+                                                      size="16" placeholder="10000 etc." type="number"
+                                                      value="<?php if (isset($train->t_cost)) {
+                                                         echo $train->t_cost;
+                                                         } ?>"
+                                                      name="t_cost" />
+                                                </div>
+                                          </div>
+                                          <div class="form-group my-2 return return_train_name"
+                                             style="<?php if (isset($train->return_train_name)) { ?> display:block <?php } ?>">
+                                             <div class="row">
+                                                <label class="control-label col-md-4">Return Train Name
+                                                <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-8">
+                                                   <input class="input-group form-control" size="16" type="text" id="return_t_name" value="<?php if (isset($train->return_train_name)) { echo $train->return_train_name; } ?>" name="return_train_name" placeholder="Adi Duronto Express, Arunachal Express etc" />
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="form-group my-2 t_return_date"
+                                             style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
+                                             <div class="row">
+                                                <label class="control-label col-md-4 text-end">Return Date & Time
+                                                <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-8">
+                                                   <input <?php if (isset($train->t_return_date) && empty($train->t_return_date)) { echo "disabled"; } ?> class="input-group form-control train_dateTime" size="16" type="text" value="<?php if (isset($train->t_return_date)) { echo $train->t_return_date; } ?>" name="t_return_date" id="t_return_date" />
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class=" form-group my-2 t_return_arr_date"                                          style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
+                                             <div class="row">
+                                                <label class="control-label col-md-4 text-end">Return Arrival Date & Time <span class="required"> * </span> </label>
+                                                <div class="col-md-8">
+                                                   <input <?php if (isset($train->t_return_arr_date) && empty($train->t_return_arr_date)) {
+                                                      echo "disabled";
+                                                      } ?>
+                                                      class="input-group form-control train_dateTime"
+                                                      size="16" type="text"
+                                                      value="<?php if (isset($train->t_return_arr_date)) {
+                                                         echo $train->t_return_arr_date;
+                                                         } ?>"
+                                                      name="t_return_arr_date" id="t_return_arr_date" />
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row form-group my-2">
+                                             <label class="control-label col-md-4 text-end">
+                                                Other Details
+                                                <!--<span class="required"> * </span>-->
+                                             </label>
+                                             <div class="col-md-8">
+                                                <textarea required class="input-group form-control"
+                                                   name="train_other_details" />
+                                                <?php if (isset($train->train_other_details)) {
+                                                   echo $train->train_other_details;
+                                                   } ?> </textarea>
+                                             </div>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Train Number
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                size="16" type="text"
-                                                value="<?php if (isset($train->train_number)) {
-                                                   echo $train->train_number;
-                                                   } ?>"
-                                                name="train_number"
-                                                placeholder="11050, 11052 etc" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">No. of Passengers
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                size="16" type="text"
-                                                value="<?php if (isset($train->t_passengers)) {
-                                                   echo $train->t_passengers;
-                                                   } ?>"
-                                                name="t_passengers" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Departure City
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                placeholder="Mumbai,Shimla etc" size="16"
-                                                type="text"
-                                                value="<?php if (isset($train->t_dep_city)) {
-                                                   echo $train->t_dep_city;
-                                                   } ?>"
-                                                name="t_dep_city" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Arrival city
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                placeholder="Mumbai,Shimla etc" size="16"
-                                                type="text"
-                                                value="<?php if (isset($train->t_arr_city)) {
-                                                   echo $train->t_arr_city;
-                                                   } ?>"
-                                                name="t_arr_city" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Departure Date & Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required readonly
-                                                class="input-group form-control train_dateTime"
-                                                size="16" type="text"
-                                                value="<?php if (isset($train->t_dep_date)) {
-                                                   echo $train->t_dep_date;
-                                                   } ?>"
-                                                name="t_dep_date" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Arrival Time & Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required readonly
-                                                class="input-group form-control train_dateTime"
-                                                size="16" type="text"
-                                                value="<?php if (isset($train->t_arr_time)) {
-                                                   echo $train->t_arr_time;
-                                                   } ?>"
-                                                name="t_arr_time" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Class
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <select required name="t_class" class="form-control">
-                                                <option value="">Choose Class</option>
-                                                <option <?php if (isset($train->train_class) && $train->train_class  == "1AC") {
-                                                   echo "selected";
-                                                   } ?> value="1AC">1AC</option>
-                                                <option <?php if (isset($train->train_class) && $train->train_class  == "2AC") {
-                                                   echo "selected";
-                                                   } ?> value="2AC">2AC</option>
-                                                <option <?php if (isset($train->train_class) && $train->train_class  == "3AC") {
-                                                   echo "selected";
-                                                   } ?> value="3AC">3AC</option>
-                                                <option <?php if (isset($train->train_class) && $train->train_class  == "Sleeper class") {
-                                                   echo "selected";
-                                                   } ?> value="Sleeper class">Sleeper class
-                                                </option>
-                                             </select>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Price
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input required class="input-group form-control"
-                                                size="16" placeholder="10000 etc." type="number"
-                                                value="<?php if (isset($train->t_cost)) {
-                                                   echo $train->t_cost;
-                                                   } ?>"
-                                                name="t_cost" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6 return return_train_name"
-                                       style="<?php if (isset($train->return_train_name)) { ?> display:block <?php } ?>">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Return Train Name
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input class="input-group form-control" size="16"
-                                                type="text" id="return_t_name"
-                                                value="<?php if (isset($train->return_train_name)) {
-                                                   echo $train->return_train_name;
-                                                   } ?>"
-                                                name="return_train_name"
-                                                placeholder="Adi Duronto Express, Arunachal Express etc" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6 t_return_date"
-                                       style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Return Date & Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input <?php if (isset($train->t_return_date) && empty($train->t_return_date)) {
-                                                echo "disabled";
-                                                } ?>
-                                                class="input-group form-control train_dateTime"
-                                                size="16" type="text"
-                                                value="<?php if (isset($train->t_return_date)) {
-                                                   echo $train->t_return_date;
-                                                   } ?>"
-                                                name="t_return_date" id="t_return_date" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6 t_return_arr_date"
-                                       style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">Return Arrival Date &
-                                          Time
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <div class="col-md-8">
-                                             <input <?php if (isset($train->t_return_arr_date) && empty($train->t_return_arr_date)) {
-                                                echo "disabled";
-                                                } ?>
-                                                class="input-group form-control train_dateTime"
-                                                size="16" type="text"
-                                                value="<?php if (isset($train->t_return_arr_date)) {
-                                                   echo $train->t_return_arr_date;
-                                                   } ?>"
-                                                name="t_return_arr_date" id="t_return_arr_date" />
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                       <div class="form-group">
-                                          <label class="control-label col-md-4">
-                                             Other Details
-                                             <!--<span class="required"> * </span>-->
-                                          </label>
-                                          <div class="col-md-8">
-                                             <textarea required class="input-group form-control"
-                                                name="train_other_details" />
-                                             <?php if (isset($train->train_other_details)) {
-                                                echo $train->train_other_details;
-                                                } ?> </textarea>
-                                          </div>
-                                       </div>
-                                    </div>
+                                    <!-- End form Inputs -->
                                  </section>
                                  <!--End Train Section-->
                               </div>

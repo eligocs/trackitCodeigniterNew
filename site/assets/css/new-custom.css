@@ -162,7 +162,8 @@ table.table.table_details td {
 
 label.control-label {
     font-size: 13px;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
+    color: #797070;
 }
 
 .form-control::placeholder { 
@@ -250,6 +251,12 @@ select.form-control:required:invalid {
     left: 268px;
     margin-top: 11px;
 }
+
+
+
+/* dashboard tabs  */
+
+.panel-heading2 .nav-tabs li {margin: 0 10px !important;}
 
 
 
