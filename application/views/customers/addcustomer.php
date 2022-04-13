@@ -52,16 +52,18 @@
                      </div>
                   </div>
                   <div id="reference_section" style="display: none;">
-                     <div class="col-md-4">
-                        <div class="form-group">
-                           <label class="control-label">Reference Name*</label>
-                           <input required type="text" placeholder="eg. Reference Name" name="inp[reference_name]" class="form-control textfield" value=""/> 
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label class="control-label">Reference Name*</label>
+                              <input required type="text" placeholder="eg. Reference Name" name="inp[reference_name]" class="form-control textfield" value=""/> 
+                           </div>
                         </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="form-group">
-                           <label class="control-label">Reference Contact Number*</label>
-                           <input required type="number" placeholder="Reference Phone Number" name="inp[reference_contact_number]" class="form-control numberfield" value=""/> 
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label class="control-label">Reference Contact Number*</label>
+                              <input required type="number" placeholder="Reference Phone Number" name="inp[reference_contact_number]" class="form-control numberfield" value=""/> 
+                           </div>
                         </div>
                      </div>
                   </div>

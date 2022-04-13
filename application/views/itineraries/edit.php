@@ -865,121 +865,97 @@
                                              class="mt-repeater-item daywise_section">
                                              <!--strong>Day: </strong><strong class="sta_d"><?php //echo $i+1; 
                                                 ?></strong-->
-                                             <div class="clearfix"></div>
                                              <div class="row">
-                                                <div class="col-md-8">
-                                                   <div class="row">
-                                                      <div class="col-md-2">
-                                                         <div class="mt-repeater-input form-group">
-                                                            <label
-                                                               class="control-label">Day</label><span
-                                                               class="required"> * </span>
-                                                            <br />
-                                                            <input required placeholder="Day 1"
-                                                               type="text" name="tour_day"
-                                                               class="form-control"
-                                                               value="<?php echo isset($tourData[$i]['tour_day']) && !empty($tourData[$i]['tour_day']) ? trim($tourData[$i]['tour_day']) : ""; ?>" />
-                                                         </div>
-                                                      </div>
-                                                      <div class="col-md-2">
-                                                         <!-- jQuery Repeater Container -->
-                                                         <div class="mt-repeater-input">
-                                                            <label class="control-label">Tour
-                                                            Date*</label>
-                                                            <br />
-                                                            <input required readonly="readonly"
-                                                               class="input-group form-control tour_dt"
-                                                               id="tour_dt" size="16" type="text"
-                                                               value="<?php echo isset($tourData[$i]['tour_date']) && !empty($tourData[$i]['tour_date']) ? trim($tourData[$i]['tour_date']) : ""; ?>"
-                                                               name="tour_date" />
-                                                         </div>
-                                                      </div>
-                                                      <div class="mt-repeater-input  t_title col-md-8">
-                                                         <label class="control-label">Tour
-                                                         Title*</label><span class="required"> *
-                                                         </span>
-                                                         <br />
-                                                         <input required
-                                                            placeholder="Shimla local sight"
-                                                            type="text" name="tour_name"
-                                                            class="form-control"
-                                                            value="<?php echo isset($tourData[$i]['tour_name']) && !empty($tourData[$i]['tour_name']) ? trim($tourData[$i]['tour_name']) : ""; ?>" />
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <div class="mt-repeater-input  ">
-                                                      <label class="control-label">Meal
-                                                      Plan</label><span class="required"> *
-                                                      </span>
-                                                      <br />
-                                                      <select required name="meal_plan"
-                                                         class="form-control">
-                                                         <option value="">Choose Meal Plan</option>
-                                                         <option value="Breakfast Only"
-                                                            <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Breakfast Only") { ?>
-                                                            selected="selected" <?php } ?>>Breakfast
-                                                            Only
-                                                         </option>
-                                                         <option
-                                                            <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Breakfast & Dinner") { ?>
-                                                            selected="selected" <?php } ?>
-                                                            value="Breakfast & Dinner"> Breakfast &
-                                                            Dinner
-                                                         </option>
-                                                         <option
-                                                            <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Breakfast, Lunch & Dinner") { ?>
-                                                            selected="selected" <?php } ?>
-                                                            value="Breakfast, Lunch & Dinner">
-                                                            Breakfast,
-                                                            Lunch & Dinner
-                                                         </option>
-                                                         <option
-                                                            <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Dinner Only") { ?>
-                                                            selected="selected" <?php } ?>
-                                                            value="Dinner Only">Dinner Only</option>
-                                                         <option
-                                                            <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "No") { ?>
-                                                            selected="selected" <?php } ?>
-                                                            value="No">No
-                                                            Meal Plan
-                                                         </option>
-                                                      </select>
-                                                   </div>
-                                                   <div class="mt-repeater-input  ">
+                                                <div class="col-md-2 my-2">
+                                                   <div class="form-group">
                                                       <label
-                                                         class="control-label">Distance</label><span
+                                                         class="control-label">Day</label><span
                                                          class="required"> * </span>
-                                                      <br />
-                                                      <input required placeholder="100 Km"
-                                                         type="number" name="tour_distance"
-                                                         class="form-control tour_distant"
-                                                         value="<?php echo isset($tourData[$i]['tour_distance']) ? $tourData[$i]['tour_distance'] : ""; ?>" />
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <!-- row close-->
-                                             <div class="clearfix"></div>
-                                             <div class="row">
-                                                <div class="col-md-9">
-                                                   <div
-                                                      class="mt-repeater-input mt-repeater-textarea t_des">
-                                                      <label class="control-label">Tour
-                                                      Description</label><span class="required"> *
-                                                      </span>
-                                                      <br />
-                                                      <textarea required name="tour_des"
+                                                      <input required placeholder="Day 1"
+                                                         type="text" name="tour_day"
                                                          class="form-control"
-                                                         rows="3"><?php echo isset($tourData[$i]['tour_des']) && !empty($tourData[$i]['tour_des']) ? trim($tourData[$i]['tour_des']) : ""; ?></textarea>
+                                                         value="<?php echo isset($tourData[$i]['tour_day']) && !empty($tourData[$i]['tour_day']) ? trim($tourData[$i]['tour_day']) : ""; ?>" />
                                                    </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                   <div class="mt-repeater-input">
+
+                                                <div class="col-md-2 my-2">
+                                                   <!-- jQuery Repeater Container -->
+                                                   <div class="form-group">
+                                                      <label class="control-label">Tour Date*</label>
+                                                      <input required readonly="readonly"
+                                                         class="input-group form-control tour_dt"
+                                                         id="tour_dt" size="16" type="text"
+                                                         value="<?php echo isset($tourData[$i]['tour_date']) && !empty($tourData[$i]['tour_date']) ? trim($tourData[$i]['tour_date']) : ""; ?>"
+                                                         name="tour_date" />
+                                                   </div>
+                                                </div>
+
+                                                <div class="t_title col-md-6 my-2">
+                                                   <label class="control-label">Tour Title <sup class="text-danger">*</sup></label>
+                                                   <input required
+                                                      placeholder="Shimla local sight"
+                                                      type="text" name="tour_name"
+                                                      class="form-control"
+                                                      value="<?php echo isset($tourData[$i]['tour_name']) && !empty($tourData[$i]['tour_name']) ? trim($tourData[$i]['tour_name']) : ""; ?>" />
+                                                </div>
+                                                
+                                                <div class="col-md-2 my-2">
+                                                   <label class="control-label">Distance</label> <sup class="text-danger">*</sup>
+                                                   <input required placeholder="100 Km"
+                                                      type="number" name="tour_distance"
+                                                      class="form-control tour_distant"
+                                                      value="<?php echo isset($tourData[$i]['tour_distance']) ? $tourData[$i]['tour_distance'] : ""; ?>" />
+                                                </div>
+
+                                                <div class="col-md-12 my-2">
+                                                   <div class=" mt-repeater-textarea t_des">
+                                                      <label class="control-label">Tour Description</label> 
+                                                      <sup class="text-danger">*</sup>
+                                                      <textarea required name="tour_des" class="form-control" rows="3"><?php echo isset($tourData[$i]['tour_des']) && !empty($tourData[$i]['tour_des']) ? trim($tourData[$i]['tour_des']) : ""; ?></textarea>
+                                                   </div>
+                                                </div>
+
+                                                <div class="col-md-4 my-2">
+                                                   <label class="control-label">Meal Plan</label> <sup class="text-danger">*</sup>
+                                                   <select required name="meal_plan" class="form-control">
+                                                      <option value="">Choose Meal Plan</option>
+                                                      <option value="Breakfast Only"
+                                                         <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Breakfast Only") { ?>
+                                                         selected="selected" <?php } ?>>Breakfast
+                                                         Only
+                                                      </option>
+                                                      <option
+                                                         <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Breakfast & Dinner") { ?>
+                                                         selected="selected" <?php } ?>
+                                                         value="Breakfast & Dinner"> Breakfast &
+                                                         Dinner
+                                                      </option>
+                                                      <option
+                                                         <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Breakfast, Lunch & Dinner") { ?>
+                                                         selected="selected" <?php } ?>
+                                                         value="Breakfast, Lunch & Dinner">
+                                                         Breakfast,
+                                                         Lunch & Dinner
+                                                      </option>
+                                                      <option
+                                                         <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Dinner Only") { ?>
+                                                         selected="selected" <?php } ?>
+                                                         value="Dinner Only">Dinner Only</option>
+                                                      <option
+                                                         <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "No") { ?>
+                                                         selected="selected" <?php } ?>
+                                                         value="No">No
+                                                         Meal Plan
+                                                      </option>
+                                                   </select>
+                                                </div>
+
+                                                <div class="col-md-4 my-2">
+                                                   <div class="form-group">
                                                       <label class="control-label">Attraction</label>
                                                       <div class="hot_des" style="float:none;">
-                                                         <input type="hidden"
-                                                            value="<?php echo isset($tourData[$i]['hot_des']) ? $tourData[$i]['hot_des'] : ""; ?>"
-                                                            class="tags_values" name="hot_des">
+                                                         <input type="hidden" value="<?php echo isset($tourData[$i]['hot_des']) ? $tourData[$i]['hot_des'] : ""; ?>" class="tags_values" name="hot_des">
+
                                                          <?php
                                                             if (isset($tourData[$i]['hot_des']) && !empty($tourData[$i]['hot_des'])) {
                                                                 $hot_dest = '';
@@ -991,25 +967,23 @@
                                                                 echo $hot_dest;
                                                             }
                                                             ?>
-                                                         <input type="text" value=""
-                                                            class="form-control"
-                                                            placeholder="Add a Hot destination" />
+
+                                                         <input type="text" value="" class="form-control" placeholder="Add a Hot destination" />
                                                       </div>
                                                    </div>
                                                 </div>
                                              </div>
-                                             <div class="mt-repeater-input del_rep">
-                                                <a href="javascript:;" data-repeater-delete
-                                                   class="btn btn-danger mt-repeater-delete"
-                                                   style="position:relative;">
-                                                <i class="fa fa-close"></i> Delete</a>
+
+                                             <div class="del_rep">
+                                                <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete" style="position:relative;">
+                                                <i class="fa-solid fa-trash-can"></i></a>
                                              </div>
                                           </div>
                                           <?php } ?>
                                        </div>
                                        <a href="javascript:;" data-repeater-create
                                           class="btn btn-success mt-repeater-add addrep">
-                                       <i class="fa fa-plus"></i> Add</a>
+                                       <i class="fa fa-plus"></i></a>
                                     </div>
                                  </div>
                                  <!-- Tour data preview -->
@@ -1022,7 +996,7 @@
                                  <div class="row">
                                     <div class="col-md-6">
                                        <div class="mt-repeater-inc tour_field_repeater">
-                                          <h4>Inclusion</h4>
+                                          <h3>Inclusion</h3>
                                           <div data-repeater-list="inc_meta">
                                              <?php
                                                 $inclusion = isset($iti->inc_meta) ? unserialize($iti->inc_meta) : "";
@@ -1040,7 +1014,7 @@
                                                       <a href="javascript:;" title="delete"
                                                          data-repeater-delete
                                                          class="btn btn-danger mt-repeater-delete">
-                                                      <i class="fa fa-close"></i></a>
+                                                      <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -1056,7 +1030,7 @@
                                                       <a href="javascript:;" title="delete"
                                                          data-repeater-delete
                                                          class="btn btn-danger mt-repeater-delete">
-                                                      <i class="fa fa-close"></i></a>
+                                                      <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -1064,12 +1038,12 @@
                                           </div>
                                           <a href="javascript:;" data-repeater-create
                                              class="btn btn-success mt-repeater-inc-add">
-                                          <i class="fa fa-plus"></i> Add</a>
+                                          <i class="fa fa-plus"></i></a>
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="mt-repeater-exc tour_field_repeater">
-                                          <h4>Exclusion</h4>
+                                          <h3>Exclusion</h3>
                                           <div data-repeater-list="exc_meta">
                                              <?php
                                                 $exclusion = isset($iti->exc_meta) ? unserialize($iti->exc_meta) : "";
@@ -1087,7 +1061,7 @@
                                                    <a title="delete" href="javascript:;"
                                                       data-repeater-delete
                                                       class="btn btn-danger mt-repeater-delete">
-                                                   <i class="fa fa-close"></i> </a>
+                                                   <i class="fa-solid fa-trash-can"></i> </a>
                                                 </div>
                                              </div>
                                              <?php }
@@ -1106,7 +1080,7 @@
                                                    <a title="delete" href="javascript:;"
                                                       data-repeater-delete
                                                       class="btn btn-danger mt-repeater-delete">
-                                                   <i class="fa fa-close"></i> </a>
+                                                   <i class="fa-solid fa-trash-can"></i> </a>
                                                 </div>
                                              </div>
                                              <?php }
@@ -1117,10 +1091,9 @@
                                           <i class="fa fa-plus"></i> Add</a>
                                        </div>
                                     </div>
-                                    <div class="clearfix"></div>
                                     <div class="col-md-12">
                                        <!--Special Inclusion Section-->
-                                       <div class="col-md-6">
+                                       <div class="col-md-12">
                                           <div class="mt-repeater-spinc tour_field_repeater_sp">
                                              <h3 class="block">Special Inclusions</h3>
                                              <div data-repeater-list="special_inc_meta">
@@ -1131,24 +1104,24 @@
                                                 <div data-repeater-item
                                                    class="mt-repeater-spinc-item form-group">
                                                    <div class="mt-repeater-spinc-cell row mb-3">
-                                                      <div class="mt-repeater-spinc-input col-md-9">
+                                                      <div class="mt-repeater-spinc-input col-md-10">
                                                          <input type="text" name="tour_special_inc"
                                                             class="form-control"
                                                             value="<?php if (isset($sp_inc[$i]["tour_special_inc"])) {
                                                                echo $sp_inc[$i]["tour_special_inc"];
                                                                } ?>" />
                                                       </div>
-                                                      <div class="mt-repeater-spinc-input col-md-3">
+                                                      <div class="mt-repeater-spinc-input col-md-2">
                                                          <a href="javascript:;" title="delete"
                                                             data-repeater-delete
                                                             class="btn btn-danger mt-repeater-delete">
-                                                         <i class="fa fa-close"></i></a>
+                                                         <i class="fa-solid fa-trash-can"></i></a>
                                                       </div>
                                                    </div>
                                                 </div>
                                                 <?php } ?>
                                              </div>
-                                             <br>
+                                            
                                              <a href="javascript:;" data-repeater-create
                                                 class="btn btn-success mt-repeater-spinc-add">
                                              <i class="fa fa-plus"></i> Add</a>
@@ -1156,7 +1129,7 @@
                                        </div>
                                        <!--END Special Inclusion-->
                                        <!--BENEFITES OF BOOK WITH SY-->
-                                       <div class="col-md-6">
+                                       <div class="col-md-12">
                                           <div class="mt-repeater-spinc tour_field_repeater_sp">
                                              <h3 class="block">Benefits of Booking With Us </h3>
                                              <div data-repeater-list="booking_benefits_meta">
@@ -1168,18 +1141,18 @@
                                                 <div data-repeater-item
                                                    class="mt-repeater-spinc-item form-group">
                                                    <div class="mt-repeater-spinc-cell row mb-3">
-                                                      <div class="mt-repeater-spinc-input col-md-9">
+                                                      <div class="mt-repeater-spinc-input col-md-10">
                                                          <input required type="text" name="benefit_inc"
                                                             class="form-control"
                                                             value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) {
                                                                echo $benefits_inc[$i]["benefit_inc"];
                                                                } ?>" />
                                                       </div>
-                                                      <div class="mt-repeater-spinc-input col-md-3">
+                                                      <div class="mt-repeater-spinc-input col-md-2">
                                                          <a href="javascript:;" title="delete"
                                                             data-repeater-delete
                                                             class="btn btn-danger mt-repeater-delete">
-                                                         <i class="fa fa-close"></i></a>
+                                                         <i class="fa-solid fa-trash-can"></i></a>
                                                       </div>
                                                    </div>
                                                 </div>
@@ -1191,22 +1164,22 @@
                                                 <div data-repeater-item
                                                    class="mt-repeater-exc-item form-group">
                                                    <!-- jQuery Repeater Container -->
-                                                   <div class="mt-repeater-exc-input col-md-9">
+                                                   <div class="mt-repeater-exc-input col-md-10">
                                                       <input required type="text" name="benefit_inc"
                                                          class="form-control"
                                                          value="<?php echo isset($get_booking_benefits[$i]["benefit_inc"]) ? $get_booking_benefits[$i]["benefit_inc"] : ''; ?>" />
                                                    </div>
-                                                   <div class="mt-repeater-exc-input col-md-3">
+                                                   <div class="mt-repeater-exc-input col-md-2">
                                                       <a title="delete" href="javascript:;"
                                                          data-repeater-delete
                                                          class="btn btn-danger mt-repeater-delete">
-                                                      <i class="fa fa-close"></i> </a>
+                                                      <i class="fa-solid fa-trash-can"></i> </a>
                                                    </div>
                                                 </div>
                                                 <?php } ?>
                                                 <?php } ?>
                                              </div>
-                                             <br>
+                                            
                                              <a href="javascript:;" data-repeater-create
                                                 class="btn btn-success mt-repeater-spinc-add">
                                              <i class="fa fa-plus"></i> Add</a>
@@ -1224,63 +1197,63 @@
                                           $hotel_meta = isset($iti->hotel_meta) ? unserialize($iti->hotel_meta) : "";
                                           $count_hotel = !empty($hotel_meta) ? count($hotel_meta) : 1;
                                           for ($i = 0; $i < $count_hotel; $i++) { ?>
-                                       <div data-repeater-item class="mt-repeater-hotel-item">
+                                       <div data-repeater-item class="mt-repeater-hotel-item mb-4">
                                           <!-- jQuery Repeater Container -->
-                                          <h4 class="clearboth">Choose Hotel By Categories:</h4>
+                                          <h6 class="fs-7">Choose Hotel By Categories:</h6>
                                           <div class="row">
-                                             <div class='mt-repeater-hotel-input form-group col-md-3'>
-                                                <label><strong>Hotel Destination:</strong></label>
+                                             <div class='mt-repeater-hotel-input form-group col-md-3 '>
+                                                <label class="control-label"><strong>Hotel Destination:</strong></label>
                                                 <input type="text" name='hotel_location'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_location"]) && !empty($hotel_meta[$i]["hotel_location"]) ? trim($hotel_meta[$i]["hotel_location"]) : ""; ?>"
                                                    class='form-control'
                                                    placeholder="Eg. Shimla/Manali">
                                              </div>
-                                             <div
-                                                class='mt-repeater-hotel-input standard  form-group col-md-2'>
-                                                <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
+                                             <div class='mt-repeater-hotel-input standard  form-group col-md-2 '>
+                                                <label class="control-label"><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
                                                 <input type='text' name="hotel_standard"
                                                    class='form-control'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_standard"]) && !empty($hotel_meta[$i]["hotel_standard"]) ? trim($hotel_meta[$i]["hotel_standard"]) : ""; ?>"
                                                    placeholder='Deluxe Hotel Name' />
                                              </div>
-                                             <div
-                                                class='mt-repeater-hotel-input deluxe form-group col-md-2'>
-                                                <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
+                                             <div class='mt-repeater-hotel-input deluxe form-group col-md-2 '>
+                                                <label class="control-label"><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                                                 <input type='text' name="hotel_deluxe"
                                                    class='form-control'
                                                    placeholder='Super Deluxe Hotel Name'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_deluxe"]) && !empty($hotel_meta[$i]["hotel_deluxe"]) ? trim($hotel_meta[$i]["hotel_deluxe"]) : ""; ?>" />
                                              </div>
-                                             <div
-                                                class='mt-repeater-hotel-input super_deluxe form-group col-md-2'>
-                                                <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
+                                             <div class='mt-repeater-hotel-input super_deluxe form-group col-md-2 '>
+                                                <label class="control-label"><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                                                 <input type='text' name="hotel_super_deluxe"
                                                    class='form-control'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_super_deluxe"]) && !empty($hotel_meta[$i]["hotel_super_deluxe"]) ? trim($hotel_meta[$i]["hotel_super_deluxe"]) : ""; ?>"
                                                    placeholder='Luxury Hotel Name' />
                                              </div>
-                                             <div
-                                                class='mt-repeater-hotel-input luxury form-group col-md-2'>
-                                                <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
+                                             <div class='mt-repeater-hotel-input luxury form-group col-md-2 '>
+                                                <label class="control-label"><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                                                 <input name="hotel_luxury" type='text'
                                                    class='form-control'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_luxury"]) && !empty($hotel_meta[$i]["hotel_super_deluxe"]) ? trim($hotel_meta[$i]["hotel_luxury"]) : ""; ?>"
                                                    placeholder='Super Luxury Hotel Name' />
                                              </div>
-                                             <div class="mt-repeater-hotel-input col-md-1">
-                                                <label><strong>&nbsp;</strong></label>
+                                             <div class="mt-repeater-hotel-input col-md-1 ">
+                                                <label class="control-label d-block">&nbsp;</label>
                                                 <a href="javascript:;" data-repeater-delete
-                                                   class="btn btn-danger mt-repeater-delete">
-                                                <i class="fa fa-close"></i> Delete
+                                                   class="btn btn-outline-danger mt-repeater-delete">
+                                                   <i class="fa-solid fa-trash-can"></i>
                                                 </a>
                                              </div>
                                           </div>
                                        </div>
                                        <?php } ?>
                                     </div>
-                                    <a href="javascript:;" data-repeater-create
-                                       class="btn btn-success mt-repeater-hotel-add">
-                                    <i class="fa fa-plus"></i> Add Hotel</a>
+                                    
+                                    <div class="my-2">
+                                       <a href="javascript:;" data-repeater-create
+                                          class="btn btn-outline-primary mt-repeater-hotel-add">
+                                       <i class="fa fa-plus"></i></a>
+                                    </div>
+
                                     <?php $rates_meta = unserialize($iti->rates_meta);
                                        //if ( is_admin_or_manager()  ){ 
                                        if ($user_role == 99 || is_manager() || is_super_manager() || is_sales_manager() ||  is_salesteam()) {
@@ -1507,17 +1480,19 @@
                                        <div data-repeater-item
                                           class="mt-repeater-hotel-note-item form-group">
                                           <!-- jQuery Repeater Container -->
-                                          <div class="mt-repeater-hotel-note-input col-md-9">
-                                             <div class="mt-repeater-hotel-note-input">
-                                                <input required type="text" name="hotel_note"
-                                                   class="form-control"
-                                                   value="<?php echo isset($hotel_note_meta[$i]["hotel_note"]) ? trim($hotel_note_meta[$i]["hotel_note"]) : ""; ?>" />
+                                          <div class="row">
+                                             <div class="mt-repeater-hotel-note-input col-md-9">
+                                                <div class="mt-repeater-hotel-note-input">
+                                                   <input required type="text" name="hotel_note"
+                                                      class="form-control"
+                                                      value="<?php echo isset($hotel_note_meta[$i]["hotel_note"]) ? trim($hotel_note_meta[$i]["hotel_note"]) : ""; ?>" />
+                                                </div>
                                              </div>
-                                          </div>
-                                          <div class="mt-repeater-hotel-note-input col-md-3">
-                                             <a href="javascript:;" data-repeater-delete
-                                                class="btn btn-danger mt-repeater-delete">
-                                             <i class="fa fa-close"></i> Delete</a>
+                                             <div class="mt-repeater-hotel-note-input col-md-3">
+                                                <a href="javascript:;" data-repeater-delete
+                                                   class="btn btn-danger mt-repeater-delete">
+                                                <i class="fa-solid fa-trash-can"></i> </a>
+                                             </div>
                                           </div>
                                        </div>
                                        <?php }
@@ -1538,7 +1513,7 @@
                                           <div class="mt-repeater-hotel-note-input col-md-3">
                                              <a href="javascript:;" data-repeater-delete
                                                 class="btn btn-danger mt-repeater-delete">
-                                             <i class="fa fa-close"></i> Delete </a>
+                                             <i class="fa-solid fa-trash-can"></i> Delete </a>
                                           </div>
                                        </div>
                                        <?php } ?>

@@ -148,6 +148,11 @@ table.table.table_details td {
     background: #f9f9f9;
 }
 
+/* Table Icons */
+.table tr td a i {
+    margin: 3px 5px;
+}
+
 
 /* ----------------------------------- */
 /* ---- Forms (lables and inputs) ---- */
@@ -212,6 +217,10 @@ select.form-control:required:invalid {
   .input-group-addon{
       margin: 5px !important;
   }
+
+  .view_call_info .call_type_seciton label.radio-inline input[type=radio] {
+      /* margin-right: 5px; */
+    }
 
   /* ------------------------------------------------ */
   /* ---- Add/Edit Packages and Itinerary form Wizard */

@@ -25804,7 +25804,8 @@ body.stop-scrolling {
     margin: 0;
     position: relative;
     border-top: none;
-    border-bottom: none
+    border-bottom: none;
+    height: auto !important;
 }
 
 .mt-element-list .list-todo.mt-list-container ul>.mt-list-item>.list-todo-item .task-list .task-list-item {
@@ -35643,7 +35644,7 @@ td span.month {
     } */
 
 .form-group {
-    position: relative;
+    /* position: relative; */
 }
 
 .form-group label.error {
@@ -35717,13 +35718,13 @@ table.dataTable tbody td {
 }
 
 .view_call_info .call_type_seciton label {
-    padding: 0 20px 15px;
-    margin-left: 14px;
+    /* padding: 0 20px 15px;
+    margin-left: 14px; */
 }
 
 .view_call_info div#picked_call_panel .form-group {
-    padding: 4px;
-    margin-bottom: 21px;
+    /* padding: 4px;
+    margin-bottom: 21px; */
 }
 
 .view_call_info .margiv-top-10 {
@@ -35732,7 +35733,7 @@ table.dataTable tbody td {
 }
 
 div#call_not_picked_panel label {
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 div#panel_detail_section .checkbox {
@@ -35807,7 +35808,7 @@ div#update_rates_section .form-group input.btn.green.button-submit {
 }
 
 div#panel_detail_section div#call_not_picked_panel {
-    border-top: 1px solid #32c5d2;
+    /* border-top: 1px solid #32c5d2; */
 }
 
 div#tab2 .mt-repeater .mt-repeater-item.daywise_section {
@@ -36252,7 +36253,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .mt-repeater-hotel-input {
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
 }
 
 .star-rating {

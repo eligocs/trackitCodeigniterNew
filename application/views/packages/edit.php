@@ -22,7 +22,7 @@
 							<!--end Section Customer Section-->
 							<div class="form-wizard">
 								<div class="form-body">
-									<ul id="clickable_steps" class="nav nav-pills nav-justified  steps <?php echo $add_pub_class; ?>">
+									<ul id="clickable_steps" class="nav nav-pills nav-justified  steps <?php echo  $add_pub_class; ?>">
 										<li>
 											<a href="#tab1" data-toggle="tab" class="step">
 												<span class="number"> 1 </span>
@@ -198,63 +198,65 @@
 																<div data-repeater-item class="mt-repeater-item daywise_section">
 																	<!--strong>Day: </strong><strong class="sta_d"><?php //echo $i+1; ?></strong-->
 																	<div class="row">
-																		<div class="col-md-2">
+																		<div class="col-md-2 my-2">
 																			<div class="form-group">
 																				<label class="control-label">Day</label><span class="required"> * </span>
 																				<input required  placeholder="Day 1" type="text" name="tour_day" class="form-control" value="<?php echo $tourData[$i]['tour_day']?>" /> 
 																			</div>
 																			<input class="input-group form-control" size="16" type="hidden" value="<?php echo $tourData[$i]['tour_date']; ?>" name="tour_date"  />
 																		</div>
-																		<div class="col-md-8">
+
+																		<div class="col-md-8 my-2">
 																			<label class="control-label">Tour Title</label><span class="required"> * </span>
 																			<br/>
 																			<input required  placeholder="Shimla local sight" type="text" name="tour_name" class="form-control" value="<?php echo $tourData[$i]['tour_name']?>" /> 
 																		</div>
-																			<div class="col-md-2">
-																				<label class="control-label">Meal Plan</label><span class="required"> * </span>
-																				<select required name="meal_plan" class="form-control">
-																					<option value="">Choose Meal Plan</option>
-																					<option value="Breakfast Only" <?php if ( $tourData[$i]['meal_plan'] == "Breakfast Only" ) { ?> selected="selected" <?php } ?> >Breakfast Only</option>
-																					<option <?php if ( $tourData[$i]['meal_plan'] == "Breakfast & Dinner" ) { ?> selected="selected" <?php } ?> value="Breakfast & Dinner"> Breakfast & Dinner</option>
-																					<option <?php if ( $tourData[$i]['meal_plan'] == "Breakfast, Lunch & Dinner" ) { ?> selected="selected"  <?php } ?> value="Breakfast, Lunch & Dinner">Breakfast, Lunch & Dinner</option>
-																					<option <?php if ( $tourData[$i]['meal_plan'] == "Dinner Only" ) { ?> selected="selected" <?php } ?> value="Dinner Only">Dinner Only</option>
-																					<option <?php if ( $tourData[$i]['meal_plan'] == "No" ) { ?> selected="selected" <?php } ?> value="No">No Meal Plan</option>
-																				</select>
-																			</div>
 
-																		<div class="col-md-12">
+																		<div class="col-md-2 my-2">
+																			<label class="control-label">Meal Plan</label><span class="required"> * </span>
+																			<select required name="meal_plan" class="form-control">
+																				<option value="">Choose Meal Plan</option>
+																				<option value="Breakfast Only" <?php if ( $tourData[$i]['meal_plan'] == "Breakfast Only" ) { ?> selected="selected" <?php } ?> >Breakfast Only</option>
+																				<option <?php if ( $tourData[$i]['meal_plan'] == "Breakfast & Dinner" ) { ?> selected="selected" <?php } ?> value="Breakfast & Dinner"> Breakfast & Dinner</option>
+																				<option <?php if ( $tourData[$i]['meal_plan'] == "Breakfast, Lunch & Dinner" ) { ?> selected="selected"  <?php } ?> value="Breakfast, Lunch & Dinner">Breakfast, Lunch & Dinner</option>
+																				<option <?php if ( $tourData[$i]['meal_plan'] == "Dinner Only" ) { ?> selected="selected" <?php } ?> value="Dinner Only">Dinner Only</option>
+																				<option <?php if ( $tourData[$i]['meal_plan'] == "No" ) { ?> selected="selected" <?php } ?> value="No">No Meal Plan</option>
+																			</select>
+																		</div>
+
+																		<div class="col-md-12 my-2">
 																			<div class="mt-repeater-textarea t_des">
 																				<label class="control-label">Tour Description</label><span class="required"> * </span>
 																				<br/>
 																				<textarea required name="tour_des" class="form-control" rows="3"><?php echo $tourData[$i]['tour_des']; ?></textarea>
 																			</div>
 																		</div>
-																		<div class="col-md-4">
+
+																		<div class="col-md-4 my-2">
 																				<label class="control-label">Distance</label><span class="required"> * </span>
 																				<br/>
 																				<input required  placeholder="100 Km" type="number" name="tour_distance" class="form-control tour_distant" value="<?php echo $tourData[$i]['tour_distance'] ?>" /> 
 																		</div>
-																		<div class="col-md-3">	
-																				<label class="control-label">Attraction</label>
-																				<div class="hot_des" style="float:none;">
-																					<input type="hidden" value="<?php echo $tourData[$i]['hot_des'] ?>" class="tags_values" name="hot_des">
-																					<?php
-																						
-																						if( isset($tourData[$i]['hot_des'] ) && !empty( $tourData[$i]['hot_des'] )  ){
-																							$hot_dest = '';
-																							$htd = explode(",", $tourData[$i]['hot_des']);
-																							foreach($htd as $t) {
-																								$t = trim($t);
-																								$hot_dest .= "<span>" . $t . "</span>";
-																							}
-																							echo $hot_dest;
-																						}	
+																		
+																		<div class="col-md-3 my-2">	
+																			<label class="control-label">Attraction</label>
+																			<div class="hot_des" style="float:none;">
+																				<input type="hidden" value="<?php echo $tourData[$i]['hot_des'] ?>" class="tags_values" name="hot_des">
+																				<?php
+																					if( isset($tourData[$i]['hot_des'] ) && !empty( $tourData[$i]['hot_des'] )  ){
+																						$hot_dest = '';
+																						$htd = explode(",", $tourData[$i]['hot_des']);
+																						foreach($htd as $t) {
+																							$t = trim($t);
+																							$hot_dest .= "<span>" . $t . "</span>";
+																						}
+																						echo $hot_dest;
+																					}	
+																				?>
 																				
-																					?>
-																					
-																					
-																					<input type="text" value="" class="form-control" placeholder="Add a Hot destination" />
-																				</div>
+																				
+																				<input type="text" value="" class="form-control" placeholder="Add a Hot destination" />
+																			</div>
 																		</div> 
 																	</div> 
 																	
@@ -348,7 +350,7 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="mt-repeater-inc tour_field_repeater">
-														<h4>Inclusion</h4>
+														<h3>Inclusion</h3>
 														<div data-repeater-list="inc_meta">
 															<?php 
 															$inclusion = unserialize($iti->inc_meta); 
@@ -399,7 +401,7 @@
 														}
 													?>	
 													<div class="mt-repeater-exc tour_field_repeater">
-														<h4>Exclusion</h4>
+														<h3>Exclusion</h3>
 														<div data-repeater-list="exc_meta">  
 														<?php 
 															$exclusion = unserialize($iti->exc_meta); 

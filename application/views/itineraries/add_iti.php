@@ -573,14 +573,12 @@
 
 											<div data-repeater-item class="mt-repeater-item daywise_section">
 											<!--strong>Day: </strong><strong class="sta_d">1</strong--> 
-											<div class="clearfix"></div>
 											<div class="row">
 											<div class="col-md-8">
 											<div class="row">
 											<div class="col-md-2">
 												<div class="mt-repeater-input form-group">
 														<label class="control-label">Day</label><span class="required"> * </span>
-														<br/>
 														<input required  placeholder="Day 1" type="text" name="tour_day" class="form-control" value="" /> 
 													</div>
 											</div>
@@ -595,7 +593,6 @@
 											
 											<div class="mt-repeater-input form-group t_title">
 														<label class="control-label">Tour Title</label><span class="required"> * </span>
-														<br/>
 														<input required  placeholder="Shimla local sight" type="text" name="tour_name" class="form-control" value="" /> 
 											</div>
 											</div>
@@ -702,7 +699,7 @@
 											<?php $count_hotel_exc	= count( $hotel_exc );
 												if( $count_hotel_exc > 0 ){ ?>
 													<?php for ( $i = 0; $i < $count_hotel_exc; $i++ ) { ?>
-														<div data-repeater-item class="mt-repeater-exc-item form-group">
+														<div data-repeater-item class="mt-repeater-exc-item row my-3 form-group">
 															<!-- jQuery Repeater Container -->
 															<div class="mt-repeater-exc-input col-md-9">
 																<input required type="text" name="exc_meta[<?php echo $i; ?>][tour_exc]" class="form-control" value="<?php echo $hotel_exc[$i]["hotel_exc"] ;?>" /> 
@@ -715,7 +712,7 @@
 														</div>
 													<?php } ?>
 												<?php }else{ ?>	
-													<div data-repeater-item class="mt-repeater-exc-item form-group">
+													<div data-repeater-item class="mt-repeater-exc-item row my-3 form-group">
 														<!-- jQuery Repeater Container -->
 														<div class="mt-repeater-exc-input col-md-9">
 															<input required type="text" name="tour_exc" class="form-control" value="" /> 
@@ -735,10 +732,10 @@
 									<div class="col-md-12">
 										<div class="col-md-6"><!--Special Inclusion Section-->
 											<div class="mt-repeater-spinc tour_field_repeater_sp">
-												<h3 class="block">Special Inclusions</h3>
+												<h4 class="block">Special Inclusions</h4>
 												<div data-repeater-list="special_inc_meta">
 													<div data-repeater-item class="mt-repeater-spinc-item form-group">
-														<div class="mt-repeater-spinc-cell">
+														<div class="mt-repeater-spinc-cell row my-3">
 															<div class="mt-repeater-spinc-input col-md-9">
 																<input required type="text" name="tour_special_inc" class="form-control" value="" /> 
 															</div>
@@ -748,7 +745,7 @@
 															</div>
 														</div>
 													</div>
-												</div><br>
+												</div>
 												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
 												<i class="fa fa-plus"></i> Add</a>
 											</div>
@@ -765,24 +762,28 @@
 														<?php for ( $i = 0; $i < $count_ben_m; $i++ ) { ?>
 															<div data-repeater-item class="mt-repeater-exc-item form-group">
 																<!-- jQuery Repeater Container -->
-																<div class="mt-repeater-exc-input col-md-9">
-																	<input required type="text" name="booking_benefits_meta[<?php echo $i; ?>][benefit_inc]" class="form-control" value="<?php echo $get_booking_benefits[$i]["benefit_inc"] ;?>" /> 
-																</div>
-																<div class="mt-repeater-exc-input col-md-3">
-																	<a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																		<i class="fa fa-close"></i> </a>
+																<div class="row my-3">
+																	<div class="mt-repeater-exc-input col-md-9">
+																		<input required type="text" name="booking_benefits_meta[<?php echo $i; ?>][benefit_inc]" class="form-control" value="<?php echo $get_booking_benefits[$i]["benefit_inc"] ;?>" /> 
+																	</div>
+																	<div class="mt-repeater-exc-input col-md-3">
+																		<a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
+																			<i class="fa fa-close"></i> </a>
+																	</div>
 																</div>
 															</div>
 														<?php } ?>
 													<?php }else{ ?>
 													<div data-repeater-item class="mt-repeater-spinc-item form-group">
 														<div class="mt-repeater-spinc-cell">
-															<div class="mt-repeater-spinc-input col-md-9">
-																<input required type="text" name="benefit_inc" class="form-control" value="" /> 
-															</div>
-															<div class="mt-repeater-spinc-input col-md-3">
-																<a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																	<i class="fa fa-close"></i></a>
+															<div class="row my-3">
+																<div class="mt-repeater-spinc-input col-md-9">
+																	<input required type="text" name="benefit_inc" class="form-control" value="" /> 
+																</div>
+																<div class="mt-repeater-spinc-input col-md-3">
+																	<a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete">
+																		<i class="fa fa-close"></i></a>
+																</div>
 															</div>
 														</div>
 													</div>
