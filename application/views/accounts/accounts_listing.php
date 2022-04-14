@@ -10,7 +10,7 @@
 					<div class="caption">
 						<i class="fa fa-cart-plus"></i>All Bank/Cash Accounts
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("accounts/add_account"); ?>" title="Add New Account">Add account</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("accounts/add_account"); ?>" title="Add New Account"><i class="fa-solid fa-plus"></i> Add account</a>
 				</div>
 			</div>
 			<div class="portlet-body second_custom_card">

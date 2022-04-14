@@ -9,36 +9,34 @@
 					<a class="btn btn-success" href="<?php echo site_url("hotels/viewroomcategory"); ?>" title="Back">Back</a>
 				</div>
 			</div>
-			<form role="form" id="addRoomCategory">
-			
-			
+		
 			<div class="portlet-body">
-			<div class="row">
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Room Category</label>
-					<input type="text" placeholder="Room Category" name="room_cat_name" class="form-control" value=""/> 
-				</div>
-				</div>
-			</div> <!-- row -->
-				<div class="clearfix"></div>
-				<div class="margiv-top-10">
-					<button type="submit" class="btn green uppercase add_roomcategory">Add Room Category</button>
-				</div>
-			</form>
-			<div class="clearfix"></div>
-			<div id="addresEd" class="sam_res"></div>		
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
-			
-			
-		</div>
-	<!-- END CONTENT BODY -->
+				<div class="bg-white p-3 rounded-4 shadow-sm">
+					<form role="form" id="addRoomCategory">
+						<div class="row">
+							<div class="col-md-6 my-2">
+								<div class="form-group">
+									<label class="control-label">Room Category</label>
+									<input type="text" placeholder="Room Category" name="room_cat_name" class="form-control" value=""/> 
+								</div>
+							</div>
+							<div class="col-md-12 my-2">
+								<button type="submit" class="btn green uppercase add_roomcategory">Add Room Category</button>
+							</div>
+						</div>
+					</form>
+					<div id="addresEd" class="sam_res"></div>	
+				</div>	
+			</div>
+			<!-- End portlet-body -->
+		</div>	
+		<!-- End page-content -->
 	</div>
+	<!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+
 <!-- Modal -->
- </div>
-
-
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	var form = $("#addRoomCategory");

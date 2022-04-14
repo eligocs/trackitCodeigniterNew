@@ -10,7 +10,7 @@
 				<div class="caption">
 					<i class="fa fa-users"></i>All Vehicles Bookings
 				</div>
-				<a class="btn btn-success" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle">Book Cab</a>
+				<a class="btn btn-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle"><i class="fa-solid fa-book"></i> Book Cab</a>
 			</div>
 		</div>
 		<!--start filter section-->

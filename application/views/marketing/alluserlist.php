@@ -5,12 +5,12 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-cogs"></i>All Marketing Users
+					<i class="fa-solid fa-users"></i> All Marketing Users
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("marketing/add"); ?>" title="add user">Add Marketing User</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("marketing/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add Marketing User</a>
 				</div>
 			</div>
-			<div class="cat_wise_filter custom_card">
+			<div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4">
 				<!--check if no area assign to service and sales team ; -->
 				<?php if( ( $user_role == 96 || $user_role == 97 ) &&  !$check_assign_area ){ 
 					echo "<p>No area assign to you.Please Contact your manager.</p>";
@@ -78,8 +78,7 @@
 			</div>
 			<!--End Filter-->
 			<div class="filter_city_list"></div><!--city filter-->
-			<hr class="clearfix" />
-			<div class="custom_card">
+			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<div class="upload_user_section">
 					<form class="" action="<?php echo base_url(); ?>marketing/import_marketing_users" method="post"  name="upload_excel" enctype="multipart/form-data">
 						<!-- File Button -->

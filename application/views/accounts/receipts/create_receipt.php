@@ -26,11 +26,11 @@
                     <div class="caption">
                         <i class="icon-plus"></i>Create New Receipt
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("accounts/receipts");?>" title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/receipts");?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
                 </div>
             </div>
 
-            <div class="portlet-body custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <form id="addAcc_frm">
                     <div class="row">
                         <!--IF NEW CUSTOMER ACCOUNT DROPDOWN BOOKED ITI ID -->

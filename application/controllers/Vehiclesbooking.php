@@ -389,7 +389,7 @@ class Vehiclesbooking extends CI_Controller {
 				$cab_name 			= get_car_name( $cab_book->cab_id );
 				$booking_status		= $cab_book->booking_status;
 				if( $booking_status == 9 ){
-					$status = "<a data-id={$booking_id} title='Cab Booking Approved' href='javascript:void(0)' class='btn btn-success ajax_booking_status'><i class='fa fa fa-thumbs-o-up' aria-hidden='true'></i> &nbsp; Approved</a>";
+					$status = "<a data-id={$booking_id} title='Cab Booking Approved' href='javascript:void(0)' class='btn btn-success ajax_booking_status'><i class='fa-solid fa-thumbs-up'></i> &nbsp; Approved</a>";
 					
 					//update cab info button
 					$cab_info_btn = "<a  href='" . site_url("vehiclesbooking/update_cab_details/{$booking_id}") . "' title='Update Cab Info' href='javascript:void(0)' class='btn btn-success'><i class='fa fa-refresh' aria-hidden='true'></i> &nbsp; Update Cab Details</a>";

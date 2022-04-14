@@ -4,11 +4,11 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Create Package</div>
-					<a class="btn btn-success pull-right" href="<?php echo site_url("packages"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("packages"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
 				</div>
 			</div>
 			<div class="" id="form_wizard_1">
-				<div class="portlet-body form custom_card">
+				<div class="portlet-body form bg-white p-3 rounded-4 shadow-sm">
 					<form id="itiForm_form">
 						<div class="form-horizontal" id="itiForm_form">
 							<!--end Section Customer Section-->

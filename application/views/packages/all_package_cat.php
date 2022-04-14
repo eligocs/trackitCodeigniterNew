@@ -3,18 +3,18 @@
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
+            if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+            ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="fa fa-users"></i>All Packages Category
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("packages/addcat"); ?>" title="add hotel">Add
-                        Package Category</a>
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("packages/addcat"); ?>" title="add hotel">
+                    <i class="fa-solid fa-plus"></i> Add Package Category</a>
                 </div>
             </div>
-            <div class="portlet-body second_custom_card">
+            <div class="portlet-body bg-white rounded-4 p-3 shadow-sm">
                 <div class="table-responsive margin-top-15">
                     <table id="packageslist" class="table table-striped display">
                         <thead>
@@ -34,11 +34,13 @@
                 </div>
             </div>
         </div>
-
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
-</div>
+<!-- END Cpage-container -->
+
+
 <div id="myModal" class="modal" role="dialog"></div>
 <!-- Modal -->
 <script type="text/javascript">

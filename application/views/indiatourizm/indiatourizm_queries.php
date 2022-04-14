@@ -7,7 +7,7 @@
 						<i class="fa fa-cogs"></i>View All Queries From Query Generator
 					</div>
 					<?php if( is_admin() || is_leads_manager() ){ ?>
-						<a class="btn btn-success" href="<?php echo site_url("customers/add"); ?>" title="Add Customer">Add customer</a>
+						<a class="btn btn-primary float-end" href="<?php echo site_url("customers/add"); ?>" title="Add Customer"><i class="fa-solid fa-plus"></i> Add customer</a>
 					<?php } ?>
 				</div>
 			</div>
@@ -15,7 +15,7 @@
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
 			<div class="portlet-body">
-				<div class="table-responsive second_custom_card">
+				<div class="bg-white p-3 rounded-4 shadow-sm table-responsive">
 					<table id="sliders" class="table table-striped display">
 						<thead>
 							<tr>
@@ -41,9 +41,9 @@
 			</div>
 		</div>
 		
-		</div>
 	</div>
-<!-- END CONTENT BODY -->
+</div>
+<!-- END page-container -->
 <style>
 #pakcageModal, #teamleader_modal{top: 10%; z-index: 999999999; }
 strong.btn.btn-success.assign_btn {

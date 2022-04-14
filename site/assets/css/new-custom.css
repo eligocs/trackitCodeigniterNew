@@ -28,6 +28,12 @@ a{
     text-decoration: none;
 }
 
+/* modal button */
+.modal button {
+    font-size: 12px !important;
+    border-radius: 2px !important;
+}
+
 
 .white_space_fix{
     white-space: nowrap !important;

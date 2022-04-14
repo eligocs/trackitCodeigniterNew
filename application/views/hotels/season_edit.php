@@ -16,7 +16,7 @@
             <form role="form" id="editSeason" method="post" action="<?php echo site_url("hotels/updateseason"); ?>">
                 <div class="portlet-body second_custom_card">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 my-2">
                             <div class="form-group">
                                 <label class="control-label">Season Name*</label>
                                 <input type="text" required placeholder="Season Name. eg: Mid Season etc."
@@ -24,8 +24,8 @@
                                     value="<?php echo $season->season_name; ?>" />
                             </div>
                         </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6">
+
+                        <div class="col-md-12 my-2">
                             <label class="control-label">Season Dates*</label>
                             <div class="mt-repeater">
                                 <div data-repeater-list="season_date_meta">
@@ -37,20 +37,21 @@
 										for( $i = 0 ; $i < $count_dates ; $i++ ){ ?>
                                     <div data-repeater-item class="mt-repeater-item mt-overflow">
                                         <div class="mt-repeater-cell">
-                                            <div
-                                                class="input-group input-large input-daterange mmt-repeater-input-inline">
-                                                <input readonly required type="text" class="form-control season_from"
-                                                    name="season_from"
-                                                    value="<?php echo isset( $dates_meta[$i]["season_from"] ) ?  $dates_meta[$i]["season_from"] : "" ?>">
-                                                <span class="input-group-addon hotel_addon"> to </span>
-                                                <input readonly required type="text" class="form-control season_to"
-                                                    name="season_to"
-                                                    value="<?php echo isset( $dates_meta[$i]["season_to"] ) ?  $dates_meta[$i]["season_to"] : "" ?>">
+                                            <div class="row input-daterange mmt-repeater-input-inline">
+                                                <div class="col-md-6 my-2 d-flex">
+                                                    <input readonly required type="text" class="form-control season_from" name="season_from" value="<?php echo isset( $dates_meta[$i]["season_from"] ) ?  $dates_meta[$i]["season_from"] : "" ?>">
+                                                    <span class="input-group-addon hotel_addon"> to </span>
+                                                </div>
+                                                <div class="col-md-5 my-2">
+                                                   <input readonly required type="text" class="form-control season_to" name="season_to" value="<?php echo isset( $dates_meta[$i]["season_to"] ) ?  $dates_meta[$i]["season_to"] : "" ?>">
+                                                </div>
+                                                <div class="col-md-1 my-2">
+                                                    <a href="javascript:;" data-repeater-delete
+                                                    class="btn btn-outline-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <a href="javascript:;" data-repeater-delete
-                                                class="btn btn-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
-                                                <i class="fa fa-close"></i>
-                                            </a>
                                         </div>
                                     </div>
                                     <?php } 
@@ -73,28 +74,26 @@
                                     </div>
                                     <?php } */ ?>
                                 </div>
-                                <a href="javascript:;" data-repeater-create
-                                    class="btn btn-success mt-repeater-add pull-right">
-                                    <i class="fa fa-plus"></i> Add new</a>
+                                <div class="mb-1 mt-2">
+                                    <a href="javascript:;" data-repeater-create class="btn btn-outline-primary mt-repeater-add"> <i class="fa fa-plus"></i> Add new</a>
+                                </div>
                             </div>
                         </div>
-                    </div> <!-- row -->
-                    <div class="clearfix"></div>
-                    <div class="margiv-top-10">
-                        <input type="hidden" name="inp[id]" class="form-control" value="<?php echo $season->id; ?>" />
-                        <button type="submit" class="btn green uppercase add_roomcategory">Update</button>
-                    </div>
+
+                        <div class="col-md-12 my-2">
+                            <input type="hidden" name="inp[id]" class="form-control" value="<?php echo $season->id; ?>" />
+                            <button type="submit" class="btn btn-success uppercase add_roomcategory">Update</button>
+                        </div>
+                    </div> 
+                </div>
             </form>
-        </div><!-- portlet body -->
-    </div> <!-- portlet -->
-    <?php }else{
-				redirect("hotels/seasons");
-			}	?>
+        </div> 
+        <?php }else{ redirect("hotels/seasons"); }	?>
+    </div>
 </div>
-<!-- END CONTENT BODY -->
-</div>
+
+
 <!-- Modal -->
-</div>
 <script>
 jQuery(document).ready(function($) {
     //Get First and Last Date of year

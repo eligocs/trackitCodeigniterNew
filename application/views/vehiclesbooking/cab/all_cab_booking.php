@@ -10,11 +10,11 @@
 				<div class="caption">
 					<i class="fa fa-bus"></i>All Cab Bookings
 				</div>
-				<a class="btn btn-success" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle">Book Cab</a>
+				<a class="btn btn-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle"><i class="fa-solid fa-book"></i> Book Cab</a>
 			</div>
 		</div>
 		<!--start filter section-->
-		<div class="second_custom_card mb-4">
+		<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
 			<form id="form-filter" class="form-horizontal">
 				<div class="actions row">
 					<div class="col-md-4">
@@ -42,9 +42,8 @@
 				<input type="hidden" name="filter_val" id="filter_val" value="all">
 			</form><!--End filter section-->	
 		</div>
-			<div class="clearfix"></div> 		
-			<div class="portlet-body">
-				<div class="table-responsive custom_card">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<div class="table-responsive">
 					<table id= "vehicles_booking" class="table table-striped display">
 						<thead>
 							<tr>

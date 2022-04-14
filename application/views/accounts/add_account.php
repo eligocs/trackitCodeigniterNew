@@ -3,8 +3,8 @@
         <div class="page-content">
             <?php echo validation_errors('<span class="help-block1 help-block-error">', '</span>'); ?>
             <?php $message = $this->session->flashdata('error'); 
-		if($message){ echo '<span class="help-block1 help-block-error">'.$message.'</span>';}
-		?>
+            if($message){ echo '<span class="help-block1 help-block-error">'.$message.'</span>';}
+            ?>
             <style>
             .dis_block {
                 display: block;
@@ -15,23 +15,18 @@
             }
             </style>
             <div class="portlet box blue">
-
                 <div class="portlet-title">
-
                     <div class="caption">
-
                         <i class="icon-plus"></i>Add Account Details
-
                     </div>
-
-                    <a class="btn btn-success" href="<?php echo site_url("accounts");?>" title="Back">Back</a>
-
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts");?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
                 </div>
 
             </div>
 
             <?php $show_bank =  isset( $account_listing[0]->account_type ) && $account_listing[0]->account_type == "bank" ? "dis_block" : "hide_div"; ?>
-            <div class="portlet-body custom_card">
+
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <form id="addAcc_frm">
                     <div class="row">
                         <div class="col-md-4 my-2">
@@ -97,8 +92,8 @@
                             </div>
                         </div>
                         <?php } ?>
-                        <div class="clearfix"></div>
-                        <div class="col-md-4 mt-sm-3 my-2">
+                        
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Remarks</label>
                                 <textarea placeholder="Remarks" name="remarks" class="form-control"
@@ -107,9 +102,9 @@
                             </div>
                         </div>
                     </div> <!-- row close -->
-                    <div class="clearfix"></div>
+                    
                     <div class="col-md-12">
-                        <div class="mt-sm-3 my-2 account_btn">
+                        <div class="my-2 account_btn">
                             <input type="hidden" name="id"
                                 value="<?php echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
                             <button type="submit" class="btn green uppercase add_Bank">Add
@@ -117,21 +112,20 @@
 
                         </div>
                     </div>
-                    <div class="clearfix"></div>
+                    
                     <div id="res"></div>
                 </form>
-            </div><!-- portlet body -->
-        </div> <!-- portlet -->
+            </div>
+
+            <!-- End portlet-body -->
+        </div>
+        <!-- End page-content -->
     </div>
-
-    <!-- END CONTENT BODY -->
-
+    <!-- End page-content-wrapper -->
 </div>
+<!-- END page-container -->
 
 <!-- Modal -->
-
-</div>
-
 <script>
 jQuery(document).ready(function($) {
     //account type on change

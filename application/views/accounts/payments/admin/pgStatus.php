@@ -25,18 +25,33 @@
                </div>
             </div>
          </div>
-         <form method="post" action="">
-   			<div class="second_custom_card">
-			   <table class='table margin-top-20'>
+         <form class="mb-0" method="post" action="">
+   			<!-- <div class="second_custom_card">
+			   <table class='table border-0'>
 					<tbody>
 						<tr>
 							<td class="border_top_zero"><label> <strong>Enter ORDER_ID ::* </strong></label></td>
-							<td class="border_top_zero"><input id="ORDER_ID" tabindex="1" class='form-control' maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo $ORDER_ID ?>">
+							<td class="border_top_zero"><input id="ORDER_ID" tabindex="1" class='form-control' maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php //echo $ORDER_ID ?>">
 							</td>
 							<td class="border_top_zero"><input value="Status Query"  class='btn btn-success' type="submit"	onclick=""></td>
 						</tr>
 					</tbody>
             	</table>
+			   </div> -->
+
+			   <div class="bg-white p-3 rounded-4 shadow-sm">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label"> <strong>Enter ORDER_ID <sup class="text-danger">*</sup> </strong></label>
+								<input id="ORDER_ID" tabindex="1" class='form-control' maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo $ORDER_ID ?>">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label for="" class="control-label d-block">&nbsp;</label>
+							<input value="Status Query"  class='btn btn-success' type="submit"	onclick="">
+						</div>
+					</div>
 			   </div>
 
 				<?php
@@ -49,7 +64,7 @@
 						<h3 class="custom_title">Response of status query:</h3>
 					</div>
 				</div>
-				<div class="custom_card">
+				<div class="bg-white p-3 rounded-4 shadow-sm">
 					<table  class='table table_payments_status table-striped' style="border: 1px solid nopadding" border="0">
 						<tbody>
 							<?php

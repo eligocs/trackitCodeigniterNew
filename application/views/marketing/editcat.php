@@ -8,30 +8,28 @@
 		?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
-					<div class="caption"><i class="fa fa-users"></i>Edit Category</strong></div>
-					<a class="btn btn-success" href="<?php echo site_url("marketing/viewcat"); ?>" title="Back">Back</a>
+					<div class="caption"><i class="fa-solid fa-pen-to-square"></i> Edit Category</strong></div>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("marketing/viewcat"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
 				</div>
 			</div>
 			
-			<div class="portlet box blue">
-				<div class="portlet-body">
-					<form role="form" id="editCat" enctype="multipart/form-data" method="post" >
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<form role="form" id="editCat" enctype="multipart/form-data" method="post" >
+					
+					<div class="col-md-4 my-2">
 						<div class="form-group">
 							<label class="control-label">Category Name*</label>
 							<input required type="text" name="category_name" placeholder="Category Name" class="form-control" value="<?php echo $cat->category_name;?>" /> 
 						</div>
-						
-									
-						<div class="margiv-top-10">
-							<input type="hidden" name="cat_id" value="<?php echo $cat->id;?>"/>
-							<button type="submit" class="btn green uppercase update_category">Update Category</button>
-						</div>
-					</form>
-				</div>
+					</div>
+								
+					<div class="col-md-12 my-2">
+						<input type="hidden" name="cat_id" value="<?php echo $cat->id;?>"/>
+						<button type="submit" class="btn green uppercase update_category mt-3">Update Category</button>
+					</div>
+				</form>
 			</div>
-
-		<div id="resEd"></div>
-		
+			<div id="resEd"></div>
 	</div>
 	<!-- END CONTENT BODY -->
 <script type="text/javascript">

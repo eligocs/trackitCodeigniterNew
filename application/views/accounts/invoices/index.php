@@ -10,10 +10,10 @@
 					<div class="caption">
 						<i class="fa fa-file-alt"></i>All Invoices
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("accounts/pending_invoices"); ?>" title="All Invoice">Generate Invoice</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("accounts/pending_invoices"); ?>" title="All Invoice"><i class="fa-solid fa-plus"></i> Generate Invoice</a>
 				</div>
 			</div>
-			<div class="portlet-body second_custom_card">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table class="table table-striped display white_space_fix">
 						<thead>

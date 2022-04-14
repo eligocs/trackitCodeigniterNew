@@ -4,13 +4,13 @@
 			<form role="form" id="addUser" method="post">
 				<div class="portlet box blue">
 					<div class="portlet-title">
-						<div class="caption"><i class="fa fa-user"></i>Add user</div>
-						<a class="btn btn-success" href="<?php echo site_url("marketing"); ?>" title="Back">Back</a>
+						<div class="caption"><i class="fa-solid fa-user-plus"></i> Add user</div>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("marketing"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
 					</div>
 				</div>
-			<div class="custom_card">
+			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<div class="row">
-					<div class="col-md-4 my-2">	
+					<div class="col-md-4 col-xl-3 my-2">	
 						<div class="form-group">
 							<label class="control-label">Choose Category*</label>
 							<?php if(!empty($row)) {
@@ -28,41 +28,42 @@
 						</div>
 					</div>	
 
-					<div class="col-md-4 my-2">	
+					<div class="col-md-4 col-xl-3 my-2">	
 						<div class="form-group">
 							<label class="control-label">Full Name*</label>
 							<input  type="text" required placeholder="Full Name" name="name" class="form-control" value="" /> 
 						</div>
 					</div>
 					
-					<div class="col-md-4 my-2">
+					<div class="col-md-4 col-xl-3 my-2">
 						<div class="form-group">
 							<label class="control-label">Email Id*</label>
 							<input type="text" required placeholder="Email Id" name="email_id" class="form-control" value="" /> 
 						</div>
 					</div>
-					<div class="col-md-3 my-2">
+
+					<div class="col-md-4 col-xl-3 my-2">
 						<div class="form-group">
 							<label class="control-label">Contact Number*</label>
 							<input type="text" required placeholder="Contact Number" name="contact_number" class="form-control" value="" /> 
 						</div>
 					</div>
 					
-					<div class="col-md-3 my-2">
+					<div class="col-md-4 col-xl-3 my-2">
 						<div class="form-group">
 							<label class="control-label">Whats App Number</label>
 							<input  type="text"  placeholder="Whats App Number" name="whats_app_number" class="form-control" value="" /> 
 						</div>
 					</div>
 					
-					<div class="col-md-3 my-2">
+					<div class="col-md-4 col-xl-3 my-2">
 						<div class="form-group">
 							<label class="control-label">Business Name*</label>
 							<input  type="text" required placeholder="Business Name" name="company_name" class="form-control" value="" /> 
 						</div>
 					</div>
 					
-					<div class="col-md-3 my-2">
+					<div class="col-md-4 col-xl-3 my-2">
 						<label class="control-label">Address( State )</label>
 						<div class="form-group">
 							<?php $state_list = get_indian_state_list(); 
@@ -79,7 +80,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-3 my-2">
+					<div class="col-md-4 col-xl-3 my-2">
 						<div id ="city_list">
 							<div class='form-group'>
 							<label>City:</label>
@@ -90,14 +91,14 @@
 						</div>
 					</div>
 
-					<div class="col-md-3 my-2">
+					<div class="col-md-4 col-xl-3 my-2">
 						<label class="control-label">Place</label>
 						<div class="form-group">
 							<input  type="text" id="place" placeholder="Place" name="place" class="form-control" value="" /> 
 						</div>
 					</div>
 					
-					<div class="col-md-3 my-2">
+					<div class="col-md-4 col-xl-3 my-2">
 						<label class="control-label">Website</label>
 						<div class="form-group">
 							<input  type="url" id="website" placeholder="website" name="website" class="form-control" value="" /> 

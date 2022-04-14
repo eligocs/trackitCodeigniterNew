@@ -158,7 +158,7 @@
                     <hr>
                     <div class="col-md-12 text-left">
                         <div class="margiv-top-10">
-                            <button type="submit" class="btn green uppercase add_hotel">Add Hotel</button>
+                            <button type="submit" class="btn btn-primary add_hotel">Add Hotel</button>
                         </div>
                     </div>
                     <div class="clearfix"></div>

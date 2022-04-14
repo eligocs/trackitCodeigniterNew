@@ -8,24 +8,24 @@
          <div class="portlet box blue" style="margin-bottom:0;">
             <div class="portlet-title">
                <div class="caption">
-                  <i class="fa fa-users"></i>All Hotel Bookings
+               <i class="fa-solid fa-hotel"></i> All Hotel Bookings
                </div>
-               <a class="btn btn-success" href="<?php echo site_url("itineraries"); ?>" title="Book Hotel">Book Hotel</a>
+               <a class="btn btn-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Book Hotel"><i class="fa-solid fa-book"></i> Book Hotel</a>
             </div>
          </div>
-         <div class="marginBottom second_custom_card">
+         <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
             <!--start filter section-->
-            <form id="form-filter" class="form-horizontal bg_white padding_zero margin_bottom_0">
-               <div class="actions custom_filter">
-                  <label class="control-label col-md-1"><strong>Filter: </strong></label>
-                  <div class="col-md-3">
-                  <input type="text" autocomplete="off" class="form-control" id="daterange"
-                                            name="dateRange" title="Checkin filter" placeholder='Checkin date' />
+            <form id="form-filter" class="form-horizontal mb-0">
+               <div class="actions row ">
+                  <div class="form-group col-md-3">
+                     <label class="control-label"><strong>Filter: </strong></label>
+                     <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" title="Checkin filter" placeholder='Checkin date' />
                      <input type="hidden" name="date_from" id="date_from">
                      <input type="hidden" name="date_to" id="date_to">
                   </div>
-                  <div class="col-md-8">
-                     <div class="btn-group" data-toggle="buttons">
+                  <div class="col-md-9">
+                     <div class="radio_filter_btns" data-toggle="buttons">
+                        <label for="" class="control-label d-block">&nbsp;</label>
                         <label class="btn btn-default  custom_active active"><input type="radio" name="filter" value="all" checked="checked" id="all"/>All</label>
                         <label class="btn btn-default  custom_active"><input type="radio" name="filter" value="upcomming" id="upcomming" />Upcomming</label>
                         <label class="btn btn-default  custom_active"><input type="radio" name="filter" value="past" id="past" />Past</label>

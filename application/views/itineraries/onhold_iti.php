@@ -46,7 +46,9 @@
 											<td><?php echo $onhold->package_name; ?></td>
 											<td><?php echo get_user_name( $onhold->agent_id ); ?></td>
 											<td>
-												<a class="btn btn-custom" target="_blank" href="<?php echo $view_link; ?>">View</a>
+												<a class="btn btn_eye" target="_blank" href="<?php echo $view_link; ?>">
+													<i class="fa-solid fa-eye"></i>
+												</a>
 											</td>
 										</tr>
 									<?php 

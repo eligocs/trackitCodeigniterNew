@@ -9,7 +9,7 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption"><i class="fa fa-users"></i>Name: <strong><?php echo $muser->name; ?></strong></div>
-               <a class="btn btn-success" href="<?php echo site_url("marketing"); ?>" title="Back">Back</a>
+               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("marketing"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
             </div>
          </div>
          <div class="second_custom_card">
@@ -106,25 +106,28 @@
                </div>
             </div>
             <!--portlet close-->	
-            <a class="btn btn-danger" href="#" id="add_call_btn" title="Back">Add Call Info</a>
+            <a class="btn btn-danger" href="#" id="add_call_btn" title="Back"><i class="fa-solid fa-phone"></i> Add Call Info</a>
             <div class="call_log" id="call_log_section" style="display: none;">
                <form id="call_detais_form" novalidate="novalidate">
                   <div class="call_type_seciton">
-                     <label class="radio-inline">
-                     <input data-id="picked_call_panel" required="" id="picked_call" class="radio_toggle" type="radio" name="callType" value="Picked call" aria-required="true">Picked call
+                     <label class="radio-inline control-label mb-3 me-3">
+                        <input data-id="picked_call_panel" required="" id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call" aria-required="true">Picked call
                      </label>
-                     <label class="radio-inline"><input class="radio_toggle" data-id="call_not_picked_panel" required="" id="call_not_picked" type="radio" name="callType" value="Call not picked" aria-required="true">Call not picked</label>
-                     <label class="radio-inline"><input class="radio_toggle" data-id="close_lead_panel" required="" id="close_lead" type="radio" name="callType" value="8" aria-required="true">Decline</label>
+                     <label class="radio-inline control-label mb-3 me-3">
+                        <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required="" id="call_not_picked" type="radio" name="callType" value="Call not picked" aria-required="true">Call not picked
+                     </label>
+                     <label class="radio-inline control-label mb-3 me-3">
+                        <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required="" id="close_lead" type="radio" name="callType" value="8" aria-required="true">Decline
+                     </label>
                   </div>
                   <div id="panel_detail_section" style="display: none;">
-                     <div class="call_type_res col-md-4" id="picked_call_panel">
+                     <div class="call_type_res row" id="picked_call_panel">
                         <!--picked call panel-->
-                        <div class="col-md-">
+                        <div class="col-md-6 my-3">
                            <div class="checkbox1">
-                              <label><input id="nxtCallCk" type="radio" class="book_query" name="book_query" required="" value="" aria-required="true"> Next call time</label>
+                              <label class="control-label mb-2"><input id="nxtCallCk" type="radio" class="book_query form-check-input" name="book_query" required="" value="" aria-required="true"> Next calling time and date <sup class="text-danger">*</sup></label>
                            </div>
                            <div id="next_call_cal">
-                              <label>Next calling time and date<span style="color:red;">*</span>:</label> 
                               <input size="16" required="" type="text" value="" name="nextCallTime" readonly="" class="form-control form_datetime" aria-required="true">  
                            </div>
                         </div>
@@ -133,20 +136,19 @@
                      <!--end picked call panel-->
                      <div class="call_type_res" id="call_not_picked_panel">
                         <!--call_not_picked panel-->
-                        <div class="col-md-12">
-                           <label class="radio-inline">
-                           <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Switched off" aria-required="true">Switched off
-                           </label>
-                           <label class="radio-inline">
-                           <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Not reachable" aria-required="true">Not reachable
-                           </label>
-                           <label class="radio-inline">
-                           <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Not answering" aria-required="true">Not answering
-                           </label>
-                           <label class="radio-inline">
-                           <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Number does not exists" aria-required="true">Number does not exists
-                           </label>
-                           <div class="clearfix"></div>
+                        <label class="radio-inline control-label me-3 mb-3">
+                        <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Switched off" aria-required="true">Switched off
+                        </label>
+                        <label class="radio-inline control-label mx-3 mb-3">
+                        <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not reachable" aria-required="true">Not reachable
+                        </label>
+                        <label class="radio-inline control-label mx-3 mb-3">
+                        <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not answering" aria-required="true">Not answering
+                        </label>
+                        <label class="radio-inline control-label mx-3 mb-3">
+                        <input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Number does not exists" aria-required="true">Number does not exists
+                        </label>
+                        <div class="row">
                            <div class="col-md-6 hide">
                               <div class="row">
                                  <div class="col-md-">
@@ -157,23 +159,18 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="clearfix"></div>
-                           <div class="col-md-6">
-                              <div class="row">
-                                 <div class="nxt_call">
-                                    <div class="form-group">
-                                       <label>Next calling time and date<span style="color:red;">*</span>:</label> 
-                                       <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime"> 
-                                    </div>
-                                    <div class="form-group">
-                                       <label>Lead prospect<span style="color:red;">*</span></label>
-                                       <select required class="form-control" name="txtProspectNotpicked">
-                                          <option value="Hot">Hot</option>
-                                          <option value="Warm">Warm</option>
-                                          <option value="Cold">Cold</option>
-                                       </select>
-                                    </div>
-                                 </div>
+                           <div class="nxt_call">
+                              <div class="form-group">
+                                 <label>Next calling time and date<span style="color:red;">*</span>:</label> 
+                                 <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime"> 
+                              </div>
+                              <div class="form-group">
+                                 <label>Lead prospect<span style="color:red;">*</span></label>
+                                 <select required class="form-control" name="txtProspectNotpicked">
+                                    <option value="Hot">Hot</option>
+                                    <option value="Warm">Warm</option>
+                                    <option value="Cold">Cold</option>
+                                 </select>
                               </div>
                            </div>
                         </div>
@@ -193,7 +190,7 @@
                               <option value="Other">Other</option>
                            </select>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="comment">Decline Comment:</label>
@@ -202,30 +199,33 @@
                         </div>
                      </div>
                      <!--end close_lead_panel-->	
-                     <div class="clearfix"></div>
-                     <div class="col-md-4">
-                        <div class="form-group">
-                           <label for="comment">Call summary<span style="color:red;">*</span>:</label>
-                           <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
+                     <div class="row">
+                        <div class="col-md-6 my-2">
+                           <div class="form-group">
+                              <label for="comment">Call summary<span style="color:red;">*</span>:</label>
+                              <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
+                           </div>
+                        </div>
+                        
+                        <div class="col-md-6 my-2">
+                           <div class="form-group">
+                              <label>Lead prospect<span style="color:red;">*</span></label>
+                              <select required class="form-control" name="txtProspect">
+                                 <option value="Hot">Hot</option>
+                                 <option value="Warm">Warm</option>
+                                 <option value="Cold">Cold</option>
+                              </select>
+                           </div>
                         </div>
                      </div>
-                     <div class="col-md-4">
-                        <div class="form-group">
-                           <label>Lead prospect<span style="color:red;">*</span></label>
-                           <select required class="form-control" name="txtProspect">
-                              <option value="Hot">Hot</option>
-                              <option value="Warm">Warm</option>
-                              <option value="Cold">Cold</option>
-                           </select>
-                        </div>
-                     </div>
+
                      <input type="hidden" name="customer_id" value="<?php echo $muser->id; ?>">
                      <input type="hidden" name="agent_id" value="<?php echo $user_id; ?>">
-                     <div class="margiv-top-10">
+                     <div class="mt-3">
                         <button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
                         <button class="btn red uppercase cancle_bnt">Cancel</button>
                      </div>
-                     <div class="clearfix"></div>
+                     
                      <div id="resp"></div>
                </form>
                </div>

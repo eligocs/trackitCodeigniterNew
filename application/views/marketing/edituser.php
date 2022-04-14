@@ -1,139 +1,144 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<?php $message = $this->session->flashdata('success'); 
-				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
-			?>
-		<?php if($m_user){ 	$muser = $m_user[0];		?>
+			<?php $message = $this->session->flashdata('success'); 
+					if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
+				?>
+			<?php if($m_user){ 	$muser = $m_user[0];		?>
 			<form role="form" id="updateUser" method="post">
-			<div class="portlet box blue">
-			<div class="portlet-title">
-					<div class="caption"><i class="fa fa-user"></i>Add user</div>
-					<a class="btn btn-success" href="<?php echo site_url("marketing"); ?>" title="Back">Back</a>
-				</div>
-			</div>
-			<div class="portlet-body custom_card">
-				<div class="col-md-4">	
-					<div class="form-group">
-						<label class="control-label">Choose Category*</label>
-						<?php if(!empty($row)) { ?>
-						<select required name="cat_id" class="form-control">
-							<option value="">Select Category</option>
-							<?php foreach($row as $cat){?>
-								<option <?php if( $muser->cat_id == $cat->id ){ echo "selected='selected'"; } ?> value="<?php echo $cat->id;?>"><?php echo $cat->category_name;?></option>
-							<?php }	?>
-								
-						</select>
-						<?php } else {?>
-							</br><span>No category found ! Please <a href="<?php echo site_url("marketing/addcat");?>">Click Here to Add category</a></span>
-						<?php }?>
-					</div>
-				</div>		
-				<div class="col-md-4">	
-				<div class="form-group">
-					<label class="control-label">Full Name*</label>
-					<input  type="text" required placeholder="Full Name" name="name" class="form-control" value="<?php echo $muser->name;?>" /> 
-				</div>
-				</div>
-				
-				<div class="col-md-4">
-				<div class="form-group">
-					<label class="control-label">Email Id*</label>
-					<input type="text" required placeholder="Email Id" name="email_id" class="form-control" value="<?php echo $muser->email_id;?>" /> 
-				</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="col-md-4">
-				<div class="form-group">
-					<label class="control-label">Contact Number*</label>
-					<input type="text" required placeholder="Contact Number" name="contact_number" class="form-control" value="<?php echo $muser->contact_number;?>" /> 
-				</div>
-				</div>
-				
-				
-				<div class="col-md-4">
-				<div class="form-group">
-					<label class="control-label">Whats App Number</label>
-					<input  type="number"  placeholder="Whats App Number" name="whats_app_number" class="form-control" value="<?php echo $muser->whats_app_number; ?>" /> 
-				</div>
-				</div>
-				
-				
-				<div class="col-md-4">
-				<div class="form-group">
-					<label class="control-label">Business Name*</label>
-					<input  type="text" required placeholder="Business Name" name="company_name" class="form-control" value="<?php echo $muser->company_name;?>" /> 
-				</div>
-				</div>
-				
-				<div class="clearfix"></div>
-				<div class="col-md-3">
-				<label class="control-label">Address ( State )</label>
-					<div class="form-group">
-						<?php $state_list = get_indian_state_list(); 
-						if( $state_list ){
-							echo "<select name='state' class='form-control' id='state'>";
-								echo '<option value="">Select State</option>';
-								foreach($state_list as $state){
-									$selected = $muser->state == $state->id ? "selected='selected'" : "";
-									echo '<option '. $selected .' value="'.$state->id.'">'.$state->name.'</option>';
-								}
-							echo "</select>";
-						}else{ ?>
-							<input type="text" placeholder="State Name" name="state" class="form-control" value="<?php echo $muser->state; ?>" /> 
-						<?php } ?>	
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption"><i class="fa-solid fa-pen-to-square"></i> Edit User</div>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("marketing"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div id ="city_list">
-						<div class='form-group'>
-							<label>City:</label>
-							<select name='city' class='form-control city'>
-								<option value="">Select City</option>
-								<?php $cities = get_city_list($muser->state);
-								if($cities){
-									foreach( $cities as $city ){ ?>
-										<option value="<?php echo $city->id;?>" <?php if ($city->id == $muser->city ) { ?> selected="selected" <?php } ?> > <?php echo $city->name ; ?></option>
+				<div class="portlet-body custom_card">
+					<div class="row">
+						<div class="col-md-4 col-xl-3 my-2">	
+							<div class="form-group">
+								<label class="control-label">Choose Category*</label>
+								<?php if(!empty($row)) { ?>
+								<select required name="cat_id" class="form-control">
+									<option value="">Select Category</option>
+									<?php foreach($row as $cat){?>
+										<option <?php if( $muser->cat_id == $cat->id ){ echo "selected='selected'"; } ?> value="<?php echo $cat->id;?>"><?php echo $cat->category_name;?></option>
+									<?php }	?>
 										
-									<?php }
-								}
-								?>
-							</select>
+								</select>
+								<?php } else {?>
+									</br><span>No category found ! Please <a href="<?php echo site_url("marketing/addcat");?>">Click Here to Add category</a></span>
+								<?php }?>
+							</div>
+						</div>		
+
+						<div class="col-md-4 col-xl-3 my-2">	
+							<div class="form-group">
+								<label class="control-label">Full Name*</label>
+								<input  type="text" required placeholder="Full Name" name="name" class="form-control" value="<?php echo $muser->name;?>" /> 
+							</div>
 						</div>
+						
+						<div class="col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Email Id*</label>
+								<input type="text" required placeholder="Email Id" name="email_id" class="form-control" value="<?php echo $muser->email_id;?>" /> 
+							</div>
+						</div>
+						
+						<div class="col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Contact Number*</label>
+								<input type="text" required placeholder="Contact Number" name="contact_number" class="form-control" value="<?php echo $muser->contact_number;?>" /> 
+							</div>
+						</div>
+						
+						<div class="col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Whats App Number</label>
+								<input  type="number"  placeholder="Whats App Number" name="whats_app_number" class="form-control" value="<?php echo $muser->whats_app_number; ?>" /> 
+							</div>
+						</div>
+						
+						
+						<div class="col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Business Name*</label>
+								<input  type="text" required placeholder="Business Name" name="company_name" class="form-control" value="<?php echo $muser->company_name;?>" /> 
+							</div>
+						</div>
+						
+						
+						<div class="col-md-4 col-xl-3 my-2">
+							<label class="control-label">Address ( State )</label>
+							<div class="form-group">
+								<?php $state_list = get_indian_state_list(); 
+								if( $state_list ){
+									echo "<select name='state' class='form-control' id='state'>";
+										echo '<option value="">Select State</option>';
+										foreach($state_list as $state){
+											$selected = $muser->state == $state->id ? "selected='selected'" : "";
+											echo '<option '. $selected .' value="'.$state->id.'">'.$state->name.'</option>';
+										}
+									echo "</select>";
+								}else{ ?>
+									<input type="text" placeholder="State Name" name="state" class="form-control" value="<?php echo $muser->state; ?>" /> 
+								<?php } ?>	
+							</div>
+						</div>
+
+						<div class="col-md-4 col-xl-3 my-2">
+							<div id ="city_list">
+								<div class='form-group'>
+									<label>City:</label>
+									<select name='city' class='form-control city'>
+										<option value="">Select City</option>
+										<?php $cities = get_city_list($muser->state);
+										if($cities){
+											foreach( $cities as $city ){ ?>
+												<option value="<?php echo $city->id;?>" <?php if ($city->id == $muser->city ) { ?> selected="selected" <?php } ?> > <?php echo $city->name ; ?></option>
+												
+											<?php }
+										}
+										?>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-xl-3 my-2">
+							<label class="control-label">Place</label>
+							<div class="form-group">
+								<input  type="text" placeholder="Place" name="place" class="form-control" value="<?php echo $muser->place; ?>" /> 
+							</div>
+						</div>
+						
+						<div class="col-md-4 col-xl-3 my-2">
+							<label class="control-label">Website</label>
+							<div class="form-group">
+								<input  type="url" placeholder="website" name="website" class="form-control" value="<?php echo $muser->website; ?>" /> 
+							</div>
+						</div>
+
+						<div class="col-md-12 my-2">
+							<div class="margiv-top-2 ">
+								<input type="hidden" name="m_id" id="id" value="<?php echo $muser->id; ?>">
+								<button type="submit" class="btn green uppercase update_user">Update User</button>
+							</div>
+						</div>	
 					</div>
 				</div>
-				<div class="col-md-3">
-				<label class="control-label">Place</label>
-					<div class="form-group">
-						<input  type="text" placeholder="Place" name="place" class="form-control" value="<?php echo $muser->place; ?>" /> 
-					</div>
-				</div>
-				
-				<div class="col-md-3">
-				<label class="control-label">Website</label>
-					<div class="form-group">
-						<input  type="url" placeholder="website" name="website" class="form-control" value="<?php echo $muser->website; ?>" /> 
-					</div>
-				</div>
-				
-			
-			<div class="clearfix"></div>
-			<div class="col-md-12">
-				<div class="margiv-top-2 ">
-					<input type="hidden" name="m_id" id="id" value="<?php echo $muser->id; ?>">
-					<button type="submit" class="btn green uppercase update_user">Update User</button>
-				</div>
-			</div>	
+				<!-- End portlet body -->
 			</form>
-				<div class="clearfix"></div>
+				
 			<div id="resEd"></div>	
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
+		</div>
 			
 		<?php }else{
 			redirect("marketing");
 		} ?>
 	</div>
+</div>
+
 	<!-- END CONTENT BODY -->
 <script type="text/javascript">
 jQuery(document).ready(function($){

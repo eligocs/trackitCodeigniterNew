@@ -66,7 +66,7 @@ class Indiatourizm extends CI_Controller {
 				
 				//Delete if admin
 				if( empty($lead->agent_id) ){
-					$row_delete = "<a href='javascript:void(0)' data-id = {$lead->id} class='btn btn-danger ajax_delete_review' title='Delete lead'><i class='fa fa-trash-o'></i></a>";
+					$row_delete = "<a href='javascript:void(0)' data-id = {$lead->id} class='btn btn_trash ajax_delete_review' title='Delete lead'><i class='fa-solid fa-trash-can'></i></a>";
 				}
 				
 				

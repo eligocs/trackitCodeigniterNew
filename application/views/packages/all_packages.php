@@ -10,11 +10,11 @@
                <div class="caption">
                   <i class="fa fa-users"></i>All Packages
                </div>
-               <a class="btn btn-success" href="<?php echo site_url("packages/add"); ?>" title="Add Package"><i class="fa-solid fa-plus"></i> Add Package</a>
+               <a class="btn btn-primary float-end" href="<?php echo site_url("packages/add"); ?>" title="Add Package"><i class="fa-solid fa-plus"></i> Add Package</a>
             </div>
          </div>
          <!--Filter-->
-         <div class="cat_wise_filter custom_card">
+         <div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm">
             <form class="mb-0" role="form" id="filter_frm" method="post">
 				<div class="row">
 					<div class="col-md-4 my-2">
@@ -58,9 +58,9 @@
          </div>
 
          <hr>
-		 <div class="portlet box blue">
-			<div class="portlet-body">
-				<div class="table-responsive">
+
+		 <div class="bg-white p-3 rounded-4 shadow-sm">
+			<div class="table-responsive">
 				<table id="packages" class="table table-striped display">
 					<thead>
 						<tr>
@@ -80,7 +80,6 @@
 						<!--DataTable Goes here-->
 					</tbody>
 				</table>
-				</div>
 			</div>
 		 </div>
       </div>

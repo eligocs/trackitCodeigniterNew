@@ -3,20 +3,19 @@
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
+            if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+            ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-users"></i>All Vehicles Bookings
+                    <i class="fa-solid fa-bus"></i> All Vehicles Bookings
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle">Book
-                        Volvo/Train/Flight</a>
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle"><i class="fa-solid fa-book"></i> Book Volvo/Train/Flight</a>
                 </div>
             </div>
-            <div class="marginBottom second_custom_card">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <!--start filter section-->
-                <form id="form-filter" class="form-horizontal marginRight bg_white margin_bottom_0 padding_zero">
+                <form id="form-filter" class="form-horizontal mb-0">
                     <div class="actions custom_filter row">
                         <div class="col-md-3">
                             <label>Filter: </label>
@@ -61,8 +60,8 @@
                 </form>
                 <!--End filter section-->
             </div>
-            <div class="portlet-body">
-                <div class="table-responsive custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+                <div class="table-responsive">
                     <table id="vehicles_booking" class="table table-striped display">
                         <thead>
                             <tr>
@@ -83,9 +82,12 @@
                 </div>
             </div>
         </div>
+        <!-- End page-content -->
     </div>
-    <!-- END CONTENT BODY -->
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
 <div id="myModal" class="modal" role="dialog"></div>
 <!-- Modal -->
 <script type="text/javascript">

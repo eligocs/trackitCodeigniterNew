@@ -31,10 +31,10 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-plus"></i>Create Payement Link For Customer
+                    <i class="fa-solid fa-plus"></i> Create Payement Link For Customer
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("accounts/all_online_transactions");?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/all_online_transactions");?>"
+                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
                 </div>
             </div>
             <?php 
@@ -64,9 +64,9 @@
 			}
 			?>
 
-            <div class="portlet-body custom_card">
+            <div class="portlet-body bg-white rounded-4 p-3 shadow-sm">
                 <?php if( $get_all_booked_iti ){ ?>
-                <form id="addAcc_frm">
+                <form class="mb-0" id="addAcc_frm">
                     <div class="row">
                         <!--IF NEW CUSTOMER ACCOUNT BOOKED ITI ID -->
                         <div class="col-md-4 my-2">
@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 my-2">
-                            <button type="submit" class="btn green uppercase add_Bank margin-top-20">Generate Payement Link</button>
+                            <button type="submit" class="btn green uppercase add_Bank">Generate Payement Link</button>
                             <input type='hidden' name='id' value='<?php echo isset( $payment_link[0]->id ) ? $payment_link[0]->id : ""?>'>
                         </div>
                         <div id="res"></div>

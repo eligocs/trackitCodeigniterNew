@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="portlet-body second_custom_card">
+            <div class="bg-white p-3 portlet-body rounded-4 shadow-sm">
                 <!-- Start customer details table -->
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm table_details">
@@ -320,137 +320,117 @@
                         <p><strong>Comment: </strong> <?php echo $customer->decline_comment; ?> </p>
                         <?php }else if( $role != 95 ){ ?>
                         <!-- Process for customer followup  -->
-                        <div class="custom_card">
+                        <div class="bg-white p-3 rounded-4 shadow-sm">
                             <a class="btn btn-danger" href="#" id="add_call_btn" title="Back">Add Call Info</a>
                             <div class="call_log" id="call_log_section">
                                 <form id="call_detais_form">
                                     <div class="call_type_seciton">
-                                        <label class="radio-inline">
+                                        <label class="radio-inline mb-3 me-2">
                                             <input data-id="picked_call_panel" required id="picked_call"
-                                                class="radio_toggle" type="radio" name="callType"
+                                                class="radio_toggle form-check-input me-2" type="radio" name="callType"
                                                 value="Picked call">Picked call
                                         </label>
-                                        <label class="radio-inline"><input class="radio_toggle"
+                                        <label class="radio-inline mb-3 me-2"><input class="radio_toggle form-check-input me-2"
                                                 data-id="call_not_picked_panel" required id="call_not_picked"
                                                 type="radio" name="callType" value="Call not picked">Call not picked
                                         </label>
-                                        <label class="radio-inline"><input class="radio_toggle"
+                                        <label class="radio-inline mb-3 me-2"><input class="radio_toggle form-check-input me-2"
                                                 data-id="close_lead_panel" required id="close_lead" type="radio"
                                                 name="callType" value="8">Decline
                                         </label>
                                     </div>
                                     <div id="panel_detail_section">
-                                        <div class="call_type_res col-md-4" id="picked_call_panel">
-                                            <!--picked call panel-->
-                                            <div class="col-md-">
-                                                <div class="form-group">
-                                                    <label for="comment">Call summary<span
-                                                            style="color:red;">*</span>:</label>
-                                                    <textarea required class="form-control" rows="3" name="callSummary"
-                                                        id="callSummary"></textarea>
+                                        <div class="call_type_res" id="picked_call_panel">
+                                            <div class="row">
+                                                <!--picked call panel-->
+                                                <div class="col-md-6 my-2">
+                                                    <div class="form-group">
+                                                        <label class="control-label" for="comment">Call summary<span style="color:red;">*</span>:</label>
+                                                        <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-">
-                                                <div class="form-group">
-                                                    <label>Lead prospect<span style="color:red;">*</span></label>
-                                                    <select required class="form-control" name="txtProspect">
-                                                        <option value="Hot">Hot</option>
-                                                        <option value="Warm">Warm</option>
-                                                        <option value="Cold">Cold</option>
-                                                    </select>
+                                                <div class="col-md-6 my-2">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
+                                                        <select required class="form-control" name="txtProspect">
+                                                            <option value="Hot">Hot</option>
+                                                            <option value="Warm">Warm</option>
+                                                            <option value="Cold">Cold</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-">
-                                                <div class="checkbox1">
-                                                    <label><input id="nxtCallCk" type="radio" class="book_query"
-                                                            name="book_query" required value=""> Next call time</label>
+                                                <div class="col-md-12 my-2">
+                                                    <div class="from-group">
+                                                        <label class="control-label mb-1"><input id="nxtCallCk" type="radio" class="book_query form-check-input" name="book_query" required value=""> Next calling time and date
+                                                        <sup class="text-danger">*</sup>
+                                                        </label>
+                                                        <div id="next_call_cal">
+                                                            <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div id="next_call_cal">
-                                                    <label>Next calling time and date<span
-                                                            style="color:red;">*</span>:</label>
-                                                    <input size="16" required type="text" value="" name="nextCallTime"
-                                                        readonly class="form-control form_datetime">
+                                                <div class="col-md-12 mt-1 mb-3">
+                                                    <label class="control-label" for="readyQuotation">
+                                                        <input id="readyQuotation" class="book_query form-check-input" name="book_query" required type="radio" value="9"> Ready for quotation
+                                                    </label>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-">
-                                                <label for="readyQuotation"><input id="readyQuotation"
-                                                        class="book_query" name="book_query" required type="radio"
-                                                        value="9"> Ready for
-                                                    quotation</label>
-                                            </div>
-                                            <!--Quotation Type Holidays/Accommodation/Cab-->
-                                            <div id="quotation_type_section">
-                                                <label class="radio-inline" for="holidays"><input id="holidays"
-                                                        class="quotation_type" name="quotation_type" required
-                                                        type="radio" value="holidays"> Holidays </label>
-                                                <label class="radio-inline" for="accommodation"><input
-                                                        id="accommodation" class="quotation_type" name="quotation_type"
-                                                        required type="radio" value="accommodation"> Accommodation
-                                                </label>
-                                                <!--label class="radio-inline" for="cab_b"><input id="cab_b" class="quotation_type" name="quotation_type" required type="radio" value="cab"> Cab Booking </label-->
+                                                <!--Quotation Type Holidays/Accommodation/Cab-->
+                                                <div id="quotation_type_section">
+                                                    <label class="radio-inline control-label me-3" for="holidays">
+                                                        <input id="holidays" class="quotation_type form-check-input me-1" name="quotation_type" required type="radio" value="holidays"> Holidays 
+                                                    </label>
+                                                    <label class="radio-inline control-label me-3" for="accommodation">
+                                                        <input id="accommodation" class="quotation_type form-check-input me-1" name="quotation_type" required type="radio" value="accommodation"> Accommodation 
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <!--end picked call panel-->
                                         <div class="call_type_res" id="call_not_picked_panel">
                                             <!--call_not_picked panel-->
                                             <div class="col-md-12">
-                                                <label class="radio-inline">
-                                                    <input required type="radio" name="callSummaryNotpicked"
-                                                        class="call_type_not_answer" value="Switched off">Switched off
+                                                <label class="radio-inline control-label me-3">
+                                                    <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer me-2" value="Switched off">Switched off
                                                 </label>
-                                                <label class="radio-inline">
-                                                    <input required type="radio" name="callSummaryNotpicked"
-                                                        class="call_type_not_answer" value="Not reachable">Not reachable
+                                                <label class="radio-inline control-label mx-3">
+                                                    <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer me-2" value="Not reachable">Not reachable
                                                 </label>
-                                                <label class="radio-inline">
-                                                    <input required type="radio" name="callSummaryNotpicked"
-                                                        class="call_type_not_answer" value="Not answering">Not answering
+                                                <label class="radio-inline control-label mx-3">
+                                                    <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer me-2" value="Not answering">Not answering
                                                 </label>
-                                                <label class="radio-inline">
-                                                    <input required type="radio" name="callSummaryNotpicked"
-                                                        class="call_type_not_answer"
-                                                        value="Number does not exists">Number does
-                                                    not exists
+                                                <label class="radio-inline control-label mx-3">
+                                                    <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer me-2" value="Number does not exists">Number does not exists
                                                 </label>
                                                 
-                                                <div class="col-md-6">
-                                                    <div class="row">
-                                                        <div class="col-md-">
-                                                            <div class="form-group">
-                                                                <label for="comment">Comment<span
-                                                                        style="color:red;">*</span>:</label>
-                                                                <textarea required class="form-control" rows="3"
-                                                                    name="comment" id="comment"></textarea>
-                                                            </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="comment">Comment <sup class="text-danger">*</sup> :</label>
+                                                            <textarea required class="form-control" rows="3"
+                                                                name="comment" id="comment"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-                                                <div class="col-md-6">
+                                                <div class="nxt_call">
                                                     <div class="row">
-                                                        <div class="nxt_call">
-                                                            <div class="form-group">
-                                                                <label>Next calling time and date<span
-                                                                        style="color:red;">*</span>:</label>
-                                                                <input size="16" required type="text" value="" readonly
-                                                                    name="nextCallTimeNotpicked"
-                                                                    class="form-control form_datetime">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Lead prospect<span
-                                                                        style="color:red;">*</span></label>
-                                                                <select required class="form-control"
-                                                                    name="txtProspectNotpicked">
-                                                                    <option value="Hot">Hot</option>
-                                                                    <option value="Warm">Warm</option>
-                                                                    <option value="Cold">Cold</option>
-                                                                </select>
-                                                            </div>
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Next calling time and date <sup class="text-danger">*</sup>:</label>
+                                                            <input size="16" required type="text" value="" readonly
+                                                                name="nextCallTimeNotpicked"
+                                                                class="form-control form_datetime">
+                                                        </div>
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Lead prospect <sup class="text-danger">*</sup></label>
+                                                            <select required class="form-control"
+                                                                name="txtProspectNotpicked">
+                                                                <option value="Hot">Hot</option>
+                                                                <option value="Warm">Warm</option>
+                                                                <option value="Cold">Cold</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         <!--end call not picked panel-->
                                         <!--close_lead_panel panel-->
                                         <div class="call_type_res" id="close_lead_panel">
@@ -473,7 +453,7 @@
                                             
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="comment">Decline Comment:</label>
+                                                    <label class="control-label" for="comment">Decline Comment:</label>
                                                     <textarea class="form-control" rows="3" name="decline_comment"
                                                         id="decline_comment"></textarea>
                                                 </div>
@@ -484,216 +464,208 @@
                                     <!--panel_section end-->
                                     
                                     <div id="customer_info_panel">
-                                        
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Whatsapp Number:</label>
-                                                <input type="text" class="form-control" placeholder="Whatsapp Number"
-                                                    name="whatsapp_number" value="">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Whatsapp Number:</label>
+                                                    <input type="text" class="form-control" placeholder="Whatsapp Number"
+                                                        name="whatsapp_number" value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Adults *:</label>
-                                                <input required type="text" class="form-control"
-                                                    placeholder="No. of Adults" name="adults" value="">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Adults *:</label>
+                                                    <input required type="text" class="form-control"
+                                                        placeholder="No. of Adults" name="adults" value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Child:</label>
-                                                <input type="text" class="form-control" placeholder="No. of child"
-                                                    name="child" value="">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Child:</label>
+                                                    <input type="text" class="form-control" placeholder="No. of child"
+                                                        name="child" value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Age of the child:</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Child age. eg: 13,12" name="child_age" value="">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Age of the child:</label>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Child age. eg: 13,12" name="child_age" value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group row">
-                                                <div class="col-sm-6">
-                                                    <label for="">Your Package Type *:</label>
-                                                    <select required name="package_type" class="form-control">
-                                                        <option value="">Choose Package Type</option>
-                                                        <option value="Honeymoon Package">Honeymoon Package</option>
-                                                        <option value="Fixed Departure">Fixed Departure</option>
-                                                        <option value="Group Package">Group Package</option>
-                                                        <option value="Other">Other</option>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="">Your Package Type *:</label>
+                                                        <select required name="package_type" class="form-control">
+                                                            <option value="">Choose Package Type</option>
+                                                            <option value="Honeymoon Package">Honeymoon Package</option>
+                                                            <option value="Fixed Departure">Fixed Departure</option>
+                                                            <option value="Group Package">Group Package</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="">&nbsp;</label>
+                                                        <input type="text" required class="form-control"
+                                                            name="package_type_other" id="pack_type_other">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">No. of rooms *:</label>
+                                                    <select required name="total_rooms" class="form-control">
+                                                        <option value="">Select Rooms</option>
+                                                        <?php 
+                                                            for( $i=1 ; $i <=20 ; $i++ ){
+                                                            echo "<option value='{$i}'>{$i}</option>";
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <label for="">&nbsp;</label>
-                                                    <input type="text" required class="form-control"
-                                                        name="package_type_other" id="pack_type_other">
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Travel Date *:</label>
+                                                    <input required type="text" class="form-control" readonly
+                                                        id="travel_date" name="travel_date" value="">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">No. of rooms *:</label>
-                                                <select required name="total_rooms" class="form-control">
-                                                    <option value="">Select Rooms</option>
-                                                    <?php 
-                                        for( $i=1 ; $i <=20 ; $i++ ){
-                                        echo "<option value='{$i}'>{$i}</option>";
-                                        }
-                                        ?>
-                                                </select>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Destination *:</label>
+                                                    <input required type="text" class="form-control" name="destination"
+                                                        value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Travel Date *:</label>
-                                                <input required type="text" class="form-control" readonly
-                                                    id="travel_date" name="travel_date" value="">
+                                            <div class="col-lg-4 col-md-6 hide_accommodation">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Pick Up Point *:</label>
+                                                    <input required type="text" class="form-control" name="pick_point"
+                                                        value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Destination *:</label>
-                                                <input required type="text" class="form-control" name="destination"
-                                                    value="">
+                                            <div class="col-lg-4 col-md-6 hide_accommodation">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Dropping Point *:</label>
+                                                    <input required type="text" class="form-control" name="drop_point"
+                                                        value="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 hide_accommodation">
-                                            <div class="form-group">
-                                                <label for="">Pick Up Point *:</label>
-                                                <input required type="text" class="form-control" name="pick_point"
-                                                    value="">
+                                            <div class="col-lg-4 col-md-6 hide_accommodation">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="">Package By *:</label>
+                                                        <select required name="package_by" class="form-control">
+                                                            <option value="">Choose Package By</option>
+                                                            <option value="Car">Car</option>
+                                                            <option value="Volvo">Volvo</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label class="control-label" for="">&nbsp;</label>
+                                                        <input type="text" required class="form-control"
+                                                            name="package_by_other" id="other_pack">
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 hide_accommodation">
-                                            <div class="form-group">
-                                                <label for="">Dropping Point *:</label>
-                                                <input required type="text" class="form-control" name="drop_point"
-                                                    value="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 hide_accommodation">
-                                            <div class="form-group row">
-                                                <div class="col-sm-6">
-                                                    <label for="">Package By *:</label>
-                                                    <select required name="package_by" class="form-control">
-                                                        <option value="">Choose Package By</option>
-                                                        <option value="Car">Car</option>
-                                                        <option value="Volvo">Volvo</option>
-                                                        <option value="Other">Other</option>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Meal Plan *:</label>
+                                                    <select required name="meal_plan" class="form-control">
+                                                        <option value="">Choose Meal Plan</option>
+                                                        <option value="Breakfast Only">Breakfast Only</option>
+                                                        <option value="Breakfast & Dinner">Breakfast & Dinner</option>
+                                                        <option value="Breakfast, Lunch & Dinner">Breakfast, Lunch & Dinner
+                                                        </option>
+                                                        <option value="Dinner Only">Dinner Only</option>
+                                                        <option value="No Meal Plan">No Meal Plan</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <label for="">&nbsp;</label>
-                                                    <input type="text" required class="form-control"
-                                                        name="package_by_other" id="other_pack">
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Honeymoon Kit *:</label>
+                                                    <input type="text" class="form-control" placeholder=""
+                                                        name="honeymoon_kit" value="">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Meal Plan *:</label>
-                                                <select required name="meal_plan" class="form-control">
-                                                    <option value="">Choose Meal Plan</option>
-                                                    <option value="Breakfast Only">Breakfast Only</option>
-                                                    <option value="Breakfast & Dinner">Breakfast & Dinner</option>
-                                                    <option value="Breakfast, Lunch & Dinner">Breakfast, Lunch & Dinner
-                                                    </option>
-                                                    <option value="Dinner Only">Dinner Only</option>
-                                                    <option value="No Meal Plan">No Meal Plan</option>
-                                                </select>
+                                            <div class="col-lg-4 col-md-6 hide_accommodation">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Car type for sightseeing *:</label>
+                                                    <select required name="car_type_sightseen" class="form-control">
+                                                        <option value="">Choose Car Category</option>
+                                                        <?php $cars = get_car_categories(); 
+                                                            if( $cars ){
+                                                            foreach($cars as $car){
+                                                                echo '<option value = "'.$car->id .'" >'.$car->car_name.'</option>';
+                                                            }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Honeymoon Kit *:</label>
-                                                <input type="text" class="form-control" placeholder=""
-                                                    name="honeymoon_kit" value="">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Hotel type *:</label>
+                                                    <select required name="hotel_type" class="form-control">
+                                                        <option value="">Choose Hotel Category</option>
+                                                        <option value="Deluxe">Deluxe</option>
+                                                        <option value="Super Deluxe">Super Deluxe</option>
+                                                        <option value="Luxury">Luxury</option>
+                                                        <option value="Super Luxury">Super Luxury</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 hide_accommodation">
-                                            <div class="form-group">
-                                                <label for="">Car type for sightseeing *:</label>
-                                                <select required name="car_type_sightseen" class="form-control">
-                                                    <option value="">Choose Car Category</option>
-                                                    <?php $cars = get_car_categories(); 
-                                        if( $cars ){
-                                        foreach($cars as $car){
-                                            echo '<option value = "'.$car->id .'" >'.$car->car_name.'</option>';
-                                        }
-                                        }
-                                        ?>
-                                                </select>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Select Country*</label>
+                                                    <select required name="country" class="form-control country">
+                                                        <option value="">Choose Country</option>
+                                                        <?php $country = get_country_list();
+                                                            if($country){
+                                                            foreach( $country as $c ){
+                                                                //$selected = $c->id == 101 ? "selected='selected'" : ""; 
+                                                                echo "<option value={$c->id}>{$c->name}</option>";
+                                                            }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Hotel type *:</label>
-                                                <select required name="hotel_type" class="form-control">
-                                                    <option value="">Choose Hotel Category</option>
-                                                    <option value="Deluxe">Deluxe</option>
-                                                    <option value="Super Deluxe">Super Deluxe</option>
-                                                    <option value="Luxury">Luxury</option>
-                                                    <option value="Super Luxury">Super Luxury</option>
-                                                </select>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Select State*</label>
+                                                    <select required name="state" class="form-control state">
+                                                        <option value="">Choose State</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label">Select Country*</label>
-                                                <select required name="country" class="form-control country">
-                                                    <option value="">Choose Country</option>
-                                                    <?php $country = get_country_list();
-                                        if($country){
-                                        foreach( $country as $c ){
-                                            //$selected = $c->id == 101 ? "selected='selected'" : ""; 
-                                            echo "<option value={$c->id}>{$c->name}</option>";
-                                        }
-                                        }
-                                        ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label">Select State*</label>
-                                                <select required name="state" class="form-control state">
-                                                    <option value="">Choose State</option>
-                                                    <?php /*$states = get_indian_state_list();
-                                        if($states){
-                                        foreach( $states as $state ){
-                                            echo "<option value={$state->id}>{$state->name}</option>";
-                                        }
-                                        }*/
-                                        ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="form-group">
-                                                <label for="">Budget Approx *:</label>
-                                                <select required name="budget" class="form-control">
-                                                    <option value="">Choose Budget</option>
-                                                    <option value="0-5000">0-5000</option>
-                                                    <option value="5001-15000">5001 - 15000</option>
-                                                    <option value="15001-30000">15001 - 30000</option>
-                                                    <option value="30001-50000">30001 - 50000</option>
-                                                    <option value="50001-100000">50001 - 100000</option>
-                                                    <option value="100001-150000">100001 - 150000</option>
-                                                    <option value=">150000">>150000</option>
-                                                </select>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="">Budget Approx *:</label>
+                                                    <select required name="budget" class="form-control">
+                                                        <option value="">Choose Budget</option>
+                                                        <option value="0-5000">0-5000</option>
+                                                        <option value="5001-15000">5001 - 15000</option>
+                                                        <option value="15001-30000">15001 - 30000</option>
+                                                        <option value="30001-50000">30001 - 50000</option>
+                                                        <option value="50001-100000">50001 - 100000</option>
+                                                        <option value="100001-150000">100001 - 150000</option>
+                                                        <option value=">150000">>150000</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!--End customer info Section-->
-                                    <input type="hidden" name="customer_id"
-                                        value="<?php echo $customer->customer_id; ?>">
+                                    <input type="hidden" name="customer_id" value="<?php echo $customer->customer_id; ?>">
                                     <input type="hidden" name="temp_key" value="<?php echo $customer->temp_key; ?>">
                                     <input type="hidden" name="agent_id" value="<?php echo $customer->agent_id; ?>">
-                                    <div class="margiv-top-10">
-                                        <button type="submit" id="submit_frm"
-                                            class="btn green uppercase submit_frm">Submit</button>
+                                    <div class="mt-3">
+                                        <button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
                                         <button class="btn red uppercase cancle_bnt">Cancel</button>
                                     </div>
                                     
@@ -702,14 +674,14 @@
                             </div>
                             <?php  }  ?>
                             <?php 
-                        //$time = "2018-07-21 3:17 PM";
-                        //echo date("Y-m-d H:i:s", strtotime( $time ));
-                        //Add 10 Minutes
-                        //$newTime = date("Y-m-d H:i:s",strtotime($time." +10 minutes"));
-                        //echo $newTime ;
-                        //$notif_time = date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s")." +10 minutes"));
-                        //echo $notif_time;
-                        ?>
+                            //$time = "2018-07-21 3:17 PM";
+                            //echo date("Y-m-d H:i:s", strtotime( $time ));
+                            //Add 10 Minutes
+                            //$newTime = date("Y-m-d H:i:s",strtotime($time." +10 minutes"));
+                            //echo $newTime ;
+                            //$notif_time = date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s")." +10 minutes"));
+                            //echo $notif_time;
+                            ?>
                             <?php if( !empty( $followUpData ) ){ ?>
                             <!--div class="panel-group accordion call-time" id="accordion3"--->
                             <?php

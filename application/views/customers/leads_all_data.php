@@ -75,8 +75,7 @@ div#quotation_type_section,
                         <i class="fa fa-users"></i>Lead Full Detail
                     </div>
                     <div class="actions">
-                        <a class="btn btn-success" href="<?php echo site_url("customers"); ?>" title="add hotel">Back To
-                            All Leads</a>
+                        <a class="btn btn-outline-primary" href="<?php echo site_url("customers"); ?>" title="Back to all leads"><i class="fa-solid fa-arrow-left"></i> Back To All Leads</a>
                     </div>
                 </div>
             </div>
@@ -1097,7 +1096,7 @@ div#quotation_type_section,
                                                                     name="callSummary" id="callSummary"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 mt-3">
                                                             <div class="checkbox">
                                                                 <label class="control-label"><input id="nxtCallCk" type="checkbox" value="" class="form-check-input me-2 mt-0">Next calling time and date<span style="color:red;">*</span>:</label>
                                                             </div>
@@ -1106,7 +1105,7 @@ div#quotation_type_section,
                                                                 <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 mt-3">
                                                             <div class="form-group">
                                                                 <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
                                                                 <select required class="form-control" name="txtProspect">

@@ -23,7 +23,7 @@
                      }	?>
                     </div>
                     <?php if( $user_role != 97 ){ ?>
-                    <a class="btn btn-success" href="<?php echo site_url("customers"); ?>" title="add Itineraries">Add
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("customers"); ?>" title="add Itineraries"><i class="fa-solid fa-plus"></i> Add
                         Itinerary</a>
                     <?php } ?>
                 </div>

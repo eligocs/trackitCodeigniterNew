@@ -10,75 +10,75 @@
                <div class="caption">
                   <i class="fa fa-inr"></i>All Online Transactions
                </div>
-               <a class="btn btn-success" href="<?php echo site_url("accounts/create_payment_link"); ?>" title="All Invoice">Create Payment Link</a>
+               <a class="btn btn-primary float-end" href="<?php echo site_url("accounts/create_payment_link"); ?>" title="All Invoice"><i class="fa-solid fa-plus"></i> Create Payment Link</a>
             </div>
          </div>
          <div class="portlet-body">
-            <div class="filter-box second_custom_card margin-bottom-20">
-               <div class="row3 marginBottom clearfix">
-                  <!--start filter section-->
-                  <form id="form-filter" class="form-horizontal marginRight">
-                     <div class="actions custom_filter">
-                        <div class="row">
-                           <!--Calender-->
-                           <div class=" col-md-4 my-2">	
-                              <div class="form-group">
-                                 <label for="" class="control-label"><strong>Select Transactions Date: </strong></label>
-                                 <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
-                              </div>
-                           </div>
-                           <div class="col-md-4 my-2">
-                              <div class="filter_box">
-                                 <label for="" class="control-label">&nbsp;</label>
-                                 <select class="form-control" name="" id="" required>
-                                    <option value="" selected disabled>Select Transaction Type</option>
-                                    <option name="filter" value="all" id="all">All</option>
-                                    <option name="filter" value="1" id="approved">Success</option>
-                                    <option name="filter" value="fail" id="">Success</option>
-                                 </select>
-                              </div>
-                              <!-- <strong>&nbsp; </strong><br>
-                              <div class="btn-group" data-toggle="buttons">
-                                 <label class="btn btn-default btn-primary custom_active"><input type="radio" name="filter" value="all" id="all"/>All</label>
-                                 <label class="btn btn-default btn-success custom_active"><input type="radio" name="filter" value="1" id="approved" />SUCCESS</label>
-                                 <label class="btn btn-default purple custom_active"><input type="radio" name="filter" value="fail" id="" />FAIL</label>
-                              </div> -->
-                              <input type="hidden" id="filter_val" value="" >
-                              <input type="hidden" name="date_from" id="date_from" value="" >
-                              <input type="hidden" name="date_to" id="date_to" value="">
-                              
-                           </div>
-                           <div class="col-md-3 my-2">
-                              <label for="" class="control-label d-block">&nbsp;</label>
-                              <input type="submit" class="btn btn-success" value="Filter">
+            <!--start filter section-->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+               <form id="form-filter" class="form-horizontals mb-0">
+                  <div class="actions custom_filter">
+                     <div class="row">
+                        <!--Calender-->
+                        <div class=" col-md-4 my-2">	
+                           <div class="form-group">
+                              <label for="" class="control-label"><strong>Select Transactions Date: </strong></label>
+                              <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
                            </div>
                         </div>
+                        <div class="col-md-4 my-2">
+                           <div class="filter_box">
+                              <label for="" class="control-label">&nbsp;</label>
+                              <select class="form-control" name="" id="" required>
+                                 <option value="" selected disabled>Select Transaction Type</option>
+                                 <option name="filter" value="all" id="all">All</option>
+                                 <option name="filter" value="1" id="approved">Success</option>
+                                 <option name="filter" value="fail" id="">Success</option>
+                              </select>
+                           </div>
+                           <!-- <strong>&nbsp; </strong><br>
+                           <div class="btn-group" data-toggle="buttons">
+                              <label class="btn btn-default btn-primary custom_active"><input type="radio" name="filter" value="all" id="all"/>All</label>
+                              <label class="btn btn-default btn-success custom_active"><input type="radio" name="filter" value="1" id="approved" />SUCCESS</label>
+                              <label class="btn btn-default purple custom_active"><input type="radio" name="filter" value="fail" id="" />FAIL</label>
+                           </div> -->
+                           <input type="hidden" id="filter_val" value="" >
+                           <input type="hidden" name="date_from" id="date_from" value="" >
+                           <input type="hidden" name="date_to" id="date_to" value="">
+                           
+                        </div>
+                        <div class="col-md-3 my-2">
+                           <label for="" class="control-label d-block">&nbsp;</label>
+                           <input type="submit" class="btn btn-success" value="Filter">
+                        </div>
                      </div>
-                  </form>
-                  <!--End filter section-->	
-               </div>
+                  </div>
+               </form>
             </div>
-            <div class="table-responsive custom_card">
-               <table class="table table-striped display">
-                  <thead>
-                     <tr>
-                        <th> # </th>
-                        <th> ORDER ID</th>
-                        <th> Lead Id </th>
-                        <th> Name </th>
-                        <th> Contact </th>
-                        <th> Email </th>
-                        <th> Tra. ID </th>
-                        <th> Amount </th>
-                        <th> Status</th>
-                        <th> Tra. Date</th>
-                        <th> Action </th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                    <div id="res"></div>
-                  </tbody>
-               </table>
+            <!--End filter section-->	
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+               <div class="table-responsive">
+                  <table class="table table-striped display">
+                     <thead>
+                        <tr>
+                           <th> # </th>
+                           <th> ORDER ID</th>
+                           <th> Lead Id </th>
+                           <th> Name </th>
+                           <th> Contact </th>
+                           <th> Email </th>
+                           <th> Tra. ID </th>
+                           <th> Amount </th>
+                           <th> Status</th>
+                           <th> Tra. Date</th>
+                           <th> Action </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     <div id="res"></div>
+                     </tbody>
+                  </table>
+               </div>
             </div>
          </div>
       </div>

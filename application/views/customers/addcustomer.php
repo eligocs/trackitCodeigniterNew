@@ -8,10 +8,10 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption"><i class="fa fa-users"></i>Add Customer</div>
-               <a class="btn btn-success" href="<?php echo site_url("customers"); ?>" title="Back">Back</a>
+               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("customers"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
             </div>
          </div>
-         <div class="custom_card">
+         <div class="bg-white p-3 rounded-4 shadow-sm">
             <?php //echo form_open('customers/savecustomer', array("id" => "customer_form")); ?>
             <form class="mb-0" id="customer_form" action="<?php echo base_url(); ?>customers/savecustomer" method="post">
                <div class="row">

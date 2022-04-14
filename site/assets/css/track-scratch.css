@@ -2454,12 +2454,12 @@ p {
 }
 
 .page-header .top-menu .dropdown-quick-sidebar-toggler>.dropdown-toggle i:before {
-    content: "ÃƒÆ’Ã‚Â®Ãƒâ€šÃ‚ÂÃƒâ€šÃ‚Â¥"
+    content: "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¥"
 }
 
 .page-quick-sidebar-open .page-header .top-menu .dropdown-quick-sidebar-toggler>.dropdown-toggle i:before,
 .page-quick-sidebar-open .page-quick-sidebar-toggler>i:before {
-    content: "ÃƒÆ’Ã‚Â®Ãƒâ€šÃ‚ÂÃƒâ€šÃ‚Â¦"
+    content: "ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦"
 }
 
 .page-portlet-fullscreen .page-quick-sidebar-toggler,
@@ -11085,7 +11085,8 @@ fieldset[disabled] .btn.purple-soft:not(.btn-outline):hover {
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
-    border-radius: 4px
+    border-radius: 4px;
+    z-index: 9999999 !important;
 }
 
 .dropdown-hoverable:hover .dropdown-menu {
@@ -11610,8 +11611,7 @@ th>.mt-radio.mt-radio-single {
 }
 
 .form {
-    padding: 0 !important
-}
+    /* padding: 0 !important; */}
 
 .form .form-body,
 .portlet-form .form-body {
@@ -11879,14 +11879,12 @@ th>.mt-radio.mt-radio-single {
 }
 
 .mt-repeater .mt-repeater-item {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
-    margin-bottom: 15px
-}
+    /* border-bottom: 1px solid #ddd; */
+    /* padding-bottom: 15px; */
+    /* margin-bottom: 15px; */}
 
 .mt-repeater .mt-repeater-item.mt-overflow {
-    overflow: auto
-}
+    /* overflow: auto; */}
 
 .mt-repeater .mt-repeater-title {
     font-size: 18px;
@@ -11950,9 +11948,8 @@ th>.mt-radio.mt-radio-single {
 }
 
 .mt-repeater .mt-repeater-cell .mt-repeater-btn-inline {
-    width: 1%;
-    float: none
-}
+    /* width: 1%; */
+    /* float: none; */}
 
 .mt-repeater .mt-repeater-row {
     margin-right: 0
@@ -30275,8 +30272,7 @@ body.stop-scrolling {
 }
 
 .bg-white {
-    background: #fff !important
-}
+    /* background: #fff !important; */}
 
 .bg-white-opacity {
     background: rgba(255, 255, 255, .8) !important
@@ -35710,8 +35706,8 @@ table.dataTable tbody td {
 /**** starts leads page****/
 
 .view_call_info div#call_log_section {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
     background: aliceblue;
     padding: 20px;
 }
@@ -36861,7 +36857,7 @@ ul#theme_color_listing li.current {
 /* ----- MODAL STYLE ----- */
 
 .modal-content {
-    border-radius: 0;
+    /* border-radius: 0; */
     border: none;
 }
 
@@ -37963,7 +37959,7 @@ table.dataTable.order-column.hover tbody tr:hover>.sorting_1 {
 
 .btn.btn-default.custom_active.active {
     color: white;
-    background: #e0296a;
+    background: #0d6efd;
     border-radius: 5px !important;
 }
 

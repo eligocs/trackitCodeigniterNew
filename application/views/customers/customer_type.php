@@ -16,12 +16,12 @@
 					<div class="caption">
 						<i class="fa fa-cogs"></i>All Customers Type
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("customers/savecustype"); ?>" title="add agent">Add Customer Type</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("customers/savecustype"); ?>" title="add agent"> <i class="fa-solid fa-plus"></i> Add Customer Type</a>
 				</div>
 			</div>
 			<div class="portlet-body">
-				<div class="table-responsive second_custom_card">
-					<table class="table display" id="table" cellspacing="0" width="100%">
+				<div class="table-responsive bg-white p-3 rounded-4 shadow-sm">
+					<table class="table display table-striped table-bordered" id="table" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th> # </th>

@@ -26,8 +26,7 @@
                         <i class="fa fa-users"></i>All Customers
                     </div>
                     <?php if( is_admin_or_manager() || is_teamleader() ){ ?>
-                    <a class="btn btn-success" href="<?php echo site_url("customers/add"); ?>" title="Add Customer">Add
-                        customer</a>
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("customers/add"); ?>" title="Add Customer"><i class="fa-solid fa-plus"></i> Add customer</a>
                     <?php  } ?>
                 </div>
             </div>
@@ -45,7 +44,7 @@
             ?>
             <div class="portlet-body">
                 <!--sort by agent -->
-                <div class="second_custom_card margin-bottom-20">
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="filter-box">
                         <div class="row3 clearfix">
                             <?php
@@ -197,7 +196,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="custom_card">
+                <div class="bg-white p-3 rounded-4 shadow-sm">
                     <?php if( is_admin_or_manager() ){ ?>
                     <div class="row clearfix">
                         <div class="col-md-3">

@@ -30,12 +30,12 @@
                     <div class="caption">
                         <i class="icon-plus"></i>Add Customer Account Details
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("accounts/customeraccounts");?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/customeraccounts");?>"
+                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
                 </div>
 
             </div>
-            <div class="portlet-body custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <form id="addAcc_frm">
                     <div class="row">
 
@@ -56,7 +56,7 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="clearfix"></div> -->
+                        <!--  -->
                         <?php } ?>
 
                         <?php if( isset( $booking_listing[0]->cus_account_id) && !empty( $booking_listing[0]->cus_account_id ) ){ ?>
@@ -198,7 +198,7 @@
                             </div>
                         </div>
 
-                        <!-- <div class="clearfix"></div> -->
+                        <!--  -->
                         <?php if(isset( $account_listing[0]->id ) ) {
 						$check_status = $account_listing[0]->status == 1 ? "checked" : "";
 						?>
@@ -244,7 +244,7 @@
                         </div>
                     </div>
             </div> <!-- row close -->
-            <div class="clearfix"></div>
+            
             <!-- <div class="margiv-top-10">
                 <input type="hidden" name="id"
                     value="<?php //echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
@@ -252,7 +252,7 @@
                 <input type="hidden" name="new_cus_id" value="" class="new_cus_id">
                 <button type="submit" class="btn green uppercase add_Bank">Update Account</button>
             </div> -->
-            <div class="clearfix"></div>
+            
             <div id="res"></div>
             </form>
         </div><!-- portlet body -->

@@ -8,14 +8,14 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-users"></i>All Booked Itineraries
+                        <i class="fa fa-users"></i> All Booked Itineraries
                     </div>
                     <?php 
                   $rev_link 	= $this->config->item('google_review_link');
                   if( !empty( $rev_link ) ){
                   ?>
                     <div class="pull-right">
-                        <button class="btn btn-success float-end" onclick="copy_rev_link()">Copy Review Link</button>
+                        <button class="btn btn-primary float-end" onclick="copy_rev_link()"><i class="fa-solid fa-plus"></i> Copy Review Link</button>
                         <strong id="altPassTemp" class='hide'><?php echo $rev_link; ?></strong>
                     </div>
                     <?php } ?>

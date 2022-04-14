@@ -10,11 +10,11 @@
 					<div class="caption">
 						<i class="fa fa-users"></i>All Customer Accounts
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("accounts/add_cus_account"); ?>" title="Add New Account">Add account</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("accounts/add_cus_account"); ?>" title="Add New Account"><i class="fa-solid fa-plus"></i> Add account</a>
 				</div>
 			</div>
 			<div class="portlet-body">
-				<div class="table-responsive second_custom_card customers_bank_acc">
+				<div class="table-responsive customers_bank_acc bg-white p-3 rounded-4 shadow-sm">
 					<table class="table table-striped display ">
 						<thead>
 							<tr>

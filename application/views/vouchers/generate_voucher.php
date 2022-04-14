@@ -4,11 +4,15 @@
             <?php if( isset($error) && !empty( $error ) ){ ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("vouchers"); ?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("vouchers"); ?>"
+                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
                 </div>
             </div>
-            <div class="alert alert-danger"> <?php echo $error; ?></div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="alert alert-danger mb-0"> <strong>Note</strong> <?php echo $error; ?></div>
+                </div>
+            </div>
             <?php }else{ ?>
             <!--GET CUSTOMER ACCOUNT-->
             <?php 
@@ -39,8 +43,9 @@
                     <div class="caption"><i class="fa fa-users"></i><strong>VOUCHER NUMBER:
                         </strong><?php echo $voucher->voucher_id; ?>
                     </div>
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("vouchers"); ?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("vouchers"); ?>"
+                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back
+                    </a>
                 </div>
             </div>
             <?php 		
@@ -115,7 +120,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                
                 <hr>
                 <!--if holidays iti show daywise data-->
                 <div class="custom_card">
@@ -579,7 +584,7 @@
                                         <input type="text" required class="form-control" id="sub"
                                             placeholder="Final confirmation Mail" name="subject" value="">
                                     </div>
-                                    <div class="clearfix"></div>
+                                    
                                     <hr>
                                     <input type="hidden" name="iti_id" value="<?php echo $voucher->iti_id; ?>">
                                     <input type="hidden" name="id" value="<?php echo $voucher->id; ?>">

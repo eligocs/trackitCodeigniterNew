@@ -7,12 +7,11 @@
                     <div class="caption">
                         <i class="fa fa-cogs"></i>All Categories
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("marketing/addcat"); ?>" title="add agent">Add
-                        Category</a>
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("marketing/addcat"); ?>" title="add agent"><i class="fa-solid fa-plus"></i> Add Category</a>
                 </div>
             </div>
-            <div class="portlet-body">
-                <div class="table-responsive second_custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+                <div class="table-responsive">
                     <table class="table table-striped display" id="table" cellspacing="0" width="100%">
                         <thead>
                             <tr>

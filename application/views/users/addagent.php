@@ -7,7 +7,7 @@
                     <a class="btn btn-success" href="<?php echo site_url("agents"); ?>" title="Back">Back</a>
                 </div>
             </div>
-            <div class="portlet-body custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <form role="form" id="addAgent">
                     <div class="row">
                         <div class="col-md-4 my-2">

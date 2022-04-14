@@ -10,9 +10,9 @@
 				<div class="portlet-title">
 					
 					<div class="caption">
-						<i class="fa fa-file-alt"></i>All Pending Invoices
+					<i class="fa-solid fa-file-circle-exclamation"></i> All Pending Invoices
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("accounts/invoices"); ?>" title="All Invoice">Confirmed Invoices</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("accounts/invoices"); ?>" title="All Invoice"><i class="fa-solid fa-check"></i> Confirmed Invoices</a>
 				</div>
 				
 			</div>

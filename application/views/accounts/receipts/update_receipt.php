@@ -5,26 +5,26 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<?php if( isset( $invoice ) && !empty( $invoice ) ){ ?>
+			<?php if( isset( $invoice ) && !empty( $invoice ) ){ ?>
+				
+			<?php echo validation_errors('<span class="help-block1 help-block-error">', '</span>'); ?>
+			<?php $message = $this->session->flashdata('error'); 
+			if($message){ echo '<span class="help-block1 help-block-error">'.$message.'</span>';}
+			?>
+			<style>
+			.dis_block{display: block;}
+			.hide_div, .shownewbooking{display: none;}
+			</style>
 			
-		<?php echo validation_errors('<span class="help-block1 help-block-error">', '</span>'); ?>
-		<?php $message = $this->session->flashdata('error'); 
-		if($message){ echo '<span class="help-block1 help-block-error">'.$message.'</span>';}
-		?>
-		<style>
-		.dis_block{display: block;}
-		.hide_div, .shownewbooking{display: none;}
-		</style>
-		
-		<?php 
-		//get customer info
-		$get_cus_info 	= get_customer_account( $invoice[0]->lead_id );
-		$customer_name 	= isset( $get_cus_info[0]->customer_name ) ? $get_cus_info[0]->customer_name : "";
-		$customer_email = isset( $get_cus_info[0]->customer_email ) ? $get_cus_info[0]->customer_email : "";
-		$customer_contact = isset( $get_cus_info[0]->customer_contact ) ? $get_cus_info[0]->customer_contact : "";
-		
-		?>
-		
+			<?php 
+			//get customer info
+			$get_cus_info 	= get_customer_account( $invoice[0]->lead_id );
+			$customer_name 	= isset( $get_cus_info[0]->customer_name ) ? $get_cus_info[0]->customer_name : "";
+			$customer_email = isset( $get_cus_info[0]->customer_email ) ? $get_cus_info[0]->customer_email : "";
+			$customer_contact = isset( $get_cus_info[0]->customer_contact ) ? $get_cus_info[0]->customer_contact : "";
+			
+			?>
+	
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
@@ -33,115 +33,117 @@
 					</div>
 					
 					<?php if( $invoice[0]->receipt_type == "cash" ){ ?>
-						<a class="btn btn-success" href="<?php echo site_url("accounts/cash_receipts"); ?>" title="Back">Back</a>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/cash_receipts"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
 					<?php }else{ ?>
-						<a class="btn btn-success" href="<?php echo site_url("accounts/receipts"); ?>" title="Back">Back</a>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/receipts"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
 					<?php } ?>
 				</div>
 			</div>
 			
-			<div class="portlet-body custom_card">
-				<div class="row">
-				<form id="addAcc_frm">
-				<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Customer Name</label>
-							<input type="text" readonly value="<?php echo $customer_name; ?>" class="form-control" >
+			<form id="addAcc_frm">
+				<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+					<div class="row">
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Customer Name</label>
+								<input type="text" readonly value="<?php echo $customer_name; ?>" class="form-control" >
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Customer Email</label>
-							<input type="text" readonly value="<?php echo $customer_email; ?>" class="form-control" >
+
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Customer Email</label>
+								<input type="text" readonly value="<?php echo $customer_email; ?>" class="form-control" >
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Customer Contact</label>
-							<input type="text" readonly value="<?php echo $customer_contact; ?>" class="form-control" >
+
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Customer Contact</label>
+								<input type="text" readonly value="<?php echo $customer_contact; ?>" class="form-control" >
+							</div>
 						</div>
-					</div>
-				
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Receipt Type</label>
-							<input type="text" readonly value="<?php echo isset( $invoice[0]->receipt_type ) && !empty( $invoice[0]->receipt_type ) ? ucfirst($invoice[0]->receipt_type) : ""; ?>" class="form-control" >
-						</div>
-					</div>
 					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Account Name</label>
-							<input type="text" readonly value="<?php echo isset( $invoice[0]->account_type_id ) && !empty( $invoice[0]->account_type_id ) ? get_cash_bank_account_name($invoice[0]->account_type_id) : ""; ?>" class="form-control" >
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Receipt Type</label>
+								<input type="text" readonly value="<?php echo isset( $invoice[0]->receipt_type ) && !empty( $invoice[0]->receipt_type ) ? ucfirst($invoice[0]->receipt_type) : ""; ?>" class="form-control" >
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Voucher Number</label>
-							<input type="text" readonly value="<?php echo isset( $invoice[0]->voucher_number ) && !empty( $invoice[0]->voucher_number ) ? ucfirst($invoice[0]->voucher_number) : ""; ?>" class="form-control" >
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Account Name</label>
+								<input type="text" readonly value="<?php echo isset( $invoice[0]->account_type_id ) && !empty( $invoice[0]->account_type_id ) ? get_cash_bank_account_name($invoice[0]->account_type_id) : ""; ?>" class="form-control" >
+							</div>
 						</div>
-					</div>
-					
-					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Voucher Date*</label>
-							<input type="text" placeholder="Voucher Date" name="voucher_date" class="form-control datepicker" value="<?php echo isset( $invoice[0]->voucher_date ) && !empty( $invoice[0]->voucher_date ) ? date("d/m/Y", strtotime($invoice[0]->voucher_date) ): ""; ?>" required="required"/> 
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Voucher Number</label>
+								<input type="text" readonly value="<?php echo isset( $invoice[0]->voucher_number ) && !empty( $invoice[0]->voucher_number ) ? ucfirst($invoice[0]->voucher_number) : ""; ?>" class="form-control" >
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Transfer Type*</label>
-							<input type="text" placeholder="eg: Online transfer,TRANSFER CHEQUE,CASH" name="transfer_type" class="form-control" value="<?php echo isset( $invoice[0]->transfer_type ) && !empty( $invoice[0]->transfer_type ) ? $invoice[0]->transfer_type : ""; ?>" required="required"/> 
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Voucher Date*</label>
+								<input type="text" placeholder="Voucher Date" name="voucher_date" class="form-control datepicker" value="<?php echo isset( $invoice[0]->voucher_date ) && !empty( $invoice[0]->voucher_date ) ? date("d/m/Y", strtotime($invoice[0]->voucher_date) ): ""; ?>" required="required"/> 
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Transfer Ref*</label>
-							<input type="text" placeholder="Transfer Reference" name="transfer_ref" class="form-control" value="<?php echo isset( $invoice[0]->transfer_ref ) && !empty( $invoice[0]->transfer_ref ) ? $invoice[0]->transfer_ref : ""; ?>" required="required"/> 
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Transfer Type*</label>
+								<input type="text" placeholder="eg: Online transfer,TRANSFER CHEQUE,CASH" name="transfer_type" class="form-control" value="<?php echo isset( $invoice[0]->transfer_type ) && !empty( $invoice[0]->transfer_type ) ? $invoice[0]->transfer_type : ""; ?>" required="required"/> 
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Transfer Date*</label>
-							<input type="text" placeholder="Transfer Date" name="transfer_date" class="form-control datepicker" value="<?php echo isset( $invoice[0]->transfer_date ) && !empty( $invoice[0]->transfer_date ) ? date("d/m/Y", strtotime($invoice[0]->transfer_date)) : ""; ?>" required="required"/> 
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Transfer Ref*</label>
+								<input type="text" placeholder="Transfer Reference" name="transfer_ref" class="form-control" value="<?php echo isset( $invoice[0]->transfer_ref ) && !empty( $invoice[0]->transfer_ref ) ? $invoice[0]->transfer_ref : ""; ?>" required="required"/> 
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label">Amount Received*</label>
-							<input type="number" placeholder="Amount Received" name="amount_received" readonly class="form-control" value="<?php echo isset( $invoice[0]->amount_received ) && !empty( $invoice[0]->amount_received ) ? $invoice[0]->amount_received : ""; ?>" required="required"/> 
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Transfer Date*</label>
+								<input type="text" placeholder="Transfer Date" name="transfer_date" class="form-control datepicker" value="<?php echo isset( $invoice[0]->transfer_date ) && !empty( $invoice[0]->transfer_date ) ? date("d/m/Y", strtotime($invoice[0]->transfer_date)) : ""; ?>" required="required"/> 
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label" >Narration*</label>
-							<textarea placeholder="remarks" name="narration" class="form-control" required="required"><?php echo isset( $invoice[0]->narration ) && !empty( $invoice[0]->narration ) ? $invoice[0]->narration : ""; ?></textarea>
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label">Amount Received*</label>
+								<input type="number" placeholder="Amount Received" name="amount_received" readonly class="form-control" value="<?php echo isset( $invoice[0]->amount_received ) && !empty( $invoice[0]->amount_received ) ? $invoice[0]->amount_received : ""; ?>" required="required"/> 
+							</div>
 						</div>
-					</div>
-				</div> <!-- row close -->
-				<div class="clearfix"></div>
-				<div class="margiv-top-10">
-					<input type="hidden" id="invoice_id" name="id" value="<?php echo $invoice[0]->id; ?>" >
-					<button type="submit" class="btn green uppercase add_Bank margin_left_15">Update Receipt</button>
+						
+						<div class="col-sm-6 col-md-4 col-xl-3 my-2">
+							<div class="form-group">
+								<label class="control-label" >Narration*</label>
+								<textarea placeholder="remarks" name="narration" class="form-control" required="required"><?php echo isset( $invoice[0]->narration ) && !empty( $invoice[0]->narration ) ? $invoice[0]->narration : ""; ?></textarea>
+							</div>
+						</div>
+
+						<div class="col-md-12 my-2">
+							<input type="hidden" id="invoice_id" name="id" value="<?php echo $invoice[0]->id; ?>" >
+							<button type="submit" class="btn green uppercase add_Bank">Update Receipt</button>
+						</div>
+					</div> 
+									
+					<div id="res"></div>
+					
+					<?php }else{ ?>
+						<?php redirect(404); ?>
+					<?php } ?>	
 				</div>
-				<div class="clearfix"></div>
-				<div id="res"></div>
 			</form>
-			
-		<?php }else{ ?>
-			<?php redirect(404); ?>
-		<?php } ?>	
-		
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
-		</div>
+		</div> 
+	</div>
+</div>
+
  <script>
 jQuery(document).ready(function($){
 	

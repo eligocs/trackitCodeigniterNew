@@ -6,12 +6,12 @@
                     <div class="caption">
                         <i class="fa fa-newspaper-o" aria-hidden="true"></i>Create Package Category
                     </div>
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("packages/viewCategory"); ?>"
-                        title="Back">Back
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("packages/viewCategory"); ?>"
+                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back
                     </a>
                 </div>
             </div>
-			<div class="second_custom_card">
+			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<form id="addCat" class="mb-0">
 					<div class="portlet-body form row">
                         <div class="col-md-4 my-2">
@@ -28,11 +28,12 @@
 				</form>
 			</div>
             <div id="res"></div>
-            <!-- END CONTENT BODY -->
         </div>
-        <!-- Modal -->
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
 
 <script type="text/javascript">
 jQuery(document).ready(function($) {
