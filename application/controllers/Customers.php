@@ -434,7 +434,7 @@ class Customers extends CI_Controller {
 				
 				if( $role == 99 || $role == 98 ){
 					//edit
-					$row_edit = "<a href=" . site_url("customers/edit/{$customer->customer_id}") . " class='btn_pencil ajax_edit_customer_table' title='Edit Customer'><i class='fa fa-pencil'></i></a>";
+					$row_edit = "<a href=" . site_url("customers/edit/{$customer->customer_id}") . " class='btn_pencil ajax_edit_customer_table' title='Edit Customer'><i class='fa-solid fa-pen-to-square'></i></a>";
 					
 					//reassign option if no-followUp
 					if( empty( $customer->cus_status ) &&  empty($customer->cus_last_followup_status) ){
@@ -453,7 +453,7 @@ class Customers extends CI_Controller {
 					}
 					
 					//edit
-					$row_edit = "<a href=" . site_url("customers/edit/{$customer->customer_id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit Customer'><i class='fa fa-pencil'></i></a>";
+					$row_edit = "<a href=" . site_url("customers/edit/{$customer->customer_id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit Customer'><i class='fa-solid fa-pen-to-square'></i></a>";
 				}
 				
 				//Check customer status 9=approved,8=decline,0=working
@@ -488,7 +488,7 @@ class Customers extends CI_Controller {
 						break;
 				}
 				
-				$view_lead = "<a href=" . site_url("customers/view_lead/") . $customer->customer_id . " target='_blank' title='View Customer' class='btn_eye' ><i class='fa fa-eye'></i></a>";
+				$view_lead = "<a href=" . site_url("customers/view_lead/") . $customer->customer_id . " target='_blank' title='View Customer' class='btn_eye' ><i class='fa-solid fa-eye'></i></a>";
 				
 				if( $role == '95' ){
 					$row[] = $view_lead . $decUserStatus;
@@ -568,7 +568,7 @@ class Customers extends CI_Controller {
 						<div id="rr"></div> ';
 					}
 					// View 
-					$row[] = "<a href=" . site_url("customers/declineView/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i></a>". $reopen_s;
+					$row[] = "<a href=" . site_url("customers/declineView/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>". $reopen_s;
 					$data[] = $row;
 				}
 			}	
@@ -613,7 +613,7 @@ class Customers extends CI_Controller {
 				$row[] = $customer->created;
 				
 				// View 
-				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn_eye' ><i class='fa fa-eye'></i></a>";
+				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn_eye' ><i class='fa-solid fa-eye'></i></a>";
 				$data[] = $row;
 			}
 		}	
@@ -656,7 +656,7 @@ class Customers extends CI_Controller {
 				$row[] = $customer->created;
 				
 				// View 
-				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn_eye' ><i class='fa fa-eye'></i></a>";
+				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn_eye' ><i class='fa-solid fa-eye'></i></a>";
 				$data[] = $row;
 			}
 		}	

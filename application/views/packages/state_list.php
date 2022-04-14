@@ -34,7 +34,7 @@
 										<td>{$i}</td>
 										<td>{$state->name}</td>
 										<td>{$state->state_image}</td>
-										<td><a href='javascript: void(0)' title='Change State Image'><i class='fa fa-pencil'></i></td>
+										<td><a href='javascript: void(0)' title='Change State Image'><i class='fa-solid fa-pen-to-square'></i></td>
 									</tr>";
 									
 									$i++;

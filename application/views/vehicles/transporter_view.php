@@ -50,7 +50,7 @@
 				<!--Edit Button-->
 				<?php if( !is_salesteam() ){ ?>
 				<div class="text-center">
-					<a title='Edit Transporter' href="<?php echo site_url("vehicles/transporteredit/{$vehicle->id}"); ?>" class="" ><i class="fa fa-pencil"></i> Edit Transporter</a> OR 
+					<a title='Edit Transporter' href="<?php echo site_url("vehicles/transporteredit/{$vehicle->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit Transporter</a> OR 
 					<a class="" href="<?php echo site_url("vehicles/transporteradd"); ?>" title="Add Transporter"><i class="fa fa-plus"></i> Add Transporter</a>
 				</div>	
 				<?php } ?>

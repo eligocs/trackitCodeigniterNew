@@ -584,7 +584,7 @@
 											<td><?php echo get_hotel_name($h_book->hotel_id); ?></td>
 											<td><?php echo $h_book->email_count . " Time Sent"; ?></td>
 											<td><?php echo $status; ?></td>
-											<td><a title='View' href="<?php echo site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}"); ?>" class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+											<td><a title='View' href="<?php echo site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}"); ?>" class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
 										</tr>
 									<?php } ?>
 								<?php }else{ ?>
@@ -737,12 +737,12 @@
 						
 						//if price is updated remove edit for agent
 						if( ($c_iti->pending_price == 2 || $c_iti->pending_price == 4) && $user_role == 96 ){
-							$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+							$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 						}else{
-							$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+							$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 						}
 						
-						$btn_view = "<a title='View' target='_blank' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+						$btn_view = "<a title='View' target='_blank' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 						$btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
 						$btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
 
@@ -825,7 +825,7 @@
 								$countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->parent_iti_id, "del_status" => 0) );
 								
 								$parent_view_link = iti_view_link($iti->parent_iti_id);
-								$view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
+								$view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
 								
 								if( $countChildIti < 6 ){
 									$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success' ><i class='fa fa-files-o' aria-hidden='true'></i></a>";
@@ -837,11 +837,11 @@
 						<?php if( !empty( $old_itineraries ) && $iti->is_amendment != 0 ){ 
 							$old_count = 1;
 							foreach( $old_itineraries as $old_iti ){ ?>
-								<a title='View Old Quotation' target="_blank" href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> " class='btn btn-danger' ><i class='fa fa-eye' aria-hidden='true'></i> View Old Quotation <?php echo $old_count; ?></a>
+								<a title='View Old Quotation' target="_blank" href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> " class='btn btn-danger' ><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation <?php echo $old_count; ?></a>
 							<?php $old_count++; } 
 						} ?>
 						
-						<a class="btn btn-success" target="_blank" href="<?php echo site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}"); ?>" title="View Quotation"><i class='fa fa-eye' aria-hidden='true'></i> View Quotation</a>
+						<a class="btn btn-success" target="_blank" href="<?php echo site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}"); ?>" title="View Quotation"><i class='fa-solid fa-eye' aria-hidden='true'></i> View Quotation</a>
 						
 						<?php if( empty($iti_status) && $iti->email_count > 0 && $iti->publish_status == "publish" ){ ?>
 							<a class="btn btn-danger" href="#" id="add_call_btn" title="Back">Add Call Info</a>

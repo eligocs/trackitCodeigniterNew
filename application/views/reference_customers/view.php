@@ -41,7 +41,7 @@
 			<!--Edit Button-->
 			<?php if( !is_salesteam()){ ?>
 			<div class="text-center">
-				<a title='Edit user' href="<?php echo site_url("reference_customers/edit/{$muser->id}"); ?>" class="" ><i class="fa fa-pencil"></i> Edit</a>
+				<a title='Edit user' href="<?php echo site_url("reference_customers/edit/{$muser->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
 				OR <a class=""  href="<?php echo site_url("reference_customers/add"); ?>" title="add user"><i class="fa fa-plus"></i> Add new</a>
 			</div>	
 			<?php } ?>

@@ -55,7 +55,7 @@
                         <div class="text-center">
                             <a title='Edit Offer'
                                 href="<?php echo site_url("clientsection/offer_edit/{$offer->id}"); ?>" class=""><i
-                                    class="fa fa-pencil"></i> Edit Offer</a>
+                                    class="fa-solid fa-pen-to-square"></i> Edit Offer</a>
                         </div>
 
                     </div> <!-- row -->

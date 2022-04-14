@@ -35,7 +35,7 @@
                                         $key = $key+1;
                                             echo "<tr><td>{$key}</td>
                                                 <td>{$value->hotel_category_name}</td>
-                                            <td><a href=" . site_url("Hotelcategory/addcategory/{$value->id}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+                                            <td><a href=" . site_url("Hotelcategory/addcategory/{$value->id}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
                                             
                                             //Show delete button if season greater than four
                                             if( $key > 4 ){

@@ -14,9 +14,9 @@
 			</div>
 		</div>
 		<!--start filter section-->
-		<div class="row marginBottom second_custom_card">
+		<div class="marginBottom second_custom_card">
 			<form id="form-filter" class="form-horizontal marginRight margin-bottom-0 bg_white padding_zero">
-				<div class="actions custom_filter ">
+				<div class="actions ">
 					<strong>Filter: </strong>
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default custom_active active"><input type="radio" name="filter" value="all" checked="checked" id="all"/>All</label>
@@ -31,7 +31,6 @@
 				<input type="hidden" name="filter_val" id="filter_val" value="all">
 			</form><!--End filter section-->	
 		</div>
-			<div class="clearfix"></div> 		
 			<div class="portlet-body">
 				<div class="table-responsive custom_card">
 					<table id= "vehicles_booking" class="table table-striped display">

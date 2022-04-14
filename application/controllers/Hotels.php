@@ -394,10 +394,10 @@ class Hotels extends CI_Controller {
 					if( $user['role'] != '96' ){
 						//edit
 						$row_edit = "<a title='edit' href=" . site_url("hotels/edit/{$hotel->id}") . " class='
-						btn_pencil ajax_edit_hotel_table' ><i class='fa fa-pencil'></i></a>";
+						btn_pencil ajax_edit_hotel_table' ><i class='fa-solid fa-pen-to-square'></i></a>";
 					}
 					// View 
-					$row[] = "<a title='view' href=" . site_url("hotels/view/{$hotel->id}") . " class='btn_eye viewhotel' ><i class='fa fa-eye'></i></a>". $row_edit . $row_delete; 
+					$row[] = "<a title='view' href=" . site_url("hotels/view/{$hotel->id}") . " class='btn_eye viewhotel' ><i class='fa-solid fa-eye'></i></a>". $row_edit . $row_delete; 
 					$data[] = $row;
 				}
 			}	
@@ -445,7 +445,7 @@ class Hotels extends CI_Controller {
 					}
 		
 					// edit 
-					$row[] = "<a title='edit' href=" . site_url("hotels/editroomrates/{$rate->htr_id}") . " class='btn_pencil' ><i class='fa fa-pencil'></i></a>". $row_delete; 
+					$row[] = "<a title='edit' href=" . site_url("hotels/editroomrates/{$rate->htr_id}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square'></i></a>". $row_delete; 
 					
 					$data[] = $row;
 				}

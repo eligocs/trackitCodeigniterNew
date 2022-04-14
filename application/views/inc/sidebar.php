@@ -355,7 +355,7 @@
              </li>
              <li class="nav-item  ">
                  <a href="<?php echo site_url("profit"); ?>" class="nav-link ">
-                     <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <i class="fa-solid fa-scale-unbalanced"></i>
                      <span class="title">Profit and Loss</span>
                  </a>
             </li>
@@ -1347,7 +1347,7 @@
              </li>
              <li class="nav-item  ">
                 <a href="<?php echo site_url("profit"); ?>" class="nav-link ">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <i class="fa-solid fa-scale-unbalanced"></i>
                     <span class="title">Profit and Loss</span>
                 </a>
             </li>
@@ -1962,7 +1962,7 @@
                      </li>
                      <?php /* <li class="nav-item  ">
 								<a href="<?php echo site_url("agents/assign_area"); ?>" class="nav-link ">
-                     <i class="fa fa-eye"></i>
+                     <i class="fa-solid fa-eye"></i>
                      <span class="title">Assign User Area</span>
                      </a>
              </li> */ ?>
@@ -2278,7 +2278,7 @@
          </li><!--end ledger menu-->
          <li class="nav-item  ">
                  <a href="<?php echo site_url("profit"); ?>" class="nav-link ">
-                     <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <i class="fa-solid fa-scale-unbalanced"></i>
                     <span class="title">Profit and Loss</span>
                  </a>
             </li>

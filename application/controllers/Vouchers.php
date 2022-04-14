@@ -84,13 +84,13 @@ class Vouchers extends CI_Controller {
 				// dump($voucher->voucher_id);die;
 				$vid = base64_url_encode( $voucher->voucher_id );
 				$viti_id = base64_url_encode( $voucher->iti_id );				
-				// $voucher_btn .= "<a title='Generate Voucher' href=" . site_url("promotion/voucher/{$vid}/{$viti_id}") . " class='btn btn-danger' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i> Client View</a>";				
+				// $voucher_btn .= "<a title='Generate Voucher' href=" . site_url("promotion/voucher/{$vid}/{$viti_id}") . " class='btn btn-danger' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i> Client View</a>";				
 				// $pdf_btn = "<a title='Generate PDF' href=" . site_url("vouchers/generate_pdf/{$voucher->iti_id}") . " class='btn_pdf' target='_blank' ><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a>";				
 				
 				if( $user['role'] == '96'  ){
 					$row[] = $pdf_btn;
 				}else{
-					$row[] = "<a title='View' href=" . site_url("itineraries/view/{$voucher->iti_id}/{$voucher->temp_key}") . " class='btn_eye' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i></a>" . $voucher_btn . $pdf_btn;
+					$row[] = "<a title='View' href=" . site_url("itineraries/view/{$voucher->iti_id}/{$voucher->temp_key}") . " class='btn_eye' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>" . $voucher_btn . $pdf_btn;
 				}
 				$data[] = $row;
 			}
@@ -353,7 +353,7 @@ class Vouchers extends CI_Controller {
 				$vid 		= base64_url_encode( $voucher[0]->voucher_id );
 				$viti_id 	= base64_url_encode( $voucher[0]->iti_id );
 				
-				$voucher_link = "<a title='View Voucher' href=" . site_url("promotion/voucher/{$vid}/{$viti_id}") . " class='btn btn-danger' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i> Click here to view voucher</a>";
+				$voucher_link = "<a title='View Voucher' href=" . site_url("promotion/voucher/{$vid}/{$viti_id}") . " class='btn btn-danger' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i> Click here to view voucher</a>";
 				
 				//$message = "VOUCHER LINK COMMING SOON";
 				$message 			= "TOUR CONFIRMATION VOUCHER <br>";

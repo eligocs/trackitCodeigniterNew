@@ -481,7 +481,7 @@ class Newsletters extends CI_Controller {
 						$row1 = "<a title='delete' href='javascript:void(0)' data-id = {$newsletter->id} class='btn btn-danger ajax_delete_newsletter'><i class='fa fa-trash-o'></i></a>";
 					}
 					$rowedit = "<a title='Send' href=" . site_url("newsletters/edit/{$newsletter->id}/{$newsletter->temp_key}") . " class='btn btn-success' ><i class='fa fa-paper-plane' aria-hidden='true'></i></a>";
-					$row[] = "<a title='view' href=" . site_url("newsletters/view/{$newsletter->id}/{$newsletter->temp_key}") . " class='btn btn-success' ><i class='fa fa-eye'></i></a>" . $rowedit . $row1;
+					$row[] = "<a title='view' href=" . site_url("newsletters/view/{$newsletter->id}/{$newsletter->temp_key}") . " class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>" . $rowedit . $row1;
 					
 					$data[] = $row;
 				}

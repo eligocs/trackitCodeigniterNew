@@ -36,8 +36,8 @@
                               else{
                               	$row1="";
                               }
-                              $rowedit = "<a title='Edit' href=".base_url('newsletters/editImgTemplate/').$val->id." class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
-                              $rowr = "<a title='view' href=" .base_url('newsletters/viewImgTemplate/').$val->id." class='btn btn-success' ><i class='fa fa-eye'></i></a>" . $rowedit . $row1;
+                              $rowedit = "<a title='Edit' href=".base_url('newsletters/editImgTemplate/').$val->id." class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
+                              $rowr = "<a title='view' href=" .base_url('newsletters/viewImgTemplate/').$val->id." class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>" . $rowedit . $row1;
                               echo $rowr;
                               	} ?></td>
                         </tr>

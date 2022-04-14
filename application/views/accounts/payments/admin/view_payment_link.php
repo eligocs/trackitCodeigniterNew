@@ -130,7 +130,7 @@
 			</div>	
 			
 			<div class="text-center">
-				<a title='Edit User' href="<?php echo site_url("accounts/create_payment_link/{$pay_link->id}"); ?>" class="btn_pencil" ><i class="fa fa-pencil"></i> Edit</a>
+				<a title='Edit User' href="<?php echo site_url("accounts/create_payment_link/{$pay_link->id}"); ?>" class="btn_pencil" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
 			</div>	
 		</div>	
 	</div>

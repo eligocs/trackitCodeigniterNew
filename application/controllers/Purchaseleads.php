@@ -90,8 +90,8 @@ class Purchaseleads extends CI_Controller {
             $row[] = $customer->c_email;
             $row[] = $customer->c_contact;
             $row[] = $customer->created;
-			$btn = "<a title='edit' href=" . site_url("purchaseleads/editlead/{$customer->id}") . " class='btn btn-success ajax_edit_user_table' ><i class='fa fa-pencil'></i></a>"; 
-			$view = "<a title='view' href=" . site_url("purchaseleads/viewlead/{$customer->id}") . " class='btn btn-success' ><i class='fa fa-eye'></i></a>"; 
+			$btn = "<a title='edit' href=" . site_url("purchaseleads/editlead/{$customer->id}") . " class='btn btn-success ajax_edit_user_table' ><i class='fa-solid fa-pen-to-square'></i></a>"; 
+			$view = "<a title='view' href=" . site_url("purchaseleads/viewlead/{$customer->id}") . " class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>"; 
 			$row[] = $btn . $view;
 			           
             $data[] = $row;

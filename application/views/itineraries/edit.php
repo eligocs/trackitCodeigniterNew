@@ -246,24 +246,20 @@
                               </div>
                               <!--div class="alert alert-success display-none">
                                  <button class="close" data-dismiss="alert"></button> Your form validation is successful! </div-->
-                              <div class="tab-pane active" id="tab1">
-                                 <h3 class="block">Provide Package details</h3>
+                              <div class="tab-pane active mt-4" id="tab1">
+                                 <h3 class="mb-0">Provide Package details</h3>
                                  <div class="row">
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">Package Name
+                                          <label class="control-label">Package Name
                                           <span class="required"> * </span>
                                           </label>
-                                          <input type="text" class="form-control" name="package_name"
-                                             placeholder="Enter Package Name."
-                                             value="<?php if (isset($iti->package_name)) {
-                                                echo $iti->package_name;
-                                                } ?>" />
+                                          <input type="text" class="form-control" name="package_name" placeholder="Enter Package Name." value="<?php if (isset($iti->package_name)) { echo $iti->package_name; } ?>" />
                                        </div>
                                     </div>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">Routing
+                                          <label class="control-label">Routing
                                           <span class="required"> * </span>
                                           </label>
                                           <input type="text" value="<?php if (isset($iti->package_routing)) {
@@ -273,11 +269,9 @@
                                              placeholder="Enter Package Routing." />
                                        </div>
                                     </div>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">Duration
-                                          <span class="required"> * </span>
-                                          </label>
+                                          <label class="control-label">Duration <span class="required"> * </span> </label>
                                           <input type="text" class="form-control"
                                              id="package_duration" name="package_duration"
                                              placeholder="Enter Package Duration eg. 3 Nights and 4 days."
@@ -286,20 +280,14 @@
                                                 } ?>" />
                                        </div>
                                     </div>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">Cab
-                                          <span class="required"> * </span>
-                                          </label>
+                                          <label class="control-label">Cab <span class="required"> * </span> </label>
                                           <select required name="cab_category" class="form-control">
                                              <option value="">Choose Car Category</option>
-                                             <?php $cars = get_car_categories();
-                                                if ($cars) {
-                                                    foreach ($cars as $car) { ?>
-                                             <option <?php if ($iti->cab_category == $car->id) { ?>
-                                                selected="selected" <?php } ?>
-                                                value="<?php echo $car->id ?>">
-                                                <?php echo $car->car_name; ?>
+                                             <?php $cars = get_car_categories(); if ($cars) { foreach ($cars as $car) { ?>
+                                             <option 
+                                             <?php if ($iti->cab_category == $car->id) { ?> selected="selected" <?php } ?> value="<?php echo $car->id ?>"> <?php echo $car->car_name; ?> 
                                              </option>
                                              ;
                                              <?php }
@@ -308,27 +296,15 @@
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">Quotation Date
-                                          <span class="required"> * </span>
-                                          </label>
-                                          <input required readonly="readonly"
-                                             class="input-group form-control quatation_date"
-                                             id="quatation_date" size="16" type="text"
-                                             value="<?php if (isset($iti->quatation_date) && !empty($iti->quatation_date)) {
-                                                echo $iti->quatation_date;
-                                                } else {
-                                                echo date("m/d/Y");
-                                                } ?>"
-                                             name="quatation_date" />
+                                          <label class="control-label">Quotation Date <span class="required"> * </span> </label>
+                                          <input required readonly="readonly" class="input-group form-control quatation_date" id="quatation_date" size="16" type="text" value="<?php if (isset($iti->quatation_date) && !empty($iti->quatation_date)) { echo $iti->quatation_date; } else { echo date("m/d/Y"); } ?>" name="quatation_date" />
                                        </div>
                                     </div>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">Package Type
-                                          <span class="required"> * </span>
-                                          </label>
+                                          <label class="control-label">Package Type <span class="required"> * </span> </label>
                                           <select required name="iti_package_type"
                                              class="form-control">
                                              <option value="">Choose Package Type</option>
@@ -347,32 +323,20 @@
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-12 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">No. Persons
+                                          <label class="control-label">No. Persons
                                           <span class="required"> * </span>
                                           </label>
                                           <div class="row">
                                              <div class="col-md-4">
-                                                <input type="text" required class="form-control"
-                                                   name="adults"
-                                                   value="<?php if (isset($iti->adults)) {
-                                                      echo $iti->adults;
-                                                      } ?>"
-                                                   placeholder="Total no. of  adults eg: 2" />
+                                                <input type="text" required class="form-control" name="adults" value="<?php if (isset($iti->adults)) { echo $iti->adults; } ?>" placeholder="Total no. of  adults eg: 2" />
                                              </div>
                                              <div class="col-md-4">
-                                                <input type="text" class="form-control" name="child"
-                                                   value="<?php if (isset($iti->child)) {
-                                                      echo $iti->child;
-                                                      } ?>" placeholder="Total child" />
+                                                <input type="text" class="form-control" name="child" value="<?php if (isset($iti->child)) { echo $iti->child; } ?>" placeholder="Total child" />
                                              </div>
                                              <div class="col-md-4">
-                                                <input type="text" class="form-control" name="child_age"
-                                                   value="<?php if (isset($iti->child_age)) {
-                                                      echo $iti->child_age;
-                                                      } ?>"
-                                                   placeholder="child age: eg. 12,15,18." />
+                                                <input type="text" class="form-control" name="child_age" value="<?php if (isset($iti->child_age)) { echo $iti->child_age; } ?>" placeholder="child age: eg. 12,15,18." />
                                              </div>
                                           </div>
                                        </div>
@@ -388,11 +352,9 @@
                                        }
                                        //dump( $room_category );
                                        ?>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-12 my-2">
                                        <div class="form-group">
-                                          <label class="control-label col-md-4">Room Category
-                                          <span class="required"> * </span>
-                                          </label>
+                                          <label class="control-label">Room Category <span class="required"> * </span> </label>
                                           <div  class="row">
                                              <div class="col-md-6">
                                                 <select title="Select Room Category" required
@@ -434,7 +396,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="col-md-4 my-2">
+                                    <div class="col-xl-4 col-md-12 my-2">
                                        <div class="form-group">
                                           <label class="control-label">Extra bed/Without extra
                                           bed</label>
@@ -795,7 +757,7 @@
                                           <div class="form-group my-2 return return_train_name"
                                              style="<?php if (isset($train->return_train_name)) { ?> display:block <?php } ?>">
                                              <div class="row">
-                                                <label class="control-label col-md-4">Return Train Name
+                                                <label class="control-label col-md-4 text-end">Return Train Name
                                                 <span class="required"> * </span>
                                                 </label>
                                                 <div class="col-md-8">
@@ -975,14 +937,14 @@
                                              </div>
 
                                              <div class="del_rep">
-                                                <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete" style="position:relative;">
+                                                <a href="javascript:;" data-repeater-delete class="btn btn-outline-danger mt-repeater-delete" style="position:relative;">
                                                 <i class="fa-solid fa-trash-can"></i></a>
                                              </div>
                                           </div>
                                           <?php } ?>
                                        </div>
                                        <a href="javascript:;" data-repeater-create
-                                          class="btn btn-success mt-repeater-add addrep">
+                                          class="btn btn-outline-primary mt-repeater-add addrep">
                                        <i class="fa fa-plus"></i></a>
                                     </div>
                                  </div>
@@ -1013,7 +975,7 @@
                                                    <div class="mt-repeater-inc-input col-md-3">
                                                       <a href="javascript:;" title="delete"
                                                          data-repeater-delete
-                                                         class="btn btn-danger mt-repeater-delete">
+                                                         class="btn btn-outline-danger mt-repeater-delete">
                                                       <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
@@ -1029,7 +991,7 @@
                                                    <div class="mt-repeater-inc-input col-md-3">
                                                       <a href="javascript:;" title="delete"
                                                          data-repeater-delete
-                                                         class="btn btn-danger mt-repeater-delete">
+                                                         class="btn btn-outline-danger mt-repeater-delete">
                                                       <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
@@ -1037,7 +999,7 @@
                                              <?php } ?>
                                           </div>
                                           <a href="javascript:;" data-repeater-create
-                                             class="btn btn-success mt-repeater-inc-add">
+                                             class="btn btn-outline-primary mt-repeater-inc-add">
                                           <i class="fa fa-plus"></i></a>
                                        </div>
                                     </div>
@@ -1060,7 +1022,7 @@
                                                 <div class="mt-repeater-exc-input col-md-3">
                                                    <a title="delete" href="javascript:;"
                                                       data-repeater-delete
-                                                      class="btn btn-danger mt-repeater-delete">
+                                                      class="btn btn-outline-danger mt-repeater-delete">
                                                    <i class="fa-solid fa-trash-can"></i> </a>
                                                 </div>
                                              </div>
@@ -1079,7 +1041,7 @@
                                                 <div class="mt-repeater-exc-input col-md-3">
                                                    <a title="delete" href="javascript:;"
                                                       data-repeater-delete
-                                                      class="btn btn-danger mt-repeater-delete">
+                                                      class="btn btn-outline-danger mt-repeater-delete">
                                                    <i class="fa-solid fa-trash-can"></i> </a>
                                                 </div>
                                              </div>
@@ -1087,106 +1049,108 @@
                                                 } ?>
                                           </div>
                                           <a href="javascript:;" data-repeater-create
-                                             class="btn btn-success mt-repeater-add">
-                                          <i class="fa fa-plus"></i> Add</a>
+                                             class="btn btn-outline-primary mt-repeater-add">
+                                          <i class="fa fa-plus"></i> </a>
                                        </div>
                                     </div>
-                                    <div class="col-md-12">
-                                       <!--Special Inclusion Section-->
-                                       <div class="col-md-12">
-                                          <div class="mt-repeater-spinc tour_field_repeater_sp">
-                                             <h3 class="block">Special Inclusions</h3>
-                                             <div data-repeater-list="special_inc_meta">
-                                                <?php
-                                                   $sp_inc     = isset($iti->special_inc_meta) ? unserialize($iti->special_inc_meta) : "";
-                                                   $count_sp_inc = !empty($sp_inc) ? count($sp_inc) : 1;
-                                                   for ($i = 0; $i < $count_sp_inc; $i++) { ?>
-                                                <div data-repeater-item
-                                                   class="mt-repeater-spinc-item form-group">
-                                                   <div class="mt-repeater-spinc-cell row mb-3">
-                                                      <div class="mt-repeater-spinc-input col-md-10">
-                                                         <input type="text" name="tour_special_inc"
-                                                            class="form-control"
-                                                            value="<?php if (isset($sp_inc[$i]["tour_special_inc"])) {
-                                                               echo $sp_inc[$i]["tour_special_inc"];
-                                                               } ?>" />
-                                                      </div>
-                                                      <div class="mt-repeater-spinc-input col-md-2">
-                                                         <a href="javascript:;" title="delete"
-                                                            data-repeater-delete
-                                                            class="btn btn-danger mt-repeater-delete">
-                                                         <i class="fa-solid fa-trash-can"></i></a>
-                                                      </div>
+                                 </div>
+                                 <hr>
+                                 <!-- Special Inclusion and BENEFITES OF BOOK WITH us -->
+                                 <div class="row">
+                                    <!--Special Inclusion Section-->
+                                    <div class="col-md-6">
+                                       <div class="mt-repeater-spinc tour_field_repeater_sp">
+                                          <h3>Special Inclusions</h3>
+                                          <div data-repeater-list="special_inc_meta">
+                                             <?php
+                                                $sp_inc     = isset($iti->special_inc_meta) ? unserialize($iti->special_inc_meta) : "";
+                                                $count_sp_inc = !empty($sp_inc) ? count($sp_inc) : 1;
+                                                for ($i = 0; $i < $count_sp_inc; $i++) { ?>
+                                             <div data-repeater-item
+                                                class="mt-repeater-spinc-item form-group">
+                                                <div class="mt-repeater-spinc-cell row mb-3">
+                                                   <div class="mt-repeater-spinc-input col-md-10">
+                                                      <input type="text" name="tour_special_inc"
+                                                         class="form-control"
+                                                         value="<?php if (isset($sp_inc[$i]["tour_special_inc"])) {
+                                                            echo $sp_inc[$i]["tour_special_inc"];
+                                                            } ?>" />
+                                                   </div>
+                                                   <div class="mt-repeater-spinc-input col-md-2">
+                                                      <a href="javascript:;" title="delete"
+                                                         data-repeater-delete
+                                                         class="btn btn-outline-danger mt-repeater-delete">
+                                                      <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
-                                                <?php } ?>
                                              </div>
-                                            
-                                             <a href="javascript:;" data-repeater-create
-                                                class="btn btn-success mt-repeater-spinc-add">
-                                             <i class="fa fa-plus"></i> Add</a>
+                                             <?php } ?>
                                           </div>
+                                          
+                                          <a href="javascript:;" data-repeater-create
+                                             class="btn btn-outline-primary mt-repeater-spinc-add">
+                                          <i class="fa fa-plus"></i></a>
                                        </div>
-                                       <!--END Special Inclusion-->
-                                       <!--BENEFITES OF BOOK WITH SY-->
-                                       <div class="col-md-12">
-                                          <div class="mt-repeater-spinc tour_field_repeater_sp">
-                                             <h3 class="block">Benefits of Booking With Us </h3>
-                                             <div data-repeater-list="booking_benefits_meta">
-                                                <?php
-                                                   $benefits_inc = !empty($iti->booking_benefits_meta) ? unserialize($iti->booking_benefits_meta) : '';
-                                                   if (!empty($benefits_inc)) {
-                                                       $count_benefit_inc = count($benefits_inc);
-                                                       for ($i = 0; $i < $count_benefit_inc; $i++) {        ?>
-                                                <div data-repeater-item
-                                                   class="mt-repeater-spinc-item form-group">
-                                                   <div class="mt-repeater-spinc-cell row mb-3">
-                                                      <div class="mt-repeater-spinc-input col-md-10">
-                                                         <input required type="text" name="benefit_inc"
-                                                            class="form-control"
-                                                            value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) {
-                                                               echo $benefits_inc[$i]["benefit_inc"];
-                                                               } ?>" />
-                                                      </div>
-                                                      <div class="mt-repeater-spinc-input col-md-2">
-                                                         <a href="javascript:;" title="delete"
-                                                            data-repeater-delete
-                                                            class="btn btn-danger mt-repeater-delete">
-                                                         <i class="fa-solid fa-trash-can"></i></a>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <?php } ?>
-                                                <?php } else {
-                                                   $get_booking_benefits = get_booking_benefits();
-                                                   $count_ben_m = !empty($get_booking_benefits) ? count($get_booking_benefits) : 1;
-                                                   for ($i = 0; $i < $count_ben_m; $i++) { ?>
-                                                <div data-repeater-item
-                                                   class="mt-repeater-exc-item form-group">
-                                                   <!-- jQuery Repeater Container -->
-                                                   <div class="mt-repeater-exc-input col-md-10">
+                                    </div>
+                                    <!--END Special Inclusion-->
+                                    <!--BENEFITES OF BOOK WITH us-->
+                                    <div class="col-md-6">
+                                       <div class="mt-repeater-spinc tour_field_repeater_sp">
+                                          <h3>Benefits of Booking With Us </h3>
+                                          <div data-repeater-list="booking_benefits_meta">
+                                             <?php
+                                                $benefits_inc = !empty($iti->booking_benefits_meta) ? unserialize($iti->booking_benefits_meta) : '';
+                                                if (!empty($benefits_inc)) {
+                                                      $count_benefit_inc = count($benefits_inc);
+                                                      for ($i = 0; $i < $count_benefit_inc; $i++) {        ?>
+                                             <div data-repeater-item
+                                                class="mt-repeater-spinc-item form-group">
+                                                <div class="mt-repeater-spinc-cell row mb-3">
+                                                   <div class="mt-repeater-spinc-input col-md-10">
                                                       <input required type="text" name="benefit_inc"
                                                          class="form-control"
-                                                         value="<?php echo isset($get_booking_benefits[$i]["benefit_inc"]) ? $get_booking_benefits[$i]["benefit_inc"] : ''; ?>" />
+                                                         value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) {
+                                                            echo $benefits_inc[$i]["benefit_inc"];
+                                                            } ?>" />
                                                    </div>
-                                                   <div class="mt-repeater-exc-input col-md-2">
-                                                      <a title="delete" href="javascript:;"
+                                                   <div class="mt-repeater-spinc-input col-md-2">
+                                                      <a href="javascript:;" title="delete"
                                                          data-repeater-delete
-                                                         class="btn btn-danger mt-repeater-delete">
-                                                      <i class="fa-solid fa-trash-can"></i> </a>
+                                                         class="btn btn-outline-danger mt-repeater-delete">
+                                                      <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
-                                                <?php } ?>
-                                                <?php } ?>
                                              </div>
-                                            
-                                             <a href="javascript:;" data-repeater-create
-                                                class="btn btn-success mt-repeater-spinc-add">
-                                             <i class="fa fa-plus"></i> Add</a>
+                                             <?php } ?>
+                                             <?php } else {
+                                                $get_booking_benefits = get_booking_benefits();
+                                                $count_ben_m = !empty($get_booking_benefits) ? count($get_booking_benefits) : 1;
+                                                for ($i = 0; $i < $count_ben_m; $i++) { ?>
+                                             <div data-repeater-item
+                                                class="mt-repeater-exc-item form-group">
+                                                <!-- jQuery Repeater Container -->
+                                                <div class="mt-repeater-exc-input col-md-10">
+                                                   <input required type="text" name="benefit_inc"
+                                                      class="form-control"
+                                                      value="<?php echo isset($get_booking_benefits[$i]["benefit_inc"]) ? $get_booking_benefits[$i]["benefit_inc"] : ''; ?>" />
+                                                </div>
+                                                <div class="mt-repeater-exc-input col-md-2">
+                                                   <a title="delete" href="javascript:;"
+                                                      data-repeater-delete
+                                                      class="btn btn-outline-danger mt-repeater-delete">
+                                                   <i class="fa-solid fa-trash-can"></i> </a>
+                                                </div>
+                                             </div>
+                                             <?php } ?>
+                                             <?php } ?>
                                           </div>
+                                          
+                                          <a href="javascript:;" data-repeater-create
+                                             class="btn btn-outline-primary mt-repeater-spinc-add">
+                                          <i class="fa fa-plus"></i></a>
                                        </div>
-                                       <!-- END BENEFITES OF BOOK WITH SY-->
                                     </div>
+                                    <!-- END BENEFITES OF BOOK WITH us -->
                                  </div>
                               </div>
                               <div class="tab-pane removeMargin" id="tab4">
@@ -1201,42 +1165,42 @@
                                           <!-- jQuery Repeater Container -->
                                           <h6 class="fs-7">Choose Hotel By Categories:</h6>
                                           <div class="row">
-                                             <div class='mt-repeater-hotel-input form-group col-md-3 '>
+                                             <div class='mt-repeater-hotel-input form-group col-xxl-3 col-xl-4 col-md-4 mb-3'>
                                                 <label class="control-label"><strong>Hotel Destination:</strong></label>
                                                 <input type="text" name='hotel_location'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_location"]) && !empty($hotel_meta[$i]["hotel_location"]) ? trim($hotel_meta[$i]["hotel_location"]) : ""; ?>"
                                                    class='form-control'
                                                    placeholder="Eg. Shimla/Manali">
                                              </div>
-                                             <div class='mt-repeater-hotel-input standard  form-group col-md-2 '>
+                                             <div class='mt-repeater-hotel-input standard  form-group col-xxl-2 col-xl-4 col-md-4 mb-3'>
                                                 <label class="control-label"><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
                                                 <input type='text' name="hotel_standard"
                                                    class='form-control'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_standard"]) && !empty($hotel_meta[$i]["hotel_standard"]) ? trim($hotel_meta[$i]["hotel_standard"]) : ""; ?>"
                                                    placeholder='Deluxe Hotel Name' />
                                              </div>
-                                             <div class='mt-repeater-hotel-input deluxe form-group col-md-2 '>
+                                             <div class='mt-repeater-hotel-input deluxe form-group col-xxl-2 col-xl-4 col-md-4 mb-3'>
                                                 <label class="control-label"><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                                                 <input type='text' name="hotel_deluxe"
                                                    class='form-control'
                                                    placeholder='Super Deluxe Hotel Name'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_deluxe"]) && !empty($hotel_meta[$i]["hotel_deluxe"]) ? trim($hotel_meta[$i]["hotel_deluxe"]) : ""; ?>" />
                                              </div>
-                                             <div class='mt-repeater-hotel-input super_deluxe form-group col-md-2 '>
+                                             <div class='mt-repeater-hotel-input super_deluxe form-group col-xxl-2 col-xl-4 col-md-4 mb-3'>
                                                 <label class="control-label"><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                                                 <input type='text' name="hotel_super_deluxe"
                                                    class='form-control'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_super_deluxe"]) && !empty($hotel_meta[$i]["hotel_super_deluxe"]) ? trim($hotel_meta[$i]["hotel_super_deluxe"]) : ""; ?>"
                                                    placeholder='Luxury Hotel Name' />
                                              </div>
-                                             <div class='mt-repeater-hotel-input luxury form-group col-md-2 '>
+                                             <div class='mt-repeater-hotel-input luxury form-group col-xxl-2 col-xl-4 col-md-4 mb-3'>
                                                 <label class="control-label"><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                                                 <input name="hotel_luxury" type='text'
                                                    class='form-control'
                                                    value="<?php echo isset($hotel_meta[$i]["hotel_luxury"]) && !empty($hotel_meta[$i]["hotel_super_deluxe"]) ? trim($hotel_meta[$i]["hotel_luxury"]) : ""; ?>"
                                                    placeholder='Super Luxury Hotel Name' />
                                              </div>
-                                             <div class="mt-repeater-hotel-input col-md-1 ">
+                                             <div class="mt-repeater-hotel-input col-xxl-1 col-xl-4 col-md-4 mb-3">
                                                 <label class="control-label d-block">&nbsp;</label>
                                                 <a href="javascript:;" data-repeater-delete
                                                    class="btn btn-outline-danger mt-repeater-delete">
@@ -1259,35 +1223,35 @@
                                        if ($user_role == 99 || is_manager() || is_super_manager() || is_sales_manager() ||  is_salesteam()) {
                                        ?>
                                     <!--Rate Meta-->
-                                    <div class="row">
+                                    <div class="row mt-4">
                                        <div class='mt-repeater-hotel-input form-group col-md-12'>
-                                          <p class="text-center"><strong style="font-size: 22px;">Rates:
+                                          <p class="text-center mb-0 fs-5"><strong>Rates:
                                              </strong>
                                           </p>
                                        </div>
-                                       <div class='mt-repeater-hotel-input standard  form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
+                                       <div class='mt-repeater-hotel-input standard  form-group col-md-3 my-2'>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
                                           <input  name="rate_meta[standard_rates]" type="number"
                                              class='form-control'
                                              value="<?php if (isset($rates_meta["standard_rates"])) echo $rates_meta["standard_rates"]; ?>"></input>
                                        </div>
-                                       <div class='mt-repeater-hotel-input deluxe form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
+                                       <div class='mt-repeater-hotel-input deluxe form-group col-md-3 my-2'>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                                           <input
                                              value="<?php if (isset($rates_meta["deluxe_rates"])) echo $rates_meta["deluxe_rates"]; ?>"
                                               name="rate_meta[deluxe_rates]" type="number"
                                              class='form-control'></input>
                                        </div>
                                        <div
-                                          class='mt-repeater-hotel-input super_deluxe form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
+                                          class='mt-repeater-hotel-input super_deluxe form-group col-md-3 my-2'>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                                           <input 
                                              value="<?php if (isset($rates_meta["super_deluxe_rates"])) echo $rates_meta["super_deluxe_rates"]; ?>"
                                              name="rate_meta[super_deluxe_rates]" type="number"
                                              class='form-control'></input>
                                        </div>
-                                       <div class='mt-repeater-hotel-input luxury form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
+                                       <div class='mt-repeater-hotel-input luxury form-group col-md-3 my-2'>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                                           <input 
                                              value="<?php if (isset($rates_meta["luxury_rates"])) echo $rates_meta["luxury_rates"]; ?>"
                                              name="rate_meta[luxury_rates]" type="number"
@@ -1311,8 +1275,9 @@
                                           $inc_gst = isset($per_person_ratemeta["inc_gst"]) && $per_person_ratemeta["inc_gst"] == 1 ? 1 : 0;
                                           $check_perperson = !empty($s_pp) ||  !empty($d_pp) ||  !empty($sd_pp) ||  !empty($l_pp) ? 1 : 0;
                                           $below_base_price = isset($per_person_ratemeta["below_base_price"]) && $per_person_ratemeta["below_base_price"] == 1 ? 1 : 0; ?>
-                                       <div class='mt-repeater-hotel-input luxury form-group col-md-6'>
-                                          <label><strong>Rate Comment*:</strong></label>
+
+                                       <div class='mt-repeater-hotel-input luxury form-group col-md-6 my-2'>
+                                          <label class="control-label"><strong>Rate Comment*:</strong></label>
                                           <textarea  name="rate_comment"
                                              class='form-control'><?php if (isset($iti->rate_comment)) echo $iti->rate_comment; ?></textarea>
                                        </div>
@@ -1322,8 +1287,8 @@
                                              ?>" class='form-control' <?php //echo !empty($inc_gst) ? "checked='checked'" : "" ; 
                                              ?> id="incgst"></input>
                                           </div-->
-                                       <div class='form-group col-md-2'>
-                                          <label><strong>Below Base Price.:</strong></label>
+                                       <div class='form-group col-md-3 my-2'>
+                                          <label class="control-label"><strong>Below Base Price.:</strong></label>
                                           <input type="checkbox"
                                              <?php echo !empty($below_base_price) ? "checked='checked'" : ""; ?>
                                              value="<?php echo $below_base_price; ?>"
@@ -1335,42 +1300,40 @@
                                        </div>
                                        <input name="per_person_ratemeta[inc_gst]" type="hidden" value="1"
                                           class='form-control incgst'></input>
-                                       <div class='form-group col-md-2'>
-                                          <label><strong>Add Per/Person Rate:</strong></label>
+                                       <div class='form-group col-md-3 my-2'>
                                           <!--inc_gst 1 = true -->
-                                          <input type="checkbox" class='form-control'
-                                             <?php echo !empty($check_perperson) ? "checked='checked'" : ""; ?>
-                                             id="per_person_rate"></input>
+                                          <label for="" class="control-label d-block">&nbsp;</label>
+                                          <input type="checkbox" class='form-check-input' <?php echo !empty($check_perperson) ? "checked='checked'" : ""; ?> id="per_person_rate"></input>
+                                          <label class="control-label"><strong>Add Per/Person Rate:</strong></label>
                                        </div>
-                                       <div class="clearfix"></div>
                                        <!--perperson rate meta -->
-                                       <div class="col-md-12 perperson_section"
+                                       <div class="row perperson_section mt-3"
                                           style="display: <?php echo !empty($check_perperson) ? "block" : "none"; ?>">
-                                          <div class='standard  form-group col-md-3'>
-                                             <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>
+                                          <div class='standard  form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong><?= totalHotelCategory()[0]->hotel_category_name ?>
                                              (Per/Person):</strong></label>
                                              <input name="per_person_ratemeta[standard_rates]"
                                                 type="number" class='form-control'
                                                 value="<?php echo $s_pp; ?>"
                                                 placeholder="Deluxe Per/Person Cost"></input>
                                           </div>
-                                          <div class='deluxe form-group col-md-3'>
-                                             <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>
+                                          <div class='deluxe form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong><?= totalHotelCategory()[1]->hotel_category_name ?>
                                              (Per/Person):</strong></label>
                                              <input name="per_person_ratemeta[deluxe_rates]"
                                                 type="number" value="<?php echo $d_pp; ?>"
                                                 class='form-control'
                                                 placeholder="Super Deluxe Per/Person Cost"></input>
                                           </div>
-                                          <div class='super_deluxe form-group col-md-3'>
-                                             <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>(Per/Person):</strong></label>
+                                          <div class='super_deluxe form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong><?= totalHotelCategory()[2]->hotel_category_name ?>(Per/Person):</strong></label>
                                              <input name="per_person_ratemeta[super_deluxe_rates]"
                                                 type="number" value="<?php echo $sd_pp; ?>"
                                                 class='form-control'
                                                 placeholder="Luxury Per/Person Cost"></input>
                                           </div>
-                                          <div class='luxury form-group col-md-3'>
-                                             <label><strong>
+                                          <div class='luxury form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong>
                                              <?= totalHotelCategory()[3]->hotel_category_name ?></strong>
                                              (Per/Person):</strong></label>
                                              <input name="per_person_ratemeta[luxury_rates]"
@@ -1379,8 +1342,8 @@
                                                 placeholder="Super Deluxe Per/Person Cost"></input>
                                           </div>
                                           <!--child rate-->
-                                          <div class='standard  form-group col-md-3'>
-                                             <label><strong
+                                          <div class='standard  form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong
                                                 class="red"><?= totalHotelCategory()[0]->hotel_category_name ?>
                                              (Per/child):</strong><span
                                                 style="font-size:10px; color: red;"> ( Leave empty
@@ -1391,8 +1354,8 @@
                                                 type="number" class='form-control'
                                                 placeholder="Deluxe Per/child Cost"></input>
                                           </div>
-                                          <div class='deluxe form-group col-md-3'>
-                                             <label><strong
+                                          <div class='deluxe form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong
                                                 class="red"><?= totalHotelCategory()[1]->hotel_category_name ?>
                                              (Per/child):</strong><span
                                                 style="font-size:10px; color: red;"> ( Leave empty
@@ -1403,8 +1366,8 @@
                                                 type="number" class='form-control'
                                                 placeholder="Super Deluxe Per/child Cost"></input>
                                           </div>
-                                          <div class='super_deluxe form-group col-md-3'>
-                                             <label><strong
+                                          <div class='super_deluxe form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong
                                                 class="red"><?= totalHotelCategory()[2]->hotel_category_name ?>
                                              (Per/child):</strong><span
                                                 style="font-size:10px; color: red;"> ( Leave empty
@@ -1415,8 +1378,8 @@
                                                 type="number" class='form-control'
                                                 placeholder="Luxury Per/child Cost"></input>
                                           </div>
-                                          <div class='luxury form-group col-md-3'>
-                                             <label><strong
+                                          <div class='luxury form-group col-xl-3 col-md-6 my-2'>
+                                             <label class="control-label"><strong
                                                 class="red"><?= totalHotelCategory()[3]->hotel_category_name ?>
                                              (Per/child):</strong><span
                                                 style="font-size:10px; color: red;"> ( Leave empty
@@ -1433,33 +1396,33 @@
                                     <!-- row -->
                                     <?php } else { ?>
                                     <!--Rate Meta-->
-                                    <div class="row">
+                                    <div class="row mt-4">
                                        <div class='mt-repeater-hotel-input form-group col-md-12'>
-                                          <p class="text-center"><strong style="font-size: 22px;">Rates:
+                                          <p class="text-center mb-0 fs-5"><strong>Rates:
                                              </strong><span class="red"></span>
                                           </p>
                                        </div>
                                        <div class='mt-repeater-hotel-input standard  form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
                                           <input
                                              value="<?php if (isset($rates_meta["luxury_rates"])) echo $rates_meta["luxury_rates"]; ?>"
                                              disabled type="number" class='form-control'></input>
                                        </div>
                                        <div class='mt-repeater-hotel-input deluxe form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                                           <input
                                              value="<?php if (isset($rates_meta["luxury_rates"])) echo $rates_meta["luxury_rates"]; ?>"
                                              disabled type="number" class='form-control'></input>
                                        </div>
                                        <div
                                           class='mt-repeater-hotel-input super_deluxe form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                                           <input
                                              value="<?php if (isset($rates_meta["luxury_rates"])) echo $rates_meta["luxury_rates"]; ?>"
                                              disabled type="number" class='form-control'></input>
                                        </div>
                                        <div class='mt-repeater-hotel-input luxury form-group col-md-3'>
-                                          <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
+                                          <label class="control-label"><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                                           <input disabled
                                              value="<?php if (isset($rates_meta["luxury_rates"])) echo $rates_meta["luxury_rates"]; ?>"
                                              type="number" class='form-control'></input>
@@ -1471,7 +1434,7 @@
                                  </div>
                                  <div class="mt-repeater-hotel-note tour_field_repeater">
                                     <div data-repeater-list="hotel_note_meta">
-                                       <label class="control-label">Add Hotel Note: </label>
+                                       <label class="control-label"> <strong>Add Hotel Note:</strong> </label>
                                        <?php
                                           $hotel_note_meta = isset($iti->hotel_note_meta) ? unserialize($iti->hotel_note_meta) : "";
                                           if (!empty($hotel_note_meta)) {
@@ -1481,16 +1444,16 @@
                                           class="mt-repeater-hotel-note-item form-group">
                                           <!-- jQuery Repeater Container -->
                                           <div class="row">
-                                             <div class="mt-repeater-hotel-note-input col-md-9">
+                                             <div class="mt-repeater-hotel-note-input col-md-10">
                                                 <div class="mt-repeater-hotel-note-input">
                                                    <input required type="text" name="hotel_note"
                                                       class="form-control"
                                                       value="<?php echo isset($hotel_note_meta[$i]["hotel_note"]) ? trim($hotel_note_meta[$i]["hotel_note"]) : ""; ?>" />
                                                 </div>
                                              </div>
-                                             <div class="mt-repeater-hotel-note-input col-md-3">
+                                             <div class="mt-repeater-hotel-note-input col-md-2">
                                                 <a href="javascript:;" data-repeater-delete
-                                                   class="btn btn-danger mt-repeater-delete">
+                                                   class="btn btn-outline-danger mt-repeater-delete">
                                                 <i class="fa-solid fa-trash-can"></i> </a>
                                              </div>
                                           </div>
@@ -1502,7 +1465,7 @@
                                        <div data-repeater-item
                                           class="mt-repeater-hotel-note-item form-group">
                                           <!-- jQuery Repeater Container -->
-                                          <div class="mt-repeater-hotel-note-input col-md-9">
+                                          <div class="mt-repeater-hotel-note-input col-md-10">
                                              <div class="mt-repeater-hotel-note-input">
                                                 <input required type="text"
                                                    name="hotel_note_meta[<?php echo $i; ?>][hotel_note]"
@@ -1510,9 +1473,9 @@
                                                    value="<?php echo isset($hotel_notes[$i]["hotel_notes"]) ? $hotel_notes[$i]["hotel_notes"] : ""; ?>" />
                                              </div>
                                           </div>
-                                          <div class="mt-repeater-hotel-note-input col-md-3">
+                                          <div class="mt-repeater-hotel-note-input col-md-2">
                                              <a href="javascript:;" data-repeater-delete
-                                                class="btn btn-danger mt-repeater-delete">
+                                                class="btn btn-outline-danger mt-repeater-delete">
                                              <i class="fa-solid fa-trash-can"></i> Delete </a>
                                           </div>
                                        </div>
@@ -1520,7 +1483,7 @@
                                        <?php } ?>
                                     </div>
                                     <a href="javascript:;" data-repeater-create
-                                       class="btn btn-success mt-repeater-hotel-note">
+                                       class="btn btn-outline-primary mt-repeater-hotel-note">
                                     <i class="fa fa-plus"></i> Add Note</a>
                                  </div>
                               </div>
@@ -1536,13 +1499,13 @@
                         <div class="form-actions">
                            <div class="row">
                               <div class="col-md-offset-3 col-md-9 text-right">
-                                 <a href="javascript:;" class="btn default button-previous">
+                                 <a href="javascript:;" class="btn btn-secondary button-previous">
                                  <i class="fa fa-angle-left"></i> Back </a>
-                                 <a href="javascript:;" class="btn green button-next"> Save & Continue
+                                 <a href="javascript:;" class="btn btn-primary button-next"> Save & Continue
                                  <i class="fa fa-angle-right"></i>
                                  </a>
                                  <a href="javascript:;" id="SubmitForm"
-                                    class="btn green button-submit">Submit</a>
+                                    class="btn btn-success button-submit">Submit</a>
                                  <!--input type="submit" class="btn green button-submit" value="Submit"-->
                               </div>
                            </div>

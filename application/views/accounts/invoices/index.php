@@ -49,7 +49,7 @@
 									<td> {$agent}</td>
 									
 									<td>
-										<a href=" . site_url("accounts/view_invoice/{$invoice->id}") . " class='btn btn_eye' target='_blank' title='View Invoice' ><i class='fa fa-eye'></i>
+										<a href=" . site_url("accounts/view_invoice/{$invoice->id}") . " class='btn btn_eye' target='_blank' title='View Invoice' ><i class='fa-solid fa-eye'></i>
 										</a>";
 										
 										if( $user_role == 93 ){

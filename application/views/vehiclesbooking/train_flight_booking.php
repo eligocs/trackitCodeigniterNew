@@ -64,7 +64,7 @@
 									<td><?php echo $vtf_book->iti_id; ?></td>
 									<td><?php echo $vtf_book->dep_date; ?></td>
 									<td><?php echo $status; ?></td>
-									<td><a title='View' href="<?php echo site_url("vehiclesbooking/viewvehiclebooking/{$vtf_book->id}/{$vtf_book->iti_id}"); ?>" class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+									<td><a title='View' href="<?php echo site_url("vehiclesbooking/viewvehiclebooking/{$vtf_book->id}/{$vtf_book->iti_id}"); ?>" class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
 								</tr>
 							<?php $i++;
 							} ?>
@@ -76,7 +76,7 @@
 			<!--End if existing booking-->
 			<div class="tour_info text-left clearfix custom_card">
 				<h4 class="text-center margin-bottom-25">Tour Info (<?php echo  ucfirst($booking_type) . " Booking Details"?>) 
-				<a title='View' href="<?php echo site_url("itineraries/view_iti/{$iti->iti_id}/{$iti->temp_key}"); ?> " target="_blank" class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i>View Quotation</a></h4>
+				<a title='View' href="<?php echo site_url("itineraries/view_iti/{$iti->iti_id}/{$iti->temp_key}"); ?> " target="_blank" class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i>View Quotation</a></h4>
 				
 				<div class="col-md-4"><div class="note note-success"><?php echo "<strong>Total Travellers:</strong> " . $total_tra ."<br>"; ?></div></div> 
 				<div class="col-md-8"><div class="note note-success"><?php echo "<strong>Package Routing: </strong> " . $iti->package_routing ."<br>"; ?></div></div>

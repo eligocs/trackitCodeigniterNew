@@ -37,7 +37,7 @@
 								foreach( $seasons as $season ){
 									echo "<tr><td>{$i}</td>
 										<td>{$season->season_name}</td>
-									<td><a href=" . site_url("hotels/editseason/{$season->id}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+									<td><a href=" . site_url("hotels/editseason/{$season->id}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 									
 									//Show delete button if season greater than four
 									/* if( $i > 4 ){

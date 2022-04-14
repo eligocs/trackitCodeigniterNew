@@ -137,12 +137,12 @@
                                             //buttons
                                             //if price is updated remove edit for agent
                                             if( $c_iti->pending_price == 2 && $role == 96 ){
-                                                $btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+                                                $btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
                                             }else{
-                                                $btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+                                                $btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
                                             }
                     
-                                            $btn_view = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+                                            $btn_view = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
                                             
                                             if( $c_iti->iti_type == 1 ){
                                                 $btn_view .= "<a target='_blank' title='View' href=" . site_url("promotion/pdf/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a>";

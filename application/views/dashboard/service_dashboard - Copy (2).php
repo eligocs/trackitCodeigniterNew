@@ -401,7 +401,7 @@
 														<td>{$h_contact}</td>
 														<td>".number_format($h_book->total_cost, "2") ."</td>
 														<td>{$status}</td>
-														<td><a title='View' target='_blank' href='".site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}") . "' class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+														<td><a title='View' target='_blank' href='".site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}") . "' class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
 													</tr>";
 												
 													$i++;
@@ -456,7 +456,7 @@
 												<td>{$t_contact}</td>
 												<td>".number_format($c_book->total_cost, "2") ."</td>
 												<td>{$status}</td>
-												<td><a target='_blank' title='View' href='".site_url("vehiclesbooking/viewbooking/{$c_book->id}") . "' class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+												<td><a target='_blank' title='View' href='".site_url("vehiclesbooking/viewbooking/{$c_book->id}") . "' class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
 											</tr>";
 										
 											$i++;
@@ -503,7 +503,7 @@
 												<td>{$v_book->iti_id}</td>
 												<td>{$dep_date}</td>
 												<td>{$status}</td>
-												<td><a title='View' target='_blank' href='".site_url("vehiclesbooking/viewvehiclebooking/{$v_book->id}/{$v_book->iti_id}") . "' class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+												<td><a title='View' target='_blank' href='".site_url("vehiclesbooking/viewvehiclebooking/{$v_book->id}/{$v_book->iti_id}") . "' class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
 											</tr>";
 											$i++;
 										} 
@@ -552,7 +552,7 @@
 												<td>{$tf_book->iti_id}</td>
 												<td>{$dep_date}</td>
 												<td>{$status}</td>
-												<td><a title='View' target='_blank' href='".site_url("vehiclesbooking/viewvehiclebooking/{$tf_book->id}/{$tf_book->iti_id}") . "' class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+												<td><a title='View' target='_blank' href='".site_url("vehiclesbooking/viewvehiclebooking/{$tf_book->id}/{$tf_book->iti_id}") . "' class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
 											</tr>";
 											$i++;
 										} 

@@ -10,7 +10,7 @@
                <div class="caption">
                   <i class="fa fa-users"></i>All Packages
                </div>
-               <a class="btn btn-success" href="<?php echo site_url("packages/add"); ?>" title="add hotel">Add Package</a>
+               <a class="btn btn-success" href="<?php echo site_url("packages/add"); ?>" title="Add Package"><i class="fa-solid fa-plus"></i> Add Package</a>
             </div>
          </div>
          <!--Filter-->
@@ -49,8 +49,8 @@
 					</div>
 					<div class="col-md-4 my-2">
 						<label class="control-label d-block" for="">&nbsp;</label>
-						<button type="submit" class="btn green uppercase add_user">Filter</button>
-						<a href="javascript:void(0);" class="btn green uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
+						<button type="submit" class="btn btn-success uppercase add_user"><i class="fa-solid fa-filter"></i> Filter</button>
+						<a href="javascript:void(0);" class="btn btn-success uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
 					</div>
 			   </div>
             </form>

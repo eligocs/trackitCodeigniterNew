@@ -23,12 +23,97 @@
                 </div>
             </div>
             <div class="portlet-body second_custom_card">
-                <?php
-               //$d = date("Y",strtotime("946665000000"));
-               //echo $d;
-               //echo date("Y-m-d", $d);
-               ?>
-                <div class="customer-details">
+                <!-- Start customer details table -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm table_details">
+                        <tr>
+                            <th>Customer Id</th>
+                            <td><?php echo $customer->customer_id; ?></td>
+                            <th>Customer Type:</th>
+                            <?php $cus_type= get_customer_type_name($customer->customer_type); ?>
+                            <td><?php echo $cus_type; ?></td>
+                            <?php if( $customer->customer_type == 2 ){ ?>
+                            <th>Reference Name</th>
+                            <td><?php echo $customer->reference_name; ?></td>
+                            <th>Reference Contact</th>
+                            <td><?php echo $customer->reference_contact_number; ?></td>
+                            <?php } ?>
+                        </tr> 
+                        <tr>
+                            <th>Customer Name</th>
+                            <td><?php echo $customer->customer_name; ?></td>
+                            <th>Customer Email</th>
+                            <td><?php echo $customer->customer_email; ?></td>
+                            <th>Customer Contact</th>
+                            <td><?php echo $customer->customer_contact; ?></td>
+                            <th>Destination</th>
+                            <td><?php echo $customer->destination; ?></td>
+                        </tr>
+                        <tr>
+                            <!--if Customer Info exists-->
+                            <?php if( !empty( $customer->adults ) && !empty($customer->hotel_category) ){ ?>
+                            <th>Whatsapp Number</th>
+                            <td><?php echo $customer->whatsapp_number; ?></td>
+                            <th>Adults</th>
+                            <td><?php echo $customer->adults; ?></td>
+                            <th>Child</th>
+                            <td><?php echo !empty( $customer->child ) ? $customer->child : "N/A" ; ?></td>
+                            <th>Child Age</th>
+                            <td><?php echo !empty( $customer->child_age ) ? $customer->child_age : "N/A" ; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Package Type</th>
+                            <?php 
+                            $pkBy =	$customer->package_type;
+                            $pack_T = $pkBy == "Other" ? $customer->package_type_other : $pkBy; ?>
+                            <td><?php echo $pack_T; ?></td>
+                            <th>Total Rooms</th>
+                            <td><?php echo $customer->total_rooms; ?></td>
+                            <th>Travel Date</th>
+                            <td><?php echo display_date_month_name($customer->travel_date); ?></td>
+                            <th>Pick Up Point</th>
+                            <td><?php echo $customer->pickup_point; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Dropping Point</th>
+                            <td><?php echo $customer->droping_point; ?></td>
+                            <th>Package By</th>
+                            <?php 
+                            $cp_type =	$customer->package_car_type;
+                            $pack_car_type = $cp_type == "Other" ? $customer->package_car_type_other : $cp_type; ?>
+                            <td><?php echo $pack_car_type; ?></td>
+                            <th>Meal Plan</th>
+                            <td><?php echo $customer->meal_plan; ?></td>
+                            <th>Honeymoon Kit</th>
+                            <td><?php echo $customer->honeymoon_kit; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Car Type for sightseeing</th>
+                            <td><?php echo get_car_name($customer->car_type_sightseen); ?></td>
+                            <th>Hotel Category</th>
+                            <td><?php echo $customer->hotel_category; ?></td>
+                            <th>Budget Approx</th>
+                            <td><?php echo $customer->budget; ?></td>
+                            <th>Country</th>
+                            <td><?php echo get_country_name($customer->country_id); ?></td>
+                        </tr>
+                        <tr>
+                            <th>State</th>
+                            <td><?php echo get_state_name($customer->state_id); ?></td>
+                            <?php } ?>
+                            <th>Customer Assign To</th>
+                            <td><?php echo get_user_name($customer->agent_id); ?></td>
+                            <!--Show agent username if customer is assign by leads team -->
+                            <?php if( !empty( $customer->assign_by ) ){ ?>
+                            <th>Customer Assign By</th>
+                            <td><?php echo get_user_name($customer->assign_by); ?></td>
+                            <?php } ?>
+                        </tr>
+                    </table>
+                </div>
+                <!-- End customer details table -->
+
+                <!-- <div class="customer-details">
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Id:</strong></div>
@@ -36,12 +121,10 @@
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Type:</strong></div>
-                            <?php 
-                        $cus_type 			= get_customer_type_name($customer->customer_type);
-                        ?>
+                            <?php $cus_type= get_customer_type_name($customer->customer_type); ?>
                             <div class="col-md-6 form_vr"><?php echo $cus_type; ?></div>
                         </div>
-                        <?php if( $customer->customer_type == 2 ){ ?>
+                        <?php //if( $customer->customer_type == 2 ){ ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Reference Name:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo $customer->reference_name; ?></div>
@@ -50,7 +133,7 @@
                             <div class="col-md-6 form_vl"><strong>Reference Contact:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo $customer->reference_contact_number; ?></div>
                         </div>
-                        <?php } ?>
+                        <?php //} ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Name:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo $customer->customer_name; ?></div>
@@ -66,9 +149,9 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Destination:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo $customer->destination; ?></div>
-                        </div>
+                        </div> -->
                         <!--if Customer Info exists-->
-                        <?php if( !empty( $customer->adults ) && !empty($customer->hotel_category) ){ ?>
+                        <!-- <?php //if( !empty( $customer->adults ) && !empty($customer->hotel_category) ){ ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Whatsapp Number:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo $customer->whatsapp_number; ?></div>
@@ -92,8 +175,8 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Package Type:</strong></div>
                             <?php 
-                        $pkBy =	$customer->package_type;
-                        $pack_T = $pkBy == "Other" ? $customer->package_type_other : $pkBy; ?>
+                            $pkBy =	$customer->package_type;
+                            $pack_T = $pkBy == "Other" ? $customer->package_type_other : $pkBy; ?>
                             <div class="col-md-6 form_vr"><?php echo $pack_T; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
@@ -116,8 +199,8 @@
                         <div class="col-lg-2 col-md-6">
                             <div class="col-md-6 form_vl"><strong>Package By:</strong></div>
                             <?php 
-                        $cp_type =	$customer->package_car_type;
-                        $pack_car_type = $cp_type == "Other" ? $customer->package_car_type_other : $cp_type; ?>
+                            $cp_type =	$customer->package_car_type;
+                            $pack_car_type = $cp_type == "Other" ? $customer->package_car_type_other : $cp_type; ?>
                             <div class="col-md-6 form_vr"><?php echo $pack_car_type; ?></div>
                         </div>
                         <div class="col-lg-3 col-md-6">
@@ -149,23 +232,22 @@
                             <div class="col-md-6 form_vl"><strong>State:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo get_state_name($customer->state_id); ?></div>
                         </div>
-                        <?php } ?>
+                        <?php //} ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Assign To:</strong></div>
                             <div class="col-md-6 form_vr"><?php echo get_user_name($customer->agent_id); ?></div>
-                        </div>
+                        </div> -->
                         <!--Show agent username if customer is assign by leads team -->
-                        <?php if( !empty( $customer->assign_by ) ){ ?>
+                        <!-- <?php //if( !empty( $customer->assign_by ) ){ ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Assign By:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo get_user_name($customer->assign_by); ?></div>
+                            <div class="col-md-6 form_vr"><?php //echo get_user_name($customer->assign_by); ?></div>
                         </div>
-                        <?php } ?>
-                    </div>
+                        <?php //} ?>
+                    </div> -->
                     <!-- row -->
-                </div>
             </div>
-            <div class="clearfix"></div>
+    
             <hr>
             <!-- if customer approved query -->
             <?php if(  $customer->cus_status == 9 ){  ?>
@@ -198,20 +280,21 @@
                                         <select required name="reassign_agent_id" class="form-control">
                                             <option value="">Select Sales Team Agents</option>
                                             <?php $agents = get_all_sales_team_loggedin_today();
-                                    if($agents){
-                                       foreach( $agents as $a ){
-                                          //if( $a->user_id == $customer->agent_id ) continue;
-                                          $count_leads = get_assigned_leads_today($a->user_id);
-                                          $count_leads = !empty( $count_leads ) ? "( {$count_leads} )" : "";
-                                          $agent_full_name = $a->first_name . ' ' . $a->last_name;
-                                          echo '<option value="'. $a->user_id . '">' . $a->user_name .' ( '. $agent_full_name . ' ) '. $count_leads .' </option>';
-                                       }
-                                    }else{
-                                       echo '<option value="">No Loggedin Agent Found!</option>';
-                                    }
-                                    ?>
+                                            if($agents){
+                                                foreach( $agents as $a ){
+                                                    //if( $a->user_id == $customer->agent_id ) continue;
+                                                    $count_leads = get_assigned_leads_today($a->user_id);
+                                                    $count_leads = !empty( $count_leads ) ? "( {$count_leads} )" : "";
+                                                    $agent_full_name = $a->first_name . ' ' . $a->last_name;
+                                                    echo '<option value="'. $a->user_id . '">' . $a->user_name .' ( '. $agent_full_name . ' ) '. $count_leads .' </option>';
+                                                }
+                                            }else{
+                                                echo '<option value="">No Loggedin Agent Found!</option>';
+                                            }
+                                            ?>
                                         </select>
                                     </div>
+
                                     <div class="form-group">
                                         <label class="control-label"></label>
                                         <input type="hidden" name="customer_id" type="text"
@@ -219,27 +302,19 @@
                                         <button type="submit" class="btn green uppercase edit_Customer">Reopen
                                             Lead</button>
                                     </div>
+
                                     <div class="form-group">
                                         <div class='rres'></div>
                                     </div>
                                 </form>
-                                <div class='red'>Note: if you reopen this lead all related itineraries and followup will
-                                    be
-                                    deleted.
-                                </div>
+                                <div class='red'>Note: if you reopen this lead all related itineraries and followup will be deleted. </div>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
                         <?php } ?>
                         <!--edit additional information customer if exists -->
                         <div class="well well-sm margin-top-20">
                             <h3 class="font_size_18" style="margin: 0;">Query Decline By Customer</h3>
                             <!-- Reopen Lead -->
-                            <?php /*<a class="btn btn-success" href="#" data-customer_id = "<?php echo $customer->customer_id; ?>"
-                            data-temp_key = "<?php echo $customer->temp_key; ?>" id="reopenLead" title="Reopen"><i
-                                class="fa fa-refresh" aria-hidden="true"></i> Reopen Lead</a>
-                            <div id="rr"></div>
-                            */ ?>
                         </div>
                         <p><strong>Reason: </strong> <?php echo $customer->decline_reason; ?> </p>
                         <p><strong>Comment: </strong> <?php echo $customer->decline_comment; ?> </p>
@@ -337,7 +412,7 @@
                                                         value="Number does not exists">Number does
                                                     not exists
                                                 </label>
-                                                <div class="clearfix"></div>
+                                                
                                                 <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="col-md-">
@@ -350,7 +425,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="clearfix"></div>
+                                                
                                                 <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="nxt_call">
@@ -395,7 +470,7 @@
                                                     <option value="Other">Other</option>
                                                 </select>
                                             </div>
-                                            <div class="clearfix"></div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="comment">Decline Comment:</label>
@@ -407,9 +482,9 @@
                                         <!--end close_lead_panel-->
                                     </div>
                                     <!--panel_section end-->
-                                    <div class="clearfix"></div>
+                                    
                                     <div id="customer_info_panel">
-                                        <div class="clearfix"></div>
+                                        
                                         <div class="col-lg-4 col-md-6">
                                             <div class="form-group">
                                                 <label for="">Whatsapp Number:</label>
@@ -463,10 +538,10 @@
                                                 <select required name="total_rooms" class="form-control">
                                                     <option value="">Select Rooms</option>
                                                     <?php 
-                                       for( $i=1 ; $i <=20 ; $i++ ){
-                                       	echo "<option value='{$i}'>{$i}</option>";
-                                       }
-                                       ?>
+                                        for( $i=1 ; $i <=20 ; $i++ ){
+                                        echo "<option value='{$i}'>{$i}</option>";
+                                        }
+                                        ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -543,12 +618,12 @@
                                                 <select required name="car_type_sightseen" class="form-control">
                                                     <option value="">Choose Car Category</option>
                                                     <?php $cars = get_car_categories(); 
-                                       if( $cars ){
-                                       	foreach($cars as $car){
-                                       		echo '<option value = "'.$car->id .'" >'.$car->car_name.'</option>';
-                                       	}
-                                       }
-                                       ?>
+                                        if( $cars ){
+                                        foreach($cars as $car){
+                                            echo '<option value = "'.$car->id .'" >'.$car->car_name.'</option>';
+                                        }
+                                        }
+                                        ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -570,13 +645,13 @@
                                                 <select required name="country" class="form-control country">
                                                     <option value="">Choose Country</option>
                                                     <?php $country = get_country_list();
-                                       if($country){
-                                       	foreach( $country as $c ){
-                                       		//$selected = $c->id == 101 ? "selected='selected'" : ""; 
-                                       		echo "<option value={$c->id}>{$c->name}</option>";
-                                       	}
-                                       }
-                                       ?>
+                                        if($country){
+                                        foreach( $country as $c ){
+                                            //$selected = $c->id == 101 ? "selected='selected'" : ""; 
+                                            echo "<option value={$c->id}>{$c->name}</option>";
+                                        }
+                                        }
+                                        ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -586,12 +661,12 @@
                                                 <select required name="state" class="form-control state">
                                                     <option value="">Choose State</option>
                                                     <?php /*$states = get_indian_state_list();
-                                       if($states){
-                                       	foreach( $states as $state ){
-                                       		echo "<option value={$state->id}>{$state->name}</option>";
-                                       	}
-                                       }*/
-                                       ?>
+                                        if($states){
+                                        foreach( $states as $state ){
+                                            echo "<option value={$state->id}>{$state->name}</option>";
+                                        }
+                                        }*/
+                                        ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -621,92 +696,91 @@
                                             class="btn green uppercase submit_frm">Submit</button>
                                         <button class="btn red uppercase cancle_bnt">Cancel</button>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    
                                     <div id="resp"></div>
                                 </form>
                             </div>
                             <?php  }  ?>
                             <?php 
-                     //$time = "2018-07-21 3:17 PM";
-                     //echo date("Y-m-d H:i:s", strtotime( $time ));
-                     //Add 10 Minutes
-                     //$newTime = date("Y-m-d H:i:s",strtotime($time." +10 minutes"));
-                     //echo $newTime ;
-                     //$notif_time = date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s")." +10 minutes"));
-                     //echo $notif_time;
-                     ?>
+                        //$time = "2018-07-21 3:17 PM";
+                        //echo date("Y-m-d H:i:s", strtotime( $time ));
+                        //Add 10 Minutes
+                        //$newTime = date("Y-m-d H:i:s",strtotime($time." +10 minutes"));
+                        //echo $newTime ;
+                        //$notif_time = date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s")." +10 minutes"));
+                        //echo $notif_time;
+                        ?>
                             <?php if( !empty( $followUpData ) ){ ?>
                             <!--div class="panel-group accordion call-time" id="accordion3"--->
                             <?php
-                     $count = 1;
-                     foreach( $followUpData as $callDetails ){ ?>
+                        $count = 1;
+                        foreach( $followUpData as $callDetails ){ ?>
                             <?php $c_type = $callDetails->callType; 
-                     if( $c_type == 9 ){
-                     	$callType_status = "Approved";
-                     }elseif( $c_type == 8 ){
-                     	$callType_status = "Decline";
-                     }else{
-                     	$callType_status = $c_type;
-                     }
-                     ?>
-                            <p></p>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="mt-element-list">
-                                    <div class="mt-list-container list-todo" id="accordion1" role="tablist"
-                                        aria-multiselectable="true">
-                                        <div class="list-todo-line"></div>
-                                        <ul>
-                                            <li class="mt-list-item">
-                                                <div class="list-todo-icon bg-white font-green-meadow">
-                                                    <i class="fa fa-clock-o"></i>
-                                                </div>
-                                                <div class="list-todo-item green-meadow">
-                                                    <a class="list-toggle-container" data-toggle="collapse"
-                                                        data-parent="#accordion1" onclick=" "
-                                                        href="#task-<?php echo $count;?>" aria-expanded="false">
-                                                        <div class="list-toggle done uppercase">
-                                                            <div class="list-toggle-title bold">Call Time:
-                                                                <?php echo $callDetails->currentCallTime;?>
-                                                            </div>
+                        if( $c_type == 9 ){
+                        $callType_status = "Approved";
+                        }elseif( $c_type == 8 ){
+                        $callType_status = "Decline";
+                        }else{
+                        $callType_status = $c_type;
+                        }
+                        ?>
+                        <div>
+                            <div class="mt-element-list">
+                                <div class="mt-list-container list-todo" id="accordion1" role="tablist"
+                                    aria-multiselectable="true">
+                                    <div class="list-todo-line"></div>
+                                    <ul>
+                                        <li class="mt-list-item">
+                                            <div class="list-todo-icon bg-white font-green-meadow">
+                                                <i class="fa fa-clock-o"></i>
+                                            </div>
+                                            <div class="list-todo-item green-meadow">
+                                                <a class="list-toggle-container" data-toggle="collapse"
+                                                    data-parent="#accordion1" onclick=" "
+                                                    href="#task-<?php echo $count;?>" aria-expanded="false">
+                                                    <div class="list-toggle done uppercase">
+                                                        <div class="list-toggle-title bold">Call Time:
+                                                            <?php echo $callDetails->currentCallTime;?>
                                                         </div>
-                                                    </a>
-                                                    <div class="task-list panel-collapse collapse"
-                                                        id="task-<?php echo $count;?>">
-                                                        <ul>
-                                                            <li class="task-list-item done">
-                                                                <div class="task-icon"><a href="javascript:;"><i
-                                                                            class="fa fa-phone"></i></a></div>
-                                                                <div class="task-content">
-                                                                    <h4 class="uppercase bold">
-                                                                        <a
-                                                                            href="javascript:;"><?php echo $callType_status;?></a>
-                                                                    </h4>
-                                                                    <p><strong>Call summary:</strong>
-                                                                        <?php echo $callDetails->callSummary;?>
-                                                                    </p>
-                                                                    <p><strong>Next Call Time:</strong>
-                                                                        <?php echo $callDetails->nextCallDate;?>
-                                                                    </p>
-                                                                    <p><strong><?php echo $callDetails->customer_prospect;?></strong>
-                                                                    </p>
-                                                                    <p><strong>Comment:</strong>
-                                                                        <?php echo $callDetails->comment;?>
-                                                                    </p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
                                                     </div>
+                                                </a>
+                                                <div class="task-list panel-collapse collapse"
+                                                    id="task-<?php echo $count;?>">
+                                                    <ul>
+                                                        <li class="task-list-item done">
+                                                            <div class="task-icon"><a href="javascript:;"><i
+                                                                        class="fa fa-phone"></i></a></div>
+                                                            <div class="task-content">
+                                                                <h4 class="uppercase bold">
+                                                                    <a
+                                                                        href="javascript:;"><?php echo $callType_status;?></a>
+                                                                </h4>
+                                                                <p><strong>Call summary:</strong>
+                                                                    <?php echo $callDetails->callSummary;?>
+                                                                </p>
+                                                                <p><strong>Next Call Time:</strong>
+                                                                    <?php echo $callDetails->nextCallDate;?>
+                                                                </p>
+                                                                <p><strong><?php echo $callDetails->customer_prospect;?></strong>
+                                                                </p>
+                                                                <p><strong>Comment:</strong>
+                                                                    <?php echo $callDetails->comment;?>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <?php $count++; ?>
-                            <?php } ?>
-                            <!--/div-->
-                            <?php } ?>
-                            <div class="clearfix"></div>
+                        </div>
+                        <?php $count++; ?>
+                        <?php } ?>
+                        <!--/div-->
+                        <?php } ?>
+                            
                         </div>
                     </div>
                 </div>
@@ -714,6 +788,7 @@
         </div>
     </div>
 </div>
+
 <style>
 #customer_info_panel,
 #quotation_type_section {

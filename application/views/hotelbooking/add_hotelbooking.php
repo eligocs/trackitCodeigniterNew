@@ -88,7 +88,7 @@
                             <td><?php echo $status; ?></td>
                             <td><a title='View'
                                     href="<?php echo site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}"); ?>"
-                                    class='btn_eye'><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                                    class='btn_eye'><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
                         </tr>
                         <?php } ?>
                     </tbody>

@@ -232,7 +232,7 @@
                                                     echo "<td>"; ?>
                                         <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank"
                                             class="btn btn_eye" style="position:relative;">
-                                            <i class="fa fa-eye"></i></a>
+                                            <i class="fa-solid fa-eye"></i></a>
 
                                         </td>
                                         <?php 	
@@ -372,7 +372,7 @@
                                                             echo "<td>"; ?>
                                                 <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank"
                                                     class="btn btn_eye" style="position:relative;">
-                                                    <i class="fa fa-eye"></i></a>
+                                                    <i class="fa-solid fa-eye"></i></a>
                                                 <a href="javascript: void(0);" class="btn btn_trash del_client_docs"
                                                     data-id="<?php echo $doc->id; ?>" style="position:relative;">
                                                     <i class="fa fa-trash-o"></i></a>
@@ -1552,7 +1552,7 @@
                                                     $city = get_city_name($hotel_book->city_id);
                                                     $total_cost	= number_format($hotel_book->total_cost);
                                                     
-                                                    $view_btn = "<a title='View' href=" . site_url("hotelbooking/view/{$hotel_book->id}/{$hotel_book->iti_id}") . " class='btn btn_eye' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+                                                    $view_btn = "<a title='View' href=" . site_url("hotelbooking/view/{$hotel_book->id}/{$hotel_book->iti_id}") . " class='btn btn_eye' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
                                                     
                                                     echo "<tr>
                                                         <td>{$sr}.</td>
@@ -1576,7 +1576,7 @@
                                                     $total_cost = number_format($c_book->total_cost);
                                                     $cab = get_car_name($c_book->cab_id);
                                                     $total_cab = $c_book->total_cabs;
-                                                    $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewbooking/{$c_book->id}") . " class='btn btn-success' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+                                                    $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewbooking/{$c_book->id}") . " class='btn btn-success' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
                                                     
                                                     echo "<tr>
                                                         <td>{$sr}.</td>
@@ -1599,7 +1599,7 @@
                                                     $tc = $single_trip_cost + $return_trip_cost;
                                                     $total_cost = number_format( $tc );
                                                     
-                                                    $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewvehiclebooking/{$c_book->id}/{$vtf_book->id}/{$vtf_book->iti_id}") . " class='btn btn-success' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+                                                    $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewvehiclebooking/{$c_book->id}/{$vtf_book->id}/{$vtf_book->iti_id}") . " class='btn btn-success' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
                                                     $type = ucfirst($vtf_book->booking_type);
                                                     echo "<tr>
                                                         <td>{$sr}.</td>
@@ -2416,7 +2416,7 @@
 							foreach( $old_itineraries as $old_iti ){ ?>
                         <a title='View Old Quotation' target="_blank"
                             href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> "
-                            class='btn btn-danger'><i class='fa fa-eye' aria-hidden='true'></i> View Old Quotation
+                            class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation
                             <?php echo $old_count; ?></a>
                         <?php $old_count++; } ?>
                     </p>
@@ -2487,7 +2487,7 @@
                     <?php if( ( $iti->iti_status == 0 || $iti->iti_status == 6 ) && is_admin_or_manager_or_sales() ){ ?>
                     <a title='Edit'
                         href=" <?php echo site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}") ; ?> "
-                        class='btn btn-success'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                        class='btn btn-success'><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>
                     <?php } ?>
 
                     <!-- Request For Update Price -->

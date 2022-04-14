@@ -168,7 +168,7 @@
 			</div>
 
 			<?php if( empty( $cab_booking->booking_status ) ){ ?>
-				<a class="" style="display:inline;" href="<?php echo site_url("vehiclesbooking/editcabbooking/{$cab_booking->id}"); ?>" title="Edit Cab Booking Info"><i class="fa fa-pencil"></i> Edit</a>
+				<a class="" style="display:inline;" href="<?php echo site_url("vehiclesbooking/editcabbooking/{$cab_booking->id}"); ?>" title="Edit Cab Booking Info"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
 			<?php } ?>			
 		<div class="well">
 			<?php

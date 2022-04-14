@@ -1356,7 +1356,7 @@
 							<p class="text-center">
 							<?php $old_count = 1;
 							foreach( $old_itineraries as $old_iti ){ ?>
-								<a title='View Old Quotation' target="_blank" href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> " class='btn btn-danger' ><i class='fa fa-eye' aria-hidden='true'></i> View Old Quotation <?php echo $old_count; ?></a>
+								<a title='View Old Quotation' target="_blank" href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> " class='btn btn-danger' ><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation <?php echo $old_count; ?></a>
 							<?php $old_count++; } ?>
 							</p>
 						<?php } ?>
@@ -1384,7 +1384,7 @@
 							<!--Edit itinerary button if iti_status is zero-->
 							
 							<?php if( $iti->iti_status == 0 && $iti->pending_price != 2 ){ ?>
-								<a title='Edit' href=" <?php echo site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}") ; ?> " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i></a>
+								<a title='Edit' href=" <?php echo site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}") ; ?> " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>
 							<?php } ?>
 							
 							<!-- Request For Update Price -->

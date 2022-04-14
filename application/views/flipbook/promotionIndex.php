@@ -51,8 +51,8 @@
                               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
                               <span class="caret"></span></button>
                               <ul class="dropdown-menu">
-                                 <li><a href="<?php  echo base_url('flipbook/view/').$pro->id; ?>" class="nav-link "><i class="fa fa-eye" aria-hidden="true"></i> View Details</a></li>
-                                 <li><a href="<?php  echo base_url('flipbook/add/').$pro->id; ?>" class="nav-link "><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
+                                 <li><a href="<?php  echo base_url('flipbook/view/').$pro->id; ?>" class="nav-link "><i class="fa-solid fa-eye" aria-hidden="true"></i> View Details</a></li>
+                                 <li><a href="<?php  echo base_url('flipbook/add/').$pro->id; ?>" class="nav-link "><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Edit</a></li>
                                  <li><a href="<?php  echo base_url('flipbook/addpages/').$pro->id; ?>" class="nav-link "><i class="fa fa-plus" aria-hidden="true"></i> Add Pages</a></li>
                                  <li class="<?php if(empty($pages)){ echo 'hide'; } ?>" ><a  target = '_blank'  href="<?php echo site_url("flipbook/viewpromotion/").$pro->id.'/'.$pro->tmp_key;?>" title="Back"><i class="fa fa-product-hunt" aria-hidden="true"></i> View Promotion </a></li>
                                  <li><a href="<?php  echo base_url('flipbook/deletePromo/').$pro->id; ?>" class="nav-link "><i class="fa fa-remove" aria-hidden="true"></i>Delete Promotion</a></li>

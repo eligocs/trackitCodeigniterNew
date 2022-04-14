@@ -889,7 +889,7 @@
 							<div class="text-right">
 								<a class="btn hide-mobile"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;<?php echo $agent->mobile; ?></a>
 								<a class="btn hide-desktop" href="tel:<?php echo $agent->mobile; ?>" title="Call Me">Call Me</a>
-								<a class="btn" target="_blank" href="<?php echo site_url("promotion/itinerary/{$iti->iti_id}/{$iti_temp_key}"); ?>" title="Download Pdf"><i class="fa fa-eye" aria-hidden="true"></i> View Old Quotation</a>
+								<a class="btn" target="_blank" href="<?php echo site_url("promotion/itinerary/{$iti->iti_id}/{$iti_temp_key}"); ?>" title="Download Pdf"><i class="fa-solid fa-eye" aria-hidden="true"></i> View Old Quotation</a>
 							</div>
 						</div>
 					</div>

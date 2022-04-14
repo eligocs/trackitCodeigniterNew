@@ -388,7 +388,7 @@ class Customers extends CI_Controller {
 				
 				if( is_admin_or_manager() ){
 					//edit
-					$row_edit = "<a href=" . site_url("customers/edit/{$customer->customer_id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit Customer'><i class='fa fa-pencil'></i></a>";
+					$row_edit = "<a href=" . site_url("customers/edit/{$customer->customer_id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit Customer'><i class='fa-solid fa-pen-to-square'></i></a>";
 					
 					//reassign option if no-followUp
 					if( empty( $customer->cus_status ) &&  empty($customer->cus_last_followup_status) ){
@@ -415,7 +415,7 @@ class Customers extends CI_Controller {
 								$pub_status = $get_iti[0]->publish_status;
 								
 								if( $pub_status == "draft" ){
-									$add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa fa-pencil'></i> Edit Itinerary</a>";
+									$add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa-solid fa-pen-to-square'></i> Edit Itinerary</a>";
 								}else{
 									$add_iti = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Itinerary'><i class='fa fa-plus'></i> View Itinerary</a>";
 								}
@@ -433,7 +433,7 @@ class Customers extends CI_Controller {
 								$temp_key = $get_acc[0]->temp_key;
 								$pub_status = $get_acc[0]->publish_status;
 								if( $pub_status == "draft" ){
-									$add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Accommodation'><i class='fa fa-pencil'></i> Edit Acc.</a>";
+									$add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Accommodation'><i class='fa-solid fa-pen-to-square'></i> Edit Acc.</a>";
 								}else{
 									$add_acc = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Accommodation'><i class='fa fa-plus'></i> View Acc.</a>";
 								}
@@ -459,7 +459,7 @@ class Customers extends CI_Controller {
 						break;
 				}
 				
-				$view_lead = "<a href=" . site_url("customers/view_lead/") . $customer->customer_id . " target='_blank' title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i></a>";
+				$view_lead = "<a href=" . site_url("customers/view_lead/") . $customer->customer_id . " target='_blank' title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>";
 				
 				if( $role == '95' ){
 					$row[] = $view_lead . $decUserStatus;
@@ -538,7 +538,7 @@ class Customers extends CI_Controller {
 					<div id="rr"></div> ';
 				}
 				// View 
-				$row[] = "<a href=" . site_url("customers/declineView/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i></a>". $reopen_s;
+				$row[] = "<a href=" . site_url("customers/declineView/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>". $reopen_s;
 				$data[] = $row;
 			}
 		}	
@@ -581,7 +581,7 @@ class Customers extends CI_Controller {
 				$row[] = $customer->created;
 				
 				// View 
-				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i></a>";
+				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>";
 				$data[] = $row;
 			}
 		}	
@@ -624,7 +624,7 @@ class Customers extends CI_Controller {
 				$row[] = $customer->created;
 				
 				// View 
-				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i></a>";
+				$row[] = "<a href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>";
 				$data[] = $row;
 			}
 		}	

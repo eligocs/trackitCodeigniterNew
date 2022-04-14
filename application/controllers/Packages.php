@@ -208,8 +208,8 @@ class Packages extends CI_Controller {
 				$row[] = $package->created;
 				
 				//buttons
-				$btn_edit = "<a title='Edit' href=" . site_url("packages/edit/{$package_id}/{$key}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
-				$btn_view = "<a title='View' href=" . site_url("packages/view/{$package_id}/{$key}") . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$btn_edit = "<a title='Edit' href=" . site_url("packages/edit/{$package_id}/{$key}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
+				$btn_view = "<a title='View' href=" . site_url("packages/view/{$package_id}/{$key}") . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
 				//if Package status is publish
 				if( $pub_status == "publish" ){
@@ -266,7 +266,7 @@ class Packages extends CI_Controller {
 				$row[] = $cat->added_date;
 				
 				//buttons
-				$btn_edit = "<a title='Edit' href=" . site_url("packages/editcat/{$catId}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+				$btn_edit = "<a title='Edit' href=" . site_url("packages/editcat/{$catId}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 				//delete Package button only for admin
 				if( ( is_admin() || is_manager() ) && $catId != 1 ){ 
 					$row_delete = "<a data-id={$catId} title='Delete Package Category' href='javascript:void(0)' class='btn_trash ajax_delete_package_cat'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";

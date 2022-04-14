@@ -244,7 +244,7 @@
 
 			<div class='text-center'>
 				<?php if( empty( $cab_booking->booking_status ) ){ ?>
-					<a class="" style="display:inline;" href="<?php echo site_url("vehiclesbooking/editcabbooking/{$cab_booking->id}"); ?>" title="Edit Cab Booking Info"><i class="fa fa-pencil"></i> Update Booking</a>
+					<a class="" style="display:inline;" href="<?php echo site_url("vehiclesbooking/editcabbooking/{$cab_booking->id}"); ?>" title="Edit Cab Booking Info"><i class="fa-solid fa-pen-to-square"></i> Update Booking</a>
 				<?php }else if( $cab_booking->booking_status == 9 ){
 					echo "<a  href='" . site_url("vehiclesbooking/update_cab_details/{$cab_booking->id}") . "' title='Update Cab Info' href='javascript:void(0)' class='btn btn-success'><i class='fa fa-refresh' aria-hidden='true'></i> &nbsp; Update Cab Details</a>";
 				} ?>	

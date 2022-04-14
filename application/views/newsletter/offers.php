@@ -36,9 +36,9 @@
                               else{
                               	$row1="";
                               }
-                              $rowedit = "<a title='Edit' href=".base_url('newsletters/addOffers/').$val->offerid." class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+                              $rowedit = "<a title='Edit' href=".base_url('newsletters/addOffers/').$val->offerid." class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
                               $rowsnd = "<a title='Edit' href=".base_url('newsletters/sendOffer/').$val->offerid." class='btn btn-success' ><i class='fa fa-paper-plane' aria-hidden='true'></i></a>";
-                              $rowr = "<a title='view' href=" .base_url('newsletters/viewOffer/').$val->offerid." class='btn btn-success' ><i class='fa fa-eye'></i></a>" . $rowedit . $row1.	$rowsnd;
+                              $rowr = "<a title='view' href=" .base_url('newsletters/viewOffer/').$val->offerid." class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>" . $rowedit . $row1.	$rowsnd;
                               echo $rowr;
                               	}} ?></td>
                         </tr>

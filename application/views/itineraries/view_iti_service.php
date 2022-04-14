@@ -549,7 +549,7 @@
                                     <td><?php echo $status; ?></td>
                                     <td><a title='View'
                                             href="<?php echo site_url("vehiclesbooking/viewbooking/{$c_book->id}"); ?>"
-                                            class='btn_eye'><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                                            class='btn_eye'><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
                                 </tr>
                                 <?php $cc++; ?>
                                 <?php }
@@ -638,7 +638,7 @@
                                     <td><?php echo $status; ?></td>
                                     <td><a title='View'
                                             href="<?php echo site_url("vehiclesbooking/viewvehiclebooking/{$vtf_book->id}/{$vtf_book->iti_id}"); ?>"
-                                            class='btn btn-success'><i class='fa fa-eye' aria-hidden='true'></i></a>
+                                            class='btn btn-success'><i class='fa-solid fa-eye' aria-hidden='true'></i></a>
                                     </td>
                                 </tr>
                                 <?php 
@@ -728,7 +728,7 @@
                                     <td><?php echo $status; ?></td>
                                     <td><a title='View'
                                             href="<?php echo site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}"); ?>"
-                                            class='btn_eye'><i class='fa fa-eye' aria-hidden='true'></i></a>
+                                            class='btn_eye'><i class='fa-solid fa-eye' aria-hidden='true'></i></a>
                                     </td>
                                 </tr>
                                 <?php 
@@ -867,7 +867,7 @@
                 <div class="inquery_section margin-bottom-25">
                     <a class="btn btn-success" target="_blank"
                         href="<?php echo site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}"); ?>"
-                        title="View Quotation"><i class='fa fa-eye' aria-hidden='true'></i> View Quotation</a>
+                        title="View Quotation"><i class='fa-solid fa-eye' aria-hidden='true'></i> View Quotation</a>
                     <strong class="success_pill"><?php echo $lead_status ?></strong>
                     <!--if amendment is done show old itinerary-->
                     <!--if amendment is done show old itinerary-->
@@ -877,7 +877,7 @@
 								foreach( $old_itineraries as $old_iti ){ ?>
                         <a title='View Old Quotation' target="_blank"
                             href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> "
-                            class='btn btn-danger'><i class='fa fa-eye' aria-hidden='true'></i> View Old Quotation
+                            class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation
                             <?php echo $old_count; ?></a>
                         <?php $old_count++; } ?>
                     </p>
@@ -885,7 +885,7 @@
                     <?php /*if( $iti->is_amendment == 2 ){ ?>
                     <a title='View Old Quotation' target="_blank"
                         href=" <?php echo site_url("itineraries/view_old_iti/{$iti->iti_id}") ; ?> "
-                        class='btn btn-danger'><i class='fa fa-eye' aria-hidden='true'></i> View Old Quotation</a>
+                        class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation</a>
                     <?php }*/ ?>
 
                 </div>

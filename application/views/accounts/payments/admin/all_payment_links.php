@@ -49,7 +49,7 @@
 									$delLink = "<a href='javascript: void(0)' data-id='{$pay_link->id}' class='btn_trash  ajax_delete_bank' target='_blank' title='Delete Payement Link' ><i class='fa fa-trash'></i>
 										</a>";
 										
-									$edLink = "<a href='" . base_url("accounts/create_payment_link/{$pay_link->id}") . "' class='btn_pencil ' target='_blank' title='Update Payement Link' ><i class='fa fa-pencil'></i>
+									$edLink = "<a href='" . base_url("accounts/create_payment_link/{$pay_link->id}") . "' class='btn_pencil ' target='_blank' title='Update Payement Link' ><i class='fa-solid fa-pen-to-square'></i>
 										</a>";
 								}	
 								
@@ -64,7 +64,7 @@
 									<td> {$pay_status}</td>
 									<td> {$agent}</td>
 									<td>
-										<a href=" . site_url("accounts/view_payment_link/{$pay_link->id}") . " class='btn_eye' target='_blank' title='View Payement' ><i class='fa fa-eye'></i>
+										<a href=" . site_url("accounts/view_payment_link/{$pay_link->id}") . " class='btn_eye' target='_blank' title='View Payement' ><i class='fa-solid fa-eye'></i>
 										{$edLink}
 										{$delLink}
 										{$client_link}

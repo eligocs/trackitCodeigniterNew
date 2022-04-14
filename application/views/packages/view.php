@@ -36,11 +36,10 @@
                         title="Back">Back</a>
                     <a title='Edit'
                         href=" <?php echo site_url("packages/edit/{$pack->package_id}/{$pack->temp_key}") ; ?> "
-                        class='btn_pencil pull-right margin-top-15 margin-right-10'><i class='fa fa-pencil'
-                            aria-hidden='true'></i></a>
+                        class='btn btn-outline-warning mt-1 me-2 float-end'><i class='fa-solid fa-pen-to-square'
+                            aria-hidden='true'></i> Edit Iti</a>
                 </div>
             </div>
-            <div class="row">
                 <div class="portlet box blue">
                     <div class="portlet-title">
                         <h3 class="custom_title">Package Overview</h3>
@@ -82,9 +81,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-               
-               
+                           
                 <div class="portlet box blue">
                     <div class="portlet-title">
                         <h3 class="custom_title">Day Wise Itinerary</h3>
@@ -134,7 +131,7 @@
                     </div>
                     <div class="portlet-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered inclusions_table">
                                 <thead class="thead-default">
                                     <tr class="thead-inverse">
                                         <th width="50%"> Inclusion</th>
@@ -364,7 +361,7 @@
                	}
                ?>
                 <hr>
-                <div class="portlet box blue row">
+                <div class="portlet box blue">
                     <div class="portlet-body">
                         <?php
                            $agent_id = $pack->agent_id;
@@ -386,13 +383,10 @@
                             <a href="<?php echo site_url("packages"); ?>" class="btn green uppercase iti_back"
                                 title="Back">Back</a>
                             <!--Edit itinerary button-->
-                            <a title='Edit'
-                                href=" <?php echo site_url("packages/edit/{$pack->package_id}/{$pack->temp_key}") ; ?> "
-                                class='btn_pencil'><i class='fa fa-pencil' aria-hidden='true'></i>Edit</a>
+                            <a title='Edit' href=" <?php echo site_url("packages/edit/{$pack->package_id}/{$pack->temp_key}") ; ?> " class='btn btn-outline-warning'><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i> Edit </a>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <!-- END CONTENT BODY -->

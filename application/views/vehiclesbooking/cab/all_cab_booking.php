@@ -14,18 +14,20 @@
 			</div>
 		</div>
 		<!--start filter section-->
-		<div class="row marginBottom second_custom_card">
-			<form id="form-filter" class="form-horizontal marginRight bg_white margin_bottom_0 padding_zero">
-				<div class="actions custom_filter">
-				<label class="control-label col-md-1"><strong>Filter: </strong></label>
-					<div class="col-md-3">
-					<input type="text" autocomplete="off" class="form-control" id="daterange"
-												name="dateRange" title="Travel date filter" placeholder='Travel date' />
-						<input type="hidden" name="date_from" id="date_from">
-						<input type="hidden" name="date_to" id="date_to">
+		<div class="second_custom_card mb-4">
+			<form id="form-filter" class="form-horizontal">
+				<div class="actions row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label"><strong>Filter: </strong></label>
+							<input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" title="Travel date filter" placeholder='Travel date' />
+							<input type="hidden" name="date_from" id="date_from">
+							<input type="hidden" name="date_to" id="date_to">
+						</div>
 					</div>
 					<div class="col-md-8">
-					<div class="btn-group" data-toggle="buttons">
+					<div class="radio_filter_btns" data-toggle="buttons">
+						<label for="" class="control-label d-block">&nbsp;</label>
 						<label class="btn btn-default custom_active active"><input type="radio" name="filter" value="all" checked="checked" id="all"/>All</label>
 						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="upcomming" id="upcomming" />Upcomming</label>
 						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="past" id="past" />Past</label>

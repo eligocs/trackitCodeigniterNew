@@ -113,9 +113,9 @@ class Payments extends CI_Controller {
 				$row[] = $st;
 				
 				//buttons
-				$update_btn = "<a title='Update Payments Detail' href=" . site_url("payments/update_payment/{$payment->id}/{$payment->iti_id}") . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$update_btn = "<a title='Update Payments Detail' href=" . site_url("payments/update_payment/{$payment->id}/{$payment->iti_id}") . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
-				//$btn_view = "<a title='View' href=" . site_url("payments/view/{$payment->id}/{$payment->iti_id}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				//$btn_view = "<a title='View' href=" . site_url("payments/view/{$payment->id}/{$payment->iti_id}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
 				$row[] = $update_btn . $refund_exist . $refunded;
 				

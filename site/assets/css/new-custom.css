@@ -3,14 +3,35 @@
 /*---- utility Css ---- */
 /* -------------------- */
 
-.white_space_fix{
-    white-space: nowrap !important;
+/* --- All Buttons Css --- */
+
+.btn-outline-warning:hover {
+    color: #fff !important;
+
+}
+
+.btn-outline-info:hover {
+    color: #fff !important;
+}
+
+/* all button and <a> css in page content */
+.page-content  .btn, .page-content a{
+    font-size: 12px;
+    border-radius: 2px !important;
+}
+
+.radio_filter_btns label.btn.btn-default.custom_active input[type=radio]{
+    display: none;
 }
 
 a{
     text-decoration: none;
 }
 
+
+.white_space_fix{
+    white-space: nowrap !important;
+}
 
 /* ----------------------------- */
 /* ---- page-common-header  ---- */
@@ -101,15 +122,6 @@ padding-top: 10px;}
 .modal.in{
     opacity: 1 !important;
 }
-
-
-
-/* all button and <a> css in page content */
-.page-content  .btn, .page-content a{
-    font-size: 12px;
-    border-radius: 2px !important;
-}
-
 
 /* protlet box Caption  */
 .portlet-title .caption{

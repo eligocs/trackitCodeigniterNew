@@ -72,7 +72,7 @@
 								<td><?php echo $c_book->pic_location . " - " . $c_book->drop_location; ?></td>
 								<td><?php echo $c_book->email_count . " Time Sent"; ?></td>
 								<td><?php echo $status; ?></td>
-								<td><a title='View' href="<?php echo site_url("vehiclesbooking/viewbooking/{$c_book->id}"); ?>" class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+								<td><a title='View' href="<?php echo site_url("vehiclesbooking/viewbooking/{$c_book->id}"); ?>" class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
 							</tr>
 						<?php } ?>
 					</tbody>

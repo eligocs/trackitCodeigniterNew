@@ -54,7 +54,7 @@
 						<div class="col-md-10"><?php echo get_user_name($review->agent_id); ?></div>
 					</div>
 					<div class="text-center">
-						<a title='Edit Review' href="<?php echo site_url("clientsection/review_edit/{$review->id}"); ?>" class="" ><i class="fa fa-pencil"></i> Edit Review</a>
+						<a title='Edit Review' href="<?php echo site_url("clientsection/review_edit/{$review->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit Review</a>
 					</div>	
 					</div> <!-- row -->
 					</div>		

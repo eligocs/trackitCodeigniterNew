@@ -225,8 +225,8 @@ class Agents extends CI_Controller {
 						$row1 = "<a title='delete' href='javascript:void(0)' data-id = {$agent->user_id} class='btn_trash ajax_delete_user'><i class='fa fa-trash-o'></i></a>";
 					}
 					
-					$rowedit = "<a title='edit' href=" . site_url("agents/editagent/{$agent->user_id}") . " class='btn_pencil ajax_edit_user_table' ><i class='fa fa-pencil'></i></a>";
-					$row[] = "<a title='view' href=" . site_url("agents/view/{$agent->user_id}") . " class='btn_eye' ><i class='fa fa-eye'></i></a>" . $rowedit . $row1;
+					$rowedit = "<a title='edit' href=" . site_url("agents/editagent/{$agent->user_id}") . " class='btn_pencil ajax_edit_user_table' ><i class='fa-solid fa-pen-to-square'></i></a>";
+					$row[] = "<a title='view' href=" . site_url("agents/view/{$agent->user_id}") . " class='btn_eye' ><i class='fa-solid fa-eye'></i></a>" . $rowedit . $row1;
 					
 					$row[] = $inSliderBtn;
 					$row[] = $agent->last_login;

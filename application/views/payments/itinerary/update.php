@@ -20,7 +20,7 @@
                     <div class="d_inline_block">
                         <a title='View Quotation' target="_blank"
                             href=" <?php echo site_url("itineraries/view/{$pay->iti_id}/{$temp_key}") ; ?> "
-                            class='btn btn-danger'><i class='fa fa-eye' aria-hidden='true'></i> View Quotation </a>
+                            class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Quotation </a>
                     </div>
                     <!--Close Lead If All Payment Received-->
 
@@ -207,8 +207,8 @@
                                 <td><?php echo ucfirst($receipt->receipt_type) ?></td>
                                 <td><?php echo $receipt->transfer_ref ?></td>
                                 <td><?php echo $receipt->amount_received ?></td>
-                                <?php echo "<td><a href=" . site_url("accounts/update_receipt/{$receipt->id}") . " class='btn_pencil margin-right-10 ajax_edit_hotel_table'  target='_blank' title='Update receipt' ><i class='fa fa-pencil'></i></a>
-												<a href=" . site_url("accounts/view_receipt/{$receipt->id}") . " class='btn_eye' target='_blank' title='view' ><i class='fa fa-eye'></i></a>
+                                <?php echo "<td><a href=" . site_url("accounts/update_receipt/{$receipt->id}") . " class='btn_pencil margin-right-10 ajax_edit_hotel_table'  target='_blank' title='Update receipt' ><i class='fa-solid fa-pen-to-square'></i></a>
+												<a href=" . site_url("accounts/view_receipt/{$receipt->id}") . " class='btn_eye' target='_blank' title='view' ><i class='fa-solid fa-eye'></i></a>
 												<a href='javascript:void(0)' data-id='{$receipt->id}'' class='btn_trash ajax_delete_bank'><i class='fa fa-trash-o'></i></a></td>"; ?>
                             <tr>
                                 <?php 
@@ -279,7 +279,7 @@
                                     <td><?php echo get_user_name($pay_trans->agent_id); ?></td>
                                     <td>
                                         <a title="Update details" class="btn_pencil edit_trans" target="_blank"
-                                            href="javascript: void(0)"><i class="fa fa-pencil"></i></a>
+                                            href="javascript: void(0)"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <!--a title="Delete" data-id="<?php echo $pay_trans->tra_id; ?>"
                                             class="btn_trash del_trans" target="_blank" href="javascript: void(0)"><i
                                                 class="fa fa-trash-o"></i></a-->

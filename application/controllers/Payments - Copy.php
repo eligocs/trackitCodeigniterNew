@@ -86,9 +86,9 @@ class Payments extends CI_Controller {
 				$row[] = empty( $balance) ? "<strong class='btn btn-success'>Done</strong>" : "<strong class='btn btn-danger'>Processing</strong>";
 				
 				//buttons
-				$update_btn = "<a title='Update Payments Detail' href=" . site_url("payments/update_payment/{$payment->id}/{$payment->iti_id}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$update_btn = "<a title='Update Payments Detail' href=" . site_url("payments/update_payment/{$payment->id}/{$payment->iti_id}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
-				//$btn_view = "<a title='View' href=" . site_url("payments/view/{$payment->id}/{$payment->iti_id}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				//$btn_view = "<a title='View' href=" . site_url("payments/view/{$payment->id}/{$payment->iti_id}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
 				$row[] = $update_btn;
 				
@@ -248,7 +248,7 @@ class Payments extends CI_Controller {
 				$row[] = empty( $balance) ? "<strong class='btn btn-success'>Done</strong>" : "<strong class='btn btn-danger'>Processing</strong>";
 				
 				//buttons
-				$update_btn = "<a title='Update Payments Detail' href=" . site_url("payments/accommodation_update_payment/{$payment->id}/{$payment->acc_id}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$update_btn = "<a title='Update Payments Detail' href=" . site_url("payments/accommodation_update_payment/{$payment->id}/{$payment->acc_id}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
 				$row[] = $update_btn;
 				$data[] = $row;

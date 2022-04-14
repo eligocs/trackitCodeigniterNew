@@ -554,7 +554,7 @@
                 <?php if( empty( $hotel_book->booking_status ) ){ ?>
                 <div class="text-center"><a style="display:inline;"
                         href="<?php echo site_url("hotelbooking/edit/{$hotel_book->id}/{$hotel_book->iti_id}"); ?>"
-                        class='btn btn-success' title="Update Hotel Booking Info"><i class='fa fa-pencil'></i> Update
+                        class='btn btn-success' title="Update Hotel Booking Info"><i class='fa-solid fa-pen-to-square'></i> Update
                         Booking</a></div>
                 <hr>
                 <?php } ?>

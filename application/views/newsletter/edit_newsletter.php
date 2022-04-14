@@ -81,7 +81,7 @@ div#mails-db {
 						<?php echo $news->subject; ?>
 					</div>
 					<div class="form-group nl-input-field">
-						<label for="body"><strong>Newsletter Body:</strong><span id="copy_news"><a title='edit'  href="#" class=' '>  &nbsp; <i class='fa fa-pencil'></i></a></span></label>
+						<label for="body"><strong>Newsletter Body:</strong><span id="copy_news"><a title='edit'  href="#" class=' '>  &nbsp; <i class='fa-solid fa-pen-to-square'></i></a></span></label>
 					</div>	
 					<div class="form-group nl-input-field">	
 						<div class="body_view"><?php echo htmlspecialchars_decode($news->body); ?></div>

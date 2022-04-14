@@ -227,7 +227,7 @@ div#quotation_type_section, #readyQuotation {
 										$pub_status = $get_iti[0]->publish_status;
 										
 										if( $pub_status == "draft" ){
-											$add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa fa-pencil'></i> Edit Itinerary</a>";
+											$add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa-solid fa-pen-to-square'></i> Edit Itinerary</a>";
 										}else{
 											$add_iti = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Itinerary'><i class='fa fa-plus'></i> View Itinerary</a>";
 										}
@@ -243,7 +243,7 @@ div#quotation_type_section, #readyQuotation {
 										$temp_key = $get_acc[0]->temp_key;
 										$pub_status = $get_acc[0]->publish_status;
 										if( $pub_status == "draft" ){
-											$add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Accommodation'><i class='fa fa-pencil'></i> Edit Acc.</a>";
+											$add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Accommodation'><i class='fa-solid fa-pen-to-square'></i> Edit Acc.</a>";
 										}else{
 											$add_acc = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Accommodation'><i class='fa fa-plus'></i> View Acc.</a>";
 										}
@@ -270,7 +270,7 @@ div#quotation_type_section, #readyQuotation {
 					
 					//View Buttons
 					echo '<div class="clearfix"></div><hr>';
-					$c_view = "<a target='_blank' href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i> View Customer</a>";
+					$c_view = "<a target='_blank' href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i> View Customer</a>";
 					echo  "<div class=' col-md-12 btn_section text-center margin-top-10'>{$add_iti} {$add_acc} {$decUserStatus} {$c_view}</div>";
 					?>
 					<div class="clearfix"></div>
@@ -372,12 +372,12 @@ div#quotation_type_section, #readyQuotation {
 													//buttons
 													//if price is updated remove edit for agent get_iti_booking_status
 													if( $iti->pending_price == 2 && $role == 96 ){
-														$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+														$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 													}else{
-														$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+														$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 													}
 													
-													$btnview = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+													$btnview = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 													
 													$btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a>";
 													

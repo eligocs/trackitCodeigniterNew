@@ -1035,7 +1035,7 @@ jQuery(document).ready(function($){
 		var followLinkCus = "<?php echo base_url("customers/?todayStatus="); ?>" + e_date + "&leadStatus=getFollowUp";
 		var followLinkIti = "<?php echo base_url("itineraries/?todayStatus="); ?>" + e_date + "&leadStatus=getFollowUp";
 		var link_f = calType == "calendar_iti_followup" ?  followLinkIti : followLinkCus;
-		var viewBtn = '<a class="all_event_link" target="_blank" href="' + link_f + '"><span class="event-count">' + '<i class="fa fa-eye"></i> View All' + '</span></a>';
+		var viewBtn = '<a class="all_event_link" target="_blank" href="' + link_f + '"><span class="event-count">' + '<i class="fa-solid fa-eye"></i> View All' + '</span></a>';
 		//append view button
 		$(".fc-widget-header .fc-title").append(" " + viewBtn);
 	});

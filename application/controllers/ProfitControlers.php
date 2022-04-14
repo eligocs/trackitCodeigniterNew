@@ -118,7 +118,7 @@ class Profit extends CI_Controller {
 				$row[] = $profitData->total_margin_cost;
 				$row[] = round($profitData->total_margin_per, 2);
 				$row[] = $l_pro_status;
-				$btn_view = "<a target='_blank' title='View' href=" . iti_view_link($profitData->iti_id) . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$btn_view = "<a target='_blank' title='View' href=" . iti_view_link($profitData->iti_id) . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				$btn_view .= "
 				<a  href='#'
 						class='btn green uppercase editMargin' data-id='{$profitData->id}'>Edit Margin</a>";

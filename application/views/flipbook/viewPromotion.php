@@ -41,7 +41,7 @@
 				</table>	
 				
 				<div class="text-center">
-					<a title='Edit User' class="btn btn-success pull-left" href="<?php echo site_url("flipbook/addpages/{$promotion[0]->id}"); ?>" class="" ><i class="fa fa-pencil"></i>Add Pages</a>
+					<a title='Edit User' class="btn btn-success pull-left" href="<?php echo site_url("flipbook/addpages/{$promotion[0]->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i>Add Pages</a>
 					<br>	
 				</div>	
 			</div>	

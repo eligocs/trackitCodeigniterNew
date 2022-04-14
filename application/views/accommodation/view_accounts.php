@@ -315,7 +315,7 @@
 																echo "<td>"; ?>
                                         <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank"
                                             class="btn btn_eye" style="position:relative;">
-                                            <i class="fa fa-eye"></i> </a>
+                                            <i class="fa-solid fa-eye"></i> </a>
                                         </td>
                                         <?php 	
 															echo "</tr>";	
@@ -400,7 +400,7 @@
                                                 <td><?php echo $status; ?></td>
                                                 <td><a title='View'
                                                         href="<?php echo site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}"); ?>"
-                                                        class='btn btn_eye'><i class='fa fa-eye'
+                                                        class='btn btn_eye'><i class='fa-solid fa-eye'
                                                             aria-hidden='true'></i></a></td>
                                             </tr>
                                             <?php 

@@ -77,7 +77,7 @@
 					<!--Edit Button-->
 					<?php if( !is_salesteam() ){ ?>
 					<div class="text-center">
-						<a title='Edit Hotel' href="<?php echo site_url("hotels/edit/{$hotel->id}"); ?>" class="" ><i class="fa fa-pencil"></i> Edit Hotel</a>
+						<a title='Edit Hotel' href="<?php echo site_url("hotels/edit/{$hotel->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit Hotel</a>
 					</div>	
 					<?php } ?>
 				</div>	

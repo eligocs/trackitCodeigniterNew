@@ -130,7 +130,7 @@ class Search extends CI_Controller {
 									$pub_status = $get_iti[0]->publish_status;
 									
 									if( $pub_status == "draft" ){
-										$add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa fa-pencil'></i> Edit Itinerary</a>";
+										$add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa-solid fa-pen-to-square'></i> Edit Itinerary</a>";
 									}else{
 										$add_iti = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Itinerary'><i class='fa fa-plus'></i> View Itinerary</a>";
 									}
@@ -148,7 +148,7 @@ class Search extends CI_Controller {
 									$temp_key = $get_acc[0]->temp_key;
 									$pub_status = $get_acc[0]->publish_status;
 									if( $pub_status == "draft" ){
-										$add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Accommodation'><i class='fa fa-pencil'></i> Edit Acc.</a>";
+										$add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Accommodation'><i class='fa-solid fa-pen-to-square'></i> Edit Acc.</a>";
 									}else{
 										$add_acc = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Accommodation'><i class='fa fa-plus'></i> View Acc.</a>";
 									}
@@ -178,7 +178,7 @@ class Search extends CI_Controller {
 					}
 					
 					//View Buttons
-					$c_view = "<a href=" . site_url("customers/view/{$cus->customer_id}/{$cus->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i> View Customer</a></div>";
+					$c_view = "<a href=" . site_url("customers/view/{$cus->customer_id}/{$cus->temp_key}") . " title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i> View Customer</a></div>";
 				
 				$cus_info_html .= "<div class=' col-md-12 btn_section'>{$add_iti} {$add_acc} {$decUserStatus} {$c_view}</div>";
 				

@@ -40,7 +40,7 @@
 									<td><?php echo $cat->name;?></td>
 									<td>
 										<?php if( $cat->id > 2 ){ ?>
-											<a title='edit' href=" <?php echo site_url("customers/savecustype/".$cat->id);?>" class="btn_pencil ajax_edit_cat_table" ><i class='fa fa-pencil'></i></a>
+											<a title='edit' href=" <?php echo site_url("customers/savecustype/".$cat->id);?>" class="btn_pencil ajax_edit_cat_table" ><i class='fa-solid fa-pen-to-square'></i></a>
 										<?php } ?>
 										
 										

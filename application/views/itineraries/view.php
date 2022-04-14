@@ -83,15 +83,16 @@
                         
                             ?>
                     </div>
-                    
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("itineraries"); ?>"
-                        title="Back">Back</a>
-                    <a class="btn btn-info pull-right" style='margin: 5px;' onclick="Print_iti();"
-                        href="javscript:void(0)" title="Back">Print</a>
+                    <!-- back btn -->
+                    <a class="btn btn-success pull-right" href="<?php echo site_url("itineraries"); ?>" title="Back">Back</a>
+                    <!-- print btn -->
+                    <a class="btn btn-outline-warning float-end mt-1 me-2" onclick="Print_iti();" href="javscript:void(0)" title="Back">Print</a>
                         <?php if( ( $iti->iti_status == 0 || $iti->iti_status == 6 ) && is_admin_or_manager_or_sales() ){ ?>
+                            <!-- edit btn -->
                             <a title='Edit Itinerary'
                                 href=" <?php echo site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}") ; ?> "
-                                class='btn_pencil pull-right margin-top-15 margin-right-10'><i class='fa fa-pencil' aria-hidden='true'></i>
+                                class='btn btn-outline-info mt-1 me-2 float-end'><i class="fa-solid fa-pen-to-square"></i>
+                                Edit
                             </a>
                         <?php } ?>
                     <?php 
@@ -116,7 +117,7 @@
                   ?>
                 </div>
             </div>
-            <div class="booking_items col-md-12 custom_card margin-bottom-20">
+            <div class="bg-white booking_items col-md-12 mb-4 p-2 rounded-4 shadow-sm">
                     <?php 
                     if(!empty(get_iti_tour_start_date($iti->iti_id))){
 
@@ -159,7 +160,7 @@
                     <?php }
                     ?>
                 </div>
-            <div class="clearfix"></div>
+            
             <?php 
             /*if( get_iti_booking_status( $iti->iti_id ) == 3 && $iti->iti_status != 9 ){ 
             $pay_detail = $paymentDetails[0];	
@@ -176,18 +177,18 @@
                         //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";
                         $is_gst_final = "";
                         echo $is_amendment . $amendment_note;
-                        echo !empty($pay_detail->iti_package_type) ? "<h4 class='text-center red uppercase'>{$pay_detail->iti_package_type}</h4>" : "";
+                        echo !empty($pay_detail->iti_package_type) ? "<div class='bg-white mb-4 p-3 text-center rounded-4 shadow-sm'><h4 class='badge bg-yellow-soft fs-7 mb-3 text-center'>{$pay_detail->iti_package_type}</h4>" : "";
                         if( $pay_detail->iti_booking_status == 0 ){
-                            echo '<h1 class="text-center green uppercase margin-bottom-40">Booked Itinerary</h1>';
+                            echo '<h1 class="text-center green uppercase fs-4 ">Booked Itinerary</h1>';
                         }else if( $pay_detail->iti_booking_status == 1 ){
-                            echo '<h1 class="text-center red uppercase margin-bottom-30">Itinerary On Hold</h1>';
+                            echo '<h1 class="text-center text-danger uppercase fs-4 ">Itinerary On Hold</h1>';
                         }else{
-                            echo '<h1 class="text-center red uppercase">Itinerary Rejected By Manager</h1>';
-                            echo "<p class='text-center'><strong class='red'> Reason: </strong> {$pay_detail->approved_note}</p>";
+                            echo '<h1 class="text-center text-danger uppercase fs-4 ">Itinerary Rejected By Manager</h1>';
+                            echo "<p class='text-center'><strong class='red'> Reason: </strong> {$pay_detail->approved_note}</p></div>";
                         } ?>
                         <div class="mt-element-step">
-                            <div class="row step-background-thin ">
-                                <div class="col-md-4 bg-grey-steel mt-step-col error ">
+                            <div class="row step-background-thin justify-content-between">
+                                <div class="col-md-4 my-2 bg-grey-steel mt-step-col error ">
                                     <div class="mt-step-number">1</div>
                                     <div class="mt-step-title uppercase font-grey-cascade"><strong>INR
                                             <?php echo $iti->final_amount; ?>/- </strong>
@@ -195,156 +196,151 @@
                                     <div class="mt-step-content font-grey-cascade">Package Final Cost: <span
                                             style="color: #fff;">(<?php echo $is_gst_final;  ?>)</span></div>
                                 </div>
-                                <div class="col-md-4 bg-grey-steel mt-step-col active">
+                                <div class="col-md-4 my-2 bg-grey-steel mt-step-col active">
                                     <div class="mt-step-number">2</div>
                                     <div class="mt-step-title uppercase font-grey-cascade">
                                         <strong><?php echo $iti->approved_package_category; ?></strong>
                                     </div>
                                     <div class="mt-step-content font-grey-cascade">Package Category</div>
                                 </div>
-                                <div class="col-md-4 bg-grey-steel mt-step-col done">
+                                <div class="col-md-4 my-2 bg-grey-steel mt-step-col done">
                                     <?php $t_date = get_travel_date($iti->iti_id); ?>
                                     <div class="mt-step-number">3</div>
                                     <div class="mt-step-title uppercase font-grey-cascade">
-                                        <?php echo !empty($t_date) ? $t_date : "--/--/----"; ?></strong>
+                                       <strong> <?php echo !empty($t_date) ? $t_date : "--/--/----"; ?></strong>
                                     </div>
                                     <div class="mt-step-content font-grey-cascade">Travel Date</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
                         <div class="mt-element-step">
-                            <div class="row step-background-thin ">
-                                <div class="col-md-4 bg-grey-steel mt-step-col done ">
+                            <div class="row step-background-thin justify-content-between">
+                                <div class="col-md-4 my-2 bg-grey-steel mt-step-col done ">
                                     <div class="mt-step-number">1</div>
                                     <div class="mt-step-title uppercase font-grey-cascade"><strong>INR
                                             <?php echo $paymentDetails[0]->advance_recieved; ?>/- </strong>
                                     </div>
                                     <div class="mt-step-content font-grey-cascade">Advance Recieved </div>
                                 </div>
-                                <div class="col-md-4 bg-grey-steel mt-step-col error">
+                                <div class="col-md-4 my-2 bg-grey-steel mt-step-col error">
                                     <div class="mt-step-number">2</div>
                                     <div class="mt-step-title uppercase font-grey-cascade">
                                         <strong><?php echo $paymentDetails[0]->total_balance_amount; ?>/-</strong>
                                     </div>
                                     <div class="mt-step-content font-grey-cascade">Balance Pending</div>
                                 </div>
-                                <div class="col-md-4 bg-grey-steel mt-step-col active">
+                                <div class="col-md-4 my-2 bg-grey-steel mt-step-col active">
                                     <?php $booking_d = $paymentDetails[0]->booking_date; ?>
                                     <div class="mt-step-number">3</div>
                                     <div class="mt-step-title uppercase font-grey-cascade">
-                                        <?php echo !empty($booking_d) ? display_month_name($booking_d ) : "--/--/----"; ?></strong>
+                                        <strong><?php echo !empty($booking_d) ? display_month_name($booking_d ) : "--/--/----"; ?></strong>
                                     </div>
                                     <div class="mt-step-content font-grey-cascade">Booking Date</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
+                        
                     </div>
                 </div>
 
             </div>
             <!--show payment screenshot details-->
-            <hr>
             <div id="update_iti_hold_status">
                 <!-- client_aadhar_card payment_screenshot -->
-                <div class="custom_card">
-                    <?php
-               $aadhar_card_img = !empty( $pay_detail->client_aadhar_card ) ? $pay_detail->client_aadhar_card : "";
-               $payment_screenshot = !empty( $pay_detail->payment_screenshot ) ? $pay_detail->payment_screenshot : "";
-               ?>
-                    <div class="col-md-4">
-                        <h4 class="uppercase">Aadhar Card Screenshot</h4>
-                        <?php if($aadhar_card_img){ ?>
-                        <a target="_blank" href="<?php echo $doc_path . $aadhar_card_img; ?>" class="example-image-link"
-                            data-lightbox="example-set" data-title="Adhar card Screenshot.">
-                            <img src="<?php echo $doc_path . $aadhar_card_img; ?>" width="150" height="150"
-                                class="image-responsive">
-                        </a>
-                        <?php }else{
-                  echo "<strong class='red'>Aadhar card Not Updated</strong>";
-                  //echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
-                  } ?>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="uppercase">Payment Screenshot</h4>
-                        <?php if($payment_screenshot){ ?>
-                        <a target="_blank" href="<?php echo $doc_path . $payment_screenshot; ?>"
-                            class="example-image-link" data-lightbox="example-set"
-                            data-title="Client Payment Screenshot.">
-                            <img src="<?php echo $doc_path . $payment_screenshot; ?>" width="150" height="150"
-                                class="image-responsive">
-                        </a>
-                        <?php }else{
-                  echo "<strong class='red'>Payment Screenshot Not Updated</strong>";
-                  //echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
-                  } ?>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="uppercase">Iti Status</h4>
-                        <?php 
-                  if( $pay_detail->iti_booking_status == 0 ){
-                  	echo "<strong class='green'>APPROVED</strong>";
-                  }else if( $pay_detail->iti_booking_status == 1 ){ 
-                  	echo '<strong class="red">ON HOLD</strong>';
-                  }else{ 
-                  	echo '<strong class="red">REJECTED BY SALES MANAGER</strong>';
-                  } ?>
-                        <p><span class="red">Comment: </span><?php echo $pay_detail->approved_note; ?></p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-12 other_docs margin-top-40">
-                        <?php if (isset( $iti_clients_docs ) && !empty( $iti_clients_docs ) ){
-                  echo '<h4 class="uppercase">Other Documents</h4>'; ?>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead class="thead-default">
-                                    <tr>
-                                        <th> Sr. </th>
-                                        <th> Title</th>
-                                        <th> Comment</th>
-                                        <th> Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-                           $docindex = 1; 
-                           foreach( $iti_clients_docs as $ind => $doc ){
-                           	echo "<tr>";
-                           		echo "<td>" . $docindex . "</td>";
-                           		echo "<td>" . $doc->file_url . "</td>";
-                           		echo "<td>" . $doc->comment . "</td>";
-                           		echo "<td>"; ?>
-                                    <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank" class="btn_eye"
-                                        style="position:relative;">
-                                        <i class="fa fa-eye"></i> View</a>
-                                    </td>
-                                    <?php 	
-                           echo "</tr>";	
-                           $docindex++;
-                           } ?>
-                                </tbody>
-                            </table>
+                <div class="bg-white mb-4 p-3 rounded-4 shadow-sm">
+                    <?php $aadhar_card_img = !empty( $pay_detail->client_aadhar_card ) ? $pay_detail->client_aadhar_card : ""; $payment_screenshot = !empty( $pay_detail->payment_screenshot ) ? $pay_detail->payment_screenshot : ""; ?>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 class="uppercase">Aadhar Card Screenshot</h4>
+                            <?php if($aadhar_card_img){ ?>
+                            <a target="_blank" href="<?php echo $doc_path . $aadhar_card_img; ?>" class="example-image-link"
+                                data-lightbox="example-set" data-title="Adhar card Screenshot.">
+                                <img src="<?php echo $doc_path . $aadhar_card_img; ?>" width="150" height="150"
+                                    class="image-responsive">
+                            </a>
+                            <?php }else{
+                            echo "<strong class='red'>Aadhar card Not Updated</strong>";
+                            //echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
+                            } ?>
                         </div>
-                        <?php } ?>
+                        <div class="col-md-4">
+                            <h4 class="uppercase">Payment Screenshot</h4>
+                            <?php if($payment_screenshot){ ?>
+                            <a target="_blank" href="<?php echo $doc_path . $payment_screenshot; ?>"
+                                class="example-image-link" data-lightbox="example-set"
+                                data-title="Client Payment Screenshot.">
+                                <img src="<?php echo $doc_path . $payment_screenshot; ?>" width="150" height="150"
+                                    class="image-responsive">
+                            </a>
+                            <?php }else{
+                                echo "<strong class='red'>Payment Screenshot Not Updated</strong>";
+                                //echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
+                                } ?>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="uppercase">Iti Status</h4>
+                            <?php 
+                                if( $pay_detail->iti_booking_status == 0 ){
+                                    echo "<strong class='green'>APPROVED</strong>";
+                                }else if( $pay_detail->iti_booking_status == 1 ){ 
+                                    echo '<strong class="red">ON HOLD</strong>';
+                                }else{ 
+                                    echo '<strong class="red">REJECTED BY SALES MANAGER</strong>';
+                            } ?>
+                            <p><span class="red">Comment: </span><?php echo $pay_detail->approved_note; ?></p>
+                        </div>
+                        <div class="col-md-12 other_docs margin-top-40">
+                            <?php if (isset( $iti_clients_docs ) && !empty( $iti_clients_docs ) ){
+                                echo '<h4 class="uppercase">Other Documents</h4>'; ?>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-default">
+                                        <tr>
+                                            <th> Sr. </th>
+                                            <th> Title</th>
+                                            <th> Comment</th>
+                                            <th> Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                            $docindex = 1; 
+                            foreach( $iti_clients_docs as $ind => $doc ){
+                                echo "<tr>";
+                                    echo "<td>" . $docindex . "</td>";
+                                    echo "<td>" . $doc->file_url . "</td>";
+                                    echo "<td>" . $doc->comment . "</td>";
+                                    echo "<td>"; ?>
+                                        <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank" class="btn_eye"
+                                            style="position:relative;">
+                                            <i class="fa-solid fa-eye"></i> View</a>
+                                        </td>
+                                        <?php 	
+                            echo "</tr>";	
+                            $docindex++;
+                            } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <?php } ?>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
                 <!--approved /reject onhold itierary by manager -->
                 <?php 
                if( is_admin_or_manager() && $pay_detail->iti_booking_status == 1 ){
                	$aadhar_card_req		= empty( $pay_detail->client_aadhar_card ) ? "required='required'" : "";
                	$payment_screenshot_req = empty( $pay_detail->payment_screenshot ) ? "required='required'" : "";	?>
-                <div class="row custom_card margin-top-30" id="update_rates_section">
+                <div class="custom_card" id="update_rates_section">
                     <form id="frmappOnholditi">
-                        <div class="frm_section">
+                        <div class="row frm_section">
                             <div class="spinner_load" style="display: none;">
                                 <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
                                 <span class="sr-only">Loading...</span>
                             </div>
-                            <div class='form-group col-md-12'>
-                                <p class="text-center uppercase"><strong style="font-size: 22px;">Please View And Update
-                                        Itinerary: </strong>
+                            <div class='col-md-12'>
+                                <p class="fs-6 mb-0 text-center text-primary uppercase">
+                                    <strong>Please View And Update Itinerary: </strong> 
                                 </p>
                             </div>
                             <div class='form-group col-md-12 iti_info'>
@@ -359,32 +355,27 @@
                             </div>
                             <!--upload aadhar card section-->
                             <div class="form-group col-md-3 remove_required">
-                                <div class="form-group2">
-                                    <label class=" "><strong>Client Aadhar Card:</strong></label>
-                                    <input class="form-control" <?php echo $aadhar_card_req; ?> id="client_aadhar_card"
-                                        type="file" name="client_aadhar_card">
-                                </div>
+                                <label class="control-label"><strong>Client Aadhar Card:</strong></label>
+                                <input class="form-control" <?php echo $aadhar_card_req; ?> id="client_aadhar_card" type="file" name="client_aadhar_card">
                                 <img id="client_aadhar_card_priview" style="display: none;" width="100" height="100" />
                             </div>
                             <!--end upload aadhar card section-->
                             <!--upload aadhar Payment card section-->
                             <div class="form-group col-md-3 remove_required">
                                 <div class="form-group2">
-                                    <label class=" "><strong>Payment Screenshot:</strong></label>
-                                    <input class="form-control" <?php echo $payment_screenshot_req; ?>
-                                        id="payment_screenshot" type="file" name="payment_screenshot">
+                                    <label class="control-label"><strong>Payment Screenshot:</strong></label>
+                                    <input class="form-control" <?php echo $payment_screenshot_req; ?> id="payment_screenshot" type="file" name="payment_screenshot">
                                 </div>
                                 <img id="payment_screenshot_priview" style="display: none;" width="100" height="100" />
                             </div>
                             <!--end perperson rate meta -->
                             <div class='form-group col-md-3'>
-                                <label><strong>Comments*</strong><span class="red" style="font-size: 12px;"> Note: This
-                                        comment is also visible for agent.</span></label>
-                                <textarea required name="approved_note" placeholder="APPROVED NOTE"
-                                    class='form-control'></textarea>
+                                <label class="control-label"><strong>Comments*</strong></label>
+                                <textarea required name="approved_note" placeholder="APPROVED NOTE" class='form-control'></textarea>
+                                <span class="red" style="font-size: 12px;"> Note: This comment is also visible for agent.</span>
                             </div>
                             <div class="form-group col-md-3">
-                                <label class=""><strong>Package Type*:</strong></label>
+                                <label class="control-label"><strong>Package Type*:</strong></label>
                                 <select required name="package_type_iti" class="form-control">
                                     <option value="">Choose Package Type</option>
                                     <option
@@ -401,13 +392,11 @@
                                         value="Other">Other</option>
                                 </select>
                             </div>
-                            <div class="clearfix"></div>
                             <div class="col-md-12 other_docs margin-top-15">
                                 <a href="javascript:;" id="add_other_docs_btn"
                                     class="btn btn-success mt-repeater-add addrep">
-                                    <i class="fa fa-plus"></i> Add Other Docs</a><span class="red"
-                                    style="font-size: 12px;"> Please upload only ( jpg|jpeg|png|pdf ) files and not more
-                                    than 2MB.</span>
+                                    <i class="fa fa-plus"></i> Add Other Docs</a>
+                                    <span class="text-danger d-block mt-1" style="font-size: 12px;"> Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
                                 <div class="other_docs_sec margin-top-20" style="display:none;">
                                     <div class="col-md-4">
                                         <div class="form-group2">
@@ -426,10 +415,9 @@
                                                 <i class="fa fa-close"></i> Delete</a>
                                         </div>
                                     </div>
-                                    <div class="clearfix"></div>
                                 </div>
                                 <?php if (isset( $iti_clients_docs ) && !empty( $iti_clients_docs ) ){
-                           echo '<h4 class="uppercase margin-top-40">Other Documents</h4>'; ?>
+                                echo '<h4 class="uppercase margin-top-40">Other Documents</h4>'; ?>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover">
                                         <thead class="thead-default">
@@ -451,7 +439,7 @@
                                     		echo "<td>"; ?>
                                             <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank"
                                                 class="btn_eye" style="position:relative;">
-                                                <i class="fa fa-eye"></i></a>
+                                                <i class="fa-solid fa-eye"></i></a>
                                             <a href="javascript: void(0);" class="btn_trash del_client_docs"
                                                 data-id="<?php echo $doc->id; ?>" style="position:relative;">
                                                 <i class="fa fa-trash-o"></i></a>
@@ -465,17 +453,17 @@
                                 </div>
                                 <?php } ?>
                             </div>
-                            <div class="clearfix"></div>
                         </div>
-                        <div class='form-group col-md-offset-4 col-md-4'>
-                            <div class="button_sec" style="margin-top: 30px;">
-                                <button class="btn green button-submit" type="submit" value="approved">APPROVE</button>
-                                <strong class="red"> OR </strong>
-                                <button type="button" class="btn red reject_iti_btn" data-toggle="modal"
-                                    data-target="#reject_iti_ModalS"> Reject</button>
-                            </div>
+                        <div class="button_sec mt-3">
+                            <button class="btn btn-success button-submit" type="submit" value="approved">
+                                <i class="fa-solid fa-thumbs-up"></i> APPROVE
+                            </button>
+                            <strong class="red"> OR </strong>
+                            <button type="button" class="btn red reject_iti_btn" data-toggle="modal"
+                                data-target="#reject_iti_ModalS"><i class="fa-solid fa-xmark"></i> Reject
+                            </button>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <div class="response_div"></div>
                         <input type="hidden" value="<?php echo $iti->iti_id; ?>" name="iti_id">
                         <input type="hidden" value="approved" name="action">
@@ -521,24 +509,24 @@
                         </div>
                     </div>
                 </div>
-                <!-- row -->
-                <?php }else if( $pay_detail->iti_booking_status == 2 && is_salesteam() ){
-               //iti_booking_status = 2 = iti rejected by sale manager due to payment
-               $aadhar_card_req		= empty( $pay_detail->client_aadhar_card ) ? "required='required'" : "";
-               $payment_screenshot_req = empty( $pay_detail->payment_screenshot ) ? "required='required'" : "";
-               $p_booked_category = $iti->approved_package_category;
-               $get_iti_package_category = get_iti_package_category();
-               $advance_recieved = $pay_detail->advance_recieved ? $pay_detail->advance_recieved : 0;
-               $second_payment_bal = $pay_detail->second_payment_bal ? $pay_detail->second_payment_bal : 0;
-               $third_payment_bal = $pay_detail->third_payment_bal ? $pay_detail->third_payment_bal : 0;
-               $final_payment_bal = $pay_detail->final_payment_bal ? $pay_detail->final_payment_bal : 0;
-               
-               $total_balance_amount = $pay_detail->total_balance_amount ? $pay_detail->total_balance_amount : 0;
-               
-               $second_payment_date = $pay_detail->second_payment_date;
-               $third_payment_date = $pay_detail->third_payment_date;
-               $final_payment_date = $pay_detail->final_payment_date;
-               ?>
+                        <!-- row -->
+                        <?php }else if( $pay_detail->iti_booking_status == 2 && is_salesteam() ){
+                    //iti_booking_status = 2 = iti rejected by sale manager due to payment
+                    $aadhar_card_req		= empty( $pay_detail->client_aadhar_card ) ? "required='required'" : "";
+                    $payment_screenshot_req = empty( $pay_detail->payment_screenshot ) ? "required='required'" : "";
+                    $p_booked_category = $iti->approved_package_category;
+                    $get_iti_package_category = get_iti_package_category();
+                    $advance_recieved = $pay_detail->advance_recieved ? $pay_detail->advance_recieved : 0;
+                    $second_payment_bal = $pay_detail->second_payment_bal ? $pay_detail->second_payment_bal : 0;
+                    $third_payment_bal = $pay_detail->third_payment_bal ? $pay_detail->third_payment_bal : 0;
+                    $final_payment_bal = $pay_detail->final_payment_bal ? $pay_detail->final_payment_bal : 0;
+                    
+                    $total_balance_amount = $pay_detail->total_balance_amount ? $pay_detail->total_balance_amount : 0;
+                    
+                    $second_payment_date = $pay_detail->second_payment_date;
+                    $third_payment_date = $pay_detail->third_payment_date;
+                    $final_payment_date = $pay_detail->final_payment_date;
+                    ?>
                 <form id="frm_update_booking_status_agent">
                     <input type="hidden" id="inp_advance_recieved" value="<?php echo $advance_recieved; ?>">
                     <div class="frm_section">
@@ -592,221 +580,181 @@
                                     name="booking_date" />
                             </div>
                             <?php 
-                        $get_tax = get_tax();
-                        $tax = !empty( $get_tax ) ? trim($get_tax) : 0;
-                        //check if gst exists
-                        $is_gst = isset( $pay_detail->is_gst ) && $pay_detail->is_gst == 1 ? true : false;
-                        $total_pack_cost = $pay_detail->total_package_cost;
+                                $get_tax = get_tax();
+                                $tax = !empty( $get_tax ) ? trim($get_tax) : 0;
+                                //check if gst exists
+                                $is_gst = isset( $pay_detail->is_gst ) && $pay_detail->is_gst == 1 ? true : false;
+                                $total_pack_cost = $pay_detail->total_package_cost;
+                                
+                                if( $is_gst ){
+                                    $get_sub_tax = ( $get_tax / 100 ) + 1;
+                                    $f_amount = round( $total_pack_cost / $get_sub_tax );
+                                }else{
+                                    $f_amount = $total_pack_cost;
+                                }
+                            ?>
                         
-                        if( $is_gst ){
-                        	$get_sub_tax = ( $get_tax / 100 ) + 1;
-                        	$f_amount = round( $total_pack_cost / $get_sub_tax );
-                        }else{
-                        	$f_amount = $total_pack_cost;
-                        }
-                        ?>
-                            <?php /*
-                        <div class="form-group col-md-2">
-                        	<label for="usr">Package Cost<span style="color:red;"> *</span>:</label>
-                        	<input type="number" required class="form-control" data-tax="<?php echo $tax; ?>"
-                            id="fnl_amount"
-                            placeholder="Total Package Cost" value="<?php echo $f_amount; ?>" />
-                        </div>
-                        <?php 
-                     //check if gst included
-                     
-                     ?>
-                        <div class="form-group col-md-2">
-                            <label for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>%
-                                    Extra)</span>:</label>
-                            <input <?php echo $is_gst ? "checked" : ""; ?>
-                                title="Check/Uncheck this button to add/substract 5% extra GST with package cost"
-                                type="checkbox" name="is_gst" id="tx" class="form-control" />
-                        </div>
-                        */ ?>
-                        <div class="form-group col-md-3">
-                            <label for="usr">Total Package Cost<span style="color:red;"> *</span>:</label>
-                            <input type="number" readonly required class="form-control" id="fnl_amount_tax"
-                                title="Total package cost after inc. tax"
-                                placeholder="Total package cost after inc. tax" value="<?php echo $total_pack_cost; ?>"
-                                name="final_amount">
-                        </div>
-                        <div class="clearfix"></div>
-                        <!--Payment Details -->
-                        <div id="due_payment_section">
-                            <div class="form-group col-md-6">
-                                <label class=""><strong>Second Installment Amount:</strong></label>
-                                <input type="text" required id="next_pay_balance" data-date-format="yyyy-mm-dd"
-                                    name="next_payment_bal" placeholder="Second Payment Balance" class="form-control"
-                                    value="<?php echo $second_payment_bal; ?>">
+                            <div class="form-group col-md-3">
+                                <label for="usr">Total Package Cost<span style="color:red;"> *</span>:</label>
+                                <input type="number" readonly required class="form-control" id="fnl_amount_tax"
+                                    title="Total package cost after inc. tax"
+                                    placeholder="Total package cost after inc. tax" value="<?php echo $total_pack_cost; ?>"
+                                    name="final_amount">
+                            </div>
+                            
+                            <!--Payment Details -->
+                            <div id="due_payment_section">
+                                <div class="form-group col-md-6">
+                                    <label class=""><strong>Second Installment Amount:</strong></label>
+                                    <input type="text" required id="next_pay_balance" data-date-format="yyyy-mm-dd"
+                                        name="next_payment_bal" placeholder="Second Payment Balance" class="form-control"
+                                        value="<?php echo $second_payment_bal; ?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=""><strong>Second Installment Due Date:</strong></label>
+                                    <input data-date-format="yyyy-mm-dd" class="input-group form-control date_picker"
+                                        id="next_payment_date" readonly type="text"
+                                        value="<?php echo $second_payment_date; ?>" name="next_payment_date" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=""><strong>3rd Installment Amount:</strong><span
+                                            id="pendingBal"></span></label>
+                                    <input type="number" readonly id="third_payment_bal" name="third_payment_bal"
+                                        placeholder="Third Payment Amount" class="form-control"
+                                        value="<?php echo $third_payment_bal; ?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=""><strong>3rd Installment Due Date:</strong></label>
+                                    <input readonly="readonly" data-date-format="yyyy-mm-dd"
+                                        class="input-group form-control date_picker_validation date_picker"
+                                        id="third_payment_date" type="text" value="<?php echo $third_payment_date; ?>"
+                                        name="third_payment_date" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=""><strong>Final Installment:</strong></label>
+                                    <input type="number" readonly id="final_payment_bal" name="final_payment_bal"
+                                        placeholder="Final Installment Amount" class="form-control"
+                                        value="<?php echo $final_payment_bal; ?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=""><strong>Final Installment Due Date:</strong></label>
+                                    <input readonly="readonly" data-date-format="yyyy-mm-dd"
+                                        class="input-group form-control date_picker_validation date_picker"
+                                        id="final_payment_date" type="text" value="<?php echo $final_payment_date; ?>"
+                                        name="final_payment_date" />
+                                </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <label class=""><strong>Second Installment Due Date:</strong></label>
-                                <input data-date-format="yyyy-mm-dd" class="input-group form-control date_picker"
-                                    id="next_payment_date" readonly type="text"
-                                    value="<?php echo $second_payment_date; ?>" name="next_payment_date" />
+                                <label class=""><strong>Total Balance Remaining:</strong></label>
+                                <input type="text" required readonly id="balance_pay" name="total_balance" placeholder=""
+                                    class="form-control" value="<?php echo $total_balance_amount; ?>">
                             </div>
                             <div class="form-group col-md-6">
-                                <label class=""><strong>3rd Installment Amount:</strong><span
-                                        id="pendingBal"></span></label>
-                                <input type="number" readonly id="third_payment_bal" name="third_payment_bal"
-                                    placeholder="Third Payment Amount" class="form-control"
-                                    value="<?php echo $third_payment_bal; ?>">
+                                <label for="usr">Please Enter Approval Note:<span style="color:red;"> *</span>:</label>
+                                <textarea required class="form-control" placeholder="Please Enter Approval Note"
+                                    name="iti_note_booked"></textarea>
                             </div>
+                            <!--upload aadhar card section-->
                             <div class="form-group col-md-6">
-                                <label class=""><strong>3rd Installment Due Date:</strong></label>
-                                <input readonly="readonly" data-date-format="yyyy-mm-dd"
-                                    class="input-group form-control date_picker_validation date_picker"
-                                    id="third_payment_date" type="text" value="<?php echo $third_payment_date; ?>"
-                                    name="third_payment_date" />
+                                <div class="form-group2">
+                                    <label class=" "><strong>Client Aadhar Card:</strong></label>
+                                    <input <?php echo $aadhar_card_req; ?> class="form-control" id="client_aadhar_card"
+                                        type="file" name="client_aadhar_card">
+                                </div>
+                                <img id="client_aadhar_card_priview"
+                                    src="<?php echo $doc_path . $pay_detail->client_aadhar_card; ?>" style="display: block;"
+                                    width="100" height="100" />
                             </div>
+                            <!--end upload aadhar card section-->
+                            <!--upload aadhar Payment card section-->
                             <div class="form-group col-md-6">
-                                <label class=""><strong>Final Installment:</strong></label>
-                                <input type="number" readonly id="final_payment_bal" name="final_payment_bal"
-                                    placeholder="Final Installment Amount" class="form-control"
-                                    value="<?php echo $final_payment_bal; ?>">
+                                <div class="form-group2">
+                                    <label class=" "><strong>Payment Screenshot*:</strong></label>
+                                    <input <?php echo $payment_screenshot_req; ?> class="form-control"
+                                        id="payment_screenshot" type="file" name="payment_screenshot">
+                                </div>
+                                <img id="payment_screenshot_priview"
+                                    src="<?php echo $doc_path . $pay_detail->payment_screenshot; ?>" style="display: block;"
+                                    width="100" height="100" />
                             </div>
-                            <div class="form-group col-md-6">
-                                <label class=""><strong>Final Installment Due Date:</strong></label>
-                                <input readonly="readonly" data-date-format="yyyy-mm-dd"
-                                    class="input-group form-control date_picker_validation date_picker"
-                                    id="final_payment_date" type="text" value="<?php echo $final_payment_date; ?>"
-                                    name="final_payment_date" />
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class=""><strong>Total Balance Remaining:</strong></label>
-                            <input type="text" required readonly id="balance_pay" name="total_balance" placeholder=""
-                                class="form-control" value="<?php echo $total_balance_amount; ?>">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="usr">Please Enter Approval Note:<span style="color:red;"> *</span>:</label>
-                            <textarea required class="form-control" placeholder="Please Enter Approval Note"
-                                name="iti_note_booked"></textarea>
-                        </div>
-                        <div class="clearfix"></div>
-                        <!--upload aadhar card section-->
-                        <div class="form-group col-md-6">
-                            <div class="form-group2">
-                                <label class=" "><strong>Client Aadhar Card:</strong></label>
-                                <input <?php echo $aadhar_card_req; ?> class="form-control" id="client_aadhar_card"
-                                    type="file" name="client_aadhar_card">
-                            </div>
-                            <img id="client_aadhar_card_priview"
-                                src="<?php echo $doc_path . $pay_detail->client_aadhar_card; ?>" style="display: block;"
-                                width="100" height="100" />
-                        </div>
-                        <!--end upload aadhar card section-->
-                        <!--upload aadhar Payment card section-->
-                        <div class="form-group col-md-6">
-                            <div class="form-group2">
-                                <label class=" "><strong>Payment Screenshot*:</strong></label>
-                                <input <?php echo $payment_screenshot_req; ?> class="form-control"
-                                    id="payment_screenshot" type="file" name="payment_screenshot">
-                            </div>
-                            <img id="payment_screenshot_priview"
-                                src="<?php echo $doc_path . $pay_detail->payment_screenshot; ?>" style="display: block;"
-                                width="100" height="100" />
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-12 other_docs">
-                            <a href="javascript:;" id="add_other_docs_btn"
-                                class="btn btn-success mt-repeater-add addrep">
-                                <i class="fa fa-plus"></i> Add Other Docs</a><span class="red" style="font-size: 12px;">
-                                Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
-                            <div class="other_docs_sec margin-t" style="display:none;">
-                                <div class="col-md-4">
-                                    <div class="form-group2">
-                                        <label class=" "><strong>Other Documents:</strong></label>
-                                        <input class="form-control" required type="file" name="iti_clients_docs[]">
+                            <div class="col-md-12 other_docs">
+                                <a href="javascript:;" id="add_other_docs_btn" class="btn btn-success mt-repeater-add addrep"> <i class="fa fa-plus"></i> Add Other Docs</a>
+                                <span class="text-danger d-block mt-1" style="font-size: 12px;"> Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
+                                <div class="other_docs_sec margin-t" style="display:none;">
+                                    <div class="col-md-4">
+                                        <div class="form-group2">
+                                            <label class=" "><strong>Other Documents:</strong></label>
+                                            <input class="form-control" required type="file" name="iti_clients_docs[]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class=" "><strong>Document Title:</strong></label>
-                                    <input class="form-control" required type="text" name="comment[]">
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mt-repeater-input margin-top-20">
-                                        <a href="javascript:;" data-repeater-delete class="btn btn-danger del_upload"
-                                            style="position:relative;">
-                                            <i class="fa fa-close"></i> Delete</a>
+                                    <div class="col-md-4">
+                                        <label class=" "><strong>Document Title:</strong></label>
+                                        <input class="form-control" required type="text" name="comment[]">
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="mt-repeater-input margin-top-20">
+                                            <a href="javascript:;" data-repeater-delete class="btn btn-danger del_upload"
+                                                style="position:relative;">
+                                                <i class="fa fa-close"></i> Delete</a>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
-                                <div class="clearfix"></div>
+                                <?php if (isset( $iti_clients_docs ) && !empty( $iti_clients_docs ) ){
+                                echo '<hr><h4 class="uppercase">Other Documents</h4>'; ?>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th> Sr. </th>
+                                                <th> Title</th>
+                                                <th> Comment</th>
+                                                <th> Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                    $docindex = 1; 
+                                    foreach( $iti_clients_docs as $ind => $doc ){
+                                        echo "<tr id='doc_row_{$doc->id}'>";
+                                            echo "<td>" . $docindex . "</td>";
+                                            echo "<td>" . $doc->file_url . "</td>";
+                                            echo "<td>" . $doc->comment . "</td>";
+                                            echo "<td>"; ?>
+                                            <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank"
+                                                class="btn btn-success" style="position:relative;">
+                                                <i class="fa-solid fa-eye"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-danger del_client_docs"
+                                                data-id="<?php echo $doc->id; ?>" style="position:relative;">
+                                                <i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                            <?php 	
+                                    echo "</tr>";	
+                                    $docindex++;
+                                    } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <?php } ?>
                             </div>
-                            <?php if (isset( $iti_clients_docs ) && !empty( $iti_clients_docs ) ){
-                        echo '<hr><h4 class="uppercase">Other Documents</h4>'; ?>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead class="thead-default">
-                                        <tr>
-                                            <th> Sr. </th>
-                                            <th> Title</th>
-                                            <th> Comment</th>
-                                            <th> Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                 $docindex = 1; 
-                                 foreach( $iti_clients_docs as $ind => $doc ){
-                                 	echo "<tr id='doc_row_{$doc->id}'>";
-                                 		echo "<td>" . $docindex . "</td>";
-                                 		echo "<td>" . $doc->file_url . "</td>";
-                                 		echo "<td>" . $doc->comment . "</td>";
-                                 		echo "<td>"; ?>
-                                        <a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank"
-                                            class="btn btn-success" style="position:relative;">
-                                            <i class="fa fa-eye"></i></a>
-                                        <a href="javascript: void(0);" class="btn btn-danger del_client_docs"
-                                            data-id="<?php echo $doc->id; ?>" style="position:relative;">
-                                            <i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                        <?php 	
-                                 echo "</tr>";	
-                                 $docindex++;
-                                 } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <?php } ?>
                         </div>
+                        <!--booking section-->
                     </div>
-                    <!--booking section-->
-                    <div class="clearfix"></div>
-                    <?php /* }else{ ?>
-                    <!-- iti_booking_status = 3 rejected due to invalid itinerary -->
-                    <h3 class='text-center uppercase red'> Itinerary Rejected due to mistake in itineary</h3>
-                    <p class="text-center">to change itinerary
-                        <a title='Edit Itinerary' target="_blank"
-                            href="<?php echo site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}"); ?> "
-                            class='btn btn-success'><i class='fa fa-pencil' aria-hidden='true'></i> Edit Itinerary</a>
-                    </p>
-                    <div class="form-group col-md-6">
-                        <label for="usr">Please Enter Approval Note:<span style="color:red;"> *</span>:</label>
-                        <textarea required class="form-control" placeholder="Please Enter Approval Note"
-                            name="iti_note_booked"></textarea>
+                <hr>
+                <div class='form-group col-md-3'>
+                    <div class="button_sec" style="margin-top: 30px;">
+                        <button name="action" class="btn green button-submit" type="submit">UPDATE PAYMENT DETAILS</button>
                     </div>
-                    <?php */
-                  // } ?>
-            </div>
-            <div class="clearfix"></div>
-            <hr>
-            <div class='form-group col-md-3'>
-                <div class="button_sec" style="margin-top: 30px;">
-                    <button name="action" class="btn green button-submit" type="submit">UPDATE PAYMENT DETAILS</button>
                 </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="response"></div>
-            <input type="hidden" value="<?php echo $pay_detail->iti_booking_status; ?>" name="reject_type">
-            <input type="hidden" value="<?php echo $iti->iti_id; ?>" name="iti_id">
-            <input type="hidden" value="<?php echo $iti->customer_id; ?>" name="customer_id">
-            <input type="hidden" value="<?php echo $iti->temp_key; ?>" name="temp_key">
-            </form>
+                <div class="response"></div>
+                <input type="hidden" value="<?php echo $pay_detail->iti_booking_status; ?>" name="reject_type">
+                <input type="hidden" value="<?php echo $iti->iti_id; ?>" name="iti_id">
+                <input type="hidden" value="<?php echo $iti->customer_id; ?>" name="customer_id">
+                <input type="hidden" value="<?php echo $iti->temp_key; ?>" name="temp_key">
+                </form>
             <?php } ?>
         </div>
-        <div class="clearfix"></div>
+        
         <hr>
         <?php } ?>
         <!-- Declined Reason -->
@@ -879,7 +827,7 @@
                     <!--inc_gst 1 = true -->
                     <input type="checkbox" class='form-control' id="per_person_rate"></input>
                 </div>
-                <div class="clearfix"></div>
+                
                 <!--perperson rate meta -->
                 <div class="col-md-10 perperson_section" style="display: none;">
                     <div class='standard  form-group col-md-3'>
@@ -902,7 +850,7 @@
                         <input name="per_person_ratemeta[luxury_rates]" type="number" class='form-control'
                             placeholder="Super Deluxe Per/Person Cost"></input>
                     </div>
-                    <div class="clearfix"></div>
+                    
                     <!--child rate-->
                     <div class='standard  form-group col-md-3'>
                         <label><strong class="red"><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/child):</strong><span
@@ -930,10 +878,10 @@
                     </div>
                 </div>
                 <!--end perperson rate meta -->
-                <div class="clearfix"></div>
                 <div class='luxury form-group col-md-4'>
-                    <label><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment
-                            is also visible for client.</span></label>
+                    <label><strong>Rate Comments*</strong>
+                        <span class="red" style="font-size: 12px;"> Note: This comment is also visible for client.</span>
+                    </label>
                     <textarea required name="rate_comment" class='form-control'></textarea>
                 </div>
                 <div class='form-group col-md-8'>
@@ -952,7 +900,7 @@
                             data-target="#reject_iti_Modal">Reject</button>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                
                 <div id="response_div"></div>
                 <input type="hidden" value="<?php echo $iti->temp_key; ?>" name="temp_key">
                 <input type="hidden" value="<?php echo $iti->iti_id; ?>" name="iti_id">
@@ -1061,7 +1009,7 @@
                     <input type="checkbox" class='form-control'
                         <?php echo !empty($check_perperson) ? "checked='checked'" : ""; ?> id="per_person_rate"></input>
                 </div>
-                <div class="clearfix"></div>
+                
                 <!--perperson rate meta -->
                 <div class="col-md-12 perperson_section"
                     style="display: <?php echo !empty( $check_perperson ) ? "block" : "none"; ?>">
@@ -1086,7 +1034,7 @@
                         <input name="per_person_ratemeta[luxury_rates]" type="number" value="<?php echo $l_pp; ?>"
                             class='form-control' placeholder="Super Deluxe Per/Person Cost"></input>
                     </div>
-                    <div class="clearfix"></div>
+                    
                     <!--child rate-->
                     <div class='standard  form-group col-md-3'>
                         <label><strong class="red"><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/child):</strong><span
@@ -1118,7 +1066,7 @@
                     </div>
                 </div>
                 <!--end perperson rate meta -->
-                <div class="clearfix"></div>
+                
                 <div class='luxury form-group col-md-4'>
                     <label><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment
                             is also visible for client.</span></label>
@@ -1131,7 +1079,7 @@
                     <input type="hidden" value="<?php echo $iti->agent_id; ?>" name="agent_id">
                     <input class="btn green button-submit" type="submit" value="update">
                 </div>
-                <div class="clearfix"></div>
+                
                 <div id="res_update_price"></div>
             </form>
         </div>
@@ -1259,7 +1207,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                
                 <hr>
                 <div class='update_margin_discount' style="display: none;">
                     <div class='standard  form-group col-md-6'>
@@ -1327,7 +1275,7 @@
                         <!--inc_gst 1 = true -->
                         <input type="checkbox" class='form-control' id="per_person_rate"></input>
                     </div>
-                    <div class="clearfix"></div>
+                    
                     <!--perperson rate meta -->
                     <div class="col-md-12 perperson_section" style="display: none;">
                         <div class='standard  form-group col-md-3'>
@@ -1354,7 +1302,7 @@
                                 <?php if( !in_array("Luxury", $dis_hotel_category_a ) ){ echo "readonly"; }else{ echo "required"; } ?>
                                 class='form-control' placeholder="Super Deluxe Per/Person Cost"></input>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <!--child rate-->
                         <div class='standard  form-group col-md-3'>
                             <label><strong class="red">Deluxe (Per/child):</strong><span
@@ -1392,13 +1340,13 @@
                     <!--end perperson rate meta -->
                 </div>
                 <!--CUSTOM DISCOUNT PRICE-->
-                <div class="clearfix"></div>
+                
                 <div class='luxury form-group col-md-4'>
                     <label><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment
                             is also visible for client.</span></label>
                     <textarea required name="rate_comment" class='form-control'></textarea>
                 </div>
-                <div class="clearfix"></div>
+                
                 <hr>
                 <div class='form-group col-md-4'>
                     <input type="hidden" value="<?php echo $iti->iti_id; ?>" name="iti_id">
@@ -1430,7 +1378,7 @@
                         <?php }
                         }?>
                 </div>
-                <div class="clearfix"></div>
+                
                 <div id="response_div"></div>
             </form>
             <?php } ?>
@@ -1512,7 +1460,7 @@
                 <input type="checkbox" class='form-control'
                     <?php echo !empty($check_perperson) ? "checked='checked'" : ""; ?> id="per_person_rate"></input>
             </div>
-            <div class="clearfix"></div>
+            
             <!--perperson rate meta -->
             <div class="col-md-12 perperson_section"
                 style="display: <?php echo !empty($check_perperson) ? "block" : "none"; ?>;">
@@ -1541,7 +1489,7 @@
                         class='form-control' value="<?php echo $l_pp; ?>"
                         placeholder="Super Deluxe Per/Person Cost"></input>
                 </div>
-                <div class="clearfix"></div>
+                
                 <!--child rate-->
                 <div class='standard  form-group col-md-3'>
                     <label><strong class="red">Deluxe (Per/child):</strong><span style="font-size:10px; color: red;"> (
@@ -1577,7 +1525,7 @@
                 </div>
             </div>
             <!--end perperson rate meta -->
-            <div class="clearfix"></div>
+            
             <div class='luxury form-group col-md-4'>
                 <label><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment is
                         also visible for client.</span></label>
@@ -1592,12 +1540,12 @@
                     value="agent">Approve/Update</button>
             </div>
             <p class="clearfix text-center red">Comment by Manager: <?php echo $iti->rate_comment; ?> </p>
-            <div class="clearfix"></div>
+            
             <div id="response_div"></div>
         </form>
         <?php } ?>
         <!-- ENd price updated by supermanager -->
-        <div class="clearfix"></div>
+        
         <div class="row2">
             <?php // echo $greeting; ?>
             <!--BOOKING DETAILS-->
@@ -1632,7 +1580,7 @@
                                 $city = get_city_name($hotel_book->city_id);
                                 $total_cost	= number_format($hotel_book->total_cost);
                                 
-                                $view_btn = "<a title='View' href=" . site_url("hotelbooking/view/{$hotel_book->id}/{$hotel_book->iti_id}") . " class='btn_eye' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+                                $view_btn = "<a title='View' href=" . site_url("hotelbooking/view/{$hotel_book->id}/{$hotel_book->iti_id}") . " class='btn_eye' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
                                 
                                 echo "<tr>
                                     <td>{$sr}.</td>
@@ -1655,7 +1603,7 @@
                                 $total_cost = number_format($c_book->total_cost);
                                 $cab = get_car_name($c_book->cab_id);
                                 $total_cab = $c_book->total_cabs;
-                                $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewbooking/{$c_book->id}") . " class='btn_eye' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+                                $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewbooking/{$c_book->id}") . " class='btn_eye' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
                                 
                                 echo "<tr>
                                     <td>{$sr}.</td>
@@ -1677,7 +1625,7 @@
                                 $tc = $single_trip_cost + $return_trip_cost;
                                 $total_cost = number_format( $tc );
                                 
-                                $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewvehiclebooking/{$c_book->id}/{$vtf_book->id}/{$vtf_book->iti_id}") . " class='btn_eye' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+                                $view_btn = "<a title='View' href=" . site_url("vehiclesbooking/viewvehiclebooking/{$c_book->id}/{$vtf_book->id}/{$vtf_book->iti_id}") . " class='btn_eye' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
                                 $type = ucfirst($vtf_book->booking_type);
                                 echo "<tr>
                                     <td>{$sr}.</td>
@@ -1768,7 +1716,7 @@
                     </div>
                 </div>
                 <!-- <h3 style="background: #3d3d3d; color: #fff; padding: 5px;">PAYMENT DETAILS</h3>
-            <div class="clearfix"></div>
+            
             <div class="table-responsive">
                <table class="table table-bordered ">
                   <tbody>
@@ -1806,7 +1754,7 @@
                </table>
             </div> -->
                 <?php } ?>
-                <div class="portlet box blue">
+                <div class="portlet box blue mt-5">
                     <div class="portlet-title">
                         <div class="custom_title">Package Overview</div>
                     </div>
@@ -1889,12 +1837,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                
 
                 <!--If Flight Exists-->
                 <?php if( isset( $flight_details ) && !empty( $flight_details ) && $iti->is_flight == 1 ){ ?>
                 <?php $flight = $flight_details[0]; ?>
-                <div class="portlet box blue">
+                <div class="portlet box blue mt-5">
                     <div class="portlet-title">
                         <h3 class="custom_title">Flight Details</h3>
                     </div>
@@ -1947,13 +1895,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                
                 <?php } ?>
                 <!--End Flight Section-->
                 <!--If Train Exists-->
                 <?php if( isset( $train_details ) && !empty( $train_details ) && $iti->is_train == 1 ){ ?>
                 <?php $train = $train_details[0]; ?>
-                <div class="portlet box blue box">
+                <div class="portlet box blue box mt-5">
                     <div class="portlet-title">
                         <h3 class="custom_title">Train Details</h3>
                     </div>
@@ -2003,14 +1951,14 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="clearfix"></div>
+                            
                         </div>
                     </div>
                 </div>
                 <?php } ?>
 
                 <!--End Flight Section-->
-                <div class="portlet box blue">
+                <div class="portlet box blue mt-5">
                     <div class="portlet-title">
                         <h3 class="custom_title">Day Wise Itinerary</h3>
                     </div>
@@ -2052,7 +2000,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="portlet box blue">
+                <div class="portlet box blue mt-5">
                     <div class="portlet-title">
                         <h3 class="custom_title">Inclusion & Exclusion</h3>
                     </div>
@@ -2091,7 +2039,7 @@
                     </div>
                 </div>
 
-                <div class="portlet box blue margin-top-40">
+                <div class="portlet box blue mt-5">
                     <?php 
                         //check if special inclusion exists
                         $sp_inc = unserialize($iti->special_inc_meta); 
@@ -2108,7 +2056,7 @@
                         }
                         ?>
                 </div>
-                <div class="portlet box blue">
+                <div class="portlet box blue mt-5">
                     <?php 
                         //check if benefits
                         $benefits_m = unserialize($iti->booking_benefits_meta); 
@@ -2126,7 +2074,7 @@
                         ?>
                 </div>
 
-                <div class="portlet box blue margin-top-50">
+                <div class="portlet box blue mt-5">
                     <div class="portlet-title">
                         <h3 class="custom_title">Hotel Details</h3>
                     </div>
@@ -2372,7 +2320,7 @@
                 </div>
             </div>
             <!--END PRINTABLE-->
-            <div class="portlet box blue margin-top-50">
+            <div class="portlet box blue mt-5">
                 <div class="portlet-title">
                     <h3 class="custom_title">Notes:</h3>
                 </div>
@@ -2390,7 +2338,7 @@
                 </div>
             </div>
 
-            <div class="portlet box blue margin-top-50">
+            <div class="portlet box blue mt-5">
                 <div class="portlet-title">
                     <h3 class="custom_title">Bank Details: Cash/Cheque at Bank or Net Transfer</h3>
                 </div>
@@ -2614,7 +2562,7 @@
                      foreach( $old_itineraries as $old_iti ){ ?>
                     <a title='View Old Quotation' target="_blank"
                         href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> "
-                        class='btn btn-danger'><i class='fa fa-eye' aria-hidden='true'></i> View Old Quotation
+                        class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation
                         <?php echo $old_count; ?></a>
                     <?php $old_count++; } ?>
                 </p>
@@ -2675,7 +2623,7 @@
             <?php if( ( $iti->iti_status == 0 || $iti->iti_status == 6 ) && is_admin_or_manager_or_sales() ){ ?>
             <a title='Edit Itinerary'
                 href=" <?php echo site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}") ; ?> "
-                class='btn_pencil pull-right'><i class='fa fa-pencil' aria-hidden='true'></i>Edit</a>
+                class='btn btn-primary'><i class="fa-solid fa-pen-to-square"></i> Edit</a>
             <?php } ?>
             <!--Sent Itinerary To Customer-->
             <?php if( is_admin_or_manager_or_sales() && $iti->publish_status == "publish" ) { ?>
@@ -2864,7 +2812,7 @@
                                             <input type="text" required class="form-control" id="sub"
                                                 placeholder="Final confirmation Mail" name="subject" value="">
                                         </div>
-                                        <div class="clearfix"></div>
+                                        
                                         <!--CC Email Address-->
                                         <div class="form-group col-md-6">
                                             <label for="cc_email">CC Email:</label>
@@ -2879,7 +2827,7 @@
                                                 placeholder="Enter BCC email eg. manager@trackitinerary.org"
                                                 name="bcc_email">
                                         </div>
-                                        <div class="clearfix"></div>
+                                        
                                         <div class="form-group col-md-6">
                                             <label for="pwd">Contact Number:</label>
                                             <input type="text" readonly value="<?php echo $customer_contact; ?>"
@@ -2892,7 +2840,7 @@
                                                 placeholder="Enter Contact Number(Admin/Manager).Not Required"
                                                 name="add_contact_number">
                                         </div>
-                                        <div class="clearfix"></div>
+                                        
                                         <div class="col-md-6">
                                             <label for="inp_inc_prices">Rate Comment*:</label>
                                             <textarea required class="form-control"
@@ -2927,7 +2875,7 @@
                                                 <input type='checkbox' id='incPriceByAgent' required name="chkmarg"
                                                     class='form-control'>
                                             </label>
-                                            <div class="clearfix"></div>
+                                            
                                             <div class="showonPchange">
                                                 <div class="col-md-6">
                                                     <label for="inp_inc_price">Increase Price (%):</label>
@@ -3002,7 +2950,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="clearfix"></div>
+                                        
                                     </div>
                                     <hr>
                                     <input type="hidden" id="inp_inc_priceText"
@@ -3024,7 +2972,7 @@
                 <?php } ?>
             </div>
             <?php } ?>
-            <div class="clearfix"></div>
+            
             <!--Comments Section -->
             <div id="UpdatePanel1">
                 <div class="modal-body">
@@ -3042,11 +2990,10 @@
                             <input type="hidden" name="agent_id" id="agent_id" value="<?php echo $iti->agent_id; ?>">
                             <input type="hidden" name="customer_id" id="customer_id"
                                 value="<?php echo $iti->customer_id; ?>">
-                            <div class="form-group col-md-12 row">
-                                <button id="LinkButton1" type="submit"
-                                    class="btn green uppercase app_iti">Submit</button>
+                            <div class="form-group">
+                                <button id="LinkButton1" type="submit" class="btn btn-success uppercase app_iti">Submit</button>
                             </div>
-                            <div class="clearfix"></div>
+                            
                             <div class="response"></div>
                         </form>
                     </div>

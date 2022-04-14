@@ -39,8 +39,8 @@
 								'<i title="Online" class="fa fa-circle" style="font-size:16px;color:green"></i>' 
 								: '<i title="Offline" class="fa fa-circle" style="font-size:16px;color:red"></i>';
 								
-								$view_btn = "<a title='view' href=" . site_url("agents/view/{$agent->user_id}") . " class='btn btn-success' ><i class='fa fa-eye'></i></a>";
-								$view_btn .= "<a title='Edit' href=" . site_url("agents/editagent/{$agent->user_id}") . " class='btn btn-success' ><i class='fa fa-pencil'></i></a>";
+								$view_btn = "<a title='view' href=" . site_url("agents/view/{$agent->user_id}") . " class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>";
+								$view_btn .= "<a title='Edit' href=" . site_url("agents/editagent/{$agent->user_id}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square'></i></a>";
 								
 								echo "<td>" . $counter . "  " . $online_offline_status . "</td>"; 
 								echo "<td>" . $agent->first_name . " " . $agent->last_name . "</td>"; 

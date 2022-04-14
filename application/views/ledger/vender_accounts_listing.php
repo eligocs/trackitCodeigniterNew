@@ -44,8 +44,8 @@
 									<td> {$account->contact} </td>
 									<td> {$account->address}</td>
 									<td> {$status}</td>
-									<td><a href=" . site_url("ledger/add_vendor_account/{$account->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Edit or add new booking id' ><i class='fa fa-pencil'></i></a>
-									<a href=" . site_url("ledger/view_vendor/{$account->id}") . " class='btn_eye' title='view' ><i class='fa fa-eye'></i></a>
+									<td><a href=" . site_url("ledger/add_vendor_account/{$account->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Edit or add new booking id' ><i class='fa-solid fa-pen-to-square'></i></a>
+									<a href=" . site_url("ledger/view_vendor/{$account->id}") . " class='btn_eye' title='view' ><i class='fa-solid fa-eye'></i></a>
 									<a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa fa-trash-o'></i></a></td>
 								</tr>";
 								$i++; 

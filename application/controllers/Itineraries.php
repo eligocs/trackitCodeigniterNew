@@ -636,12 +636,12 @@ class Itineraries extends CI_Controller {
 				//buttons
 				//if price is updated remove edit for agent get_iti_booking_status
 				if( $iti->pending_price == 2 && $role == 96 ){
-					$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn_pencil editPop' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+					$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn_pencil editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 				}else{
-					$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+					$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 				}
 				
-				$btnview = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$btnview = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
 				 $btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf/{$iti_id}/{$key}") . " class='btn_pdf' ><i class='fa-solid fa-file-pdf'></i></a>";
 				//  $btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf1/{$iti_id}/{$key}") . " class='btn_pdf' ><i class='fa fa-file-pdf-o' aria-hidden='true'></i>Pdf layout2</a>";
@@ -859,7 +859,7 @@ class Itineraries extends CI_Controller {
 				$row[] = $iti->travel_date;
 				$row[] = !empty($iti->iti_close_status) ? "<strong class='red'>CLOSED</strong>" : "<strong class='green'>OPEN</strong>";
 				//buttons
-				$btn_view = "<a target='_blank' title='View' href=" . site_url("itineraries/view/{$iti_id}/{$key}") . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$btn_view = "<a target='_blank' title='View' href=" . site_url("itineraries/view/{$iti_id}/{$key}") . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
 				//check if itinerary closed
 				$btn_view_receipt = "";
@@ -955,7 +955,7 @@ class Itineraries extends CI_Controller {
 				$dec_bnt = "<strong class='btn btn-danger'>Declined</strong>";
 				
 				//buttons
-				$row[] =  "<a title='View' target='_blank' href=" . site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}") . " class='btn btn-success' ><i class='fa fa-eye' aria-hidden='true'></i></a>" . $dec_bnt;
+				$row[] =  "<a title='View' target='_blank' href=" . site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>" . $dec_bnt;
 				
 				$data[] = $row;
 			}
@@ -4813,14 +4813,14 @@ class Itineraries extends CI_Controller {
 				if( !empty($tend_d) && $tend_d <= $td ){
 					$check_if_request_sent = check_review_request_status( $iti->customer_id );
 					if( $check_if_request_sent ){
-						$rev_btn = "<i class='fa fa-check-circle-o'></i> Sent";
+						$rev_btn = "<i class='fa-solid fa-envelope-circle-check'></i> Sent";
 					}else{
-						$rev_btn = "<a title='Send review link to customer' target='_blank' href='javascript: void(0)' class='btn btn-success sendReview_req' data-cusid = '{$iti->customer_id}' >Click to send</a>";
+						$rev_btn = "<a title='Send review link to customer' target='_blank' href='javascript: void(0)' class='btn btn-success sendReview_req' data-cusid = '{$iti->customer_id}' ><i class='fa-solid fa-comment-sms'></i> Click to send</a>";
 					}
 				}
 				
 				//buttons
-				$row[] =  "<a title='View' target='_blank' href=" . site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}") . " class='btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a>";
+				$row[] =  "<a title='View' target='_blank' href=" . site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}") . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
 				
 				$row[] = $rev_btn; 
 				$row[] = date("d-m-Y", strtotime($iti->iti_decline_approved_date));
@@ -4904,19 +4904,19 @@ class Itineraries extends CI_Controller {
 				$edit_bn = "";
 				$inv_bn = "";
 				if( $role == 99 || $role == 98 || $role == 93 ){
-					$edit_bn = "<a title='Edit' target='_blank' href=" . site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}") . " class='btn btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+					$edit_bn = "<a title='Edit' target='_blank' href=" . site_url("itineraries/edit/{$iti->iti_id}/{$iti->temp_key}") . " class='btn btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 				
 					//check invoice	
 					$cinv = is_invoice_created( $iti->customer_id );
 					if( $cinv ){
 						$invId = $cinv[0]->id;
-						$inv_bn = "<a title='View' target='_blank' href=" . site_url("accounts/view_invoice/{$invId}") . " class='btn btn-danger' ><i class='fa fa-eye' aria-hidden='true'></i> View invoice</a>";
+						$inv_bn = "<a title='View' target='_blank' href=" . site_url("accounts/view_invoice/{$invId}") . " class='btn btn-danger' ><i class='fa-solid fa-eye' aria-hidden='true'></i> View invoice</a>";
 					}else{
 						$inv_bn = "<a title='View' target='_blank' href=" . site_url("accounts/generate_invoice/{$iti->customer_id}") . " class='btn btn-success' ><i class='fa fa-plus' aria-hidden='true'></i> Create invoice</a>";
 					}
 				}
 				
-				$row[] =  "<a title='View' target='_blank' href=" . site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}") . " class='btn btn_eye' ><i class='fa fa-eye' aria-hidden='true'></i></a> " . $edit_bn . $inv_bn;
+				$row[] =  "<a title='View' target='_blank' href=" . site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}") . " class='btn btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a> " . $edit_bn . $inv_bn;
 				
 				$data[] = $row;
 			}

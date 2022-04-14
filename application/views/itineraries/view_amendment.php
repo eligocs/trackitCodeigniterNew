@@ -106,16 +106,16 @@
 					<div class="text-center btns_section">
 						<p>Amendment of Iti Id: <strong><?php echo $iti->iti_id; ?></p>
 						<?php if( is_admin() ){ ?>
-							<a title='Edit' href=" <?php echo site_url("itineraries/edit_amendment_iti/{$iti->id}/{$iti->temp_key}") ; ?> " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i> Edit</a>
+							<a title='Edit' href=" <?php echo site_url("itineraries/edit_amendment_iti/{$iti->id}/{$iti->temp_key}") ; ?> " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i> Edit</a>
 						<?php }else if( empty($iti->sent_for_review) || $iti->sent_for_review == 1 ){  ?>
-							<a title='Edit' href=" <?php echo site_url("itineraries/edit_amendment_iti/{$iti->id}/{$iti->temp_key}") ; ?> " class='btn btn-success' ><i class='fa fa-pencil' aria-hidden='true'></i> Edit</a>
+							<a title='Edit' href=" <?php echo site_url("itineraries/edit_amendment_iti/{$iti->id}/{$iti->temp_key}") ; ?> " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i> Edit</a>
 						<?php } ?>
 						
 
 						<?php if( !empty( $old_itineraries ) ){ 
 							$old_count = 1;
 							foreach( $old_itineraries as $old_iti ){ ?>
-								<a title='View Old Quotation' target="_blank" href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> " class='btn btn-danger' ><i class='fa fa-eye' aria-hidden='true'></i> View Old Quotation <?php echo $old_count; ?></a>
+								<a title='View Old Quotation' target="_blank" href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> " class='btn btn-danger' ><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation <?php echo $old_count; ?></a>
 							<?php $old_count++; } 
 						} ?>
 						

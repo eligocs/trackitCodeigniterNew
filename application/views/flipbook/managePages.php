@@ -9,7 +9,7 @@
 				</div>
 			</div>
 			<a class="btn btn-success"  href="<?php echo site_url("flipbook/viewpromotion/").$promotion[0]->id.'/'.$promotion[0]->tmp_key;?>" title="Back">View Promotion </a>
-			<a title='Edit User' class="btn btn-success pull-right" href="<?php echo site_url("flipbook/addpages/{$promotion[0]->id}"); ?>" class="" ><i class="fa fa-pencil"></i>Add Pages</a>
+			<a title='Edit User' class="btn btn-success pull-right" href="<?php echo site_url("flipbook/addpages/{$promotion[0]->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i>Add Pages</a>
 		<?php if(isset($pages) && !empty($pages) ){ ?>
 			<table class="table dataTable table-striped table-hover">
 				<thead>
@@ -39,7 +39,7 @@
 								}
 						?></td>
 						<td><?php echo $page->p_order; ?></td>
-						<td><a href="<?php  echo base_url('flipbook/viewPage/').$page->id.'/'.$type; ?>" class="nav-link "><i class="fa fa-eye" aria-hidden="true"></i></a>
+						<td><a href="<?php  echo base_url('flipbook/viewPage/').$page->id.'/'.$type; ?>" class="nav-link "><i class="fa-solid fa-eye" aria-hidden="true"></i></a>
 							<a href="<?php  echo base_url('flipbook/editPage/').$page->id.'/'.$type; ?>" class="nav-link ">
 								<i class="fa fa-edit" aria-hidden="true"></i></a>
 							<a href="<?php  echo base_url('flipbook/deletePage/').$page->id; ?>" class="nav-link"><i class="fa fa-remove" aria-hidden="true"></i></a>

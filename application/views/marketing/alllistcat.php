@@ -34,7 +34,7 @@
                                 <td><?php echo $cat->category_name;?></td>
                                 <td>
                                     <a title='edit' href=" <?php echo site_url("marketing/editcat/".$cat->id);?>"
-                                        class="btn_pencil  ajax_edit_cat_table"><i class='fa fa-pencil'></i></a>
+                                        class="btn_pencil  ajax_edit_cat_table"><i class='fa-solid fa-pen-to-square'></i></a>
 
                                     <?php if( $cat->super_category != 1 ){ ?>
                                     <a title="delete" href="javascript:void(0)" data-id="<?php echo $cat->id;?>"

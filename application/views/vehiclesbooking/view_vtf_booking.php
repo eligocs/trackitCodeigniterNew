@@ -240,7 +240,7 @@
                 <div class="text-center">
                     <a title='Edit booking'
                         href="<?php echo site_url("vehiclesbooking/editvtf/{$tra_booking->id}/{$tra_booking->iti_id}"); ?>"
-                        class=""><i class="fa fa-pencil"></i> Edit Booking</a>
+                        class=""><i class="fa-solid fa-pen-to-square"></i> Edit Booking</a>
                 </div>
                 <?php } ?>
                 <div class="well">

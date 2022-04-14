@@ -713,7 +713,7 @@
    			//client view
    			$vid			 	= base64_url_encode( $get_receipt[0]->id );
    			$voucher_number 	= base64_url_encode( $get_receipt[0]->voucher_number );
-   			$receipt_link = "<a title='View Receipt' href=" . site_url("promotion/receipt/{$vid}/{$voucher_number}") . " class='btn btn-danger' target='_blank' ><i class='fa fa-eye' aria-hidden='true'></i> Click here to view receipt</a>";
+   			$receipt_link = "<a title='View Receipt' href=" . site_url("promotion/receipt/{$vid}/{$voucher_number}") . " class='btn btn-danger' target='_blank' ><i class='fa-solid fa-eye' aria-hidden='true'></i> Click here to view receipt</a>";
    			
    			$message = "HI, <strong> {$customer_name} </strong> <br><br>";
    			$message .= "Click below link to view receipt<br><br>";
@@ -1070,7 +1070,7 @@
    				$row[] = $tra_s;
    				$row[] = $transaction->trans_date;
    				
-   				$btn = "<a href=" . site_url("accounts/view_pay/{$transaction->id}") . " class='btn btn-success' target='_blank' title='View Payement' ><i class='fa fa-eye'></i></a>";
+   				$btn = "<a href=" . site_url("accounts/view_pay/{$transaction->id}") . " class='btn btn-success' target='_blank' title='View Payement' ><i class='fa-solid fa-eye'></i></a>";
    				
    				$row[] = $btn;
    				$data[] = $row;

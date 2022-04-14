@@ -123,7 +123,7 @@ z<?php if($invoice){ 	$invoice = $invoice[0];		?>
 			</div>	
 			
 			<div class="text-center">
-				<a title='Edit User' href="<?php echo site_url("accounts/update_receipt/{$invoice->id}"); ?>" class="" ><i class="fa fa-pencil"></i> Update Receipt</a>
+				<a title='Edit User' href="<?php echo site_url("accounts/update_receipt/{$invoice->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Update Receipt</a>
 			</div>	
 			
 		</div>	

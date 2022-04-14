@@ -206,10 +206,10 @@ class Hotelbooking extends CI_Controller {
 				
 				$edit = "";
 				if( ( $role == 97 && $hotel_book->is_approved_by_gm == 0 ) || is_gm() || $role == 99  ){
-					$edit = "<a title='edit' href=" . site_url("hotelbooking/edit/{$booking_id}/{$iti_id}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+					$edit = "<a title='edit' href=" . site_url("hotelbooking/edit/{$booking_id}/{$iti_id}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 				}	
 				
-				$row[] = "<a title='View' href=" . site_url("hotelbooking/view/{$booking_id}/{$iti_id}") . " class='btn_eye ' ><i class='fa fa-eye' aria-hidden='true'></i></a>" . $edit . $row_delete . $view_mail;
+				$row[] = "<a title='View' href=" . site_url("hotelbooking/view/{$booking_id}/{$iti_id}") . " class='btn_eye ' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>" . $edit . $row_delete . $view_mail;
 				$row[] = get_user_name($hotel_book->agent_id); 
 				
 				$data[] = $row;

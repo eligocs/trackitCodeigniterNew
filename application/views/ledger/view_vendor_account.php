@@ -68,7 +68,7 @@
 				</table>
 			</div>				
 			<div class="text-center">
-				<a title='Edit User' href="<?php echo site_url("ledger/add_vendor_account/{$account_listing->id}"); ?>" class="btn btn-success" ><i class="fa fa-pencil"></i> Edit </a>
+				<a title='Edit User' href="<?php echo site_url("ledger/add_vendor_account/{$account_listing->id}"); ?>" class="btn btn-success" ><i class="fa-solid fa-pen-to-square"></i> Edit </a>
 			</div>	
 			
 			<hr>
@@ -97,8 +97,8 @@
 									<td> {$invoice->lead_id}</td>
 									<td> {$invoice->transfer_ref}</td>
 									<td> {$invoice->amount_received}</td>
-									<td><a target='_blank' href=" . site_url("accounts/update_receipt/{$invoice->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Update Invoice' ><i class='fa fa-pencil'></i></a>
-									<a target='_blank' href=" . site_url("accounts/view_receipt/{$invoice->id}") . " class='btn_eye' title='view' ><i class='fa fa-eye'></i></a></td>
+									<td><a target='_blank' href=" . site_url("accounts/update_receipt/{$invoice->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Update Invoice' ><i class='fa-solid fa-pen-to-square'></i></a>
+									<a target='_blank' href=" . site_url("accounts/view_receipt/{$invoice->id}") . " class='btn_eye' title='view' ><i class='fa-solid fa-eye'></i></a></td>
 								</tr>";
 								$i++; 
 							}

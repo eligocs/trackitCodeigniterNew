@@ -44,7 +44,7 @@
 
 									echo $date; ?></td>
 								<td>
-								<a href="<?php echo  site_url('search/?id=').$lead->customer_id ; ?>" title='View Customer' class='btn btn-success' ><i class='fa fa-eye'></i></a>
+								<a href="<?php echo  site_url('search/?id=').$lead->customer_id ; ?>" title='View Customer' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>
 								</td>	
 								</tr>
 							

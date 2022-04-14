@@ -59,7 +59,7 @@
                            <td><?php echo get_user_name($msg->agent_id); ?> </td>
                            <td>
                               <div class="d-flex">
-								<a title='View Sending Details' href="<?php echo site_url("msg_center/view_message/{$msg->id}"); ?> " class='btn_eye' ><i class='fa fa-eye'></i></a>
+								<a title='View Sending Details' href="<?php echo site_url("msg_center/view_message/{$msg->id}"); ?> " class='btn_eye' ><i class='fa-solid fa-eye'></i></a>
 								<a title='Send Message' href="<?php echo site_url("msg_center/resend_message/{$msg->id}"); ?> " class=' btn_send' ><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
 								<?php 
 									if( is_admin() ){ ?>

@@ -43,7 +43,7 @@
 			
 			<?php if( isset( $iti_link ) && !empty( $iti_link ) ){ ?>
 				<div class='text-center'>
-					<a class='btn btn-success' target="_blank" href="<?php echo $iti_link; ?>" title='View Itinerary' ><i class='fa fa-eye'></i> View Itinerary</a>
+					<a class='btn btn-success' target="_blank" href="<?php echo $iti_link; ?>" title='View Itinerary' ><i class='fa-solid fa-eye'></i> View Itinerary</a>
 				</div>	
 			<?php } ?>
 			<!--form errors-->

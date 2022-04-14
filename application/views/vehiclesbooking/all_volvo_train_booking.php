@@ -14,10 +14,10 @@
                         Volvo/Train/Flight</a>
                 </div>
             </div>
-            <div class="row marginBottom second_custom_card">
+            <div class="marginBottom second_custom_card">
                 <!--start filter section-->
                 <form id="form-filter" class="form-horizontal marginRight bg_white margin_bottom_0 padding_zero">
-                    <div class="actions custom_filter">
+                    <div class="actions custom_filter row">
                         <div class="col-md-3">
                             <label>Filter: </label>
                             <select class="form-control booking_type" name="booking_type">
@@ -33,9 +33,9 @@
                                                         name="dateRange" title="Travel date filter" placeholder='Travel date' />
                                 <input type="hidden" name="date_from" id="date_from">
                                 <input type="hidden" name="date_to" id="date_to">
-                            </div>                        
+                        </div>                        
                         <div class="col-md-6">
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="radio_filter_btns" data-toggle="buttons">
 								<label class="d_block" for="">&nbsp;</label>
                                 <label class="btn btn-default custom_active active"><input type="radio" name="filter"
                                         value="all" checked="checked" id="all" />All</label>
@@ -54,7 +54,6 @@
                                         value="pending" id="pending" />Pending</label>
 
                                 <!--label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending_gm" id="pending_gm" />Pending GM</label-->
-
                             </div>
                         </div>
                     </div>

@@ -31,7 +31,7 @@
 									<td><?php echo $counter; ?> .</td>
 									<td><?php echo get_state_name($package->state_id); ?></td>
 									<td><?php echo $package->package_name; ?></td>
-									<td><a href="<?php echo base_url("vehicles/viewpackagecost/{$package->id}"); ?>"><i class="fa fa-eyes"></i> View<a></td>
+									<td><a href="<?php echo base_url("vehicles/viewpackagecost/{$package->id}"); ?>"><i class="fa-solid fa-eyes"></i> View<a></td>
 								</tr>
 							<?php }
 						}else{ ?>

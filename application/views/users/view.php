@@ -204,7 +204,7 @@
                     <div class="text-center">
                         <input type="hidden" value="<?php echo $agent->user_id; ?>" name="user_id" id="user_id_v">
                         <a title='Edit User' href="<?php echo site_url("agents/editagent/{$agent->user_id}"); ?>"
-                            class=""><i class="fa fa-pencil"></i> Edit User</a>
+                            class=""><i class="fa-solid fa-pen-to-square"></i> Edit User</a>
                     </div>
                 </div>
             </div>

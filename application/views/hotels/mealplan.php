@@ -34,7 +34,7 @@
 								foreach( $mealplan as $meal ){
 									echo "<tr><td>{$i}</td>
 										<td>{$meal->name}</td>
-									<td><a href=" . site_url("hotels/editmealplan/{$meal->id}") . " class='btn_pencil' ><i class='fa fa-pencil' aria-hidden='true'></i></a>";//Show delete button if season greater than four
+									<td><a href=" . site_url("hotels/editmealplan/{$meal->id}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";//Show delete button if season greater than four
 									if( $i > 4 ){
 										echo "<a href='javascript:void(0)' data-id='{$meal->id}' class='btn btn-danger ajax_delete_mealplan'>Delete</a></td></tr>";
 									}									

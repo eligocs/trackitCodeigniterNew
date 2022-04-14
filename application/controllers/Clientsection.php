@@ -219,9 +219,9 @@ class Clientsection extends CI_Controller {
 				}
 			
 				//edit
-				$row_edit = "<a href=" . site_url("clientsection/review_edit/{$review->id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit Review'><i class='fa fa-pencil'></i></a>";
+				$row_edit = "<a href=" . site_url("clientsection/review_edit/{$review->id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit Review'><i class='fa-solid fa-pen-to-square'></i></a>";
 				// View 
-				$row[] = "<a href=" . site_url("clientsection/review_view/{$review->id}") . " title='View review' class='btn btn-success' ><i class='fa fa-eye'></i></a>". $row_edit . $row_delete;  
+				$row[] = "<a href=" . site_url("clientsection/review_view/{$review->id}") . " title='View review' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>". $row_edit . $row_delete;  
 				$data[] = $row;
 			}
 		}	
@@ -519,9 +519,9 @@ class Clientsection extends CI_Controller {
 				}
 			
 				//edit
-				$row_edit = "<a href=" . site_url("clientsection/slide_edit/{$slider->id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit slide'><i class='fa fa-pencil'></i></a>";
+				$row_edit = "<a href=" . site_url("clientsection/slide_edit/{$slider->id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit slide'><i class='fa-solid fa-pen-to-square'></i></a>";
 				// View 
-				$row[] = "<a href=" . site_url("clientsection/slide_view/{$slider->id}") . " title='View slide' class='btn btn-success' ><i class='fa fa-eye'></i></a>". $row_edit . $row_delete;  
+				$row[] = "<a href=" . site_url("clientsection/slide_view/{$slider->id}") . " title='View slide' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>". $row_edit . $row_delete;  
 				$data[] = $row;
 			}
 		}	
@@ -779,9 +779,9 @@ class Clientsection extends CI_Controller {
 				}
 			
 				//edit
-				$row_edit = "<a href=" . site_url("clientsection/youtube_vid_edit/{$youtube->id}") . " class='btn btn-success' title='Edit slide'><i class='fa fa-pencil'></i></a>";
+				$row_edit = "<a href=" . site_url("clientsection/youtube_vid_edit/{$youtube->id}") . " class='btn btn-success' title='Edit slide'><i class='fa-solid fa-pen-to-square'></i></a>";
 				// View 
-				$row[] = "<a href=" . site_url("clientsection/youtube_vid_view/{$youtube->id}") . " title='View slide' class='btn btn-success' ><i class='fa fa-eye'></i></a>". $row_edit . $row_delete;  
+				$row[] = "<a href=" . site_url("clientsection/youtube_vid_view/{$youtube->id}") . " title='View slide' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>". $row_edit . $row_delete;  
 				$data[] = $row;
 			}
 		}	
@@ -960,9 +960,9 @@ class Clientsection extends CI_Controller {
 				}
 			
 				//edit
-				$row_edit = "<a href=" . site_url("clientsection/offer_edit/{$offer->id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit offer'><i class='fa fa-pencil'></i></a>";
+				$row_edit = "<a href=" . site_url("clientsection/offer_edit/{$offer->id}") . " class='btn btn-success ajax_edit_customer_table' title='Edit offer'><i class='fa-solid fa-pen-to-square'></i></a>";
 				// View 
-				$row[] = "<a href=" . site_url("clientsection/offer_view/{$offer->id}") . " title='View offer' class='btn btn-success' ><i class='fa fa-eye'></i></a>". $row_edit . $row_delete;  
+				$row[] = "<a href=" . site_url("clientsection/offer_view/{$offer->id}") . " title='View offer' class='btn btn-success' ><i class='fa-solid fa-eye'></i></a>". $row_edit . $row_delete;  
 				$data[] = $row;
 			}
 		}	
