@@ -1957,6 +1957,7 @@ class Itineraries extends CI_Controller {
 	
 	//ajax request to update Itineraries call log
 	public function updateItiStatus(){
+
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
 		$user_id = $user['user_id'];
@@ -2075,6 +2076,8 @@ class Itineraries extends CI_Controller {
 				//update customer status to declined=8
 				$this->global_model->update_data( "customers_inquery", array("customer_id" => $customer_id ) , array("decline_comment" => $decline_comment , "cus_status" => 8, "lead_last_followup_date" => $currentDate ) );
 			}elseif( $callType == "Booked lead" ){
+				// dump("dsl;kflsdf")
+				// dump($_POST);die;
 				$call_status = 1; //if lead book not upcoming notification
 				//check if itinerary not publish return false
 				if( $publish_status != "publish" ){
@@ -2344,6 +2347,7 @@ class Itineraries extends CI_Controller {
 					"iti_status" => 9 
 				);
 				
+				// dump($u_data);die;
 				$update_status = $this->global_model->update_data( "itinerary", $where_iti, $u_data );
 				$this->global_model->update_data( "customers_inquery", array("customer_id" => $customer_id ) , array("lead_last_followup_date" => $currentDate ) );
 				
