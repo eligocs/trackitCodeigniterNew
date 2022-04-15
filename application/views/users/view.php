@@ -10,10 +10,10 @@
                                                             echo $newDate; ?></span></strong>
                         <strong>Last Login Ip: <span class="text-white"><?php echo $agent->login_ip; ?></span></strong>
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("agents"); ?>" title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
-            <div class="second_custom_card">
+            <div class="bg-white p-3 rounded-4 shadow-sm">
                 <?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 				?>
@@ -25,7 +25,7 @@
 					?>
 
                 <div class="portlet-body">
-                    <h3>User Details <?php echo $online_offline_status; ?></h3>
+                    <h3 class="mb-3">User Details <?php echo $online_offline_status; ?></h3>
                     <div class="table-responsive">
                         <table class="table table-condensed table-hover table-striped">
                             <tr>
@@ -203,14 +203,16 @@
                     </div>
                     <div class="text-center">
                         <input type="hidden" value="<?php echo $agent->user_id; ?>" name="user_id" id="user_id_v">
-                        <a title='Edit User' href="<?php echo site_url("agents/editagent/{$agent->user_id}"); ?>"
-                            class=""><i class="fa-solid fa-pen-to-square"></i> Edit User</a>
+                        <a class="btn btn-outline-secondary" title='Edit User' href="<?php echo site_url("agents/editagent/{$agent->user_id}"); ?>" class=""><i class="fa-solid fa-pen-to-square"></i> Edit User</a>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
 
 <div class="loader"></div>
 <?php }else{

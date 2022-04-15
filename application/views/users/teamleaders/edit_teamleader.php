@@ -4,13 +4,13 @@
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<div class="portlet box blue">
-			<div class="portlet-title">
-					<div class="caption"><i class="fa fa-user"></i>Edit Team</div>
-						<a class="btn btn-success" href="<?php echo site_url("agents/teamleaders"); ?>" title="Back">Back</a>
-			</div>
+				<div class="portlet-title">
+						<div class="caption"><i class="fa fa-user"></i>Edit Team</div>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents/teamleaders"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
+				</div>
 			</div>
 			<?php echo $this->session->flashdata('message'); ?>
-			<div class="portlet-body">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<?php /*  if( empty($all_unassigned_sales_agent) ){
 					echo "<div class='alert alert-danger'>No agents found</div>";
 				}else{  */ ?>
@@ -26,12 +26,12 @@
 					<?php //dump( $assigned_mem ); ?>
 					<?php //echo $leader_data[0]->leader_id; ?>
 					<?php// dump( $all_unassigned_sales_agent ); ?>
-								<?php 
-								foreach ($assigned_mem as $user){
-									$selected =  $leader_data[0]->leader_id == $user ? "selected=selected" : "";
-									echo "<option ". $selected ." value='".$user . "'>" . ucfirst(get_user_name($user)) . "</option>";
-								}
-								?>
+						<?php 
+						foreach ($assigned_mem as $user){
+							$selected =  $leader_data[0]->leader_id == $user ? "selected=selected" : "";
+							echo "<option ". $selected ." value='".$user . "'>" . ucfirst(get_user_name($user)) . "</option>";
+						}
+						?>
 					<div class="col-md-4">
 						<div class="form-group-2">
 							<label class="control-label">Select Team Leader*</label>
@@ -68,7 +68,7 @@
 				<div class="col-md-12">
 					<div class="margiv-top-10">
 						<input type="hidden" name="id" id="team_id" value="<?php echo isset( $leader_data[0]->id ) ? $leader_data[0]->id : ""; ?>">
-						<button type="submit" class="btn green uppercase add_agent">Update Team</button>
+						<button type="submit" class="btn green uppercase add_agent"><i class="fa-solid fa-user-check"></i> Update Team</button>
 					</div>
 				</div>	
 				</form><div class="clearfix"></div>

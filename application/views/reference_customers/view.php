@@ -9,7 +9,7 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="fa fa-users"></i>Name: <strong><?php echo $muser->name; ?></strong></div>
-					<a class="btn btn-success" href="<?php echo site_url("reference_customers"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("reference_customers"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
 			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
@@ -137,7 +137,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="comment">Decline Comment:</label>
-								<textarea class="form-control" rows="3" name="decline_comment" id="decline_comment"></textarea>
+								   <textarea class="form-control" rows="3" name="decline_comment" id="decline_comment"></textarea>
 										</div> 
 									</div>
 								</div><!--end close_lead_panel-->	

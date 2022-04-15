@@ -197,11 +197,11 @@ class Msg_center extends CI_Controller {
 			//if data exists
 			if( !empty( $get_data ) ){
 				$total = count( $get_data );
-				$res_html .= "<div class='well'><label class='strong'>
-					<input type='checkbox' id='checkAll'/> Select all</label>
+				$res_html .= "<div class='p-3 mb-2 border-bottom'><label class='strong mb-2'>
+					<input class='form-check-input me-2' type='checkbox' id='checkAll'/> Select all</label>
 					<div class=''>
 						Total Records Found: <strong> {$total} </strong><br>
-						<span class='red small'>Note:</span>
+						<span class='d-inline-block mt-2 red small'>Note:</span>
 							<span class='small'><em> By click on select all you can select only first 1000 checkbox.</em></span>
 					</div></div>";
 					
@@ -214,13 +214,13 @@ class Msg_center extends CI_Controller {
 						$name = !empty( $company_name ) ? $company_name : $customer->$name_key;
 						$contact = $customer->$contact_key;
 						
-						$res_html .= "<div class='all_mails'><input id='emaillist_{$list_id}' required class='form-control cus_emails' name='customer_contacts[]' type='checkbox' value='{$contact}' /><label for='emaillist_{$list_id}'>{$contact} < {$name} ></label></div>";
+						$res_html .= "<div class='all_mails'><input id='emaillist_{$list_id}' required class='form-check-input cus_emails' name='customer_contacts[]' type='checkbox' value='{$contact}' /><label for='emaillist_{$list_id}'>{$contact} < {$name} ></label></div>";
 						$list_id++;
 					}
 					
 					$res_html .=  "</div>";	
 					//$res_html .=  "<div class='clearfix'></div><a href='#' class='btn btn-success pull-right' id='loadMore'>LoadMore</a>";
-					$res_html .=  "<div class='clearfix'></div><div id='emails_res'></div>";
+					$res_html .=  "<div id='emails_res'></div>";
 				
 				$res = array("status" => true, "msg" => "All Customers Found!", "res_html" => $res_html );
 			}else{

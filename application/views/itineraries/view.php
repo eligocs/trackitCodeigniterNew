@@ -84,7 +84,7 @@
                             ?>
                     </div>
                     <!-- back btn -->
-                    <a class="btn btn-outline-primary float-end mt-1" href="<?php echo site_url("itineraries"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                    <a class="btn btn-outline-primary float-end mt-1" href="<?php echo site_url("itineraries"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                     <!-- print btn -->
                     <a class="btn btn-outline-secondary float-end mt-1 me-2" onclick="Print_iti();" href="javscript:void(0)" title="print">Print</a>
                         <?php if( ( $iti->iti_status == 0 || $iti->iti_status == 6 ) && is_admin_or_manager_or_sales() ){ ?>
@@ -2625,7 +2625,7 @@
                     <input type="hidden" name="iti_id" value="<?php echo $iti->iti_id; ?>" id="iti_send_id">
                     <input type="hidden" name="temp_key" value="<?php echo $iti->temp_key; ?>" id="iti_send_key">
                     <a href="<?php echo site_url("itineraries"); ?>" class="btn btn-outline-primary iti_back float-end"
-                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                     <!-- Request For Update Price -->
                     <?php if( ($user_role == 96 || $user_role == 99) && !empty( $get_rate_meta ) && $iti->email_count > 0 && $iti->discount_rate_request == 0 && $iti->iti_status == 0 && $countPrice < 6 ){ ?>
                     <span class="btn btn-green reqPrice_update" title="Request For Update Price">Request Manager To

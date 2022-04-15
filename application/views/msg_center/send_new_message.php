@@ -5,7 +5,7 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-cogs"></i>Msg Center Create New Message
+					<i class="fa-solid fa-comment-sms"></i> Msg Center Create New Message
 					</div>
 				</div>
 			</div>
@@ -17,9 +17,10 @@
 				if($eerr){ echo '<span class="help-block help-block-success"><span class="red">'.$eerr.'</span></span>'; }
 			?>
 			<!--Filter-->
-			<div class="cat_wise_filter custom_card margin-bottom-25">
-				<form id="filter_frm" >
+			<div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm">
+				<form id="filter_frm" class="mb-0" >
 					<!--Get customers added by current agent if sales team-->
+					<div class="row">
 					<?php if( isset( $user_role ) && $user_role == 96  ){ ?>
 						<div class="col-md-3">	
 							<div class="form-group">
@@ -34,18 +35,21 @@
 								</select>
 							</div>
 						</div>	
+
 						<div class="col-md-3">	
 							<div class="form-group">
 								<label class="control-label">Leads Date Range</label>
 								<input type="text" class="form-control" id="daterange" name="dateRange" value="" />
 							</div>
 						</div>
+
 						<!--empty val for city and state -->
 						<input type="hidden" value="" name="date_from" id="date_from" />
 						<input type="hidden" value="" name="date_to" id="date_to" />
 						<input type="hidden" value="" name="state" />
 						<input type="hidden" value="" name="city" />
-					<?php }else{ ?>
+						<?php }else{ ?>
+
 						<div class="col-md-3">	
 							<div class="form-group">
 								<label class="control-label">Choose Category*</label>
@@ -64,7 +68,7 @@
 								</select>
 							</div>
 						</div>	
-					
+						
 						<div class="col-md-3 hideonlead">
 							<label class="control-label">State * </label>
 							<div class="form-group">
@@ -79,56 +83,60 @@
 								</select>	
 							</div>
 						</div>
-						
+							
 						<div class="col-md-3 hideonlead">
 							<div id ="city_list">
 								<div class='form-group'>
-								<label>City:</label>
-								<select name='city' id="cityID" class='form-control city'>
-									<option value="">All Cities</option>
-								</select>
+									<label class="control-label">City:</label>
+									<select name='city' id="cityID" class='form-control city'>
+										<option value="">All Cities</option>
+									</select>
 								</div>
 							</div>
 						</div>
-					<?php }	?>
-					<div class="col-md-3">	
-						<div class="margiv-top-10">
-							<label class="d_block" for="">&nbsp;</label>
-							<button type="submit" class="btn green uppercase add_user">Get Customers</button>
-							<a href="javascript:void(0);" class="btn green uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
+						<div class="col-md-3">	
+							<label class="d-block control-label" for="">&nbsp;</label>
+							<button type="submit" class="btn btn-success uppercase add_user">
+								<i class="fa-solid fa-user-plus"></i> Get Customers
+							</button>
+							<a href="javascript:void(0);" class="btn btn-success uppercase reset_filter">
+								<i class="fa fa-refresh"></i> Reset
+							</a>
 						</div>
 					</div>
+					<?php }	?>
 				</form>	
-				<div class="clearfix"></div>
+				
 				<div class="res"></div>
 			</div>
-			<div class="clearfix"></div>
-			<!--Sent Message Form -->
-			<div>
-				<form role='form' class="custom_card row" method="post" style="display: none;" id='sendMessage'>
-					<div class="clearfix" id="customer_listing"></div>
-					<hr>
-					<div class="col-md-6">
-						<label>Type a text message* <span style='color: red; font-size: 12px;'>Note: Max 160 character</span></label>
-						<textarea required maxlength="160" name="text_message" class="form-control"></textarea>
-					</div>
-					<div class="clearfix"></div>
-					<hr class="clreafix" />
-					<div class="col-md-3">	
-						<div class="margiv-top-10">
-							<button type="submit" class="btn green uppercase add_user">Send Message</button>
-						</div>
-					</div>
-					<input type="hidden" name="action_type" value="add">
-				</form>
-			</div>
-			<div class="clearfix" id="res"></div>
-		</div>	
 			
-		</div>
-		</div>
+			<!--Sent Message Form -->
+			<form role='form' method="post" style="display: none;" id='sendMessage'>
+				<div class="bg-white p-3 rounded-4 shadow-sm mt-4">
+					<div class="border" id="customer_listing"></div>
+					<div class="row">
+						<div class="col-md-6 mb-3 mt-4">
+							<label>Type a text message* <span style='color: red; font-size: 12px;'>Note: Max 160 character</span></label>
+							<textarea required maxlength="160" name="text_message" class="form-control"></textarea>
+						</div>
+						
+						<div class="col-md-12 my-2">	
+							<button type="submit" class="btn green uppercase add_user"><i class="fa-solid fa-comment-dots"></i> Send Message</button>
+						</div>
+						<input type="hidden" name="action_type" value="add">
+					</div>
+				</div>
+			</form>
+			<div id="res"></div>
+		</div>	
+		<!-- End page-content -->
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+</div>
+
 <style>
 .city_filter .btn:hover {
   background-color: #32c5d2 !important;

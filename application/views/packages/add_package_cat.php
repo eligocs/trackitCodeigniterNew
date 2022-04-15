@@ -7,7 +7,7 @@
                         <i class="fa fa-newspaper-o" aria-hidden="true"></i>Create Package Category
                     </div>
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("packages/viewCategory"); ?>"
-                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back
+                        title="Back"><i class="fa-solid fa-reply"></i> Back
                     </a>
                 </div>
             </div>

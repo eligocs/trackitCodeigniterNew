@@ -5,7 +5,7 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("vouchers"); ?>"
-                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
             <div class="card">
@@ -44,7 +44,7 @@
                         </strong><?php echo $voucher->voucher_id; ?>
                     </div>
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("vouchers"); ?>"
-                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back
+                        title="Back"><i class="fa-solid fa-reply"></i> Back
                     </a>
                 </div>
             </div>

@@ -103,7 +103,7 @@
                      <!-- header_target_section -->
                   <div class='header_target_section'>
                      <a href="<?php echo base_url("incentive"); ?>" title="Go to incentive page">
-                        <div class="progress" style="max-width:100%; min-width:250px;">
+                        <div class="progress" style="max-width:100%; min-width:280px;">
                            <span class="target"><span >Booked: <?php echo $mbooked; ?></span> / <span>Target: <?php echo $mtarget; ?> </span></span>
                            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
                               aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentage; ?>%">
@@ -145,14 +145,12 @@
                   </div>
                   <?php }	?> 
                   <!--End Clock Section-->
-                  <div class="top-menu">
-                     <ul class="nav navbar-nav pull-right">
-                        <!--NOTIFICATION SECTION-->
-                        <!-- END NOTIFICATION DROPDOWN -->
+                  <!-- start TOP NAVIGATION MENU-->
+                   <div class="top-menu">
+                     <ul class="nav navbar-nav">
                         <?php if( !empty( $user_data ) ){ ?>
                         <li class="dropdown dropdown-user">
                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                           <?php //$defalut_logo = 'yatra_logo.png'; ?>
                            <?php $defalut_logo = $user_data[0]->gender == "female" ? "profile_f.png" : "profile_m.png"; ?>
                            <?php $usr_pic = $user_data[0]->user_pic ? $user_data[0]->user_pic : $defalut_logo; ?>
                            <img alt="" class="img-circle" src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic;?>" />
@@ -162,17 +160,15 @@
                            <ul class="dropdown-menu dropdown-menu-default">
                               <li>
                                  <a href="<?php echo site_url("dashboard/profile"); ?>">
-                                 <i class="icon-user"></i> My Profile </a>
+                                 <i class="fa-solid fa-address-card"></i> My Profile </a>
                               </li>
                               <li class="divider"> </li>
                               <li>
                                  <a href="<?php echo site_url("dashboard/logout");?>">
-                                 <i class="icon-key"></i> Log Out </a>
+                                 <i class="fa-solid fa-arrow-right-to-bracket"></i> Log Out </a>
                               </li>
                            </ul>
                         </li>
-                        <!-- END USER LOGIN DROPDOWN -->
-                        <!-- END QUICK SIDEBAR TOGGLER -->
                         <?php }else{ ?>
                         <li class="">
                            <a href="<?php echo site_url("login");?>" >
@@ -181,7 +177,7 @@
                         </li>
                         <?php } ?>
                      </ul>
-                  </div>
+                  </div> 
                   <!-- END TOP NAVIGATION MENU -->
             </div>
       </div>

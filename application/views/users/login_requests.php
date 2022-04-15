@@ -5,14 +5,14 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-cogs"></i>All Login Requested
+					<i class="fa-solid fa-right-to-bracket"></i> All Login Requested
 					</div>
 				</div>
 			</div>
 			<?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
-			<div class="portlet-body second_custom_card">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table class="table table-striped display" cellspacing="0" width="100%">
 						<thead>

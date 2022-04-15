@@ -4,8 +4,8 @@
 		 <!-- BEGIN SAMPLE TABLE PORTLET-->
 			<div class="portlet box blue">
 				<div class="portlet-title">
-					<div class="caption"> <i class="fa fa-cogs"></i>All Hotels </div>
-					<a class="btn btn-success" href="<?php echo site_url("hotels/add"); ?>" title="add hotel">Add Hotel</a>
+					<div class="caption"> <i class="fa-solid fa-hotel"></i> All Hotels </div>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("hotels/add"); ?>" title="add hotel"><i class="fa-solid fa-plus"></i> Add Hotel</a>
 				</div>
 			</div>	
 			<!--Show success message if hotel edit/add -->
@@ -17,9 +17,9 @@
 				//dump(get_indian_state_list());
 			?>
 			<div class="portlet-body">
-				<div class="marginBottom second_custom_card">
+				<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
 					<!--start filter section-->
-					<form id="form-filter" class="form-horizontal clearfix mb-0">
+					<form id="form-filter" class="form-horizontal mb-0">
 						<div class="actions custom_filter form-inline">
 							<!--strong>Filter: </strong-->
 							<div class="row" data-toggle="buttons">
@@ -66,7 +66,7 @@
 						</div>
 					</form><!--End filter section-->
 				</div> 
-				<div class="table-responsive custom_card">
+				<div class="table-responsive bg-white p-3 rounded-4 shadow-sm">
 					<table id="hotels" class="table table-striped display white_space_fix">
 						<thead>
 							<tr>

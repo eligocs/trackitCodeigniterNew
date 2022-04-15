@@ -6,7 +6,7 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-gift"></i>Agents Incentive
+					<i class="fa-solid fa-sack-dollar"></i> Agents Incentive
 					</div>
 				</div>
 			</div>

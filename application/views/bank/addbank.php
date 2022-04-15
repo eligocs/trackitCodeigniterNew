@@ -9,13 +9,13 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-plus"></i>Add Bank Details
+                    <i class="fa-solid fa-plus"></i> Add Bank Details
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("bank");?>" title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("bank");?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
 
-            <div class="portlet-body custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <div class="row">
                     <div class="col-md-4 my-2">
                         <div class="form-group">

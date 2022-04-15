@@ -3,14 +3,14 @@
         <div class="page-content">
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-user"></i>Add user</div>
+                    <div class="caption"><i class="fa-solid fa-user-plus"></i> Add user</div>
                     <a class="btn btn-success" href="<?php echo site_url("agents"); ?>" title="Back">Back</a>
                 </div>
             </div>
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <form role="form" id="addAgent">
                     <div class="row">
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">First Name*</label>
                                 <input required type="text" name="first_name" placeholder="First Name" class="form-control"
@@ -18,14 +18,14 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Last Name</label>
                                 <input type="text" placeholder="Last Name" name="last_name" class="form-control" value="" />
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">User Name*</label>
                                 <input type="text" placeholder="User Name! Should be Unique" name="user_name" class="form-control" value="" />
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">User Password*</label>
                                 <input id="PaSS" type="password" placeholder="Enter your password" name="password"
@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Confirm Password*</label>
                                 <input type="password" placeholder="Confirm password" name="c_password" class="form-control"
@@ -49,7 +49,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Alternate Password*</label>
                                 <input id="" type="text" placeholder="Enter alternate password" name="alt_pass" class="form-control alt_pass" value="" />
@@ -58,14 +58,14 @@
                         </div>
                         
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Email*</label>
                                 <input type="email" placeholder="Email" name="email" class="form-control" value="" />
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Office Timing*</label>
                                 <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012"
@@ -80,7 +80,7 @@
                         </div>
 
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Mobile Number*</label>
                                 <input type="text" placeholder="Mobile" maxlength="12" name="mobile" class="form-control"
@@ -88,7 +88,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Gender*</label><br>
                                 <input required name="gender" value="male" type="radio" id="male"><label
@@ -99,7 +99,7 @@
                         </div>
 
                         <?php $get_all_users_role = get_all_users_role(); ?>
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">User Role*</label>
                                 <?php if( is_admin()){ ?>
@@ -130,7 +130,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">User Status*</label>
                                 <select required name="user_status" class="form-control">
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Mobile Number For Login*</label>
                                 <input type="text" placeholder="Mobile number for login otp. Should be unique." maxlength="10" name="mobile_otp" class="form-control numberf" value="" />
@@ -149,7 +149,7 @@
                         </div>
 
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Website</label>
                                 <input type="text" placeholder="Mobile" name="website" class="form-control"

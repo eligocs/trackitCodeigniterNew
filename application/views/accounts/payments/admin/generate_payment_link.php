@@ -34,7 +34,7 @@
                     <i class="fa-solid fa-plus"></i> Create Payement Link For Customer
                     </div>
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/all_online_transactions");?>"
-                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
             <?php 

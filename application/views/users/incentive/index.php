@@ -16,13 +16,14 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-gift"></i>Agents Incentive
+                    <i class="fa-solid fa-sack-dollar"></i> Agents Incentive
                     </div>
                 </div>
             </div>
             <?php $sales_team_agents = get_all_sales_team_agents(); ?>
-            <div class="second_custom_card">
-                <form id="frmInsentivecal">
+
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <form id="frmInsentivecal" class="mb-0">
                     <div class="row">
                         <div class="col-md-3 my-2">
                             <div class="form-group">
@@ -54,27 +55,22 @@
                         <div class="col-md-3 my-2">
                             <div class="form-group">
                                 <label for="" class="control-label d-block">&nbsp;</label>
-                                <a href="javascript:void(0)" class="btn btn-danger pull-right export_btn">
+                                <a href="javascript:void(0)" class="btn btn-danger export_btn">
                                     <i class="fa fa-file-excel"></i> Export All Agents Incentive
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="clearfix"></div>
-
                     <div class="processing"></div>
                 </form>
             </div>
 
-            <div class="clearfix"></div>
-            <hr>
             <div class="portlet-body">
-                <div class='agent_info_section custom_card' style="display:none;">
+                <div class='agent_info_section bg-white p-3 rounded-4 shadow-sm' style="display:none;">
                     <!--congratulation section-->
                     <!--theme 1-->
                     <div class="cong_theme_1 cntheme">
-                        <div class="clearfix congrats">
+                        <div class=" congrats">
                             <h1>Congratulations!</h1>
                         </div>
                         <!--END theme 1-->
@@ -121,20 +117,21 @@
                     </div>
                     <!--Incentive Terms and conditions-->
                     <div class="cong_theme_1 cntheme">
-                        <div class="clearfix congrats">
+                        <div class=" congrats">
                             <h1>Congratulations!</h1>
                         </div>
                     </div>
-                    <div class="clearfix incentive_terms_section">
-
-                    </div>
+                    <div class=" incentive_terms_section"></div>
                 </div>
             </div>
         </div>
-
+        <!--End page-content  -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
+<!-- END page-container -->
+
+
 </div>
 <style>
 .congrats {

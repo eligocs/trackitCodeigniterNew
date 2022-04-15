@@ -3,215 +3,182 @@
 </script>
 <script src="<?php echo base_url();?>site/assets/js/components-editors.js" type="text/javascript"></script>
 
-<style>
-.nl-input-field,
-.body_edit {
-    margin-left: auto !important;
-    float: none;
-    margin-right: auto !important;
-    padding: 10px;
-    line-height: 100%;
-}
-
-.form-group.nl-input-field {
-    margin-bottom: 5px;
-    border: 1px solid #eaeaea;
-}
-
-.mails-db {
-    margin-bottom: 20px;
-}
-
-div#mails-db {
-    border: 1px solid #e6e6e6;
-    padding-top: 10px;
-}
-
-.heading-label {
-    background: #f1f1f1;
-    padding: 10px;
-    border: 1px solid #ececec;
-    margin-top: 0;
-}
-</style>
-
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="portlet box blue">
 
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Create Newsletter</div>
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("newsletters/send"); ?>"
-                        title="Back">Back</a>
+                    <div class="caption"><i class="fa-solid fa-bullhorn"></i> Create Newsletter</div>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("newsletters/send"); ?>"
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
 			<div class="profile-content">
-				<div class="custom_card">
-					<div class="row">
-						<form role="form" class="form-bordered" method="post"
-							action="<?php echo base_url('newsletters/send'); ?>" id="sendNewsletter">
-							<!--Show success message if Category edit/add -->
-							<?php $message = $this->session->flashdata('success'); 
-								if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
-							?>
-							<div class="form-group col-md-12 newsletter_radio_group">
-								<label class="font_size_18 margin-bottom-15 fw_700" for="youtube_link">Select Template Type:</label>
-								<br>
-								<input type="radio" class="form temp" value="1" id='default'
-									name="type"><strong>Default</strong>
-								<input type="radio" class="form temp" value="2" id='text' name="type"><strong>Text</strong>
-								<input type="radio" class="form temp" value="3" id='image' name="type"><strong>Image</strong>
-							</div>
-							<!--Image list -->
-							<div class="form-group imagetemp hide col-md-12">
-								<?php if($imageTemplate >0 ){
-								foreach($imageTemplate as $img){
-									?>
-								<input type='radio' class='form imagelist'
-									value='<?php echo base_url('site/images/imageTemplate/'.$img->img_name);  ?>'
-									id='text' name='image'>
-								<img width='10%'
-									src="<?php echo base_url('site/images/imageTemplate/'.$img->img_name);  ?>">
-								<br>
+				<div class="bg-white p-3 rounded-4 shadow-sm">
+                    <form role="form" class="form-bordered" method="post"
+                        action="<?php echo base_url('newsletters/send'); ?>" id="sendNewsletter">
+                        <!--Show success message if Category edit/add -->
+                        <?php $message = $this->session->flashdata('success'); 
+                            if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
+                        ?>
+                        <div class="form-group">
+                            <label class="d-block fs-6 fw-bold mb-3" for="youtube_link">Select Template Type:</label>
 
-								<?php 	}
-									}?>
-							</div>
-							<div class="form-group  texttemp hide col-md-12">
-								<?php if($textTemplate >0 ){
-							foreach($textTemplate as $text){
-									$slug	= $text->slug;
-									$link 	= base_url() . "promotion/templateText/{$slug}";
-								echo "<input type='radio' class='form textlist' value='{$link}' id='text'  name='image'>$text->greeting<br>";
-							}
-						}?>
-							</div>
+                            <input type="radio" class="form temp form-check-input me-2 mb-2" value="1" id='default'
+                                name="type"><strong class="me-3 fs-7">Default</strong>
+                            <input type="radio" class="form temp form-check-input me-2 mb-2" value="2" id='text' name="type"><strong class="me-3 fs-7">Text</strong>
+                            <input type="radio" class="form temp form-check-input me-2 mb-2" value="3" id='image' name="type"><strong class="me-3 fs-7">Image</strong>
 
-							<!-- h2 class="text-center"><strong>Create Newsletter</strong></h2 -->
-							<div class="form-group col-md-12 my-2">
-								<label class="control-label" for="subject"><strong>Subject:</strong></label>
-								<input required type="text" class="form-control" id="subject"
-									placeholder="Enter subject" name="subject">
-							</div>
-							<div class="letter hide">
-								<div class="form-group col-md-12 my-2">
-									<label for="youtube_link"><strong>Youtube Link:</strong></label>
-									<input type="url" class="form-control" id="youtube"
-										placeholder="Enter youtube video link" name="youtube_link">
-								</div>
+                        </div>
+                        <!--Image list -->
+                        <div class="form-group imagetemp hide col-md-12">
+                            <?php if($imageTemplate >0 ){
+                            foreach($imageTemplate as $img){
+                                ?>
+                            <input type='radio' class='form imagelist'
+                                value='<?php echo base_url('site/images/imageTemplate/'.$img->img_name);  ?>'
+                                id='text' name='image'>
+                            <img width='10%'
+                                src="<?php echo base_url('site/images/imageTemplate/'.$img->img_name);  ?>">
+                            <br>
 
-								<div class="form-group col-md-12 my-2">
-									<label for="body"><strong>Newsletter Body:</strong></label>
-									<textarea name="template"
-										id="template"><?php if($templates!= NULL){ echo htmlspecialchars_decode($templates[0]->template); }?></textarea>
-								</div>
+                            <?php 	}
+                                }?>
+                        </div>
+                        <div class="form-group  texttemp hide col-md-12">
+                            <?php if($textTemplate >0 ){
+                        foreach($textTemplate as $text){
+                                $slug	= $text->slug;
+                                $link 	= base_url() . "promotion/templateText/{$slug}";
+                            echo "<input type='radio' class='form textlist' value='{$link}' id='text'  name='image'>$text->greeting<br>";
+                        }
+                        }?>
+                        </div>
 
-							</div>
-							<div class="form-group imagetemp hide col-md-12 my-2">
-								<label for="body"><strong>Image Body:</strong></label>
-								<textarea id="summernote_1" name="imagetemplate"></textarea>
-							</div>
-							<div class="form-group texttemp hide col-md-12 my-2">
-								<label for="body"><strong>Text Template Body:</strong></label>
-								<textarea id="summernote_3" name="texttemplate"></textarea>
-							</div>
-							<!--get marketing users by marketing category -->
-							<div class="cat_wise_filter row">
-								<!--Get customers added by current agent if sales team-->
-								<?php if( isset( $user_role ) && $user_role == 96  ){ ?>
-								<div class="col-md-3 my-2">
-									<div class="form-group">
-										<label class="control-label"><strong>Choose Category*</strong></label>
-										<select required name="cat" class="form-control" id="mak_cat">
-											<option value="">Select Category</option>
-											<option value="closed_lead">Closed Leads</option>
-											<option value="process_lead">All Leads</option>
-										</select>
-									</div>
-								</div>
-								<!--empty val for city and state -->
-								<input type="hidden" value="" name="state" id="state" />
-								<input type="hidden" value="" name="city" id="cityID" />
-								<?php }else{ ?>
-								<div class="col-md-3 my-2">
-									<div class="form-group">
-										<label class="control-label"><strong>Choose Category*</strong></label>
-										<select required name="cat" class="form-control" id="mak_cat">
-											<option value="">Select Category</option>
-											<option value="closed_lead">Closed Leads</option>
-											<option value="process_lead">Process Leads</option>
-											<option value="reference">Reference Customers</option>
-											<?php if(!empty($marketing_category)) {	?>
-											<?php foreach($marketing_category as $cat){?>
-											<option value="<?php echo $cat->id;?>">
-												<?php echo $cat->category_name;?></option>
-											<?php }	?>
-											<?php } ?>
-										</select>
-									</div>
-								</div>
+                        <!-- h2 class="text-center"><strong>Create Newsletter</strong></h2 -->
+                        <div class="form-group my-3">
+                            <label class="control-label" for="subject"><strong>Subject:</strong></label>
+                            <input required type="text" class="form-control" id="subject"
+                                placeholder="Enter subject" name="subject">
+                        </div>
+                        <div class="letter hide">
+                            <div class="form-group my-3">
+                                <label class="control-label" for="youtube_link"><strong>Youtube Link:</strong></label>
+                                <input type="url" class="form-control" id="youtube"
+                                    placeholder="Enter youtube video link" name="youtube_link">
+                            </div>
+
+                            <div class="form-group my-3">
+                                <label class="control-label" for="body"><strong>Newsletter Body:</strong></label>
+                                <textarea name="template"
+                                    id="template"><?php if($templates!= NULL){ echo htmlspecialchars_decode($templates[0]->template); }?></textarea>
+                            </div>
+
+                        </div>
+                        <div class="form-group imagetemp hide my-3">
+                            <label class="control-label" for="body"><strong>Image Body:</strong></label>
+                            <textarea id="summernote_1" name="imagetemplate"></textarea>
+                        </div>
+                        <div class="form-group texttemp hide my-3">
+                            <label class="control-label" for="body"><strong>Text Template Body:</strong></label>
+                            <textarea id="summernote_3" name="texttemplate"></textarea>
+                        </div>
+                        <!--get marketing users by marketing category -->
+                        <div class="cat_wise_filter row">
+                            <!--Get customers added by current agent if sales team-->
+                            <?php if( isset( $user_role ) && $user_role == 96  ){ ?>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label"><strong>Choose Category*</strong></label>
+                                    <select required name="cat" class="form-control" id="mak_cat">
+                                        <option value="">Select Category</option>
+                                        <option value="closed_lead">Closed Leads</option>
+                                        <option value="process_lead">All Leads</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--empty val for city and state -->
+                            <input type="hidden" value="" name="state" id="state" />
+                            <input type="hidden" value="" name="city" id="cityID" />
+                            <?php }else{ ?>
+                            <div class="col-md-3 my-2">
+                                <div class="form-group">
+                                    <label class="control-label"><strong>Choose Category*</strong></label>
+                                    <select required name="cat" class="form-control" id="mak_cat">
+                                        <option value="">Select Category</option>
+                                        <option value="closed_lead">Closed Leads</option>
+                                        <option value="process_lead">Process Leads</option>
+                                        <option value="reference">Reference Customers</option>
+                                        <?php if(!empty($marketing_category)) {	?>
+                                        <?php foreach($marketing_category as $cat){?>
+                                        <option value="<?php echo $cat->id;?>">
+                                            <?php echo $cat->category_name;?></option>
+                                        <?php }	?>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
 
 
-								<div class="col-md-3 hideonlead">
-									<label class="control-label">State * </label>
-									<div class="form-group">
-										<select name='state' class='form-control' id='state'>
-											<option value="">All States</option>
-											<?php $state_list = get_indian_state_list(); 
-												if( $state_list ){
-													foreach($state_list as $state){
-														echo '<option value="'.$state->id.'">'.$state->name.'</option>';
-													}
-												} ?>
-										</select>
-									</div>
-								</div>
+                            <div class="col-md-3 my-2 hideonlead">
+                                <label class="control-label">State * </label>
+                                <div class="form-group">
+                                    <select name='state' class='form-control' id='state'>
+                                        <option value="">All States</option>
+                                        <?php $state_list = get_indian_state_list(); 
+                                            if( $state_list ){
+                                                foreach($state_list as $state){
+                                                    echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+                                                }
+                                            } ?>
+                                    </select>
+                                </div>
+                            </div>
 
-								<div class="col-md-3 hideonlead">
-									<div id="city_list">
-										<div class='form-group'>
-											<label>City:</label>
-											<select name='city' id="cityID" class='form-control city'>
-												<option value="">All Cities</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<?php } ?>
-								<div class="col-md-3 my-2">
-									<div class="">
-										<label for="" class="control-label d-block">&nbsp;</label>
-										<a href="javascript:void(0);"
-											class="btn green uppercase get_marketing_users">Get
-											Customers</a>
-										<a href="javascript:void(0);"
-											class="btn green uppercase reset_filter"><i
-												class="fa fa-refresh"></i> Reset</a>
-									</div>
-								</div>
-								<div class="clearfix"></div>
-								<div class="res"></div>
-							</div>
-							<div class="clearfix"></div>
+                            <div class="col-md-3 my-2 hideonlead">
+                                <div id="city_list">
+                                    <div class='form-group'>
+                                        <label>City:</label>
+                                        <select name='city' id="cityID" class='form-control city'>
+                                            <option value="">All Cities</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <div class="col-md-3 my-2">
+                                <div class="">
+                                    <label for="" class="control-label d-block">&nbsp;</label>
+                                    <a href="javascript:void(0);"
+                                        class="btn green uppercase get_marketing_users"> 
+                                        <i class="fa-solid fa-bullhorn"></i> Get Customers
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn green uppercase reset_filter">
+                                        <i class="fa fa-refresh"></i> Reset
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="res"></div>
+                        </div>
+                        
 
-							<!--ajax user listing-->
-							<div class="clearfix" id="customer_listing"></div>
-							<div id='emails_res'></div>
-							<div class="form-actions">
-								<div class="row my-2">
-									<div class="col-md-10">
-										<button type="submit" class="btn green">
-											<i class="fa fa-check"></i> Send Newsletter </button>
-									</div>
-								</div>
-							</div>
-							<input type="hidden" name="temp_key" value="<?php echo getTokenKey(10); ?>">
-							<input type="hidden" name="action_type" value="add">
-						</form>
-						<div class="clearfix"></div>
-						<div id="res"></div>
-					</div>
+                        <!--ajax user listing-->
+                        <div  id="customer_listing"></div>
+                        <div id='emails_res'></div>
+                        <div class="form-actions">
+                            <div class="row my-2">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn green">
+                                    <i class="fa-solid fa-comment-dots"></i> Send Newsletter </button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="temp_key" value="<?php echo getTokenKey(10); ?>">
+                        <input type="hidden" name="action_type" value="add">
+                    </form>
+                    
+                    <div id="res"></div>
 				</div>
 			</div>
     		<!-- END PROFILE CONTENT -->

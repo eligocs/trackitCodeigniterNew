@@ -9,7 +9,7 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption"><i class="fa fa-users"></i>Name: <strong><?php echo $muser->name; ?></strong></div>
-               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("marketing"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("marketing"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
             </div>
          </div>
          <div class="second_custom_card">

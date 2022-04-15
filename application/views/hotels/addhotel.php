@@ -11,14 +11,14 @@
             <?php //echo get_country_name(101);	?>
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="icon-plus"></i>Add New Hotel</div>
-                    <a class="btn btn-success" href="<?php echo site_url("hotels"); ?>" title="Back">Back</a>
+                    <div class="caption"><i class="fa-solid fa-plus"></i> Add New Hotel</div>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
 
             <form role="form" id="addHotel" enctype="multipart/form-data">
 
-                <div class="portlet-body second_custom_card">
+                <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                     <div class="row">
 
                         <div class="col-md-4 my-2">
@@ -27,12 +27,12 @@
                                 <select name="country" class="form-control country">
                                     <option value="">Choose Country</option>
                                     <?php $country = get_country_list();
-						if($country){
-							foreach( $country as $c ){
-								echo '<option value="'. $c->id . '">' . $c->name . '</option>';
-							}
-						}
-						?>
+                                        if($country){
+                                            foreach( $country as $c ){
+                                                echo '<option value="'. $c->id . '">' . $c->name . '</option>';
+                                            }
+                                        }
+                                        ?>
                                 </select>
                             </div>
                         </div>
@@ -55,8 +55,6 @@
                             </div>
                         </div>
 
-
-                        <div class="clearfix"></div>
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Category*</label>
@@ -72,7 +70,6 @@
                                 </select> 
                             </div>
                         </div>
-
 
                         <div class="col-md-4 my-2">
                             <div class="form-group">
@@ -113,7 +110,7 @@
                                     value="" />
                             </div>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <div class="col-md-4 my-2">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
@@ -137,7 +134,7 @@
                         </div>
 
                        
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Room Category*</label>
                                 <select name="room_category[]" class="form-control cat select2" multiple> 
@@ -152,16 +149,12 @@
                             </div>
                         </div>
 
-
-                    </div> <!-- row -->
-
-                    <hr>
-                    <div class="col-md-12 text-left">
-                        <div class="margiv-top-10">
-                            <button type="submit" class="btn btn-primary add_hotel">Add Hotel</button>
+                        <div class="col-md-12 my-2">
+                            <div class="margiv-top-10">
+                                <button type="submit" class="btn btn-primary add_hotel">Add Hotel</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="clearfix"></div>
+                    </div> <!-- row -->                    
                     <div id="addresEd" class="sam_res"></div>
             </form>
         </div><!-- portlet body -->

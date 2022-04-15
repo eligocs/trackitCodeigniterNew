@@ -9,13 +9,13 @@ select#state {
         <div class="page-content">
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-user"></i>Add Team</div>
-                    <a class="btn btn-success" href="<?php echo site_url("agents/teamleaders"); ?>"
-                        title="Back">Back</a>
+                    <div class="caption"><i class="fa-solid fa-people-group"></i> Add Team</div>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents/teamleaders"); ?>"
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
             <?php echo $this->session->flashdata('message'); ?>
-            <div class="portlet-body custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <?php if( empty($all_unassigned_sales_agent) ){
 					echo "<div class='alert alert-danger'>No agents found</div>";
 				}else{ ?>

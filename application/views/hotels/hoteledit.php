@@ -8,14 +8,14 @@
             <?php if($hotels){ 	$hotel = $hotels[0]; ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-users"></i>Hotel Name:
+                    <div class="caption"><i class="fa-solid fa-hotel"></i> Hotel Name:
                         <strong><?php  echo $hotel->hotel_name; ?></strong>
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("hotels"); ?>" title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
             <form role="form" id="editHotel" enctype="multipart/form-data">
-                <div class="custom_card">
+                <div class="bg-white p-3 rounded-4 shadow-sm">
                     <div class="row">
                         <div class="form-group col-md-3 my-2">
                             <label class="control-label">Hotel Name*:</label>
