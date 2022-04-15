@@ -5,9 +5,9 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption">
-                  <i class="fa fa-cogs"></i>All Reference Customers
+               <i class="fa-solid fa-users"></i> All Reference Customers
                </div>
-               <a class="btn btn-success" href="<?php echo site_url("Reference_customers/add"); ?>" title="add user">Add Reference Customer</a>
+               <a class="btn btn-primary float-end" href="<?php echo site_url("Reference_customers/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add Reference Customer</a>
             </div>
          </div>
          <!--Show success message if hotel edit/add -->
@@ -18,24 +18,25 @@
             if($eerr){ echo '<span class="help-block help-block-success"><span class="red">'.$eerr.'</span></span>'; }
             ?>
          <!--Filter-->
-         <div class="cat_wise_filter second_custom_card">
-            <form role="form" id="filter_frm" method="post">
-               <div class="col-md-4">
-                  <label class="control-label">State * </label>
-                  <div class="form-group">
-                     <select name='state' required class='form-control' id='state'>
-                        <option value="">Select State</option>
-                        <?php $state_list = get_indian_state_list(); 
-                           if( $state_list ){
-                           	foreach($state_list as $state){
-                           		echo '<option value="'.$state->id.'">'.$state->name.'</option>';
-                           	}
-                           } ?>
-                     </select>
+         <div class="cat_wise_filter bg-white cat_wise_filter p-3 rounded-4 shadow-sm mb-4">
+            <form class="mb-0" role="form" id="filter_frm" method="post">
+               <div class="row">
+                  <div class="col-md-4 my-2">
+                     <label class="control-label">State * </label>
+                     <div class="form-group">
+                        <select name='state' required class='form-control' id='state'>
+                           <option value="">Select State</option>
+                           <?php $state_list = get_indian_state_list(); 
+                              if( $state_list ){
+                                 foreach($state_list as $state){
+                                    echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+                                 }
+                              } ?>
+                        </select>
+                     </div>
                   </div>
-               </div>
-               <div class="col-md-4 margin-top-15">
-                  <div class="margin-top-10">
+                  <div class="col-md-4 my-2">
+                     <label for="" class="control-label d-block">&nbsp;</label>
                      <button type="submit" class="btn green uppercase add_user">Filter</button>
                      <a href="javascript:void(0);" class="btn green uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
                   </div>
@@ -43,38 +44,39 @@
                <input type="hidden" id="stateID" value="" />
                <input type="hidden" id="cityID" value="" />
             </form>
-            <div class="clearfix"></div>
             <div class="res"></div>
          </div>
          <!--End Filter-->
          <div class="filter_city_list"></div>
          <!--city filter-->
-         <hr class="clearfix" />
          <div class="loader"></div>
-         <div class="custom_card">
+
+         <div class="bg-white p-3 rounded-4 shadow-sm">
             <div class="upload_user_section">
                <form class="" action="<?php echo base_url(); ?>reference_customers/import_ref_customers" method="post" name="upload_excel" enctype="multipart/form-data">
                   <!-- File Button -->
-                  <div class="col-md-4">
-                     <div class="form-group">
-                        <label class="control-label" for="filebutton">Select Csv File</label>
-                        <div class="d_inline_block">
-                           <input required type="file" name="file" id="file" class="input-large">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label class="control-label" for="filebutton">Select Csv File</label>
+                           <div class="d_inline_block">
+                              <input required type="file" name="file" id="file" class="">
+                           </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="col-md-4">
-                     <!-- Button -->
-                     <div class="form-group">
-                        <label class="control-label" for="singlebutton">Import Customers</label>
-                        <div class="d_inline_block">
-                           <button type="submit" id="submit" name="Import" class="btn green uppercase button-loading" data-loading-text="Loading...">Import</button>
+                     <div class="col-md-6">
+                        <!-- Button -->
+                        <div class="form-group">
+                           <label class="control-label" for="singlebutton">Import Customers</label>
+                           <div class="d_inline_block">
+                              <button type="submit" id="submit" name="Import" class="btn green uppercase button-loading" data-loading-text="Loading...">Import</button>
+                           </div>
                         </div>
                      </div>
                   </div>
                </form>
             </div>
-            <div class="clearfix"></div>
+            
             <div class="portlet-body">
                <div class="table-responsive">
                   <table class="table table-striped display" id="table" cellspacing="0" width="100%">

@@ -2,7 +2,7 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<!--Show success message if hotel edit/add -->
+			<!--Show success message if hotel edit/add -->
 			<?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
@@ -12,43 +12,44 @@
 					<a class="btn btn-success" href="<?php echo site_url("reference_customers"); ?>" title="Back">Back</a>
 				</div>
 			</div>
-			<div class="portlet-body">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<h3>User Details</h3>
 				<div class="table-responsive">	
-				<table class="table table-condensed table-hover">	
-					<tr>
-						<td width="20%"><div class="col-mdd-2 form_vl"><strong>Full Name: </strong></div></td>	
-						<td><div class="col-mdd-10 form_vr"><?php echo $muser->name; ?></div></td>
-					</tr>
-					<tr>
-						<td width="20%"><div class="col-mdd-2 form_vl"><strong>Email: </strong></div></td>	
-						<td><div class="col-mdd-10 form_vr"><?php echo $muser->email; ?></div></td>
-					</tr>	
-					<tr>
-						<td width="20%"><div class="col-mdd-2 form_vl"><strong>Contact Number: </strong></div></td>	
-						<td><div class="col-mdd-10 form_vr"><?php echo $muser->contact; ?></div></td>
-					</tr>	
-					<tr>
-						<td width="20%"><div class="col-mdd-2 form_vl"><strong>State: </strong></div></td>	
-						<td><div class="col-mdd-10 form_vr"><?php echo get_state_name($muser->state); ?></div></td>
-					</tr>	
-					<tr>
-						<td width="20%"><div class="col-mdd-2 form_vl"><strong>City: </strong></div></td>	
-						<td><div class="col-mdd-10 form_vr"><?php echo get_city_name($muser->city); ?></div></td>
-					</tr>	
-				</table>	
+					<table class="table table-condensed table-hover">	
+						<tr>
+							<td width="20%"><div class="col-mdd-2 form_vl"><strong>Full Name: </strong></div></td>	
+							<td><div class="col-mdd-10 form_vr"><?php echo $muser->name; ?></div></td>
+						</tr>
+						<tr>
+							<td width="20%"><div class="col-mdd-2 form_vl"><strong>Email: </strong></div></td>	
+							<td><div class="col-mdd-10 form_vr"><?php echo $muser->email; ?></div></td>
+						</tr>	
+						<tr>
+							<td width="20%"><div class="col-mdd-2 form_vl"><strong>Contact Number: </strong></div></td>	
+							<td><div class="col-mdd-10 form_vr"><?php echo $muser->contact; ?></div></td>
+						</tr>	
+						<tr>
+							<td width="20%"><div class="col-mdd-2 form_vl"><strong>State: </strong></div></td>	
+							<td><div class="col-mdd-10 form_vr"><?php echo get_state_name($muser->state); ?></div></td>
+						</tr>	
+						<tr>
+							<td width="20%"><div class="col-mdd-2 form_vl"><strong>City: </strong></div></td>	
+							<td><div class="col-mdd-10 form_vr"><?php echo get_city_name($muser->city); ?></div></td>
+						</tr>	
+					</table>	
+				</div>	
+				<!--Edit Button-->
+				<?php if( !is_salesteam()){ ?>
+				<div class="text-center">
+					<a title='Edit user' href="<?php echo site_url("reference_customers/edit/{$muser->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+					OR <a class=""  href="<?php echo site_url("reference_customers/add"); ?>" title="add user"><i class="fa fa-plus"></i> Add new</a>
+				</div>	
+				<?php } ?>
 			</div>	
-			<!--Edit Button-->
-			<?php if( !is_salesteam()){ ?>
-			<div class="text-center">
-				<a title='Edit user' href="<?php echo site_url("reference_customers/edit/{$muser->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-				OR <a class=""  href="<?php echo site_url("reference_customers/add"); ?>" title="add user"><i class="fa fa-plus"></i> Add new</a>
-			</div>	
-			<?php } ?>
-		</div>	
-		<a class="btn btn-danger" href="#" id="add_call_btn" title="Back">Add Call Info</a>
+			<a class="btn btn-danger mt-3" href="#" id="add_call_btn" title="Back"><i class="fa-solid fa-phone"></i> Add Call Info</a>
 					<div class="call_log" id="call_log_section" style="display: none;">
 						<form id="call_detais_form" novalidate="novalidate">
+
 							<div class="call_type_seciton">
 								<label class="radio-inline">
 									<input data-id="picked_call_panel" required="" id="picked_call" class="radio_toggle" type="radio" name="callType" value="Picked call" aria-required="true">Picked call
@@ -59,7 +60,6 @@
 
 							<div id="panel_detail_section" style="display: none;">
 								<div class="call_type_res col-md-4" id="picked_call_panel"><!--picked call panel-->
-									
 									<div class="col-md-">
 										<div class="checkbox1">
 											<label><input id="nxtCallCk" type="radio" class="book_query" name="book_query" required="" value="" aria-required="true"> Next call time</label>
@@ -69,27 +69,23 @@
 											<input size="16" required="" type="text" value="" name="nextCallTime" readonly="" class="form-control form_datetime" aria-required="true">  
 										</div>	
 									</div>	
-									
-							
-									
 									<!--Quotation Type Holidays/Accommodation/Cab-->
-								
 								</div><!--end picked call panel-->
 								<div class="call_type_res" id="call_not_picked_panel"><!--call_not_picked panel-->
 									<div class="col-md-12">
-										<label class="radio-inline">
+										<label class="radio-inline control-label">
 											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Switched off" aria-required="true">Switched off
 										</label>
-										<label class="radio-inline">
+										<label class="radio-inline control-label">
 											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Not reachable" aria-required="true">Not reachable
 										</label>
-										<label class="radio-inline">
+										<label class="radio-inline control-label">
 											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Not answering" aria-required="true">Not answering
 										</label>
-										<label class="radio-inline">
+										<label class="radio-inline control-label">
 											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Number does not exists" aria-required="true">Number does not exists
 										</label>
-										<div class="clearfix"></div>
+										
 										<div class="col-md-6 hide">
 											<div class="row">
 												<div class="col-md-">
@@ -100,29 +96,26 @@
 												</div>
 											</div>	
 										</div>	
-										<div class="clearfix"></div>
-										<div class="col-md-6">
-										<div class="row">
-											<div class="nxt_call">
-											<div class="form-group">
-												<label>Next calling time and date<span style="color:red;">*</span>:</label> 
-												<input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime"> 
-											</div>
-											
-											<div class="form-group">
-												<label>Lead prospect<span style="color:red;">*</span></label>
-												<select required class="form-control" name="txtProspectNotpicked">
-													<option value="Hot">Hot</option>
-													<option value="Warm">Warm</option>
-													<option value="Cold">Cold</option>
-												</select>
-											</div>
-										</div>	
-										</div>	
-										</div>
-
 										
-									
+										<div class="col-md-6">
+											<div class="row">
+												<div class="nxt_call">
+													<div class="form-group">
+														<label>Next calling time and date<span style="color:red;">*</span>:</label> 
+														<input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime"> 
+													</div>
+
+													<div class="form-group">
+														<label>Lead prospect<span style="color:red;">*</span></label>
+														<select required class="form-control" name="txtProspectNotpicked">
+															<option value="Hot">Hot</option>
+															<option value="Warm">Warm</option>
+															<option value="Cold">Cold</option>
+														</select>
+													</div>
+												</div>	
+											</div>	
+										</div>
 									</div>
 								</div>
 								<!--end call not picked panel-->	
@@ -140,7 +133,7 @@
 											<option value="Other">Other</option>
 										</select>
 									</div>
-									<div class="clearfix"></div>
+									
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="comment">Decline Comment:</label>
@@ -148,7 +141,7 @@
 										</div> 
 									</div>
 								</div><!--end close_lead_panel-->	
-								 <div class="clearfix"></div>
+								 
 									<div class="col-md-4">
 										<div class="form-group">
 										  <label for="comment">Call summary<span style="color:red;">*</span>:</label>
@@ -171,7 +164,7 @@
 										<button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
 										<button class="btn red uppercase cancle_bnt">Cancel</button>
 									</div>
-									<div class="clearfix"></div>
+									
 									<div id="resp"></div>
 								</form>
 							</div>
@@ -235,11 +228,9 @@
 						</div-->
 				<?php $count++; ?>
 			<?php } ?>
-		<!--/div-->	
-	<?php } ?>
-	<div class="clearfix"></div>
-					</div>
-					<!--div class="panel-group accordion call-time" id="accordion3"--->
+			<?php } ?>
+		</div>
+	<!--div class="panel-group accordion call-time" id="accordion3"--->
 					
 	</div>
 <?php  }else{ redirect("reference_customers"); } ?>		
