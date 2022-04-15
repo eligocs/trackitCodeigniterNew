@@ -288,7 +288,7 @@
 					<?php 
 					//check if benefits
 					$benefits_m = unserialize($iti->booking_benefits_meta); 
-					$count_bn_inc = count( $benefits_m );
+					$count_bn_inc = !empty($benefits_m) ?count( $benefits_m ) : '';
 					if( !empty($benefits_m) ){
 						echo '<div class="well well-sm"><h3>Benefits of Booking With Us</h3></div>';
 						echo "   <ul class='inclusion'>";

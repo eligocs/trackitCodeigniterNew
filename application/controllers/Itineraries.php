@@ -552,6 +552,7 @@ class Itineraries extends CI_Controller {
 		$no = $_POST['start'];
 		if( !empty($list) ){
 			foreach ($list as $iti) {
+				// dump($iti);die;
 			 	$pub_status = $iti->publish_status;
 				$row_delete = $btn_edit="";
 				$row_edit = "";
@@ -572,7 +573,7 @@ class Itineraries extends CI_Controller {
 				$childLink = "<a title='View Child Itineraries' href=" . site_url("itineraries/childIti/{$iti_id}/{$key}") . " class='btn btn-success blue' ><i class='fa fa-child' aria-hidden='true'></i></a>";
 				
 				$showChildItiBtn = $countChildIti > 0 ? $childLink : "";
-				
+		
 				//get iti_status
 				$iti_status = $iti->iti_status;
 				if( $pub_status == "publish" ){
@@ -595,7 +596,7 @@ class Itineraries extends CI_Controller {
 				}
 				
 				//Get itinerary type 1=itinerary , 2=accommodation
-				$iti_type = $iti->iti_type == 2 ? "<strong class='red'>Accommodation</strong>" : "<strong class='green'>Holiday</strong>";
+				$iti_type = $iti->iti_type == 2 ? "<strong class='red'>Accommodation</strong>" : "<strong class='white'>Holiday</strong>";
 				
 				// count iti sent status 
 				$iti_sent = $iti->email_count;
@@ -608,20 +609,51 @@ class Itineraries extends CI_Controller {
 					$temp_t_d = $iti->t_start_date;
 				}	
 
-				$cliendData  = '<p class="my-2"> ' . $iti->iti_id . '</p>';
-				$cliendData  .= '<p class="my-2"> ' . $iti->customer_id . '</p>';
-				$cliendData  .= '<p class="my-2"> ' . $iti_type . '</p>';
+				/* Client Detatil */
+				$cliendData  = '<span title="Lead Id" class="badge bg-light text-dark me-2"> Lead ID : ' . $iti->iti_id . '</span>';
+				$cliendData  .= '<div title="Client Name" class="fw-bold my-3">' . strtoupper($iti->customer_name) . '</div>';
+				$cliendData  .= "<div class='other_info d-flex'>
+									<span title='Holiday Type' class='badge bg-success me-2'> {$iti_type} </span>
+									<span title='Phone Number' class='badge bg-primary me-2'> 
+										<a href='tel:+8989281754' class='text-white'>{$iti->customer_contact}</a>
+									</span>
+								</div>";
 				$cliendData  .= '<p class="my-2"> ' . $iti->customer_name . '</p>';
 				$cliendData  .= '<p class="my-2"> ' . $iti->customer_contact . '</p>';
-				
+
+				/* Total no of travel */
+				$totalTravle = '<div class="d-flex">';
+				$totalTravle .= "<span   class='badge bg-light text-dark me-1 my-1 fs-7' title='Adult'>
+					  				{$iti->adults} <i class='fa-solid fa-user text-black-50' ></i>
+								</span>"; 
+				if($iti->child != 00){
+				$totalTravle .= "<span   class='badge bg-light text-dark me-1 my-1 fs-7' title='Children'>
+									{$iti->child}  <i class='fa-solid fa-child text-black-50' ></i>
+								</span>";
+					$sum = $iti->adults + $iti->child;
+				$totalTravle .= "<span  class='badge bg-light text-dark me-1 my-1 fs-7' title='Baby'>     
+									{$sum} <i class='fa-solid fa-baby text-black-50'></i>
+								</span>";
+				}
+				$totalTravle .='</div>';
+
+				/*Travel date And agent name */
+				$traveldate  =   '<span title="Lead Id" class="badge bg-light text-dark me-2"> Booking Date : ' . date("d-m-Y", strtotime($iti->iti_decline_approved_date)) . '</span>';
+				$traveldate  .=   '<span title="Lead Id" class="badge bg-light text-dark me-2"> Temp. T/Date : ' . $temp_t_d . '</span>';
+				$traveldate  .=   '<span title="Lead Id" class="badge bg-light text-dark me-2"> Start Date : ' . date("d-m-Y", strtotime($iti->travel_date)) . '</span>';
+				$traveldate  .=   '<span title="Lead Id" class="badge bg-light text-dark me-2"> End Date : ' . date("d-m-Y", strtotime(get_iti_tour_end_date($iti->iti_id))) . '</span>';
+				$traveldate .=   '<span   class="badge bg-light text-dark me-1 my-1 fs-7">
+									assigned to :' .  ucFirst(get_user_name( $iti->agent_id )) .
+								'</span>';
+
 				$row = array();
-				$row[] = $no;
+				// $row[] = $no;
 				$row[] = $cliendData;
-		 		$row[] = $iti_type;
-				$row[] = $iti->customer_id;
-				$row[] = $iti->customer_name;
-				$row[] = $iti->customer_contact;
-				$row[] = $iti->package_name . $l_pro_status;
+				$row[] = $totalTravle;
+		 		$row[] = $iti->package_name . $l_pro_status;;
+				$row[] = $traveldate;
+				$row[] = $sent_status;
+				$row[] = date("d F Y", strtotime( $iti->lead_created ));
 				
 				//Check temp travel date if publish_status != "draft" iti_type = 1 Itinerary , 2 = accommodation
 				/* if( $iti->publish_status != "draft" && $iti->iti_type == 1 ){
@@ -629,10 +661,6 @@ class Itineraries extends CI_Controller {
 					$temp_t_d = !empty( $day_wise_meta ) && isset( $day_wise_meta[0]['tour_date'] ) ? $day_wise_meta[0]['tour_date'] : "";
 				}else if( $iti->publish_status != "draft" && $iti->iti_type == 2  ){
 				} */
-				
-				$row[] = $temp_t_d;
-				//Booked iti travel date
-				$row[] = $iti->travel_date;
 				//buttons
 				//if price is updated remove edit for agent get_iti_booking_status
 				if( $iti->pending_price == 2 && $role == 96 ){

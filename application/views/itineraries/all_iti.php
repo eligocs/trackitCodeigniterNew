@@ -271,13 +271,12 @@
                     <table id="itinerary2" class="table table-striped table-hover">
                         <thead>
                             <tr>
-                               
+                                <!-- <th> Ser .No</th> -->
                                 <th> Iti Info </th>
                                 <th> Travellers </th>
                                 <th> Package Name </th>                             
                                 <th> Travel Date</th>
                                 <th> Sent Status</th>                                
-                    
                                 <th>Created on </th>
                                 <th> Action </th>
                             </tr>
@@ -648,7 +647,7 @@ $(document).ready(function() {
    		} */
 
     //datatables
-    table = $('#itinerary').DataTable({
+    table = $('#itinerary2').DataTable({
         "aLengthMenu": [
             [10, 25, 50, 100, -1],
             [10, 25, 50, 100, 'All']

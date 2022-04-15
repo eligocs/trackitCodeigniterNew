@@ -1796,10 +1796,12 @@
 			$ci = & get_instance();
 			$daywisemetas  = $ci->global_model->getdata( "itinerary", array("iti_id" => trim($iti_id)), "daywise_meta" );
 			$unserialize = unserialize($daywisemetas);
-		   	$t = array_key_last($unserialize);
-			$date = !empty($unserialize) ? str_replace('/', '-', $unserialize[$t]['tour_date']) : '';
-            $new_date = !empty($date) ? date('Y-m-d', strtotime($date)) : '';
-			$tour_date = $new_date;
+			if(!empty($unserialize)){
+				$t = array_key_last($unserialize);
+				$date = !empty($unserialize) ? str_replace('/', '-', $unserialize[$t]['tour_date']) : '';
+				$new_date = !empty($date) ? date('Y-m-d', strtotime($date)) : '';
+				$tour_date = $new_date;
+			}
 		    return $tour_date;
 		}else{
 		    return $tour_date;
