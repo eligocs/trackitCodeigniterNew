@@ -164,14 +164,14 @@
                                  <label>Next calling time and date<span style="color:red;">*</span>:</label> 
                                  <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime"> 
                               </div>
-                              <div class="form-group">
+                              <!-- <div class="form-group">
                                  <label>Lead prospect<span style="color:red;">*</span></label>
                                  <select required class="form-control" name="txtProspectNotpicked">
                                     <option value="Hot">Hot</option>
                                     <option value="Warm">Warm</option>
                                     <option value="Cold">Cold</option>
                                  </select>
-                              </div>
+                              </div> -->
                            </div>
                         </div>
                      </div>
