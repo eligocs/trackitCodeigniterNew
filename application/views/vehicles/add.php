@@ -4,22 +4,22 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Add New Vehicle
+					<i class="fa-solid fa-plus"></i> Add New Vehicle
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("vehicles"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("vehicles"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>	
-			<div class="portlet-body custom_card">
-				<form role="form" id="addVehicles">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<form class="mb-0" role="form" id="addVehicles">
 					<div class="row">
-						<div class="col-md-6 my-2">
+						<div class="col-md-4 my-2">
 							<div class="form-group">
 								<label class="control-label">Vehicle Name*</label>
 								<input type="text" required placeholder="Cab Name" name="inp[car_name]" class="form-control" value=""/> 
 							</div>
 						</div>
 
-						<div class="col-md-6 my-2">
+						<div class="col-md-4 my-2">
 							<div class="form-group">
 								<label class="control-label">Max Person*</label>
 								<select name="inp[max_person]" class="form-control" required >
@@ -31,24 +31,25 @@
 							</div>
 						</div>
 						
-						<div class="col-md-6 my-2">
+						<div class="col-md-4 my-2">
 							<div class="form-group">
 								<label class="control-label">Rate per/day*</label>
 								<input type="number" required placeholder="Vehicle Rate per/day" name="inp[car_rate]" class="form-control price_input" value=""/> 
 							</div>
 						</div>
 						<div class="col-md-12 my-2">
-							<button type="submit" class="btn green uppercase add_vehicle">Add Vehicle</button>
+							<button type="submit" class="btn green uppercase add_vehicle"><i class="fa-solid fa-plus"></i> Add Vehicle</button>
 						</div>
 					</div>
 				</form>
 				<div id="addresEd"></div>		
 			</div>
 		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
-
+<!-- End page-container -->
 
 <!-- Modal -->
 <script type="text/javascript">

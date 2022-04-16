@@ -307,7 +307,7 @@
 														</div>
 														<div class="clearfix"></div>
 														<div class="col-md-12"><a href="javascript:;" data-repeater-create class="clearfix btn btn-success">
-														<i class="fa fa-plus"></i> Add New Category</a>
+														<i class="fa-solid fa-plus"></i> Add New Category</a>
 														</div>
 													</div><!--End inner repeater-->
 													
@@ -321,7 +321,7 @@
 										</div>
 										<div class="col-md-12">
 										<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-add">
-										<i class="fa fa-plus"></i> Add Hotel</a>
+										<i class="fa-solid fa-plus"></i> Add Hotel</a>
 										</div>
 									</div>
 									
@@ -361,7 +361,7 @@
 											<?php } ?>	
 										</div>
 										<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-note">
-										<i class="fa fa-plus"></i> Add Note</a>
+										<i class="fa-solid fa-plus"></i> Add Note</a>
 									</div>
 								</div>
 								</div> <!-- tab2 -->
@@ -385,7 +385,7 @@
 												</div>
 											</div><br>
 											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-inc-add">
-											<i class="fa fa-plus"></i> Add</a>
+											<i class="fa-solid fa-plus"></i> Add</a>
 										</div>
 										
 										<div class="clearfix"></div>
@@ -407,7 +407,7 @@
 														</div>
 													</div><br>
 													<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-													<i class="fa fa-plus"></i> Add</a>
+													<i class="fa-solid fa-plus"></i> Add</a>
 												</div>
 											</div><!--end Special Inclusion Section-->	
 											
@@ -446,7 +446,7 @@
 														<?php } ?>
 													</div><br>
 													<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-													<i class="fa fa-plus"></i> Add</a>
+													<i class="fa-solid fa-plus"></i> Add</a>
 												</div>
 											</div><!--end Special Inclusion Section-->	
 										</div>	
@@ -484,7 +484,7 @@
 												<?php } ?>	
 											</div>
 											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
-											<i class="fa fa-plus"></i> Add</a>
+											<i class="fa-solid fa-plus"></i> Add</a>
 										</div>
 									</div>
 									<div class="clearfix"></div>

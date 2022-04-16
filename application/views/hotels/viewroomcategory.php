@@ -1,28 +1,26 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		 <!-- BEGIN SAMPLE TABLE PORTLET-->
-		 
-		 <div id="messageres"></div>	
-		 
-		 
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-cogs"></i>View Room Category
+			<div class="portlet box blue">
+				<div id="messageres"></div>	
+				<div class="portlet-title">
+					<div class="caption">
+					<i class="fa-solid fa-people-roof"></i> View Room Category
+					</div>
+					<?php //$count_room_cat = isset($roomcategory) ? count($roomcategory) : 0 ; ?>
+					<!--Hide add room category button if roomcategory equal to five-->
+					<?php /* if( $count_room_cat < 5 ){ */ ?>
+						<a class="btn btn-primary float-end" href="<?php echo site_url("hotels/addroomcategory"); ?>" title="add room category"><i class="fa-solid fa-plus"></i> Add Room Category</a>
+					<?php /* }  */?>	
 				</div>
-				<?php //$count_room_cat = isset($roomcategory) ? count($roomcategory) : 0 ; ?>
-				<!--Hide add room category button if roomcategory equal to five-->
-				<?php /* if( $count_room_cat < 5 ){ */ ?>
-					<a class="btn btn-success" href="<?php echo site_url("hotels/addroomcategory"); ?>" title="add room category">Add Room Category</a>
-				<?php /* }  */?>	
+				<!--Show success message if Category edit/add -->
+				<?php $message = $this->session->flashdata('success'); 
+					if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
+				?>
 			</div>
-			<!--Show success message if Category edit/add -->
-			<?php $message = $this->session->flashdata('success'); 
-				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
-			?>
-			<div class="portlet-body">
-				<div class="table-responsive margin-top-15">
+			<!-- Start portlet-body -->
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<div class="table-responsive">
 					<table class="table table-striped display">
 						<thead>
 							<tr>
@@ -59,12 +57,15 @@
 					</table>
 				</div>
 			</div>
+			<!-- End portlet-body -->
 		</div>
-		
-		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
+<!-- End page-container-->
+
+
 <!-- Modal -->
  
 

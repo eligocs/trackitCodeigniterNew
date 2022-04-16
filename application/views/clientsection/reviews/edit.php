@@ -6,7 +6,7 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Edit Review
+						<i class="fa-solid fa-plus"></i>Edit Review
 					</div>
 					<a class="btn btn-success" href="<?php echo site_url("clientsection/reviews"); ?>" title="Back">Back</a>
 				</div>

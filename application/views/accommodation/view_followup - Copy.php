@@ -455,7 +455,7 @@
 						<div class="portlet-title">
 							<div class="caption"><i class="fa fa-calendar"></i>Hotel Booking Details</div>
 							<?php if( !$hotel_booking_status ){ ?>
-								<a href="<?php echo $add_hotel_booking_link; ?>" class="btn btn-success pull-right" title="Book Hotel"><i class="fa fa-plus"></i> Book New Hotel</a>
+								<a href="<?php echo $add_hotel_booking_link; ?>" class="btn btn-success pull-right" title="Book Hotel"><i class="fa-solid fa-plus"></i> Book New Hotel</a>
 							<?php } ?>
 						</div>
 				

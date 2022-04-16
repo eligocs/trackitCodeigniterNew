@@ -945,7 +945,7 @@
                                        </div>
                                        <a href="javascript:;" data-repeater-create
                                           class="btn btn-outline-primary mt-repeater-add addrep">
-                                       <i class="fa fa-plus"></i></a>
+                                       <i class="fa-solid fa-plus"></i></a>
                                     </div>
                                  </div>
                                  <!-- Tour data preview -->
@@ -1000,7 +1000,7 @@
                                           </div>
                                           <a href="javascript:;" data-repeater-create
                                              class="btn btn-outline-primary mt-repeater-inc-add">
-                                          <i class="fa fa-plus"></i></a>
+                                          <i class="fa-solid fa-plus"></i></a>
                                        </div>
                                     </div>
                                     <div class="col-md-6">
@@ -1050,7 +1050,7 @@
                                           </div>
                                           <a href="javascript:;" data-repeater-create
                                              class="btn btn-outline-primary mt-repeater-add">
-                                          <i class="fa fa-plus"></i> </a>
+                                          <i class="fa-solid fa-plus"></i> </a>
                                        </div>
                                     </div>
                                  </div>
@@ -1089,7 +1089,7 @@
                                           
                                           <a href="javascript:;" data-repeater-create
                                              class="btn btn-outline-primary mt-repeater-spinc-add">
-                                          <i class="fa fa-plus"></i></a>
+                                          <i class="fa-solid fa-plus"></i></a>
                                        </div>
                                     </div>
                                     <!--END Special Inclusion-->
@@ -1147,7 +1147,7 @@
                                           
                                           <a href="javascript:;" data-repeater-create
                                              class="btn btn-outline-primary mt-repeater-spinc-add">
-                                          <i class="fa fa-plus"></i></a>
+                                          <i class="fa-solid fa-plus"></i></a>
                                        </div>
                                     </div>
                                     <!-- END BENEFITES OF BOOK WITH us -->
@@ -1215,7 +1215,7 @@
                                     <div class="my-2">
                                        <a href="javascript:;" data-repeater-create
                                           class="btn btn-outline-primary mt-repeater-hotel-add">
-                                       <i class="fa fa-plus"></i></a>
+                                       <i class="fa-solid fa-plus"></i></a>
                                     </div>
 
                                     <?php $rates_meta = unserialize($iti->rates_meta);
@@ -1484,7 +1484,7 @@
                                     </div>
                                     <a href="javascript:;" data-repeater-create
                                        class="btn btn-outline-primary mt-repeater-hotel-note">
-                                    <i class="fa fa-plus"></i> Add Note</a>
+                                    <i class="fa-solid fa-plus"></i> Add Note</a>
                                  </div>
                               </div>
                               <div class="tab-pane" id="tab7">

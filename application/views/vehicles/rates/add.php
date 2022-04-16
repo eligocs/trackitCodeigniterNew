@@ -4,7 +4,7 @@
 			<?php //echo get_country_name(101);	?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
-					<div class="caption"><i class="icon-plus"></i>Add Vehicle Rate</div>
+					<div class="caption"><i class="fa-solid fa-plus"></i>Add Vehicle Rate</div>
 					<a class="btn btn-success" href="<?php echo site_url("vehicles/add_tour_rate"); ?>" title="Back">Back</a>
 				</div>
 			</div>

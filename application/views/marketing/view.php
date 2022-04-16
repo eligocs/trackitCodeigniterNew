@@ -101,8 +101,9 @@
                </div>
                <!--Edit Button-->
                <div class="text-center">
-                  <a title='Edit user' href="<?php echo site_url("marketing/edit/{$muser->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                  OR <a class=""  href="<?php echo site_url("marketing/add"); ?>" title="add user"><i class="fa fa-plus"></i> Add new</a>
+                  <a class="btn btn-outline-secondary" title='Edit user' href="<?php echo site_url("marketing/edit/{$muser->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                     <strong class="mx-3"> OR </strong>
+                  <a class="btn btn-outline-secondary"  href="<?php echo site_url("marketing/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add new</a>
                </div>
             </div>
             <!--portlet close-->	
@@ -178,23 +179,25 @@
                      <!--end call not picked panel-->	
                      <!--close_lead_panel panel-->
                      <div class="call_type_res" id="close_lead_panel">
-                        <div class="form-group col-md-6">
-                           <select required="" class="form-control" name="decline_reason" aria-required="true">
-                              <option value="">Select Reason</option>
-                              <option value="Booked with someone else">Booked with someone else</option>
-                              <option value="Not interested">Not interested</option>
-                              <option value="Not answering call from 1 week">Not answering call from 1 week</option>
-                              <option value="Plan cancelled">Plan cancelled</option>
-                              <option value="Wrong number">Wrong number</option>
-                              <option value="Denied to post lead">Denied to post lead</option>
-                              <option value="Other">Other</option>
-                           </select>
-                        </div>
-                        
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label for="comment">Decline Comment:</label>
-                              <textarea class="form-control" rows="3" name="decline_comment" id="decline_comment"></textarea>
+                        <div class="row">
+                           <div class="form-group col-md-6 my-2">
+                              <label class="control-label d-block" for="">Decline Reason:</label>
+                              <select required="" class="form-control" name="decline_reason" aria-required="true">
+                                 <option value="">Select Reason</option>
+                                 <option value="Booked with someone else">Booked with someone else</option>
+                                 <option value="Not interested">Not interested</option>
+                                 <option value="Not answering call from 1 week">Not answering call from 1 week</option>
+                                 <option value="Plan cancelled">Plan cancelled</option>
+                                 <option value="Wrong number">Wrong number</option>
+                                 <option value="Denied to post lead">Denied to post lead</option>
+                                 <option value="Other">Other</option>
+                              </select>
+                           </div>
+                           <div class="col-md-6 my-2">
+                              <div class="form-group">
+                                 <label class="control-label" for="comment">Decline Comment:</label>
+                                 <textarea class="form-control" rows="3" name="decline_comment" id="decline_comment"></textarea>
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -202,14 +205,14 @@
                      <div class="row">
                         <div class="col-md-6 my-2">
                            <div class="form-group">
-                              <label for="comment">Call summary<span style="color:red;">*</span>:</label>
+                              <label class="control-label" for="comment">Call summary<span style="color:red;">*</span>:</label>
                               <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
                            </div>
                         </div>
                         
                         <div class="col-md-6 my-2">
                            <div class="form-group">
-                              <label>Lead prospect<span style="color:red;">*</span></label>
+                              <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
                               <select required class="form-control" name="txtProspect">
                                  <option value="Hot">Hot</option>
                                  <option value="Warm">Warm</option>

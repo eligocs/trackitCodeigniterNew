@@ -84,7 +84,7 @@
 																	<?php } ?>
 																</div>
 																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-																<i class="fa fa-plus"></i> Add new</a>
+																<i class="fa-solid fa-plus"></i> Add new</a>
 															</div>
 															<hr>
 														<div class="form-group">
@@ -147,7 +147,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 													<hr>
@@ -207,7 +207,7 @@
 																	<?php } ?>
 																</div>
 																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-																<i class="fa fa-plus"></i> Add new</a>
+																<i class="fa-solid fa-plus"></i> Add new</a>
 															</div>
 													<div class="form-group">
 														<div class="form-actions">
@@ -305,7 +305,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 													<?php $hotel_notes = isset($term_meta->hotel_notes) ? unserialize( $term_meta->hotel_notes) : ""; 
@@ -339,7 +339,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 														<?php 
@@ -373,7 +373,7 @@
 																<?php } ?>	
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 													<div class="clearfix"></div>
@@ -440,7 +440,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 													</div>	
@@ -482,7 +482,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>
 													<hr>
@@ -545,7 +545,7 @@
 																	<?php } ?>
 																</div>
 																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
-																<i class="fa fa-plus"></i> Add new</a>
+																<i class="fa-solid fa-plus"></i> Add new</a>
 															</div>
 														</div>	
 												 

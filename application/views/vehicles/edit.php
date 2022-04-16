@@ -1,59 +1,64 @@
 <div class="page-container customer_content">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<?php if($vehicles){ 	
-		$category = $vehicles[0]; ?>
+			<?php if($vehicles){ 	
+			$category = $vehicles[0]; ?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
-					<div class="caption"><i class="fa fa-bed"></i>Edit Vehicle</div>
-					<a class="btn btn-success" href="<?php echo site_url("vehicles"); ?>" title="Back">Back</a>
+					<div class="caption"><i class="fa-solid fa-pen-to-square"></i> Edit Vehicle</div>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("vehicles"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
-			<form role="form" id="editCab">
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Vehicle Name*</label>
-					<input required type="text" placeholder="vehicle name with seater" name="car_name" class="form-control" value="<?php echo $category->car_name; ?>"/> 
-				</div>
-				</div>
-				
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Max Person*</label>
-					<select name="max_person" class="form-control" required >
-						<option value="">Select Max Person</option>
-						<?php $max = $category->max_person; ?>
-						<?php for($i = 2 ; $i<= 40; $i++ ){
-							$select = $max == $i ? "selected" : "";
-							echo "<option {$select} value={$i}>{$i}</option>";
-						} ?>
-					</select>
-				</div>
-				</div>
-				<div class="clearfix"></div>
-				
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Vehicle Rate*</label>
-					<input required type="number" placeholder="vehicle rate" name="car_rate" class="form-control price_input" value="<?php echo $category->car_rate; ?>"/> 
-				</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="margiv-top-10">
-					<input type="hidden" name="id" value="<?php echo $category->id;?>"/>
-					<button type="submit" class="btn green uppercase edit_cab">Update</button>
-				</div>
-			</form>
-			<div id="editRoomCatRes"></div>		
-		<?php }else{
-			echo "Invalid Hotel id";
-		}?>
-		</div>
-	<!-- END CONTENT BODY -->
-	</div>
-<!-- Modal -->
- </div>
+			<div class="bg-white p-3 rounded-4 shadow-sm">
+				<form class="mb-0" role="form" id="editCab">
+					<div class="row">
+						<div class="col-md-4 my-2">
+							<div class="form-group">
+								<label class="control-label">Vehicle Name*</label>
+								<input required type="text" placeholder="vehicle name with seater" name="car_name" class="form-control" value="<?php echo $category->car_name; ?>"/> 
+							</div>
+						</div>
+						
+						<div class="col-md-4 my-2">
+							<div class="form-group">
+								<label class="control-label">Max Person*</label>
+								<select name="max_person" class="form-control" required >
+									<option value="">Select Max Person</option>
+									<?php $max = $category->max_person; ?>
+									<?php for($i = 2 ; $i<= 40; $i++ ){
+										$select = $max == $i ? "selected" : "";
+										echo "<option {$select} value={$i}>{$i}</option>";
+									} ?>
+								</select>
+							</div>
+						</div>
 
+						<div class="col-md-4 my-2">
+							<div class="form-group">
+								<label class="control-label">Vehicle Rate*</label>
+								<input required type="number" placeholder="vehicle rate" name="car_rate" class="form-control price_input" value="<?php echo $category->car_rate; ?>"/> 
+							</div>
+						</div>
+						
+						<div class="col-md-12 my-2">
+							<input type="hidden" name="id" value="<?php echo $category->id;?>"/>
+							<button type="submit" class="btn green uppercase edit_cab">Update</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="editRoomCatRes"></div>		
+			<?php }else{
+				echo "Invalid Hotel id";
+			}?>
+		</div>
+		<!-- End page-content -->
+	</div>
+	<!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+
+<!-- Modal -->
 
 <script type="text/javascript">
 

@@ -4,7 +4,7 @@
 			<form role="form" id="addAgent">
 			<div class="portlet box blue">
 			<div class="portlet-title">
-					<div class="caption"><i class="fa fa-user"></i>Add user</div>
+					<div class="caption"><i class="fa-solid fa-user"></i>Add user</div>
 					<a class="btn btn-success" href="<?php echo site_url("agents"); ?>" title="Back">Back</a>
 				</div>
 			</div>

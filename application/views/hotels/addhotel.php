@@ -151,7 +151,7 @@
 
                         <div class="col-md-12 my-2">
                             <div class="margiv-top-10">
-                                <button type="submit" class="btn btn-primary add_hotel">Add Hotel</button>
+                                <button type="submit" class="btn btn-primary add_hotel"><i class="fa-solid fa-plus"></i> Add Hotel</button>
                             </div>
                         </div>
                     </div> <!-- row -->                    

@@ -85,7 +85,7 @@
 																	<?php } ?>
 																</div>
 																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-																<i class="fa fa-plus"></i> Add new</a>
+																<i class="fa-solid fa-plus"></i> Add new</a>
 															</div>
 											</div>
 											<!-- END PERSONAL INFO TAB -->
@@ -129,7 +129,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 												</div>
@@ -172,7 +172,7 @@
 														<?php } ?>
 													</div>
 													<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-													<i class="fa fa-plus"></i> Add new</a>
+													<i class="fa-solid fa-plus"></i> Add new</a>
 												</div>
 											</div>
 											<!-- Promotion Signature Tab -->
@@ -226,7 +226,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 													<?php $hotel_notes = isset($term_meta->hotel_notes) ? unserialize( $term_meta->hotel_notes) : ""; 
@@ -260,7 +260,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 														<?php 
@@ -294,7 +294,7 @@
 																<?php } ?>	
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 											</div><!--end hotel exclusion-->
@@ -344,7 +344,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
 													</div>	
@@ -386,7 +386,7 @@
 																<?php } ?>
 															</div>
 															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
-															<i class="fa fa-plus"></i> Add new</a>
+															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>
 											</div><!--end How to book package--->
@@ -431,7 +431,7 @@
 															<?php } ?>
 														</div>
 														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
-														<i class="fa fa-plus"></i> Add new</a>
+														<i class="fa-solid fa-plus"></i> Add new</a>
 													</div>
 												</div>
 											</div><!--Amendment Policy (Prepend/Postpend)--->

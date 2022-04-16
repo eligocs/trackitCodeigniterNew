@@ -237,7 +237,7 @@
 														</div>
 													</div>
 												</div>
-												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add addrep"><i class="fa fa-plus"></i> Add</a>
+												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add addrep"><i class="fa-solid fa-plus"></i> Add</a>
 											</div>
 										</div>
 										<!-- Inclusion & Exclusion -->
@@ -261,7 +261,7 @@
 															</div>
 														</div>
 														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-inc-add">
-														<i class="fa fa-plus"></i> Add</a>
+														<i class="fa-solid fa-plus"></i> Add</a>
 													</div>
 													
 												</div>	
@@ -310,7 +310,7 @@
 															<?php } ?>	
 														</div>
 														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
-														<i class="fa fa-plus"></i> Add</a>
+														<i class="fa-solid fa-plus"></i> Add</a>
 													</div>
 												</div>
 												<div class="col-md-12">
@@ -331,7 +331,7 @@
 															</div>
 														</div><br>
 														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-														<i class="fa fa-plus"></i> Add</a>
+														<i class="fa-solid fa-plus"></i> Add</a>
 													</div>
 												</div>	
 											</div>
@@ -374,7 +374,7 @@
 												</div>
 												<p></p>
 												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-add">
-												<i class="fa fa-plus"></i> Add Hotel</a>
+												<i class="fa-solid fa-plus"></i> Add Hotel</a>
 											</div>						
 											<div class="mt-repeater-hotel-note tour_field_repeater">
 												<div data-repeater-list="hotel_note_meta">
@@ -411,7 +411,7 @@
 													<?php } ?>	
 												</div>
 												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-note">
-												<i class="fa fa-plus"></i> Add Note</a>
+												<i class="fa-solid fa-plus"></i> Add Note</a>
 											</div>
 										</div>
 										<div class="tab-pane" id="tab7">

@@ -11,7 +11,7 @@
 			<div class="portlet box blue mb0">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Add  <?php echo $booking_type; ?> Booking Details Flight/Train/Volvo
+						<i class="fa-solid fa-plus"></i>Add  <?php echo $booking_type; ?> Booking Details Flight/Train/Volvo
 					</div>
 					<a class="btn btn-success" href="<?php echo site_url("itineraries"); ?>" title="Back">Back</a>
 				</div>

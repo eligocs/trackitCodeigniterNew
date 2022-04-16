@@ -6,13 +6,12 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-cogs"></i>View All Vehicles
+                    <i class="fa-solid fa-taxi"></i> View All Vehicles
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("vehicles/add"); ?>" title="add Vehicle">Add
-                        Vehicle</a>
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("vehicles/add"); ?>" title="add Vehicle"><i class="fa-solid fa-plus"></i> Add Vehicle</a>
                 </div>
             </div>
-            <div class="portlet-body second_custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <div class="table-responsive margin-top-20">
                     <table id="cabs" class="table table-stirped display">
                         <thead>
@@ -31,10 +30,13 @@
                 </div>
             </div>
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
+<!-- End page-container -->
 </div>
+
 <!-- Modal -->
 <script type="text/javascript">
 jQuery(document).ready(function($) {

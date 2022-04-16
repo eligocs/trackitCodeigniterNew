@@ -10,36 +10,39 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-cogs"></i>View All Transporters
+                    <i class="fa-solid fa-truck-arrow-right"></i> View All Transporters
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("vehicles/transporteradd"); ?>"
-                        title="Add Transporter">Add Transporter</a>
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("vehicles/transporteradd"); ?>"
+                        title="Add Transporter"><i class="fa-solid fa-plus"></i> Add Transporter</a>
                 </div>
-                <div class="portlet-body second_custom_card">
-                    <div class="table-responsive margin-top-20">
-                        <table id="trans" class="table table-striped display">
-                            <thead>
-                                <tr>
-                                    <th> # </th>
-                                    <th> Transporter Name </th>
-                                    <th> Email</th>
-                                    <th> Contact</th>
-                                    <th> Address</th>
-                                    <th> Vehicles</th>
-                                    <th> Action </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!--data table goes here -->
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+                <div class="table-responsive margin-top-20">
+                    <table id="trans" class="table table-striped display">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Transporter Name </th>
+                                <th> Email</th>
+                                <th> Contact</th>
+                                <th> Address</th>
+                                <th> Vehicles</th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--data table goes here -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        <!-- End page-content -->
     </div>
-    <!-- END CONTENT BODY -->
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
 <!-- Modal -->
 <script type="text/javascript">
 jQuery(document).ready(function($) {

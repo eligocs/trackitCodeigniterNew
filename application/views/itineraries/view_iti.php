@@ -1154,7 +1154,7 @@
                                             <div class="col-md-12 other_docs margin-bottom-20">
                                                 <a href="javascript:;" id="add_other_docs_btn"
                                                     class="btn btn-success mt-repeater-add addrep">
-                                                    <i class="fa fa-plus"></i> Add Other Docs</a><span class="red"
+                                                    <i class="fa-solid fa-plus"></i> Add Other Docs</a><span class="red"
                                                     style="font-size: 10px;"> Please upload only ( jpg|jpeg|png|pdf ) files
                                                     and not more than 2MB.</span>
                                                 <div class="other_docs_sec" style="display:none;">

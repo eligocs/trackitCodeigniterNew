@@ -649,7 +649,7 @@
 													</div>
 												</div>
 											</div>
-											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add addrep"><i class="fa fa-plus"></i> Add</a>
+											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add addrep"><i class="fa-solid fa-plus"></i> Add</a>
 										</div>
 									</div>
 										<!-- Tour data preview -->
@@ -676,7 +676,7 @@
 												</div>
 											</div><br>
 											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-inc-add">
-											<i class="fa fa-plus"></i> Add</a>
+											<i class="fa-solid fa-plus"></i> Add</a>
 										</div>
 										
 									</div>	
@@ -725,7 +725,7 @@
 												<?php } ?>	
 											</div>
 											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
-											<i class="fa fa-plus"></i> Add</a>
+											<i class="fa-solid fa-plus"></i> Add</a>
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -747,7 +747,7 @@
 													</div>
 												</div>
 												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-												<i class="fa fa-plus"></i> Add</a>
+												<i class="fa-solid fa-plus"></i> Add</a>
 											</div>
 										</div><!--end Special Inclusion Section-->	
 										
@@ -790,7 +790,7 @@
 													<?php } ?>
 												</div><br>
 												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-												<i class="fa fa-plus"></i> Add</a>
+												<i class="fa-solid fa-plus"></i> Add</a>
 											</div>
 										</div><!--end Special Inclusion Section-->	
 									</div>	
@@ -832,7 +832,7 @@
 										</div>
 										<p></p>
 										<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-add">
-										<i class="fa fa-plus"></i> Add Hotel</a>
+										<i class="fa-solid fa-plus"></i> Add Hotel</a>
 										<?php //if ( isset( $user_role ) && $user_role == "99" || $user_role == "98"  ){
 										if ( $user_role == 99 || is_cost_manager() || is_super_manager() || is_sales_manager() ){	?>
 											<!--Rate Meta-->
@@ -921,7 +921,7 @@
 											<?php } ?>	
 										</div>
 										<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-note">
-										<i class="fa fa-plus"></i> Add Note</a>
+										<i class="fa-solid fa-plus"></i> Add Note</a>
 									</div>
 								</div>
 								<div class="tab-pane" id="tab7">

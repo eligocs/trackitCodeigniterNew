@@ -12,14 +12,15 @@ button#bElim {
         <div class="page-content">
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-users"></i>Add Room Rate</div>
-                    <a class="btn btn-success" href="<?php echo site_url("hotels/viewroomrates"); ?>"
-                        title="Back">Back</a>
+                    <div class="caption">
+                        <i class="fa-solid fa-plus"></i> Add Room Rate
+                    </div>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels/viewroomrates"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
 
-            <div class="second_custom_card">
-                <form role="form" id="addHotelRoomRate" action="<?php echo base_url( "hotels/add_room_rates" ); ?>"
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+                <form class="mb-0" role="form" id="addHotelRoomRate" action="<?php echo base_url( "hotels/add_room_rates" ); ?>"
                     method="post">
                     <?php //echo get_country_name(101);	?>
                     <div class="row">
@@ -65,7 +66,7 @@ button#bElim {
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
+                   
                     <style>
                     .single_rate_section {
                         margin-top: 10px;
@@ -185,14 +186,14 @@ button#bElim {
                                                         class="btn btn-danger mt-innerrepeater-delete">
                                                         <i class="fa fa-close"></i> Delete</a>
                                                 </div>
-                                                <div class="clearfix"></div>
+                                               
                                             </div>
                                         </div>
-                                        <div class="clearfix"></div>
+                                       
                                         <div class="col-md-12">
                                             <a href="javascript:;" data-repeater-create
                                                 class="clearfix btn btn-success">
-                                                <i class="fa fa-plus"></i> Add New Season</a>
+                                                <i class="fa-solid fa-plus"></i> Add New Season</a>
                                         </div>
                                     </div> -->
                                     <!--End inner repeater-->
@@ -208,7 +209,7 @@ button#bElim {
                         </div>
                         <!-- <a href="javascript:;" data-repeater-create
                             class="btn btn-success mt-repeater-add margin_left_15">
-                            <i class="fa fa-plus"></i> Add new</a> -->
+                            <i class="fa-solid fa-plus"></i> Add new</a> -->
                     </div>
                     <!--End field Reaper -->
 
@@ -219,15 +220,18 @@ button#bElim {
                             <button type="submit" class="btn green uppercase add_hotel">Add Hotel Room Rates</button>
                         </div>
                     </div> -->
-                    <div class="clearfix"></div>
+                   
                 </form>
             </div>
             <div id="addresEd"></div>
         </div>
-        <!-- END CONTENT BODY -->
+        <!-- End page-content -->
     </div>
-    <!-- Modal -->
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
+
 <script src="<?php echo base_url()?>site/assets/js/seteditable.js"></script>
 <script type="text/javascript">
 /* Hotel Exclusion repeater */

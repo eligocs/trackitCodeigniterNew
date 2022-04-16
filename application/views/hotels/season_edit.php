@@ -8,9 +8,9 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-plus"></i>Edit Season
+                    <i class="fa-solid fa-pen-to-square"></i> Edit Season
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("hotels/seasons"); ?>" title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels/seasons"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
             <form role="form" id="editSeason" method="post" action="<?php echo site_url("hotels/updateseason"); ?>">
@@ -47,7 +47,7 @@
                                                 </div>
                                                 <div class="col-md-1 my-2">
                                                     <a href="javascript:;" data-repeater-delete
-                                                    class="btn btn-outline-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
+                                                    class="btn btn-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
                                                     <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
@@ -75,7 +75,7 @@
                                     <?php } */ ?>
                                 </div>
                                 <div class="mb-1 mt-2">
-                                    <a href="javascript:;" data-repeater-create class="btn btn-outline-primary mt-repeater-add"> <i class="fa fa-plus"></i> Add new</a>
+                                    <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-add"> <i class="fa-solid fa-plus"></i> Add new</a>
                                 </div>
                             </div>
                         </div>
@@ -88,10 +88,12 @@
                 </div>
             </form>
         </div> 
+        <!-- End page-content -->
         <?php }else{ redirect("hotels/seasons"); }	?>
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-
+<!-- End page-container -->
 
 <!-- Modal -->
 <script>

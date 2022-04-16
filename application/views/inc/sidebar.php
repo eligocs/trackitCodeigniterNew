@@ -433,7 +433,7 @@
 
                      <li class="nav-item  ">
                          <a href="<?php echo site_url("marketing/viewcat"); ?>" class="nav-link ">
-                             <i class="icon-plus"></i>
+                             <i class="fa-solid fa-plus"></i>
                              <span class="title">Leads Categories</span>
                          </a>
                      </li>
@@ -992,7 +992,7 @@
 
                  <li class="nav-item  ">
                      <a href="<?php echo site_url("accommodation/add"); ?>" class="nav-link ">
-                         <i class="icon-plus"></i>
+                         <i class="fa-solid fa-plus"></i>
                          <span class="title">Add Accommodation Package</span>
                      </a>
                  </li>
@@ -1656,7 +1656,7 @@
 
                  <li class="nav-item  ">
                      <a href="<?php echo site_url("accommodation/add"); ?>" class="nav-link ">
-                         <i class="icon-plus"></i>
+                         <i class="fa-solid fa-plus"></i>
                          <span class="title">Add Accommodation Package</span>
                      </a>
                  </li>
@@ -1956,7 +1956,7 @@
 
                      <li class="nav-item  ">
                          <a href="<?php echo site_url("marketing/viewcat"); ?>" class="nav-link ">
-                             <i class="icon-plus"></i>
+                             <i class="fa-solid fa-plus"></i>
                              <span class="title">Marketing Categories</span>
                          </a>
                      </li>

@@ -4,7 +4,7 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-plus"></i>Add New Video
+                        <i class="fa-solid fa-plus"></i>Add New Video
                     </div>
                     <a class="btn btn-success" href="<?php echo site_url("clientsection/youtube"); ?>"
                         title="Back">Back</a>

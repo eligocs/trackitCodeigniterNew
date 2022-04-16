@@ -7,14 +7,14 @@
 					<div class="caption">
 						<i class="fa fa-hotel"></i>Hotel Name: <strong><?php  echo $hotel->hotel_name; ?></strong>
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("hotels"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
 			<!--Show success message if hotel edit/add -->
 			<?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
-			<div class="portlet-body custom_card">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<h3>Hotel Details</h3>
 				<div class="table-responsive">	
 					<table class="table table-condensed table-hover">	
@@ -77,7 +77,7 @@
 					<!--Edit Button-->
 					<?php if( !is_salesteam() ){ ?>
 					<div class="text-center">
-						<a title='Edit Hotel' href="<?php echo site_url("hotels/edit/{$hotel->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit Hotel</a>
+						<a title='Edit Hotel' href="<?php echo site_url("hotels/edit/{$hotel->id}"); ?>" class="btn btn-outline-secondary" ><i class="fa-solid fa-pen-to-square"></i> Edit Hotel</a>
 					</div>	
 					<?php } ?>
 				</div>	

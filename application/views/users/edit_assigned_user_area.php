@@ -17,7 +17,7 @@
 			<form role="form" method="post" action="<?php echo site_url('agents/update_assign_user_area/').$id; ?>" >
 			<div class="portlet box blue">
 			<div class="portlet-title">
-					<div class="caption"><i class="fa fa-user"></i>Assign user area </div>
+					<div class="caption"><i class="fa-solid fa-user"></i>Assign user area </div>
 					<a class="btn btn-success" href="<?php echo site_url("agents/assign_area"); ?>" title="Back">Back</a>
 				</div>
 			</div>

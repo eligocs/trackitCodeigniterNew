@@ -7,7 +7,7 @@
 			<div class="portlet box blue">
 			<div class="portlet-title ">
 				<div class="caption">
-					<i class="fa fa-user"></i> Welcome: <strong><?php echo $u_data->user_name; ?></strong>
+					<i class="fa-solid fa-user"></i> Welcome: <strong><?php echo $u_data->user_name; ?></strong>
 				</div>
 				<a class="btn btn-success" href="<?php echo site_url("dashboard"); ?>" title="Back">Back</a>
 			</div>

@@ -42,12 +42,12 @@
 				<?php if( !is_salesteam()){ ?>
 				<div class="text-center">
 					<a title='Edit user' href="<?php echo site_url("reference_customers/edit/{$muser->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-					OR <a class=""  href="<?php echo site_url("reference_customers/add"); ?>" title="add user"><i class="fa fa-plus"></i> Add new</a>
+					OR <a class=""  href="<?php echo site_url("reference_customers/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add new</a>
 				</div>	
 				<?php } ?>
 			</div>	
 			<a class="btn btn-danger mt-3" href="#" id="add_call_btn" title="Back"><i class="fa-solid fa-phone"></i> Add Call Info</a>
-					<div class="call_log" id="call_log_section" style="display: none;">
+					<div class="call_log bg-white p-3 mt-4 rounded-4 shadow-sm" id="call_log_section" style="display: none;">
 						<form id="call_detais_form" novalidate="novalidate">
 
 							<div class="call_type_seciton">

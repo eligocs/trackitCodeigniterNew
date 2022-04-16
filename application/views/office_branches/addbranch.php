@@ -9,7 +9,7 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-plus"></i>Add Office Branch Details
+                        <i class="fa-solid fa-plus"></i>Add Office Branch Details
                     </div>
                     <a class="btn btn-success" href="<?php echo site_url("terms/office_branches");?>"
                         title="Back">Back</a>

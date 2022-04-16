@@ -3415,7 +3415,9 @@ p {
 }
 
 .img-circle {
-    border-radius: 50% !important;height: 35px;width: 35px;}
+    border-radius: 50% !important;height: 35px;width: 35px;
+    object-fit: cover;
+    }
 
 .img-rounded {
     border-radius: 6px !important
@@ -36031,10 +36033,21 @@ td span.month {
     position: static !important;
 }
 
-.user-profile-image {
-    max-height: 150px !important;
-    max-width: 250px;
+.profile-userpic .user-profile-image {
+    max-height: 150px!important;
+    max-width: 150px;
     width: 100%;
+    border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile_left_sec {
+    max-height: 350px;
+}
+
+.profile_left_sec .profile-userpic{
+    margin-top: 15px;
 }
 
 .active.disabled.btn-success {
@@ -38576,17 +38589,19 @@ thead.thead-default tr {
 }
 
 .profile-usertitle {
-    line-height: 28px;
+    /* line-height: 28px;
     margin-top: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 15px; */
 }
 
+.profile_details {margin-top: 20px;line-height: 28px;}
+
 .profile-userpic {
-    margin-top: 22px;
+    /* margin-top: 22px; */
 }
 
 .profile-sidebar-portlet {
-    padding: 10px !important;
+    /* padding: 10px !important; */
 }
 
 .booking_items span {

@@ -389,7 +389,7 @@
                             <div class="col-md-12 other_docs margin-top-15">
                                 <a href="javascript:;" id="add_other_docs_btn"
                                     class="btn btn-success mt-repeater-add addrep">
-                                    <i class="fa fa-plus"></i> Add Other Docs</a>
+                                    <i class="fa-solid fa-plus"></i> Add Other Docs</a>
                                     <span class="text-danger d-block mt-1" style="font-size: 12px;"> Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
                                 <div class="other_docs_sec margin-top-20" style="display:none;">
                                     <div class="col-md-4">
@@ -672,7 +672,7 @@
                                     width="100" height="100" />
                             </div>
                             <div class="col-md-12 other_docs">
-                                <a href="javascript:;" id="add_other_docs_btn" class="btn btn-success mt-repeater-add addrep"> <i class="fa fa-plus"></i> Add Other Docs</a>
+                                <a href="javascript:;" id="add_other_docs_btn" class="btn btn-success mt-repeater-add addrep"> <i class="fa-solid fa-plus"></i> Add Other Docs</a>
                                 <span class="text-danger d-block mt-1" style="font-size: 12px;"> Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
                                 <div class="other_docs_sec margin-t" style="display:none;">
                                     <div class="col-md-4">

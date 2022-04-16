@@ -17,7 +17,7 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-plus"></i>Add Account Details
+                        <i class="fa-solid fa-plus"></i>Add Account Details
                     </div>
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts");?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>

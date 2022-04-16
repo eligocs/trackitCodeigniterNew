@@ -4,7 +4,7 @@
 			<?php //echo get_country_name(101);	?>
 			<div class="portlet box blue">
 			<div class="portlet-title">
-				<div class="caption"><i class="icon-plus"></i>All State Codes</div>
+				<div class="caption"><i class="fa-solid fa-plus"></i>All State Codes</div>
 				<a class="btn btn-success" href="<?php echo site_url("hotels"); ?>" title="Back">Back</a>
 			</div>
 			</div>

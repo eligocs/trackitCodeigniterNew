@@ -1340,7 +1340,7 @@ div#quotation_type_section,
                                                             <div class="col-md-12 other_docs mt-4">
                                                                 <a href="javascript:;" id="add_other_docs_btn"
                                                                     class="btn btn-success mt-repeater-add addrep">
-                                                                    <i class="fa fa-plus"></i> Add Other Docs</a><span
+                                                                    <i class="fa-solid fa-plus"></i> Add Other Docs</a><span
                                                                     class="text-danger" style="font-size: 10px;"> Please upload only (
                                                                     jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
                                                                 <div class="other_docs_sec mt-2" style="display:none;">

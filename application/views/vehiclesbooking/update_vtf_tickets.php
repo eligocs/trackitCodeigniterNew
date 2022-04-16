@@ -9,7 +9,7 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Update  <?php echo $booking_type; ?> Tickets
+						<i class="fa-solid fa-plus"></i>Update  <?php echo $booking_type; ?> Tickets
 					</div>
 					<a class="btn btn-success" href="<?php echo site_url("vehiclesbooking/allvehiclesbookings"); ?>" title="Back">Back</a>
 				</div>
@@ -326,7 +326,7 @@
 				<hr>
 				<div class="col-md-12 other_docs">
 					<a href="javascript:;" id="add_other_docs_btn" class="btn btn-success mt-repeater-add addrep">
-					<i class="fa fa-plus"></i> Add Other Docs</a><span class="red" style="font-size: 12px;"> Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
+					<i class="fa-solid fa-plus"></i> Add Other Docs</a><span class="red" style="font-size: 12px;"> Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
 					<div class="other_docs_sec" style="display: <?php echo isset( $vtf_booking_docs[0]->id ) && !empty($vtf_booking_docs[0]->id ) ? "none" : "block"; ?>">
 						<div class="col-md-4">
 							<div class="form-group2">

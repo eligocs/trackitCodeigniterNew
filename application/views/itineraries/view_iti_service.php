@@ -505,7 +505,7 @@
                     <div class="custom_title"><i class="fa fa-cab"></i> Cab Booking Details</div>
                     <?php if( !$cab_booking_status ){ ?>
                     <a href="<?php echo $add_cab_booking_link; ?>" class="btn btn-success pull-right"
-                        title="Book Cab"><i class="fa fa-plus"></i> Book New Cab</a>
+                        title="Book Cab"><i class="fa-solid fa-plus"></i> Book New Cab</a>
                     <?php } ?>
                 </div>
                 <div class="portlet-body">
@@ -598,7 +598,7 @@
                     <div class="custom_title"><i class="fa fa-plane"></i>Volvo/Train/Flight Booking Details</div>
                     <?php if( !$vtf_booking_status ){ ?>
                     <a href="<?php echo $add_vft_booking_link; ?>" class="btn btn-success pull-right"
-                        title="Book Hotel"><i class="fa fa-plus"></i> Book New</a>
+                        title="Book Hotel"><i class="fa-solid fa-plus"></i> Book New</a>
                     <?php } ?>
                 </div>
                 <div class="portlet-body ">
@@ -683,7 +683,7 @@
                     <div class="custom_title"><i class="fa fa-calendar"></i>Hotel Booking Details</div>
                     <?php if( !$hotel_booking_status ){ ?>
                     <a href="<?php echo $add_hotel_booking_link; ?>" class="btn btn-success pull-right"
-                        title="Book Hotel"><i class="fa fa-plus"></i> Book New Hotel</a>
+                        title="Book Hotel"><i class="fa-solid fa-plus"></i> Book New Hotel</a>
                     <?php } ?>
                 </div>
 

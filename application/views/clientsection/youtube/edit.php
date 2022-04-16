@@ -6,7 +6,7 @@ if( !empty( $youtube ) ){ ?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Edit youtube video
+						<i class="fa-solid fa-plus"></i>Edit youtube video
 					</div>
 					<a class="btn btn-success" href="<?php echo site_url("clientsection/youtube"); ?>" title="Back">Back</a>
 				</div>

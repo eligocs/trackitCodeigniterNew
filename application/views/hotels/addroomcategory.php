@@ -4,29 +4,27 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Add New Room Category
+					<i class="fa-solid fa-plus"></i> Add New Room Category
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("hotels/viewroomcategory"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels/viewroomcategory"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
 		
-			<div class="portlet-body">
-				<div class="bg-white p-3 rounded-4 shadow-sm">
-					<form role="form" id="addRoomCategory">
-						<div class="row">
-							<div class="col-md-6 my-2">
-								<div class="form-group">
-									<label class="control-label">Room Category</label>
-									<input type="text" placeholder="Room Category" name="room_cat_name" class="form-control" value=""/> 
-								</div>
-							</div>
-							<div class="col-md-12 my-2">
-								<button type="submit" class="btn green uppercase add_roomcategory">Add Room Category</button>
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<form class="mb-0" role="form" id="addRoomCategory">
+					<div class="row">
+						<div class="col-md-6 my-2">
+							<div class="form-group">
+								<label class="control-label">Room Category</label>
+								<input type="text" placeholder="Room Category" name="room_cat_name" class="form-control" value=""/> 
 							</div>
 						</div>
-					</form>
-					<div id="addresEd" class="sam_res"></div>	
-				</div>	
+						<div class="col-md-12 my-2">
+							<button type="submit" class="btn green uppercase add_roomcategory">Add Room Category</button>
+						</div>
+					</div>
+				</form>
+				<div id="addresEd" class="sam_res"></div>	
 			</div>
 			<!-- End portlet-body -->
 		</div>	

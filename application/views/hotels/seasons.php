@@ -1,26 +1,27 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<?php 
-		$message = $this->session->flashdata('success'); 
-		$err = $this->session->flashdata('error'); 
-		if($err){ echo '<span class="help-block help-block-error1 red">'.$err.'</span>';} 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
-		 <!-- BEGIN SAMPLE TABLE PORTLET-->
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-cogs"></i>All Seasons
+			<?php 
+			$message = $this->session->flashdata('success'); 
+			$err = $this->session->flashdata('error'); 
+			if($err){ echo '<span class="help-block help-block-error1 red">'.$err.'</span>';} 
+			if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+			?>
+		 	<!-- BEGIN SAMPLE TABLE PORTLET-->
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa-solid fa-calendar-days"></i> All Seasons
+					</div>
+					
+					<?php $count_room_cat = isset($seasons) ? count($seasons) : 0 ; ?>
+					<!--Hide add room category button if seasons equal to three-->
+					<?php if( $count_room_cat < 3 ){ ?>
+						<a class="btn btn-primary float-end" href="<?php echo site_url("hotels/addseason"); ?>" title="Add Season"><i class="fa-solid fa-plus"></i> Add Season</a>
+					<?php } ?>	
 				</div>
-				
-				<?php $count_room_cat = isset($seasons) ? count($seasons) : 0 ; ?>
-				<!--Hide add room category button if seasons equal to three-->
-				<?php if( $count_room_cat < 3 ){ ?>
-					<a class="btn btn-success" href="<?php echo site_url("hotels/addseason"); ?>" title="Add Season">Add Season</a>
-				<?php } ?>	
 			</div>
-			<div class="portlet-body">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table id="hotels" class="table table-striped display">
 						<thead>
@@ -53,13 +54,13 @@
 				</div>
 			</div>
 		</div>
-		
-		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
 <!-- Modal -->
- 
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	$(document).on("click", ".ajax_delete_season", function(){

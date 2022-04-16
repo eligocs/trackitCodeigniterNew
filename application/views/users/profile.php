@@ -9,255 +9,220 @@
 	            <div class="portlet box blue">
 	                <div class="portlet-title ">
 	                    <div class="caption">
-	                        <i class="fa fa-user"></i> Welcome: <strong><?php echo $u_data->user_name; ?></strong>
+	                        <i class="fa-solid fa-user"></i> Welcome: <strong><?php echo $u_data->user_name; ?></strong>
 	                    </div>
-	                    <a class="btn btn-success" href="<?php echo site_url("dashboard"); ?>" title="Back">Back</a>
+	                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("dashboard"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 	                </div>
 	            </div>
-	            <div class="row">
-	                <div class="col-md-12">
-	                    <!-- BEGIN PROFILE SIDEBAR -->
-	                    <div class="profile-sidebar">
-	                        <!-- PORTLET MAIN -->
-	                        <div class="portlet light profile-sidebar-portlet ">
-	                            <!-- SIDEBAR USERPIC -->
-	                            <div class="profile-userpic">
-	                                <?php $defalut_logo = $u_data->gender == "female" ? "profile_f.png" : "profile_m.png"; ?>
-	                                <?php $usr_pic = $u_data->user_pic ? $u_data->user_pic: $defalut_logo; ?>
-	                                <img alt="" class="img-responsive user-profile-image"
-	                                    src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
-	                            </div>
-	                            <!-- END SIDEBAR USERPIC -->
-	                            <!-- SIDEBAR USER TITLE -->
-	                            <div class="profile-usertitle">
-	                                <div class="profile-usertitle-name"> Name: 
-										<strong>
-	                                        <?php echo !empty( $u_data->first_name ) ? ucfirst($u_data->first_name) ." ". ucfirst($u_data->last_name): ucfirst($u_data->user_name); ?>
-	                                    </strong></div>
-	                                <div class="profile-usertitle-name">Email:
-	                                    <strong><?php echo $u_data->email; ?></strong>
-	                                    <div>
-	                                        <div class="profile-usertitle-name">Mobile:
-	                                            <strong><?php echo $u_data->mobile; ?></strong>
-	                                            <div>
-	                                                <div class="profile-usertitle-job">
-	                                                    <strong class="red">
-	                                                        <?php if($u_data->user_type == 99){
-																echo $u_data->is_super_admin == 1 ? "Super Admin" : "Administrator";
-																}elseif($u_data->user_type == 98){
-																	$agent_type = get_manager_type( $u_data->is_super_manager );
-																	/* if(   $u_data->is_super_manager == 1 ){
-																		$agent_type = "Super Manager";
-																	}else if( $u_data->is_super_manager == 2 ){
-																		$agent_type = "Leads Manager";
-																	}else{
-																		$agent_type = get_role_name($u_data->user_type);
-																	} */
-																	echo $agent_type; 
-																	//echo $u_data->is_super_manager == 1 ? "Super Manager" : "Manager";
-																	//echo $u_data->is_super_manager == 1 ? "Super Manager" : $u_data->is_super_manager == 2 ? "Leads Manager" : "Manager";
-																}else{
-																	echo get_role_name($u_data->user_type);
-																}
-															?> 
-														</strong>
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                    <!-- END BEGIN PROFILE SIDEBAR -->
-	                                    <!-- BEGIN PROFILE CONTENT -->
-	                                    <div class="profile-content">
-	                                        <div class="row">
-	                                            <div class="col-md-12">
-	                                                <div class="portlet light ">
-	                                                    <div class="portlet-title tabbable-line">
-	                                                        <div class="caption caption-md">
-	                                                            <i class="icon-globe theme-font hide"></i>
-	                                                            <span
-	                                                                class="caption-subject font-blue-madison bold uppercase">Profile
-	                                                                Account</span>
-	                                                        </div>
+				<!-- BEGIN PROFILE SIDEBAR -->
+				<div class="profile-sidebar">
+					<!-- PORTLET MAIN -->
+					<div class="profile-sidebar-portlet">
+						<div class="profile-usertitle">
+							<div class="row ms-0">
+								<!-- Profile Preview Details -->
+								<div class="col-md-3 p-3 profile_left_sec bg-white rounded-4 shadow-sm text-center">
+									<div class="profile-userpic">
+										<?php $defalut_logo = $u_data->gender == "female" ? "profile_f.png" : "profile_m.png"; ?>
+										<?php $usr_pic = $u_data->user_pic ? $u_data->user_pic: $defalut_logo; ?>
+										<img alt="" class="img-responsive user-profile-image" src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
+									</div>	
+									<div class="profile_details">
+										<div>
+											<strong class="red">
+												<?php if($u_data->user_type == 99){
+													echo $u_data->is_super_admin == 1 ? "Super Admin" : "Administrator";
+													}elseif($u_data->user_type == 98){
+														$agent_type = get_manager_type( $u_data->is_super_manager );
+														echo $agent_type; 
+													}else{
+														echo get_role_name($u_data->user_type);
+													}
+												?> 
+											</strong>
+										</div>
+										<div>
+											<span>Name: </span>
+											<strong>
+												<?php echo !empty( $u_data->first_name ) ? ucfirst($u_data->first_name) ." ". ucfirst($u_data->last_name): ucfirst($u_data->user_name); ?>
+											</strong>
+										</div>
+										<div>
+											<span>Mobile:</span>
+											<strong><?php echo $u_data->mobile; ?></strong>
+										</div>
+										<div>
+											<span>Email :</span>
+											<strong><?php echo $u_data->email; ?></strong>
+										</div>
+									</div>
+								</div>
+								<!-- End Profile Preview Details -->
+								<!-- Start Tab Area -->
+								<div class=" col-md-9">
+									<!-- END BEGIN PROFILE SIDEBAR -->
+									<!-- BEGIN PROFILE CONTENT -->
+									<div class="profile-content">
+										<div class="light p-3 portlet rounded-4 shadow-sm">
+											<div class="portlet-title tabbable-line">
+												<div class="caption caption-md">
+													<i class="icon-globe theme-font hide"></i>
+													<span
+														class="caption-subject font-blue-madison bold uppercase">Profile
+														Account</span>
+												</div>
 
-	                                                        <ul class="nav nav-tabs  justify-content-end">
-	                                                            <li class="active">
-	                                                                <a href="#tab_1_1" data-toggle="tab">Personal Info</a>
-	                                                            </li>
-	                                                            <li>
-	                                                                <a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
-	                                                            </li>
-	                                                            <li>
-	                                                                <a href="#tab_1_3" data-toggle="tab">Change
-	                                                                    Password</a>
-	                                                            </li>
+												<ul class="nav nav-tabs  justify-content-end">
+													<li class="active">
+														<a href="#tab_1_1" data-toggle="tab">Personal Info</a>
+													</li>
+													<li>
+														<a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
+													</li>
+													<li>
+														<a href="#tab_1_3" data-toggle="tab">Change
+															Password</a>
+													</li>
 
-	                                                        </ul>
-	                                                    </div>
-	                                                    <div class="portlet-body">
-	                                                        <div class="tab-content">
-	                                                            <!-- PERSONAL INFO TAB -->
-	                                                            <div class="tab-pane active" id="tab_1_1">
-	                                                                <form role="form" id="UpdateForm"
-	                                                                    enctype="multipart/form-data">
-	                                                                    <div class="form-group my-2">
-	                                                                        <label class="control-label">First Name</label>
-	                                                                        <input required type="text" name="firstname"
-	                                                                            placeholder="First Name"
-	                                                                            class="form-control"
-	                                                                            value="<?php echo $u_data->first_name;?>" />
-	                                                                    </div>
+												</ul>
+											</div>
+											<div class="portlet-body">
+												<div class="tab-content">
+													<!-- PERSONAL INFO TAB -->
+													<div class="tab-pane active" id="tab_1_1">
+														<form class="mb-0" role="form" id="UpdateForm"
+															enctype="multipart/form-data">
+															<div class="form-group mb-3">
+																<label class="control-label">First Name</label>
+																<input required type="text" name="firstname" placeholder="First Name" class="form-control" value="<?php echo $u_data->first_name;?>" />
+															</div>
 
-	                                                                    <div class="form-group my-2">
-	                                                                        <label class="control-label">Last Name</label>
-	                                                                        <input required type="text"
-	                                                                            placeholder="Last Name" name="lastname"
-	                                                                            class="form-control"
-	                                                                            value="<?php echo $u_data->last_name;?>" />
-	                                                                    </div>
+															<div class="form-group mb-3">
+																<label class="control-label">Last Name</label>
+																<input required type="text" placeholder="Last Name" name="lastname" class="form-control" value="<?php echo $u_data->last_name;?>" />
+															</div>
 
-	                                                                    <div class="form-group my-2">
-	                                                                        <label class="control-label">Mobile
-	                                                                            Number</label>
-	                                                                        <input required type="text"
-	                                                                            placeholder="Mobile" name="mobile"
-	                                                                            class="form-control"
-	                                                                            value="<?php echo $u_data->mobile;?>" />
-	                                                                    </div>
+															<div class="form-group mb-3">
+																<label class="control-label">Mobile Number</label>
+																<input required type="text" placeholder="Mobile" name="mobile" class="form-control" value="<?php echo $u_data->mobile;?>" />
+															</div>
 
-	                                                                    <div class="form-group my-2">
-	                                                                        <label class="control-label">Gender</label>
-	                                                                        <input required name="gender" value="male"
-	                                                                            <?php if($u_data->gender=='male'){ echo "checked=checked";}  ?>
-	                                                                            type="radio" id="lmale"> <label
-	                                                                            for="lmale">Male</label>
-	                                                                        <input name="gender"
-	                                                                            <?php if($u_data->gender=='female'){ echo "checked=checked";}  ?>
-	                                                                            value="female" type="radio" id="lfemale">
-	                                                                        <label for="lfemale">Female</label>
-	                                                                    </div>
+															<div class="form-group mb-3">
+																<label class="control-label">Gender</label>
 
-	                                                                    <div class="margiv-top-10 my-2">
-	                                                                        <input type="hidden" name="user_id"
-	                                                                            value="<?php echo $u_data->user_id;?>" />
-	                                                                        <button type="submit"
-	                                                                            class="btn green uppercase update_profile">Update
-	                                                                            Profile</button>
-	                                                                    </div>
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" required name="gender" value="male" <?php if($u_data->gender=='male'){ echo "checked=checked";}  ?> type="radio" id="lmale">
+																	<label class="from-check-label" for="lmale">Male</label>
+																</div>
+																
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" name="gender" <?php if($u_data->gender=='female'){ echo "checked=checked";}  ?> value="female" type="radio" id="lfemale">
+																	<label class="from-check-label" for="lfemale">Female</label>
+																</div>
+																
+															</div>
 
-	                                                                </form>
-	                                                                <div id="reponseUpdate"></div>
-	                                                            </div>
-	                                                            <!-- END PERSONAL INFO TAB -->
-	                                                            <!-- CHANGE AVATAR TAB -->
-	                                                            <div class="tab-pane" id="tab_1_2">
-	                                                                <form role="form" id="changePic"
-	                                                                    enctype="multipart/form-data">
-	                                                                    <div class="form-group">
-	                                                                        <div class="col-md-6">
-	                                                                            <div id="upload-demo" style="width:400px;">
-	                                                                            </div>
+															<div class="margiv-top-10">
+																<input type="hidden" name="user_id" value="<?php echo $u_data->user_id;?>" />
+																<button type="submit" class="btn green uppercase update_profile">Update Profile</button>
+															</div>
 
-	                                                                            <div>
-	                                                                                <span class="btn default btn-file">
-	                                                                                    <span class="fileinput-newa"> Click
-	                                                                                        Here To Change </span>
-	                                                                                    <span class="fileinput-existss">
-	                                                                                        Avatar </span>
-	                                                                                    <input id="profile_pic" type="file"
-	                                                                                        id="profile_pic"
-	                                                                                        name="profile_pic"> </span>
-	                                                                            </div>
+														</form>
+														<div id="reponseUpdate"></div>
+													</div>
+													<!-- END PERSONAL INFO TAB -->
+													<!-- CHANGE AVATAR TAB -->
+													<div class="tab-pane" id="tab_1_2">
+														<form class="mb-0" role="form" id="changePic"
+															enctype="multipart/form-data">
+															<div class="form-group row">
+																<div class="col">
+																	<div id="upload-demo" style="width:400px;">
+																	</div>
 
-	                                                                            <div class="margin-top-10 clearfix">
-	                                                                                <span class="label label-danger">NOTE!
-	                                                                                </span>
-	                                                                                <span>&nbsp; &nbsp; Image size not
-	                                                                                    bigger then 1 MB and size (350 X
-	                                                                                    200).</span>
-	                                                                            </div>
-	                                                                        </div>
-	                                                                        <div class="col-md-6">
-	                                                                            <div class="fileinput fileinput-new"
-	                                                                                data-provides="fileinput">
-	                                                                                <div class="fileinput-new thumbnail"
-	                                                                                    style="width: 350px; height: 200px;">
-	                                                                                    <img alt="" class="img-responsive"
-	                                                                                        src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
-	                                                                                </div>
+																	<div>
+																		<span class="btn default btn-file">
+																			<span class="fileinput-newa"> Click
+																				Here To Change </span>
+																			<span class="fileinput-existss">
+																				Avatar </span>
+																			<input id="profile_pic" type="file"
+																				id="profile_pic"
+																				name="profile_pic"> </span>
+																	</div>
 
-	                                                                            </div>
-	                                                                        </div>
-	                                                                    </div>
-	                                                                    <div class="margin-top-10 clearfix"></div>
-	                                                                    <hr>
-	                                                                    <div class="margin-top-10">
-	                                                                        <input type="hidden" id="avatar_user_id"
-	                                                                            name="user_id"
-	                                                                            value="<?php echo $u_data->user_id;?>" />
-	                                                                        <button type="submit"
-	                                                                            class="btn green uppercase upload-result">Update
-	                                                                            Profile</button>
-	                                                                    </div>
-	                                                                </form>
-	                                                                <div id="changePicRes"></div>
-	                                                            </div>
-	                                                            <!-- END CHANGE AVATAR TAB -->
-	                                                            <!-- CHANGE PASSWORD TAB -->
-	                                                            <div class="tab-pane" id="tab_1_3">
-	                                                                <form id="changePass">
-	                                                                    <div class="form-group  my-2">
-	                                                                        <label class="control-label">Current
-	                                                                            Password</label>
-	                                                                        <input required type="password"
-	                                                                            class="form-control"
-	                                                                            placeholder="Enter your current password"
-	                                                                            name="oldPass" />
-	                                                                    </div>
-	                                                                    <div class="form-group  my-2">
-	                                                                        <label class="control-label">New
-	                                                                            Password</label>
-	                                                                        <input required id="password"
-	                                                                            placeholder="Enter new password"
-	                                                                            type="password" class="form-control"
-	                                                                            name="currentPass" />
-	                                                                    </div>
-	                                                                    <div class="form-group  my-2">
-	                                                                        <label class="control-label">Retype
-	                                                                            Password</label>
-	                                                                        <input required type="password"
-	                                                                            placeholder="Retype new password"
-	                                                                            class="form-control"
-	                                                                            name="password_again" />
-	                                                                    </div>
+																	<div class="margin-top-10 clearfix">
+																		<span class="label label-danger">NOTE!
+																		</span>
+																		<span>&nbsp; &nbsp; Image size not
+																			bigger then 1 MB and size (350 X
+																			200).</span>
+																	</div>
+																</div>
+																<div class="col">
+																	<div class="fileinput fileinput-new"
+																		data-provides="fileinput">
+																		<div class="fileinput-new thumbnail"
+																			style="width: 350px; height: 200px;">
+																			<img alt="" class="img-responsive"
+																				src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
+																		</div>
 
-	                                                                    <div class="margin-top-10  my-2">
-	                                                                        <input type="hidden" name="user_id"
-	                                                                            value="<?php echo $u_data->user_id;?>" />
-	                                                                        <button type="submit"
-	                                                                            class="btn green uppercase">Change
-	                                                                            Password</button>
-	                                                                    </div>
-	                                                                </form>
-	                                                                <div id="ajaxResChangePass"></div>
-	                                                            </div>
-	                                                            <!-- END CHANGE PASSWORD TAB -->
+																	</div>
+																</div>
+															</div>
+															<div class="margin-top-10 clearfix"></div>
+															<hr>
+															<div class="margin-top-10">
+																<input type="hidden" id="avatar_user_id"
+																	name="user_id"
+																	value="<?php echo $u_data->user_id;?>" />
+																<button type="submit"
+																	class="btn green uppercase upload-result">Update
+																	Profile</button>
+															</div>
+														</form>
+														<div id="changePicRes"></div>
+													</div>
+													<!-- END CHANGE AVATAR TAB -->
+													<!-- CHANGE PASSWORD TAB -->
+													<div class="tab-pane" id="tab_1_3">
+														<form id="changePass">
+															<div class="form-group  mb-3">
+																<label class="control-label">Current Password</label>
+																<input required type="password" class="form-control" placeholder="Enter your current password" name="oldPass" />
+															</div>
+															<div class="form-group  mb-3">
+																<label class="control-label">New Password</label>
+																<input required id="password" placeholder="Enter new password" type="password" class="form-control" name="currentPass" />
+															</div>
+															<div class="form-group  mb-3">
+																<label class="control-label">Retype Password</label>
+																<input required type="password" placeholder="Retype new password" class="form-control" name="password_again" />
+															</div>
 
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                    <!-- END PROFILE CONTENT -->
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <!-- END CONTENT BODY -->
-	                    </div>
-	                    <!-- END CONTENT -->
+															<div class="margin-top-12">
+																<input type="hidden" name="user_id" value="<?php echo $u_data->user_id;?>" />
+																<button type="submit" class="btn green uppercase">Change Password</button>
+															</div>
+														</form>
+														<div id="ajaxResChangePass"></div>
+													</div>
+													<!-- END CHANGE PASSWORD TAB -->
 
-	                </div>
-	            </div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- END PROFILE CONTENT -->
+								</div>
+								<!-- End Tab Area -->
+							</div>
+						</div>
+					</div>
+					<!-- END CONTENT BODY -->
+				</div>
+				<!-- END CONTENT -->
 	        </div>
 	    </div>
 	</div>

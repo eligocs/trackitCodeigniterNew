@@ -5,7 +5,7 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption">
-               <i class="fa-solid fa-users"></i> All Reference Customers
+                  <i class="fa-solid fa-users"></i> All Reference Customers
                </div>
                <a class="btn btn-primary float-end" href="<?php echo site_url("Reference_customers/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add Reference Customer</a>
             </div>

@@ -335,7 +335,7 @@
 																</div>
 																	<div class="clearfix"></div>
 																	<a href="javascript:;" data-repeater-create class="clearfix btn btn-success">
-																	<i class="fa fa-plus"></i>Add New</a>
+																	<i class="fa-solid fa-plus"></i>Add New</a>
 																</div>
 															<?php } ?>	<!--inner meta-->
 															<div class="clearfix"></div>
@@ -434,7 +434,7 @@
 																</div>
 																<div class="clearfix"></div>
 																<a href="javascript:;" data-repeater-create class="clearfix btn btn-success">
-																<i class="fa fa-plus"></i>Add New</a>
+																<i class="fa-solid fa-plus"></i>Add New</a>
 															</div><!--End inner repeater-->
 															
 															<div class="mt-repeater-hotel-input col-md-1">
@@ -447,7 +447,7 @@
 												<?php } ?>	
 											</div>
 											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-add">
-											<i class="fa fa-plus"></i> Add Hotel</a>
+											<i class="fa-solid fa-plus"></i> Add Hotel</a>
 											<hr>
 										</div>
 										<div class="mt-repeater-hotel-note tour_field_repeater">
@@ -507,7 +507,7 @@
 												<?php } ?>	
 											</div>
 											<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-note">
-											<i class="fa fa-plus"></i> Add Note</a>
+											<i class="fa-solid fa-plus"></i> Add Note</a>
 										</div>
 									</div>
 									<div class="tab-pane" id="tab3">
@@ -550,7 +550,7 @@
 													<?php }?>	
 												</div>	
 												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-inc-add">
-												<i class="fa fa-plus"></i> Add</a>
+												<i class="fa-solid fa-plus"></i> Add</a>
 											</div>
 											<div class="clearfix"></div>
 											<div class="col-md-12">
@@ -591,7 +591,7 @@
 																<?php } ?>
 														</div><br>
 														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-														<i class="fa fa-plus"></i> Add</a>
+														<i class="fa-solid fa-plus"></i> Add</a>
 													</div>
 												</div><!--END Special Inclusion-->
 												<div class="clearfix"></div>
@@ -651,7 +651,7 @@
 															<?php } ?>
 														</div><br>
 														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-														<i class="fa fa-plus"></i> Add</a>
+														<i class="fa-solid fa-plus"></i> Add</a>
 													</div>
 												</div><!-- END BENEFITES OF BOOK WITH SY-->
 											</div>	
@@ -707,7 +707,7 @@
 													<?php } ?>	
 												</div>
 												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
-												<i class="fa fa-plus"></i> Add</a>
+												<i class="fa-solid fa-plus"></i> Add</a>
 											</div>
 										</div>
 										<div class="clearfix"></div>

@@ -4,7 +4,7 @@
 		<div class="portlet box blue">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="icon-plus"></i>Book Cab
+					<i class="fa-solid fa-plus"></i>Book Cab
 				</div>
 				<a class="btn btn-success" href="<?php echo site_url("vehiclesbooking"); ?>" title="Back">Back</a>
 			</div>

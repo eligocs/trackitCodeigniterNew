@@ -28,7 +28,7 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Update Receipt
+						<i class="fa-solid fa-plus"></i>Update Receipt
 						<span class=''> &nbsp; &nbsp; Lead ID: <strong> <?php echo $invoice[0]->lead_id; ?></strong></span>
 					</div>
 					

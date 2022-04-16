@@ -3,7 +3,7 @@
 		<div class="page-content">
 			<div class="portlet box blue">
 			<div class="portlet-title">
-					<div class="caption"><i class="fa fa-user"></i>Edit user</div>
+					<div class="caption"><i class="fa-solid fa-user"></i>Edit user</div>
 					<a class="btn btn-success" href="<?php echo site_url("marketing"); ?>" title="Back">Back</a>
 				</div>
 			</div>

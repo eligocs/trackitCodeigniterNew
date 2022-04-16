@@ -5,7 +5,7 @@
 		<div class="page-content">
 			<div class="portlet box blue">
 				<div class="portlet-title">
-						<div class="caption"><i class="fa fa-user"></i>Edit Team</div>
+						<div class="caption"><i class="fa-solid fa-user"></i>Edit Team</div>
 						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents/teamleaders"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>

@@ -78,7 +78,7 @@
 								?>
 								</div>
 								<a href="javascript:;" data-repeater-create="" class="btn btn-success mt-repeater-add">
-									<i class="fa fa-plus"></i> Add New Day Wise Itineary</a>
+									<i class="fa-solid fa-plus"></i> Add New Day Wise Itineary</a>
 							</div>
 							</div>
 							<div class="col-md-6">
@@ -103,7 +103,7 @@
 								?>
 								</div>
 								<a href="javascript:;" data-repeater-create="" class="btn btn-success mt-repeater-add">
-									<i class="fa fa-plus"></i> Add </a>
+									<i class="fa-solid fa-plus"></i> Add </a>
 							</div>
 							</div>
 

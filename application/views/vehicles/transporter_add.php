@@ -4,13 +4,13 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-plus"></i>Add Transporter:
+                        <i class="fa-solid fa-plus"></i>Add Transporter:
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("vehicles/transporters"); ?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("vehicles/transporters"); ?>"
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
-            <div class="portlet-body second_custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <form role="form" id="addTranspoter">
                     <div class="row">
                         <div class="col-md-4 my-2">
@@ -60,7 +60,8 @@
                             </div>
                         </div>
                         <div class="col-md-12 my-2">
-                            <button type="submit" class="btn green uppercase add_trans">Add Transpoter</button>
+                            <button type="submit" class="btn green uppercase add_trans"><i class="fa-solid fa-plus"></i> 
+                            Add Transpoter</button>
                         </div>
                     </div>
                 </form>

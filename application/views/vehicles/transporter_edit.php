@@ -1,82 +1,95 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<?php if($vehicles){ 	$vehicle = $vehicles[0]; ?>
+			<?php if($vehicles){ 	$vehicle = $vehicles[0]; ?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
-					<div class="caption"><i class="fa fa-users"></i>Vehicle Name: <strong><?php  echo $vehicle->trans_name; ?></strong></div>
-					<a class="btn btn-success" href="<?php echo site_url("vehicles/transporters"); ?>" title="Back">Back</a>
+					<div class="caption">
+						<i class="fa-solid fa-pen-to-square"></i> Vehicle Name: 
+						<strong><?php  echo $vehicle->trans_name; ?></strong>
+					</div>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("vehicles/transporters"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
-			<form role="form" id="editTrans">
-			<div class="col-md-4">
-				<div class="form-group">
-					<label class="control-label">Transporter Name*:</label>
-					<input required type="text" placeholder="Transporter Name" name="trans_name" class="form-control" value="<?php echo $vehicle->trans_name; ?>"/> 
-				</div>
-				</div>
-				<div class="col-md-4">
-				<div class="form-group">
-					<label class="control-label">Email*:</label>
-					<input type="email" placeholder="Email" name="trans_email" class="form-control" value="<?php echo $vehicle->trans_email; ?>"/> 
-				</div>
-				</div>
-				<div class="col-md-4">
-				<div class="form-group">
-					<label class="control-label">Contact*:</label>
-					<input required type="number" placeholder="Contact Number" name="trans_contact" class="form-control" value="<?php echo $vehicle->trans_contact; ?>"/> 
-				</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label" >Address:</label>
-					<textarea required name="trans_address" class="form-control"  placeholder="Transporter Full Address"><?php echo $vehicle->trans_address; ?></textarea>
-				</div>
-				</div>
-				<?php 
-					$car_list = $vehicle->trans_cars_list;
-					$c = "";
-					if( !empty($car_list) ){
-						$clist = explode(",",$car_list);
-					}
-				?>
-					<div class="col-md-6">
-				<div class="form-group">
-					<label class="control-label">Select Vehicles: </label>
-					<select required multiple name="trans_cars_list[]" class="form-control">
-						<?php $cars = get_car_categories(); 
-							if( $cars ){
-								foreach($cars as $car){ ?>
-								<?php if( !empty($car_list)){ ?>
-									<option value="<?php echo $car->id;?>" <?php if ( in_array($car->id, $clist ) ) { ?> selected="selected" <?php } ?> > <?php echo $car->car_name ; ?></option>
-								<?php }else{ ?>
-									<option value="<?php echo $car->id;?>"> <?php echo $car->car_name ; ?></option>
-								<?php } 
-								}
-							}else{
-								echo '<option value="">No Transporter available. </option>';
+			<div class="bg-white p-3 rounded-4 shadow-sm">
+				<form class="mb-0" role="form" id="editTrans">
+					<div class="row">
+						<div class="col-md-4 my-2">
+							<div class="form-group">
+								<label class="control-label">Transporter Name*:</label>
+								<input required type="text" placeholder="Transporter Name" name="trans_name" class="form-control" value="<?php echo $vehicle->trans_name; ?>"/> 
+							</div>
+						</div>
+
+						<div class="col-md-4 my-2">
+							<div class="form-group">
+								<label class="control-label">Email*:</label>
+								<input type="email" placeholder="Email" name="trans_email" class="form-control" value="<?php echo $vehicle->trans_email; ?>"/> 
+							</div>
+						</div>
+
+						<div class="col-md-4 my-2">
+							<div class="form-group">
+								<label class="control-label">Contact*:</label>
+								<input required type="number" placeholder="Contact Number" name="trans_contact" class="form-control" value="<?php echo $vehicle->trans_contact; ?>"/> 
+							</div>
+						</div>
+						
+						<div class="col-md-6 my-2">
+							<div class="form-group">
+								<label class="control-label" >Address:</label>
+								<textarea required name="trans_address" class="form-control"  placeholder="Transporter Full Address"><?php echo $vehicle->trans_address; ?></textarea>
+							</div>
+						</div>
+
+						<?php 
+							$car_list = $vehicle->trans_cars_list;
+							$c = "";
+							if( !empty($car_list) ){
+								$clist = explode(",",$car_list);
 							}
 						?>
-					</select>
-				</div>
-				</div>
-				<hr>
-				<div class="margiv-top-10">
-					<input type="hidden" name="id" id="tra_id" value="<?php echo $vehicle->id;?>"/>
-					<button type="submit" class="btn green uppercase edit_hotel">Update Transporter</button>
-				</div>
-			</form>
-			<div id="editHotelRes"></div>		
-		<?php }else{
-			echo "Invalid Trasporter id";
-		}?>
+						<div class="col-md-6 my-2">
+							<div class="form-group">
+								<label class="control-label">Select Vehicles: </label>
+								<select required multiple name="trans_cars_list[]" class="form-control">
+									<?php $cars = get_car_categories(); 
+										if( $cars ){
+											foreach($cars as $car){ ?>
+											<?php if( !empty($car_list)){ ?>
+												<option value="<?php echo $car->id;?>" <?php if ( in_array($car->id, $clist ) ) { ?> selected="selected" <?php } ?> > <?php echo $car->car_name ; ?></option>
+											<?php }else{ ?>
+												<option value="<?php echo $car->id;?>"> <?php echo $car->car_name ; ?></option>
+											<?php } 
+											}
+										}else{
+											echo '<option value="">No Transporter available. </option>';
+										}
+									?>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-12 my-2">
+							<input type="hidden" name="id" id="tra_id" value="<?php echo $vehicle->id;?>"/>
+							<button type="submit" class="btn green uppercase edit_hotel">Update Transporter</button>
+						</div>
+					</div>
+				</form>
+				<div id="editHotelRes"></div>		
+				<?php }else{
+					echo "Invalid Trasporter id";
+				}?>
+			</div>
 		</div>
-	<!-- END CONTENT BODY -->
+		<!-- End page-content -->
 	</div>
-<!-- Modal -->
- </div>
+	<!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
 
+
+<!-- Modal -->
 
 <script type="text/javascript">
 jQuery(document).ready(function($){

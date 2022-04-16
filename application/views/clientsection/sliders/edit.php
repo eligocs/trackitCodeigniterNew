@@ -10,7 +10,7 @@
 			<div class="portlet box blue">
 					<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Edit slide
+						<i class="fa-solid fa-plus"></i>Edit slide
 					</div>
 					<a class="btn btn-success" href="<?php echo site_url("clientsection/sliders"); ?>" title="Back">Back</a>
 				</div>

@@ -1,15 +1,16 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		 <!-- BEGIN SAMPLE TABLE PORTLET-->
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-cogs"></i>All Hotel Room Rates 
+			<!-- BEGIN SAMPLE TABLE PORTLET-->
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+					<i class="fa-solid fa-indian-rupee-sign"></i> All Hotel Room Rates 
+					</div>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("hotels/addroomrates"); ?>" title="Add Hotel Room Rates"><i class="fa-solid fa-plus"></i> Add Hotel Room Rates</a>
 				</div>
-				<a class="btn btn-success" href="<?php echo site_url("hotels/addroomrates"); ?>" title="Add Hotel Room Rates">Add Hotel Room Rates</a>
 			</div>
-			<div class="portlet-body">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive margin-top-15">
 					<table id="room_rates" class="table table-striped display">
 						<thead>
@@ -31,11 +32,13 @@
 				</div>
 			</div>
 		</div>
-		
-		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
+
 <!-- Modal -->
  
 

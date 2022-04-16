@@ -6,53 +6,62 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i>Add Season
+						<i class="fa-solid fa-plus"></i> Add Season
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("hotels/seasons"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels/seasons"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
 			<form role="form" id="addSeason" method="post" action="<?php echo site_url("hotels/saveseason"); ?>">
-				<div class="portlet-body custom_card">
+				<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-4 my-2">
 							<div class="form-group">
 								<label class="control-label">Season Name*</label>
 								<input type="text" required placeholder="Season Name. eg: Mid Season etc." name="inp[season_name]" class="form-control" value=""/> 
 							</div>
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-8 my-2">
 							<label class="control-label">Season Dates*</label>
 							<div class="mt-repeater">
 								<div data-repeater-list="season_date_meta">
 									<div data-repeater-item class="mt-repeater-item mt-overflow">
 										<div class="mt-repeater-cell">
-											<div class="input-group input-daterange mmt-repeater-input-inline">
-												<input readonly required type="text" class="form-control season_from" name="season_from" value="" >
-												<span class="input-group-addon hotel_addon"> to </span>
-												<input readonly required type="text" class="form-control season_to" name="season_to" value=""  > 
+											<div class="row">
+												<div class="col-md-10 my-2">
+													<div class="input-group input-daterange mmt-repeater-input-inline">
+														<input readonly required type="text" class="form-control season_from" name="season_from" value="" >
+														<span class="input-group-addon hotel_addon"> to </span>
+														<input readonly required type="text" class="form-control season_to" name="season_to" value=""  > 
+													</div>
+												</div>
+												<div class="col-md-2 my-2">
+													<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
+													<i class="fa-solid fa-trash-can"></i> 
+													</a>
+												</div>
 											</div>
-											<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
-												<i class="fa fa-close"></i>
-											</a>
 										</div>
 									</div>
 								</div>
 								<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
-								<i class="fa fa-plus"></i> Add new</a>
+								<i class="fa-solid fa-plus"></i> Add new</a>
 							</div>
 						</div>
 						<div class="col-md-12 my-2">
-							<button type="submit" class="btn green uppercase add_roomcategory">Add Season</button>
+							<button type="submit" class="btn green uppercase add_roomcategory">
+								<i class="fa-solid fa-plus"></i> Add Season
+							</button>
 						</div>
 					</div> 
 				</div>
 				<!--End portlet body -->
 			</form>
-		</div> <!-- portlet -->
+		</div> 
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
-
+<!-- End page-container -->
 
 <!-- Modal -->
 <script>

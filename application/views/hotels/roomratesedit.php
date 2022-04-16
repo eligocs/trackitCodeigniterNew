@@ -1,7 +1,7 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		<?php if($roomrates){ 	$rate = $roomrates[0]; ?>
+			<?php if($roomrates){ 	$rate = $roomrates[0]; ?>
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="fa fa-hotel"></i>Hotel Name: <strong><?php  echo get_hotel_name($rate->hotel_id); ?></strong></div>
@@ -110,16 +110,17 @@
 				</div>
 			</form>
 			<div id="editHotelRoomRates"></div>		
-		<?php }else{
-			echo "Invalid Room Rates id";
-		}?>
+			<?php }else{
+				echo "Invalid Room Rates id";
+			}?>
 		</div>
-	<!-- END CONTENT BODY -->
 	</div>
+	<!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+
+
 <!-- Modal -->
- </div>
-
-
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	/*   jQuery.validator.addMethod("multiemail", function (value, element) {
