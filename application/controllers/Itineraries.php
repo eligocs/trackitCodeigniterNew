@@ -2104,8 +2104,6 @@ class Itineraries extends CI_Controller {
 				//update customer status to declined=8
 				$this->global_model->update_data( "customers_inquery", array("customer_id" => $customer_id ) , array("decline_comment" => $decline_comment , "cus_status" => 8, "lead_last_followup_date" => $currentDate ) );
 			}elseif( $callType == "Booked lead" ){
-				// dump("dsl;kflsdf")
-				// dump($_POST);die;
 				$call_status = 1; //if lead book not upcoming notification
 				//check if itinerary not publish return false
 				if( $publish_status != "publish" ){
@@ -2271,6 +2269,32 @@ class Itineraries extends CI_Controller {
 					'is_below_base_price'	=> $is_below_base_price, //1= gst included
 					'iti_package_type'		=> $iti_package_type,
 				);
+
+
+				$accountData = array(
+					'name' => $customer_name,
+					'email' => $customer_email,
+					'phone' => $customer_contact,
+					'group_id' => '3',
+					'group_name' => 'customer',
+					'company' => $customer_name,
+					// 'vat_no' => $this->input->post('vat_no'),
+					// 'customer_group_id' => $this->input->post('customer_group'),
+					// 'customer_group_name' => '$cg->name',
+					// 'price_group_id' => $this->input->post('price_group') ? $this->input->post('price_group') : NULL,
+					// 'price_group_name' => $this->input->post('price_group') ? $pg->name : NULL,
+					// 'address' => $this->input->post('address'),
+					// 'city' => $this->input->post('city'),
+					// 'state' => $this->input->post('state'),
+					// 'postal_code' => $this->input->post('postal_code'),
+					// 'country' => $this->input->post('country'),
+					// 'cf1' => $this->input->post('cf1'),
+					// 'cf2' => $this->input->post('cf2'),
+					// 'cf3' => $this->input->post('cf3'),
+					// 'cf4' => $this->input->post('cf4'),
+					// 'cf5' => $this->input->post('cf5'),
+					// 'cf6' => $this->input->post('cf6'),
+				);
 				
 				//payment_screenshot/client_aadhar_card
 				
@@ -2313,6 +2337,7 @@ class Itineraries extends CI_Controller {
 				$pay_id = $this->global_model->getdata("iti_payment_details", array( "iti_id" => $iti_id ) );
 				if( empty( $pay_id ) ){
 					$insert_payment_details = $this->global_model->insert_data( "iti_payment_details", $payData );
+					$this->global_model->insert_data_account_table( "track_companies", $accountData );
 					if ( !$insert_payment_details ){
 						$res = array('status' => false, 'msg' => "Payment not updated please try again later!");
 						die( json_encode($res) );
@@ -2328,7 +2353,6 @@ class Itineraries extends CI_Controller {
 						die( json_encode($res) );
 					}	
 				}
-				
 				/* End Payment Details Section */
 				
 				//Get Current Itinerary data

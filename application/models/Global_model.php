@@ -17,6 +17,18 @@ class Global_Model extends CI_Model
         }
         return $result;
     }
+
+	//insert Data
+	public function insert_data_account_table($tablename, $data_array) {
+		$db2 = $this->load->database('account', TRUE);
+        if ( $db2->insert($tablename, $data_array) ) {
+            $id = $db2->insert_id();
+			$result = $id;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
 	
 	//insert batch Data
 	public function insert_batch_data($tablename, $data_array) {

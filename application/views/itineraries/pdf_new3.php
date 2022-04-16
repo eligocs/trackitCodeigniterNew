@@ -147,14 +147,6 @@ if (!empty($itinerary)) {
     .strikeLine {
         text-decoration: line-through !important;
     }
-
-
-    @font-face {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    src: url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-  }
     </style>
 
 </head>
@@ -209,10 +201,12 @@ if (!empty($itinerary)) {
                             </p>
                             <?php
                             }else if(!empty($discountPriceData)){
-                               echo !empty(get_last_discountPrice($iti->iti_id)->standard_rates) ? '<span>2 Star: </span>' . get_last_discountPrice($iti->iti_id)->standard_rates . str_repeat("&nbsp;", 5) : ''; 
-                               echo !empty(get_last_discountPrice($iti->iti_id)->deluxe_rates) ? '<span>3 Star: </span>' . get_last_discountPrice($iti->iti_id)->deluxe_rates .  str_repeat("&nbsp;", 5) : '';  
-                               echo !empty(get_last_discountPrice($iti->iti_id)->super_deluxe_rates) ? '<span>4 Star: </span>' . get_last_discountPrice($iti->iti_id)->super_deluxe_rates  .  str_repeat("&nbsp;", 5) : '';
-                               echo !empty(get_last_discountPrice($iti->iti_id)->luxury_rates) ? '<span>5 Star: </span>' . get_last_discountPrice($iti->iti_id)->luxury_rates .  str_repeat("&nbsp;", 5) : '';
+                                $agent_price_percentage = !empty(get_last_discountPrice($iti->iti_id)->agent_price) ? get_last_discountPrice($iti->iti_id)->agent_price : 0;
+                               echo !empty(get_last_discountPrice($iti->iti_id)->standard_rates) ? '<span>2 Star: </span>' . number_format(get_last_discountPrice($iti->iti_id)->standard_rates +  get_last_discountPrice($iti->iti_id)->standard_rates * $agent_price_percentage / 100) .  str_repeat("&nbsp;", 5) : ''; 
+                               echo !empty(get_last_discountPrice($iti->iti_id)->deluxe_rates) ? '<span>3 Star: </span>' . number_format(get_last_discountPrice($iti->iti_id)->deluxe_rates +  get_last_discountPrice($iti->iti_id)->deluxe_rates * $agent_price_percentage / 100) .  str_repeat("&nbsp;", 5)
+                                : '';  
+                               echo !empty(get_last_discountPrice($iti->iti_id)->super_deluxe_rates) ? '<span>4 Star: </span>' . number_format(get_last_discountPrice($iti->iti_id)->super_deluxe_rates +  get_last_discountPrice($iti->iti_id)->super_deluxe_rates * $agent_price_percentage / 100) .  str_repeat("&nbsp;", 5)  : '';
+                               echo !empty(get_last_discountPrice($iti->iti_id)->luxury_rates) ? '<span>5 Star: </span>' .  number_format(get_last_discountPrice($iti->iti_id)->luxury_rates +  get_last_discountPrice($iti->iti_id)->luxury_rates * $agent_price_percentage / 100) .  str_repeat("&nbsp;", 5)  : '';
                             }else{
                             $rate_meta = unserialize($iti->rates_meta);
                             $agent_price_percentage = !empty($iti->agent_price) ? $iti->agent_price : 0;
@@ -221,10 +215,10 @@ if (!empty($itinerary)) {
                                     //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
                                     $inc_gst = "";
 
-                                    $s_pp = isset($per_person_ratemeta["standard_rates"]) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . number_format($per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage / 100) . " Per/Person" : "";
-                                    $d_pp = isset($per_person_ratemeta["deluxe_rates"]) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . number_format($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage / 100) . " Per/Person" : "";
-                                    $sd_pp = isset($per_person_ratemeta["super_deluxe_rates"]) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . number_format($per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage / 100) . " Per/Person" : "";
-                                    $l_pp = isset($per_person_ratemeta["luxury_rates"]) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . number_format($per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage / 100)  . " Per/Person" : "";
+                                    $s_pp = isset($per_person_ratemeta["standard_rates"]) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $d_pp = isset($per_person_ratemeta["deluxe_rates"]) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . $per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $sd_pp = isset($per_person_ratemeta["super_deluxe_rates"]) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . $per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $l_pp = isset($per_person_ratemeta["luxury_rates"]) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . $per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage / 100  . " Per/Person" : "";
 
                                     //child rates
                                     $child_s_pp = isset($per_person_ratemeta["child_standard_rates"]) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " .  number_format($per_person_ratemeta["child_standard_rates"]  + $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage / 100) . "/- Per Child" : "";
@@ -247,6 +241,10 @@ if (!empty($itinerary)) {
                             echo !empty($super_deluxe_rates) ? '<span>4 Star: </span>' . $super_deluxe_rates .  str_repeat("&nbsp;", 5) : ''; 
                             echo !empty($rate_luxry) ? '<span>5 Star: </span>' . $rate_luxry .  str_repeat("&nbsp;", 5) : ''; 
 
+                            // echo !empty($rate_meta["standard_rates"]) ? '<span>2 Star: </span>' . $rate_meta["standard_rates"] .  str_repeat("&nbsp;", 5) : '';
+                            // echo !empty($rate_meta["deluxe_rates"]) ? '<span>3 Star: </span>' . $rate_meta["deluxe_rates"] .  str_repeat("&nbsp;", 5) : ''; 
+                            // echo !empty($rate_meta["super_deluxe_rates"]) ? '<span>4 Star: </span>' . $rate_meta["super_deluxe_rates"] .  str_repeat("&nbsp;", 5) : ''; 
+                            // echo !empty($rate_meta["luxury_rates"]) ? '<span>5 Star: </span>' . $rate_meta["luxury_rates"] .  str_repeat("&nbsp;", 5) : ''; 
                             }
                             ?>
                             <p style="font-size: 16px; margin: 0;"><?php
@@ -552,11 +550,10 @@ if (!empty($itinerary)) {
                                     //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
                                     $inc_gst = "";
 
-                                    $s_pp = isset($per_person_ratemeta["standard_rates"]) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . number_format($per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage / 100) . " Per/Person" : "";
-                                    $d_pp = isset($per_person_ratemeta["deluxe_rates"]) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . number_format($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage / 100) . " Per/Person" : "";
-                                    $sd_pp = isset($per_person_ratemeta["super_deluxe_rates"]) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . number_format($per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage / 100) . " Per/Person" : "";
-                                    $l_pp = isset($per_person_ratemeta["luxury_rates"]) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . number_format($per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage / 100)  . " Per/Person" : "";
-                              
+                                    $s_pp = isset($per_person_ratemeta["standard_rates"]) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $d_pp = isset($per_person_ratemeta["deluxe_rates"]) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . $per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $sd_pp = isset($per_person_ratemeta["super_deluxe_rates"]) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . $per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $l_pp = isset($per_person_ratemeta["luxury_rates"]) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . $per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage / 100  . " Per/Person" : "";
 
                                     //child rates
                                     $child_s_pp = isset($per_person_ratemeta["child_standard_rates"]) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " .  number_format($per_person_ratemeta["child_standard_rates"]  + $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage / 100) . "/- Per Child" : "";
@@ -567,12 +564,12 @@ if (!empty($itinerary)) {
 
                                     $child_l_pp = isset($per_person_ratemeta["child_luxury_rates"]) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " .   number_format($per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage / 100) . "/- Per Child" : "";
 
-                                    $standard_rates = !empty($rate_meta["standard_rates"]) ? number_format($rate_meta["standard_rates"] + $rate_meta["standard_rates"] * $agent_price_percentage / 100) . "/-"  . "<br>" . $s_pp . "<br>" . "<br>" . $child_s_pp . "<br>"   : "<strong class='red'>On Request</strong>";
+                                    $standard_rates = !empty($rate_meta["standard_rates"]) ? number_format($rate_meta["standard_rates"] + $rate_meta["standard_rates"] * $agent_price_percentage / 100) . "/-" : "<strong class='red'>On Request</strong>";
 
-                                    $deluxe_rates = !empty($rate_meta["deluxe_rates"]) ? number_format($rate_meta["deluxe_rates"] + $rate_meta["deluxe_rates"] * $agent_price_percentage / 100) . "/-"  . "<br>" . $d_pp . "<br>" . "<br>" . $child_d_pp . "<br>" : "<strong class='red'>On Request</strong>";
+                                    $deluxe_rates = !empty($rate_meta["deluxe_rates"]) ? number_format($rate_meta["deluxe_rates"] + $rate_meta["deluxe_rates"] * $agent_price_percentage / 100) . "/-" : "<strong class='red'>On Request</strong>";
 
-                                    $super_deluxe_rates = !empty($rate_meta["super_deluxe_rates"]) ? number_format($rate_meta["super_deluxe_rates"] + $rate_meta["super_deluxe_rates"] * $agent_price_percentage / 100) . "/-"   . "<br>" . $sd_pp . "<br>" . "<br>" . $child_sd_pp . "<br>": "<strong class='red'>On Request</strong>";
-                                    $rate_luxry = !empty($rate_meta["luxury_rates"]) ? number_format($rate_meta["luxury_rates"] + $rate_meta["luxury_rates"] * $agent_price_percentage / 100) . "/-"   . "<br>" . $l_pp . "<br>" . "<br>" . $child_l_pp . "<br>": "<strong class='red'>On Request</strong>";
+                                    $super_deluxe_rates = !empty($rate_meta["super_deluxe_rates"]) ? number_format($rate_meta["super_deluxe_rates"] + $rate_meta["super_deluxe_rates"] * $agent_price_percentage / 100) . "/-" : "<strong class='red'>On Request</strong>";
+                                    $rate_luxry = !empty($rate_meta["luxury_rates"]) ? number_format($rate_meta["luxury_rates"] + $rate_meta["luxury_rates"] * $agent_price_percentage / 100) . "/-" : "<strong class='red'>On Request</strong>";
                                     $dicount = !empty($discountPriceData) ? "strikeLine" : "";
                                     ?>
                                 <tr>
@@ -957,7 +954,6 @@ if (!empty($itinerary)) {
                                             {$agent_lp}
                                         </td></tr>";
                                             
-                                        
                                     if( !empty( $discountPriceData ) ){
                                         foreach( $discountPriceData as $price ){
                                             $agent_price_percentage = !empty($price->agent_price) ? $price->agent_price : 0;
@@ -1441,7 +1437,7 @@ if (!empty($itinerary)) {
                             <tr>
 
                                 <th
-                                    style=" font-family:georgia;padding: 5px; font-weight: 500; border: 1px solid #c6c1c1; text-align: left;">
+                                    style="padding: 5px; font-weight: 500; border: 1px solid #c6c1c1; text-align: left;">
                                     Bank Name</th>
                                 <td style="padding: 5px; border: 1px solid #c6c1c1; text-align: left;"><?= $b_name ?>
                                 </td>
@@ -1709,6 +1705,5 @@ if (!empty($itinerary)) {
 
 </html>
 <?php
-// $dompdf->setBasePath(realpath(APPLICATION_PATH . "/path/fonts.css"));
 }
 ?>
