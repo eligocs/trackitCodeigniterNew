@@ -8,7 +8,7 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption"><i class="fa fa-users"></i>Add Customer</div>
-               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("customers"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("customers"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
             </div>
          </div>
          <div class="bg-white p-3 rounded-4 shadow-sm">

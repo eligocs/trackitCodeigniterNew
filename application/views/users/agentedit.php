@@ -6,45 +6,47 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"><i class="fa fa-users"></i>User Name: <strong><?php echo $agent->user_name; ?></strong></div>
-					<a class="btn btn-success" href="<?php echo site_url("agents"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
-			<div class="custom_card">
+			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<form class="mb-0" role="form" id="editAgent" enctype="multipart/form-data" >
 					<div class="row">
-						<div class="col-md-4 my-2">
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">First Name*</label>
 								<input required type="text" name="firstname" placeholder="First Name" class="form-control" value="<?php echo $agent->first_name;?>" /> 
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Last Name*</label>
 								<input required type="text" placeholder="Last Name" name="lastname" class="form-control" value="<?php echo $agent->last_name;?>" /> 
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Email*</label>
 								<input required type="email" placeholder="Email" name="email" class="form-control" value="<?php echo $agent->email;?>" /> 
 							</div>
 						</div>
 						
-						<div class="col-md-4 my-2">
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Change Password</label>
 								<input type="password" name="newpassword" placeholder="Enter new password" class="form-control" value="" /> 
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Alternate Password</label>
 								<input type="text" name="alt_pass" maxlength="8" placeholder="Alternate password" class="form-control alt_pass" value="<?php echo isset($agent->alt_pass) ? $agent->alt_pass : "";?>" /> 
 								<span style='font-size: 11px; color: red;'> (Accessible by manager/admin)</span>
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Office Timing*</label>
 								<div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm/dd/yyyy">
@@ -55,21 +57,23 @@
 							</div>
 						</div>
 						
-						<div class="col-md-4 my-2">
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Mobile Number*</label>
 								<input required type="text" placeholder="Mobile" name="mobile" class="form-control" value="<?php echo $agent->mobile;?>"/> 
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Gender*</label><br>
 								<input required name="gender" value="male" <?php if($agent->gender=='male'){ echo "checked=checked";}  ?> type="radio"> Male
 								<input required name="gender" <?php if($agent->gender=='female'){ echo "checked=checked";}  ?> value="female" type="radio"> Female
 							</div>
 						</div>
+
 						<?php $get_all_users_role = get_all_users_role(); ?>
-						<div class="col-md-4 my-2">
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">User Role*</label>
 								<?php if( is_admin() ){ ?>
@@ -99,7 +103,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-4 my-2">
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">User Status*</label>
 								<select required name="user_status" class="form-control" id="user_status" >
@@ -109,14 +113,16 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Mobile Number For Login*</label>
 								<input  type="text" placeholder="Mobile number for login otp. Should be unique." maxlength="10" id="mobile_otp" name="mobile_otp" class="form-control" data-otp_val="<?php echo $agent->mobile_otp;?>" value="<?php echo $agent->mobile_otp;?>" /> 
 								<span style='font-size: 11px; color: red;'> (Visible for manager/admin only.)</span>
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+
+						<div class="col-md-4 col-xl-3 my-2">
 							<div class="form-group">
 								<label class="control-label">Website</label>
 								<input type="text" placeholder="Website" name="website" class="form-control" value="<?php echo $agent->website;?>" /> 
@@ -125,7 +131,7 @@
 						
 						<div class="col-md-12">
 							<input type="hidden" name="user_id" id="user_id" value="<?php echo $agent->user_id;?>"/>
-							<button type="submit" class="btn green uppercase update_profile">Update User</button>
+							<button type="submit" class="btn green uppercase update_profile"><i class="fa-solid fa-user-check"></i> Update User</button>
 						</div>
 					</div>
 				</form>

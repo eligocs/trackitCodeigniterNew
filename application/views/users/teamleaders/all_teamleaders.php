@@ -61,9 +61,9 @@ ol.unassign_list li:hover{    cursor: move;}
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-cogs"></i>All Team Leaders
+					<i class="fa-solid fa-user-tie"></i> All Team Leaders
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("agents/add_teamleader"); ?>" title="add teamleader">Add Teamleader</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("agents/add_teamleader"); ?>" title="add teamleader"><i class="fa-solid fa-plus"></i> Add Teamleader</a>
 				</div>
 			</div>
 			<?php $message = $this->session->flashdata('success'); 
@@ -133,8 +133,8 @@ ol.unassign_list li:hover{    cursor: move;}
 									echo "</div></td>";
 									echo "<td>" . get_user_name( $teamleader->leader_created_by ) . "</td>";
 									echo "<td>
-										<a href='{$editUrl}' class='btn btn-success' title='view/edit teamleaders'><i class='fa-solid fa-pen-to-square'></i><a>
-										<a href='javascript:void(0)' data-id={$teamleader->id} class='btn btn-danger ajax_delete_user' title='delete teamleaders'><i class='fa fa-trash-o'></i><a>
+										<a href='{$editUrl}' class='btn text-primary' title='view/edit teamleaders'><i class='fa-solid fa-pen-to-square'></i><a>
+										<a href='javascript:void(0)' data-id={$teamleader->id} class='btn text-danger ajax_delete_user' title='delete teamleaders'><i class='fa-solid fa-trash-can'></i><a>
 									</td>";
 								echo "</tr>";
 								$counter++;

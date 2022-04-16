@@ -1,65 +1,67 @@
-<!-- BEGIN CONTENT User Role: 96 -->
-<div class="page-content-wrapper sales_team_dashboard">
-	<!-- BEGIN CONTENT BODY -->
-	<div class="page-content">
-		<!-- BEGIN PAGE HEADER-->
-		<!-- BEGIN PAGE BAR -->
-		<div class="page-bar">
-			<ul class="page-breadcrumb">
-				<li>
-					<a href="<?php echo base_url(); ?>">Home</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<span>User Dashboard</span>
-				</li>
-			</ul>
-		</div>
-		<div class="row">
-			<div class="container">
-					<h3 class="text-center">User Dashboard </h3>
-					<div class="getDashboardSection" id="getDashboardSection">
-						<form id="salesTeamDashboarFrm">
-							<?php /* if( is_admin() ){ ?>
-								<div class="col-md-4">
-								<div class="form-group">
-									<label>Select manager<span style="color:red;">*</span></label>
-									<?php if( !empty( $managers ) ){ ?>
-										<select required class="form-control" id='manager_user_id' name="manager_id">
-											<option value="">Select User</option>
-											<?php foreach( $managers as $user ){ ?>
-												<option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
-											<?php } ?>
-										</select>
-									<?php }else{ ?>
-										<p>No Users found!.
-									<?php } ?>
+<div class="page-container">
+	<!-- BEGIN CONTENT User Role: 96 -->
+	<div class="page-content-wrapper sales_team_dashboard">
+		<!-- BEGIN CONTENT BODY -->
+		<div class="page-content p-4">
+			<!-- BEGIN PAGE HEADER-->
+			<!-- BEGIN PAGE BAR -->
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<a href="<?php echo base_url(); ?>">Home</a>
+						<i class="fa fa-circle"></i>
+					</li>
+					<li>
+						<span>User Dashboard</span>
+					</li>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="container">
+						<h3 class="text-center">User Dashboard </h3>
+						<div class="getDashboardSection" id="getDashboardSection">
+							<form id="salesTeamDashboarFrm">
+								<?php /* if( is_admin() ){ ?>
+									<div class="col-md-4">
+									<div class="form-group">
+										<label>Select manager<span style="color:red;">*</span></label>
+										<?php if( !empty( $managers ) ){ ?>
+											<select required class="form-control" id='manager_user_id' name="manager_id">
+												<option value="">Select User</option>
+												<?php foreach( $managers as $user ){ ?>
+													<option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
+												<?php } ?>
+											</select>
+										<?php }else{ ?>
+											<p>No Users found!.
+										<?php } ?>
+									</div>
+									</div>
+								<?php } */ ?>
+								<div class="col-md-offset-4 col-md-4">
+									<div class="form-group">
+										<label>Select salesteam user<span style="color:red;">*</span></label>
+										<?php if( !empty( $sales_team_users ) ){ ?>
+											<select required class="form-control" id='sales_user_id' name="user_id">
+												<option value="">Select User</option>
+												<?php foreach( $sales_team_users as $user ){ ?>
+													<option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
+												<?php } ?>
+											</select>
+										<?php }else{ ?>
+											<p>No Users found!.
+										<?php } ?>
+									</div>
 								</div>
-								</div>
-							<?php } */ ?>
-							<div class="col-md-offset-4 col-md-4">
-								<div class="form-group">
-									<label>Select salesteam user<span style="color:red;">*</span></label>
-									<?php if( !empty( $sales_team_users ) ){ ?>
-										<select required class="form-control" id='sales_user_id' name="user_id">
-											<option value="">Select User</option>
-											<?php foreach( $sales_team_users as $user ){ ?>
-												<option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
-											<?php } ?>
-										</select>
-									<?php }else{ ?>
-										<p>No Users found!.
-									<?php } ?>
-								</div>
-							</div>
-						</form>
-					</div>	
-				
-			</div>	
-		</div>
-		
-</div><!-- END CONTENT -->
-<!-- END QUICK SIDEBAR -->
+							</form>
+						</div>	
+					
+				</div>	
+			</div>
+			
+	</div><!-- END CONTENT -->
+	<!-- END QUICK SIDEBAR -->
+	</div>
 </div>
 <!-- END CONTAINER -->
 <script>

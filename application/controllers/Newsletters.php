@@ -243,10 +243,10 @@ class Newsletters extends CI_Controller {
 			if( !empty( $get_data ) ){
 				$total = count( $get_data );
 				
-				$res_html .= "<div class='form-group nl-input-field'>
-						<h5 class='heading-label' for='emails'><strong>Select Customer Emails:</strong></h5>
-						<div class='well'>
-							<label class='strong'>
+				$res_html .= "<div class='border form-group my-4 nl-input-field pb-2'>
+						<h5 class='bg-light p-3' for='emails'><strong>Select Customer Emails:</strong></h5>
+						<div class='p-3 border-bottom'>
+							<label class='strong mb-2'>
 								<input type='checkbox' id='checkAll'/> Select all
 							</label>
 							Total Records Found: <strong> {$total} </strong><br>
@@ -256,7 +256,7 @@ class Newsletters extends CI_Controller {
 							</div>
 						</div>";
 						
-				$res_html .= "<div class='mails-db' id='mails-db'>";
+				$res_html .= "<div class='mails-db mt-2' id='mails-db'>";
 							$list_id = 1;
 							foreach( $get_data as $customer ){
 								$company_name = isset( $customer->company_name ) && !empty( $customer->company_name ) ? $customer->company_name : "";

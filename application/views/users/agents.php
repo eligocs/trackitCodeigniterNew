@@ -5,63 +5,58 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-cogs"></i>All Users
+                    <i class="fa-solid fa-users"></i> All Users
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("agents/addagent"); ?>" title="add agent">Add
-                        User</a>
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("agents/addagent"); ?>" title="add agent"><i class="fa-solid fa-plus"></i> Add User</a>
                 </div>
             </div>
-            <div class="second_custom_card">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <?php 
                $ustatus = "";
                if( isset( $_GET['ustatus'] ) && !empty( $_GET['ustatus'] ) ){
                   $ustatus = $_GET['ustatus'];
                } ?>
 
-                <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible">
-                <input type="hidden" name="filter_val" id="filter_val"
-                                value="">
-                <input type="hidden" name="userStatus_val" id="userStatus"
-                                value="">
-                    <div class="filter_section text-center">
+                <form id="form-filter" class="form-horizontal mb-0">
+                    <input type="hidden" name="filter_val" id="filter_val" value="">
+                    <input type="hidden" name="userStatus_val" id="userStatus" value="">
+                    <div class="filter_section">
                         <div id="filter"></div>
                         <div class="row">
-                        <input type="hidden" id="ustatus" value="<?php echo $ustatus; ?>">
-                        <div class="col-md-offset-2 col-md-4">
-                            <label><strong>Select User By Status:</strong></label>
-                            <select name = "userStatus" class='form-control mfilter'>
-                                <option value="">All Users</option>
-                                <option value="active">Active User</option>
-                                <option value="inactive">Inactive User</option>
-                                <option value="block">Block User</option>
-                            </select>
+                            <input type="hidden" id="ustatus" value="<?php echo $ustatus; ?>">
+                            <div class="col-md-4 my-2">
+                                <label class="control-label"><strong>Select User By Status:</strong></label>
+                                <select name = "userStatus" class='form-control mfilter'>
+                                    <option value="">All Users</option>
+                                    <option value="active">Active User</option>
+                                    <option value="inactive">Inactive User</option>
+                                    <option value="block">Block User</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 my-2">
+                                <label class="control-label"><strong>Select User By Role:</strong></label>
+                                <select name="userFilter" class='form-control mfilter'>
+                                    <option value="">All Roles</option>
+                                    <?php if( get_all_users_role() ){
+                                        $roles = get_all_users_role();
+                                        foreach( $roles as $r ){
+                                            if( $r->role_id == 99 ) continue;
+                                            $role_name = ucfirst($r->role_name);
+                                            echo "<option value='{$r->role_id}'>{$role_name}</option>";
+                                        }
+                                        } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-2 my-2">
+                                <label for="" class="control-label d-block">&nbsp;</label>
+                                <input type="submit" class="btn btn-success" value="Filter">
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <label><strong>Select User By Role:</strong></label>
-                            <select name="userFilter" class='form-control mfilter'>
-                                <option value="">All Roles</option>
-                                <?php if( get_all_users_role() ){
-                        $roles = get_all_users_role();
-                        foreach( $roles as $r ){
-                        	if( $r->role_id == 99 ) continue;
-                        	$role_name = ucfirst($r->role_name);
-                        	echo "<option value='{$r->role_id}'>{$role_name}</option>";
-                        }
-                        } ?>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="" class="d_block">&nbsp;</label>
-                            <input type="submit" class="btn btn-success" value="Filter">
-                        </div>
-                    </div>
                     </div>
                 </form>
-                <div class="clearfix"></div>
             </div>
-            <hr>
-            <div class="portlet-body">
-                <div class="table-responsive custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+                <div class="table-responsive">
                     <table class="table table-striped display" id="table" cellspacing="0" width="100%">
                         <thead>
                             <tr>

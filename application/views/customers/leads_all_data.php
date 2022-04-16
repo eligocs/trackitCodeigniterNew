@@ -75,7 +75,7 @@ div#quotation_type_section,
                         <i class="fa fa-users"></i>Lead Full Detail
                     </div>
                     <div class="actions">
-                        <a class="btn btn-outline-primary" href="<?php echo site_url("customers"); ?>" title="Back to all leads"><i class="fa-solid fa-arrow-left"></i> Back To All Leads</a>
+                        <a class="btn btn-outline-primary" href="<?php echo site_url("customers"); ?>" title="Back to all leads"><i class="fa-solid fa-reply"></i> Back To All Leads</a>
                     </div>
                 </div>
             </div>

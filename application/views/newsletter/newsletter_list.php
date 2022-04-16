@@ -8,35 +8,37 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="fa fa-newspaper-o" aria-hidden="true"></i>All Sent Newsletter
+					<i class="fa-solid fa-comment-sms"></i> All Sent Newsletter
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("newsletters/create"); ?>" title="Create Newsletter">Create Newsletter</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("newsletters/create"); ?>" title="Create Newsletter"><i class="fa-solid fa-bullhorn"></i> Create Newsletter</a>
 				</div>
-				<div class="portlet-body second_custom_card">
-					<div class="table-responsive margin-top-20">
-						<table class="table table-striped display" id="table" cellspacing="0" width="100%">
-							<thead>
-								<tr>
-									<th> # </th>
-									<th> Newsletter ID </th>
-									<th> Subject </th>
-									<th> Sent To </th>
-									<th> Sent Date/time </th>
-									<th> Agent </th>
-									<th> Action </th>
-								</tr>
-							</thead>
-							<tbody>
-							<!--Data table -->
-							</tbody>
-						</table>
-					</div>
+			</div>
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<div class="table-responsive margin-top-20">
+					<table class="table table-striped display" id="table" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th> # </th>
+								<th> Newsletter ID </th>
+								<th> Subject </th>
+								<th> Sent To </th>
+								<th> Sent Date/time </th>
+								<th> Agent </th>
+								<th> Action </th>
+							</tr>
+						</thead>
+						<tbody>
+						<!--Data table -->
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
+<!-- END page-container -->
 <!-- Modal -->
 
 <script type="text/javascript">

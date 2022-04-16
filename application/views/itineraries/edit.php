@@ -29,7 +29,7 @@
                   Package Type: <strong class=""> <?php echo check_iti_type($iti->iti_id); ?></strong>
                </div>
                <a class="btn btn-outline-primary float-end" href="<?php echo site_url("itineraries"); ?>"
-                  title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                  title="Back"><i class="fa-solid fa-reply"></i> Back</a>
             </div>
          </div>
          <div class="portlet light bordered" id="form_wizard_1">

@@ -37,89 +37,96 @@ $doc_path =  base_url() .'site/assets/thoughts/';
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-						<i class="icon-plus"></i> Latest Update
+					<i class="fa-solid fa-newspaper"></i> Latest Update
 					</div>
 				</div>
 			</div>
-				<div class="clearfix"></div>
-					<?php if( $id ){ ?>
-						<div class="update_thstatus text-center second_custom_card margin-bottom-25">
-							<label class="shs">Show/Hide Status</label>
-							<div class="clearfix"></div>
-							<label class="switch_custom">
-								<input type="checkbox" <?php echo $ckstatus; ?> id="inSlider" data-id="<?php echo $id; ?>" >
-								<span class="custom_slide_btn round"></span>
+				
+			<?php if( $id ){ ?>
+				<div class="update_thstatus text-center bg-white p-3 rounded-4 shadow-sm mb-4">
+					<label class="shs">Show/Hide Status</label>
+					
+					<label class="switch_custom">
+						<input type="checkbox" <?php echo $ckstatus; ?> id="inSlider" data-id="<?php echo $id; ?>" >
+						<span class="custom_slide_btn round"></span>
+					</label>
+				</div>	
+			<?php } ?>	
+				
+
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<form role="form" id="addSlide" enctype="multipart/form-data">
+					<div class="row">
+						<div class="call_type_seciton col-md-12">
+							<label class="radio-inline control-label me-2 mb-3">
+								<input id="picked_call" <?php echo $checked_radio1; ?> class="radio_toggle form-check-input me-2" type="radio"  data-id="txtstatus" name="type" value="0">Text
+							</label>
+							<label class="radio-inline control-label me-2 mb-3">
+								<input class="radio_toggle form-check-input me-2" <?php echo $checked_radio2; ?> data-id="imgstatus" type="radio" name="type" value="1">Image
+							</label>
+							<label class="radio-inline control-label me-2 mb-3">
+								<input class="radio_toggle form-check-input me-2" <?php echo $checked_radio3; ?> data-id="vidstatus" required id="close_lead" type="radio" name="type" value="2">Youtube
 							</label>
 						</div>	
-					<?php } ?>	
-				<div class="clearfix"></div>
 
-			<div class="portlet-body custom_card">
-			<form role="form" id="addSlide" enctype="multipart/form-data">
-				<div class="row1">
-					<div class="call_type_seciton">
-						<label class="radio-inline">
-							<input id="picked_call" <?php echo $checked_radio1; ?> class="radio_toggle" type="radio"  data-id="txtstatus" name="type" value="0">Text
-						</label>
-						<label class="radio-inline"><input class="radio_toggle" <?php echo $checked_radio2; ?> data-id="imgstatus" type="radio" name="type" value="1">Image</label>
-						<label class="radio-inline"><input class="radio_toggle" <?php echo $checked_radio3; ?> data-id="vidstatus" required id="close_lead" type="radio" name="type" value="2">Youtube</label>
-					</div>	
-					<br>
-					<div class="col-md-6 ssection" id="txtstatus" <?php echo $show_div1; ?> >
-						<div class="form-group">
-							<label class="control-label"><strong>Status </strong>(Max 1000 characters)*</label>
-							 <textarea maxlength="500" required class="form-control" rows="10" name="text_status" ><?php echo $content1; ?></textarea>
-						</div>
-					</div>
-					<div class="col-md-6 ssection" id="imgstatus" <?php echo $show_div2; ?> >
-						<label class="control-label">Status Image*</label>
-						<div class="form-group">
-							<div class="fileinput fileinput-new" data-provides="fileinput">
-								<div class="fileinput-new thumbnail" style="width: 100%; height: 150px;">
-									<img alt="" class="img-responsive" src="" />
-									<?php $poster_path = $doc_path . $content; ?>
-									<img alt="" class="img-responsive editvid-image" src="<?php echo $poster_path; ?>" />
-								</div>
-								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
-								<div>
-									<span class="btn default btn-file">
-										<span class="fileinput-newa"> Click here to update status image </span>
-										<span class="fileinput-existss"> </span>
-										<input id="image_url" type="file" name="image_url"> </span>
-									<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
-								</div>
-							</div>
-							<div class="clearfix margin-top-10">
-								<span class="label label-danger">NOTE! </span>&nbsp;
-								<span class='red'> Image size not bigger then 2 MB and dimensions(1250px X 600px).</span>
+						<div class="col-md-6 my-2 ssection" id="txtstatus" <?php echo $show_div1; ?> >
+							<div class="form-group">
+									<label class="control-label"><strong>Status </strong>(Max 1000 characters)*</label>
+								<textarea maxlength="500" required class="form-control" rows="10" name="text_status" ><?php echo $content1; ?></textarea>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-6 ssection" id="vidstatus" <?php echo $show_div3; ?> >
-						<div class="form-group">
-							<label class="control-label">Youtube Video Link*</label>
-							<input type="url" required placeholder="eg: https://www.youtube.com/watch?v=YE7VzlLtp-4" name="youtube_vid_link" class="form-control" value="<?php echo $content3; ?>"/> 
+
+						<div class="col-md-6 my-2 ssection" id="imgstatus" <?php echo $show_div2; ?> >
+							<label class="control-label">Status Image*</label>
+							<div class="form-group">
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+									<div class="fileinput-new thumbnail" style="width: 100%; height: 150px;">
+										<img alt="" class="img-responsive" src="" />
+										<?php $poster_path = $doc_path . $content; ?>
+										<img alt="" class="img-responsive editvid-image" src="<?php echo $poster_path; ?>" />
+									</div>
+									<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+									<div>
+										<span class="btn default btn-file my-2">
+											<span class="fileinput-newa"> Click here to update status image </span>
+											<span class="fileinput-existss"> </span>
+											<input id="image_url" type="file" name="image_url"> </span>
+										<a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
+									</div>
+								</div>
+								<div class="clearfix margin-top-10">
+									<span class="label label-danger">NOTE! </span>&nbsp;
+									<span class='red'> Image size not bigger then 2 MB and dimensions(1250px X 600px).</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 my-2 ssection" id="vidstatus" <?php echo $show_div3; ?> >
+							<div class="form-group">
+								<label class="control-label">Youtube Video Link*</label>
+								<input type="url" required placeholder="eg: https://www.youtube.com/watch?v=YE7VzlLtp-4" name="youtube_vid_link" class="form-control" value="<?php echo $content3; ?>"/> 
+							</div>
+						</div>
+
+						<div class="col-md-12 my-3">
+							<input type="hidden" name="id" value="<?php echo $id; ?>"/> 
+							<button type="submit" class="btn green uppercase">Update Status</button>
 						</div>
 					</div>
-				</div>
-				<div class="clearfix"></div>
-				<hr>
-				<div class="col-md-10">
-				<div class="margiv-top-10">
-					<input type="hidden" name="id" value="<?php echo $id; ?>"/> 
-					<button type="submit" class="btn green uppercase">Update Status</button>
-				</div>
+				</form>
+				<div id="addresEd"></div>		
 			</div>
-			</form>
-			<div class="clearfix"></div>
-			<div id="addresEd"></div>		
-			</div><!-- portlet body -->
-			</div> <!-- portlet -->
-		</div>
-	<!-- END CONTENT BODY -->
+			<!--End portlet body -->
+		</div> 
+		<!-- End page-content -->
 	</div>
+	<!-- END page-content-wrapper -->
+</div>
+<!-- End page-container -->
+</div>
+
+
 <!-- Modal -->
- </div>
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	

@@ -15,95 +15,99 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption">
-                  <i class="fa fa-gift"></i>Agents Monthly Targets
+               <i class="fa-solid fa-bullseye"></i> Agents Monthly Targets
                </div>
             </div>
          </div>
-         <?php $sales_team_agents = get_all_sales_team_agents(); ?>
-         <div class="row clearfix second_custom_card margin-bottom-20">
-            <form id="frmInsentivecal">
+         <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+            <?php $sales_team_agents = get_all_sales_team_agents(); ?>
+            <form id="frmInsentivecal" class="mb-0">
                <?php
                   $month = isset( $_GET['month'] ) && !empty($_GET['month']) ? $_GET['month'] : date("Y-m");
                   /* 
                   <div class="col-md-3">
-                  	<div class="form-group">
-                  		<label for="sales_user_id">Select Sales Team User:</label>
-                  		<select required class="form-control select_user" id='sales_user_id' name="user_id">
-                  			<option value="-1">All Agents</option>
-                  			<?php foreach( $sales_team_agents as $user ){ ?>
-               <option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
-               <?php } ?>
-               </select>
+                     <div class="form-group">
+                        <label for="sales_user_id">Select Sales Team User:</label>
+                        <select required class="form-control select_user" id='sales_user_id' name="user_id">
+                           <option value="-1">All Agents</option>
+                           <?php foreach( $sales_team_agents as $user ){ ?>
+                           <option value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
+                           <?php } ?>
+                           </select>
+                     </div>
+                  </div>
+               */ ?>
+               
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="form-group">
+                           <label class="control-label" for="daterange">Select Month*:</label>
+                           <input type="text" required autocomplete="off" class="form-control" id="daterange" name="dateRange" value="<?php echo $month; ?>" required />
+                     </div> 
+                  </div>
+                  <!--input type="submit" class="btn btn-success" value="Check Target"-->
+                  <input type="hidden" id="datefrom" name="datefrom" value="<?php echo $month; ?>" >
+               </div>
+            </form>	
          </div>
-      </div>
-      */ ?>
-      <div class="col-md-offset-4 col-md-3">
-      <div class="form-group">
-      <label for="daterange">Select Month*:</label>
-      <input type="text" required autocomplete="off" class="form-control" id="daterange" name="dateRange" value="<?php echo $month; ?>" required />
-      </div> 
-      </div>
-      <!--input type="submit" class="btn btn-success" value="Check Target"-->
-      <input type="hidden" id="datefrom" name="datefrom" value="<?php echo $month; ?>" >
-      </form>	
-   </div>
-   <div class="custom_card">
-      <h4 class='text-center'><span id='ainfo_name'></span> <strong class='red'>Month: </strong><span id='ainfo_month'><?php echo date("M,Y", strtotime($month) ); ?></span></h4>
-      <div class="clearfix"></div>
-      <div class="portlet-body">
-         <div class='agent_info_section'>
-            <div class="table-responsive">
-               <table class="table table-striped display" id="table" cellspacing="0" width="100%">
-                  <thead>
-                     <tr>
-                        <th> # </th>
-                        <th> Name </th>
-                        <th> User Name </th>
-                        <th> Target (Pkg.) </th>
-                        <th> Booked (Pkg.) </th>
-                        <th> Assigned By </th>
-                        <th> Action </th>
-                     </tr>
-                  </thead>
-                  <tbody class="ins_data">
-                     <?php if( isset( $monthly_targets ) && !empty( $monthly_targets ) ){
-                        $counter = 1;
-                        foreach( $monthly_targets as $target ){
-                        	
-                        	//remove teamleader
-                        	if( is_teamleader( $target->user_id ) ) continue;
-                        	
-                        	$assigned_by = !empty( $target->target_assigned_by ) ? get_user_name($target->target_assigned_by) : "SY";
-                        	$m_target = 	isset($target->target) ? $target->target : get_default_target();
-                        	$m_target_input = "<input class='hideinputbox' min='5' max='100' type='number' value='{$m_target}' >";
-                        	
-                        	$booked_pkg = get_agents_booked_packages( $target->user_id, $month );
-                        	$update_btn = "<a title='Update Target' href='javascript: void(0)' class='btn_pencil assign_target' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
-                        	
-                        	echo "<tr data-total_target= '{$m_target}' data-agent_id='{$target->user_id}' >
-                        		<td>{$counter}.</td>
-                        		<td>{$target->name}</td>
-                        		<td>{$target->user_name}</td>
-                        		<td><span class='mtupdate'>{$m_target}</span>{$m_target_input}</td>
-                        		<td>{$booked_pkg}</td>
-                        		<td>{$assigned_by}</td>
-                        		<td>{$update_btn}</td>
-                        	</tr>";
-                        	$counter++;
-                        }
-                        }else{
-                        echo "<tr><td colspan=3>No Data Found!</td></tr>";
-                        } ?>
-                  </tbody>
-               </table>
+         <div class="bg-white p-3 rounded-4 shadow-sm">
+            <h4 class='text-center'><span id='ainfo_name'></span> <strong class='red'>Month: </strong><span id='ainfo_month'><?php echo date("M,Y", strtotime($month) ); ?></span></h4>
+            <div class="clearfix"></div>
+            <div class="portlet-body">
+               <div class='agent_info_section'>
+                  <div class="table-responsive">
+                     <table class="table table-striped display" id="table" cellspacing="0" width="100%">
+                        <thead>
+                           <tr>
+                              <th> # </th>
+                              <th> Name </th>
+                              <th> User Name </th>
+                              <th> Target (Pkg.) </th>
+                              <th> Booked (Pkg.) </th>
+                              <th> Assigned By </th>
+                              <th> Action </th>
+                           </tr>
+                        </thead>
+                        <tbody class="ins_data">
+                           <?php if( isset( $monthly_targets ) && !empty( $monthly_targets ) ){
+                              $counter = 1;
+                              foreach( $monthly_targets as $target ){
+                                 
+                                 //remove teamleader
+                                 if( is_teamleader( $target->user_id ) ) continue;
+                                 
+                                 $assigned_by = !empty( $target->target_assigned_by ) ? get_user_name($target->target_assigned_by) : "SY";
+                                 $m_target = 	isset($target->target) ? $target->target : get_default_target();
+                                 $m_target_input = "<input class='hideinputbox' min='5' max='100' type='number' value='{$m_target}' >";
+                                 
+                                 $booked_pkg = get_agents_booked_packages( $target->user_id, $month );
+                                 $update_btn = "<a title='Update Target' href='javascript: void(0)' class='btn_pencil assign_target' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
+                                 
+                                 echo "<tr data-total_target= '{$m_target}' data-agent_id='{$target->user_id}' >
+                                    <td>{$counter}.</td>
+                                    <td>{$target->name}</td>
+                                    <td>{$target->user_name}</td>
+                                    <td><span class='mtupdate'>{$m_target}</span>{$m_target_input}</td>
+                                    <td>{$booked_pkg}</td>
+                                    <td>{$assigned_by}</td>
+                                    <td>{$update_btn}</td>
+                                 </tr>";
+                                 $counter++;
+                              }
+                              }else{
+                              echo "<tr><td colspan=3>No Data Found!</td></tr>";
+                              } ?>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
             </div>
          </div>
-      </div>
+      </div>   
    </div>
 </div>
-</div>
-</div>
-<!-- END CONTENT BODY -->
+
+
 </div>
 <!-- Modal -->
 <script type="text/javascript">

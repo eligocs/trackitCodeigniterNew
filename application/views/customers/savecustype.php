@@ -18,7 +18,7 @@
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-user"></i>Add/Edit Customer Type</div>
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("customers/customer_type"); ?>"
-                        title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
 

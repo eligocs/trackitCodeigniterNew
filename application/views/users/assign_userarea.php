@@ -2,98 +2,99 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			<form role="form" id="frm_user_area" method="post" action="<?php echo site_url('agents/assign_user_area'); ?>" >
-			<div class="portlet box blue">
-			<div class="portlet-title">
-					<div class="caption"><i class="fa fa-user"></i>Assign user area </div>
-					<a class="btn btn-success" href="<?php echo site_url("agents/view_assign_area"); ?>" title="Back">Back</a>
-				</div>
-			</div>
-			<?php echo $this->session->flashdata('message'); ?>
-			
-			<div class="portlet-body">
-			
-				<div class="col-md-4">
-				<div class="form-group-2">
-					<label class="control-label">User*</label>
-					
-					<select name="user" id="user" required class="form-control">
-						<option value="">Select user</option>
-					<?php 
-						//$sales_team = get_all_sales_team_agents();
-						foreach ($sales_service_team as $user){
-							echo "<option ". $selected ." value='".$user->user_id . "'>".$user->first_name ." ".$user->last_name ."</option>";
-						}
-					?>
-					</select>		
-				</div>	
-				<div id="error_msg"> </div>
-				</div>
-				
-				<div class="col-md-4">
-					<div class="form-group-2">
-						<label class="control-label">State*</label><span style="font-size: 12px; color: red;"> (Ctr + click) for multi select</span> 
-						<select name="state[]" required multiple class="form-control" id="state" >
-							<?php 
-							$states = get_indian_state_list();
-							foreach ($states as $state){
-								echo "<option ". $selected ." value='".$state->id . "'>".$state->name ."</option>";
-							} ?>
-						</select>
+			<form class="mb-0" role="form" id="frm_user_area" method="post" action="<?php echo site_url('agents/assign_user_area'); ?>" >
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption"><i class="fa-solid fa-user-gear"></i> Assign user area </div>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents/view_assign_area"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 					</div>
 				</div>
-				
-				<div class="col-md-4">
-					<div id ="city_list">
-						<div class="form-group-2">
-							<label class="control-label">city*</label><span style="font-size: 12px; color: red;"> (Ctr + click) for multi select</span> 
-							<select name="city[]" required class="form-control city" multiple id="city" >
-							
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="col-md-4">
-					<div id ="city_list">
-						<div class="form-group-2">
-							<label class="control-label">Place*</label>
-							<input type="text" name="place" class="form-control" placeholder="Place" />
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4">
-				<div class="form-group-2">
-					<label class="control-label">Assign Category*</label>
-					<select name="category[]" required class="form-control">
-					
-					<?php 
-					$categories = get_all_categories();
-						foreach ($categories as $category){
-							echo "<option ". $selected ." value='".$category->id . "'>".$category->category_name ."</option>";
-						} ?>
-					</select>
-				</div>
-				</div>
-				<div class="clearfix"></div>
-			
-			<hr>
-			<div class="col-md-12">
-				<div class="margiv-top-10">
-					<input type="hidden" name="added_by" value="<?php echo $user_id; ?>">
-					<input type="submit" class="btn green uppercase add_agent" id='button'/>
-				</div>
-			</div>	
-			</form>
-			<div id="addresEd"></div>		
-			
-			</div><!-- portlet body -->
+				<?php echo $this->session->flashdata('message'); ?>
 
+				<div class="bg-white p-3 portlet-body rounded-4 shadow-sm">
+					<div class="row">
+						<div class="col-md-4 my-3">
+							<div class="form-group-2">
+								<label class="control-label">User*</label>
+								
+								<select name="user" id="user" required class="form-control">
+									<option value="">Select user</option>
+								<?php 
+									//$sales_team = get_all_sales_team_agents();
+									foreach ($sales_service_team as $user){
+										echo "<option ". $selected ." value='".$user->user_id . "'>".$user->first_name ." ".$user->last_name ."</option>";
+									}
+								?>
+								</select>		
+							</div>	
+							<div id="error_msg"> </div>
+						</div>
+						
+						<div class="col-md-4 my-3">
+							<div class="form-group-2">
+								<label class="control-label">State*</label><span style="font-size: 12px; color: red;"> (Ctr + click) for multi select</span> 
+								<select name="state[]" required multiple class="form-control" id="state" >
+									<?php 
+									$states = get_indian_state_list();
+									foreach ($states as $state){
+										echo "<option ". $selected ." value='".$state->id . "'>".$state->name ."</option>";
+									} ?>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-4 my-3">
+							<div id ="city_list">
+								<div class="form-group-2">
+									<label class="control-label">city*</label><span style="font-size: 12px; color: red;"> (Ctr + click) for multi select</span> 
+									<select name="city[]" required class="form-control city" multiple id="city" >
+									
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 my-3">
+							<div id ="city_list">
+								<div class="form-group-2">
+									<label class="control-label">Place*</label>
+									<input type="text" name="place" class="form-control" placeholder="Place" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4 my-3">
+							<div class="form-group-2">
+								<label class="control-label">Assign Category*</label>
+								<select name="category[]" required class="form-control">
+								
+								<?php 
+								$categories = get_all_categories();
+									foreach ($categories as $category){
+										echo "<option ". $selected ." value='".$category->id . "'>".$category->category_name ."</option>";
+									} ?>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<input type="hidden" name="added_by" value="<?php echo $user_id; ?>">
+							<input type="submit" class="btn green uppercase add_agent" id='button'/>
+						</div>	
+						<div id="addresEd"></div>		
+					</div>
+				</div>
+				<!-- End portlet body -->
+			</form>
+			<!-- End Form -->
 		</div>
-	<!-- END CONTENT BODY -->
+		<!-- END page-content -->
 	</div>
+	<!-- End page-content-wrapper -->
 </div>
+<!-- End page-content -->
+
+
 <!-- Modal -->
 <style>select option:disabled {color:red;}</style>
 <script type="text/javascript">

@@ -16,20 +16,20 @@
 						<?php
 						if (!empty($category)) {
 						?>
-						<i class=""></i>Edit Hotel Category
+						<i class="fa-solid fa-pen-to-square"></i> Edit Hotel Category
 						<?php
 						} else {
 						?>
-						<i class="icon-plus"></i>Add Hotel Category
+						<i class="fa-solid fa-plus"></i> Add Hotel Category
 						<?php
 						} ?>
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("hotelcategory"); ?>" title="Back">Back</a>
+					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotelcategory"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
 			<form role="form" id="addSeason" method="post"
 				action="<?php echo site_url("hotelcategory/saveHotelCategory"); ?>">
-				<div class="portlet-body custom_card">
+				<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 					<div class="row">
 						<div class="col-md-6 my-2">
 							<div class="form-group">

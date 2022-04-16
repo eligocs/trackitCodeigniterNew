@@ -352,7 +352,7 @@
 															<div data-repeater-list="group_book_pacakge_terms">
 																<?php if( $tour_list > 0 ){ ?>
 																	<?php for ( $i = 0; $i < $tour_list; $i++ ) { ?>
-																		<div data-repeater-item class="mt-repeater-item mt-overflow">
+																		<div data-repeater-item class="mt-repeater-item mt-overflow my-3">
 																			<div class="mt-repeater-cell">
 																				<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms]" required type="text" placeholder="Booking Terms Title" value="<?php echo isset($book_package[$i]["hotel_book_terms"]) ? $book_package[$i]["hotel_book_terms"] : "";?>" class="form-control mmt-repeater-input-inline" />
 																				
@@ -365,7 +365,7 @@
 																		</div>	
 																	<?php } ?>	
 																<?php }else{ ?>
-																	<div data-repeater-item class="mt-repeater-item mt-overflow">
+																	<div data-repeater-item class="mt-repeater-item  mt-overflow my-3">
 																		<div class="mt-repeater-cell">
 																			<input name="hotel_book_terms" required type="text" placeholder="Enter Booking title" class="form-control mmt-repeater-input-inline" />
 																			

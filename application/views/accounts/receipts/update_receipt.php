@@ -33,9 +33,9 @@
 					</div>
 					
 					<?php if( $invoice[0]->receipt_type == "cash" ){ ?>
-						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/cash_receipts"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/cash_receipts"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 					<?php }else{ ?>
-						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/receipts"); ?>" title="Back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/receipts"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 					<?php } ?>
 				</div>
 			</div>

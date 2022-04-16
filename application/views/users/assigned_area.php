@@ -5,16 +5,15 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-
-						<i class="fa fa-cogs"></i>All Users With Assigned Area
+					<i class="fa-solid fa-location-dot"></i> All Users With Assigned Area
 					</div>
-					<a class="btn btn-success" href="<?php echo site_url("agents/assign_area"); ?>" title="add agent">Assign User</a>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("agents/assign_area"); ?>" title="add agent"><i class="fa-solid fa-user-gear"></i> Assign User</a>
 				</div>
 			</div>
 			<?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
-			<div class="portlet-body second_custom_card">
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table class="table table-striped display" cellspacing="0" width="100%">
 						<thead>
@@ -81,10 +80,12 @@
 				</div>
 			</div>
 		</div>
-		
-		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
+</div>
+<!-- END page-container -->
+
 </div>
 <!-- Modal -->
 
