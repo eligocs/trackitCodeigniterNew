@@ -11,21 +11,20 @@
 				</div>
 			</div>
 			<?php $sales_team_agents = get_all_sales_team_agents(); ?>
-			<!-- custom_card -->
-			<div class="custom_card">
-				<form id="frmInsentivecal" class="margin_bottom_0 margin-top-10">
+
+			<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+				<form id="frmInsentivecal" class="mb-0">
 					<div class="row">
-					
-						<div class="col-md-3">
-								<div class="form-group margin_bottom_0">
-									<label class="control-label" for="daterange">Select Month*:</label>
-									<input type="text" required autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
-								</div> 
+						<div class="col-md-3 my-2">
+							<div class="form-group">
+								<label class="control-label" for="daterange">Select Month*:</label>
+								<input type="text" required autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+							</div> 
 						</div>
 							
 						<?php if( is_teamleader() ){
 							$team_members = is_teamleader(); ?>
-							<div class="col-md-3">
+							<div class="col-md-3 my-2">
 								<div class="form-group">
 									<label class="control-label" for="sales_user_id">Select Team Member*:</label>
 									<select required class="form-control select_user" id='sales_user_id' name="user_id">
@@ -41,8 +40,9 @@
 							</div>
 						<?php } ?>
 							
-						<div class="col-md-3">
+						<div class="col-md-3 my-2">
 							<div class="form-group">
+								<label for="" class="control-label d-block">&nbsp;</label>
 								<input type="submit" class="btn btn-success" value="Generate Incentive">
 								<input type="hidden" id="datefrom" name="datefrom" value="<?php echo date("Y-m"); ?>" >
 							</div>
@@ -53,7 +53,7 @@
 			</div>
 			
 			<div class="portlet-body">
-				<div class='agent_info_section custom_card' style="display:none;">
+				<div class='agent_info_section bg-white p-3 rounded-4 shadow-sm' style="display:none;">
 					<!--theme 1-->
 					<div class="cong_theme_1 cntheme">
 						<div class="clearfix congrats">
@@ -116,6 +116,7 @@
 		</div>
 		<!-- End page-content -->
 	</div>
+	<!-- End page-content-wrapper -->
 </div>
 <!-- END page-container -->
 

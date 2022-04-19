@@ -9,9 +9,9 @@ z<?php if($invoice){ 	$invoice = $invoice[0];		?>
 						<strong>Voucher Number: <span class=""><?php echo $invoice->voucher_number; ?></span></strong>
 					</div>
 					<?php if( $invoice->receipt_type == "cash" ){ ?>
-						<a class="btn btn-success" href="<?php echo site_url("accounts/cash_receipts"); ?>" title="Back">Back</a>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/cash_receipts"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 					<?php }else{ ?>
-						<a class="btn btn-success" href="<?php echo site_url("accounts/receipts"); ?>" title="Back">Back</a>
+						<a class="btn btn-outline-primary float-end" href="<?php echo site_url("accounts/receipts"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 					<?php } ?>	
 				</div>
 			</div>
@@ -32,13 +32,13 @@ z<?php if($invoice){ 	$invoice = $invoice[0];		?>
 					<?php $hotelbooking_sent = $invoice->sent_count; ?>
 					<div  class="d-flex justify-content-between mb-4">
 						<?php 
-						echo '<a id="hotel_email_sent" href="#" class="btn green uppercase ">Send</a><div class="clearfix"></div>';
+						echo '<a id="hotel_email_sent" href="#" class="btn green uppercase "><i class="fa-solid fa-paper-plane"></i> Send</a>';
 						echo "<div> <sapn class='badge bg-purple-wisteria fs-7 fw-normal p-2'>Receipt Sent " . $hotelbooking_sent . " Times.</sapn> </div>";
 						?>
 					</div>
-					<div class="clearfix"></div>					
 					<div id="response" class="sam_res"></div>
 				</div>
+
 				<h3>Receipt Details</h3>
 				<div class="table-responsive">	
 					<table class="table table-condensed table-bordered table-hover">
@@ -107,7 +107,6 @@ z<?php if($invoice){ 	$invoice = $invoice[0];		?>
 							<td><div class="col-mdd-10 form_vr"><strong><?php echo $invoice->narration; ?></strong></div></td>
 						</tr>
 						
-						
 						<tr>
 							<td width="20%"><div class="col-mdd-2 form_vl border_right_none"><strong>Updated By:</strong></div></td>	
 							<td><div class="col-mdd-10 form_vr"><strong><?php echo get_user_name($invoice->agent_id); ?></strong></div></td>
@@ -119,13 +118,12 @@ z<?php if($invoice){ 	$invoice = $invoice[0];		?>
 						</tr>
 					</table>
 				</div>	
-			
-			<div class="text-center">
-				<a title='Edit User' href="<?php echo site_url("accounts/update_receipt/{$invoice->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Update Receipt</a>
+				<div class="text-center">
+				   <a title='Edit User' href="<?php echo site_url("accounts/update_receipt/{$invoice->id}"); ?>" class="btn btn-outline-secondary" ><i class="fa-solid fa-pen-to-square"></i> Update Receipt</a>
+				</div>	
 			</div>	
-		</div>	
-	</div>
-  </div>
+		</div>
+  	</div>
 </div>
 
 <!--Sent Hotel Booking Mail Modal-->

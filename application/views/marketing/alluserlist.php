@@ -5,7 +5,7 @@
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
-					<i class="fa-solid fa-users"></i> All Marketing Users
+						<i class="fa-solid fa-users"></i> All Marketing Users
 					</div>
 					<a class="btn btn-primary float-end" href="<?php echo site_url("marketing/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add Marketing User</a>
 				</div>
@@ -131,16 +131,22 @@
 			</div>
 			<?php } ?>
 		</div>
-		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
+</div>
+</div>
+<!-- End page-container -->
+
+
+
 <style>
-.city_filter .btn:hover {
-  background-color: #32c5d2 !important;
-}
-.city_filter .btn.active {
-  background-color: #32c5d2 !important;
-}
+	.city_filter .btn:hover {
+	background-color: #32c5d2 !important;
+	}
+	.city_filter .btn.active {
+	background-color: #32c5d2 !important;
+	}
 </style>
 
 <script type="text/javascript">

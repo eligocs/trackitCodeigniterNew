@@ -15,7 +15,7 @@
                         title="Back">Back</a>
                 </div>
             </div>
-            <div class="row">
+            <div class="">
                 <div class="col-md-12 margin-bottom-20">
                     <div class="d_inline_block">
                         <a title='View Quotation' target="_blank"
@@ -65,7 +65,7 @@
                             <button type="submit" class="btn green uppercase submit_frm" id="submit_frm">Submit To
                                 Refund</button>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <div class="resPonse_refund"></div>
 
                         <input type="hidden" name="customer_id" value="<?php echo $pay->customer_id; ?>">
@@ -111,10 +111,43 @@
                 <div class="col-md-12 custom_card">
                     <div class="portlet-body ">
                         <div class="customer-details">
+                            <div class="well well-sm bg_lightpurple padding_10">
+                                <h3 class="text-white">&nbsp;Payment Details</h3>
+                            </div>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Itinerary Id</th>
+                                    <td><?php echo $pay->iti_id; ?></td>
+                                    <th>Customer Name</th>
+                                    <td><?php echo $pay->customer_name; ?></td>
+                                    <th>Customer Contact</th>
+                                    <td><?php echo $pay->customer_contact; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Customer Email</th>
+                                    <td><?php echo $pay->customer_email; ?></td>
+                                    <th>Package Cost</th>
+                                    <td><?php echo number_format($pay->total_package_cost) . " /-"; ?></td>
+                                    <th>Advance Received (as 1st installment)</th>
+                                    <td> <?php echo number_format($pay->advance_recieved) . " /-"; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Advance Received Date (as 1st installment)</th>
+                                    <td><?php echo $pay->booking_date; ?></td>
+                                    <th>Next Installment Amount</th>
+                                    <td><?php echo $pay->next_payment; ?></td>
+                                    <th>Next Installment Date</th>
+                                    <td><?php echo display_month_name( $pay->next_payment_due_date ); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Balance Pending</th>
+                                    <td><?php echo number_format( $pay->total_balance_amount ) . " /-"; ?></td>
+                                    <th>Travel Date</th>
+                                    <td><?php echo display_month_name($pay->travel_date); ?></td>
+                                </tr>
+                            </table>
+
                             <div class="colum_table">
-                                <div class="well well-sm bg_lightpurple padding_10">
-                                    <h3 class="text-white">&nbsp;Payment Details</h3>
-                                </div>
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Itinerary Id:</strong></div>
                                     <div class="col-md-4 form_vr"><?php echo $pay->iti_id; ?></div>
@@ -134,7 +167,8 @@
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Package Cost:</strong></div>
                                     <div class="col-md-4 form_vr">
-                                        <?php echo number_format($pay->total_package_cost) . " /-"; ?></div>
+                                        <?php echo number_format($pay->total_package_cost) . " /-"; ?>
+                                    </div>
                                 </div>
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Advance Received (as 1st
@@ -143,8 +177,7 @@
                                         <?php echo number_format($pay->advance_recieved) . " /-"; ?></div>
                                 </div>
                                 <div class="col-md-12 col-lg-6">
-                                    <div class="col-md-8 form_vl"><strong>Advance Received Date (as 1st
-                                            installment):</strong></div>
+                                    <div class="col-md-8 form_vl"><strong>Advance Received Date (as 1st installment):</strong></div>
                                     <div class="col-md-4 form_vr"><?php echo $pay->booking_date; ?></div>
                                 </div>
                                 <div class="col-md-12 col-lg-6">
@@ -223,7 +256,7 @@
                 </div>
 
                 <!--TRANSCTIONS-->
-                <div class="clearfix">&nbsp;</div>
+                <div class="">&nbsp;</div>
                 <div class="col-md-12 custom_card margin-top-10">
                     <div class="table-responsive">
                         <table class="table table-bordered d-table">
@@ -312,7 +345,7 @@
                     </div>
                 </div>
 
-                <div class="clearfix">&nbsp;</div>
+                <div class="">&nbsp;</div>
                 <?php 
 				$advance_rec = $pay->advance_recieved;
 				$total_amount_received = $advance_rec + $pay_received; 
@@ -426,7 +459,7 @@
                 </div>
                 <?php } ?>
             </div>
-            <div class="clearfix">&nbsp;</div>
+            <div class="">&nbsp;</div>
             <!-- End Payment Details -->
             <?php 
 					$nextPay = !empty( $pay->next_payment ) ? trim( $pay->next_payment ) : 0;
@@ -469,102 +502,101 @@
 
                                 <div class="tab-content">
                                     <!--Receive Payment TAB-->
-                                    <div class="tab-pane fade active in" id="pvtab_1_1">
+                                    <div class="tab-pane active" id="pvtab_1_1">
                                         <form id="update_payment">
-                                            <h3 class="text-center margin-bottom-30">RECIEVE PAYMENT</h3>
-                                            <div class="form-group col-md-3">
-                                                <label for="usr">Total Package Cost:</label>
-                                                <input type="text" readonly class="form-control"
-                                                    value="<?php echo $pay->total_package_cost; ?>" />
+                                            <div class="row">
+                                                <h3 class="text-center margin-bottom-30">RECIEVE PAYMENT</h3>
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label " for="usr">Total Package Cost:</label>
+                                                    <input type="text" readonly class="form-control"
+                                                        value="<?php echo $pay->total_package_cost; ?>" />
+                                                </div>
+
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label " for="usr">Total Amount Received:</label>
+                                                    <input type="text" readonly class="form-control"
+                                                        value="<?php echo $total_amount_received; ?>" />
+                                                </div>
+
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label " for="usr">Total Balance Pending:</label>
+                                                    <input type="text" readonly class="form-control" name="last_balance"
+                                                        id="total_bal" value="<?php echo $pay->total_balance_amount; ?>" />
+                                                </div>
+
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Invoice Date*:</strong></label>
+                                                    <input type="text" id="invoice_date" required name="invoice_date"
+                                                        placeholder="Invoice Date" class="form-control invoice_date"
+                                                        value="">
+                                                </div>
+                                                
+
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Inst. Amount To Receive:</strong></label>&nbsp;
+                                                    <strong class="red"><?php echo number_format( $nextPay ); ?> /-
+                                                    </strong> Ins Date : <?php echo $pay->next_payment_due_date; ?>
+
+                                                    <input type="number" required data-ins_number="<?php echo $inst_count; ?>" readonly id="current_payment" name="total_payment_recieve" data-pre_amount="<?php echo $nextPay; ?>" placeholder="Payment Received. eg: 5000" class="form-control" value="<?php echo $nextPay; ?>">
+
+                                                </div>
+
+                                                <!--Show adjustment amount only if not final installment -->
+                                                <?php if( $inst_count < 3 ){ ?>
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><input type="checkbox" class="extraCheck" value="Yes">
+                                                        <strong>Adjustment In Amount:</strong>
+                                                    </label>
+                                                </div>
+                                                <?php }  ?>
+
+                                                <!--DISCOUNT BUTTON -->
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><input type="checkbox" class="discountCheck"
+                                                            value="Yes"> <strong>Discount:</strong></label>
+                                                    <input type="number" readonly id="discount" name="discount"
+                                                        placeholder="Discount Price" class="form-control" value="">
+                                                </div>
                                             </div>
 
-                                            <div class="form-group col-md-3">
-                                                <label for="usr">Total Amount Received:</label>
-                                                <input type="text" readonly class="form-control"
-                                                    value="<?php echo $total_amount_received; ?>" />
-                                            </div>
 
-                                            <div class="form-group col-md-3">
-                                                <label for="usr">Total Balance Pending:</label>
-                                                <input type="text" readonly class="form-control" name="last_balance"
-                                                    id="total_bal" value="<?php echo $pay->total_balance_amount; ?>" />
-                                            </div>
-
-                                            <div class="form-group col-md-3">
-                                                <label class=""><strong>Invoice Date*:</strong></label>
-                                                <input type="text" id="invoice_date" required name="invoice_date"
-                                                    placeholder="Invoice Date" class="form-control invoice_date"
-                                                    value="">
-                                            </div>
-                                            <div class="clearfix"></div>
-
-                                            <div class="form-group col-md-4">
-                                                <label class=""><strong>Inst. Amount To Receive:</strong></label>&nbsp;
-                                                <strong class="red"><?php echo number_format( $nextPay ); ?> /-
-                                                </strong> Ins Date : <?php echo $pay->next_payment_due_date; ?>
-
-                                                <input type="number" required
-                                                    data-ins_number="<?php echo $inst_count; ?>" readonly
-                                                    id="current_payment" name="total_payment_recieve"
-                                                    data-pre_amount="<?php echo $nextPay; ?>"
-                                                    placeholder="Payment Received. eg: 5000" class="form-control"
-                                                    value="<?php echo $nextPay; ?>">
-
-                                            </div>
-                                            <!--Show adjustment amount only if not final installment -->
-                                            <?php if( $inst_count < 3 ){ ?>
-                                            <div class="form-group col-md-4">
-                                                <label class=""><input type="checkbox" class="extraCheck" value="Yes">
-                                                    <strong>Adjustment In Amount:</strong></label>
-                                            </div>
-                                            <?php }  ?>
-
-                                            <!--DISCOUNT BUTTON -->
-                                            <div class="form-group col-md-4">
-                                                <label class=""><input type="checkbox" class="discountCheck"
-                                                        value="Yes"> <strong>Discount:</strong></label>
-                                                <input type="number" readonly id="discount" name="discount"
-                                                    placeholder="Discount Price" class="form-control" value="">
-                                            </div>
                                             <?php switch( $inst_count ){
-													//Get installment count
-													case 1: ?>
+                                            //Get installment count
+                                            case 1: ?>
                                             <?php 
-														$due_ins_payment = $pay->second_payment_bal;
-														$due_ins_date = $pay->second_payment_date;
-														?>
-                                            <div class="clearfix"></div>
-                                            <div class="nextInstallments">
+                                            $due_ins_payment = $pay->second_payment_bal;
+                                            $due_ins_date = $pay->second_payment_date;
+                                            ?>
+                                            
+                                            <div class="nextInstallments row">
                                                 <!--show if third payment is pending-->
                                                 <div id="newBal"></div>
-                                                <div class="form-group col-md-4">
-                                                    <label class=""><strong>Third Installment Amount:</strong></label>
+
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Third Installment Amount:</strong></label>
                                                     <input type="number" id="third_pay_balance" name="third_payment_bal"
                                                         placeholder="Third Installment Amount"
                                                         class="form-control pending_pay"
                                                         data-pre_amount="<?php echo $pay->third_payment_bal; ?>"
                                                         value="<?php echo $pay->third_payment_bal; ?>">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label class=""><strong>Third Installment Due Date:</strong></label>
-                                                    <input readonly="readonly" data-date-format="yyyy-mm-dd"
-                                                        class="input-group form-control date_picker"
-                                                        id="third_payment_date" type="text"
-                                                        data-pre_date="<?php echo $pay->third_payment_date; ?>"
-                                                        value="<?php echo $pay->third_payment_date; ?>"
-                                                        name="third_payment_date" />
+
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Third Installment Due Date:</strong></label>
+                                                    <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker" id="third_payment_date" type="text" data-pre_date="<?php echo $pay->third_payment_date; ?>" value="<?php echo $pay->third_payment_date; ?>" name="third_payment_date" />
                                                 </div>
-                                                <div class="clearfix"></div>
-                                                <div class="form-group col-md-4">
-                                                    <label class=""><strong>Final Installment Amount:</strong></label>
+                                                
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Final Installment Amount:</strong></label>
                                                     <input type="number" readonly="readonly" id="final_pay_balance"
                                                         name="final_payment_bal" placeholder="Final Installment Amount"
                                                         class="form-control pending_pay"
                                                         data-pre_amount="<?php echo $pay->final_payment_bal; ?>"
                                                         value="<?php echo $pay->final_payment_bal; ?>">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label class=""><strong>Final Installment Due Date:</strong></label>
+                                                
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Final Installment Due Date:</strong></label>
                                                     <input readonly="readonly" data-date-format="yyyy-mm-dd"
                                                         class="input-group form-control date_picker"
                                                         id="final_payment_date"
@@ -575,19 +607,19 @@
                                             </div>
                                             <?php break;
 													case 2: ?>
-                                            <div class="clearfix"></div>
-                                            <div class="nextInstallments">
+                                            
+                                            <div class="nextInstallments row">
                                                 <div id="newBal"></div>
-                                                <div class="form-group col-md-4">
-                                                    <label class=""><strong>Final Installment Amount:</strong></label>
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Final Installment Amount:</strong></label>
                                                     <input type="number" readonly="readonly" id="final_pay_balance"
                                                         name="final_payment_bal" placeholder="Final Installment Amount"
                                                         class="form-control pending_pay"
                                                         data-pre_amount="<?php echo $pay->final_payment_bal; ?>"
                                                         value="<?php echo $pay->final_payment_bal; ?>">
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <label class=""><strong>Final Installment Due Date:</strong></label>
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Final Installment Due Date:</strong></label>
                                                     <input readonly="readonly" data-date-format="yyyy-mm-dd"
                                                         class="input-group form-control date_picker"
                                                         id="final_payment_date"
@@ -602,100 +634,89 @@
 													break; ?>
                                             <?php } ?>
                                             <!--End Installment Condition-->
-                                            <div class="clearfix"></div>
-                                            <div class="form-group col-md-3">
-                                                <div class="form-group2">
-                                                    <label class=" "><strong>Bank Name:</strong></label>
-                                                    <input class="form-control" id="bank_name" type="text"
-                                                        placeholder="eg: HDFC, ICIC" name="bank_name" value="">
+                                            <div class="row">
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <div class="form-group2">
+                                                        <label class="control-label "><strong>Bank Name:</strong></label>
+                                                        <input class="form-control" id="bank_name" type="text"
+                                                            placeholder="eg: HDFC, ICIC" name="bank_name" value="">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <div class="form-group2">
-                                                    <label class=" "><strong>Payment Type:</strong></label>
-                                                    <input required class="form-control" id="pay_type" type="text"
-                                                        placeholder="eg: Cash/cheque" name="pay_type" value="">
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <div class="form-group2">
+                                                        <label class=" control-label"><strong>Payment Type:</strong></label>
+                                                        <input required class="form-control" id="pay_type" type="text"
+                                                            placeholder="eg: Cash/cheque" name="pay_type" value="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-xl-3 col-md-4 my-2">
+                                                    <label class="control-label"><strong>Balance Due After Payment Receive:</strong></label>
+                                                    <input type="number" readonly id="due_balance" name="new_due_balance"
+                                                        data-pre_balance="<?php echo $newBalPending; ?>" placeholder="Due Balance"
+                                                        class="form-control" value="<?php echo $newBalPending; ?>">
+                                                </div>
+                                    
+                                                <div class="form-group col-md-12">
+                                                    <?php echo $fmsg; ?>
                                                 </div>
                                             </div>
 
-                                            <?php /*
-												<div class="form-group col-md-3">
-													<div class="form-group2">
-														<label class=" "><strong>Travel Date*:</strong></label>
-														<input readonly="readonly" required data-date-format="yyyy-mm-dd" class="input-group form-control date_picker" type="text" value="<?php echo $pay->travel_date; ?>"
-                                            name="travel_date" />
-                                    </div>
-                                </div> */ ?>
-
-                                <div class="form-group col-md-3">
-                                    <label class=""><strong>Balance Due After Payment Receive:</strong></label>
-                                    <input type="number" readonly id="due_balance" name="new_due_balance"
-                                        data-pre_balance="<?php echo $newBalPending; ?>" placeholder="Due Balance"
-                                        class="form-control" value="<?php echo $newBalPending; ?>">
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="form-group col-md-12">
-                                    <?php echo $fmsg; ?>
-                                </div>
-                                <input type="hidden" name="iti_id" value="<?php echo $pay->iti_id; ?>">
-                                <input type="hidden" name="customer_id" value="<?php echo $pay->customer_id; ?>">
-                                <input type="hidden" name="tra_id" value="<?php echo $pay->id; ?>">
-                                <input type="hidden" name="ins_number" value="<?php echo $inst_count; ?>">
-                                <!--div class="margiv-top-10">
-                                    <button type="submit" class="btn green uppercase submit_frm"
-                                        id="submit_frm">Submit</button>
-                                </div-->
-                                <div class="clearfix"></div>
-                                <div class="resPonse"></div>
-                                </form>
+                                            <input type="hidden" name="iti_id" value="<?php echo $pay->iti_id; ?>">
+                                            <input type="hidden" name="customer_id" value="<?php echo $pay->customer_id; ?>">
+                                            <input type="hidden" name="tra_id" value="<?php echo $pay->id; ?>">
+                                            <input type="hidden" name="ins_number" value="<?php echo $inst_count; ?>">
+                                            <div class="resPonse"></div>
+                                        </form>
                             </div>
                             <!--TAB 1 CLOSE-->
                             <!--Postpone TAB-->
                             <div class="tab-pane" id="pvtab_1_2">
                                 <form id="form_postpone_dates">
                                     <!--show if third payment is pending-->
-                                    <h3 class="text-center">POSTPONE DATE</h3>
+                                    <h3 class="text-center">Postpone Date</h3>
+                                    <div class="row">
                                     <?php if( !empty($pay->second_payment_bal) && ( $pay->second_pay_status == "unpaid") ) { ?>
-                                    <div class="form-group col-md-6">
-                                        <label class=""><strong>Second Installment Amount:</strong></label>
+                                    <div class="form-group col-md-6 my-2">
+                                        <label class="control-label"><strong>Second Installment Amount:</strong></label>
                                         <input type="number" readonly class="form-control"
                                             value="<?php echo $pay->second_payment_bal; ?>">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label class=""><strong>Second Installment Due Date:</strong></label>
+                                    <div class="form-group col-md-6 my-2">
+                                        <label class="control-label"><strong>Second Installment Due Date:</strong></label>
                                         <input readonly="readonly" required data-date-format="yyyy-mm-dd"
                                             class="input-group form-control postpone_date" id="second_payment_date_post"
                                             type="text" data-pre_date="<?php echo $pay->second_payment_date; ?>"
                                             value="<?php echo $pay->second_payment_date; ?>"
                                             name="second_payment_date" />
                                     </div>
-                                    <div class="clearfix"></div>
+                                    
                                     <?php } ?>
                                     <!--show if third payment is pending-->
                                     <?php if( !empty($pay->third_payment_bal) && ( $pay->third_pay_status == "unpaid") ){ ?>
-                                    <div class="form-group col-md-6">
-                                        <label class=""><strong>Third Installment Amount:</strong></label>
+                                    <div class="form-group col-md-6 my-2">
+                                        <label class="control-label"><strong>Third Installment Amount:</strong></label>
                                         <input type="number" readonly class="form-control"
                                             value="<?php echo $pay->third_payment_bal; ?>">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label class=""><strong>Third Installment Due Date:</strong></label>
+                                    <div class="form-group col-md-6 my-2">
+                                        <label class="control-label"><strong>Third Installment Due Date:</strong></label>
                                         <input readonly="readonly" required data-date-format="yyyy-mm-dd"
                                             class="input-group form-control postpone_date" id="third_payment_date_post"
                                             type="text" data-pre_date="<?php echo $pay->third_payment_date; ?>"
                                             value="<?php echo $pay->third_payment_date; ?>" name="third_payment_date" />
                                     </div>
-                                    <div class="clearfix"></div>
+                                    
                                     <?php } ?>
                                     <!--show if final payment is pending-->
                                     <?php if( !empty($pay->final_payment_bal) && ( $pay->final_pay_status == "unpaid") ){ ?>
-                                    <div class="form-group col-md-6">
-                                        <label class=""><strong>Final Installment Amount:</strong></label>
+                                    <div class="form-group col-md-6 my-2">
+                                        <label class="control-label"><strong>Final Installment Amount:</strong></label>
                                         <input type="number" readonly="readonly" class="form-control pending_pay"
                                             value="<?php echo $pay->final_payment_bal; ?>">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label class=""><strong>Final Installment Due Date:</strong></label>
+                                    <div class="form-group col-md-6 my-2">
+                                        <label class="control-label"><strong>Final Installment Due Date:</strong></label>
                                         <input readonly="readonly" data-date-format="yyyy-mm-dd" required
                                             class="input-group form-control postpone_date" id="final_payment_date_post"
                                             data-pre_date="<?php echo $pay->final_payment_date; ?>" type="text"
@@ -707,11 +728,12 @@
                                     <input type="hidden" name="customer_id" value="<?php echo $pay->customer_id; ?>">
                                     <input type="hidden" name="tra_id" value="<?php echo $pay->id; ?>">
                                     <input type="hidden" name="ins_number" value="<?php echo $inst_count; ?>">
-                                    <div class="margiv-top-10">
+
+                                    <div class="col-md-12 my-2">
                                         <button type="submit" class="btn green uppercase submit_pfrm"
                                             id="submit_pfrm">Submit</button>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    </div>
                                     <div class="ajax_resPonse"></div>
                                     <!--Update Payment Details-->
                                 </form>
@@ -720,7 +742,7 @@
                         <!--TAB CONTENT-->
                         <!--amendment_note-->
                         <?php if( !empty( $pay->amendment_note ) ){ ?>
-                        <div class='clearfix well well-sm text-center'><strong>Amendment Note : </strong> <span
+                        <div class=' well well-sm text-center'><strong>Amendment Note : </strong> <span
                                 class='red'><?php echo $pay->amendment_note; ?></span></div>
                         <?php } ?>
                     </div>
@@ -797,7 +819,7 @@
                                     class="form-control">
                             </div>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="pkup">Add New Final Cost Of Package:
@@ -814,7 +836,7 @@
                                     value="<?php echo $pay->customer_name; ?>" class="form-control">
                             </div>
                         </div>
-                        <div class="clearfix"></div>
+                        
                         <hr>
                         <input type="hidden" name="iti_id" value="<?php echo $pay->iti_id; ?>">
                         <input type="hidden" name="package_actual_cost" value="<?php echo $pay->total_package_cost; ?>">
@@ -823,7 +845,7 @@
                         <button type="submit" id="reqDis_btn" class="btn btn-default">Update</button>
                         <div id="priceRes"></div>
                     </div>
-                    <div class="clearfix"></div>
+                    
                 </form>
             </div>
             <div class="modal-footer"></div>
@@ -850,7 +872,7 @@
                         <input type="text" id="einvoice_date" required name="einvoice_date" placeholder="Invoice Date"
                             class="form-control einvoice_date" value="">
                     </div>
-                    <div class="clearfix"></div>
+                    
 
                     <div class="col-md-6">
                         <label class=" "><strong>Bank Name*:</strong></label>
@@ -863,11 +885,11 @@
                         <input required type="text" value="" name="e_t_payment_type" class="form-control"
                             placeholder="online/offline etc." id="e_t_payment_type">
                     </div>
-                    <div class="clearfix"></div>
+                    
                     <hr>
                     <input type="hidden" id="edit_tra_id" name="id" value="<?php echo $pay->id; ?>">
                     <button type="submit" id="reqtrad_btn" class="btn btn-default">Update</button>
-                    <div class="clearfix"></div>
+                    
                 </form>
             </div>
             <div class="modal-footer"></div>
