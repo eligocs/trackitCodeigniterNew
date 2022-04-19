@@ -11,8 +11,8 @@ class Api extends CI_Controller {
         if(!empty($_POST['Name'])){
             $insert_data = array(
                 'name' => $_POST['Name'],
-                'email' => $_POST['Phone'],
-                'mobile' => $_POST['Email'],
+                'email' => $_POST['Email'],
+                'mobile' => $_POST['Phone'],
                 'date' => $_POST['Date'],
                 'query_from' => 'Google Query',
             );
