@@ -354,7 +354,7 @@
 														<div data-repeater-list="inc_meta">
 															<?php 
 															$inclusion = unserialize($iti->inc_meta); 
-															$count_inc = count( $inclusion );
+															$count_inc = !empty($inclusion) ? count( $inclusion ) : '';
 															if( !empty($inclusion) ){ 
 																for ( $i = 0; $i < $count_inc; $i++ ) {		?>
 																		<div data-repeater-item class="mt-repeater-inc-item form-group">
@@ -405,7 +405,7 @@
 														<div data-repeater-list="exc_meta">  
 														<?php 
 															$exclusion = unserialize($iti->exc_meta); 
-															$count_exc = count( $exclusion );
+															$count_exc =  !empty($exclusion) ? count( $exclusion ) : '';
 															if( !empty($exclusion) ){ 
 																for ( $i = 0; $i < $count_exc; $i++ ) {		?>
 																	<div data-repeater-item class="mt-repeater-exc-item form-group row my-3">
@@ -461,7 +461,7 @@
 														<div data-repeater-list="special_inc_meta">
 															<?php 
 																$sp_inc = unserialize($iti->special_inc_meta); 
-																$count_sp_inc = count( $sp_inc );
+																$count_sp_inc = !empty( $sp_inc ) ? count( $sp_inc ) : '';
 																if( !empty($sp_inc) ){ 
 																	for ( $i = 0; $i < $count_sp_inc; $i++ ) {		?>
 																		<div data-repeater-item class="mt-repeater-spinc-item  form-group">
@@ -501,7 +501,7 @@
 											<div class="mt-repeater-hotel tour_field_repeater">
 												<div data-repeater-list="hotel_meta">
 												<?php $hotel_meta = unserialize($iti->hotel_meta); 
-													$count_hotel = count( $hotel_meta ); 
+													$count_hotel = !empty($hotel_meta) ?  count( $hotel_meta ) : ''; 
 													if( !empty( $hotel_meta ) ){
 														for ( $i = 0; $i < $count_hotel; $i++ ) { ?>
 															<div data-repeater-item class="mt-repeater-hotel-item">
@@ -582,7 +582,7 @@
 												<div data-repeater-list="hotel_note_meta">
 													<label class="control-label">Add Hotel Note: </label>
 													<?php  $hotel_note_meta = unserialize($iti->hotel_note_meta); 
-													$count_hotel_meta = count( $hotel_note_meta );
+													$count_hotel_meta = !empty($hotel_note_meta) ?  count( $hotel_note_meta ) : '';
 													if( !empty($hotel_note_meta) ){
 														for ( $i = 0; $i < $count_hotel_meta; $i++ ) { ?>
 															<div data-repeater-item class="mt-repeater-hotel-note-item form-group">
