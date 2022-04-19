@@ -40,7 +40,7 @@
                                         
                                         //Show delete button if season greater than four
                                         if( $key > 4 ){
-                                            echo "<a href='javascript:void(0)' data-id='{$value->id}' class='btn btn_trash ajax_delete_category'><i class='fa-solid fa-trash'></i></a></td></tr>";
+                                            echo "<a href='javascript:void(0)' data-id='{$value->id}' class='btn btn_trash ajax_delete_category'><i class='fa-solid fa-trash-can'></i></a></td></tr>";
                                         } 
                                     }
                                 }else{

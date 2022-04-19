@@ -71,8 +71,8 @@
                         Q. Type: <strong>
                             <?php echo check_iti_type( $iti->iti_id ) . ' ( ' . $iti->iti_package_type . ')'; ?></strong>
                     </div>
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("itineraries"); ?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("itineraries"); ?>"
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
            
@@ -865,7 +865,7 @@
                         title="View Quotation"><i class='fa-solid fa-eye' aria-hidden='true'></i> View Quotation</a>
                     <!-- get_iti_booking_status( $iti->iti_id )  != 3 -->
                     <?php if( empty($iti_status) && $iti->email_count > 0 && $iti->publish_status == "publish"  ){ ?>
-                    <a class="btn btn-danger" href="#" id="add_call_btn" title="Back"><i class="fa-solid fa-phone"></i> Add Call Info</a>
+                    <a class="btn btn-danger" href="#" id="add_call_btn" title="Add Call Info"><i class="fa-solid fa-phone"></i> Add Call Info</a>
                     <?php } ?>
                     
                     <!--show duplicate button if parent iti -->

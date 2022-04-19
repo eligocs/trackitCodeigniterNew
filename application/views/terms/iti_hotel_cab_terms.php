@@ -63,7 +63,7 @@
 														$count_bank_payment_terms	= count( $bank_payment_terms ); 
 														$count_bankTerms			= $count_bank_payment_terms-1; 
 														?>
-														<label class="control-label"><strong>Bank Payment Terms Heading</strong></label><br>
+														<label class="control-label"><strong>Bank Payment Terms Heading</strong></label>
 															<input name="group_bankPay_condition[heading]" required type="text" placeholder="eg. Bank Payment Terms" value="<?php if(isset($bank_payment_terms["heading"]) ) { echo $bank_payment_terms["heading"] ; } ?>" class="form-control" />
 															<hr style="border:none;">
 															<div class="form-group mt-repeater">
@@ -72,26 +72,34 @@
 																	<?php if( $count_bankTerms > 0 ){ ?>
 																		<?php for ( $i = 0; $i < $count_bankTerms; $i++ ) { ?>
 																		<div data-repeater-item class="mt-repeater-item mt-overflow">
-																			<div class="mt-repeater-cell">
-																				<input name="group_bankPay_condition[<?php echo $i; ?>][terms]" required type="text" placeholder="Add Terms & Condition" value="<?php echo $bank_payment_terms[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
-																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
-																				</a>
+																			<div class="mt-repeater-cell row">
+																				<div class="col-md-11 my-2">
+																				    <input name="group_bankPay_condition[<?php echo $i; ?>][terms]" required type="text" placeholder="Add Terms & Condition" value="<?php echo $bank_payment_terms[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
+																				</div>
+																				<div class="col-md-1 my-2">
+																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																						<i class="fa-solid fa-trash-can"></i>
+																					</a>
+																				</div>
 																			</div>
 																		</div>	
 																		<?php } ?>	
 																	<?php }else{ ?>
 																		<div data-repeater-item class="mt-repeater-item mt-overflow">
-																			<div class="mt-repeater-cell">
-																				<input name="terms" required type="text" placeholder="Terms & Condition" class="form-control mmt-repeater-input-inline" />
-																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
-																				</a>
+																			<div class="mt-repeater-cell row">
+																				<div class="col-md-11 my-2">
+																				   <input name="terms" required type="text" placeholder="Terms & Condition" class="form-control mmt-repeater-input-inline" />
+																				</div>
+																				<div class="col-md-1 my-2">
+																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																						<i class="fa-solid fa-trash-can"></i>
+																					</a>
+																				</div>
 																			</div>
 																		</div>
 																	<?php } ?>
 																</div>
-																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
+																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 																<i class="fa-solid fa-plus"></i> Add new</a>
 															</div>
 											</div>
@@ -106,7 +114,7 @@
 														?>
 												<div class="row">
 													<div class="col-md-12">
-														<label class="control-label"><strong>Refund Policy & Cancellation Heading</strong></label><br>
+														<label class="control-label"><strong>Refund Policy & Cancellation Heading</strong></label>
 															
 														<input name="group_cancel_terms[heading]" required type="text" placeholder="CANCELLATION & REFUND POLICY:" value="<?php if(isset($cancel_content["heading"]) ) { echo $cancel_content["heading"] ; } ?>" class="form-control" />
 														<hr style="border:none;">
@@ -119,15 +127,15 @@
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
 																		<div class="mt-repeater-cell">
 																		<div class="row">
-																			<div class="col-md-6">
+																			<div class="col-md-6 my-2">
 																				<input name="group_cancel_terms[<?php echo $i; ?>][cancel_terms]" required type="text" placeholder="Add tour cancel & refund terms title" value="<?php echo isset($cancel_content[$i]["cancel_terms"]) ? $cancel_content[$i]["cancel_terms"] : "";?>" class="form-controlmmt-repeater-input-inline form-control " />
 																			</div>
-																			<div class="col-md-5">
+																			<div class="col-md-5 my-2">
 																				<input name="group_cancel_terms[<?php echo $i; ?>][cancel_terms_right]" required type="text" placeholder="Add tour cancel & refund terms value" value="<?php echo isset($cancel_content[$i]["cancel_terms_right"]) ? $cancel_content[$i]["cancel_terms_right"] : "";?>" class="form-control mmt-repeater-input-inline" />
 																			</div>
-																			<div class="col-md-1">
+																			<div class="col-md-1 my-2">
 																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
+																					<i class="fa-solid fa-trash-can"></i>
 																				</a>
 																			</div>
 																		</div>
@@ -137,24 +145,24 @@
 																<?php }else{ ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
 																		<div class="mt-repeater-cell">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<input name="cancel_terms" required type="text" placeholder="Add tour cancel & refund terms" class="form-control mmt-repeater-input-inline" />
-																			</div>	
-																			<div class="col-md-5">
-																				<input name="cancel_terms_right" required type="text" placeholder="Add tour cancel & refund terms value" class="form-control mmt-repeater-input-inline" />
-																			</div>	
-																			<div class="col-md-1">
-																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																			<div class="row">
+																				<div class="col-md-6 my-2">
+																					<input name="cancel_terms" required type="text" placeholder="Add tour cancel & refund terms" class="form-control mmt-repeater-input-inline" />
+																				</div>	
+																				<div class="col-md-5 my-2">
+																					<input name="cancel_terms_right" required type="text" placeholder="Add tour cancel & refund terms value" class="form-control mmt-repeater-input-inline" />
+																				</div>	
+																				<div class="col-md-1 my-2">
+																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																				</div>
 																			</div>
-																		</div>
 																		</div>
 																	</div>
 																<?php } ?>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
@@ -169,7 +177,7 @@
 												$count_terms_content	= count( $terms_content ); 
 												$counttermContent		= $count_terms_content-1; 
 												?>
-												<label class="control-label"><strong>Terms & Condition Heading</strong></label><br>
+												<label class="control-label"><strong>Terms & Condition Heading</strong></label>
 												
 												<input name="group_terms_condition[heading]" required type="text" placeholder="eg. Terms & Condition" value="<?php if(isset($terms_content["heading"]) ) { echo $terms_content["heading"] ; } ?>" class="form-control" />
 												<hr style="border:none">
@@ -179,26 +187,34 @@
 														<?php if( $counttermContent > 0 ){ ?>
 															<?php for ( $i = 0; $i < $counttermContent; $i++ ) { ?>
 															<div data-repeater-item class="mt-repeater-item mt-overflow">
-																<div class="mt-repeater-cell">
-																	<input name="group_terms_condition[<?php echo $i; ?>][terms]" required type="text" placeholder="Add Terms & Condition" value="<?php echo $terms_content[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
-																	<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																		<i class="fa fa-close"></i>
-																	</a>
+																<div class="mt-repeater-cell row">
+																	<div class="col-md-11 my-2">
+																	    <input name="group_terms_condition[<?php echo $i; ?>][terms]" required type="text" placeholder="Add Terms & Condition" value="<?php echo $terms_content[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
+																	</div>
+																	<div class="col-md-1 my-2">
+																		<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																			<i class="fa-solid fa-trash-can"></i>
+																		</a>
+																	</div>
 																</div>
 															</div>	
 															<?php } ?>	
 														<?php }else{ ?>
 															<div data-repeater-item class="mt-repeater-item mt-overflow">
-																<div class="mt-repeater-cell">
-																	<input name="terms" required type="text" placeholder="Terms & Condition" class="form-control mmt-repeater-input-inline" />
-																	<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																		<i class="fa fa-close"></i>
-																	</a>
+																<div class="mt-repeater-cell row">
+																	<div class="col-md-11 my-2">
+																	   <input name="terms" required type="text" placeholder="Terms & Condition" class="form-control mmt-repeater-input-inline" />
+																	</div>
+																	<div class="col-md-1 my-2">
+																		<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																			<i class="fa-solid fa-trash-can"></i>
+																		</a>
+																	</div>
 																</div>
 															</div>
 														<?php } ?>
 													</div>
-													<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
+													<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 													<i class="fa-solid fa-plus"></i> Add new</a>
 												</div>
 											</div>
@@ -233,26 +249,34 @@
 																<?php if( $count_hotel_exc > 0 ){ ?>
 																	<?php for ( $i = 0; $i < $count_hotel_exc; $i++ ) { ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
-																		<div class="mt-repeater-cell">
-																			<input name="group_hotel_exc[<?php echo $i; ?>][hotel_exc]" required type="text" placeholder="Enter hotel exclusion" value="<?php echo $hotel_exc[$i]["hotel_exc"] ;?>" class="form-control mmt-repeater-input-inline" />
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10 my-2">
+																			   <input name="group_hotel_exc[<?php echo $i; ?>][hotel_exc]" required type="text" placeholder="Enter hotel exclusion" value="<?php echo $hotel_exc[$i]["hotel_exc"] ;?>" class="form-control mmt-repeater-input-inline" />
+																			</div>
+																			<div class="col-md-2 my-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>	
 																	<?php } ?>	
 																<?php }else{ ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
-																		<div class="mt-repeater-cell">
-																			<input name="hotel_exc" required type="text" placeholder="Enter hotel exclusion" class="form-control mmt-repeater-input-inline" />
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10 my-2">
+																			   <input name="hotel_exc" required type="text" placeholder="Enter hotel exclusion" class="form-control mmt-repeater-input-inline" />
+																			</div>
+																			<div class="col-md-2 my-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>
 																<?php } ?>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
@@ -267,26 +291,34 @@
 															<?php if( $count_hotel_notes > 0 ){ ?>
 																	<?php for ( $i = 0; $i < $count_hotel_notes; $i++ ) { ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
-																		<div class="mt-repeater-cell">
-																			<input name="group_hotel_notes[<?php echo $i; ?>][hotel_notes]" required type="text" placeholder="Enter hotel notes" value="<?php echo $hotel_notes[$i]["hotel_notes"] ;?>" class="form-control mmt-repeater-input-inline" />
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10 my-2">
+																			   <input name="group_hotel_notes[<?php echo $i; ?>][hotel_notes]" required type="text" placeholder="Enter hotel notes" value="<?php echo $hotel_notes[$i]["hotel_notes"] ;?>" class="form-control mmt-repeater-input-inline" />
+																			</div>
+																			<div class="col-md-2 my-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>	
 																	<?php } ?>	
 																<?php }else{ ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
-																		<div class="mt-repeater-cell">
-																			<input name="hotel_notes" required type="text" placeholder="Enter hotel notes" class="form-control mt-repeater-input-inline" />
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10 my-2">
+																			   <input name="hotel_notes" required type="text" placeholder="Enter hotel notes" class="form-control mt-repeater-input-inline" />
+																			</div>
+																			<div class="col-md-2 my-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>
 																<?php } ?>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
@@ -301,26 +333,34 @@
 																<?php if( $count_rates_notes > 0 ){ ?>
 																	<?php for ( $i = 0; $i < $count_rates_notes; $i++ ) { ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
-																		<div class="mt-repeater-cell">
-																			<input name="group_hotel_rates_notes[<?php echo $i; ?>][rates_notes]" required type="text" placeholder="Enter hotel notes" value="<?php if( isset( $rates_dates_notes[$i]["rates_notes"] ) ){ echo $rates_dates_notes[$i]["rates_notes"] ; } ?>" class="form-control mmt-repeater-input-inline" />
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10 my-2">
+																			   <input name="group_hotel_rates_notes[<?php echo $i; ?>][rates_notes]" required type="text" placeholder="Enter hotel notes" value="<?php if( isset( $rates_dates_notes[$i]["rates_notes"] ) ){ echo $rates_dates_notes[$i]["rates_notes"] ; } ?>" class="form-control mmt-repeater-input-inline" />
+																			</div>
+																			<div class="col-md-2 my-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>	
 																	<?php } ?>	
 																<?php }else{ ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
-																		<div class="mt-repeater-cell">
-																			<input name="rates_notes" required type="text" placeholder="Enter rates and dates notes exclustion" class="form-control mt-repeater-input-inline" />
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10 my-2">
+																			   <input name="rates_notes" required type="text" placeholder="Enter rates and dates notes exclustion" class="form-control mt-repeater-input-inline" />
+																			</div>
+																			<div class="col-md-2 my-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>
 																<?php } ?>	
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
@@ -344,41 +384,47 @@
 														
 														<input name="group_book_pacakge_terms[heading]" required type="text" placeholder="How to book package heading" value="<?php if(isset($book_package["heading"]) ) { echo $book_package["heading"] ; } ?>" class="form-control" />
 														<hr>
-														<label class="control-label"><strong>HOW TO BOOK PACKAGE SUBHEADING </strong></label><br>
+														<label class="control-label"><strong>HOW TO BOOK PACKAGE SUBHEADING </strong></label>
 														<input name="group_book_pacakge_terms[sub_heading]" required type="text" placeholder="How to book package sub heading" value="<?php if(isset($book_package["sub_heading"]) ){ echo $book_package["sub_heading"] ; } ?>" class="form-control" />
 														<hr>
-														<label class="control-label"><strong>HOW TO BOOK PACKAGE TERMS </strong></label><br>
+														<label class="control-label"><strong>HOW TO BOOK PACKAGE TERMS </strong></label>
 														<div class="form-group mt-repeater">
 															<div data-repeater-list="group_book_pacakge_terms">
 																<?php if( $tour_list > 0 ){ ?>
 																	<?php for ( $i = 0; $i < $tour_list; $i++ ) { ?>
 																		<div data-repeater-item class="mt-repeater-item mt-overflow my-3">
-																			<div class="mt-repeater-cell">
-																				<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms]" required type="text" placeholder="Booking Terms Title" value="<?php echo isset($book_package[$i]["hotel_book_terms"]) ? $book_package[$i]["hotel_book_terms"] : "";?>" class="form-control mmt-repeater-input-inline" />
-																				
-																				<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms_right]" required type="text" placeholder="Booking Terms Value" value="<?php echo isset($book_package[$i]["hotel_book_terms_right"]) ? $book_package[$i]["hotel_book_terms_right"] : "";?>" class="form-control mmt-repeater-input-inline" />
-																				
-																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
-																				</a>
+																			<div class="mt-repeater-cell row">
+																				<div class="col-md-10">
+																					<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms]" required type="text" placeholder="Booking Terms Title" value="<?php echo isset($book_package[$i]["hotel_book_terms"]) ? $book_package[$i]["hotel_book_terms"] : "";?>" class="form-control my-2 mmt-repeater-input-inline" />
+																					
+																					<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms_right]" required type="text" placeholder="Booking Terms Value" value="<?php echo isset($book_package[$i]["hotel_book_terms_right"]) ? $book_package[$i]["hotel_book_terms_right"] : "";?>" class="form-control my-2 mmt-repeater-input-inline" />
+																				</div>
+																					
+																				<div class="col-md-2">
+																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline mt-5"> 
+																					<i class="fa-solid fa-trash-can"></i> </a>
+																				</div>
 																			</div>
 																		</div>	
 																	<?php } ?>	
 																<?php }else{ ?>
 																	<div data-repeater-item class="mt-repeater-item  mt-overflow my-3">
-																		<div class="mt-repeater-cell">
-																			<input name="hotel_book_terms" required type="text" placeholder="Enter Booking title" class="form-control mmt-repeater-input-inline" />
-																			
-																			<input name="hotel_book_terms_right" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline" />
-																			
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10">
+																				<input name="hotel_book_terms" required type="text" placeholder="Enter Booking title" class="form-control mmt-repeater-input-inline my-2" />
+																				
+																				<input name="hotel_book_terms_right" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline my-2" />
+																			</div>
+																			<div class="col-md-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline mt-5">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>
 																<?php } ?>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  ">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>	
@@ -392,35 +438,43 @@
 														//remove one element from array for heading
 														$tour_ad_list = $count_advance_pay - 1;
 														?>
-														<label class="control-label"><strong>PROCESS OF MAKING ADVANCE PAYMENT:</strong></label><br>
+														<label class="control-label"><strong>PROCESS OF MAKING ADVANCE PAYMENT:</strong></label>
 														<input name="group_pro_advance_pay[heading]" required type="text" placeholder="PROCESS OF MAKING ADVANCE PAYMENT:" value="<?php if(isset($advance_pay_terms["heading"]) ) { echo $advance_pay_terms["heading"] ; } ?>" class="form-control" />
 														<hr>
-														<label class="control-label"><strong>PROCESS OF MAKING ADVANCE PAYMENT TERMS </strong></label><br>
+														<label class="control-label"><strong>PROCESS OF MAKING ADVANCE PAYMENT TERMS </strong></label>
 														<div class="form-group mt-repeater">
 															<div data-repeater-list="group_pro_advance_pay">
 																<?php if( $tour_ad_list > 0 ){ ?>
 																	<?php for ( $i = 0; $i < $tour_ad_list; $i++ ) { ?>
 																		<div data-repeater-item class="mt-repeater-item mt-overflow">
-																			<div class="mt-repeater-cell">
-																				<input name="group_pro_advance_pay[<?php echo $i; ?>][terms]" required type="text" placeholder="Hotel Booking Terms" value="<?php echo $advance_pay_terms[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
-																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
-																				</a>
+																			<div class="mt-repeater-cell row">
+																				<div class="col-md-10 my-2">
+																				    <input name="group_pro_advance_pay[<?php echo $i; ?>][terms]" required type="text" placeholder="Hotel Booking Terms" value="<?php echo $advance_pay_terms[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
+																				</div>
+																				<div class="col-md-2 my-2">
+																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																					</a>
+																				</div>
 																			</div>
 																		</div>	
 																	<?php } ?>	
 																<?php }else{ ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
-																		<div class="mt-repeater-cell">
-																			<input name="terms" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline" />
-																			<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																			</a>
+																		<div class="mt-repeater-cell row">
+																			<div class="col-md-10 my-2">
+																			   <input name="terms" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline" />
+																			</div>
+																			<div class="col-md-2 my-2">
+																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																				</a>
+																			</div>
 																		</div>
 																	</div>
 																<?php } ?>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>
@@ -437,7 +491,7 @@
 												?>
 												<div class="row">
 													<div class="col-md-12">
-														<label class="control-label"><strong>Amendment Policy (Prepend/Postpend) Heading</strong></label><br>
+														<label class="control-label"><strong>Amendment Policy (Prepend/Postpend) Heading</strong></label>
 														
 														<input name="group_amendment_policy_terms[heading]" required type="text" placeholder="Amendment Policy (Prepend/Postpend)" value="<?php if(isset($amendment_policy["heading"]) ) { echo $amendment_policy["heading"] ; } ?>" class="form-control" />
 														<hr style="border:none">
@@ -449,15 +503,15 @@
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
 																		<div class="mt-repeater-cell">
 																			<div class="row">
-																				<div class="col-md-6">
+																				<div class="col-md-6 my-2">
 																					<input name="group_amendment_policy_terms[<?php echo $i; ?>][amend_policy]" required type="text" placeholder="Add amendment terms title" value="<?php echo isset($amendment_policy[$i]["amend_policy"]) ? $amendment_policy[$i]["amend_policy"] : ""; ?>" class="form-control mmt-repeater-input-inline" />
 																				</div>
-																				<div class="col-md-5">
+																				<div class="col-md-5 my-2">
 																					<input name="group_amendment_policy_terms[<?php echo $i; ?>][amend_policy_right]" required type="text" placeholder="Add amendment terms value" value="<?php echo isset($amendment_policy[$i]["amend_policy_right"]) ? $amendment_policy[$i]["amend_policy_right"] : ""; ?>" class="form-control mmt-repeater-input-inline" />
 																				</div>	
-																				<div class="col-md-1">											
+																				<div class="col-md-1 my-2">											
 																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
+																					<i class="fa-solid fa-trash-can"></i>
 																					</a>
 																				</div>
 																			</div>
@@ -467,24 +521,24 @@
 																<?php }else{ ?>
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
 																		<div class="mt-repeater-cell">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<input name="amend_policy" required type="text" placeholder="Enter Amendment terms title" class="form-control mmt-repeater-input-inline" />
+																			<div class="row">
+																				<div class="col-md-6 my-2">
+																					<input name="amend_policy" required type="text" placeholder="Enter Amendment terms title" class="form-control mmt-repeater-input-inline" />
+																				</div>	
+																				<div class="col-md-5 my-2">
+																					<input name="amend_policy_right" required type="text" placeholder="Enter Amendment terms value" class="form-control mmt-repeater-input-inline" />
+																				</div>	
+																				<div class="col-md-1 my-2">
+																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
+																					<i class="fa-solid fa-trash-can"></i>
+																					</a>
+																				</div>	
 																			</div>	
-																			<div class="col-md-5">
-																				<input name="amend_policy_right" required type="text" placeholder="Enter Amendment terms value" class="form-control mmt-repeater-input-inline" />
-																			</div>	
-																			<div class="col-md-1">
-																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																				<i class="fa fa-close"></i>
-																				</a>
-																			</div>	
-																		</div>	
 																		</div>
 																	</div>
 																<?php } ?>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>
@@ -496,12 +550,12 @@
 												<?php $term_meta = $terms[0];
 												//get data if exists
 												$payment_policy = isset($term_meta->payment_policy) ? unserialize( $term_meta->payment_policy) : ""; 
-												$count_payment_policy	= count( $payment_policy );
-												$count_paymentpolicy	= $count_payment_policy-1;
+												$count_payment_policy	= !empty($payment_policy ) ?  count( $payment_policy ) : '';
+												$count_paymentpolicy	= !empty ($count_payment_policy) ? $count_payment_policy-1 : '';
 												?>
 												<div class="row">
 													<div class="col-md-12">
-														<label class="control-label"><strong>Payment Policy (After receiving Booking cost)</strong></label><br>
+														<label class="control-label"><strong>Payment Policy (After receiving Booking cost)</strong></label>
 														<input name="payment_policy[heading]" required type="text" placeholder="Payment Policy (Payment Policy (After receiving Booking cost)" value="<?php if(isset($payment_policy["heading"]) ) { echo $payment_policy["heading"] ; } ?>" class="form-control" />
 														<hr style="border:none">
 														<div class="form-group mt-repeater">
@@ -512,15 +566,15 @@
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
 																		<div class="mt-repeater-cell">
 																			<div class="row">
-																				<div class="col-md-6">
+																				<div class="col-md-6 my-2">
 																					<input name="payment_policy[<?php echo $i; ?>][pay_policy]" required type="text" placeholder="Add payment terms title" value="<?php echo isset($payment_policy[$i]["pay_policy"]) ? $payment_policy[$i]["pay_policy"] : ""; ?>" class="form-control mmt-repeater-input-inline" />
 																				</div>
-																				<div class="col-md-5">	
+																				<div class="col-md-5 my-2">	
 																					<input name="payment_policy[<?php echo $i; ?>][pay_policy_right]" required type="text" placeholder="Add payment terms value" value="<?php echo isset($payment_policy[$i]["pay_policy_right"]) ? $payment_policy[$i]["pay_policy_right"] : ""; ?>" class="form-control mmt-repeater-input-inline" />
 																				</div>
-																				<div class="col-md-1">	
+																				<div class="col-md-1 my-2">	
 																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
+																					<i class="fa-solid fa-trash-can"></i>
 																					</a>
 																				</div>
 																			</div>
@@ -531,15 +585,15 @@
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
 																		<div class="mt-repeater-cell">
 																			<div class="row">
-																				<div class="col-md-6">
+																				<div class="col-md-6 my-2">
 																					<input name="pay_policy" required type="text" placeholder="Enter payment terms title" class="form-control mmt-repeater-input-inline" />
 																				</div>
-																				<div class="col-md-5">
+																				<div class="col-md-5 my-2">
 																					<input name="pay_policy_right" required type="text" placeholder="Enter payment terms value" class="form-control mmt-repeater-input-inline" />
 																				</div>	
-																				<div class="col-md-1">	
+																				<div class="col-md-1 my-2">	
 																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
+																					<i class="fa-solid fa-trash-can"></i>
 																					</a>
 																				</div>	
 																			</div>
@@ -547,7 +601,7 @@
 																	</div>
 																<?php } ?>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
+															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>
@@ -565,7 +619,7 @@
 													?>
 													<div class="row">
 														<div class="col-md-12">
-															<label class="control-label"><strong>Booking With Us Benefits</strong></label><br>
+															<label class="control-label"><strong>Benefits of Booking With Us</strong></label>
 															<hr style="border:none">
 															<div class="form-group mt-repeater">
 																<div data-repeater-list="booking_benefits_terms">
@@ -574,12 +628,12 @@
 																		<div data-repeater-item class="mt-repeater-item mt-overflow">
 																			<div class="mt-repeater-cell">
 																				<div class="row">
-																					<div class="col-md-6">
+																					<div class="col-md-6 my-2">
 																						<input name="booking_benefits_terms[<?php echo $i; ?>][benefit_inc]" required type="text" placeholder="Add Booking benefits" value="<?php echo isset($booking_benefits_terms[$i]["benefit_inc"]) ? $booking_benefits_terms[$i]["benefit_inc"] : ""; ?>" class="form-control mmt-repeater-input-inline" />
 																					</div>
-																					<div class="col-md-1">	
+																					<div class="col-md-1 my-2">	
 																						<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																						<i class="fa fa-close"></i>
+																						<i class="fa-solid fa-trash-can"></i>
 																						</a>
 																					</div>
 																				</div>
@@ -590,12 +644,12 @@
 																		<div data-repeater-item class="mt-repeater-item mt-overflow">
 																			<div class="mt-repeater-cell">
 																			<div class="row">
-																				<div class="col-md-6">
+																				<div class="col-md-6 my-2">
 																					<input name="benefit_inc" required type="text" placeholder="Enter Booking benefits" class="form-control mmt-repeater-input-inline" />
 																				</div>
-																				<div class="col-md-1">	
+																				<div class="col-md-1 my-2">	
 																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
-																					<i class="fa fa-close"></i>
+																					<i class="fa-solid fa-trash-can"></i>
 																					</a>
 																				</div>	
 																			</div>	
@@ -603,7 +657,7 @@
 																		</div>
 																	<?php } ?>
 																</div>
-																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  pull-right">
+																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add mt-3">
 																<i class="fa-solid fa-plus"></i> Add new</a>
 															</div>
 														</div>

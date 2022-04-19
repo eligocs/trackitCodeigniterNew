@@ -34,7 +34,7 @@
                                                                         value="<?php if(isset($val->logo_url) && !empty($val->logo_url)){echo $val->logo_url; } ?>" />
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <a class="btn btn_blue_outline"
+                                                                    <a class="btn btn-success"
                                                                         data-toggle="modal" href="#draggable"> Add Logo
                                                                     </a>
                                                                 </div>
@@ -53,8 +53,8 @@
                                                                     value="<?php if(isset($val->favicon) && !empty($val->favicon)){echo $val->favicon; } ?>" />
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <a class="btn btn_blue_outline"
-                                                                    data-toggle="modal" href="#draggable1"> Add Icon
+                                                                    <a class="btn btn-success"
+                                                                    data-toggle="modal" href="#draggable1"><i class="fa-solid fa-plus"></i> Add Icon
                                                                     </a>
                                                                 </div>
                                                             </div>

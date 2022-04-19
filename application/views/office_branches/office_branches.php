@@ -1,22 +1,19 @@
 <div class="page-container">
 	<div class="page-content-wrapper">
 		<div class="page-content">
-		 <!-- BEGIN SAMPLE TABLE PORTLET-->
-		 
-		 <?php $message = $this->session->flashdata('success'); 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
-		
-	
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-users"></i>All Banks
+			<!-- BEGIN SAMPLE TABLE PORTLET-->
+			
+			<?php $message = $this->session->flashdata('success'); 
+			if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+			?>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption"> <i class="fa-solid fa-building-columns"></i> All Banks </div>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("terms/add_branch"); ?>" title="Add Bank Details"><i class="fa-solid fa-plus"></i> Add Branch</a>
 				</div>
-				<a class="btn btn-success" href="<?php echo site_url("terms/add_branch"); ?>" title="Add Bank Details">Add Branch</a>
-			</div></div>
-			<div class="portlet-body">
-				<div class="table-responsive second_custom_card">
+			</div>
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<div class="table-responsive">
 					<table class="table table-striped display dataTable">
 						<thead>
 							<tr>
@@ -56,11 +53,14 @@
 					</table>
 				</div>
 			</div>
+			<!-- End portlet-body -->
 		</div>
-		
-		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+
 </div>
 <!-- Modal -->
 <script type="text/javascript">

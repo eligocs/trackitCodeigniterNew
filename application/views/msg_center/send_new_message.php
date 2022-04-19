@@ -116,7 +116,7 @@
 					<div class="border" id="customer_listing"></div>
 					<div class="row">
 						<div class="col-md-6 mb-3 mt-4">
-							<label>Type a text message* <span style='color: red; font-size: 12px;'>Note: Max 160 character</span></label>
+							<label class="control-label">Type a text message* <span style='color: red; font-size: 12px;'>Note: Max 160 character</span></label>
 							<textarea required maxlength="160" name="text_message" class="form-control"></textarea>
 						</div>
 						

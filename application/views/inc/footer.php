@@ -206,7 +206,6 @@ jQuery(document).ready(function($) {
 	<!--------------------Popup THOUGHT OF THE DAY end------------>
 
 	</div><!-- main_page_container End -->
-
 	<!-- BEGIN FOOTER -->
 	<div class="page-footer">
 	    <div class="page-footer-inner"> <?php echo date("Y"); ?> &copy; Develop By

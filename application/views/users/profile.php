@@ -108,7 +108,7 @@
 															</div>
 
 															<div class="form-group mb-3">
-																<label class="control-label">Gender</label>
+																<label class="control-label me-3">Gender</label>
 
 																<div class="form-check form-check-inline">
 																	<input class="form-check-input" required name="gender" value="male" <?php if($u_data->gender=='male'){ echo "checked=checked";}  ?> type="radio" id="lmale">
@@ -209,7 +209,6 @@
 														<div id="ajaxResChangePass"></div>
 													</div>
 													<!-- END CHANGE PASSWORD TAB -->
-
 												</div>
 											</div>
 										</div>

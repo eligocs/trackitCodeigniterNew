@@ -41,191 +41,208 @@
 				<!--Edit Button-->
 				<?php if( !is_salesteam()){ ?>
 				<div class="text-center">
-					<a title='Edit user' href="<?php echo site_url("reference_customers/edit/{$muser->id}"); ?>" class="" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-					OR <a class=""  href="<?php echo site_url("reference_customers/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add new</a>
+					<!-- btn Edit -->
+					<a title='Edit user' href="<?php echo site_url("reference_customers/edit/{$muser->id}"); ?>" class="btn btn-outline-secondary" ><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+					<strong class="mx-3"> OR </strong>
+					<!-- Add btn -->
+					<a class="btn btn-outline-secondary"  href="<?php echo site_url("reference_customers/add"); ?>" title="add user">
+						<i class="fa-solid fa-plus"></i> Add new
+					</a>
 				</div>	
 				<?php } ?>
 			</div>	
 			<a class="btn btn-danger mt-3" href="#" id="add_call_btn" title="Back"><i class="fa-solid fa-phone"></i> Add Call Info</a>
-					<div class="call_log bg-white p-3 mt-4 rounded-4 shadow-sm" id="call_log_section" style="display: none;">
-						<form id="call_detais_form" novalidate="novalidate">
+					<div class="row">
+						<div class="col-md-9 call_log" id="call_log_section" style="display: none;">
+							<div class="bg-white p-3 mt-4 rounded-4 shadow-sm">
+								<form id="call_detais_form" novalidate="novalidate">
 
-							<div class="call_type_seciton">
-								<label class="radio-inline">
-									<input data-id="picked_call_panel" required="" id="picked_call" class="radio_toggle" type="radio" name="callType" value="Picked call" aria-required="true">Picked call
-								</label>
-								<label class="radio-inline"><input class="radio_toggle" data-id="call_not_picked_panel" required="" id="call_not_picked" type="radio" name="callType" value="Call not picked" aria-required="true">Call not picked</label>
-								<label class="radio-inline"><input class="radio_toggle" data-id="close_lead_panel" required="" id="close_lead" type="radio" name="callType" value="8" aria-required="true">Decline</label>
-							</div>	
+								<div class="call_type_seciton">
+									<label class="radio-inline control-label me-3 mb-3">
+										<input data-id="picked_call_panel" required="" id="picked_call" class="radio_toggle me-2 form-check-input" type="radio" name="callType" value="Picked call" aria-required="true">Picked call
+									</label>
+									<label class="radio-inline control-label me-3 mb-3">
+										<input class="radio_toggle me-2 form-check-input" data-id="call_not_picked_panel" required="" id="call_not_picked" type="radio" name="callType" value="Call not picked" aria-required="true">Call not picked
+									</label>
+									<label class="radio-inline control-label me-3 mb-3">
+										<input class="radio_toggle me-2 form-check-input" data-id="close_lead_panel" required="" id="close_lead" type="radio" name="callType" value="8" aria-required="true">Decline
+									</label>
+								</div>	
 
-							<div id="panel_detail_section" style="display: none;">
-								<div class="call_type_res col-md-4" id="picked_call_panel"><!--picked call panel-->
-									<div class="col-md-">
-										<div class="checkbox1">
-											<label><input id="nxtCallCk" type="radio" class="book_query" name="book_query" required="" value="" aria-required="true"> Next call time</label>
-										</div>
-										<div id="next_call_cal">
-											<label>Next calling time and date<span style="color:red;">*</span>:</label> 
-											<input size="16" required="" type="text" value="" name="nextCallTime" readonly="" class="form-control form_datetime" aria-required="true">  
-										</div>	
-									</div>	
-									<!--Quotation Type Holidays/Accommodation/Cab-->
-								</div><!--end picked call panel-->
-								<div class="call_type_res" id="call_not_picked_panel"><!--call_not_picked panel-->
-									<div class="col-md-12">
-										<label class="radio-inline control-label">
-											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Switched off" aria-required="true">Switched off
-										</label>
-										<label class="radio-inline control-label">
-											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Not reachable" aria-required="true">Not reachable
-										</label>
-										<label class="radio-inline control-label">
-											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Not answering" aria-required="true">Not answering
-										</label>
-										<label class="radio-inline control-label">
-											<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer" value="Number does not exists" aria-required="true">Number does not exists
-										</label>
-										
-										<div class="col-md-6 hide">
-											<div class="row">
-												<div class="col-md-">
-													<div class="form-group">
-													  <label for="comment">Comment<span style="color:red;">*</span>:</label>
-													  <textarea required="" class="form-control" rows="3" name="comment" id="comment" aria-required="true"></textarea>
-													</div> 
+								<div id="panel_detail_section" style="display: none;">
+									<div class="row">
+										<div class="call_type_res col-md-6 my-2" id="picked_call_panel">
+											<!--picked call panel-->
+											<div>
+												<div class="checkbox1">
+													<label class="control-label">
+														<input id="nxtCallCk" type="radio" class="book_query form-check-input" name="book_query" required="" value="" aria-required="true"> Next calling time and date <sup class="text-danger">*</sup>
+													</label>
 												</div>
-											</div>	
-										</div>	
-										
-										<div class="col-md-6">
-											<div class="row">
-												<div class="nxt_call">
-													<div class="form-group">
-														<label>Next calling time and date<span style="color:red;">*</span>:</label> 
-														<input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime"> 
-													</div>
-
-													<div class="form-group">
-														<label>Lead prospect<span style="color:red;">*</span></label>
-														<select required class="form-control" name="txtProspectNotpicked">
-															<option value="Hot">Hot</option>
-															<option value="Warm">Warm</option>
-															<option value="Cold">Cold</option>
-														</select>
-													</div>
+												<div id="next_call_cal">
+													<input size="16" required="" type="text" value="" name="nextCallTime" readonly="" class="form-control form_datetime" aria-required="true">  
 												</div>	
 											</div>	
+											<!--Quotation Type Holidays/Accommodation/Cab-->
+										</div><!--end picked call panel-->
+										<div class="call_type_res" id="call_not_picked_panel"><!--call_not_picked panel-->
+											<div class="col-md-12">
+												<label class="radio-inline control-label me-3">
+													<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Switched off" aria-required="true">Switched off
+												</label>
+												<label class="radio-inline control-label me-3">
+													<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not reachable" aria-required="true">Not reachable
+												</label>
+												<label class="radio-inline control-label me-3">
+													<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not answering" aria-required="true">Not answering
+												</label>
+												<label class="radio-inline control-label me-3">
+													<input required="" type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Number does not exists" aria-required="true">Number does not exists
+												</label>
+												
+												<div class="col-md-6 hide">
+													<div class="row">
+														<div class="col-md-">
+															<div class="form-group">
+															<label for="comment">Comment<span style="color:red;">*</span>:</label>
+															<textarea required="" class="form-control" rows="3" name="comment" id="comment" aria-required="true"></textarea>
+															</div> 
+														</div>
+													</div>	
+												</div>	
+											
+												<div class="nxt_call">
+													<div class="row">
+														<div class="form-group col-md-6 my-2">
+															<label class="control-label">Next calling time and date<span style="color:red;">*</span>:</label> 
+															<input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime"> 
+														</div>
+
+														<div class="form-group col-md-6 my-2">
+															<label class="control-label">Lead prospect<span style="color:red;">*</span></label>
+															<select required class="form-control" name="txtProspectNotpicked">
+																<option value="Hot">Hot</option>
+																<option value="Warm">Warm</option>
+																<option value="Cold">Cold</option>
+															</select>
+														</div>
+													</div>	
+												</div>	
+											</div>
 										</div>
+										<!--end call not picked panel-->	
+										<!--close_lead_panel panel-->
+										<div class="call_type_res" id="close_lead_panel">
+											<div class="row">
+												<div class="form-group col-md-6 my-2">
+													<label for="" class="control-label"> Select Decline Reason :</label>
+													<select required="" class="form-control" name="decline_reason" aria-required="true">
+														<option value="">Select Reason</option>
+														<option value="Booked with someone else">Booked with someone else</option>
+														<option value="Not interested">Not interested</option>
+														<option value="Not answering call from 1 week">Not answering call from 1 week</option>
+														<option value="Plan cancelled">Plan cancelled</option>
+														<option value="Wrong number">Wrong number</option>
+														<option value="Denied to post lead">Denied to post lead</option>
+														<option value="Other">Other</option>
+													</select>
+												</div>
+												
+												<div class="col-md-6 my-2">
+													<div class="form-group">
+														<label class="control-label" for="comment">Decline Comment:</label>
+														<textarea class="form-control" rows="3" name="decline_comment" id="decline_comment"></textarea>
+													</div> 
+												</div>
+											</div>
+										</div>
+										<!--end close_lead_panel-->	
+										
+										<div class="col-md-6 my-2">
+											<div class="form-group">
+											<label class="control-label" for="comment">Call summary <sup class="text-danger">*</sup></label>
+											<textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
+											</div> 
+										</div>
+										<div class="col-md-6 my-2">
+											<div class="form-group">
+												<label class="control-label">Lead prospect <sup class="text-danger">*</sup></label>
+												<select required class="form-control" name="txtProspect">
+													<option value="Hot">Hot</option>
+													<option value="Warm">Warm</option>
+													<option value="Cold">Cold</option>
+												</select>
+											</div>
+										</div>
+										<input type="hidden" name="customer_id" value="<?php echo $muser->id; ?>">
+										<input type="hidden" name="agent_id" value="<?php echo $user_id; ?>">
+										<div class="mt-3">
+											<button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
+											<button class="btn red uppercase cancle_bnt">Cancel</button>
+										</div>
+										
+										<div id="resp"></div>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<?php if( !empty( $followUpData ) ){ ?>
+						<!--div class="panel-group accordion call-time" id="accordion3"--->
+						<?php
+						$count = 1;
+						foreach( $followUpData as $callDetails ){ ?>
+						<?php $c_type = $callDetails->callType; 
+							if( $c_type == 9 ){
+								$callType_status = "Approved";
+							}elseif( $c_type == 8 ){
+								$callType_status = "Decline";
+							}else{
+								$callType_status = $c_type;
+							}
+						?>
+						<div class="col-md-3">
+							<div class="bg-white p-3 rounded-4 shadow-sm mt-3">
+								<div class="mt-element-list">			 
+									<div class="mt-list-container list-todo" id="accordion1" role="tablist" aria-multiselectable="true">
+										<div class="list-todo-line"></div>
+										<ul>
+											<li class="mt-list-item">
+												<div class="list-todo-icon bg-white font-green-meadow">
+													<i class="fa fa-clock-o"></i>
+												</div>
+												<div class="list-todo-item green-meadow">
+													<a class="list-toggle-container" data-toggle="collapse" data-parent="#accordion1" onclick=" " href="#task-<?php echo $count;?>" aria-expanded="false">
+														<div class="list-toggle done uppercase">
+															<div class="list-toggle-title bold">Call Time: <?php echo $callDetails->currentCallTime;?></div>
+															
+														</div>
+													</a>
+													<div class="task-list panel-collapse collapse" id="task-<?php echo $count;?>">
+														<ul>
+															<li class="task-list-item done">
+																<div class="task-icon"><a href="javascript:;"><i class="fa fa-phone"></i></a></div>
+						
+																<div class="task-content">
+																	<h4 class="uppercase bold">
+																		<a href="javascript:;"><?php echo $callType_status;?></a>
+																	</h4>
+															<p><strong>Call summary:</strong> <?php echo $callDetails->callSummary;?></p>
+															<p><strong>Next Call Time:</strong> <?php echo $callDetails->nextCallDate;?></p>
+															<p><strong><?php echo $callDetails->customer_prospect;?></strong></p>
+															<p><strong>Comment:</strong> <?php echo $callDetails->comment;?></p>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</li>
+										</ul>
 									</div>
 								</div>
-								<!--end call not picked panel-->	
-								<!--close_lead_panel panel-->
-								<div class="call_type_res" id="close_lead_panel">
-									<div class="form-group col-md-6">
-										<select required="" class="form-control" name="decline_reason" aria-required="true">
-											<option value="">Select Reason</option>
-											<option value="Booked with someone else">Booked with someone else</option>
-											<option value="Not interested">Not interested</option>
-											<option value="Not answering call from 1 week">Not answering call from 1 week</option>
-											<option value="Plan cancelled">Plan cancelled</option>
-											<option value="Wrong number">Wrong number</option>
-											<option value="Denied to post lead">Denied to post lead</option>
-											<option value="Other">Other</option>
-										</select>
-									</div>
-									
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="comment">Decline Comment:</label>
-								   <textarea class="form-control" rows="3" name="decline_comment" id="decline_comment"></textarea>
-										</div> 
-									</div>
-								</div><!--end close_lead_panel-->	
-								 
-									<div class="col-md-4">
-										<div class="form-group">
-										  <label for="comment">Call summary<span style="color:red;">*</span>:</label>
-										  <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
-										</div> 
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<label>Lead prospect<span style="color:red;">*</span></label>
-											<select required class="form-control" name="txtProspect">
-												<option value="Hot">Hot</option>
-												<option value="Warm">Warm</option>
-												<option value="Cold">Cold</option>
-											</select>
-										</div>
-									</div>
-									<input type="hidden" name="customer_id" value="<?php echo $muser->id; ?>">
-									<input type="hidden" name="agent_id" value="<?php echo $user_id; ?>">
-									<div class="margiv-top-10">
-										<button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
-										<button class="btn red uppercase cancle_bnt">Cancel</button>
-									</div>
-									
-									<div id="resp"></div>
-								</form>
 							</div>
-			
-							</div>
-								<?php if( !empty( $followUpData ) ){ ?>
-							<!--div class="panel-group accordion call-time" id="accordion3"--->
-								<?php
-								$count = 1;
-								foreach( $followUpData as $callDetails ){ ?>
-									<?php $c_type = $callDetails->callType; 
-										if( $c_type == 9 ){
-											$callType_status = "Approved";
-										}elseif( $c_type == 8 ){
-											$callType_status = "Decline";
-										}else{
-											$callType_status = $c_type;
-										}
-									?>
-							<p></p>
-							<div class="col-md-6 col-lg-4">
-									<div class="mt-element-list">			 
-										<div class="mt-list-container list-todo" id="accordion1" role="tablist" aria-multiselectable="true">
-											<div class="list-todo-line"></div>
-											<ul>
-												<li class="mt-list-item">
-													<div class="list-todo-icon bg-white font-green-meadow">
-														<i class="fa fa-clock-o"></i>
-													</div>
-													<div class="list-todo-item green-meadow">
-														<a class="list-toggle-container" data-toggle="collapse" data-parent="#accordion1" onclick=" " href="#task-<?php echo $count;?>" aria-expanded="false">
-															<div class="list-toggle done uppercase">
-																<div class="list-toggle-title bold">Call Time: <?php echo $callDetails->currentCallTime;?></div>
-																
-															</div>
-														</a>
-														<div class="task-list panel-collapse collapse" id="task-<?php echo $count;?>">
-															<ul>
-																<li class="task-list-item done">
-																	<div class="task-icon"><a href="javascript:;"><i class="fa fa-phone"></i></a></div>
-							
-																	<div class="task-content">
-																		<h4 class="uppercase bold">
-																			<a href="javascript:;"><?php echo $callType_status;?></a>
-																		</h4>
-																<p><strong>Call summary:</strong> <?php echo $callDetails->callSummary;?></p>
-																<p><strong>Next Call Time:</strong> <?php echo $callDetails->nextCallDate;?></p>
-																<p><strong><?php echo $callDetails->customer_prospect;?></strong></p>
-																<p><strong>Comment:</strong> <?php echo $callDetails->comment;?></p>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
-									</div>		<!--/div>
-							</div>
-						</div-->
+						</div>		
+					</div>
 				<?php $count++; ?>
 			<?php } ?>
 			<?php } ?>

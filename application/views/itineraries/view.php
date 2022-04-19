@@ -2054,7 +2054,7 @@
                         <?php 
                             //check if benefits
                             $benefits_m = unserialize($iti->booking_benefits_meta); 
-                            $count_bn_inc = count( $benefits_m );
+                            $count_bn_inc = !empty( $benefits_m ) ? count( $benefits_m ) : '';
                             if( !empty($benefits_m) ){
                                 echo '<div class=" portlet-title"><h3 class="custom_title">Benefits of Booking With Us</h3></div>';
                                 echo "<div class='portlet-body'>   <ul class='inclusion'>";
@@ -2973,7 +2973,7 @@
                         <?php if( $iti->iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" ){ ?>
                         <div class="contactForm">
                             <form id="confirmForm">
-                                <h3>Enter Your Comment For Client</h3>
+                                <h3 class="fs-6">Enter Your Comment For Client</h3>
                                 <div class="form-group feedback">
                                     <textarea required placeholder="Please Enter comment here...." rows="4" cols="20"
                                         name="client_comment" class="form-control client_textarea" /></textarea>
@@ -2984,7 +2984,7 @@
                                 <input type="hidden" name="agent_id" id="agent_id" value="<?php echo $iti->agent_id; ?>">
                                 <input type="hidden" name="customer_id" id="customer_id"
                                     value="<?php echo $iti->customer_id; ?>">
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     <button id="LinkButton1" type="submit" class="btn btn-success uppercase app_iti">Submit</button>
                                 </div>
                                 
@@ -3019,6 +3019,7 @@
 <!-- End page-container -->
 </div>
 </div>
+
 
 
 <!-- END CONTENT BODY -->

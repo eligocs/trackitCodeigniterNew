@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="page-content-wrapper">
-        <div class="page-content p-3">
+        <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
             if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
@@ -33,11 +33,11 @@
             }
             ?>
             <!--sort by agent -->
-            <div class="margin-bottom-25 custom_card">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <!--start filter section-->
                 <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible mb-0">
-                    <?php if( $user_role == 99 || $user_role == 98 ){ ?>
                     <div class="row">
+                    <?php if( $user_role == 99 || $user_role == 98 ){ ?>
                         <div class="col-md-3 my-2">
                             <?php $sales_team_agents = get_all_sales_team_agents(); ?>
                             <div class="form-group">
@@ -95,14 +95,13 @@
                     </div>
                 </form>
             </div>
-            <div class="clearfix"></div>
             <div class="spinner_load" style="display: none;">
                 <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
                 <span class="sr-only">Loading...</span>
             </div>
             <!--export button for admin and manager-->
-            <div class="portlet-body">
-                <div class="table-responsive custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+                <div class="table-responsive">
                     <table id="itinerary" class="table table-striped display">
                         <thead>
                             <tr>
@@ -130,10 +129,14 @@
                 </div>
             </div>
         </div>
+        <!-- end page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
-</div>
+<!-- End page-container -->
+
+
+
 <script type="text/javascript">
 jQuery(document).ready(function($) {
     //SENT GOOGLE REVIEW LINK TO CUSTOMER

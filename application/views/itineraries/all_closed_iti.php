@@ -12,30 +12,28 @@
 					</div>
 				</div>
 			</div>	
-			<div class="portlet box blue">
-				<div class="portlet-body">
-					<div class="table-responsive">
-						<table id="itinerary" class="table table-striped display">
-							<thead>
-								<tr>
-									<th> # </th>
-									<th> Iti ID </th>
-									<th> Iti Type </th>
-									<th> Lead ID </th>
-									<th> Name </th>
-									<th> Package Name</th>
-									<th> Tra. Date</th>
-									<th> Booking Date</th>
-									<th> Action </th>
-								</tr>
-							</thead>
-							<tbody>
-							<div class="loader"></div>
-							<div id="res"></div>
-								<!--DataTable Goes here-->
-							</tbody>
-						</table>
-					</div>
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+				<div class="table-responsive">
+					<table id="itinerary" class="table table-striped display">
+						<thead>
+							<tr>
+								<th> # </th>
+								<th> Iti ID </th>
+								<th> Iti Type </th>
+								<th> Lead ID </th>
+								<th> Name </th>
+								<th> Package Name</th>
+								<th> Tra. Date</th>
+								<th> Booking Date</th>
+								<th> Action </th>
+							</tr>
+						</thead>
+						<tbody>
+						<div class="loader"></div>
+						<div id="res"></div>
+							<!--DataTable Goes here-->
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

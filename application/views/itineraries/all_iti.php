@@ -28,7 +28,7 @@
                     <?php } ?>
                 </div>
             </div>
-            <div class="second_custom_card margin-bottom-25">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="filter-box">
                     <div class="row3  clearfix">
                         <?php
@@ -202,7 +202,7 @@
                     </div>
                 </div>
             </div>
-            <div class="portlet-body custom_card">
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <?php if( is_admin_or_manager() ){ ?>
                 <div class="row clearfix">
                     <div class="col-md-3">

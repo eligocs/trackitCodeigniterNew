@@ -10,16 +10,13 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-users"></i><span>Customer Detail </span>
-                        <?php if( is_admin_or_manager() ){ ?>
-                        <a class="btn btn-danger" style="display:inline;"
-                            href="<?php echo site_url("customers/edit/{$customer->customer_id}"); ?>"
-                            title="Edit Customer Info">Edit Customer</a>
-                        <?php } ?>
                     </div>
                     <div class="actions">
-                        <a class="btn btn-success" href="<?php echo site_url("customers"); ?>" title="add hotel">Back To
-                            All Leads</a>
+                        <a class="btn btn-outline-primary float-end" href="<?php echo site_url("customers"); ?>" title="Back to all Leads"><i class="fa-solid fa-reply"></i> Back To All Leads</a>
                     </div>
+                    <?php if( is_admin_or_manager() ){ ?>
+                        <a class="btn btn-outline-secondary float-end mt-2 me-3" style="display:inline;" href="<?php echo site_url("customers/edit/{$customer->customer_id}"); ?>" title="Edit Customer Info"><i class="fa-solid fa-pen-to-square"></i> Edit Customer</a>
+                        <?php } ?>
                 </div>
             </div>
             <div class="bg-white p-3 portlet-body rounded-4 shadow-sm">

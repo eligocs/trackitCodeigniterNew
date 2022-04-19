@@ -3,20 +3,19 @@
         <div class="page-content">
             <?php echo validation_errors('<span class="help-block1 help-block-error">', '</span>'); ?>
             <?php $message = $this->session->flashdata('error'); 
-		if($message){ echo '<span class="help-block1 help-block-error">'.$message.'</span>';}
-		?>
+            if($message){ echo '<span class="help-block1 help-block-error">'.$message.'</span>';}
+            ?>
             <?php echo form_open(' ',array('id'=> 'branch_form')); ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa-solid fa-plus"></i>Add Office Branch Details
+                        <i class="fa-solid fa-plus"></i> Add Office Branch Details
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("terms/office_branches");?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("terms/office_branches");?>"
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
-            <div class="portlet-body custom_card">
-
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <div class="row">
                     <div class="col-md-6 my-2">
                         <div class="form-group">
@@ -54,23 +53,25 @@
                                 required="required" />
                         </div>
                     </div>
-                    <div class="clearfix"></div>
+                    
                     <div class="col-md-12">
                         <div class="col-md-3 my-2">
-                            <label for="" class="d_block">&nbsp;</label>
                             <button type="submit" class="btn green uppercase add_Bank">Add Branch</button>
                         </div>
                     </div>
 
                 </div> <!-- row close -->
-                <div class="clearfix"></div>
                 <div id="res"></div>
                 </form>
-            </div><!-- portlet body -->
-        </div> <!-- portlet -->
+            </div>
+            <!-- End portlet body -->
+        </div> 
+        <!-- End page-content-wrapper -->
     </div>
-    <!-- END CONTENT BODY -->
+    <!-- End page-container -->
 </div>
+
+
 <!-- Modal -->
 </div>
 <script type="text/javascript">

@@ -39,7 +39,7 @@
 							</div>
 						</div>
 						<div class="col-md-12 my-2">
-						   <button type="submit" class="btn green uppercase add_roomcategory"><?= !empty($category) ? 'Edit Category' : 'Add Category'; ?>
+						   <button type="submit" class="btn green uppercase add_roomcategory"><?= !empty($category) ? '<i class="fa-solid fa-pen-to-square"></i> Edit Category' : '<i class="fa-solid fa-plus"></i> Add Category'; ?>
 							</button>
 						</div>
 					</div> <!-- row -->
