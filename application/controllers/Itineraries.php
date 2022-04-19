@@ -1986,6 +1986,7 @@ class Itineraries extends CI_Controller {
 	//ajax request to update Itineraries call log
 	public function updateItiStatus(){
 
+		
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
 		$user_id = $user['user_id'];
@@ -2278,22 +2279,6 @@ class Itineraries extends CI_Controller {
 					'group_id' => '3',
 					'group_name' => 'customer',
 					'company' => $customer_name,
-					// 'vat_no' => $this->input->post('vat_no'),
-					// 'customer_group_id' => $this->input->post('customer_group'),
-					// 'customer_group_name' => '$cg->name',
-					// 'price_group_id' => $this->input->post('price_group') ? $this->input->post('price_group') : NULL,
-					// 'price_group_name' => $this->input->post('price_group') ? $pg->name : NULL,
-					// 'address' => $this->input->post('address'),
-					// 'city' => $this->input->post('city'),
-					// 'state' => $this->input->post('state'),
-					// 'postal_code' => $this->input->post('postal_code'),
-					// 'country' => $this->input->post('country'),
-					// 'cf1' => $this->input->post('cf1'),
-					// 'cf2' => $this->input->post('cf2'),
-					// 'cf3' => $this->input->post('cf3'),
-					// 'cf4' => $this->input->post('cf4'),
-					// 'cf5' => $this->input->post('cf5'),
-					// 'cf6' => $this->input->post('cf6'),
 				);
 				
 				//payment_screenshot/client_aadhar_card

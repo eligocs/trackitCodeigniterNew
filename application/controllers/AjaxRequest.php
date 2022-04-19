@@ -235,9 +235,10 @@ class AjaxRequest extends CI_Controller {
 		$seasons = get_all_seasons();
 		$hotel_id = $this->input->post("hotel",TRUE);
 		$meals_plans = get_all_mealplans(); 
-
+		
 		if(!empty($seasons)){ 
 			foreach( $seasons as $season ){
+				// print_r($hotel_id);die;
 				 
 				echo '<h3>'.$season->season_name.'</h3>'; ?>
 					<table
