@@ -95,6 +95,7 @@ class Users extends \Restserver\Libraries\REST_Controller
      */
     public function login_post()
     {
+
         header("Access-Control-Allow-Origin: *");
 
         # XSS Filtering (https://www.codeigniter.com/user_guide/libraries/security.html)
