@@ -68,6 +68,8 @@ class Customers extends \Restserver\Libraries\REST_Controller
                 $this->response($message, REST_Controller::HTTP_NOT_FOUND);
 
             }
+        } else {
+            $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
 
