@@ -13,6 +13,7 @@ class Customers extends \Restserver\Libraries\REST_Controller
     
     
     public function customerlist_GET(){
+        
         header("Access-Control-Allow-Origin: *");
         
         // Load Authorization Token Library
