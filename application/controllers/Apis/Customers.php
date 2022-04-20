@@ -12,7 +12,7 @@ class Customers extends \Restserver\Libraries\REST_Controller
     }
     
     
-    public function customerlist_GET(){
+    public function customerlist_POST(){
         
         header("Access-Control-Allow-Origin: *");
         
