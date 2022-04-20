@@ -55,7 +55,7 @@ class Customers extends \Restserver\Libraries\REST_Controller
                 $message = [
                     'status' => 200,
                     'data' => $list,
-                    'message' => "Successful ! "
+                    'message' => "Successfull"
                 ];
                 $this->response($message, REST_Controller::HTTP_OK);
             }else{
