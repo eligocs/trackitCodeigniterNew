@@ -340,10 +340,10 @@ if (!empty($itinerary)) {
                                                     $hot_dest = trim($t);
                                                 ?>
                             <span
-                                style="display: inline-block;font-size: 14px; font-weight: 500;  margin-left: 8px; line-height:1px; margin-top:-4px !important; "><?= ucfirst($hot_dest) ?>
+                                style="font-size: 14px; font-weight: 500;  margin-left: 8px; "><?= ucfirst($hot_dest) ?>
                             </span>
                             <?php
-                                                } ?>
+                            } ?>
                         </div>
                         <?php
                                         }
@@ -876,65 +876,34 @@ if (!empty($itinerary)) {
                                 if( $iti->pending_price == 4 ){
                                     echo "<tr><td  colspan=5 class='red'>Awaiting price verfication from super manager.</td></tr>"; 
                                 }else{
-                                    $agent_price_percentage = !empty($iti->agent_price) ? $iti->agent_price : 0;
+                                  $rate_meta = unserialize($iti->rates_meta);
+                                $agent_price_percentage = !empty($iti->agent_price) ? $iti->agent_price : 0;
                                     //get per person price
-                                    $per_person_ratemeta 	= unserialize($iti->per_person_ratemeta);
+                                    $per_person_ratemeta     = unserialize($iti->per_person_ratemeta);
                                     //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
                                     $inc_gst = "";
-                                    
-                                    $below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "(Below BP.)" : "";
-                                    $bbp_css = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "bbptr" : "";
-                                    
-                                    $agent_sp = $agent_dp = $agent_sdp = $agent_lp = "";
-                                    //if percentage exists
-                                    if( $agent_price_percentage ){
-                                        $as_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . ($per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
-                                        $ad_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . ($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
-                                        $asd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . ($per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
-                                        $al_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . ($per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage/100)  . " Per/Person" : "";
 
-                                        //child rates
-                                        $achild_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " .  number_format( $per_person_ratemeta["child_standard_rates"]  + $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage/100  ) . "/- Per Child" : "";
-                                        
-                                        $achild_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
-                                        
-                                        $achild_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
-                                        
-                                        $achild_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " .   number_format( $per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";													
-                                        
-                                        $astandard_rates = !empty( $rate_meta["standard_rates"]) ? number_format($rate_meta["standard_rates"] + $rate_meta["standard_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                                        
-                                        $adeluxe_rates = !empty( $rate_meta["deluxe_rates"]) ? number_format($rate_meta["deluxe_rates"] + $rate_meta["deluxe_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                                        
-                                        $asuper_deluxe_rates = !empty( $rate_meta["super_deluxe_rates"]) ? number_format($rate_meta["super_deluxe_rates"] + $rate_meta["super_deluxe_rates"] * $agent_price_percentage / 100  ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                                        $arate_luxry = !empty( $rate_meta["luxury_rates"]) ? number_format($rate_meta["luxury_rates"] + $rate_meta["luxury_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                                        
-                                        $agent_sp = "<br><strong class='aprice'> AP( " . $astandard_rates . "</strong> <br> {$as_pp} <br> {$achild_s_pp} )";
-                                        $agent_dp = "<br><strong class='aprice'> AP( " . $adeluxe_rates . "</strong> <br> {$ad_pp} <br> {$achild_d_pp} )";
-                                        $agent_sdp = "<br><strong class='aprice'> AP( " . $asuper_deluxe_rates . "</strong> <br> {$asd_pp} <br> {$achild_sd_pp} )";
-                                        $agent_lp = "<br><strong class='aprice'> AP( " . $arate_luxry . "</strong> <br> {$al_pp} <br> {$achild_l_pp} )";
-                                    }
-                                    
-                                    $s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
-                                    $d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
-                                    $sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
-                                    $l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
-                                    
+                                    $s_pp = isset($per_person_ratemeta["standard_rates"]) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $d_pp = isset($per_person_ratemeta["deluxe_rates"]) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . $per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $sd_pp = isset($per_person_ratemeta["super_deluxe_rates"]) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . $per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage / 100 . " Per/Person" : "";
+                                    $l_pp = isset($per_person_ratemeta["luxury_rates"]) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . $per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage / 100  . " Per/Person" : "";
+
                                     //child rates
-                                    $child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
-                                    $child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
-                                    $child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
-                                    $child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
-                                    
-                                    $s_rates = isset( $rate_meta["standard_rates"] ) && !empty( $rate_meta["standard_rates"]) ? $rate_meta["standard_rates"] : 0;
-                                    $d_rates = isset( $rate_meta["deluxe_rates"] ) && !empty( $rate_meta["deluxe_rates"]) ? $rate_meta["deluxe_rates"] : 0;
-                                    $sd_rates = isset( $rate_meta["super_deluxe_rates"] ) && !empty( $rate_meta["super_deluxe_rates"]) ? $rate_meta["super_deluxe_rates"] : 0;
-                                    $l_rates = isset( $rate_meta["luxury_rates"] ) && !empty( $rate_meta["luxury_rates"]) ? $rate_meta["luxury_rates"] : 0;
-                                    
-                                    $standard_rates = !empty( $s_rates ) ? number_format($s_rates) . "/- {$inc_gst}" : "------";
-                                    $deluxe_rates = !empty( $d_rates ) ? number_format($d_rates) . "/- {$inc_gst}" : "-----";
-                                    $super_deluxe_rates = !empty( $sd_rates ) ? number_format($sd_rates) . "/- {$inc_gst}" : "------";
-                                    $rate_luxry = !empty( $l_rates ) ? number_format($l_rates) . "/- {$inc_gst}" : "-----";
+                                    $child_s_pp = isset($per_person_ratemeta["child_standard_rates"]) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " .  number_format($per_person_ratemeta["child_standard_rates"]  + $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage / 100) . "/- Per Child" : "";
+
+                                    $child_d_pp = isset($per_person_ratemeta["child_deluxe_rates"]) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage / 100) . "/- Per Child" : "";
+
+                                    $child_sd_pp = isset($per_person_ratemeta["child_super_deluxe_rates"]) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage / 100) . "/- Per Child" : "";
+
+                                    $child_l_pp = isset($per_person_ratemeta["child_luxury_rates"]) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " .   number_format($per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage / 100) . "/- Per Child" : "";
+
+                                    $standard_rates = !empty($rate_meta["standard_rates"]) ? number_format($rate_meta["standard_rates"] + $rate_meta["standard_rates"] * $agent_price_percentage / 100) . "/-" : "";
+
+                                    $deluxe_rates = !empty($rate_meta["deluxe_rates"]) ? number_format($rate_meta["deluxe_rates"] + $rate_meta["deluxe_rates"] * $agent_price_percentage / 100) . "/-" : "";
+
+                                    $super_deluxe_rates = !empty($rate_meta["super_deluxe_rates"]) ? number_format($rate_meta["super_deluxe_rates"] + $rate_meta["super_deluxe_rates"] * $agent_price_percentage / 100) . "/-" : "";
+                                    $rate_luxry = !empty($rate_meta["luxury_rates"]) ? number_format($rate_meta["luxury_rates"] + $rate_meta["luxury_rates"] * $agent_price_percentage / 100) . "/-" : "";
+
                                     
                                     echo "<tr class='{$strike_class} {$strike_class_final} {$bbp_css}'><td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>Price {$below_base_price}</td>
                                         <td style='padding: 5px; border: 1px solid #c6c1c1; text-align: left;'>		

@@ -1981,7 +1981,7 @@
                                                     $htd = explode(",", $tourData[$i]['hot_des']);
                                                     foreach($htd as $t) {
                                                         $t = trim($t);
-                                                        $hot_dest .= "<span>" . $t . "</span>";
+                                                        $hot_dest .= "<span style='display:inline-block; margin: 0 8px;'>" . $t . "</span>";
                                                     }
                                                     echo '<div class="hot_des_view "><strong>Attraction: </strong>' . $hot_dest . '</div>';
                                                 }	

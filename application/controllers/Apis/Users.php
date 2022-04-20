@@ -95,7 +95,6 @@ class Users extends \Restserver\Libraries\REST_Controller
      */
     public function login_post()
     {
-
         header("Access-Control-Allow-Origin: *");
 
         # XSS Filtering (https://www.codeigniter.com/user_guide/libraries/security.html)
@@ -119,33 +118,37 @@ class Users extends \Restserver\Libraries\REST_Controller
         {
             // Load Login Function
             $output = $this->UserModel->user_login($this->input->post('username'), $this->input->post('password'));
+            // dump($output);die;
             if (!empty($output) AND $output != FALSE)
             {
                 // Load Authorization Token Library
                 $this->load->library('Authorization_Token');
 
                 // Generate Token
-                $token_data['id'] = $output->id;
-                $token_data['full_name'] = $output->full_name;
-                $token_data['username'] = $output->username;
+                $token_data['id'] = $output->user_id;
+                $token_data['first_name'] = $output->first_name;
+                $token_data['last_name'] = $output->last_name;
+                $token_data['username'] = $output->user_name;
+                $token_data['is_super_admin'] = $output->is_super_admin;
+                $token_data['role'] = $output->user_type;
                 $token_data['email'] = $output->email;
-                $token_data['created_at'] = $output->created_at;
-                $token_data['updated_at'] = $output->updated_at;
+                $token_data['created_at'] = $output->created_date;
                 $token_data['time'] = time();
 
                 $user_token = $this->authorization_token->generateToken($token_data);
-
                 $return_data = [
-                    'user_id' => $output->id,
-                    'full_name' => $output->full_name,
+                    'user_id' => $output->user_id,
+                    'first_name' => $output->first_name,
+                    'last_name' => $output->last_name,
                     'email' => $output->email,
-                    'created_at' => $output->created_at,
+                    'user_type' => $output->user_type,
+                    'created_at' => $output->created_date,
                     'token' => $user_token,
                 ];
 
                 // Login Success
                 $message = [
-                    'status' => true,
+                    'status' => 200,
                     'data' => $return_data,
                     'message' => "User login successful"
                 ];
@@ -154,7 +157,7 @@ class Users extends \Restserver\Libraries\REST_Controller
             {
                 // Login Error
                 $message = [
-                    'status' => FALSE,
+                    'status' => 401,
                     'message' => "Invalid Username or Password"
                 ];
                 $this->response($message, REST_Controller::HTTP_NOT_FOUND);
