@@ -2232,6 +2232,26 @@ class Itineraries extends CI_Controller {
 				$agent_margin   = isset( $_POST['agent_margin'] ) ? $_POST['agent_margin'] : 0;
 				$is_below_base_price   = isset( $_POST['is_below_base_price'] ) ? $_POST['is_below_base_price'] : 0;
 				$is_gst			= 1;
+
+
+					//update itinerary data
+					$booking_date_u = !empty( $booking_date ) ? $booking_date : current_datetime();
+					$u_data = array( 
+						"final_amount" => $final_amount,
+						"followup_status" => $iti_note,
+						"parent_iti_id" => 0,
+						"pending_price" => 2,
+						"discount_rate_request" => 0,
+						"iti_decline_approved_date" => $booking_date_u,
+						"approved_package_category" => $approved_package_category,
+						"iti_status" => 9 
+					);
+					
+					// dump($u_data);die;
+					$update_status = $this->global_model->update_data( "itinerary", $where_iti, $u_data );
+					if($update_status){
+
+					
 				
 				//payment details
 				$payData = array(
@@ -2272,14 +2292,14 @@ class Itineraries extends CI_Controller {
 				);
 
 
-				$accountData = array(
-					'name' => $customer_name,
-					'email' => $customer_email,
-					'phone' => $customer_contact,
-					'group_id' => '3',
-					'group_name' => 'customer',
-					'company' => $customer_name,
-				);
+				// $accountData = array(
+				// 	'name' => $customer_name,
+				// 	'email' => $customer_email,
+				// 	'phone' => $customer_contact,
+				// 	'group_id' => '3',
+				// 	'group_name' => 'customer',
+				// 	'company' => $customer_name,
+				// );
 				
 				//payment_screenshot/client_aadhar_card
 				
@@ -2322,7 +2342,7 @@ class Itineraries extends CI_Controller {
 				$pay_id = $this->global_model->getdata("iti_payment_details", array( "iti_id" => $iti_id ) );
 				if( empty( $pay_id ) ){
 					$insert_payment_details = $this->global_model->insert_data( "iti_payment_details", $payData );
-					$this->global_model->insert_data_account_table( "track_companies", $accountData );
+					// $this->global_model->insert_data_account_table( "track_companies", $accountData );
 					if ( !$insert_payment_details ){
 						$res = array('status' => false, 'msg' => "Payment not updated please try again later!");
 						die( json_encode($res) );
@@ -2338,6 +2358,7 @@ class Itineraries extends CI_Controller {
 						die( json_encode($res) );
 					}	
 				}
+			}
 				/* End Payment Details Section */
 				
 				//Get Current Itinerary data
@@ -2371,21 +2392,21 @@ class Itineraries extends CI_Controller {
 				$this->global_model->delete_data( "itinerary", $delete_where);
 				
 				
-				//update itinerary data
-				$booking_date_u = !empty( $booking_date ) ? $booking_date : current_datetime();
-				$u_data = array( 
-					"final_amount" => $final_amount,
-					"followup_status" => $iti_note,
-					"parent_iti_id" => 0,
-					"pending_price" => 2,
-					"discount_rate_request" => 0,
-					"iti_decline_approved_date" => $booking_date_u,
-					"approved_package_category" => $approved_package_category,
-					"iti_status" => 9 
-				);
+				// //update itinerary data
+				// $booking_date_u = !empty( $booking_date ) ? $booking_date : current_datetime();
+				// $u_data = array( 
+				// 	"final_amount" => $final_amount,
+				// 	"followup_status" => $iti_note,
+				// 	"parent_iti_id" => 0,
+				// 	"pending_price" => 2,
+				// 	"discount_rate_request" => 0,
+				// 	"iti_decline_approved_date" => $booking_date_u,
+				// 	"approved_package_category" => $approved_package_category,
+				// 	"iti_status" => 9 
+				// );
 				
-				// dump($u_data);die;
-				$update_status = $this->global_model->update_data( "itinerary", $where_iti, $u_data );
+				// // dump($u_data);die;
+				// $update_status = $this->global_model->update_data( "itinerary", $where_iti, $u_data );
 				$this->global_model->update_data( "customers_inquery", array("customer_id" => $customer_id ) , array("lead_last_followup_date" => $currentDate ) );
 				
 				//sent mail to admin/manager/customer

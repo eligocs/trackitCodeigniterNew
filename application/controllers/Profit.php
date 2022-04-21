@@ -117,6 +117,7 @@ class Profit extends CI_Controller {
 				$row = array();
 				$row[] = $no;
 				$row[] = $profitData->iti_id;
+				$row[] = date("d-m-Y", strtotime($profitData->iti_decline_approved_date));
 				$row[] = $customer_name;
 				$row[] =get_user_name( trim($profitData->agent_id) );
 				$row[] = $profitData->sellingPrice;

@@ -9,7 +9,8 @@ class Users extends \Restserver\Libraries\REST_Controller
     public function __construct() {
         parent::__construct();
         // Load User Model
-        $this->load->model('user_model', 'UserModel');
+        // $this->load->model('api_model/user_model', 'UserModel');
+        $this->load->model('Api/UserModel');
     }
 
     /**

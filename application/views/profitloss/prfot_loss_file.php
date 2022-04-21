@@ -71,13 +71,14 @@
 								<tr>
 									<th> # </th>
 									<th> Iti Id</th>
+									<th> Booking Date</th>
 									<th> Customer Name</th>
 									<th> Agent Name</th>
 									<th> Selling Price</th>
-									<th> Total Expenses </th>
-									<th> Total Profit/loss  </th>
-									<th> Total Profit/Loss Percent <i class="fas fa-percent    "></i> </th>
-									<th> Is Profit Or Loss </th>
+									<th>  Expenses </th>
+									<th>  Profit/loss  </th>
+									<th>  Profit/Loss <i class="fas fa-percent    "></i> </th>
+									<th>  Profit Or Loss </th>
 									<th> View </th>
 								</tr>
 							</thead>
@@ -120,8 +121,8 @@
 							<thead>
 								<tr>
 									<th>Total Tenover</th>
-									<th>Gross Profit Amount</th>
-									<th>Gross Profit Percent:</th>
+									<th>G/P Amount</th>
+									<th>G/P Percent:</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -144,8 +145,8 @@
 							<thead>
 								<tr>
 									<th>Total Tenover</th>
-									<th>Gross Profit Amount</th>
-									<th>Gross Profit Percent:</th>
+									<th>G/L  Amount</th>
+									<th>G/L Percent:</th>
 								</tr>
 							</thead>
 							<tbody>
