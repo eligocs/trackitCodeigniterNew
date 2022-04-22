@@ -7,12 +7,13 @@ class AudioModel extends CI_Model
     	// Audio File Insert
 	function AudioInsertdata($data){
         if($data){
-            $ins_qry=$this->db->insert('callrecord',$data);
-            if($ins_qry){
-                return true;
-            }else{
-                return false;
+            if ( $this->db->insert('callrecord',$data) ) {
+                $id = $this->db->insert_id();
+                $result = $id;
+            } else {
+                $result = false;
             }
+            return $result;
         }
 	}
 

@@ -14,7 +14,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
     /* uplode cal record */
     public function callrecord_POST(){
         header("Access-Control-Allow-Origin: *");
-        
+         
         // Load Authorization Token Library
         $this->load->library('Authorization_Token');
         /**
@@ -34,7 +34,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
             if(!is_dir($doc_path)){
                 if (!mkdir($doc_path, 0777, true)) {
                     $message = [
-                        'status' => 400,
+                        'status' => 500,
                         'data' => [],
                         'message' => "File not uploaded. Please contact administrator."
                     ];
@@ -58,9 +58,9 @@ class Audio extends \Restserver\Libraries\REST_Controller
                 if(!$this->upload->do_upload('callAudio')){
 						$err = $this->upload->display_errors();
                         $message = [
-                            'status' => 400,
+                            'status' => 500,
                             'data' => $err ,
-                            'message' => "Some Error"
+                            'message' => "Fail to upload file."
                         ];
                         $this->response($message, REST_Controller::HTTP_NOT_FOUND);
 					}else{
@@ -73,15 +73,31 @@ class Audio extends \Restserver\Libraries\REST_Controller
                                 'iti_id' => $iti_id,
                                 'created_date' => current_datetime(),
                         );
-                        $this->AudioModel->AudioInsertdata($callrecord);
-                        $message = [
-                            'status' => 200,
-                            'data' => $callrecord ,
-                            'message' => "Recoding Save"
-                        ];
-                        $this->response($message, REST_Controller::HTTP_OK);
+                     $insert_id =   $this->AudioModel->AudioInsertdata($callrecord);
+                        if($insert_id){
+                            $message = [
+                                'status' => 200,
+                                'data' => $callrecord ,
+                                'message' => "Recoding Save successful"
+                            ];
+                            $this->response($message, REST_Controller::HTTP_OK);
+                        }else{
+                            $message = [
+                                'status' => 500,
+                                'data' => [] ,
+                                'message' => "Fail to save image in database."
+                            ];
+                            $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+                        }
 					}
 					unset($config);
+                }else{
+                    $message = [
+                        'status' => 500,
+                        'data' => [],
+                        'message' => "Audio file not present in request"
+                    ];
+                    $this->response($message, REST_Controller::HTTP_NOT_FOUND);
                 }
 
         } else {
