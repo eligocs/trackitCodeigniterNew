@@ -28,7 +28,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
             
             $year = date("Y");
 			$month = date("m");
-            $doc_path =  dirname($_SERVER["SCRIPT_FILENAME"]) . '/site/assets/audio/'. date("Y") . '/' . date("m") . '-'  . $cus_id . '/';
+            $doc_path =  dirname($_SERVER["SCRIPT_FILENAME"]) . '/site/assets/audio/'. date("Y") . '/' . date("m") . '/'  . $cus_id . '/';
             
             //check if path exists
             if(!is_dir($doc_path)){
@@ -42,7 +42,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
                 }
             }
             
-            $file_prefix = date("Y") . "/".  date("m") . "-" . $cus_id . "/";
+            $file_prefix = date("Y") . "/".  date("m") . "/" . $cus_id . "/";
             
             if( isset( $_FILES['callAudio']['name'] ) && !empty( $_FILES['callAudio']['name'] ) ){
                 
