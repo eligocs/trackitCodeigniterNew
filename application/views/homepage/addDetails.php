@@ -35,7 +35,8 @@
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <a class="btn btn-success"
-                                                                        data-toggle="modal" href="#draggable"> Add Logo
+                                                                        data-toggle="modal" href="#draggable">
+                                                                        <i class="fa-solid fa-plus"></i> Add Logo
                                                                     </a>
                                                                 </div>
                                                             </div>

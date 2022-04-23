@@ -62,186 +62,185 @@
             $signature					= isset($terms[0]) && !empty($terms[0]->promotion_signature) ?  htmlspecialchars_decode($terms[0]->promotion_signature) : "";
             $payment_policy				= isset($terms[0]) && !empty($terms[0]->payment_policy) ? unserialize($terms[0]->payment_policy) : "";
             ?>
-            <div class="row2">
-                <div class="custom_card">
-                    <p><strong>Dear : </strong> <?php echo $customer_name . ' / ' . $customer_contact; ?></p>
-                    <?php echo $greeting; ?>
-                    <div class="well well-sm margin-top-40">
-                        <h3>Package Overview</h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-bordered ">
-                            <tbody>
-                                <tr class="thead-inverse">
-                                    <td><strong>Name</strong></td>
-                                    <td><strong>Contact</strong></td>
-                                    <td><strong>Email</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $customer_name; ?></td>
-                                    <td><?php echo $customer_contact; ?></td>
-                                    <td><?php echo $customer_email; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>No of Adults</strong></td>
-                                    <td><strong>No of Children</strong></td>
-                                    <td><strong>Address</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $itinerary[0]->adults; ?></td>
-                                    <td><?php echo $itinerary[0]->child;  ?></td>
-                                    <td><?php echo $customer_address; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Package Name</strong></td>
-                                    <td><strong>Total Rooms</strong></td>
-                                    <td><strong>Travel Date</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $itinerary[0]->package_name; ?></td>
-                                    <td><?php echo isset($hotels[0]->total_rooms) ? $hotels[0]->total_rooms : "";  ?>
-                                    </td>
-                                    <td><?php echo $itinerary[0]->t_start_date . " - " . $itinerary[0]->t_end_date; ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Duration</td>
-                                    <td><strong>Vehicle Type</strong></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $itinerary[0]->iti_type == 2 ? $itinerary[0]->total_nights . " Nights" : $itinerary[0]->duration; ?>
-                                    </td>
-                                    <td><?php echo !empty( $itinerary[0]->cab_category ) ? get_car_name( $itinerary[0]->cab_category ) : "--"; ?>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <p><strong>Dear : </strong> <?php echo $customer_name . ' / ' . $customer_contact; ?></p>
+                <?php echo $greeting; ?>
+            </div>
+
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <h3>Package Overview</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered ">
+                        <tbody>
+                            <tr class="thead-inverse">
+                                <td><strong>Name</strong></td>
+                                <td><strong>Contact</strong></td>
+                                <td><strong>Email</strong></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $customer_name; ?></td>
+                                <td><?php echo $customer_contact; ?></td>
+                                <td><?php echo $customer_email; ?></td>
+                            </tr>
+                            <tr>
+                                <td><strong>No of Adults</strong></td>
+                                <td><strong>No of Children</strong></td>
+                                <td><strong>Address</strong></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $itinerary[0]->adults; ?></td>
+                                <td><?php echo $itinerary[0]->child;  ?></td>
+                                <td><?php echo $customer_address; ?></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Package Name</strong></td>
+                                <td><strong>Total Rooms</strong></td>
+                                <td><strong>Travel Date</strong></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $itinerary[0]->package_name; ?></td>
+                                <td><?php echo isset($hotels[0]->total_rooms) ? $hotels[0]->total_rooms : "";  ?>
+                                </td>
+                                <td><?php echo $itinerary[0]->t_start_date . " - " . $itinerary[0]->t_end_date; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Duration</td>
+                                <td><strong>Vehicle Type</strong></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $itinerary[0]->iti_type == 2 ? $itinerary[0]->total_nights . " Nights" : $itinerary[0]->duration; ?>
+                                </td>
+                                <td><?php echo !empty( $itinerary[0]->cab_category ) ? get_car_name( $itinerary[0]->cab_category ) : "--"; ?>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
-                <hr>
-                <!--if holidays iti show daywise data-->
-                <div class="custom_card">
-                    <?php if( $iti->iti_type == 1 ){ ?>
-                    <div class="well well-sm">
-                        <h3>Day Wise Programme</h3>
-                    </div>
-                    <div class="table-responsive2 printable">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <?php
-                           //$day_wise = $iti->daywise_meta; 
-                           //dump( $iti->daywise_meta ); die;
-                           $tourData = unserialize( $iti->daywise_meta );
-                           $count_day = count( $tourData );
-                           if( $count_day > 0 ){
-                           	//print_r( $tourData );
-                           	for ( $i = 0; $i < $count_day; $i++ ) {
-                           	echo "<tr><td width='10%'>";
-                           		$day = $i+1;
-                           		echo "<span class=''><strong>Day: ".$tourData[$i]['tour_day']."</strong> </span>";
-                           		echo "</td><td width='80%'>";
-                           		echo "<!--<div class='some-space'></div>--><strong>" . $tourData[$i]['tour_name'] . "</strong><br>"; 
-                           		echo "<strong>Tour Date:</strong><em> " .display_date_month($tourData[$i]['tour_date']) . "</em><br>"; 
-                           		echo "<strong>Meal Plan:</strong><em> " .$tourData[$i]['meal_plan'] . "</em><br>"; 
-                           		echo "<strong>Tour Description:</strong><em> " .$tourData[$i]['tour_des'] . "</em><br>"; 
-                           		echo "<strong>Distance:</strong><em> " .$tourData[$i]['tour_distance'] . " KMS</em><br>";
-                           		//hot destination
-                           		if( isset($tourData[$i]['hot_des'] ) && !empty( $tourData[$i]['hot_des'] ) ){
-                           			$hot_dest = '';
-                           			$htd = explode(",", $tourData[$i]['hot_des']);
-                           			foreach($htd as $t) {
-                           				$t = trim($t);
-                           				$hot_dest .= "<span>" . $t . "</span>";
-                           			}
-                           			echo '<div class="hot_des_view "><strong>Attraction: </strong>' . $hot_dest . '</div>';
-                           		}	
-                           		echo "</td>";
-                           	echo "</tr>";
-                           	}
-                           }	?>
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            
+            
+            <!--if holidays iti show daywise data-->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <?php if( $iti->iti_type == 1 ){ ?>
+                <div class="">
+                    <h3>Day Wise Programme</h3>
                 </div>
-                <hr>
-                <?php } ?>
-                <!--HOTELS DETAILS-->
-                <div class="custom_Card">
-                    <?php if( $hotels ){ ?>
-                    <div class="well well-sm">
-                        <h3>Accommodation</h3>
-                    </div>
-                    <div class="table-responsive2 printable">
-                        <table class="table table-bordered">
-                            <thead class="thead-default">
-                                <th>Sr.</th>
-                                <th>City</th>
-                                <th>Check In</th>
-                                <th>Check Out</th>
-                                <th>Hotel</th>
-                                <th>Room Cat</th>
-                                <th>Rooms</th>
-                                <th>N/t</th>
-                            </thead>
-                            <tbody>
-                                <?php
-                           $ch = 1;
-                           foreach ( $hotels as $hotel ) {
-                           	if( !empty( $hotel->check_in ) && !empty($hotel->check_out) ){
-                           		$check_in 	=  $hotel->check_in; 
-                           		$check_out 	=  $hotel->check_out;
-                           		$date1 		=	 new DateTime($check_in);
-                           		$t_date2 	= 	 new DateTime($check_out);
-                           		$total_days =  $t_date2->diff($date1)->format("%a"); 
-                           		$total_days = $total_days+1;
-                           		if( $total_days <= 1 ){
-                           			$duration =  "Single Day";
-                           		}else{
-                           			$nights = $total_days - 1;
-                           			$duration =  $nights . " Nights";
-                           			
-                           		}
-                           	}else{
-                           		$duration =  "";
-                           		$nights ="";
-                           	}
-                           	
-                           	//Get Hotel Information 
-                           	$htl_info = get_hotel_details($hotel->hotel_id);;
-                           	$hotel_info = $htl_info[0];
-                           	$hotel_name = $hotel_info->hotel_name;
-                           	$hotel_emails = $hotel_info->hotel_email;
-                           	$city = get_city_name( $hotel->city_id );
-                           	$check_in_m = display_month_name( $hotel->check_in );
-                           	$check_out_m = display_month_name( $hotel->check_out );
-                           	$room_cat = get_roomcat_name( $hotel->room_type );
-                           	echo "<tr>
-                           			<td>{$ch}.</td>
-                           			<td>{$city}</td>
-                           			<td>{$check_in_m}</td>
-                           			<td>{$check_out_m}</td>
-                           			<td>{$hotel_name}</td>
-                           			<td>{$room_cat}</td>
-                           			<td>{$hotel->total_rooms}</td>
-                           			<td>{$nights}</td>
-                           		</tr>";
-                           	$ch++;
-                           } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <?php }?>
+                <div class="table-responsive printable">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <?php
+                        //$day_wise = $iti->daywise_meta; 
+                        //dump( $iti->daywise_meta ); die;
+                        $tourData = unserialize( $iti->daywise_meta );
+                        $count_day = count( $tourData );
+                        if( $count_day > 0 ){
+                        //print_r( $tourData );
+                        for ( $i = 0; $i < $count_day; $i++ ) {
+                        echo "<tr><td width='10%'>";
+                            $day = $i+1;
+                            echo "<span class=''><strong>Day: ".$tourData[$i]['tour_day']."</strong> </span>";
+                            echo "</td><td width='80%'>";
+                            echo "<!--<div class='some-space'></div>--><strong>" . $tourData[$i]['tour_name'] . "</strong><br>"; 
+                            echo "<strong>Tour Date:</strong><em> " .display_date_month($tourData[$i]['tour_date']) . "</em><br>"; 
+                            echo "<strong>Meal Plan:</strong><em> " .$tourData[$i]['meal_plan'] . "</em><br>"; 
+                            echo "<strong>Tour Description:</strong><em> " .$tourData[$i]['tour_des'] . "</em><br>"; 
+                            echo "<strong>Distance:</strong><em> " .$tourData[$i]['tour_distance'] . " KMS</em><br>";
+                            //hot destination
+                            if( isset($tourData[$i]['hot_des'] ) && !empty( $tourData[$i]['hot_des'] ) ){
+                                $hot_dest = '';
+                                $htd = explode(",", $tourData[$i]['hot_des']);
+                                foreach($htd as $t) {
+                                    $t = trim($t);
+                                    $hot_dest .= "<span>" . $t . "</span>";
+                                }
+                                echo '<div class="hot_des_view "><strong>Attraction: </strong>' . $hot_dest . '</div>';
+                            }	
+                            echo "</td>";
+                        echo "</tr>";
+                        }
+                        }	?>
+                        </tbody>
+                    </table>
                 </div>
-                <hr>
-                <div class="custom_card">
-                    <!--VEHICLES DETAILS-->
-                    <?php if( $cab_booking ){ ?>
-                    <div class="well well-sm">
-                        <h3>Vehicle</h3>
-                    </div>
+            </div>
+
+            
+            <?php } ?>
+            <!--HOTELS DETAILS-->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <?php if( $hotels ){ ?>
+                <div class="">
+                    <h3>Accommodation</h3>
+                </div>
+                <div class="table-responsive2 printable">
+                    <table class="table table-bordered">
+                        <thead class="thead-default">
+                            <th>Sr.</th>
+                            <th>City</th>
+                            <th>Check In</th>
+                            <th>Check Out</th>
+                            <th>Hotel</th>
+                            <th>Room Cat</th>
+                            <th>Rooms</th>
+                            <th>N/t</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                        $ch = 1;
+                        foreach ( $hotels as $hotel ) {
+                        if( !empty( $hotel->check_in ) && !empty($hotel->check_out) ){
+                            $check_in 	=  $hotel->check_in; 
+                            $check_out 	=  $hotel->check_out;
+                            $date1 		=	 new DateTime($check_in);
+                            $t_date2 	= 	 new DateTime($check_out);
+                            $total_days =  $t_date2->diff($date1)->format("%a"); 
+                            $total_days = $total_days+1;
+                            if( $total_days <= 1 ){
+                                $duration =  "Single Day";
+                            }else{
+                                $nights = $total_days - 1;
+                                $duration =  $nights . " Nights";
+                                
+                            }
+                        }else{
+                            $duration =  "";
+                            $nights ="";
+                        }
+                        
+                        //Get Hotel Information 
+                        $htl_info = get_hotel_details($hotel->hotel_id);;
+                        $hotel_info = $htl_info[0];
+                        $hotel_name = $hotel_info->hotel_name;
+                        $hotel_emails = $hotel_info->hotel_email;
+                        $city = get_city_name( $hotel->city_id );
+                        $check_in_m = display_month_name( $hotel->check_in );
+                        $check_out_m = display_month_name( $hotel->check_out );
+                        $room_cat = get_roomcat_name( $hotel->room_type );
+                        echo "<tr>
+                                <td>{$ch}.</td>
+                                <td>{$city}</td>
+                                <td>{$check_in_m}</td>
+                                <td>{$check_out_m}</td>
+                                <td>{$hotel_name}</td>
+                                <td>{$room_cat}</td>
+                                <td>{$hotel->total_rooms}</td>
+                                <td>{$nights}</td>
+                            </tr>";
+                        $ch++;
+                        } ?>
+                        </tbody>
+                    </table>
+                </div>
+                <?php }?>
+            </div>
+            
+                <!--VEHICLES DETAILS-->
+                <?php if( $cab_booking ){ ?>
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                    <h3>Vehicle</h3>
                     <div class="table-responsive2 printable">
                         <table class="table table-bordered">
                             <thead class="thead-default">
@@ -253,50 +252,49 @@
                             </thead>
                             <tbody>
                                 <?php
-                           $chd = 1;
-                           foreach ( $cab_booking as $cab_book ) {
-                           	//Get cab_book Information 
-                           	$cab_name = get_car_name($cab_book->cab_id);
-                           	$picking_date = display_month_name($cab_book->picking_date);
-                           	$droping_date = display_month_name($cab_book->droping_date);
-                           	echo "<tr>
-                           			<td>{$chd}.</td>
-                           			<td>{$cab_name}</td>
-                           			<td>{$picking_date}</td>
-                           			<td>{$droping_date}</td>
-                           			<td>{$cab_book->pic_location} - {$cab_book->drop_location}</td>
-                           		</tr>";
-                           		
-                           		//cab meta driver info
-                           		$cab_meta = unserialize( $cab_book->cab_meta ); 
-                           		$t_cabs = $cab_book->total_cabs;
-                           		if( !empty( $cab_meta ) ){
-                           			for( $i=0; $i < $t_cabs; $i++ ){
-                           				$taxi_number = isset($cab_meta[$i]['taxi_number']) ? $cab_meta[$i]['taxi_number'] : "";
-                           				$driver_name = isset($cab_meta[$i]['driver_name']) ? $cab_meta[$i]['driver_name'] : "";
-                           				$driver_contact = isset($cab_meta[$i]['driver_contact']) ? $cab_meta[$i]['driver_contact'] : "";
-                           				
-                           				echo "<tr class='row_dot'>
-                           					<td></td>
-                           					<td><strong>Taxi Number: </strong> {$taxi_number}</td>
-                           					<td><strong>Driver Name: </strong> {$driver_name} </td>
-                           					<td colspan=2><strong>Driver Contact: </strong> {$driver_contact}</td>
-                           				</tr>";
-                           			}	
-                           		}
-                           
-                           	$chd++;	
-                           } ?>
+                            $chd = 1;
+                            foreach ( $cab_booking as $cab_book ) {
+                            //Get cab_book Information 
+                            $cab_name = get_car_name($cab_book->cab_id);
+                            $picking_date = display_month_name($cab_book->picking_date);
+                            $droping_date = display_month_name($cab_book->droping_date);
+                            echo "<tr>
+                                    <td>{$chd}.</td>
+                                    <td>{$cab_name}</td>
+                                    <td>{$picking_date}</td>
+                                    <td>{$droping_date}</td>
+                                    <td>{$cab_book->pic_location} - {$cab_book->drop_location}</td>
+                                </tr>";
+                                
+                                //cab meta driver info
+                                $cab_meta = unserialize( $cab_book->cab_meta ); 
+                                $t_cabs = $cab_book->total_cabs;
+                                if( !empty( $cab_meta ) ){
+                                    for( $i=0; $i < $t_cabs; $i++ ){
+                                        $taxi_number = isset($cab_meta[$i]['taxi_number']) ? $cab_meta[$i]['taxi_number'] : "";
+                                        $driver_name = isset($cab_meta[$i]['driver_name']) ? $cab_meta[$i]['driver_name'] : "";
+                                        $driver_contact = isset($cab_meta[$i]['driver_contact']) ? $cab_meta[$i]['driver_contact'] : "";
+                                        
+                                        echo "<tr class='row_dot'>
+                                            <td></td>
+                                            <td><strong>Taxi Number: </strong> {$taxi_number}</td>
+                                            <td><strong>Driver Name: </strong> {$driver_name} </td>
+                                            <td colspan=2><strong>Driver Contact: </strong> {$driver_contact}</td>
+                                        </tr>";
+                                    }	
+                                }
+                            
+                            $chd++;	
+                            } ?>
                             </tbody>
                         </table>
                     </div>
-                    <?php } ?>
                 </div>
-                <!--if holidays iti show daywise data-->
-                <?php if( isset($vtf_booking[0]) ){ ?>
-                <div class="well well-sm">
-                    <h3>Volvo/Train/Flight Tickets Detail</h3>
-                </div>
+                <?php } ?>
+            <!--if holidays iti show daywise data-->
+            <?php if( isset($vtf_booking[0]) ){ ?>
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <h3>Volvo/Train/Flight Tickets Detail</h3>
                 <div class="table-responsive2 printable">
                     <table class="table table-bordered">
                         <thead class="thead-default">
@@ -309,289 +307,274 @@
                         $vd = 1;
                         $doc_path =  base_url() . 'site/assets/client_tickets_docs/';
                         foreach ( $vtf_booking as $v_booking ) {
-                        	//Get cab_book Information 
-                        	$vtf_booking_docs = $this->global_model->getdata( 'vtf_booking_docs', array("booking_id" => $v_booking->id ) );
-                        	echo "<tr>
-                        			<td>{$vd}.</td>
-                        			<td>{$v_booking->booking_type}</td>";
-                        			echo "<td>";
-                        			if( $vtf_booking_docs ){
-                        				echo "<table class='table table-bordered'>";
-                        				$vbd = 1;
-                        				foreach( $vtf_booking_docs as $b_docs  ){
-                        					$d_link = '<a href="' . $doc_path . $b_docs->file_url .'" title="Click here to view/download" target="_blank" class="btn btn-success" style="position:relative;"><i class="fa fa-download"aria-hidden="true"></i></a>';
-                        					
-                        					echo "<tr>
-                        						<td>{$vbd}.</td>
-                        						<td>{$b_docs->description}</td>
-                        						<td>{$d_link}</td>
-                        					</tr>";	
-                        					
-                        					$vbd++;
-                        				}	
-                        				echo "</table>";
-                        			}
-                        			echo "</td>";
-                        		echo "</tr>";
-                        	$vd++;	
+                            //Get cab_book Information 
+                            $vtf_booking_docs = $this->global_model->getdata( 'vtf_booking_docs', array("booking_id" => $v_booking->id ) );
+                            echo "<tr>
+                                    <td>{$vd}.</td>
+                                    <td>{$v_booking->booking_type}</td>";
+                                    echo "<td>";
+                                    if( $vtf_booking_docs ){
+                                        echo "<table class='table table-bordered'>";
+                                        $vbd = 1;
+                                        foreach( $vtf_booking_docs as $b_docs  ){
+                                            $d_link = '<a href="' . $doc_path . $b_docs->file_url .'" title="Click here to view/download" target="_blank" class="btn btn-success" style="position:relative;"><i class="fa fa-download"aria-hidden="true"></i></a>';
+                                            
+                                            echo "<tr>
+                                                <td>{$vbd}.</td>
+                                                <td>{$b_docs->description}</td>
+                                                <td>{$d_link}</td>
+                                            </tr>";	
+                                            
+                                            $vbd++;
+                                        }	
+                                        echo "</table>";
+                                    }
+                                    echo "</td>";
+                                echo "</tr>";
+                            $vd++;	
                         } ?>
                         </tbody>
                     </table>
                 </div>
-                <?php } ?>
-                <hr>
-                <div class="custom_card">
-                    <div class="well well-sm">
-                        <h3>Package / Tour Cost & Advance Received Details</h3>
-                    </div>
-                    <?php
-                  $p_cost		= isset($pay->total_package_cost) ? number_format($pay->total_package_cost) : "";
-                  $advance 	= isset($pay->advance_recieved) ? $pay->advance_recieved : ""; 
-                  $balance 	= isset($pay->total_balance_amount) ?  $pay->total_balance_amount : "";
-                  ?>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <?php 
-                           echo "<tr>
-                           	<td>Package Cost: </td>
-                           	<td>{$p_cost}</td></tr>
-                           	<tr><td>Advance Received (1st Ins.): </td>
-                           	<td>{$advance}</td></tr>
-                           	<tr><td>Total Balance Pending: </td>
-                           	<td>{$balance}</td></tr>"
-                           ?>
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            <?php } ?>
+            
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <h3>Package / Tour Cost & Advance Received Details</h3>
+                <?php
+                $p_cost		= isset($pay->total_package_cost) ? number_format($pay->total_package_cost) : "";
+                $advance 	= isset($pay->advance_recieved) ? $pay->advance_recieved : ""; 
+                $balance 	= isset($pay->total_balance_amount) ?  $pay->total_balance_amount : "";
+                ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <?php 
+                        echo "<tr>
+                        <td>Package Cost: </td>
+                        <td>{$p_cost}</td></tr>
+                        <tr><td>Advance Received (1st Ins.): </td>
+                        <td>{$advance}</td></tr>
+                        <tr><td>Total Balance Pending: </td>
+                        <td>{$balance}</td></tr>"
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-                <hr>
-                <div class="custom_card">
-                    <div class="well well-sm">
-                        <h3>Notes:</h3>
-                    </div>
-                    <ul>
-                        <?php $hotel_note_meta = unserialize($iti->hotel_note_meta); 
-                     $count_hotel_meta = count( $hotel_note_meta );
-                     
-                     if( $count_hotel_meta > 0 ){
-                     	for ( $i = 0; $i < $count_hotel_meta; $i++ ) {
-                     		echo "<li>" . $hotel_note_meta[$i]["hotel_note"] . "</li>";
-                     	}	
-                     } ?>
-                    </ul>
-                </div>
-                <hr>
+            </div>
+            
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <h3>Notes:</h3>
+                <ul>
+                    <?php $hotel_note_meta = unserialize($iti->hotel_note_meta); 
+                    $count_hotel_meta = count( $hotel_note_meta );
+                    
+                    if( $count_hotel_meta > 0 ){
+                    for ( $i = 0; $i < $count_hotel_meta; $i++ ) {
+                        echo "<li>" . $hotel_note_meta[$i]["hotel_note"] . "</li>";
+                    }	
+                    } ?>
+                </ul>
+            </div>
+            
 
-                <div class="custom_card">
-                    <div class="well well-sm">
-                        <h3>Inclusion & Exclusion</h3>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <h3>Inclusion & Exclusion</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-default">
+                            <tr class="thead-inverse">
+                                <th width="50%"> Inclusion</th>
+                                <th width="50%"> Exclusion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                        $inclusion = unserialize($iti->inc_meta); 
+                        $count_inc = count( $inclusion );
+                        $exclusion = unserialize($iti->exc_meta); 
+                        $count_exc = count( $exclusion );
+                        echo "<tr><td><ul>";
+                        if( $count_inc > 0 ){
+                            for ( $i = 0; $i < $count_inc; $i++ ) {
+                                echo "<li>" . $inclusion[$i]["tour_inc"] . "</li>";
+                            }	
+                        }
+                        echo "</ul></td><td><ul>";
+                        if( $count_exc > 0 ){
+                            for ( $i = 0; $i < $count_exc; $i++ ) {
+                                echo "<li>" . $exclusion[$i]["tour_exc"] . "</li>";
+                            }	
+                        }
+                        echo "</ul></td></tr>";
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <h3>Contact Numbers Regarding Booking</h3>
+                <p><strong> Please Contact Regarding booking & payment Detail Given Below:- <strong></p>
+                <?php $get_sales_team_details = get_settings(); ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-default">
+                            <tr>
+                                <th> Sr. No.</th>
+                                <th> Contact For</th>
+                                <th> Contact Person</th>
+                                <th> Mobile Number</th>
+                                <th> Email Id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>Volvo</td>
+                                <td><?php echo $get_sales_team_details->vehicle_team_name; ?></td>
+                                <td><?php echo $get_sales_team_details->vehicle_team_contact; ?></td>
+                                <td><?php echo $get_sales_team_details->vehicle_email; ?></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Hotel</td>
+                                <td><?php echo $get_sales_team_details->hotel_team_name; ?></td>
+                                <td><?php echo $get_sales_team_details->hotel_team_contact; ?></td>
+                                <td><?php echo $get_sales_team_details->hotel_email; ?></td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>Payment</td>
+                                <td><?php echo $get_sales_team_details->sales_team_name; ?></td>
+                                <td><?php echo $get_sales_team_details->sales_team_contact; ?></td>
+                                <td><?php echo $get_sales_team_details->sales_email; ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <?php
+            echo "<div class='bg-white p-3 rounded-4 shadow-sm mb-4'><h3>Online Payment Terms</h3>";
+            $count_bank_payment_terms	= count( $online_payment_terms ); 
+            $count_bankTerms			= $count_bank_payment_terms-1; 
+            if(isset($online_payment_terms["heading"]) ) { 
+            echo "<div class=''><h5>" . $online_payment_terms["heading"] . "</h5></div>"; 
+            }
+            if( $count_bankTerms > 0 ){
+            echo "<ul class='client_listing'>";
+                for ( $i = 0; $i < $count_bankTerms; $i++ ) { 
+                    echo "<li>" . $online_payment_terms[$i]["terms"] . "</li>";
+                }
+            echo "</ul></div>";
+            }
+            
+            echo "<div class='bg-white p-3 rounded-4 shadow-sm mb-4'><h3>Cancellation Of The Tour By Client</h3>";
+            $count_cancel_content	= count( $cancel_tour_by_client );
+            if( $count_cancel_content > 0 ){
+            echo '<div class="table-responsive">
+                        <table class="table table-bordered tbl_policy_view">
                             <thead class="thead-default">
-                                <tr class="thead-inverse">
-                                    <th width="50%"> Inclusion</th>
-                                    <th width="50%"> Exclusion</th>
+                                <tr>
+                                    <th colspan=3> Cancellation and Refund Policy </th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php 
-							$inclusion = unserialize($iti->inc_meta); 
-							$count_inc = count( $inclusion );
-							$exclusion = unserialize($iti->exc_meta); 
-							$count_exc = count( $exclusion );
-							echo "<tr><td><ul>";
-							if( $count_inc > 0 ){
-								for ( $i = 0; $i < $count_inc; $i++ ) {
-									echo "<li>" . $inclusion[$i]["tour_inc"] . "</li>";
-								}	
-							}
-							echo "</ul></td><td><ul>";
-							if( $count_exc > 0 ){
-								for ( $i = 0; $i < $count_exc; $i++ ) {
-									echo "<li>" . $exclusion[$i]["tour_exc"] . "</li>";
-								}	
-							}
-							echo "</ul></td></tr>";
-							?>
-                            </tbody>
-                        </table>
-                    </div>
+                            <tbody>';
+                $counter_ra = 1;
+                for ( $i = 0; $i < $count_cancel_content-1; $i++ ) { 
+                    $book_title = isset($cancel_tour_by_client[$i]["cancel_terms"]) ? $cancel_tour_by_client[$i]["cancel_terms"] : "";
+                    $book_val = isset($cancel_tour_by_client[$i]["cancel_terms_right"]) ? $cancel_tour_by_client[$i]["cancel_terms_right"] : "";
+                    echo "<tr>
+                        <td>" . $counter_ra . "</td>
+                        <td>" . $book_title . "</td>
+                        <td>" . $book_val . "</td>
+                    </tr>";
+                    $counter_ra++;
+                }
+            echo "</tbody></table></div></div>";
+            }
+            
+            echo "<div class='bg-white p-3 rounded-4 shadow-sm mb-4'><h3>Terms & Condition</h3>";
+            $count_cancel_content	= count( $terms_condition );
+            if( $count_cancel_content > 0 ){
+            echo "<ul class='client_listing'>";
+                for ( $i = 0; $i < $count_cancel_content-1; $i++ ) { 
+                    echo "<li>" . $terms_condition[$i]["terms"] . "</li>";
+                }
+            echo "</ul></div>";
+            }
+            ?>
+
+            <div class="voucher_sign_sec bg-white p-3 rounded-4 shadow-sm mb-0">
+                <?php
+                    $agent_id = $iti->agent_id;
+                    $user_info = get_user_info($agent_id);
+                    if($user_info){
+                    $agent = $user_info[0];
+                    echo "<strong>Regards</strong><br>";
+                    echo "<strong> " . $agent->first_name . " " . $agent->last_name . "</strong><br>";
+                    echo "<strong>Call Us : </strong> " . $agent->mobile . "<br>";
+                    echo "<strong>Email : </strong> " . $agent->email . "<br>";
+                    echo "<strong>Timing : </strong> " . $agent->in_time . " To " . $agent->out_time . "<br>";
+                    echo "<strong>Website : </strong> " . $agent->website;
+                    }	
+                ?>
+            </div>
+
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <div class="disc_con">
+                    <?php echo $disclaimer; ?>
                 </div>
-
-                <hr>
-
-                <div class="custom_card">
-                    <div class='well well-sm'>
-                        <h3>Contact Numbers Regarding Booking</h3>
-                    </div>
-                    <p><strong> Please Contact Regarding booking & payment Detail Given Below:- <strong></p>
-                    <?php $get_sales_team_details = get_settings(); ?>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead class="thead-default">
-                                <tr>
-                                    <th> Sr. No.</th>
-                                    <th> Contact For</th>
-                                    <th> Contact Person</th>
-                                    <th> Mobile Number</th>
-                                    <th> Email Id</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Volvo</td>
-                                    <td><?php echo $get_sales_team_details->vehicle_team_name; ?></td>
-                                    <td><?php echo $get_sales_team_details->vehicle_team_contact; ?></td>
-                                    <td><?php echo $get_sales_team_details->vehicle_email; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Hotel</td>
-                                    <td><?php echo $get_sales_team_details->hotel_team_name; ?></td>
-                                    <td><?php echo $get_sales_team_details->hotel_team_contact; ?></td>
-                                    <td><?php echo $get_sales_team_details->hotel_email; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>3.</td>
-                                    <td>Payment</td>
-                                    <td><?php echo $get_sales_team_details->sales_team_name; ?></td>
-                                    <td><?php echo $get_sales_team_details->sales_team_contact; ?></td>
-                                    <td><?php echo $get_sales_team_details->sales_email; ?></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="form-group">
                     <?php
-               echo "<div class='well well-sm'><h3>Online Payment Terms</h3></div>";
-               $count_bank_payment_terms	= count( $online_payment_terms ); 
-               $count_bankTerms			= $count_bank_payment_terms-1; 
-               if(isset($online_payment_terms["heading"]) ) { 
-               	echo "<div class='well well-sm'><h3>" . $online_payment_terms["heading"] . "</h3></div>"; 
-               }
-               if( $count_bankTerms > 0 ){
-               	echo "<ul class='client_listing'>";
-               		for ( $i = 0; $i < $count_bankTerms; $i++ ) { 
-               			echo "<li>" . $online_payment_terms[$i]["terms"] . "</li>";
-               		}
-               	echo "</ul>";
-               }
-               
-               echo "<div class='well well-sm'><h3>Cancellation Of The Tour By Client</h3></div>";
-               $count_cancel_content	= count( $cancel_tour_by_client );
-               if( $count_cancel_content > 0 ){
-               	echo '<div class="table-responsive">
-               				<table class="table table-bordered tbl_policy_view">
-               					<thead class="thead-default">
-               						<tr>
-               							<th colspan=3> Cancellation and Refund Policy </th>
-               						</tr>
-               					</thead>
-               					<tbody>';
-               		$counter_ra = 1;
-               		for ( $i = 0; $i < $count_cancel_content-1; $i++ ) { 
-               			$book_title = isset($cancel_tour_by_client[$i]["cancel_terms"]) ? $cancel_tour_by_client[$i]["cancel_terms"] : "";
-               			$book_val = isset($cancel_tour_by_client[$i]["cancel_terms_right"]) ? $cancel_tour_by_client[$i]["cancel_terms_right"] : "";
-               			echo "<tr>
-               				<td>" . $counter_ra . "</td>
-               				<td>" . $book_title . "</td>
-               				<td>" . $book_val . "</td>
-               			</tr>";
-               			$counter_ra++;
-               		}
-               	echo "</tbody></table></div>";
-               }
-               
-               echo "<div class='well well-sm'><h3>Terms & Condition</h3></div>";
-               $count_cancel_content	= count( $terms_condition );
-               if( $count_cancel_content > 0 ){
-               	echo "<ul class='client_listing'>";
-               		for ( $i = 0; $i < $count_cancel_content-1; $i++ ) { 
-               			echo "<li>" . $terms_condition[$i]["terms"] . "</li>";
-               		}
-               	echo "</ul>";
-               }
-               ?>
-                    <div class="voucher_sign_sec">
-                        <?php
-               $agent_id = $iti->agent_id;
-               $user_info = get_user_info($agent_id);
-               if($user_info){
-               	$agent = $user_info[0];
-               	echo "<strong>Regards</strong><br>";
-               	echo "<strong> " . $agent->first_name . " " . $agent->last_name . "</strong><br>";
-               	echo "<strong>Call Us : </strong> " . $agent->mobile . "<br>";
-               	echo "<strong>Email : </strong> " . $agent->email . "<br>";
-               	echo "<strong>Timing : </strong> " . $agent->in_time . " To " . $agent->out_time . "<br>";
-               	echo "<strong>Website : </strong> " . $agent->website;
-               }	
-               ?>
-                    </div>
+                    $voucher_mail_sent = $voucher->sent_count;
+                    ?>
                 </div>
-
-                <div class="custom_card row margin-top-30">
-                    <div class="disc_con">
-                        <?php echo $disclaimer; ?>
-                    </div>
-                    <div class="form-group col-md-12 margin_bottom_0">
-                        <?php
-					$voucher_mail_sent = $voucher->sent_count;
-				// 	echo '<div class="text-center margin-bottom-20 margin-top-15"><a title="send voucher to client" href="#" class="btn green uppercase" id="iti_send">Send Voucher</a></div>';
-					
-				// 	if( $voucher_mail_sent == 0 ){ 
-				// 		echo "<div class='clearfix alert alert-danger'>Voucher not send yet.</div>";
-				// 	}else{ 
-				// 		echo "<div class='clearfix alert alert-success'>Voucher Sent " . $voucher_mail_sent . " Times.</div>";
-				// 	}
-					?>
-                    </div>
-                </div>
+            </div>
 
 
-                <!-- Modal sent itinerary-->
-                <div class="modal fade" id="sendItiModal" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Send Voucher</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form id="sentItiForm">
-                                    <div class="form-group">
-                                        <label for="email">Customer Email:</label>
-                                        <input required type="email" readonly value="<?php echo $customer_email; ?>"
-                                            class="form-control" id="email" placeholder="Enter customer email"
-                                            name="customer_email">
-                                    </div>
-                                    <!--CC Email Address-->
-                                    <div class="form-group">
-                                        <label for="cc_email">CC Email:</label>
-                                        <input type="text" value="" class="form-control" id="cc_email"
-                                            placeholder="Enter CC Email.eg. admin@trackitinerary.org" name="cc_email">
-                                    </div>
-                                    <!--BCC Email Address-->
-                                    <div class="form-group">
-                                        <label for="bcc_email">BCC Email:</label>
-                                        <input type="text" value="" class="form-control" id="bcc_email"
-                                            placeholder="Enter BCC email eg. manager@trackitinerary.org"
-                                            name="bcc_email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="sub">Subject:</label>
-                                        <input type="text" required class="form-control" id="sub"
-                                            placeholder="Final confirmation Mail" name="subject" value="">
-                                    </div>
-                                    
-                                    <hr>
-                                    <input type="hidden" name="iti_id" value="<?php echo $voucher->iti_id; ?>">
-                                    <input type="hidden" name="id" value="<?php echo $voucher->id; ?>">
-                                    <button type="submit" id="sentIti_btn" class="btn btn-success">Send Voucher</button>
-                                    <div id="mailSentResponse" class="sam_res"></div>
-                                </form>
-                            </div>
+            <!-- Modal sent itinerary-->
+            <div class="modal fade" id="sendItiModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Send Voucher</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="sentItiForm">
+                                <div class="form-group">
+                                    <label for="email">Customer Email:</label>
+                                    <input required type="email" readonly value="<?php echo $customer_email; ?>"
+                                        class="form-control" id="email" placeholder="Enter customer email"
+                                        name="customer_email">
+                                </div>
+                                <!--CC Email Address-->
+                                <div class="form-group">
+                                    <label for="cc_email">CC Email:</label>
+                                    <input type="text" value="" class="form-control" id="cc_email"
+                                        placeholder="Enter CC Email.eg. admin@trackitinerary.org" name="cc_email">
+                                </div>
+                                <!--BCC Email Address-->
+                                <div class="form-group">
+                                    <label for="bcc_email">BCC Email:</label>
+                                    <input type="text" value="" class="form-control" id="bcc_email"
+                                        placeholder="Enter BCC email eg. manager@trackitinerary.org"
+                                        name="bcc_email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sub">Subject:</label>
+                                    <input type="text" required class="form-control" id="sub"
+                                        placeholder="Final confirmation Mail" name="subject" value="">
+                                </div>
+                                
+                                
+                                <input type="hidden" name="iti_id" value="<?php echo $voucher->iti_id; ?>">
+                                <input type="hidden" name="id" value="<?php echo $voucher->id; ?>">
+                                <button type="submit" id="sentIti_btn" class="btn btn-success">Send Voucher</button>
+                                <div id="mailSentResponse" class="sam_res"></div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -10,10 +10,10 @@
                         <div class="caption"><i class="fa fa-users"></i>Hotel Name:
                             <strong><?php echo get_hotel_name($hotel_book->hotel_id); ?></strong></div>
 
-                        <a class="btn btn-success" href="<?php echo site_url("hotelbooking"); ?>" title="Back">Back</a>
+                        <a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotelbooking"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                     </div>
                 </div>
-                <div class="custom_card">
+                <div class="bg-white p-3 rounded-4 shadow-sm">
                     <form class="form-horizontal2" role="form" id="addHotelRoomRate">
                         <div class="row">
                             <div class="col-md-3 my-2">

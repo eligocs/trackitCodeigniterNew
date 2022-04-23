@@ -8,267 +8,265 @@
 	//This Month
 	$this_month = date("Y-m");
 ?>
-<!-- END SIDEBAR -->
-<!-- BEGIN CONTENT -->
-<div class="page-content-wrapper sales_team_dashboard">
-    <!-- BEGIN CONTENT BODY -->
-    <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
-        <!-- BEGIN PAGE HEADER-->
-        <div class="theme-panel hidden-xs hidden-sm">
-            <div class="toggler"> </div>
-            <div class="toggler-close"> </div>
-            <div class="theme-options">
-                <div class="theme-option theme-colors clearfix">
-                    <span> THEME COLOR </span>
-                    <ul id="theme_color_listing">
-                        <li class="color-default current tooltips" data-style="default" data-container="body"
-                            data-original-title="Default"> </li>
-                        <li class="color-darkblue tooltips" data-style="theme_dark" data-container="body"
-                            data-original-title="Theme Dark"> </li>
-                        <li class="color-blue tooltips" data-style="theme_light" data-container="body"
-                            data-original-title="Theme Light"> </li>
-                    </ul>
-                </div>
-                <div class="th_response"></div>
-            </div>
-        </div>
-
-
-        <nav class="quick-nav">
-            <a class="quick-nav-trigger" href="javascript: void(0)">
-                <span aria-hidden="true"></span>
-            </a>
-            <ul class="sidebar-buttons">
-
-                <li><button class="btn" id="btn_load_travel_followup"><i class="fa fa-clock-o"></i> Travel Dates
-                        Follow</button></li>
-            </ul>
-            <span aria-hidden="true" class="quick-nav-bg"></span>
-
-        </nav>
-        <div class="quick-nav-overlay"></div>
-
-        <!-- BEGIN PAGE BAR -->
-        <div class="page-bar">
-            <ul class="page-breadcrumb">
-                <li>
-                    <a href="<?php echo site_url(); ?>">Home</a>
-                    <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <span>Dashboard</span>
-                </li>
-            </ul>
-        </div>
-        <!-- END PAGE BAR -->
-
-        <!-- BEGIN PAGE TITLE-->
-        <h1 class="page-title"> Service Team Dashboard
-            <small>recent payments received, payments pending etc.</small>
-        </h1>
-        <!-- END PAGE TITLE-->
-        <!-- END PAGE HEADER-->
-        <!-- BEGIN DASHBOARD STATS 1-->
-
-        <div class="portlet box blue margin-top-40">
-            <div class="portlet-title">
-                <div class="caption"><i class="fa fa-calendar"></i>Today's Status</div>
-            </div>
-            <div class="portlet-body">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="callCountBlock">
-                            <a class="dashboard-stat dashboard-stat-v2 blue"
-                                href="<?php echo site_url("itineraries") . "/?todayStatus={$today_date}&leadStatus=approved"; ?>">
-                                <div class="visual">
-                                    <i class="fa fa-comments"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        <span data-counter="counterup"
-                                            data-value="<?php echo isset($totalApprovedItiToday) ? $totalApprovedItiToday : 0; ?>">0</span>
-                                    </div>
-                                    <div class="desc"> Iti Booked <br> Today </div>
-                                </div>
-                            </a>
-                        </div>
+<!-- Start Page-Container -->
+<div class="page-container">
+    <!-- Start page-content-wrapper -->
+    <div class="page-content-wrapper sales_team_dashboard">
+        <!-- Start Page-content -->
+        <div class="page-content p-4">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN PAGE HEADER-->
+            <div class="theme-panel hidden-xs hidden-sm">
+                <div class="toggler"> </div>
+                <div class="toggler-close"> </div>
+                <div class="theme-options">
+                    <div class="theme-option theme-colors ">
+                        <span> THEME COLOR </span>
+                        <ul id="theme_color_listing">
+                            <li class="color-default current tooltips" data-style="default" data-container="body"
+                                data-original-title="Default"> </li>
+                            <li class="color-darkblue tooltips" data-style="theme_dark" data-container="body"
+                                data-original-title="Theme Dark"> </li>
+                            <li class="color-blue tooltips" data-style="theme_light" data-container="body"
+                                data-original-title="Theme Light"> </li>
+                        </ul>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="callCountBlock">
-                            <a class="dashboard-stat dashboard-stat-v2 blue"
-                                href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=approved"; ?>">
-                                <div class="visual">
-                                    <i class="fa fa-comments"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        <span data-counter="counterup"
-                                            data-value="<?php echo isset($totalApprovedItiMonth) ? $totalApprovedItiMonth : 0; ?>">0</span>
-                                    </div>
-                                    <div class="desc"> Iti Booked <br> This Month </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <div class="th_response"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="clearfix"></div>
-        <!-- END DASHBOARD STATS 1-->
-        <div class="row2">
-            <div class="clearfix clearboth"></div>
-            <!--AMENDMENT SECTION-->
-            <div class="portlet box blue">
+            <nav class="quick-nav">
+                <a class="quick-nav-trigger" href="javascript: void(0)">
+                    <span aria-hidden="true"></span>
+                </a>
+                <ul class="sidebar-buttons">
+
+                    <li><button class="btn" id="btn_load_travel_followup"><i class="fa fa-clock-o"></i> Travel Dates
+                            Follow</button></li>
+                </ul>
+                <span aria-hidden="true" class="quick-nav-bg"></span>
+
+            </nav>
+            <div class="quick-nav-overlay"></div>
+
+            <!-- BEGIN PAGE BAR -->
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <a href="<?php echo site_url(); ?>">Home</a>
+                        <i class="fa fa-circle"></i>
+                    </li>
+                    <li>
+                        <span>Dashboard</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- END PAGE BAR -->
+
+            <!-- BEGIN PAGE TITLE-->
+            <h1 class="page-title"> Service Team Dashboard
+                <small>recent payments received, payments pending etc.</small>
+            </h1>
+            <!-- END PAGE TITLE-->
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN DASHBOARD STATS 1-->
+
+            <div class="portlet box blue margin-top-40">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-calendar"></i>LATEST AMENDMENT</div>
+                    <div class="caption"><i class="fa fa-calendar"></i>Today's Status</div>
                 </div>
-                <div class="row dashboard-tables-all-info">
-                    <div class="col-lg-12 col-xs-12 col-sm-12 margin-bottom-30">
-                        <div class="portlet light">
-                            <div class="portlet-title tabbable-line">
-                                <div class="caption">
-                                    <i class="icon-bubbles font-dark hide"></i>
-                                    <span class="caption-subject font-dark bold uppercase">Last 20 Amendments</span>
-                                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="callCountBlock">
+                                <a class="dashboard-stat dashboard-stat-v2 blue"
+                                    href="<?php echo site_url("itineraries") . "/?todayStatus={$today_date}&leadStatus=approved"; ?>">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup"
+                                                data-value="<?php echo isset($totalApprovedItiToday) ? $totalApprovedItiToday : 0; ?>">0</span>
+                                        </div>
+                                        <div class="desc"> Iti Booked <br> Today </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="portlet-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="portlet_comments_21">
-                                        <div class="dashboard-scroll">
-                                            <table class="table table-hover d-table table-fixed">
-                                                <tr>
-                                                    <th>Sr.</th>
-                                                    <th>Name</th>
-                                                    <th>Package</th>
-                                                    <th>agent</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                <?php if( isset($amendmentItineraries) && !empty( $amendmentItineraries )) { 
-                                            $ii = 1;	
-                                            foreach( $amendmentItineraries as $am_iti ){ ?>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="callCountBlock">
+                                <a class="dashboard-stat dashboard-stat-v2 blue"
+                                    href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=approved"; ?>">
+                                    <div class="visual">
+                                        <i class="fa fa-comments"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup"
+                                                data-value="<?php echo isset($totalApprovedItiMonth) ? $totalApprovedItiMonth : 0; ?>">0</span>
+                                        </div>
+                                        <div class="desc"> Iti Booked <br> This Month </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                                <tr>
-                                                    <td><?php echo $ii;?>.</td>
-                                                    <td><?php echo $am_iti->customer_name;?></td>
-                                                    <td><?php echo $am_iti->package_name;?></td>
-                                                    <td><?php echo get_user_name($am_iti->agent_id);?></td>
-
-                                                    <td><a class="btn btn-custom" target="_blank"
-                                                            href="<?php echo site_url("itineraries/view_iti/{$am_iti->iti_id}/{$am_iti->temp_key}"); ?>">
-                                                            View</a></td>
-                                                </tr>
-                                                <?php 
-                                            $ii++;
-                                            } 
-                                        }else{ ?>
-                                                <tr>
-                                                    <td colspan="5" class="text-center">
-                                                        <div class="mt-comment-text"> No Data found. </div>
-                                                    </td>
-                                                </tr>
-                                                <?php } ?>
-                                                <!-- END: Pending Payments section -->
-                                            </table>
+            
+            <!-- END DASHBOARD STATS 1-->
+                <!--AMENDMENT SECTION-->
+                <div class="portlet box blue mt-5">
+                    <div class="portlet-title">
+                        <div class="caption"><i class="fa fa-calendar"></i>LATEST AMENDMENT</div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row dashboard-tables-all-info">
+                            <div class="col-lg-12 col-xs-12 col-sm-12 margin-bottom-30">
+                                <div class="portlet light">
+                                    <div class="portlet-title tabbable-line">
+                                        <div class="caption">
+                                            <i class="icon-bubbles font-dark hide"></i>
+                                            <span class="caption-subject font-dark bold uppercase">Last 20 Amendments</span>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn_blue_outline view_table_data"><i
-                                            class="fa fa-angle-down"></i> View All</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <!--END AMENDMENT SECTION-->
-            <!-- Pending Vouchers  -->
-            <div class="portlet box blue">
-                <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-calendar"></i>LATEST VOUCHERS</div>
-                </div>
-
-                <div class="row dashboard-tables-all-info">
-                    <div class="col-md-12">
-                        <div class="panel">
-                            <div class="panel-heading2">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#latest_pending" data-toggle="tab">Latest Pending Vouchers</a>
-                                    </li>
-                                    <li><a href="#last_20_confirmed" data-toggle="tab">Last 20 Confirmed Vouchers</a></li>
-                                </ul>
-                            </div>
-                            <div class="panel-body padding-0">
-                                <div class="dashboard-scroll">
                                     <div class="tab-content">
-                                        <div class="tab-pane fade in active" id="latest_pending">
-                                            <table class="table table-hover d-table table-fixed">
-                                                <tr>
-                                                    <th>Sr.</th>
-                                                    <th>Name</th>
-                                                    <th>Package</th>
-                                                    <th>agent</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                <?php if( isset($pending_vouchers) && !empty($pending_vouchers) ) {
-                                                    $dcnt = 1;	
-                                                    foreach( $pending_vouchers as $pen_voucher ){ ?>
-                                                <tr>
-                                                    <td><?php echo $dcnt; ?>.</td>
-                                                    <td><?php echo $pen_voucher->customer_name;?></td>
-                                                    <td><?php echo $pen_voucher->package_name;?></td>
-                                                    <td><?php echo get_user_name($pen_voucher->agent_id);?></td>
-                                                    <td><a class="btn btn-custom" target="_blank"
-                                                            href="<?php echo site_url("itineraries/view_iti/{$pen_voucher->iti_id}/{$pen_voucher->temp_key}"); ?>">
-                                                            View</a></td>
-                                                </tr>
-                                                <?php 
-                                                        $dcnt++;
-                                                    } 
-                                                }else{ ?>
-                                                <tr>
-                                                    <td colspan="5" class="text-center">
-                                                        <div class="mt-comment-text"> No Data found. </div>
-                                                    </td>
-                                                </tr>
-                                                <?php } ?>
-                                                <!-- END: Pending Payments section -->
-                                            </table>
+                                        <div class="tab-pane active" id="portlet_comments_21">
+                                            <div class="dashboard-scroll">
+                                                <table class="table table-hover d-table table-fixed">
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Name</th>
+                                                        <th>Package</th>
+                                                        <th>agent</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    <?php if( isset($amendmentItineraries) && !empty( $amendmentItineraries )) { 
+                                                $ii = 1;	
+                                                foreach( $amendmentItineraries as $am_iti ){ ?>
+
+                                                    <tr>
+                                                        <td><?php echo $ii;?>.</td>
+                                                        <td><?php echo $am_iti->customer_name;?></td>
+                                                        <td><?php echo $am_iti->package_name;?></td>
+                                                        <td><?php echo get_user_name($am_iti->agent_id);?></td>
+
+                                                        <td><a class="btn btn-custom" target="_blank"
+                                                                href="<?php echo site_url("itineraries/view_iti/{$am_iti->iti_id}/{$am_iti->temp_key}"); ?>">
+                                                                View</a></td>
+                                                    </tr>
+                                                    <?php 
+                                                $ii++;
+                                                } 
+                                            }else{ ?>
+                                                    <tr>
+                                                        <td colspan="5" class="text-center">
+                                                            <div class="mt-comment-text"> No Data found. </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                    <!-- END: Pending Payments section -->
+                                                </table>
+                                            </div>
                                         </div>
-                                        <div class="tab-pane fade" id="last_20_confirmed">
-                                            <table class="table table-hover d-table table-fixed">
-                                                <tr>
-                                                    <th>Sr.</th>
-                                                    <th>Name</th>
-                                                    <th>Package</th>
-                                                    <th>agent</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                <?php if( isset($confirmed_vouchers) && !empty($confirmed_vouchers) ) {
-                                                $cnt = 1;	
-                                                foreach( $confirmed_vouchers as $cnfrm_voucher ){ ?>
-                                                <tr>
-                                                    <td><?php echo $cnt; ?>.</td>
-                                                    <td><?php echo $cnfrm_voucher->customer_name;?></td>
-                                                    <td><?php echo $cnfrm_voucher->package_name;?></td>
-                                                    <td><?php echo get_user_name($cnfrm_voucher->agent_id);?></td>
-                                                    <td><a class="btn btn-custom" target="_blank"
-                                                            href="<?php echo site_url("itineraries/view_iti/{$cnfrm_voucher->iti_id}/{$cnfrm_voucher->temp_key}"); ?>">
-                                                            View</a></td>
-                                                </tr>
-                                                <?php 
-                                                        $cnt++;
+                                        <button type="button" class="btn btn_blue_outline view_table_data"><i
+                                                class="fa fa-angle-down"></i> View All</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--END AMENDMENT SECTION-->
+                <!-- Pending Vouchers  -->
+                <div class="portlet box blue mt-5">
+                    <div class="portlet-title">
+                        <div class="caption"><i class="fa fa-calendar"></i>LATEST VOUCHERS</div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row dashboard-tables-all-info">
+                            <div class="col-md-12">
+                                <div class="panel">
+                                    <div class="panel-heading2">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#latest_pending" data-toggle="tab">Latest Pending Vouchers</a>
+                                            </li>
+                                            <li><a href="#last_20_confirmed" data-toggle="tab">Last 20 Confirmed Vouchers</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dashboard-scroll">
+                                        <div class="tab-content">
+                                            <div class="tab-pane  active" id="latest_pending">
+                                                <table class="table table-hover d-table table-fixed">
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Name</th>
+                                                        <th>Package</th>
+                                                        <th>agent</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    <?php if( isset($pending_vouchers) && !empty($pending_vouchers) ) {
+                                                        $dcnt = 1;	
+                                                        foreach( $pending_vouchers as $pen_voucher ){ ?>
+                                                    <tr>
+                                                        <td><?php echo $dcnt; ?>.</td>
+                                                        <td><?php echo $pen_voucher->customer_name;?></td>
+                                                        <td><?php echo $pen_voucher->package_name;?></td>
+                                                        <td><?php echo get_user_name($pen_voucher->agent_id);?></td>
+                                                        <td><a class="btn btn-custom" target="_blank"
+                                                                href="<?php echo site_url("itineraries/view_iti/{$pen_voucher->iti_id}/{$pen_voucher->temp_key}"); ?>">
+                                                                View</a></td>
+                                                    </tr>
+                                                    <?php 
+                                                            $dcnt++;
                                                         } 
-                                                        }else{ ?>
-                                                <tr>
-                                                    <td colspan="5" class="text-center">
-                                                        <div class="mt-comment-text"> No Data found. </div>
-                                                    </td>
-                                                </tr>
-                                                <?php } ?>
-                                                <!-- END: Pending Payments section -->
-                                            </table>
+                                                    }else{ ?>
+                                                    <tr>
+                                                        <td colspan="5" class="text-center">
+                                                            <div class="mt-comment-text"> No Data found. </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                    <!-- END: Pending Payments section -->
+                                                </table>
+                                            </div>
+                                            <div class="tab-pane " id="last_20_confirmed">
+                                                <table class="table table-hover d-table table-fixed">
+                                                    <tr>
+                                                        <th>Sr.</th>
+                                                        <th>Name</th>
+                                                        <th>Package</th>
+                                                        <th>agent</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    <?php if( isset($confirmed_vouchers) && !empty($confirmed_vouchers) ) {
+                                                    $cnt = 1;	
+                                                    foreach( $confirmed_vouchers as $cnfrm_voucher ){ ?>
+                                                    <tr>
+                                                        <td><?php echo $cnt; ?>.</td>
+                                                        <td><?php echo $cnfrm_voucher->customer_name;?></td>
+                                                        <td><?php echo $cnfrm_voucher->package_name;?></td>
+                                                        <td><?php echo get_user_name($cnfrm_voucher->agent_id);?></td>
+                                                        <td><a class="btn btn-custom" target="_blank"
+                                                                href="<?php echo site_url("itineraries/view_iti/{$cnfrm_voucher->iti_id}/{$cnfrm_voucher->temp_key}"); ?>">
+                                                                View</a></td>
+                                                    </tr>
+                                                    <?php 
+                                                            $cnt++;
+                                                            } 
+                                                            }else{ ?>
+                                                    <tr>
+                                                        <td colspan="5" class="text-center">
+                                                            <div class="mt-comment-text"> No Data found. </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                    <!-- END: Pending Payments section -->
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -276,15 +274,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--End Pending Vouchers  -->
+                <!--End Pending Vouchers  -->
+            <!-- END CONTENT BODY -->
         </div>
-        <!-- END CONTENT BODY -->
+        <!-- Start Page-content -->
     </div>
-    <!-- END CONTENT -->
-    <!-- END QUICK SIDEBAR -->
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTAINER -->
+<!-- End Page-Container -->
+
 
 <!-- ITINERARIES FOLLOW UP -->
 <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">

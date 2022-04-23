@@ -108,7 +108,7 @@
 					$inst_count = 	$paytransaction + 1;
 				?>
                 <!--End Check for Installment -->
-                <div class="col-md-12 custom_card">
+                <div class="col-md-12 bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="portlet-body ">
                         <div class="customer-details">
                             <div class="well well-sm bg_lightpurple padding_10">
@@ -147,7 +147,7 @@
                                 </tr>
                             </table>
 
-                            <div class="colum_table">
+                            <!-- <div class="colum_table">
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Itinerary Id:</strong></div>
                                     <div class="col-md-4 form_vr"><?php echo $pay->iti_id; ?></div>
@@ -200,14 +200,14 @@
                                             class='green'><?php echo display_month_name($pay->travel_date); ?></strong>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
                 </div>
 
                 <!--receipts-->
-                <div class="col-md-12 custom_card margin-top-30">
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                     <table class="table table-bordered d-table">
                         <thead class="thead-default">
                             <tr>
@@ -219,7 +219,7 @@
                                     <p class="text-center uppercase green margin-bottom-10 margin-top-10 font_size_16">
                                             <strong>All Receipts</strong>                                
                                         </p>
-                                        <a target='_blank' href='<?php echo site_url("/accounts/create_receipt/{$pay->customer_id}"); ?>' title='Click here to create new receopt' class='btn btn-success'>Create New Recipt</a>
+                                        <a target='_blank' href='<?php echo site_url("/accounts/create_receipt/{$pay->customer_id}"); ?>' title='Click here to create new receopt' class='btn btn-success'><i class="fa-solid fa-plus"></i> Create New Recipt</a>
                                </div>
                             </tr>
                             <tr>
@@ -256,13 +256,13 @@
                 </div>
 
                 <!--TRANSCTIONS-->
-                <div class="">&nbsp;</div>
-                <div class="col-md-12 custom_card margin-top-10">
+                
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="table-responsive">
                         <table class="table table-bordered d-table">
                             <thead class="thead-default">
                                 <tr>
-                                    <p class="text-center uppercase green margin-bottom-10 margin-top-10 font_size_16">
+                                    <p class="uppercase green margin-bottom-10 margin-top-10 font_size_16">
                                         <strong>Payment Transactions</strong></p>
                                 </tr>
                                 <tr>
@@ -345,7 +345,7 @@
                     </div>
                 </div>
 
-                <div class="">&nbsp;</div>
+                
                 <?php 
 				$advance_rec = $pay->advance_recieved;
 				$total_amount_received = $advance_rec + $pay_received; 
@@ -354,6 +354,36 @@
                 <?php if( $pay->iti_close_status == 0 ){ ?>
                 <div class="col-md-12 custom_card margin-top-10">
                     <div class="portlet-body">
+                        <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    <th>Total Package Cost</th>
+                                    <td><?php echo number_format($pay->total_package_cost) . " /-"; ?></td>
+                                    <th>Total Payment Received</th>
+                                    <td><?php echo number_format($total_amount_received) . " /-"; ?></td>
+                                    <th>Advance Received</th>
+                                    <td><?php echo number_format($pay->advance_recieved) . " /-"; ?></td>
+                                    <th>Advance Received Date</th>
+                                    <td><?php echo display_month_name( $pay->booking_date ); ?></td>
+                                </tr>
+                                <tr>
+                                    <?php if( !empty( $pay->second_payment_bal ) ){ ?>
+                                    <?php $pd = $pay->second_pay_status == "paid" ? "<strong class='green'>PAID</strong>" : "<strong class='red'>UNPAID</strong>"; ?>
+                                    <th>Second Installment Amount</th>
+                                    <td>(<?php echo $pd; ?>)</td>
+                                    <th>Second Installment Date</th>
+                                    <td><?php echo display_month_name( $pay->second_payment_date ); ?></td>
+                                    <?php } ?>
+                                    <?php if( !empty( $pay->third_payment_bal ) ){ ?>
+                                    <?php $pd = $pay->third_pay_status == "paid" ? "<strong class='green'>PAID</strong>" : "<strong class='red'>UNPAID</strong>"; ?>
+                                    <th>Third Installment Amount</th>
+                                    <td>(<?php echo $pd; ?>)</td>
+                                    <th>Third Installment Date</th>
+                                    <td><?php echo display_month_name ( $pay->third_payment_date ); ?></td>
+                                    <?php } ?>
+                                </tr>
+                            </table>
+                        </div>
                         <div class="customer-details">
                             <div class="colum_table ">
                                 <div class="col-md-12 col-lg-6">
@@ -459,7 +489,7 @@
                 </div>
                 <?php } ?>
             </div>
-            <div class="">&nbsp;</div>
+            
             <!-- End Payment Details -->
             <?php 
 					$nextPay = !empty( $pay->next_payment ) ? trim( $pay->next_payment ) : 0;
