@@ -16,7 +16,7 @@
                 <div class="bg-white p-3 rounded-4 shadow-sm">
                     <form class="form-horizontal2" role="form" id="addHotelRoomRate">
                         <div class="row">
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select State*</label>
                                     <select required name="state_id" class="form-control state" id='state'>
@@ -31,7 +31,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select City*</label>
                                     <select required name="hotelcity" class="form-control city">
@@ -47,7 +47,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select Hotel*</label>
                                     <select required name="hotel" class="form-control" id="hotels_list">
@@ -70,7 +70,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Room Category*</label>
                                     <select required name="room_type" class="form-control">
@@ -89,21 +89,21 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Invoice Id*: </label>
                                     <input type="text" class="form-control" required name="invoice_id"
                                         value="<?php echo isset($hotel_book->invoice_id) ? $hotel_book->invoice_id : ""; ?>">
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Guest*: </label>
                                     <input type="text" id="total_tral" class="form-control" required name="total_travellers"
                                         value="<?php echo isset($hotel_book->total_travellers) ? $hotel_book->total_travellers : ""; ?>">
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Booking Date*: </label>
                                     <div class="input-group input-daterange">
@@ -124,14 +124,14 @@
                             $t_date2 	=  new DateTime($check_out);
                             $total_nights =  $t_date2->diff($date1)->format("%a"); 
                             ?>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Nights:</label>
                                     <input readonly type="text" id="total_nights" class="form-control"
                                         value="<?php echo $total_nights; ?>">
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Meal Plan *</label>
                                     <?php $mealPlans = get_all_mealplans();
@@ -152,7 +152,7 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Inclusion: </label>
                                     <textarea type="text" name="inclusion" placeholder="Inclusion"
@@ -170,7 +170,7 @@
                                     $extra_bed_cost_per_night = $extra_bed * $extra_bed_cost;
                             ?>
 
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Room Rate(Per/room)*: </label>
                                     <input type="text" required placeholder="Room Rate" name="room_rates"
@@ -178,7 +178,7 @@
                                         value="<?php echo isset($hotel_book->room_cost) ? $hotel_book->room_cost : ""; ?>" />
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Room Cost for 1 Night*: </label>
                                     <div class="form-group2">
@@ -188,7 +188,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Rooms*: </label>
                                     <select required name="total_rooms" class="form-control total_rooms clearfield">
@@ -208,17 +208,17 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-8 col-xl-9">
                                 <?php $display = !empty($hotel_book->extra_bed ) ? "block" : "none"; ?>
                                 <div class="extra_bed_section row" style="display: <?php echo $display; ?>">
                                     <!--extra bed cost section-->
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 my-2">
                                         <div class="form-group">
                                             <label class="control-label">Extra Bed Rate (Per/bed)*: </label>
                                             <input required type="text" id="extra_bed_rate" name="extra_bed_rate" placeholder="Extra Bed Charges" class="form-control extra_bed_rate clearfield price_input" value="<?php echo isset($hotel_book->extra_bed_cost) ? $hotel_book->extra_bed_cost : 0; ?>" />
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 my-2">
                                         <div class="form-group">
                                             <label class="control-label">Extra Bed*: </label>
                                             <select required name="extra_bed" class="form-control extra_bed clearfield">
@@ -228,7 +228,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 my-2">
                                         <div class="form-group2">
                                             <label class="control-label">Total Bed Cost for 1 Night*: </label>
                                             <input class="form-control clearfield" type="text" name="total_ex_bed_rate" value="<?php echo $extra_bed_cost_per_night; ?>" id="total_ex_bed_rate" readonly />
@@ -275,19 +275,19 @@
                                 </div>
                                 <!--End Without Extra bed cost section-->
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label"><strong>Inclusion Charges:</strong></label>
                                     <input class="form-control price_input" id="extra_charges" type="number" placeholder="eg: 100" name="extra_charges" value="<?php echo isset($hotel_book->inclusion_cost) ? $hotel_book->inclusion_cost : 0; ?>" />
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label"><strong>Hotel Tax:</strong></label>
                                     <input class="form-control price_input" id="hotel_tax" type="number" placeholder="eg: 100" name="hotel_tax" value="<?php echo isset($hotel_book->hotel_tax) ? $hotel_book->hotel_tax : 0; ?>" />
                                 </div>
                             </div>
-                            <div class="col-md-3 my-2">
+                            <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <label class="control-label"><strong>Total Cost*:</strong></label>
                                 <a href="javascript: void(0)" id="calculate_cost">Calculate</a>
                                 <input readonly class="form-control clearfield price_input" id="total_cost" type="number"

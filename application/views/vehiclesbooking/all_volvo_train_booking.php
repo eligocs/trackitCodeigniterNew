@@ -17,7 +17,7 @@
                 <!--start filter section-->
                 <form id="form-filter" class="form-horizontal mb-0">
                     <div class="actions custom_filter row">
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-xl-3 my-2">
                             <label>Filter: </label>
                             <select class="form-control booking_type" name="booking_type">
                                 <option value="">All</option>
@@ -26,14 +26,14 @@
                                 <option value="flight">Flight</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6 col-xl-3 my-2">
                             <label>Travel Date: </label>
                             <input type="text" autocomplete="off" class="form-control" id="daterange"
                                                         name="dateRange" title="Travel date filter" placeholder='Travel date' />
                                 <input type="hidden" name="date_from" id="date_from">
                                 <input type="hidden" name="date_to" id="date_to">
                         </div>                        
-                        <div class="col-md-6">
+                        <div class="col-xl-6 col-md-12 my-2">
                             <div class="radio_filter_btns" data-toggle="buttons">
 								<label class="d_block" for="">&nbsp;</label>
                                 <label class="btn btn-default custom_active active"><input type="radio" name="filter"

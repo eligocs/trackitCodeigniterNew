@@ -16,25 +16,25 @@
             <form class="mb-0" id="customer_form" action="<?php echo base_url(); ?>customers/savecustomer" method="post">
                <div class="row">
                   <input type="hidden" name="inp[temp_key]" value="<?php echo getTokenKey(15); ?>">
-                  <div class="col-md-4 my-2">
+                  <div class="col-md-4 col-sm-6 my-2">
                      <div class="form-group">
                         <label class="control-label">Customer Name*</label>
                         <input required type="text" placeholder="eg. Mr. Prem Thakur" name="inp[customer_name]" class="form-control textfield" value="<?php if(isset($customer_name)){ echo $customer_name; }else{ echo set_value('inp[customer_name]'); } ?>"/> 
                      </div>
                   </div>
-                  <div class="col-md-4 my-2">
+                  <div class="col-md-4 col-sm-6 my-2">
                      <div class="form-group">
                         <label class="control-label">Email*</label>
                         <input required type="email" placeholder="eg: your-name@domain.com" name="inp[customer_email]" class="form-control" value="<?php if(isset($customer_email)){ echo $customer_email; }else{ echo set_value('inp[customer_email]'); } ?>"/> 
                      </div>
                   </div>
-                  <div class="col-md-4 my-2">
+                  <div class="col-md-4 col-sm-6 my-2">
                      <div class="form-group">
                         <label class="control-label">Contact Number*</label>
                         <input required type="number" placeholder="eg: 9816098160" name="inp[customer_contact]" class="form-control numberfield" value="<?php if(isset($customer_contact)){ echo $customer_contact; }else{ echo set_value('inp[customer_contact]'); } ?>"/> 
                      </div>
                   </div>
-                  <div class="col-md-4 my-2">
+                  <div class="col-md-4 col-sm-6 my-2">
                      <?php $get_cus_type = get_customer_type(); ?>
                      <div class="form-group">
                         <label class="control-label">Customer Type*</label>
@@ -53,13 +53,13 @@
                   </div>
                   <div id="reference_section" style="display: none;">
                      <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-6 my-2">
                            <div class="form-group">
                               <label class="control-label">Reference Name*</label>
                               <input required type="text" placeholder="eg. Reference Name" name="inp[reference_name]" class="form-control textfield" value=""/> 
                            </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-6 my-2">
                            <div class="form-group">
                               <label class="control-label">Reference Contact Number*</label>
                               <input required type="number" placeholder="Reference Phone Number" name="inp[reference_contact_number]" class="form-control numberfield" value=""/> 
@@ -67,7 +67,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-md-4 my-2">
+                  <div class="col-md-4 col-sm-6 my-2">
                      <div class="form-group">
                         <label class="control-label">Assign To *</label>
                         <select  name="inp[agent_id]" class="form-control" required>

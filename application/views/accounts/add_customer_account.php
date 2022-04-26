@@ -38,10 +38,9 @@
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <form id="addAcc_frm">
                     <div class="row">
-
                         <!--IF NEW CUSTOMER ACCOUNT DROPDOWN BOOKED ITI ID -->
                         <?php if( !isset( $account_listing[0]->id ) ){ ?>
-                        <div class="col-md-offset-4 col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Booked Lead ID*</label>
                                 <select name="iti_id" class="form-control" required id="select_iti_id">
@@ -80,7 +79,7 @@
 						echo "<hr>";
 					} ?>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Name*</label>
                                 <input type="text" placeholder="Customer Name" name="customer_name" class="form-control"
@@ -89,7 +88,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Email*</label>
                                 <input type="email" placeholder="Customer Email" name="customer_email"
@@ -99,7 +98,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Contact*</label>
                                 <input type="text" placeholder="Customer Contact" name="customer_contact"
@@ -109,7 +108,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Alternate Contact</label>
                                 <input type="text" placeholder="Customer Alternate Contact"
@@ -118,7 +117,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Country*</label>
                                 <select required name="country_id" class="form-control country">
@@ -135,7 +134,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select State*</label>
                                 <select required name="state_id" class="form-control state">
@@ -153,7 +152,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Place of Supply*</label>
                                 <select required name="place_of_supply_state_id" class="form-control">
@@ -171,7 +170,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Client GST</label>
                                 <input type="text" placeholder="Client GST NO" maxlength="16" name="client_gst"
@@ -181,16 +180,15 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Address*</label>
-                                <textarea placeholder="Address" name="address" class="form-control"
-                                    required="required"><?php echo isset( $account_listing[0]->address ) ? $account_listing[0]->address : ""; ?></textarea>
+                                <textarea placeholder="Address" name="address" class="form-control" required="required"><?php echo isset( $account_listing[0]->address ) ? $account_listing[0]->address : ""; ?></textarea>
 
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Remarks*</label>
                                 <textarea placeholder="Remarks" name="remarks" class="form-control"
@@ -202,6 +200,7 @@
                         <?php if(isset( $account_listing[0]->id ) ) {
 						$check_status = $account_listing[0]->status == 1 ? "checked" : "";
 						?>
+
                         <div class="col-md-2 my-2">
                             <div class="form-group">
                                 <label class="control-label">Black Listed ?</label>
@@ -218,7 +217,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2 shownewbooking">
+                        <div class="col-md-6 col-lg-4 col-sm-6 my-2 shownewbooking">
                             <div class="form-group">
                                 <label class="control-label">Select New Booked Lead ID*</label>
                                 <select name="new_iti_id" class="form-control new_iti_id" required id="new_iti_id">

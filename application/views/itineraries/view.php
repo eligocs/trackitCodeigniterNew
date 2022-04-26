@@ -2037,7 +2037,7 @@
                         <?php 
                             //check if special inclusion exists
                             $sp_inc = unserialize($iti->special_inc_meta); 
-                            $count_sp_inc = count( $sp_inc );
+                            $count_sp_inc = !empty($sp_inc) ? count( $sp_inc ) : '';
                             if( !empty($sp_inc) ){
                                 echo '<div class="portlet-title"><h3 class="custom_title">Special Inclusions</h3></div>';
                                 echo "<div class='portlet-body'>   <ul class='inclusion'>";

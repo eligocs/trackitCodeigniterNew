@@ -69,7 +69,6 @@
                   <div class="page-logo">
                      <a href="<?php echo site_url();?>">
                      <img src="<?php echo site_url()  . 'site/images/' . getLogo() ?>" alt="Trackitineray software" class="img-responsive logo-top">
-                     <!-- <img src="<?php //echo site_url()  . 'site/assets/logo_email.png'  ?>" alt="Trackitineray software" class="img-responsive logo-top"> -->
                      </a>
                      <div class="menu-toggler sidebar-toggler">
                         <!-- <span></span> -->
@@ -79,19 +78,10 @@
                   <!-- END LOGO -->
                   <!-- BEGIN RESPONSIVE MENU TOGGLER -->
                   <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-                  <span></span>
+                  <!-- <span></span> -->
+                     <i class="fa-solid fa-bars"></i>
                   </a>
                </div>
-               <!-- END HEADER INNER -->
-               <strong class="red"> <?php //echo get_last_login() ?></strong>
-               <!--clock section
-               <div id="MyClockDisplay" class="clock"></div>
-            -->
-            <!--new year-->
-            <!--div class="marq_h">
-               Welcome to 2019
-               </div-->
-            <!--end new year-->
                <?php 
                   //if saleteam user show monthly target
                   if( $h_user_role == 99 || $h_user_role == 98   ){
@@ -103,7 +93,7 @@
                      <!-- header_target_section -->
                   <div class='header_target_section'>
                      <a href="<?php echo base_url("incentive"); ?>" title="Go to incentive page">
-                        <div class="progress" style="max-width:100%; min-width:280px;">
+                        <div class="progress">
                            <span class="target"><span >Booked: <?php echo $mbooked; ?></span> / <span>Target: <?php echo $mtarget; ?> </span></span>
                            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
                               aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentage; ?>%">
@@ -177,15 +167,12 @@
                         </li>
                         <?php } ?>
                      </ul>
-                  </div> 
-                  <!-- END TOP NAVIGATION MENU -->
-            </div>
+            </div> 
+            <!-- END TOP NAVIGATION MENU -->
+         </div>
       </div>
       <!-- page-common-header Strat END -->
-
-
       <!-- BEGIN HEADER & CONTENT DIVIDER -->
-      <div class="clearfix"> </div>
       <!-- END HEADER & CONTENT DIVIDER -->
       <!-- BEGIN CONTAINER -->
       <!-- main_page_container-->

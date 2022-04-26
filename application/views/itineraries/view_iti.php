@@ -487,7 +487,7 @@
                 <!-- portlet -->
                 <div class="custom_card">
                     <div class="tour_des bg_white outline_none">
-                        <ul class="list-group">
+                        <ul class="p-0 row">
                             <div class="row">
                             <li class="col-md-4">
                                 <div class=" list-group-item"><strong> Itinerary Id: </strong><span

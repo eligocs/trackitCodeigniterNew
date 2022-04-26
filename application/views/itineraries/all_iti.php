@@ -30,7 +30,7 @@
             </div>
             <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="filter-box">
-                    <div class="row3  clearfix">
+                    <div class="row3  ">
                         <?php
                      $hideClass = "";
                      if( isset( $_GET["todayStatus"] ) ){	
@@ -204,8 +204,8 @@
             </div>
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <?php if( is_admin_or_manager() ){ ?>
-                <div class="row clearfix">
-                    <div class="col-md-3">
+                <div class="row ">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="sales_user_id">Select Sales Team User:</label>
                             <select required class="form-control select_user" id='sales_user_id' name="user_id">
@@ -218,37 +218,27 @@
                             </select>
                         </div>
                     </div>
-                    <label for="" class="d_block">&nbsp;</label>
-                    <div class="dropdown pull-right action_menu">
-                        <button class="btn btn_blue_outline dropdown-toggle" type="button" data-toggle="dropdown">Action
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <!-- dropdown-item -->
-                            <li>
-                                <a
-                                    href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>"><i
-                                        class="fa fa-envelope"></i> Today Revised Quotation Sent</a>
-                            </li>
-                            <!-- dropdown-item -->
-                            <li>
-                                <a
-                                    href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>"><i
-                                        class="fa fa-envelope"></i> Today Sent Quotation</a>
-                            </li>
-                            <!-- dropdown-item -->
-                        </ul>
+                    <div class="col-md-8">
+                        <label for="space" class="control-label">&nbsp;</label>
+                        <div class="dropdown float-end">
+                            <button class="btn btn_blue_outline dropdown-toggle" type="button" data-bs-toggle="dropdown">Action</button>
+                            <ul class="dropdown-menu">
+                                <!-- dropdown-item -->
+                                <li>
+                                    <a href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>"><i class="fa fa-envelope"></i> Today Revised Quotation Sent</a>
+                                </li>
+                                <!-- dropdown-item -->
+                                <li>
+                                    <a href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>"><i class="fa fa-envelope"></i> Today Sent Quotation</a>
+                                </li>
+                                <!-- dropdown-item -->
+                            </ul>
+                        </div>
                     </div>
-                    <!--export button for admin and manager-->
-                    <!-- <a href="<?php// echo base_url("export/export_itinerary_fiter_data");?>"
-                        class="btn btn-danger pull-right export_btn"><i class="fa fa-file-excel"></i> Export</a>
-                    <a href="<?php// echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>"
-                        class="btn btn-success pull-right"><i class="fa fa-envelope"></i> Today Sent Quotation</a>
-                    <a href="<?php// echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>"
-                        class="btn btn-info pull-right"><i class="fa fa-envelope"></i> Today Revised Quotation Sent</a> -->
                 </div>
                 <?php }else if( is_teamleader() ){
 				$team_members = is_teamleader(); ?>
-                <div class="row clearfix">
+                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="sales_user_id">Select Team Member:</label>

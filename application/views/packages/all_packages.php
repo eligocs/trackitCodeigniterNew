@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<div class="col-md-4 my-2">
-						<label class="control-label d-block" for="">&nbsp;</label>
+						<label class="control-label d-none d-md-block" for="">&nbsp;</label>
 						<button type="submit" class="btn btn-success uppercase add_user"><i class="fa-solid fa-filter"></i> Filter</button>
 						<a href="javascript:void(0);" class="btn btn-success uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
 					</div>
