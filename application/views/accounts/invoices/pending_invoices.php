@@ -34,8 +34,6 @@
 						
 						<tbody>
 						<div id="res"></div>
-						<!-- <a href=" . site_url("accounts/generate_invoice/{$invoice->customer_id}") . " class='btn btn-success' target='_blank' title='Create Invoice' ><i class='fa fa-plus'></i> Create Invoice
-						</a> -->
 						<?php 
 						if( isset($pending_invoices) && !empty( $pending_invoices ) ){
 							$i = 1;
@@ -51,7 +49,7 @@
 									<td> {$invoice->t_end_date}</td>
 									<td> {$agent}</td>
 									<td>
-										<a href='http://localhost/perfex/admin/invoices/invoice?customer_id=1'  class='btn btn-success' target='_blank' title='Create Invoice' ><i class='fa fa-plus'></i> Create Invoice
+										<a data-id='{$invoice->iti_id}' class='btn btn-success invoice' target='_blank' title='Create Invoice' ><i class='fa fa-plus'></i> Create Invoice
 										</a>
 										
 										<a href=" . site_url("itineraries/view/{$invoice->iti_id}/{$invoice->temp_key}") . " class='btn btn-success' target='_blank' title='Create Invoice' ><i class='fa-solid fa-eye'></i> View Iti
@@ -75,5 +73,24 @@
 <script type="text/javascript">
 jQuery(document).ready(function($){
 	$(".table").DataTable();
+	$(document).on("click", ".invoice", function(){
+		var userid = $(this).data("id");
+			$.ajax({
+				url: "<?php echo base_url(); ?>" + "accounts/invoice_create",
+				type:"Post",
+				data:{					
+					userid:userid}
+					,
+				dataType: "json",
+				cache: false,
+				success: function(r){
+					if(r.status = true){
+						window.location.href = r.data;
+					}else{
+						alert("Error! Please try again.");
+					}
+				}
+			});	   
+	});
 });
 </script>

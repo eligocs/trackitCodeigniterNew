@@ -44,13 +44,17 @@ class Audio extends \Restserver\Libraries\REST_Controller
             
             $file_prefix = date("Y") . "/".  date("m") . "/" . $cus_id . "/";
             
-            if( isset( $_FILES['callAudio']['name'] ) && !empty( $_FILES['callAudio']['name'] ) ){
-                
+            // file_put_contents('audio.mp3', base64_decode($data));
+            if( isset( $_FILES['callAudio']['name'] ) && !empty( $_FILES['callAudio']['name'] ) ){  
+                $type = pathinfo($_FILES['callAudio'], PATHINFO_EXTENSION);
+                $data = file_get_contents($_FILES['callAudio']);
+                dump($data);die;
+                $encode = base64_encode($_FILES['callAudio']);
                 $f_n = $_FILES['callAudio']['name'];
                 $n = str_replace(' ', '_', $f_n);
                 $file_name = $iti_id . "_audio_{$cus_id}_"  . $n;
 
-                $config['allowed_types'] = 'mp3|amr';
+                $config['allowed_types'] = 'mp3';
                 $config['upload_path'] = $doc_path;
                 $config['file_name'] = $file_name;
                 $this->load->library('upload', $config);

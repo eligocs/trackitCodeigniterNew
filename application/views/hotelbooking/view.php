@@ -363,14 +363,14 @@
 
 						$extra_bed_cost 	= !empty($hotel_book->extra_bed_cost) ? $hotel_book->extra_bed_cost : 0;
 
-						$extra_bed_cost_per_night = $extra_bed * $extra_bed_cost;
+						$extra_bed_cost_per_night = !empty($extra_bed) ?  $extra_bed * $extra_bed_cost : '';
 
 						
 
 						//Without extra bed default: 1 for old entries
 						$w_extra_bed 		= !empty($hotel_book->without_extra_bed) ? $hotel_book->without_extra_bed : 1;
 						$without_extra_bed_cost = !empty($hotel_book->without_extra_bed_cost) ? $hotel_book->without_extra_bed_cost * $w_extra_bed : 0;
-						$total_cost_rooms 	= $extra_bed_cost_per_night + $total_room_cost_pernight + $without_extra_bed_cost;
+						$total_cost_rooms 	=  !empty($extra_bed_cost_per_night) ? $extra_bed_cost_per_night + $total_room_cost_pernight + $without_extra_bed_cost : '';
 						$inclusion_cost 	= $hotel_book->inclusion_cost;
 						$hotel_tax 			= $hotel_book->hotel_tax;
 						$total_cost			 = number_format($hotel_book->total_cost);
@@ -484,7 +484,7 @@
 
                             <td>
                                 <div class="col-mdd-10 form_vr">INR.
-                                    <?php echo number_format($total_cost_rooms) . " * " . $nights; ?></div>
+                                    <?php echo  !empty($total_cost_rooms) ? number_format($total_cost_rooms) . " * " . $nights : ''; ?></div>
                             </td>
 
                         </tr>
@@ -501,7 +501,7 @@
 
                             <td>
                                 <div class="col-mdd-10 form_vr">INR.
-                                    <?php echo number_format($total_cost_rooms * $nights); ?></div>
+                                    <?php echo!empty($total_cost_rooms) ? number_format($total_cost_rooms * $nights) : ''; ?></div>
                             </td>
 
                         </tr>
