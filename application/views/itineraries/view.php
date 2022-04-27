@@ -754,16 +754,16 @@
             <?php } ?>
             <!-- Declined Reason -->
             <?php if($iti->iti_status == 7 ){ ?>
-            <div class="well well-sm">
+            <div class="">
                 <p class="red">Declined Reason: <strong><?php echo $iti->followup_status; ?></strong></p>
                 <p class="red">Declined Comment: <strong><?php echo $iti->decline_comment; ?></strong></p>
             </div>
             <?php } 
             else if($iti->iti_status == 6 ){ ?>
             <!-- Rejected Reason -->
-            <div class="well well-sm text-center custom_card">
-                <h2 class="red">Rejected Itinerary</h2>
-                <p class="red">Reason: <strong><?php echo $iti->iti_reject_comment; ?></strong></p>
+            <div class="mb-4 text-center">
+                <h2 class="fs-5 text-danger">Rejected Itinerary</h2>
+                <p class="my-0"> <span>Reason :</span> <strong><?php echo $iti->iti_reject_comment; ?></strong></p>
             </div>
             <?php } ?>
             <?php
@@ -782,104 +782,118 @@
             //print_r( $get_rate_meta );
             //echo $user_role;
          if( ( (empty($get_rate_meta) || get_iti_booking_status($iti->iti_id)  == 3) || $iti->pending_price == 1 ) && ( ( ( ( is_manager() && !is_leads_manager() ) || is_admin() ) && ( $iti->pending_price == 1 || $iti->pending_price == 5 ) ) || ( is_teamleader() && $iti->pending_price == 5 ) ) ){ ?>
-            <div class=" custom_card margin-bottom-30" id="update_rates_section">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4" id="update_rates_section">
                 <form id="submitRates">
+                    <div class="row">
                     <div class='form-group col-md-12'>
                         <p class="text-center"><strong style="font-size: 22px;">Please Update Rates By Hotel Category:
                             </strong>
                         </p>
                     </div>
-                    <div class='standard  form-group col-md-2'>
-                        <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
+
+                    <div class='standard form-group col-xl-2 col-md-3 my-2'>
+                        <label class="control-label">
+                            <strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong>
+                        </label>
                         <input required name="rate_meta[standard_rates]" type="number" class='form-control'>
                     </div>
-                    <div class='deluxe form-group col-md-2'>
-                        <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
+
+                    <div class='deluxe form-group col-xl-2 col-md-3 my-2'>
+                        <label class="control-label"><strong>
+                            <?= totalHotelCategory()[1]->hotel_category_name ?>:</strong>
+                        </label>
                         <input required name="rate_meta[deluxe_rates]" type="number" class='form-control'>
                     </div>
-                    <div class='super_deluxe form-group col-md-2'>
-                        <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
+
+                    <div class='super_deluxe form-group col-xl-2 col-md-3 my-2'>
+                        <label class="control-label">
+                            <strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong>
+                        </label>
                         <input required name="rate_meta[super_deluxe_rates]" type="number" class='form-control'>
                     </div>
-                    <div class='luxury form-group col-md-2'>
-                        <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
+
+                    <div class='luxury form-group col-xl-2 col-md-3 my-2'>
+                        <label class="control-label">
+                            <strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong>
+                        </label>
                         <input required name="rate_meta[luxury_rates]" type="number" class='form-control'>
                     </div>
-                    <!--div class='form-group col-md-2' >
-                <label><strong>GST Inc.:</strong></label>
-                <input type="checkbox" value="1" class='form-control' id="incgst">
-                </div-->
-                    <div class='form-group col-md-2'>
-                        <label><strong>Below Base Price.:</strong></label>
-                        <input type="checkbox" value="1" title="Check if price is below Base Price" class='form-control'
-                            id="below_bp">
-                        <input name="per_person_ratemeta[below_base_price]" type="hidden" value=""
-                            class='form-control below_bp'>
+                    
+                    <div class='form-group col-xl-2 col-md-3 my-2'>
+                        <label class="control-label d-block"><strong>Below Base Price.:</strong></label>
+                        <input type="checkbox" value="1" title="Check if price is below Base Price" class='form-check-input' id="below_bp">
+                        <input name="per_person_ratemeta[below_base_price]" type="hidden" value="" class='form-control below_bp'>
                     </div>
                     <input name="per_person_ratemeta[inc_gst]" type="hidden" value="1" class='form-control incgst'>
-                    <div class='form-group col-md-2'>
-                        <label><strong>Add Per/Person Rate:</strong></label>
-                        <!--inc_gst 1 = true -->
-                        <input type="checkbox" class='form-control' id="per_person_rate">
+
+                    <div class='form-group col-xl-2 col-md-3 my-2'>
+                        <label class="control-label d-block text-nowrap"><strong>Add Per/Person Rate:</strong></label>
+                        <input type="checkbox" class='form-check-input' id="per_person_rate">
                     </div>
                     
                     <!--perperson rate meta -->
-                    <div class="col-md-10 perperson_section" style="display: none;">
-                        <div class='standard  form-group col-md-3'>
-                            <label><strong><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/Person):</strong></label>
-                            <input name="per_person_ratemeta[standard_rates]" type="number" class='form-control'
-                                placeholder="Deluxe Per/Person Cost">
-                        </div>
-                        <div class='deluxe form-group col-md-3'>
-                            <label><strong><?= totalHotelCategory()[1]->hotel_category_name ?> (Per/Person):</strong></label>
-                            <input name="per_person_ratemeta[deluxe_rates]" type="number" class='form-control'
-                                placeholder="Super Deluxe Per/Person Cost">
-                        </div>
-                        <div class='super_deluxe form-group col-md-3'>
-                            <label><strong><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/Person):</strong></label>
-                            <input name="per_person_ratemeta[super_deluxe_rates]" type="number" class='form-control'
-                                placeholder="Luxury Per/Person Cost">
-                        </div>
-                        <div class='luxury form-group col-md-3'>
-                            <label><strong><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/Person):</strong></label>
-                            <input name="per_person_ratemeta[luxury_rates]" type="number" class='form-control'
-                                placeholder="Super Deluxe Per/Person Cost">
-                        </div>
-                        
-                        <!--child rate-->
-                        <div class='standard  form-group col-md-3'>
-                            <label><strong class="red"><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/child):</strong><span
-                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
-                            <input name="per_person_ratemeta[child_standard_rates]" type="number" class='form-control'
-                                placeholder="Deluxe Per/child Cost">
-                        </div>
-                        <div class='deluxe form-group col-md-3'>
-                            <label><strong class="red"><?= totalHotelCategory()[1]->hotel_category_name ?>  (Per/child):</strong><span
-                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
-                            <input name="per_person_ratemeta[child_deluxe_rates]" type="number" class='form-control'
-                                placeholder="Super Deluxe Per/child Cost">
-                        </div>
-                        <div class='super_deluxe form-group col-md-3'>
-                            <label><strong class="red"><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/child):</strong><span
-                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
-                            <input name="per_person_ratemeta[child_super_deluxe_rates]" type="number" class='form-control'
-                                placeholder="Luxury Per/child Cost">
-                        </div>
-                        <div class='luxury form-group col-md-3'>
-                            <label><strong class="red"><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/child):</strong><span
-                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
-                            <input name="per_person_ratemeta[child_luxury_rates]" type="number" class='form-control'
-                                placeholder="Super Deluxe Per/child Cost">
+                    <div class="perperson_section" style="display: none;">
+                        <div class="row">
+                            <div class='standard  form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label">
+                                    <strong><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/Person):</strong>
+                                </label>
+                                <input name="per_person_ratemeta[standard_rates]" type="number" class='form-control' placeholder="Deluxe Per/Person Cost">
+                            </div>
+                            <div class='deluxe form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label">
+                                    <strong><?= totalHotelCategory()[1]->hotel_category_name ?> (Per/Person):</strong>
+                                </label>
+                                <input name="per_person_ratemeta[deluxe_rates]" type="number" class='form-control'
+                                    placeholder="Super Deluxe Per/Person Cost">
+                            </div>
+                            <div class='super_deluxe form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label">
+                                    <strong><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/Person):</strong>
+                                </label>
+                                <input name="per_person_ratemeta[super_deluxe_rates]" type="number" class='form-control'
+                                    placeholder="Luxury Per/Person Cost">
+                            </div>
+                            <div class='luxury form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label">
+                                    <strong><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/Person):</strong>
+                                </label>
+                                <input name="per_person_ratemeta[luxury_rates]" type="number" class='form-control'
+                                    placeholder="Super Deluxe Per/Person Cost">
+                            </div>
+                            
+                            <!--child rate-->
+                            <div class='standard  form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label"><strong class="red"><?= totalHotelCategory()[0]->hotel_category_name ?> (Per/child):</strong><span style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                <input name="per_person_ratemeta[child_standard_rates]" type="number" class='form-control' placeholder="Deluxe Per/child Cost">
+                            </div>
+                            <div class='deluxe form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label"><strong class="red"><?= totalHotelCategory()[1]->hotel_category_name ?>  (Per/child):</strong><span style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                <input name="per_person_ratemeta[child_deluxe_rates]" type="number" class='form-control' placeholder="Super Deluxe Per/child Cost">
+                            </div>
+                            <div class='super_deluxe form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label"><strong class="red"><?= totalHotelCategory()[2]->hotel_category_name ?> (Per/child):</strong><span
+                                        style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                <input name="per_person_ratemeta[child_super_deluxe_rates]" type="number" class='form-control'
+                                    placeholder="Luxury Per/child Cost">
+                            </div>
+                            <div class='luxury form-group col-xl-3 col-md-4 my-2'>
+                                <label class="control-label"><strong class="red"><?= totalHotelCategory()[3]->hotel_category_name ?> (Per/child):</strong><span
+                                        style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                <input name="per_person_ratemeta[child_luxury_rates]" type="number" class='form-control'
+                                    placeholder="Super Deluxe Per/child Cost">
+                            </div>
                         </div>
                     </div>
                     <!--end perperson rate meta -->
-                    <div class='luxury form-group col-md-4'>
-                        <label><strong>Rate Comments*</strong>
+                    <div class='luxury form-group col-md-4 my-2'>
+                        <label class="control-label"><strong>Rate Comments*</strong>
                             <span class="red" style="font-size: 12px;"> Note: This comment is also visible for client.</span>
                         </label>
                         <textarea required name="rate_comment" class='form-control'></textarea>
                     </div>
-                    <div class='form-group col-md-8'>
+
+                    <div class='form-group col-md-8 my-2'>
                         <div class="button_sec" style="margin-top: 30px;">
                             <button name="action" class="btn green button-submit" type="submit" value="agent">Send To
                                 Agent</button> <strong class="red"> OR </strong>
@@ -900,6 +914,7 @@
                     <input type="hidden" value="<?php echo $iti->temp_key; ?>" name="temp_key">
                     <input type="hidden" value="<?php echo $iti->iti_id; ?>" name="iti_id">
                     <input type="hidden" value="<?php echo $iti->agent_id; ?>" name="agent_id">
+                    </div>
                 </form>
             </div>
             <!-- row -->
@@ -1063,7 +1078,7 @@
                     <!--end perperson rate meta -->
                     
                     <div class='luxury form-group col-md-4'>
-                        <label><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment
+                        <label class="control-label"><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment
                                 is also visible for client.</span></label>
                         <textarea required name="rate_comment"
                             class='form-control'><?php echo $iti->rate_comment; ?></textarea>
@@ -1456,7 +1471,7 @@
                 </div>
                 
                 <!--perperson rate meta -->
-                <div class="col-md-12 perperson_section"
+                <div class="perperson_section"
                     style="display: <?php echo !empty($check_perperson) ? "block" : "none"; ?>;">
                     <div class='standard  form-group col-md-3'>
                         <label><strong>Deluxe (Per/Person):</strong></label>
@@ -1521,7 +1536,7 @@
                 <!--end perperson rate meta -->
                 
                 <div class='luxury form-group col-md-4'>
-                    <label><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment is
+                    <label class="control-label"><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment is
                             also visible for client.</span></label>
                     <textarea required name="rate_comment" class='form-control'></textarea>
                 </div>

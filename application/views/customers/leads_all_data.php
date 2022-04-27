@@ -40,9 +40,6 @@
     display: none;
 }
 
-#pakcageModal {
-    top: 20%;
-}
 
 .iti_leads_followup_section {
     height: 500px;
@@ -128,6 +125,10 @@ div#quotation_type_section,
                                     <?php $cus_type 	= get_customer_type_name($customer->customer_type); ?>
                                     <?php echo $cus_type; ?>
                                 </td>
+                                <th>Customer Contact</th>
+                                <td><?php echo $customer->customer_contact; ?></td>
+                            </tr>
+                            <tr>
                                 <?php if( $customer->customer_type == 2 ){ ?>
                                 <th>Reference Name</th>
                                 <td><?php echo $customer->reference_name; ?></td>
@@ -140,24 +141,24 @@ div#quotation_type_section,
                             <tr>
                                 <th>Customer Email</th>
                                 <td><?php echo $customer->customer_email; ?></td>
-                                <th>Customer Contact</th>
-                                <td><?php echo $customer->customer_contact; ?></td>
                                 <th>Created</th>
                                 <td><?php echo $customer->created; ?></td>
                                 <th>Destination</th>
                                 <td><?php echo $customer->destination; ?></td>
-                                <!--if Customer Info exists-->
+                            </tr>
+                            <tr>
+                                 <!--if Customer Info exists-->
                                 <?php if( !empty( $customer->adults ) && !empty($customer->hotel_category) ){ ?>
                                 <th>Whatsapp Number</th>
                                 <td><?php echo $customer->whatsapp_number; ?></td>
-                            </tr>
-                            <tr>
                                 <th>Adults</th>
                                 <td><?php echo $customer->adults; ?></td>
                                 <th>Child</th>
                                 <td>
                                     <?php echo !empty( $customer->child ) ? $customer->child : "N/A" ; ?>
                                 </td>
+                            </tr>
+                            <tr>
                                 <th>Child Age</th>
                                 <td>
                                     <?php echo !empty( $customer->child_age ) ? $customer->child_age : "N/A" ; ?>
@@ -185,6 +186,8 @@ div#quotation_type_section,
                                 <td>
                                     <?php echo $customer->droping_point; ?>
                                 </td>
+                            </tr>
+                            <tr>
                                 <th>Package By</th>
                                 <td>
                                    <?php $cp_type =	$customer->package_car_type; $pack_car_type = $cp_type == "Other" ? $customer->package_car_type_other : $cp_type; ?>
@@ -192,12 +195,12 @@ div#quotation_type_section,
                                 </td>
                                 <th>Meal Plan</th>
                                 <td><?php echo $customer->meal_plan; ?></td>
-                            </tr>
-                            <tr>
                                 <th>Honeymoon Kit</th>
                                 <td>
                                     <?php echo $customer->honeymoon_kit; ?>
                                 </td>
+                            </tr>
+                            <tr>
                                 <th>Car Type for sightseeing</th>
                                 <td>
                                     <?php echo get_car_name($customer->car_type_sightseen); ?>
@@ -210,12 +213,12 @@ div#quotation_type_section,
                                 <td>
                                     <?php echo $customer->budget; ?>
                                 </td>
+                            </tr>
+                            <tr>
                                 <th>Country</th>
                                 <td>
                                     <?php echo get_country_name($customer->country_id); ?>
                                 </td>
-                            </tr>
-                            <tr>
                                 <th>State</th>
                                 <td>
                                     <?php echo get_state_name($customer->state_id); ?>
@@ -225,6 +228,8 @@ div#quotation_type_section,
                                 <td>
                                     <?php echo get_user_name($customer->agent_id); ?>
                                 </td>
+                            </tr>
+                            <tr>
                                 <!--Show agent username if customer is assign by leads team -->
                                 <?php if( !empty( $customer->assign_by ) ){ ?>
                                 <th>Customer Assign By</th>
@@ -238,876 +243,453 @@ div#quotation_type_section,
                     <!-- <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Lead Id:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->customer_id; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->customer_id; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Type:</strong></div>
-                            <?php $cus_type 	= get_customer_type_name($customer->customer_type); ?>
-                            <div class="col-md-6 form_vr"><?php echo $cus_type; ?></div>
+                            <?php// $cus_type 	= get_customer_type_name($customer->customer_type); ?>
+                            <div class="col-md-6 form_vr"><?php// echo $cus_type; ?></div>
                         </div>
-                        <?php if( $customer->customer_type == 2 ){ ?>
+                        <?php// if( $customer->customer_type == 2 ){ ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Reference Name:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->reference_name; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->reference_name; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Reference Contact:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->reference_contact_number; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->reference_contact_number; ?></div>
                         </div>
-                        <?php } ?>
+                        <?php //} ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Name:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->customer_name; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->customer_name; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Email:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->customer_email; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->customer_email; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Contact:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->customer_contact; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->customer_contact; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Created:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->created; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->created; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Destination:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->destination; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->destination; ?></div>
                         </div> -->
                         <!--if Customer Info exists-->
                         <!-- <?php //if( !empty( $customer->adults ) && !empty($customer->hotel_category) ){ ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Whatsapp Number:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->whatsapp_number; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->whatsapp_number; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Adults:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->adults; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->adults; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Child:</strong></div>
                             <div class="col-md-6 form_vr">
-                                <?php echo !empty( $customer->child ) ? $customer->child : "N/A" ; ?></div>
+                                <?php// echo !empty( $customer->child ) ? $customer->child : "N/A" ; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Child Age:</strong></div>
                             <div class="col-md-6 form_vr">
-                                <?php echo !empty( $customer->child_age ) ? $customer->child_age : "N/A" ; ?></div>
+                                <?php// echo !empty( $customer->child_age ) ? $customer->child_age : "N/A" ; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Package Type:</strong></div>
-                            <?php $pkBy =	$customer->package_type; $pack_T = $pkBy == "Other" ? $customer->package_type_other : $pkBy; ?>
-                            <div class="col-md-6 form_vr"><?php echo $pack_T; ?></div>
+                            <?php// $pkBy =	$customer->package_type; $pack_T = $pkBy == "Other" ? $customer->package_type_other : $pkBy; ?>
+                            <div class="col-md-6 form_vr"><?php// echo $pack_T; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Total Rooms:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->total_rooms; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->total_rooms; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Travel Date:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo display_date_month_name($customer->travel_date); ?>
+                            <div class="col-md-6 form_vr"><?php// echo display_date_month_name($customer->travel_date); ?>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Pick Up Point:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->pickup_point; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->pickup_point; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Dropping Point:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->droping_point; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->droping_point; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Package By:</strong></div>
-                            <?php $cp_type =	$customer->package_car_type; $pack_car_type = $cp_type == "Other" ? $customer->package_car_type_other : $cp_type; ?>
-                            <div class="col-md-6 form_vr"><?php echo $pack_car_type; ?></div>
+                            <?php// $cp_type =	$customer->package_car_type; $pack_car_type = $cp_type == "Other" ? $customer->package_car_type_other : $cp_type; ?>
+                            <div class="col-md-6 form_vr"><?php// echo $pack_car_type; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Meal Plan:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->meal_plan; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->meal_plan; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-12">
                             <div class="col-md-3 col-md-6 form_vl"><strong>Honeymoon Kit:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->honeymoon_kit; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->honeymoon_kit; ?></div>
                         </div>
                         <div class="col-lg-12 col-md-6">
                             <div class="col-md-3 col-md-6 form_vl"><strong>Car Type for sightseeing:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo get_car_name($customer->car_type_sightseen); ?>
+                            <div class="col-md-6 form_vr"><?php// echo get_car_name($customer->car_type_sightseen); ?>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Hotel Category:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->hotel_category; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->hotel_category; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Budget Approx:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo $customer->budget; ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo $customer->budget; ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Country:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo get_country_name($customer->country_id); ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo get_country_name($customer->country_id); ?></div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>State:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo get_state_name($customer->state_id); ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo get_state_name($customer->state_id); ?></div>
                         </div>
                         <?php// } ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Assign To:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo get_user_name($customer->agent_id); ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo get_user_name($customer->agent_id); ?></div>
                         </div> -->
                         <!--Show agent username if customer is assign by leads team -->
                         <!-- <?php //if( !empty( $customer->assign_by ) ){ ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="col-md-6 form_vl"><strong>Customer Assign By:</strong></div>
-                            <div class="col-md-6 form_vr"><?php echo get_user_name($customer->assign_by); ?></div>
+                            <div class="col-md-6 form_vr"><?php// echo get_user_name($customer->assign_by); ?></div>
                         </div>
                         <?php// } ?> -->
-                    </div>
-                    <!-- row -->
-                    <!--get itinerary accommodation add/edit buttons-->
-                    <?php
-                  $add_acc = "";
-                  $add_iti = "";
-                  switch( $customer->cus_status ){
-                  	case 9:
-                  		//check if itinerary created against current leadStatus
-                  		//if iti not booked
-                  		if( get_iti_status( $customer->customer_id ) != 9 ){
-                  			if( is_admin_or_manager_or_sales() ){
-                  				$where3 = array( "customer_id" => $customer->customer_id , "iti_type" => 1 );
-                  				$get_iti = $this->global_model->getdata( "itinerary", $where3 );
-                  				if( !empty( $get_iti ) ){
-                  					$iti_id = $get_iti[0]->iti_id;
-                  					$temp_key = $get_iti[0]->temp_key;
-                  					$pub_status = $get_iti[0]->publish_status;
-                  					
-                  					if( $pub_status == "draft" ){
-                  						$add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa-solid fa-pen-to-square'></i> Edit Itinerary</a>";
-                  					}else{
-                  						$add_iti = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Itinerary'><i class='fa-solid fa-eye'></i> View Itinerary</a>";
-                  					}
-                  					
-                  				}else{						
-                  					$add_iti = "<a href=" . site_url("itineraries/add/{$customer->customer_id}/{$customer->temp_key}") . " class='btn btn-green ajax_additi_table' data-id='{$customer->customer_id}' data-temp_key ='{$customer->temp_key}' title='Add Itinerary'><i class='fa fa-plus'></i> Ready for quotation</a>";
-                  				}	
-                  				//check if Accommodation created against current leadStatus cus
-                  				$where4 = array( "customer_id" => $customer->customer_id , "iti_type" => 2);
-                  				$get_acc = $this->global_model->getdata( "itinerary", $where4 );
-                  				if( !empty( $get_acc ) ){
-                  					$iti_id = $get_acc[0]->iti_id;
-                  					$temp_key = $get_acc[0]->temp_key;
-                  					$pub_status = $get_acc[0]->publish_status;
-                  					if( $pub_status == "draft" ){
-                  						$add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-secondary' title='Draft Accommodation'><i class='fa-solid fa-pen-to-square'></i> Edit Acc.</a>";
-                  					}else{
-                  						$add_acc = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Accommodation'><i class='fa fa-plus'></i> View Acc.</a>";
-                  					}
-                  				}else{	
-                  					$add_acc = "<a href=" . site_url("itineraries/add_accommodation/{$customer->customer_id}/{$customer->temp_key}") . " class='btn btn-green' data-id='{$customer->customer_id}' data-temp_key ='{$customer->temp_key}' title='Add Accommodation Package'><i class='fa fa-plus'></i> Acc. Quotation</a>";
-                  				}	 
-                  			}
-                  		}	
-                        break;
-                  }
+                </div>
+                <!-- row -->
+                <!--get itinerary accommodation add/edit buttons-->
+                <?php
+                $add_acc = "";
+                $add_iti = "";
+                switch( $customer->cus_status ){
+                case 9:
+                //check if itinerary created against current leadStatus
+                //if iti not booked
+                if( get_iti_status( $customer->customer_id ) != 9 ){
+                    if( is_admin_or_manager_or_sales() ){
+                        $where3 = array( "customer_id" => $customer->customer_id , "iti_type" => 1 );
+                        $get_iti = $this->global_model->getdata( "itinerary", $where3 );
+                        if( !empty( $get_iti ) ){
+                            $iti_id = $get_iti[0]->iti_id;
+                            $temp_key = $get_iti[0]->temp_key;
+                            $pub_status = $get_iti[0]->publish_status;
+                            
+                            if( $pub_status == "draft" ){
+                                $add_iti = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='Draft Itinerary'><i class='fa-solid fa-pen-to-square'></i> Edit Itinerary</a>";
+                            }else{
+                                $add_iti = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Itinerary'><i class='fa-solid fa-eye'></i> View Itinerary</a>";
+                            }
+                            
+                        }else{						
+                            $add_iti = "<a href=" . site_url("itineraries/add/{$customer->customer_id}/{$customer->temp_key}") . " class='btn btn-green ajax_additi_table' data-id='{$customer->customer_id}' data-temp_key ='{$customer->temp_key}' title='Add Itinerary'><i class='fa fa-plus'></i> Ready for quotation</a>";
+                        }	
+                        //check if Accommodation created against current leadStatus cus
+                        $where4 = array( "customer_id" => $customer->customer_id , "iti_type" => 2);
+                        $get_acc = $this->global_model->getdata( "itinerary", $where4 );
+                        if( !empty( $get_acc ) ){
+                            $iti_id = $get_acc[0]->iti_id;
+                            $temp_key = $get_acc[0]->temp_key;
+                            $pub_status = $get_acc[0]->publish_status;
+                            if( $pub_status == "draft" ){
+                                $add_acc = "<a href=" . site_url("itineraries/edit/{$iti_id}/{$temp_key}") . " class='btn btn-secondary' title='Draft Accommodation'><i class='fa-solid fa-pen-to-square'></i> Edit Acc.</a>";
+                            }else{
+                                $add_acc = "<a href=" . site_url("itineraries/view/{$iti_id}/{$temp_key}") . " class='btn btn-blue' title='View Accommodation'><i class='fa fa-plus'></i> View Acc.</a>";
+                            }
+                        }else{	
+                            $add_acc = "<a href=" . site_url("itineraries/add_accommodation/{$customer->customer_id}/{$customer->temp_key}") . " class='btn btn-green' data-id='{$customer->customer_id}' data-temp_key ='{$customer->temp_key}' title='Add Accommodation Package'><i class='fa fa-plus'></i> Acc. Quotation</a>";
+                        }	 
+                    }
+                }	
+                break;
+                }
                   
-                  //View Buttons
-                  echo '';
-                  $c_view = "<a target='_blank' href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-warning text-white' ><i class='fa-solid fa-eye'></i> View Customer</a>";
-                  echo  "<div class='text-center my-4'>{$add_iti} {$add_acc} {$decUserStatus} {$c_view}</div>";
-                  ?>
-                </div>
-                <!--end customer info section-->
-                <!--itineraries section -->
-                <div class="bg-white p-3 rounded-4 shadow-sm">
-                    <div class="iti_section">
-                        <h3 class='text-center uppercase'>Itineraries Info</h3>
-                        <?php if( isset( $itineraries ) && !empty( $itineraries ) ){ 
-                     $index = 1;
-                     ?>
-                        <div class="table-responsive">
-                            <table id="itineraries_tbl" class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th> # </th>
-                                        <th> Iti Id </th>
-                                        <th> Package Name </th>
-                                        <th> Type </th>
-                                        <th> Pub. Staus </th>
-                                        <th> Temp/Travel Date </th>
-                                        <th> Travel Date </th>
-                                        <th> Created </th>
-                                        <?php if( is_admin_or_manager() ){  ?>
-                                        <th> Agent </th>
-                                        <?php } ?>
-                                        <th> Sent Status </th>
-                                        <th> Action </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach( $itineraries as $iti ){ ?>
-                                    <!--DataTable goes here-->
-                                    <tr>
-                                        <?php 
-                                 $row_delete = $btn_edit="";
-                                 	$row_edit = "";
-                                 	$btncmt = "";
-                                 	$iti_s = "";
-                                 	$rev_btn_service = "";
-                                 	$amend_btn = "";
-                                 	$iti_id = $iti->iti_id;
-                                 	$pub_status = $iti->publish_status;
-                                 	$key = $iti->temp_key;
-                                 	//get discount rate request
-                                 	$discount_request = $iti->discount_rate_request;
-                                 	$discReq = $discount_request == 1 ? "<strong class='red'> (Price Discount Request) </strong>" : " ";
-                                 	
-                                 	//Count All Child Itineraries
-                                 	$countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti_id, "del_status" => 0) );
-                                 	
-                                 	$childLink = "<a title='View Child Itineraries' href=" . site_url("itineraries/childIti/{$iti_id}/{$key}") . " class='btn btn-success blue' ><i class='fa fa-child' aria-hidden='true'></i></a>";
-                                 	
-                                 	$showChildItiBtn = $countChildIti > 0 ? $childLink : "";
-                                 	
-                                 	//get iti_status
-                                 	$iti_status = $iti->iti_status;
-                                 	if( $pub_status == "publish" ){
-                                 		$p_status = "<strong>" . ucfirst($pub_status) . "</strong>";
-                                 	}elseif( $pub_status == "price pending" ){
-                                 		$p_status = "<strong class='blue'>" . ucfirst($pub_status) . "</strong>";
-                                 	}else{
-                                 		$p_status = "<strong class='red'>" . ucfirst($pub_status) . "</strong>";
-                                 	}
-                                 	//Lead Prospect Hot/Warm/Cold
-                                 	$cus_pro_status = get_iti_prospect($iti->iti_id);
-                                 	if( $cus_pro_status == "Warm" ){
-                                 		$l_pro_status = "<strong class='green'> ( " . $cus_pro_status . " )</strong>";
-                                 	}else if( $cus_pro_status == "Hot" ){
-                                 		$l_pro_status = "<strong class='black'> ( " . $cus_pro_status . " )</strong>";
-                                 	}else if( $cus_pro_status == "Cold" ){
-                                 		$l_pro_status = "<strong class='red'> ( " . $cus_pro_status . " )</strong>";
-                                 	}else{
-                                 		$l_pro_status = "";
-                                 	}
-                                 	
-                                 	//Get itinerary type 1=itinerary , 2=accommodation
-                                 	$iti_type = $iti->iti_type == 2 ? "<strong class='red'>Accommodation</strong>" : "<strong class='green'>Holiday</strong>";
-                                 	
-                                 	
-                                 	$row[] = $iti_type;
-                                 	$row[] = $iti->package_name . $l_pro_status;
-                                 	
-                                 	//Check temp travel date if publish_status != "draft" iti_type = 1 Itinerary , 2 = accommodation
-                                 	/* $temp_t_d = "";
-                                 	if( $iti->publish_status != "draft" && $iti->iti_type == 1 ){
-                                 		$day_wise_meta = !empty( $iti->daywise_meta ) ? unserialize($iti->daywise_meta) : "";
-                                 		$temp_t_d = !empty( $day_wise_meta ) && isset( $day_wise_meta[0]['tour_date'] ) ? $day_wise_meta[0]['tour_date'] : "";
-                                 	}else if( $iti->publish_status != "draft" && $iti->iti_type == 2  ){
-                                 		$temp_t_d = $iti->t_start_date;
-                                 	} */
-                                 	
-                                 	$temp_t_d = $iti->t_start_date;
-                                 	
-                                 	
-                                 	//buttons
-                                 	//if price is updated remove edit for agent get_iti_booking_status
-                                 	if( $iti->pending_price == 2 && $role == 96 ){
-                                 		$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn_pencil editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
-                                 	}else{
-                                 		$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
-                                 	}
-                                 	
-                                 	$btnview = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
-                                 	
-                                 	$btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf/{$iti_id}/{$key}") . " class='btn_pdf' >
-                                     <i class='fa-solid fa-file-pdf'></i></a>";
-                                 	
-                                     $btn_view ="";
-
-                                 	// $btn_view = "<a title='client view' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
-                                 	
-                                 	//Show if type=1=itinerary
-                                 	if( $iti->iti_type == 1 ){
-                                 		//$btn_view .= "<a title='client view' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
-                                 	}
-                                 	
-                                 	//clone button
-                                 	if( empty( $iti->parent_iti_id ) &&  $countChildIti < 6  && $iti->iti_status == 0  && $iti->email_count > 0 && $pub_status == "publish" ){
-                                 		//type 2=accommodation
-                                 		if( $iti->iti_type == 2 ){
-                                 			$btn_view .= "<a data-customer_id='{$iti->customer_id}' data-iti_id='{$iti_id}' title='Duplicate Accommodation' href=" . site_url("itineraries/duplicate/{$iti_id}") . " class='child_clone' >
-                                             <i class='fa-solid fa-clone'></i></a>";
-                                 		}else{
-                                 			$btn_view .= "<a data-customer_id='{$iti->customer_id}' data-iti_id='{$iti_id}' title='Duplicate Itinerary' href=" . site_url(	"itineraries/duplicate/{$iti_id}") . " class=' duplicateItiBtn' >
-                                             <i class='fa-solid fa-clone'></i></a>";
-                                 		}	
-                                 	}	
-                                 	
-                                 	if( !empty( $iti->client_comment_status ) && $iti->client_comment_status == 1 ){
-                                 		$btncmt = "<a data-id={$iti_id} data-key={$key} title='Client Comment' href='javascript:void(0)' class='btn btn-success ajax_iti_status red'><span class='blink'><i class='fa fa fa-comment-o' aria-hidden='true'></i>  New Comment</span></a>";
-                                 	}
-                                 	
-                                 	//if itinerary status is publish
-                                 	if( $pub_status == "publish" || $pub_status == "price pending" ){
-                                 		//delete itinerary button only for admin
-                                 		if( is_admin_or_manager() && empty( $countChildIti ) ){ 
-                                 			$row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='ajax_delete_iti'>
-                                             <i class='fa-solid fa-trash-can'></i></a>";
-                                 		}
-                                 		//Check for iti status
-                                 		if( isset( $iti->booking_status ) && $iti->booking_status != 0 ){
-                                 			$it_status = "<a title='itinerary booked' class='btn btn-green' title='Itinerary Booked'>Hold</a>";
-                                 			$st = "On Hold";
-                                 			$iti_s = isset( $iti->booking_status ) && $iti->booking_status == 0 ? "APPROVED" : "ON HOLD";
-                                 		}else if( $iti_status == 9 ){
-                                 			$it_status = "<a title='itinerary booked' class='btn btn-green' title='Itinerary Booked'><i class='fa fa-check-circle-o' aria-hidden='true'></i></a>";
-                                 			$st = "<i title='itinerary booked' class='fa fa-check-circle-o' aria-hidden='true'></i>";
-                                 			$iti_s = "APPROVED";
-                                 		}else if( $iti_status == 7 ){
-                                 			$it_status = "<a title='itinerary declined' class='btn btn-danger'><i class='fa fa-ban' aria-hidden='true'></i></a>";
-                                 			$st = "<i title='itinerary declined' class='fa fa-ban' aria-hidden='true'></i>";
-                                 			$iti_s = "DECLINED";
-                                 		}else if( $iti_status == 6 ){
-                                 			$it_status = "<a title='Itinerary Rejected' class='btn btn-danger'><i class='fa fa-ban' aria-hidden='true'></i></a>";
-                                 			$st = "<span title='Itinerary Rejected' class='rejected_iti'>Rejected</span>";
-                                 			$iti_s = "REJECTED";
-                                 		}else{
-                                 		    $it_status ="";
-                                 			//$it_status = "<a title='working...' class='btn btn-success'><i class='fa fa-tasks' aria-hidden='true'></i></a>";
-                                 			$st = "<i title='working...' class='fa fa-tasks' aria-hidden='true'></i>";
-                                 			
-                                 			$iti_s = empty( $iti->followup_id ) ? "NOT PROCESS" : "WORKING";
-                                 		}
-                                 		
-                                 		//Amendment Btn
-                                 		if( ( is_admin_or_manager() || is_salesteam() ) && $iti->is_amendment == 1 ){
-                                 			$amendment_id = $this->global_model->getdata( 'iti_amendment_temp', array("iti_id" => $iti_id), "id" );
-                                 			$amend_btn = " <a href='" . base_url("itineraries/view_amendment/{$amendment_id}") ."' class='btn btn-success' title='Click to view amendment itinerary'>View Amendment</a>";
-                                 			$amend_btn = !empty( $amendment_id ) ? $amend_btn : "";
-                                 		}else if( $iti->is_amendment == 2 ){
-                                 			$amend_btn = "<span class='btn btn-danger'>Revised</span>";
-                                 			$rev_btn_service = "<span class='btn btn-danger'>Revised</span>";
-                                 		}
-                                 		
-                                 		//show only view button for sales team
-                                 		if( $role == 97 ){
-                                 			$btns = $btnview;
-                                 		}else{
-                                 			$allBtns = $btncmt. $btn_edit . $btnview. $btn_view . $row_delete . $it_status . $showChildItiBtn;
-                                 			$btns = "<a href='' class='btn btn-success optionToggleBtn margin-bottom-10'>View</a><div class='optionTogglePanel'>{$allBtns}</div>" . $st . $showChildItiBtn . $amend_btn;
-                                 		}	
-                                 	}else{ 
-                                 		//if itinerary in draft hide buttons for sales team
-                                 		$btns =  $btn_edit . "
-                                 			<a data-id={$iti_id} title='Delete Itinerary Permanent' href='javascript:void(0)' class='delete_iti_permanent'>
-                                             <i class='fa-solid fa-trash-can'></i></a>";
-                                 	}
-                                 	
-                                 	//get iti sent status
-                                 	$iti_sent = $iti->email_count;
-                                 	$sent_status = $iti_sent > 0 ? "$iti_sent Time Sent" : "Not Sent"; 
-                                 
-                                 	//Booked iti travel date
-                                 	$travel_date = get_travel_date( $iti->iti_id);
-                                 	//print data
-                                 	echo "<td>" . $index . "</td>";
-                                 	echo "<td>" . $iti->iti_id . "</td>";
-                                 	echo "<td>" . $iti->package_name . "</td>";
-                                 	echo "<td>" . $iti_type . "</td>";
-                                 	echo "<td>" . $p_status . " " . $discReq . "</td>";
-                                 	echo "<td>" . $temp_t_d . "</td>";
-                                 	echo "<td>" . $travel_date . "</td>";
-                                 	echo "<td>" . $iti->added . "</td>";
-                                 	if( $role != 96 ){
-                                 		echo "<td>" .  get_user_name( $iti->agent_id ) . "</td>";
-                                 	}
-                                 	echo "<td>". $btns ."</td>";	
-                                 	echo "<td>". $sent_status ."</td>";	
-                                 ?>
-                                    </tr>
+                //View Buttons
+                echo '';
+                $c_view = "<a target='_blank' href=" . site_url("customers/view/{$customer->customer_id}/{$customer->temp_key}") . " title='View Customer' class='btn btn-warning text-white' ><i class='fa-solid fa-eye'></i> View Customer</a>";
+                echo  "<div class='text-center my-4'>{$add_iti} {$add_acc} {$decUserStatus} {$c_view}</div>";
+                ?>
+            </div>
+            <!--end customer info section-->
+            <!--itineraries section -->
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+                <div class="iti_section">
+                    <h3 class='text-center uppercase'>Itineraries Info</h3>
+                    <?php if( isset( $itineraries ) && !empty( $itineraries ) ){ 
+                    $index = 1;
+                    ?>
+                    <div class="table-responsive">
+                        <table id="itineraries_tbl" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Iti Id </th>
+                                    <th> Package Name </th>
+                                    <th> Type </th>
+                                    <th> Pub. Staus </th>
+                                    <th> Temp/Travel Date </th>
+                                    <th> Travel Date </th>
+                                    <th> Created </th>
+                                    <?php if( is_admin_or_manager() ){  ?>
+                                    <th> Agent </th>
+                                    <?php } ?>
+                                    <th> Sent Status </th>
+                                    <th> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach( $itineraries as $iti ){ ?>
+                                <!--DataTable goes here-->
+                                <tr>
                                     <?php 
-                              $index++;
-                              } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!--end table-->
-                        <?php }else{
-                     echo "<div class='alert alert-info'>No Itineraries Found!</div>";
-                     } ?>
+                                $row_delete = $btn_edit="";
+                                $row_edit = "";
+                                $btncmt = "";
+                                $iti_s = "";
+                                $rev_btn_service = "";
+                                $amend_btn = "";
+                                $iti_id = $iti->iti_id;
+                                $pub_status = $iti->publish_status;
+                                $key = $iti->temp_key;
+                                //get discount rate request
+                                $discount_request = $iti->discount_rate_request;
+                                $discReq = $discount_request == 1 ? "<strong class='red'> (Price Discount Request) </strong>" : " ";
+                                
+                                //Count All Child Itineraries
+                                $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti_id, "del_status" => 0) );
+                                
+                                $childLink = "<a title='View Child Itineraries' href=" . site_url("itineraries/childIti/{$iti_id}/{$key}") . " class='btn btn-success blue' ><i class='fa fa-child' aria-hidden='true'></i></a>";
+                                
+                                $showChildItiBtn = $countChildIti > 0 ? $childLink : "";
+                                
+                                //get iti_status
+                                $iti_status = $iti->iti_status;
+                                if( $pub_status == "publish" ){
+                                    $p_status = "<strong>" . ucfirst($pub_status) . "</strong>";
+                                }elseif( $pub_status == "price pending" ){
+                                    $p_status = "<strong class='blue'>" . ucfirst($pub_status) . "</strong>";
+                                }else{
+                                    $p_status = "<strong class='red'>" . ucfirst($pub_status) . "</strong>";
+                                }
+                                //Lead Prospect Hot/Warm/Cold
+                                $cus_pro_status = get_iti_prospect($iti->iti_id);
+                                if( $cus_pro_status == "Warm" ){
+                                    $l_pro_status = "<strong class='green'> ( " . $cus_pro_status . " )</strong>";
+                                }else if( $cus_pro_status == "Hot" ){
+                                    $l_pro_status = "<strong class='black'> ( " . $cus_pro_status . " )</strong>";
+                                }else if( $cus_pro_status == "Cold" ){
+                                    $l_pro_status = "<strong class='red'> ( " . $cus_pro_status . " )</strong>";
+                                }else{
+                                    $l_pro_status = "";
+                                }
+                                
+                                //Get itinerary type 1=itinerary , 2=accommodation
+                                $iti_type = $iti->iti_type == 2 ? "<strong class='red'>Accommodation</strong>" : "<strong class='green'>Holiday</strong>";
+                                
+                                
+                                $row[] = $iti_type;
+                                $row[] = $iti->package_name . $l_pro_status;
+                                
+                                //Check temp travel date if publish_status != "draft" iti_type = 1 Itinerary , 2 = accommodation
+                                /* $temp_t_d = "";
+                                if( $iti->publish_status != "draft" && $iti->iti_type == 1 ){
+                                    $day_wise_meta = !empty( $iti->daywise_meta ) ? unserialize($iti->daywise_meta) : "";
+                                    $temp_t_d = !empty( $day_wise_meta ) && isset( $day_wise_meta[0]['tour_date'] ) ? $day_wise_meta[0]['tour_date'] : "";
+                                }else if( $iti->publish_status != "draft" && $iti->iti_type == 2  ){
+                                    $temp_t_d = $iti->t_start_date;
+                                } */
+                                
+                                $temp_t_d = $iti->t_start_date;
+                                
+                                
+                                //buttons
+                                //if price is updated remove edit for agent get_iti_booking_status
+                                if( $iti->pending_price == 2 && $role == 96 ){
+                                    $btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn_pencil editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
+                                }else{
+                                    $btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
+                                }
+                                
+                                $btnview = "<a target='_blank' title='View' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn_eye' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
+                                
+                                $btnview .= "<a target='_blank' title='View Pdf' href=" . site_url("itineraries/pdf/{$iti_id}/{$key}") . " class='btn_pdf' >
+                                    <i class='fa-solid fa-file-pdf'></i></a>";
+                                
+                                    $btn_view ="";
+
+                                // $btn_view = "<a title='client view' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
+                                
+                                //Show if type=1=itinerary
+                                if( $iti->iti_type == 1 ){
+                                    //$btn_view .= "<a title='client view' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
+                                }
+                                
+                                //clone button
+                                if( empty( $iti->parent_iti_id ) &&  $countChildIti < 6  && $iti->iti_status == 0  && $iti->email_count > 0 && $pub_status == "publish" ){
+                                    //type 2=accommodation
+                                    if( $iti->iti_type == 2 ){
+                                        $btn_view .= "<a data-customer_id='{$iti->customer_id}' data-iti_id='{$iti_id}' title='Duplicate Accommodation' href=" . site_url("itineraries/duplicate/{$iti_id}") . " class='child_clone' >
+                                            <i class='fa-solid fa-clone'></i></a>";
+                                    }else{
+                                        $btn_view .= "<a data-customer_id='{$iti->customer_id}' data-iti_id='{$iti_id}' title='Duplicate Itinerary' href=" . site_url(	"itineraries/duplicate/{$iti_id}") . " class=' duplicateItiBtn' >
+                                            <i class='fa-solid fa-clone'></i></a>";
+                                    }	
+                                }	
+                                
+                                if( !empty( $iti->client_comment_status ) && $iti->client_comment_status == 1 ){
+                                    $btncmt = "<a data-id={$iti_id} data-key={$key} title='Client Comment' href='javascript:void(0)' class='btn btn-success ajax_iti_status red'><span class='blink'><i class='fa fa fa-comment-o' aria-hidden='true'></i>  New Comment</span></a>";
+                                }
+                                
+                                //if itinerary status is publish
+                                if( $pub_status == "publish" || $pub_status == "price pending" ){
+                                    //delete itinerary button only for admin
+                                    if( is_admin_or_manager() && empty( $countChildIti ) ){ 
+                                        $row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='ajax_delete_iti'>
+                                            <i class='fa-solid fa-trash-can'></i></a>";
+                                    }
+                                    //Check for iti status
+                                    if( isset( $iti->booking_status ) && $iti->booking_status != 0 ){
+                                        $it_status = "<a title='itinerary booked' class='btn btn-green' title='Itinerary Booked'>Hold</a>";
+                                        $st = "On Hold";
+                                        $iti_s = isset( $iti->booking_status ) && $iti->booking_status == 0 ? "APPROVED" : "ON HOLD";
+                                    }else if( $iti_status == 9 ){
+                                        $it_status = "<a title='itinerary booked' class='btn btn-green' title='Itinerary Booked'><i class='fa fa-check-circle-o' aria-hidden='true'></i></a>";
+                                        $st = "<i title='itinerary booked' class='fa fa-check-circle-o' aria-hidden='true'></i>";
+                                        $iti_s = "APPROVED";
+                                    }else if( $iti_status == 7 ){
+                                        $it_status = "<a title='itinerary declined' class='btn btn-danger'><i class='fa fa-ban' aria-hidden='true'></i></a>";
+                                        $st = "<i title='itinerary declined' class='fa fa-ban' aria-hidden='true'></i>";
+                                        $iti_s = "DECLINED";
+                                    }else if( $iti_status == 6 ){
+                                        $it_status = "<a title='Itinerary Rejected' class='btn btn-danger'><i class='fa fa-ban' aria-hidden='true'></i></a>";
+                                        $st = "<span title='Itinerary Rejected' class='rejected_iti'>Rejected</span>";
+                                        $iti_s = "REJECTED";
+                                    }else{
+                                        $it_status ="";
+                                        //$it_status = "<a title='working...' class='btn btn-success'><i class='fa fa-tasks' aria-hidden='true'></i></a>";
+                                        $st = "<i title='working...' class='fa fa-tasks' aria-hidden='true'></i>";
+                                        
+                                        $iti_s = empty( $iti->followup_id ) ? "NOT PROCESS" : "WORKING";
+                                    }
+                                    
+                                    //Amendment Btn
+                                    if( ( is_admin_or_manager() || is_salesteam() ) && $iti->is_amendment == 1 ){
+                                        $amendment_id = $this->global_model->getdata( 'iti_amendment_temp', array("iti_id" => $iti_id), "id" );
+                                        $amend_btn = " <a href='" . base_url("itineraries/view_amendment/{$amendment_id}") ."' class='btn btn-success' title='Click to view amendment itinerary'>View Amendment</a>";
+                                        $amend_btn = !empty( $amendment_id ) ? $amend_btn : "";
+                                    }else if( $iti->is_amendment == 2 ){
+                                        $amend_btn = "<span class='btn btn-danger'>Revised</span>";
+                                        $rev_btn_service = "<span class='btn btn-danger'>Revised</span>";
+                                    }
+                                    
+                                    //show only view button for sales team
+                                    if( $role == 97 ){
+                                        $btns = $btnview;
+                                    }else{
+                                        $allBtns = $btncmt. $btn_edit . $btnview. $btn_view . $row_delete . $it_status . $showChildItiBtn;
+                                        $btns = "<a href='' class='btn btn-success optionToggleBtn margin-bottom-10'>View</a><div class='optionTogglePanel'>{$allBtns}</div>" . $st . $showChildItiBtn . $amend_btn;
+                                    }	
+                                }else{ 
+                                    //if itinerary in draft hide buttons for sales team
+                                    $btns =  $btn_edit . "
+                                        <a data-id={$iti_id} title='Delete Itinerary Permanent' href='javascript:void(0)' class='delete_iti_permanent'>
+                                            <i class='fa-solid fa-trash-can'></i></a>";
+                                }
+                                
+                                //get iti sent status
+                                $iti_sent = $iti->email_count;
+                                $sent_status = $iti_sent > 0 ? "$iti_sent Time Sent" : "Not Sent"; 
+                                
+                                //Booked iti travel date
+                                $travel_date = get_travel_date( $iti->iti_id);
+                                //print data
+                                echo "<td>" . $index . "</td>";
+                                echo "<td>" . $iti->iti_id . "</td>";
+                                echo "<td>" . $iti->package_name . "</td>";
+                                echo "<td>" . $iti_type . "</td>";
+                                echo "<td>" . $p_status . " " . $discReq . "</td>";
+                                echo "<td>" . $temp_t_d . "</td>";
+                                echo "<td>" . $travel_date . "</td>";
+                                echo "<td>" . $iti->added . "</td>";
+                                if( $role != 96 ){
+                                    echo "<td>" .  get_user_name( $iti->agent_id ) . "</td>";
+                                }
+                                echo "<td>". $btns ."</td>";	
+                                echo "<td>". $sent_status ."</td>";	
+                                ?>
+                                </tr>
+                                <?php 
+                            $index++;
+                            } ?>
+                            </tbody>
+                        </table>
                     </div>
+                    <!--end table-->
+                    <?php }else{
+                    echo "<div class='alert alert-info'>No Itineraries Found!</div>";
+                    } ?>
                 </div>
-                <!--end itineraries section -->
-                
-                <!--followup section -->
-                <div class="bg-white p-3 rounded-4 shadow-sm mt-4">
-                    <div class="row">
-                        <div class="col-md-8 col-xxl-9">
-                            <h3 class="text-center uppercase">Take Follow up</h3>
-                            <div class="customer_followup">
-                                <!-- Process for customer followup  -->
-                                <?php if( is_admin_or_manager_or_sales() && $customer->cus_status == 0 ){ ?>
-                                <div id="customer_f" class="col-md-12 clearfix" style="display: block;">
-                                    <a class="btn btn-danger" href="#" id="add_call_btn" title="Add followup"> <i class="fa-solid fa-phone"></i> Add Call Info</a>
-                                    <div class="call_log" id="call_log_section">
-                                        <!--lead followup-->
-                                        <form id="call_detais_form" class="lead_frm">
-                                            <!-- #lead_frm .spinner_load-->
-                                            <div class="frm_section">
-                                                <div class="spinner_load" style="display: none;">
-                                                    <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
-                                                    <span class="sr-only">Loading...</span>
-                                                </div>
-                                                <div class="call_type_seciton mb-3">
-                                                    <label class="radio-inline mx-2">
-                                                        <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
-                                                    </label>
-                                                    <label class="radio-inline mx-2">
-                                                        <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
-                                                    </label>
-                                                    
-                                                    <label class="radio-inline mx-2">
-                                                        <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="8">Decline
-                                                    </label>
-                                                </div>
-                                                <div id="panel_detail_section">
-                                                    <div class="call_type_res" id="picked_call_panel">
-                                                        <!--picked call panel-->
-                                                        <div class="row">
-                                                            <div class="col-md-12 my-2">
-                                                                <div class="form-group">
-                                                                    <label class="control-label" for="comment">Call summary<span
-                                                                            style="color:red;">*</span>:</label>
-                                                                    <textarea required class="form-control" rows="3"
-                                                                        name="callSummary" id="callSummary"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md- 12 my-2">
-                                                                <div class="form-group">
-                                                                    <label>Lead prospect<span
-                                                                            style="color:red;">*</span></label>
-                                                                    <select required class="form-control" name="txtProspect">
-                                                                        <option value="Hot">Hot</option>
-                                                                        <option value="Warm">Warm</option>
-                                                                        <option value="Cold">Cold</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 my-2">
-                                                                <div class="checkbox1 mb-2">
-                                                                    <label>
-                                                                        <input id="nxtCallCk" type="radio" class="book_query form-check-input" name="book_query" required value=""> Next calling time and date <sup class="text-danger">*</sup>
-                                                                    </label>
-                                                                </div>
-                                                                <div id="next_call_cal">
-                                                                    <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 my-2">
-                                                                <label for="readyQuotation"><input id="readyQuotation" class="book_query form-check-input" name="book_query" required type="radio" value="9"> Ready for quotation</label>
-                                                            </div>
-                                                            <!--Quotation Type Holidays/Accommodation/Cab-->
-                                                            <div id="quotation_type_section" class="mt-1">
-                                                                <label class="radio-inline" for="holidays">
-                                                                    <input id="holidays" class="quotation_type form-check-input" name="quotation_type" required type="radio" value="holidays"> Holidays 
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end picked call panel-->
-                                                    <div class="call_type_res" id="call_not_picked_panel">
-                                                        <!--call_not_picked panel-->
-                                                        <div>
-                                                            <label class="radio-inline mx-2 control-label">
-                                                                <input required type="radio" name="callSummaryNotpicked" class="me-2 call_type_not_answer form-check-input" value="Switched off">Switched off
-                                                            </label>
-                                                            <label class="radio-inline mx-2 control-label">
-                                                                <input required type="radio" name="callSummaryNotpicked" class="me-2 all_type_not_answer form-check-input" value="Not reachable">Not reachable
-                                                            </label>
-                                                            <label class="radio-inline mx-2 control-label">
-                                                                <input required type="radio" name="callSummaryNotpicked" class="me-2 call_type_not_answer form-check-input" value="Not answering">Not answering
-                                                            </label>
-                                                            <label class="radio-inline mx-2 control-label">
-                                                                <input required type="radio" name="callSummaryNotpicked" class="me-2 call_type_not_answer form-check-input" value="Number does not exists">Number does not exists
-                                                            </label>
-                                                            
-                                                            <div class="row mt-4">
-                                                                <div class="col-md-">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label" for="comment">Comment<span style="color:red;">*</span>:</label>
-                                                                        <textarea required class="form-control" rows="3" name="comment" id="comment"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="nxt_call">
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-6 my-3">
-                                                                        <label>Next calling time and date<span style="color:red;">*</span>:</label>
-                                                                        <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
-                                                                    </div>
-                                                                    <div class="form-group col-md-6 my-3">
-                                                                        <label>Lead prospect<span
-                                                                                style="color:red;">*</span></label>
-                                                                        <select required class="form-control"
-                                                                            name="txtProspectNotpicked">
-                                                                            <option value="Hot">Hot</option>
-                                                                            <option value="Warm">Warm</option>
-                                                                            <option value="Cold">Cold</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end call not picked panel-->
-                                                    <!--close_lead_panel panel-->
-                                                    <div class="call_type_res" id="close_lead_panel">
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 my-3">
-                                                                <label class="control-label" for="">Select Decline Reason <sup class="text-danger">*</sup></label>
-                                                                <select required class="form-control" name="decline_reason">
-                                                                    <option value="">Select Reason</option>
-                                                                    <option value="Booked with someone else">Booked with someone else</option>
-                                                                    <option value="Not interested">Not interested</option>
-                                                                    <option value="Not answering call from 1 week">Not answering call from 1 week</option>
-                                                                    <option value="Plan cancelled">Plan cancelled</option>
-                                                                    <option value="Wrong number">Wrong number</option>
-                                                                    <option value="Denied to post lead">Denied to post lead
-                                                                    </option>
-                                                                    <option value="Other">Other</option>
-                                                                </select>
-                                                            </div>
-                                                            
-                                                            <div class="col-md-6 my-3">
-                                                                <div class="form-group">
-                                                                    <label class="control-label" for="comment">Decline Comment :</label>
-                                                                    <textarea class="form-control" rows="3" required name="decline_comment" id="decline_comment"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end close_lead_panel-->
-                                                </div>
-                                                <!--panel_section end-->
-                                                
-                                                <div id="customer_info_panel">
-                                                    <div class="row mt-3">
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Whatsapp Number:</label>
-                                                                <input type="text" class="form-control" placeholder="Whatsapp Number" name="whatsapp_number" value="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Adults *:</label>
-                                                                <input required type="text" class="form-control" placeholder="No. of Adults" name="adults" value="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Child:</label>
-                                                                <input type="text" class="form-control" placeholder="No. of child" name="child" value="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Age of the child:</label>
-                                                                <input type="text" class="form-control" placeholder="Child age. eg: 13,12" name="child_age" value="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-6">
-                                                                    <label class="control-label" for="">Package Type *:</label>
-                                                                    <select required name="package_type" class="form-control">
-                                                                        <option value="">Choose Package Type</option>
-                                                                        <option value="Honeymoon Package">Honeymoon Package
-                                                                        </option>
-                                                                        <option value="Fixed Departure">Fixed Departure</option>
-                                                                        <option value="Group Package">Group Package</option>
-                                                                        <option value="Other">Other</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="control-label" for="">&nbsp;</label>
-                                                                    <input type="text" required class="form-control" name="package_type_other" id="pack_type_other">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">No. of rooms *:</label>
-                                                                <select required name="total_rooms" class="form-control">
-                                                                    <option value="">Select Rooms</option>
-                                                                    <?php 
-                                                                        for( $i=1 ; $i <=60 ; $i++ ){
-                                                                            echo "<option value='{$i}'>{$i}</option>";
-                                                                        }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Travel Date <sup class="text-danger">*</sup>:</label>
-                                                                <input required type="text" class="form-control" readonly id="travel_date" name="travel_date" value="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Destination *:</label>
-                                                                <input required type="text" class="form-control" name="destination" value="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Pick Up Point *:</label>
-                                                                <input required type="text" class="form-control"
-                                                                    name="pick_point" value="">
-                                                            </div>
-                                                        </div>
-                                                    
-                                                        <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Dropping Point *:</label>
-                                                                <input required type="text" class="form-control"
-                                                                    name="drop_point" value="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-6">
-                                                                    <label class="control-label" for="">Package By *:</label>
-                                                                    <select required name="package_by" class="form-control">
-                                                                        <option value="">Choose Package By</option>
-                                                                        <option value="Car">Car</option>
-                                                                        <option value="Volvo">Volvo</option>
-                                                                        <option value="Other">Other</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <label class="control-label" for="">&nbsp;</label>
-                                                                    <input type="text" required class="form-control"
-                                                                        name="package_by_other" id="other_pack">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Meal Plan *:</label>
-                                                                <select required name="meal_plan" class="form-control">
-                                                                    <option value="">Choose Meal Plan</option>
-                                                                    <option value="Breakfast Only">Breakfast Only</option>
-                                                                    <option value="Breakfast & Dinner">Breakfast & Dinner
-                                                                    </option>
-                                                                    <option value="Breakfast, Lunch & Dinner">Breakfast, Lunch &
-                                                                        Dinner</option>
-                                                                    <option value="Dinner Only">Dinner Only</option>
-                                                                    <option value="No Meal Plan">No Meal Plan</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Honeymoon Kit *:</label>
-                                                                <input type="text" class="form-control" placeholder=""
-                                                                    name="honeymoon_kit" value="">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Car type for sightseeing *:</label>
-                                                                <select required name="car_type_sightseen" class="form-control">
-                                                                    <option value="">Choose Car Category</option>
-                                                                    <?php $cars = get_car_categories(); 
-                                                                    if( $cars ){
-                                                                        foreach($cars as $car){
-                                                                            echo '<option value = "'.$car->id .'" >'.$car->car_name.'</option>';
-                                                                        }
-                                                                    }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Hotel type *:</label>
-                                                                <select required name="hotel_type" class="form-control">
-                                                                    <option value="">Choose Hotel Category</option>
-                                                                    <option value="Deluxe">2 Star</option>
-                                                                    <option value="Super Deluxe">3 Star</option>
-                                                                    <option value="Luxury">4 Star</option>
-                                                                    <option value="Super Luxury">5 Star</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Select Country*</label>
-                                                                <select required name="country" class="form-control country">
-                                                                    <option value="">Choose Country</option>
-                                                                                <?php $country = get_country_list();
-                                                                    if($country){
-                                                                        foreach( $country as $c ){
-                                                                            //$selected = $c->id == 101 ? "selected" : ""; 
-                                                                            echo "<option value={$c->id}>{$c->name}</option>";
-                                                                        }
-                                                                    }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Select State*</label>
-                                                                <select required name="state" class="form-control state">
-                                                                    <option value="">Choose State</option>
-                                                                            <?php $states = get_indian_state_list();
-                                                                    if($states){
-                                                                        foreach( $states as $state ){
-                                                                            echo "<option {$selected} value={$state->id}>{$state->name}</option>";
-                                                                        }
-                                                                    }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Budget Approx *:</label>
-                                                                <select required name="budget" class="form-control">
-                                                                    <option value="">Choose Budget</option>
-                                                                    <option value="0-5000">0-5000</option>
-                                                                    <option value="5001-15000">5001 - 15000</option>
-                                                                    <option value="15001-30000">15001 - 30000</option>
-                                                                    <option value="30001-50000">30001 - 50000</option>
-                                                                    <option value="50001-100000">50001 - 100000</option>
-                                                                    <option value="100001-150000">100001 - 150000</option>
-                                                                    <option value=">150000">>150000</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6 col-md-6 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label" for="">Meal Plan Type :</label>
-                                                                <select  name="meal_plan_type" class="form-control">
-                                                                    <option value="">Choose</option>
-                                                                    <option value="Veg">Veg</option>
-                                                                    <option value="Non-Veg">Non-Veg</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--End customer info Section-->
-                                                
-                                            </div>
-                                            <input type="hidden" name="customer_id"
-                                                value="<?php echo $customer->customer_id; ?>" id="customer_id_followup">
-                                            <input type="hidden" name="agent_id" value="<?php echo $customer->agent_id; ?>">
-
-                                            <div class="mt-3">
-                                                <button type="submit" id="submit_frm"
-                                                    class="btn green uppercase submit_frm">Submit</button>
-                                                <button class="btn red uppercase cancle_bnt">Cancel</button>
-                                            </div>
-                                            
-                                            <div id="resp"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!--end customer followup status-->
-                                <!--if customer status 9 show iti followup -->
-                                <?php }else if( $customer->cus_status == 8 ){ ?>
-                                <div class="alert alert-danger">LEAD DECLINED</div>
-                                <?php }else if( isset($itineraries[0]->iti_status) && $itineraries[0]->iti_status == 9 ){ ?>
-                                <div class="alert alert-success">LEAD APPROVED</div>
-                                <?php }else if( $customer->cus_status == 9 && isset( $itineraries ) && !empty( $itineraries ) && $itineraries[0]->iti_status != 7  && $itineraries[0]->iti_status != 9 && is_admin_or_manager_or_sales() )
-                                { ?>
-                                <a class="btn btn-danger" href="#" id="add_call_btn" title="Add Followup"> <i class="fa-solid fa-phone"></i> Add Call Info</a>
+            </div>
+            <!--end itineraries section -->
+            <!--followup section -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mt-4">
+                <div class="row">
+                    <div class="col-md-8 col-xxl-9">
+                        <h3 class="text-center uppercase">Take Follow up</h3>
+                        <div class="customer_followup">
+                            <!-- Process for customer followup  -->
+                            <?php if( is_admin_or_manager_or_sales() && $customer->cus_status == 0 ){ ?>
+                            <div id="customer_f" class="col-md-12 clearfix" style="display: block;">
+                                <a class="btn btn-danger" href="#" id="add_call_btn" title="Add followup"> <i class="fa-solid fa-phone"></i> Add Call Info</a>
                                 <div class="call_log" id="call_log_section">
-                                    <form id="iti_call_detais_form" enctype="multipart/form-data">
+                                    <!--lead followup-->
+                                    <form id="call_detais_form" class="lead_frm">
+                                        <!-- #lead_frm .spinner_load-->
                                         <div class="frm_section">
                                             <div class="spinner_load" style="display: none;">
                                                 <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
                                                 <span class="sr-only">Loading...</span>
                                             </div>
-                                            <div class="call_type_seciton">
-                                                <label class="radio-inline mb-3 me-3">
+                                            <div class="call_type_seciton mb-3">
+                                                <label class="radio-inline mx-2">
                                                     <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
                                                 </label>
-                                                <label class="radio-inline mb-3 me-3">
+                                                <label class="radio-inline mx-2">
                                                     <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
                                                 </label>
-                                                <label class="radio-inline mb-3 me-3">
-                                                    <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="Close lead">Decline Itinerary
+                                                
+                                                <label class="radio-inline mx-2">
+                                                    <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="8">Decline
                                                 </label>
-                                                <label class="radio-inline mb-3 me-3">
-                                                    <input class="radio_toggle form-check-input me-2" data-id="booked_lead_panel" required id="booked_lead" type="radio" name="callType" value="Booked lead">Booked Itinerary
-                                                </label>
-                                                <!--iti id listing-->
-                                                <div class="form-group mt-2">
-                                                    <label class="control-label" for="usr">Iti Id <sup class="text-danger">*</sup> :</label>
-                                                    <select required class="form-control" name="iti_id"
-                                                        id="iti_followup_change">
-                                                        <option value="">Select Iti ID</option>
-                                                        <?php if( isset( $itineraries ) && !empty( $itineraries ) ){
-                                                            foreach( $itineraries as $iti_list ){
-                                                                //iti_status == 9 or 7 (approved/declined)
-                                                                if( $iti_list->iti_status == 9 || $iti_list->iti_status == 7 ) continue;
-                                                                $iti_id 		= $iti_list->iti_id;
-                                                                $package_name 	= $iti_list->package_name;
-                                                                $iti_type = $iti_list->iti_type == 2 ? "Accommodation" : "Holidays";
-                                                                $op_name	= $iti_id . "( " . $iti_type . " )";
-                                                                echo "<option value={$iti_id}>{$op_name}</option>";
-                                                            }
-                                                        } ?>
-                                                    </select>
-                                                    <p id="rrp"></p>
-                                                </div>
                                             </div>
                                             <div id="panel_detail_section">
                                                 <div class="call_type_res" id="picked_call_panel">
                                                     <!--picked call panel-->
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-12 my-2">
                                                             <div class="form-group">
-                                                                <label class="control-label" for="comment">Call summary<span style="color:red;">*</span>:</label>
+                                                                <label class="control-label" for="comment">Call summary<span
+                                                                        style="color:red;">*</span>:</label>
                                                                 <textarea required class="form-control" rows="3"
                                                                     name="callSummary" id="callSummary"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 mt-3">
-                                                            <div class="checkbox">
-                                                                <label class="control-label"><input id="nxtCallCk" type="checkbox" value="" class="form-check-input me-2 mt-0">Next calling time and date<span style="color:red;">*</span>:</label>
-                                                            </div>
-                                                            <div id="next_call_cal">
-                                                                <!-- <label class="control-label">Next calling time and date<span style="color:red;">*</span>:</label> -->
-                                                                <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mt-3">
+                                                        <div class="col-md- 12 my-2">
                                                             <div class="form-group">
-                                                                <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
+                                                                <label>Lead prospect<span
+                                                                        style="color:red;">*</span></label>
                                                                 <select required class="form-control" name="txtProspect">
                                                                     <option value="Hot">Hot</option>
                                                                     <option value="Warm">Warm</option>
@@ -1115,289 +697,96 @@ div#quotation_type_section,
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-12 my-2">
+                                                            <div class="checkbox1 mb-2">
+                                                                <label>
+                                                                    <input id="nxtCallCk" type="radio" class="book_query form-check-input" name="book_query" required value=""> Next calling time and date <sup class="text-danger">*</sup>
+                                                                </label>
+                                                            </div>
+                                                            <div id="next_call_cal">
+                                                                <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 my-2">
+                                                            <label for="readyQuotation"><input id="readyQuotation" class="book_query form-check-input" name="book_query" required type="radio" value="9"> Ready for quotation</label>
+                                                        </div>
+                                                        <!--Quotation Type Holidays/Accommodation/Cab-->
+                                                        <div id="quotation_type_section" class="mt-1">
+                                                            <label class="radio-inline" for="holidays">
+                                                                <input id="holidays" class="quotation_type form-check-input" name="quotation_type" required type="radio" value="holidays"> Holidays 
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!--end picked call panel-->
                                                 <div class="call_type_res" id="call_not_picked_panel">
                                                     <!--call_not_picked panel-->
                                                     <div>
-                                                        <label class="radio-inline control-label">
-                                                            <input required type="radio" name="callSummaryNotpicked"
-                                                                class="me-2 call_type_not_answer form-check-input" value="Switched off">Switched
-                                                            off
+                                                        <label class="radio-inline mx-2 control-label">
+                                                            <input required type="radio" name="callSummaryNotpicked" class="me-2 call_type_not_answer form-check-input" value="Switched off">Switched off
                                                         </label>
-                                                        <label class="radio-inline control-label mx-3">
-                                                            <input required type="radio" name="callSummaryNotpicked"
-                                                                class="me-2 call_type_not_answer form-check-input" value="Not reachable">Not
-                                                            reachable
+                                                        <label class="radio-inline mx-2 control-label">
+                                                            <input required type="radio" name="callSummaryNotpicked" class="me-2 all_type_not_answer form-check-input" value="Not reachable">Not reachable
                                                         </label>
-                                                        <label class="radio-inline control-label mx-3">
-                                                            <input required type="radio" name="callSummaryNotpicked"
-                                                                class="me-2 call_type_not_answer form-check-input" value="Not answering">Not
-                                                            answering
+                                                        <label class="radio-inline mx-2 control-label">
+                                                            <input required type="radio" name="callSummaryNotpicked" class="me-2 call_type_not_answer form-check-input" value="Not answering">Not answering
                                                         </label>
-                                                        <div class="nxt_call">
-                                                            <div class="row">
-                                                                <div class="col-md-6 my-3">
-                                                                    <label>Next calling time and date<span style="color:red;">*</span>:</label>
-                                                                    <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
-                                                                </div>
-                                                                <div class="col-md-6 my-3">
-                                                                    <div class="form-group">
-                                                                        <label>Lead prospect<span
-                                                                                style="color:red;">*</span></label>
-                                                                        <select required class="form-control"
-                                                                            name="txtProspectNotpicked">
-                                                                            <option value="Hot">Hot</option>
-                                                                            <option value="Warm">Warm</option>
-                                                                            <option value="Cold">Cold</option>
-                                                                        </select>
-                                                                    </div>
+                                                        <label class="radio-inline mx-2 control-label">
+                                                            <input required type="radio" name="callSummaryNotpicked" class="me-2 call_type_not_answer form-check-input" value="Number does not exists">Number does not exists
+                                                        </label>
+                                                        
+                                                        <div class="row mt-4">
+                                                            <div class="col-md-">
+                                                                <div class="form-group">
+                                                                    <label class="control-label" for="comment">Comment<span style="color:red;">*</span>:</label>
+                                                                    <textarea required class="form-control" rows="3" name="comment" id="comment"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row mt-2">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label for="comment">Comment<span
-                                                                            style="color:red;">*</span>:</label>
-                                                                    <textarea required class="form-control" rows="3"
-                                                                        name="comment" id="comment"></textarea>
+                                                        
+                                                        <div class="nxt_call">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6 my-3">
+                                                                    <label>Next calling time and date<span style="color:red;">*</span>:</label>
+                                                                    <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
+                                                                </div>
+                                                                <div class="form-group col-md-6 my-3">
+                                                                    <label>Lead prospect<span
+                                                                            style="color:red;">*</span></label>
+                                                                    <select required class="form-control"
+                                                                        name="txtProspectNotpicked">
+                                                                        <option value="Hot">Hot</option>
+                                                                        <option value="Warm">Warm</option>
+                                                                        <option value="Cold">Cold</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!--end call not picked panel-->
-                                                <!--booked_lead_panel panel If itinerary booked-->
-                                                <input type="hidden" name="firstdate" id="fist_tour_date" value="<?= get_iti_tour_start_date($iti->iti_id) ?>">
-                                                <div class="call_type_res" id="booked_lead_panel">
-                                                    <div class="col-md-12">
-                                                        <div >
-                                                            <label class="radio-inline control-label">
-                                                                <input required class="is_travel_date me-2  form-check-input" type="radio" name="is_travel_date" value="fixed">Fixed Travel Date
-                                                            </label>
-                                                            <label class="radio-inline control-label mx-2">
-                                                                <input required class="is_travel_date me-2 form-check-input" type="radio" name="is_travel_date" value="notfixed">Not Fixed Travel Date
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="booking_section mt-3" style="display:none;">
-                                                        <?php 
-                                                            $get_iti_package_category = get_iti_package_category();
-                                                        ?>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label" for="usr">Package Category <sup class="text-danger">*</sup> :</label>
-                                                                <div id="appCatListDiv">
-                                                                    <select required class='form-control' id='appCatList'
-                                                                        name='approved_package_category'>
-                                                                        <option value="">Select package category</option>
-                                                                        <?php  if($get_iti_package_category){
-                                                                foreach( $get_iti_package_category as $book_cat ){
-                                                                //                       switch( $book_cat->name ){
-                                                                // 				case 'Deluxe':
-                                                                // 					$cat_name = "2 Star";
-                                                                // 					break;
-                                                                // 				case 'Super Deluxe':
-                                                                // 					$cat_name = "3 Star";
-                                                                // 					break;
-                                                                // 				case 'Luxury':	
-                                                                // 					$cat_name = "4 Star";
-                                                                // 					break;
-                                                                // 				case 'Super Luxury':	
-                                                                // 					$cat_name = "5 Star";
-                                                                // 					break;
-                                                                // 				default:
-                                                                // 					$cat_name = "Not Found";
-                                                                // 					break;	
-                                                                // 			}
-                                                                    echo "<option value='{$book_cat->name}'>$book_cat->name </option>";
-                                                                }
-                                                                } ?>
-                                                                    <?php $get_tax = get_tax();
-                                                                    $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label">Package Type*:</label>
-                                                                <select required name="package_type_iti" class="form-control">
-                                                                    <option value="">Choose Package Type</option>
-                                                                    <option value="Honeymoon Package">Honeymoon Package</option>
-                                                                    <option value="Fixed Departure">Fixed Departure</option>
-                                                                    <option value="Group Package">Group Package</option>
-                                                                    <option value="Other">Other</option>
-                                                                </select>
-                                                            </div>
-                                            
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label" for="usr">Total Package Cost <sup class="text-danger">*</sup>:</label>
-                                                                <input type="number" readonly required class="form-control"
-                                                                    id="fnl_amount_tax" data-tax="<?php echo $tax; ?>" data-original-price=""
-                                                                    title="Total package cost after inc. tax"
-                                                                    placeholder="Total package cost after inc. tax"
-                                                                    name="final_amount"  >
-                                                            </div>
-
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label">Booking Date <sup class="text-danger">*</sup>:</label>
-                                                                <input required readonly="readonly"
-                                                                    data-date-format="yyyy-mm-dd"
-                                                                    class="input-group form-control" id="booking_date"
-                                                                    type="text" value="" name="booking_date" />
-                                                            </div>
-
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label" for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
-                                                                <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
-                                                            </div>
-                                                            
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label">Advance Received: <sup class="text-danger">*</sup> <span id="fiftyPer"></span></label>
-                                                                <input required type="number" id="pack_advance_recieve"
-                                                                    name="advance_recieve"
-                                                                    placeholder="Advance Received. eg: 5000"
-                                                                    class="form-control" value="">
-                                                            </div>
-
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label">Transaction Date(1st installment): <sup class="text-danger">*</sup></label>
-                                                                <input required readonly="readonly"
-                                                                    data-date-format="yyyy-mm-dd"
-                                                                    class="input-group form-control transaction_date"
-                                                                    id="transaction_date" type="text" value=""
-                                                                    name="transaction_date" />
-                                                            </div>
-                                                        </div>
-                                                        <!--Payment Details -->
-                                                        <div id="due_payment_section">
-                                                            <div class="row">
-                                                                <div class="form-group col-md-6 my-2">
-                                                                    <label class="control-label">Second Installment Amount:</label>
-                                                                    <input type="text" readonly id="next_pay_balance" data-date-format="yyyy-mm-dd" name="next_payment_bal" placeholder="Second Payment Balance" class="form-control" value="">
-                                                                </div>
-                                                                <div class="form-group col-md-6 my-2">
-                                                                    <label class="control-label">Second Installment Due Date:</label>
-                                                                    <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker" id="next_payment_date" type="text" value="" name="next_payment_date" />
-                                                                </div>
-                                                                <div class="form-group col-md-6 my-2">
-                                                                    <label class="control-label">3rd Installment Amount:<span id="pendingBal"></span></label>
-                                                                    <input type="number" readonly id="third_payment_bal" name="third_payment_bal" placeholder="Third Payment Amount" class="form-control" value="">
-                                                                </div>
-                                                                <div class="form-group col-md-6 my-2">
-                                                                    <label class="control-label">3rd Installment Due Date:</label>
-                                                                    <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="third_payment_date" type="text" value="" name="third_payment_date" />
-                                                                </div>
-                                                                <div class="form-group col-md-6 my-2">
-                                                                    <label class="control-label">Final Installment:</label>
-                                                                    <input type="number" readonly id="final_payment_bal" name="final_payment_bal" placeholder="Final Installment Amount" class="form-control" value="">
-                                                                </div>
-                                                                <div class="form-group col-md-6 my-2">
-                                                                    <label class="control-label">Final Installment Due Date:</label>
-                                                                    <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="final_payment_date" type="text" value="" name="final_payment_date" />
-                                                                </div>  
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label">Total Balance Remaining:</label>
-                                                                <input type="text" required readonly id="balance_pay" name="total_balance" placeholder="" class="form-control" value="">
-                                                            </div>
-                                                            <div class="form-group col-md-6 my-2" id="ttravel_date">
-                                                                <label class="control-label">Travel Date <sup class="text-danger">*</sup>:</label>
-                                                                <input readonly="readonly" required data-date-format="yyyy-mm-dd" class="input-group form-control" id="travel_date_iti" type="text" value="" name="travel_date" />
-                                                            </div>
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label"><strong>Bank Name <sup class="text-danger">*</sup>:</strong></label>
-                                                                <input required class="form-control" id="bank_name" type="text" placeholder="eg: HDFC, ICIC" name="bank_name" value="">
-                                                            </div>
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label" for="usr">Please Enter Approval Note: <sup class="text-danger">*</sup>:</label>
-                                                                <textarea required class="form-control"
-                                                                    placeholder="Please Enter Approval Note"
-                                                                    name="iti_note_booked"></textarea>
-                                                            </div>
-                                                            
-                                                            <!--upload aadhar card section-->
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label">Client Aadhar Card: 
-                                                                    <span class="text-danger">(Max size 2 MB</span> 
-                                                                </label>
-                                                                <input class="form-control" id="client_aadhar_card" type="file" name="client_aadhar_card">
-                                                                <img id="client_aadhar_card_priview" style="display: none;" width="100" height="100" />
-                                                            </div>
-                                                            <!--end upload aadhar card section-->
-                                                            <!--upload aadhar Payment card section-->
-                                                            <div class="form-group col-md-6 my-2">
-                                                                <label class="control-label">Payment Screenshot <sup class="text-red">*</sup> : <span  class="text-danger" style="font-size: 10px;">(Max size 2 MB) </span></label>
-                                                                <input required class="form-control" id="payment_screenshot" type="file" name="payment_screenshot">
-                                                                <img id="payment_screenshot_priview" style="display: none;" width="100" height="100" />
-                                                            </div>
-                                                            
-                                                            <div class="col-md-12 other_docs mt-4">
-                                                                <a href="javascript:;" id="add_other_docs_btn"
-                                                                    class="btn btn-success mt-repeater-add addrep">
-                                                                    <i class="fa-solid fa-plus"></i> Add Other Docs</a><span
-                                                                    class="text-danger" style="font-size: 10px;"> Please upload only (
-                                                                    jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
-                                                                <div class="other_docs_sec mt-2" style="display:none;">
-                                                                    <div class="row">
-                                                                        <div class="col-md-5 my-2">
-                                                                            <div class="">
-                                                                                <label class=" "><strong>Other
-                                                                                        Documents:</strong></label>
-                                                                                <input class="form-control" required type="file"
-                                                                                    name="iti_clients_docs[]">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-5 my-2">
-                                                                            <label class=" "><strong>Document
-                                                                                    Title:</strong></label>
-                                                                            <input class="form-control" required type="text"
-                                                                                name="doc_comment[]">
-                                                                        </div>
-                                                                        <div class="col-md-2 my-2">
-                                                                            <div class="mt-repeater-input margin-top-20">
-                                                                                <a href="javascript:;" data-repeater-delete class="btn btn-danger del_upload" style="position:relative;"> <i class="fa fa-close"></i> Delete</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--End Payment Details -->
-                                                </div>
-                                                <!--end booked_lead panel-->
+                                                <!--close_lead_panel panel-->
                                                 <div class="call_type_res" id="close_lead_panel">
-                                                    <!--close_lead_panel panel-->
                                                     <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label class="control-label" for="">Select Decline Reason</label>
-                                                            <select required class="form-control" name="iti_note_decline">
+                                                        <div class="form-group col-md-6 my-3">
+                                                            <label class="control-label" for="">Select Decline Reason <sup class="text-danger">*</sup></label>
+                                                            <select required class="form-control" name="decline_reason">
                                                                 <option value="">Select Reason</option>
-                                                                <option value="Booked with someone else">Booked with someone
-                                                                    else</option>
+                                                                <option value="Booked with someone else">Booked with someone else</option>
                                                                 <option value="Not interested">Not interested</option>
-                                                                <option value="Price is high">Price is high</option>
-                                                                <option value="Not answering call from 1 week">Not answering
-                                                                    call from 1 week</option>
+                                                                <option value="Not answering call from 1 week">Not answering call from 1 week</option>
                                                                 <option value="Plan cancelled">Plan cancelled</option>
                                                                 <option value="Wrong number">Wrong number</option>
-                                                                <option value="Denied to post lead">Denied to post lead</option>
+                                                                <option value="Denied to post lead">Denied to post lead
+                                                                </option>
                                                                 <option value="Other">Other</option>
                                                             </select>
                                                         </div>
                                                         
-                                                        <div class="form-group col-md-6">
+                                                        <div class="col-md-6 my-3">
                                                             <div class="form-group">
-                                                                <label class="control-label" for="comment">Decline Comment:</label>
-                                                                <textarea class="form-control" rows="3" name="decline_comment"
-                                                                    id="decline_comment"></textarea>
+                                                                <label class="control-label" for="comment">Decline Comment :</label>
+                                                                <textarea class="form-control" rows="3" required name="decline_comment" id="decline_comment"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1405,202 +794,814 @@ div#quotation_type_section,
                                                 <!--end close_lead_panel-->
                                             </div>
                                             <!--panel_section end-->
-                                            <!--input type="hidden" name="iti_id" id="hid_iti_id" value="<?php //echo $itineraries[0]->iti_id; ?>"-->
-                                            <!--input type="hidden" name="temp_key" id="hid_temp_key" value="<?php //echo $itineraries[0]->temp_key; ?>"-->
-                                            <!--input type="hidden" name="customer_id" value="<?php //echo $customer->customer_id; ?>"-->
-                                            <!--input type="hidden" name="parent_iti_id" value="<?php //echo $itineraries[0]->parent_iti_id; ?>"-->
-                                            <input type="hidden" name="agent_id" value="<?php echo $customer->agent_id; ?>">
-                                            <!--input type="hidden" name="iti_type" value="<?php //echo $itineraries[0]->iti_type; ?>"-->
+                                            
+                                            <div id="customer_info_panel">
+                                                <div class="row mt-3">
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Whatsapp Number:</label>
+                                                            <input type="text" class="form-control" placeholder="Whatsapp Number" name="whatsapp_number" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Adults *:</label>
+                                                            <input required type="text" class="form-control" placeholder="No. of Adults" name="adults" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Child:</label>
+                                                            <input type="text" class="form-control" placeholder="No. of child" name="child" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Age of the child:</label>
+                                                            <input type="text" class="form-control" placeholder="Child age. eg: 13,12" name="child_age" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label" for="">Package Type *:</label>
+                                                                <select required name="package_type" class="form-control">
+                                                                    <option value="">Choose Package Type</option>
+                                                                    <option value="Honeymoon Package">Honeymoon Package
+                                                                    </option>
+                                                                    <option value="Fixed Departure">Fixed Departure</option>
+                                                                    <option value="Group Package">Group Package</option>
+                                                                    <option value="Other">Other</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label" for="">&nbsp;</label>
+                                                                <input type="text" required class="form-control" name="package_type_other" id="pack_type_other">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">No. of rooms *:</label>
+                                                            <select required name="total_rooms" class="form-control">
+                                                                <option value="">Select Rooms</option>
+                                                                <?php 
+                                                                    for( $i=1 ; $i <=60 ; $i++ ){
+                                                                        echo "<option value='{$i}'>{$i}</option>";
+                                                                    }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Travel Date <sup class="text-danger">*</sup>:</label>
+                                                            <input required type="text" class="form-control" readonly id="travel_date" name="travel_date" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Destination *:</label>
+                                                            <input required type="text" class="form-control" name="destination" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Pick Up Point *:</label>
+                                                            <input required type="text" class="form-control"
+                                                                name="pick_point" value="">
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Dropping Point *:</label>
+                                                            <input required type="text" class="form-control"
+                                                                name="drop_point" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label" for="">Package By *:</label>
+                                                                <select required name="package_by" class="form-control">
+                                                                    <option value="">Choose Package By</option>
+                                                                    <option value="Car">Car</option>
+                                                                    <option value="Volvo">Volvo</option>
+                                                                    <option value="Other">Other</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label" for="">&nbsp;</label>
+                                                                <input type="text" required class="form-control"
+                                                                    name="package_by_other" id="other_pack">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Meal Plan *:</label>
+                                                            <select required name="meal_plan" class="form-control">
+                                                                <option value="">Choose Meal Plan</option>
+                                                                <option value="Breakfast Only">Breakfast Only</option>
+                                                                <option value="Breakfast & Dinner">Breakfast & Dinner
+                                                                </option>
+                                                                <option value="Breakfast, Lunch & Dinner">Breakfast, Lunch &
+                                                                    Dinner</option>
+                                                                <option value="Dinner Only">Dinner Only</option>
+                                                                <option value="No Meal Plan">No Meal Plan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Honeymoon Kit *:</label>
+                                                            <input type="text" class="form-control" placeholder=""
+                                                                name="honeymoon_kit" value="">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Car type for sightseeing *:</label>
+                                                            <select required name="car_type_sightseen" class="form-control">
+                                                                <option value="">Choose Car Category</option>
+                                                                <?php $cars = get_car_categories(); 
+                                                                if( $cars ){
+                                                                    foreach($cars as $car){
+                                                                        echo '<option value = "'.$car->id .'" >'.$car->car_name.'</option>';
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Hotel type *:</label>
+                                                            <select required name="hotel_type" class="form-control">
+                                                                <option value="">Choose Hotel Category</option>
+                                                                <option value="Deluxe">2 Star</option>
+                                                                <option value="Super Deluxe">3 Star</option>
+                                                                <option value="Luxury">4 Star</option>
+                                                                <option value="Super Luxury">5 Star</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Select Country*</label>
+                                                            <select required name="country" class="form-control country">
+                                                                <option value="">Choose Country</option>
+                                                                            <?php $country = get_country_list();
+                                                                if($country){
+                                                                    foreach( $country as $c ){
+                                                                        //$selected = $c->id == 101 ? "selected" : ""; 
+                                                                        echo "<option value={$c->id}>{$c->name}</option>";
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Select State*</label>
+                                                            <select required name="state" class="form-control state">
+                                                                <option value="">Choose State</option>
+                                                                        <?php $states = get_indian_state_list();
+                                                                if($states){
+                                                                    foreach( $states as $state ){
+                                                                        echo "<option {$selected} value={$state->id}>{$state->name}</option>";
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Budget Approx *:</label>
+                                                            <select required name="budget" class="form-control">
+                                                                <option value="">Choose Budget</option>
+                                                                <option value="0-5000">0-5000</option>
+                                                                <option value="5001-15000">5001 - 15000</option>
+                                                                <option value="15001-30000">15001 - 30000</option>
+                                                                <option value="30001-50000">30001 - 50000</option>
+                                                                <option value="50001-100000">50001 - 100000</option>
+                                                                <option value="100001-150000">100001 - 150000</option>
+                                                                <option value=">150000">>150000</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Meal Plan Type :</label>
+                                                            <select  name="meal_plan_type" class="form-control">
+                                                                <option value="">Choose</option>
+                                                                <option value="Veg">Veg</option>
+                                                                <option value="Non-Veg">Non-Veg</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End customer info Section-->
                                             
                                         </div>
-                                        <!--booking section-->
-                                        
-                                        <hr>
-                                        <div class="margiv-top-10">
+                                        <input type="hidden" name="customer_id"
+                                            value="<?php echo $customer->customer_id; ?>" id="customer_id_followup">
+                                        <input type="hidden" name="agent_id" value="<?php echo $customer->agent_id; ?>">
+
+                                        <div class="mt-3">
                                             <button type="submit" id="submit_frm"
                                                 class="btn green uppercase submit_frm">Submit</button>
                                             <button class="btn red uppercase cancle_bnt">Cancel</button>
                                         </div>
-                                        <div class="resPonse"></div>
+                                        
+                                        <div id="resp"></div>
                                     </form>
                                 </div>
-                                <!--end iti followup section-->
-                                <?php }else{
-                            echo "<div class='alert alert-info'>Lead approved to take next followup you need to create itinerary.</div>";
-                            } ?>
-                        </div>
-                        </div>
-                        <div class="col-md-4 col-xxl-3">
-                            <!--leads followup details-->
-                            <h3 class="text-center uppercase">Follow up history</h3>
-                            <div class="iti_leads_followup_section">
-                                <?php if( isset( $itineary_followup ) && !empty( $itineary_followup ) ){
-                            $count = 1;
-                            $iti_html = "";
-                            foreach( $itineary_followup as $iti_follow ){
-                                $c_type = $iti_follow->callType;
-                                $call_time_i = display_month_name_with_time($iti_follow->currentCallTime);
-                                $link = iti_view_link( $iti_follow->iti_id  );
-                                $view_btn_i = "<a href='{$link}' target='_blank' class='btn-blue' title='View'><i class='fa fa-plus'></i> View</a>";
-                                
-                                if( $c_type == "Booked lead" ){
-                                    $callType_status = "<strong class='green'>{$c_type}</strong>";
-                                }elseif( $c_type == "Close lead" ){
-                                $callType_status = "<strong class='red'>{$c_type}</strong>";
-                                }else{
-                                    $callType_status = $c_type;
-                                }
-                                
-                                $iti_html .= "
-                                <div class='col-md-12 col-lg-12'>
-                                            <div class='mt-element-list'>	
-                                            
-                                                <div class='mt-list-container list-todo' id='accordion1' role='tablist' aria-multiselectable='true'>
-                                            <div class='list-todo-line'></div>
-                                            <ul>
-                                                <li class='mt-list-item'>
-                                                    <div class='list-todo-icon bg-white font-green-meadow'>
-                                                        <i class='fa fa-clock-o'></i>
-                                                    </div>
-                                                    <div class='list-todo-item green-meadow'>
-                                                        <a class='list-toggle-container' data-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task_iti-{$count}' aria-expanded='false'>
-                                                            <div class='list-toggle done uppercase'>
-                                                                <div class='list-toggle-title bold'>Call Time: {$call_time_i}</div>
-                            
-                                                            </div>
-                                                        </a>
-                                                        <div class='note note-success'>
-                                                                <div class='list-toggle-title '>{$view_btn_i  }<span></span><span><b>  Iti Id: </b></span>{$iti_follow->iti_id}<span><b>  Status: </b></span>{$callType_status}
-                                                                    </div>
-                            
-                                                            </div>
-                                                        <div class='task-list panel-collapse collapse' id='task_iti-{$count}'>
-                                                            <ul>
-                                                                <li class='task-list-item done'>
-                                                                    <div class='task-icon'><a href='javascript:;'><i class='fa fa-phone'></i></a></div>
-                            
-                                                                    <div class='task-content'>
-                                                                        <h4 class='uppercase bold'>
-                                                                            <a href='javascript:;'>{$callType_status}</a>
-                                                                        </h4>
-                                                            <p><strong>Itinerary Id:</strong>{$iti_follow->iti_id}</p>
-                                                                <p><strong>{$callType_status}</strong></p>
-                                                                <p><strong>Call summary:{$iti_follow->callSummary}</p>
-                                                                <p><strong>Next Call Time:</strong>{$iti_follow->nextCallDate}</p>
-                                                                <p><strong>Comment: {$iti_follow->comment}</strong></p>
-                                                                <p><strong>{$iti_follow->itiProspect}</strong></p>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
+                            </div>
+                            <!--end customer followup status-->
+                            <!--if customer status 9 show iti followup -->
+                            <?php }else if( $customer->cus_status == 8 ){ ?>
+                            <div class="alert alert-danger">LEAD DECLINED</div>
+                            <?php }else if( isset($itineraries[0]->iti_status) && $itineraries[0]->iti_status == 9 ){ ?>
+                            <div class="alert alert-success">LEAD APPROVED</div>
+                            <?php }else if( $customer->cus_status == 9 && isset( $itineraries ) && !empty( $itineraries ) && $itineraries[0]->iti_status != 7  && $itineraries[0]->iti_status != 9 && is_admin_or_manager_or_sales() )
+                            { ?>
+                            <a class="btn btn-danger" href="#" id="add_call_btn" title="Add Followup"> <i class="fa-solid fa-phone"></i> Add Call Info</a>
+                            <div class="call_log" id="call_log_section">
+                                <form id="iti_call_detais_form" enctype="multipart/form-data">
+                                    <div class="frm_section">
+                                        <div class="spinner_load" style="display: none;">
+                                            <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <div class="call_type_seciton">
+                                            <label class="radio-inline mb-3 me-3">
+                                                <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
+                                            </label>
+                                            <label class="radio-inline mb-3 me-3">
+                                                <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
+                                            </label>
+                                            <label class="radio-inline mb-3 me-3">
+                                                <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="Close lead">Decline Itinerary
+                                            </label>
+                                            <label class="radio-inline mb-3 me-3">
+                                                <input class="radio_toggle form-check-input me-2" data-id="booked_lead_panel" required id="booked_lead" type="radio" name="callType" value="Booked lead">Booked Itinerary
+                                            </label>
+                                            <!--iti id listing-->
+                                            <div class="form-group mt-2">
+                                                <label class="control-label" for="usr">Iti Id <sup class="text-danger">*</sup> :</label>
+                                                <select required class="form-control" name="iti_id"
+                                                    id="iti_followup_change">
+                                                    <option value="">Select Iti ID</option>
+                                                    <?php if( isset( $itineraries ) && !empty( $itineraries ) ){
+                                                        foreach( $itineraries as $iti_list ){
+                                                            //iti_status == 9 or 7 (approved/declined)
+                                                            if( $iti_list->iti_status == 9 || $iti_list->iti_status == 7 ) continue;
+                                                            $iti_id 		= $iti_list->iti_id;
+                                                            $package_name 	= $iti_list->package_name;
+                                                            $iti_type = $iti_list->iti_type == 2 ? "Accommodation" : "Holidays";
+                                                            $op_name	= $iti_id . "( " . $iti_type . " )";
+                                                            echo "<option value={$iti_id}>{$op_name}</option>";
+                                                        }
+                                                    } ?>
+                                                </select>
+                                                <p id="rrp"></p>
+                                            </div>
+                                        </div>
+                                        <div id="panel_detail_section">
+                                            <div class="call_type_res" id="picked_call_panel">
+                                                <!--picked call panel-->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="comment">Call summary<span style="color:red;">*</span>:</label>
+                                                            <textarea required class="form-control" rows="3"
+                                                                name="callSummary" id="callSummary"></textarea>
                                                         </div>
                                                     </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            ";
-                                $count++;
-                            }
-                            echo $iti_html;
-                            } ?>
-                                <?php if( isset( $lead_followup ) && !empty( $lead_followup ) ){
-                            $count = 1;
-                            $cus_html = "";
-                            foreach( $lead_followup as $cus_follow ){
-                                $c_type = $cus_follow->callType;
-                                $link = customer_view_link( $cus_follow->customer_id  );
-                                $view_btn = "<a href='{$link}' target='_blank' class='btn btn-blue' title='View'><i class='fa fa-plus'></i> View</a>";
-                                
-                                $call_time = display_month_name_with_time($cus_follow->currentCallTime);
-                                
-                                if( $c_type == 9 ){
-                                    $callType_status = "<strong class='green'>Approved</strong>";
-                                }elseif( $c_type == 8 ){
-                                    $callType_status = "<strong class='red'>Decline</strong>";
-                                }else{
-                                    $callType_status = $c_type;
-                                }
-                                $cus_html .= "<div class='col-md-12 col-lg-12'>
-                                            <div class='mt-element-list'>			 
-                                                <div class='mt-list-container list-todo' id='accordion1' role='tablist' aria-multiselectable='true'>
-                                            <div class='list-todo-line'></div>
-                                            <ul>
-                                                <li class='mt-list-item'>
-                                                    <div class='list-todo-icon bg-white font-green-meadow'>
-                                                        <i class='fa fa-clock-o'></i>
+                                                    <div class="col-md-6 mt-3">
+                                                        <div class="checkbox">
+                                                            <label class="control-label"><input id="nxtCallCk" type="checkbox" value="" class="form-check-input me-2 mt-0">Next calling time and date<span style="color:red;">*</span>:</label>
+                                                        </div>
+                                                        <div id="next_call_cal">
+                                                            <!-- <label class="control-label">Next calling time and date<span style="color:red;">*</span>:</label> -->
+                                                            <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
+                                                        </div>
                                                     </div>
-                                                    <div class='list-todo-item green-meadow'>
-                                                        <a class='list-toggle-container' data-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task-{$count}' aria-expanded='false'>
-                                                            <div class='list-toggle done uppercase'>
-                                                                <div class='list-toggle-title bold '>Call Time: {$call_time} <br>
+                                                    <div class="col-md-6 mt-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
+                                                            <select required class="form-control" name="txtProspect">
+                                                                <option value="Hot">Hot</option>
+                                                                <option value="Warm">Warm</option>
+                                                                <option value="Cold">Cold</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end picked call panel-->
+                                            <div class="call_type_res" id="call_not_picked_panel">
+                                                <!--call_not_picked panel-->
+                                                <div>
+                                                    <label class="radio-inline control-label">
+                                                        <input required type="radio" name="callSummaryNotpicked"
+                                                            class="me-2 call_type_not_answer form-check-input" value="Switched off">Switched
+                                                        off
+                                                    </label>
+                                                    <label class="radio-inline control-label mx-3">
+                                                        <input required type="radio" name="callSummaryNotpicked"
+                                                            class="me-2 call_type_not_answer form-check-input" value="Not reachable">Not
+                                                        reachable
+                                                    </label>
+                                                    <label class="radio-inline control-label mx-3">
+                                                        <input required type="radio" name="callSummaryNotpicked"
+                                                            class="me-2 call_type_not_answer form-check-input" value="Not answering">Not
+                                                        answering
+                                                    </label>
+                                                    <div class="nxt_call">
+                                                        <div class="row">
+                                                            <div class="col-md-6 my-3">
+                                                                <label>Next calling time and date<span style="color:red;">*</span>:</label>
+                                                                <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
+                                                            </div>
+                                                            <div class="col-md-6 my-3">
+                                                                <div class="form-group">
+                                                                    <label>Lead prospect<span
+                                                                            style="color:red;">*</span></label>
+                                                                    <select required class="form-control"
+                                                                        name="txtProspectNotpicked">
+                                                                        <option value="Hot">Hot</option>
+                                                                        <option value="Warm">Warm</option>
+                                                                        <option value="Cold">Cold</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
-                                                        </a>";
-                                                        
-                                                    if(!empty($cus_follow->nextCallDate)){
-                                                        $cus_html .=	"<div class='note note-success'><p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p></div>";
-                                                    }
-                                                    $cus_html .= "
-                                                        <div class='task-list panel-collapse collapse' id='task-{$count}'>
-                                                            <ul>
-                                                                <li class='task-list-item done'>
-                                                                    <div class='task-icon'><a href='javascript:;'><i class='fa fa-phone'></i></a></div>
-                            
-                                                                    <div class='task-content'>
-                                                                        <h4 class='uppercase bold'>
-                                                                            <a href='javascript:;'>{$callType_status}</a>
-                                                                        </h4>
-                                                                <p><strong>Call summary: </strong> {$cus_follow->callSummary}</p>
-                                                                <p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p>
-                                                                <p><strong>Comment: </strong> {$cus_follow->comment}</p>
-                                                                <p><strong>{$cus_follow->customer_prospect}</strong></p>
-                                                                <p><strong>{$view_btn}</strong></p>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
                                                         </div>
                                                     </div>
-                                                </li>
-                                            </ul>
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="comment">Comment<span
+                                                                        style="color:red;">*</span>:</label>
+                                                                <textarea required class="form-control" rows="3"
+                                                                    name="comment" id="comment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end call not picked panel-->
+                                            <!--booked_lead_panel panel If itinerary booked-->
+                                            <input type="hidden" name="firstdate" id="fist_tour_date" value="<?= get_iti_tour_start_date($iti->iti_id) ?>">
+                                            <div class="call_type_res" id="booked_lead_panel">
+                                                <div class="col-md-12">
+                                                    <div >
+                                                        <label class="radio-inline control-label">
+                                                            <input required class="is_travel_date me-2  form-check-input" type="radio" name="is_travel_date" value="fixed">Fixed Travel Date
+                                                        </label>
+                                                        <label class="radio-inline control-label mx-2">
+                                                            <input required class="is_travel_date me-2 form-check-input" type="radio" name="is_travel_date" value="notfixed">Not Fixed Travel Date
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="booking_section mt-3" style="display:none;">
+                                                    <?php 
+                                                        $get_iti_package_category = get_iti_package_category();
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label" for="usr">Package Category <sup class="text-danger">*</sup> :</label>
+                                                            <div id="appCatListDiv">
+                                                                <select required class='form-control' id='appCatList'
+                                                                    name='approved_package_category'>
+                                                                    <option value="">Select package category</option>
+                                                                    <?php  if($get_iti_package_category){
+                                                            foreach( $get_iti_package_category as $book_cat ){
+                                                            //                       switch( $book_cat->name ){
+                                                            // 				case 'Deluxe':
+                                                            // 					$cat_name = "2 Star";
+                                                            // 					break;
+                                                            // 				case 'Super Deluxe':
+                                                            // 					$cat_name = "3 Star";
+                                                            // 					break;
+                                                            // 				case 'Luxury':	
+                                                            // 					$cat_name = "4 Star";
+                                                            // 					break;
+                                                            // 				case 'Super Luxury':	
+                                                            // 					$cat_name = "5 Star";
+                                                            // 					break;
+                                                            // 				default:
+                                                            // 					$cat_name = "Not Found";
+                                                            // 					break;	
+                                                            // 			}
+                                                                echo "<option value='{$book_cat->name}'>$book_cat->name </option>";
+                                                            }
+                                                            } ?>
+                                                                <?php $get_tax = get_tax();
+                                                                $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Package Type*:</label>
+                                                            <select required name="package_type_iti" class="form-control">
+                                                                <option value="">Choose Package Type</option>
+                                                                <option value="Honeymoon Package">Honeymoon Package</option>
+                                                                <option value="Fixed Departure">Fixed Departure</option>
+                                                                <option value="Group Package">Group Package</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                        
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label" for="usr">Total Package Cost <sup class="text-danger">*</sup>:</label>
+                                                            <input type="number" readonly required class="form-control"
+                                                                id="fnl_amount_tax" data-tax="<?php echo $tax; ?>" data-original-price=""
+                                                                title="Total package cost after inc. tax"
+                                                                placeholder="Total package cost after inc. tax"
+                                                                name="final_amount"  >
+                                                        </div>
+
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Booking Date <sup class="text-danger">*</sup>:</label>
+                                                            <input required readonly="readonly"
+                                                                data-date-format="yyyy-mm-dd"
+                                                                class="input-group form-control" id="booking_date"
+                                                                type="text" value="" name="booking_date" />
+                                                        </div>
+
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label" for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
+                                                            <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
+                                                        </div>
+                                                        
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Advance Received: <sup class="text-danger">*</sup> <span id="fiftyPer"></span></label>
+                                                            <input required type="number" id="pack_advance_recieve"
+                                                                name="advance_recieve"
+                                                                placeholder="Advance Received. eg: 5000"
+                                                                class="form-control" value="">
+                                                        </div>
+
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Transaction Date(1st installment): <sup class="text-danger">*</sup></label>
+                                                            <input required readonly="readonly"
+                                                                data-date-format="yyyy-mm-dd"
+                                                                class="input-group form-control transaction_date"
+                                                                id="transaction_date" type="text" value=""
+                                                                name="transaction_date" />
+                                                        </div>
+                                                    </div>
+                                                    <!--Payment Details -->
+                                                    <div id="due_payment_section">
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6 my-2">
+                                                                <label class="control-label">Second Installment Amount:</label>
+                                                                <input type="text" readonly id="next_pay_balance" data-date-format="yyyy-mm-dd" name="next_payment_bal" placeholder="Second Payment Balance" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-md-6 my-2">
+                                                                <label class="control-label">Second Installment Due Date:</label>
+                                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker" id="next_payment_date" type="text" value="" name="next_payment_date" />
+                                                            </div>
+                                                            <div class="form-group col-md-6 my-2">
+                                                                <label class="control-label">3rd Installment Amount:<span id="pendingBal"></span></label>
+                                                                <input type="number" readonly id="third_payment_bal" name="third_payment_bal" placeholder="Third Payment Amount" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-md-6 my-2">
+                                                                <label class="control-label">3rd Installment Due Date:</label>
+                                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="third_payment_date" type="text" value="" name="third_payment_date" />
+                                                            </div>
+                                                            <div class="form-group col-md-6 my-2">
+                                                                <label class="control-label">Final Installment:</label>
+                                                                <input type="number" readonly id="final_payment_bal" name="final_payment_bal" placeholder="Final Installment Amount" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-md-6 my-2">
+                                                                <label class="control-label">Final Installment Due Date:</label>
+                                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="final_payment_date" type="text" value="" name="final_payment_date" />
+                                                            </div>  
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Total Balance Remaining:</label>
+                                                            <input type="text" required readonly id="balance_pay" name="total_balance" placeholder="" class="form-control" value="">
+                                                        </div>
+                                                        <div class="form-group col-md-6 my-2" id="ttravel_date">
+                                                            <label class="control-label">Travel Date <sup class="text-danger">*</sup>:</label>
+                                                            <input readonly="readonly" required data-date-format="yyyy-mm-dd" class="input-group form-control" id="travel_date_iti" type="text" value="" name="travel_date" />
+                                                        </div>
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label"><strong>Bank Name <sup class="text-danger">*</sup>:</strong></label>
+                                                            <input required class="form-control" id="bank_name" type="text" placeholder="eg: HDFC, ICIC" name="bank_name" value="">
+                                                        </div>
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label" for="usr">Please Enter Approval Note: <sup class="text-danger">*</sup>:</label>
+                                                            <textarea required class="form-control"
+                                                                placeholder="Please Enter Approval Note"
+                                                                name="iti_note_booked"></textarea>
+                                                        </div>
+                                                        
+                                                        <!--upload aadhar card section-->
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Client Aadhar Card: 
+                                                                <span class="text-danger">(Max size 2 MB</span> 
+                                                            </label>
+                                                            <input class="form-control" id="client_aadhar_card" type="file" name="client_aadhar_card">
+                                                            <img id="client_aadhar_card_priview" style="display: none;" width="100" height="100" />
+                                                        </div>
+                                                        <!--end upload aadhar card section-->
+                                                        <!--upload aadhar Payment card section-->
+                                                        <div class="form-group col-md-6 my-2">
+                                                            <label class="control-label">Payment Screenshot <sup class="text-red">*</sup> : <span  class="text-danger" style="font-size: 10px;">(Max size 2 MB) </span></label>
+                                                            <input required class="form-control" id="payment_screenshot" type="file" name="payment_screenshot">
+                                                            <img id="payment_screenshot_priview" style="display: none;" width="100" height="100" />
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12 other_docs mt-4">
+                                                            <a href="javascript:;" id="add_other_docs_btn"
+                                                                class="btn btn-success mt-repeater-add addrep">
+                                                                <i class="fa-solid fa-plus"></i> Add Other Docs</a><span
+                                                                class="text-danger" style="font-size: 10px;"> Please upload only (
+                                                                jpg|jpeg|png|pdf ) files and not more than 2MB.</span>
+                                                            <div class="other_docs_sec mt-2" style="display:none;">
+                                                                <div class="row">
+                                                                    <div class="col-md-5 my-2">
+                                                                        <div class="">
+                                                                            <label class=" "><strong>Other
+                                                                                    Documents:</strong></label>
+                                                                            <input class="form-control" required type="file"
+                                                                                name="iti_clients_docs[]">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5 my-2">
+                                                                        <label class=" "><strong>Document
+                                                                                Title:</strong></label>
+                                                                        <input class="form-control" required type="text"
+                                                                            name="doc_comment[]">
+                                                                    </div>
+                                                                    <div class="col-md-2 my-2">
+                                                                        <div class="mt-repeater-input margin-top-20">
+                                                                            <a href="javascript:;" data-repeater-delete class="btn btn-danger del_upload" style="position:relative;"> <i class="fa fa-close"></i> Delete</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--End Payment Details -->
+                                            </div>
+                                            <!--end booked_lead panel-->
+                                            <div class="call_type_res" id="close_lead_panel">
+                                                <!--close_lead_panel panel-->
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label class="control-label" for="">Select Decline Reason</label>
+                                                        <select required class="form-control" name="iti_note_decline">
+                                                            <option value="">Select Reason</option>
+                                                            <option value="Booked with someone else">Booked with someone
+                                                                else</option>
+                                                            <option value="Not interested">Not interested</option>
+                                                            <option value="Price is high">Price is high</option>
+                                                            <option value="Not answering call from 1 week">Not answering
+                                                                call from 1 week</option>
+                                                            <option value="Plan cancelled">Plan cancelled</option>
+                                                            <option value="Wrong number">Wrong number</option>
+                                                            <option value="Denied to post lead">Denied to post lead</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="comment">Decline Comment:</label>
+                                                            <textarea class="form-control" rows="3" name="decline_comment"
+                                                                id="decline_comment"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end close_lead_panel-->
                                         </div>
+                                        <!--panel_section end-->
+                                        <!--input type="hidden" name="iti_id" id="hid_iti_id" value="<?php //echo $itineraries[0]->iti_id; ?>"-->
+                                        <!--input type="hidden" name="temp_key" id="hid_temp_key" value="<?php //echo $itineraries[0]->temp_key; ?>"-->
+                                        <!--input type="hidden" name="customer_id" value="<?php //echo $customer->customer_id; ?>"-->
+                                        <!--input type="hidden" name="parent_iti_id" value="<?php //echo $itineraries[0]->parent_iti_id; ?>"-->
+                                        <input type="hidden" name="agent_id" value="<?php echo $customer->agent_id; ?>">
+                                        <!--input type="hidden" name="iti_type" value="<?php //echo $itineraries[0]->iti_type; ?>"-->
+                                        
                                     </div>
-                                </div>";
-                                $count++;					
-                            }
-                            echo $cus_html;
-                            } ?>
+                                    <!--booking section-->
+                                    
+                                    <hr>
+                                    <div class="margiv-top-10">
+                                        <button type="submit" id="submit_frm"
+                                            class="btn green uppercase submit_frm">Submit</button>
+                                        <button class="btn red uppercase cancle_bnt">Cancel</button>
+                                    </div>
+                                    <div class="resPonse"></div>
+                                </form>
                             </div>
+                            <!--end iti followup section-->
+                            <?php }else{
+                        echo "<div class='alert alert-info'>Lead approved to take next followup you need to create itinerary.</div>";
+                        } ?>
+                    </div>
+                    </div>
+                    <div class="col-md-4 col-xxl-3">
+                        <!--leads followup details-->
+                        <h3 class="text-center uppercase">Follow up history</h3>
+                        <div class="iti_leads_followup_section">
+                            <?php if( isset( $itineary_followup ) && !empty( $itineary_followup ) ){
+                        $count = 1;
+                        $iti_html = "";
+                        foreach( $itineary_followup as $iti_follow ){
+                            $c_type = $iti_follow->callType;
+                            $call_time_i = display_month_name_with_time($iti_follow->currentCallTime);
+                            $link = iti_view_link( $iti_follow->iti_id  );
+                            $view_btn_i = "<a href='{$link}' target='_blank' class='btn-blue' title='View'><i class='fa fa-plus'></i> View</a>";
+                            
+                            if( $c_type == "Booked lead" ){
+                                $callType_status = "<strong class='green'>{$c_type}</strong>";
+                            }elseif( $c_type == "Close lead" ){
+                            $callType_status = "<strong class='red'>{$c_type}</strong>";
+                            }else{
+                                $callType_status = $c_type;
+                            }
+                            
+                            $iti_html .= "
+                            <div class='col-md-12 col-lg-12'>
+                                        <div class='mt-element-list'>	
+                                        
+                                            <div class='mt-list-container list-todo' id='accordion1' role='tablist' aria-multiselectable='true'>
+                                        <div class='list-todo-line'></div>
+                                        <ul>
+                                            <li class='mt-list-item'>
+                                                <div class='list-todo-icon bg-white font-green-meadow'>
+                                                    <i class='fa fa-clock-o'></i>
+                                                </div>
+                                                <div class='list-todo-item green-meadow'>
+                                                    <a class='list-toggle-container' data-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task_iti-{$count}' aria-expanded='false'>
+                                                        <div class='list-toggle done uppercase'>
+                                                            <div class='list-toggle-title bold'>Call Time: {$call_time_i}</div>
+                        
+                                                        </div>
+                                                    </a>
+                                                    <div class='note note-success'>
+                                                            <div class='list-toggle-title '>{$view_btn_i  }<span></span><span><b>  Iti Id: </b></span>{$iti_follow->iti_id}<span><b>  Status: </b></span>{$callType_status}
+                                                                </div>
+                        
+                                                        </div>
+                                                    <div class='task-list panel-collapse collapse' id='task_iti-{$count}'>
+                                                        <ul>
+                                                            <li class='task-list-item done'>
+                                                                <div class='task-icon'><a href='javascript:;'><i class='fa fa-phone'></i></a></div>
+                        
+                                                                <div class='task-content'>
+                                                                    <h4 class='uppercase bold'>
+                                                                        <a href='javascript:;'>{$callType_status}</a>
+                                                                    </h4>
+                                                        <p><strong>Itinerary Id:</strong>{$iti_follow->iti_id}</p>
+                                                            <p><strong>{$callType_status}</strong></p>
+                                                            <p><strong>Call summary:{$iti_follow->callSummary}</p>
+                                                            <p><strong>Next Call Time:</strong>{$iti_follow->nextCallDate}</p>
+                                                            <p><strong>Comment: {$iti_follow->comment}</strong></p>
+                                                            <p><strong>{$iti_follow->itiProspect}</strong></p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        ";
+                            $count++;
+                        }
+                        echo $iti_html;
+                        } ?>
+                            <?php if( isset( $lead_followup ) && !empty( $lead_followup ) ){
+                        $count = 1;
+                        $cus_html = "";
+                        foreach( $lead_followup as $cus_follow ){
+                            $c_type = $cus_follow->callType;
+                            $link = customer_view_link( $cus_follow->customer_id  );
+                            $view_btn = "<a href='{$link}' target='_blank' class='btn btn-blue' title='View'><i class='fa fa-plus'></i> View</a>";
+                            
+                            $call_time = display_month_name_with_time($cus_follow->currentCallTime);
+                            
+                            if( $c_type == 9 ){
+                                $callType_status = "<strong class='green'>Approved</strong>";
+                            }elseif( $c_type == 8 ){
+                                $callType_status = "<strong class='red'>Decline</strong>";
+                            }else{
+                                $callType_status = $c_type;
+                            }
+                            $cus_html .= "<div class='col-md-12 col-lg-12'>
+                                        <div class='mt-element-list'>			 
+                                            <div class='mt-list-container list-todo' id='accordion1' role='tablist' aria-multiselectable='true'>
+                                        <div class='list-todo-line'></div>
+                                        <ul>
+                                            <li class='mt-list-item'>
+                                                <div class='list-todo-icon bg-white font-green-meadow'>
+                                                    <i class='fa fa-clock-o'></i>
+                                                </div>
+                                                <div class='list-todo-item green-meadow'>
+                                                    <a class='list-toggle-container' data-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task-{$count}' aria-expanded='false'>
+                                                        <div class='list-toggle done uppercase'>
+                                                            <div class='list-toggle-title bold '>Call Time: {$call_time} <br>
+                                                            </div>
+                                                        </div>
+                                                    </a>";
+                                                    
+                                                if(!empty($cus_follow->nextCallDate)){
+                                                    $cus_html .=	"<div class='note note-success'><p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p></div>";
+                                                }
+                                                $cus_html .= "
+                                                    <div class='task-list panel-collapse collapse' id='task-{$count}'>
+                                                        <ul>
+                                                            <li class='task-list-item done'>
+                                                                <div class='task-icon'><a href='javascript:;'><i class='fa fa-phone'></i></a></div>
+                        
+                                                                <div class='task-content'>
+                                                                    <h4 class='uppercase bold'>
+                                                                        <a href='javascript:;'>{$callType_status}</a>
+                                                                    </h4>
+                                                            <p><strong>Call summary: </strong> {$cus_follow->callSummary}</p>
+                                                            <p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p>
+                                                            <p><strong>Comment: </strong> {$cus_follow->comment}</p>
+                                                            <p><strong>{$cus_follow->customer_prospect}</strong></p>
+                                                            <p><strong>{$view_btn}</strong></p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>";
+                            $count++;					
+                        }
+                        echo $cus_html;
+                        } ?>
                         </div>
                     </div>
-                    <!--end leads followup details-->
                 </div>
-                <!--end followup section -->
+                <!--end leads followup details-->
             </div>
+            <!--end followup section -->
         </div>
     </div>
 </div>
+
+</div>
 <!--End page-container-->
-
-
-
-
 <!-- Modal -->
 <div id="pakcageModal" class="modal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">Close</button>
                 <h4 class="modal-title">Select Package</h4>
+                <button type="button" class="close" data-dismiss="modal">Close</button>
             </div>
             <div class="modal-body">
-                <form id="createIti">
-                    <div class="">
+                <form id="createIti" class="mb-0">
+                    <div class="row">
                         <?php $prePackages = get_all_packages(); ?>
                         <?php $getPackCat = get_package_categories(); ?>
                         <?php $state_list = get_indian_state_list(); ?>
-                        <div class="form-group">
-                            <label>Select Package Category*</label>
+                        <div class="form-group col-md-12 my-2">
+                            <label class="control-label">Select Package Category*</label>
                             <select required name="package_cat_id" class="form-control" id="pkg_cat_id">
                                 <option value="">Choose Package</option>
                                 <?php if( $getPackCat ){ ?>
@@ -1611,8 +1612,8 @@ div#quotation_type_section,
                                 <?php }	?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Select State*</label>
+                        <div class="form-group col-md-12 my-2">
+                            <label class="control-label">Select State*</label>
                             <select required disabled name="satate_id" class="form-control" id="state_id">
                                 <option value="">Select State</option>
                                 <?php if( $state_list ){ 
@@ -1622,24 +1623,24 @@ div#quotation_type_section,
                            } ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Select Package</label>
+                        <div class="form-group col-md-12 my-2">
+                            <label class="control-label">Select Package</label>
                             <select required disabled name="packages" class="form-control" id="pkg_id">
                                 <option value="">Choose Package</option>
                             </select>
                         </div>
-                        <div class="form-actions">
+                        <div class="form-actions my-2 text-center">
                             <input type="hidden" id="cust_id" value="">
-                            <input type="submit" class='btn btn-green' id="continue_package" value="Continue">
+                            <input type="submit" class='btn btn-primary' id="continue_package" value="Continue">
                         </div>
                     </div>
                     <div id="pack_response"></div>
                 </form>
-                <hr>
-                <h2><strong>OR</strong></h2>
-                <div class="form-group">
-                    <a href="" class='btn btn-green' id="readyForQuotation" title='Add Itinerary'><i
-                            class='fa fa-plus'></i> Create New</a>
+                <strong class="text-center d-block">OR</strong>
+                <div class="form-group my-2 text-center">
+                    <a href="" class='btn btn-green' id="readyForQuotation" title='Add Itinerary'>
+                        <i class='fa fa-plus'></i> Create New
+                    </a>
                 </div>
             </div>
             <div class="modal-footer"></div>
@@ -1701,7 +1702,7 @@ div#quotation_type_section,
                         <?php $getPackCat = get_package_categories(); ?>
                         <?php $state_list = get_indian_state_list(); ?>
                         <div class="form-group">
-                            <label>Select Package Category*</label>
+                            <label class="control-label">Select Package Category*</label>
                             <select required name="package_cat_id" class="form-control" id="dup_pkg_cat_id">
                                 <option value="">Choose Package</option>
                                 <?php if( $getPackCat ){ ?>
@@ -1713,7 +1714,7 @@ div#quotation_type_section,
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Select State*</label>
+                            <label class="control-label">Select State*</label>
                             <select required disabled name="satate_id" class="form-control" id="dup_state_id">
                                 <option value="">Select State</option>
                                 <?php if( $state_list ){ 
@@ -1724,7 +1725,7 @@ div#quotation_type_section,
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Select Package*</label>
+                            <label class="control-label">Select Package*</label>
                             <select required disabled name="packages" class="form-control" id="dup_pkg_id">
                                 <option value="">Choose Package</option>
                             </select>

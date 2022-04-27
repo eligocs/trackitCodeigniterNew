@@ -45,7 +45,7 @@
 										</li>
 										<li>
 											<a href="#tab7" data-toggle="tab" class="step">
-												<span class="number"> 7 </span>
+												<span class="number"> 5 </span>
 												<span class="desc">
 													<i class="fa fa-check"></i> Submit Itineray </span>
 											</a>
@@ -135,10 +135,10 @@
 														<label class="control-label">No. of Persons
 															<span class="required"> * </span>
 														</label>
-														<div class="col-md-3">
+														<div class="col-md-3 mb-3 mb-md-0">
 															<input type="text" required class="form-control" name="adults" value="" placeholder="Adults" />
 														</div>
-														<div class="col-md-3 padding-0">
+														<div class="col-md-3 mb-3 mb-md-0">
 															<input type="text" class="form-control" name="child" value="" placeholder="Children" />
 														</div>
 														<div class="col-md-5">
@@ -178,7 +178,7 @@
 															<div class="col-md-2 my-2">
 																<div class="mt-repeater-input form-group">
 																	<label class="control-label">Day</label><span class="required"> * </span>
-																	<br/>
+
 																	<input required  placeholder="Day 1" type="text" name="tour_day" class="form-control" value="" /> 
 																</div>
 																<input readonly="readonly" class="input-group form-control" size="16" type="hidden" value="" name="tour_date"  />
@@ -186,29 +186,28 @@
 															<div class="col-md-8 my-2">
 																<div class="mt-repeater-input form-group t_title">
 																	<label class="control-label">Tour Title</label><span class="required"> * </span>
-																	<br/>
+																	
 																	<input required  placeholder="Shimla local sight" type="text" name="tour_name" class="form-control" value="" /> 
 																</div>
 															</div>
 															<div class="col-md-2 my-2">
 																<div class="mt-repeater-input form-group">
 																	<label class="control-label">Distance</label><span class="required"> * </span>
-																	<br/>
+																	
 																	<input required  placeholder="100 Km" type="number" name="tour_distance" class="form-control tour_distant" value="" /> 
 																</div>
 															</div>
 															<div class="col-md-12 my-2">
-																<div class="mt-repeater-input mt-repeater-textarea t_des"      				  style="padding-left:0; padding-right:0;"> 
-																	<label class="control-label">Tour Description</label>
+																<div class="mt-repeater-input mt-repeater-textarea t_des"> 		<label class="control-label">Tour Description</label>
 																	<span class="required"> * </span>
 																	<textarea required="required" name="tour_des" class="form-control" rows="2"></textarea>
-																		
+																				
 																</div>
 															</div>
-															<div class="col-md-3 my-2">
+															<div class="col-md-4 my-2">
 																<div class="mt-repeater-input form-group">
 																	<label class="control-label">Meal Plan</label><span class="required"> * </span>
-																	<br/>
+																	
 																	<select required name="meal_plan" class="form-control">
 																		<option value="">Choose Meal Plan</option>
 																		<option value="Breakfast Only">Breakfast Only</option>
@@ -219,7 +218,7 @@
 																	</select>
 																</div>
 															</div>
-															<div class="col-md-6 my-2">
+															<div class="col-md-8 my-2">
 																<div class="mt-repeater-input">
 																	<label class="control-label">Attraction</label>
 																	<div class="hot_des" style="float:none;">
@@ -232,12 +231,12 @@
 														<!-- row close-->	
 														<!-- jQuery Repeater Container -->
 														<div class="mt-repeater-input del_rep">
-															<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete" style="position:relative;">
-															<i class="fa fa-close"></i> Delete</a>
+															<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete my-3" style="position:relative;">
+															<i class="fa-solid fa-trash-can"></i></a>
 														</div>
 													</div>
 												</div>
-												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add addrep"><i class="fa-solid fa-plus"></i> Add</a>
+												<a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-add addrep"><i class="fa-solid fa-plus"></i></a>
 											</div>
 										</div>
 										<!-- Inclusion & Exclusion -->
@@ -249,19 +248,20 @@
 														<h4>Inclusion</h4>
 														<div data-repeater-list="inc_meta">
 															<div data-repeater-item class="mt-repeater-inc-item form-group">
-																<div class="mt-repeater-inc-cell">
-																	<div class="mt-repeater-inc-input col-md-9">
+																<div class="mt-repeater-inc-cell row my-3">
+																	<div class="mt-repeater-inc-input col-sm-10 col-10">
 																		<input required type="text" name="tour_inc" class="form-control" value="" /> 
 																	</div>
-																	<div class="mt-repeater-inc-input col-md-3">
+																	<div class="mt-repeater-inc-input col-sm-2 col-2 ">
 																		<a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																			<i class="fa fa-close"></i></a>
+																		<i class="fa-solid fa-trash-can"></i></i>
+																		</a>
 																	</div>
 																</div>
 															</div>
 														</div>
-														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-inc-add">
-														<i class="fa-solid fa-plus"></i> Add</a>
+														<a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-inc-add">
+														<i class="fa-solid fa-plus"></i></a>
 													</div>
 													
 												</div>	
@@ -284,54 +284,55 @@
 														<?php $count_hotel_exc	= count( $hotel_exc );
 															if( !empty($hotel_exc ) ){ ?>
 																<?php for ( $i = 0; $i < $count_hotel_exc; $i++ ) { ?>
-																	<div data-repeater-item class="mt-repeater-exc-item form-group">
+																	<div data-repeater-item class="mt-repeater-exc-item form-group row my-3">
 																		<!-- jQuery Repeater Container -->
-																		<div class="mt-repeater-exc-input col-md-9">
+																		<div class="mt-repeater-exc-input col-sm-10 col-10">
 																			<input required type="text" name="exc_meta[<?php echo $i; ?>][tour_exc]" class="form-control" value="<?php echo $hotel_exc[$i]["hotel_exc"] ;?>" /> 
 																		</div>
 																		
-																		<div class="mt-repeater-exc-input col-md-3">
+																		<div class="mt-repeater-exc-input col-sm-2 col-2 ">
 																			<a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																				<i class="fa fa-close"></i> </a>
+																				<i class="fa-solid fa-trash-can"></i></i> </a>
 																		</div>
 																	</div>
 																<?php } ?>
 															<?php }else{ ?>	
 																<div data-repeater-item class="mt-repeater-exc-item form-group">
 																	<!-- jQuery Repeater Container -->
-																	<div class="mt-repeater-exc-input col-md-9">
+																	<div class="mt-repeater-exc-input col-sm-10 col-10">
 																		<input required type="text" name="tour_exc" class="form-control" value="" /> 
 																	</div>
-																	<div class="mt-repeater-exc-input col-md-3">
+																	<div class="mt-repeater-exc-input col-sm-2 col-2 ">
 																		<a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																			<i class="fa fa-close"></i> </a>
+																			<i class="fa-solid fa-trash-can"></i></i> </a>
 																	</div>
 																</div>
 															<?php } ?>	
 														</div>
-														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
-														<i class="fa-solid fa-plus"></i> Add</a>
+														<a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-add">
+														<i class="fa-solid fa-plus"></i></a>
 													</div>
 												</div>
+												<hr class="mt-4">
 												<div class="col-md-12">
 													<!--Special Inclusion Section-->
 													<div class="mt-repeater-spinc tour_field_repeater_sp">
 														<h3 class="block">Special Inclusions</h3>
 														<div data-repeater-list="special_inc_meta">
 															<div data-repeater-item class="mt-repeater-spinc-item form-group">
-																<div class="mt-repeater-spinc-cell">
-																	<div class="mt-repeater-spinc-input col-md-9">
+																<div class="mt-repeater-spinc-cell row my-3">
+																	<div class="mt-repeater-spinc-input col-sm-10 col-10">
 																		<input required type="text" name="tour_special_inc" class="form-control" value="" /> 
 																	</div>
-																	<div class="mt-repeater-spinc-input col-md-3">
+																	<div class="mt-repeater-spinc-input col-sm-2 col-2 ">
 																		<a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																			<i class="fa fa-close"></i></a>
+																			<i class="fa-solid fa-trash-can"></i></i></a>
 																	</div>
 																</div>
 															</div>
 														</div><br>
-														<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-spinc-add">
-														<i class="fa-solid fa-plus"></i> Add</a>
+														<a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-spinc-add">
+														<i class="fa-solid fa-plus"></i></a>
 													</div>
 												</div>	
 											</div>
@@ -339,78 +340,81 @@
 										<!-- Hotel Details -->
 										<div class="tab-pane" id="tab4">
 											<h3 class="block">Hotel Details</h3>
-											<h4 class="clearboth">Choose Hotel By Categories:</h4>
+											<h4 class="fs-7 mb-0">Choose Hotel By Categories:</h4>
 											<div class="mt-repeater-hotel tour_field_repeater">
 												<div data-repeater-list="hotel_meta">
-													<div data-repeater-item class="mt-repeater-hotel-item">
+													<div data-repeater-item class="mt-repeater-hotel-item border-bottom mb-3 pb-4">
 														<div class="row">
-															<div class='mt-repeater-hotel-input  col-md-3' >
+															<div class='mt-repeater-hotel-input  col-xxl-3 col-md-12 my-2' >
 																<label><strong>Hotel Location:</strong></label>
 																<input required type="text" name='hotel_location' class='form-control' placeholder="Eg. Shimla/Manali">
 															</div>
-															<div class='mt-repeater-hotel-input standard   col-md-2' >
+															<div class='mt-repeater-hotel-input standard col-xxl-2 col-md-3 my-2' >
 																<label><strong>Standard:</strong></label>
 																<textarea name="hotel_standard" required class='form-control'></textarea>
 															</div>
 															
-															<div class='mt-repeater-hotel-input deluxe   col-md-2' >
+															<div class='mt-repeater-hotel-input deluxe col-xxl-2 col-md-3 my-2' >
 																<label><strong>Deluxe:</strong></label>
 																<textarea name="hotel_deluxe" required class='form-control'></textarea>
 															</div>
-															<div class='mt-repeater-hotel-input super_deluxe   col-md-2' >
+															<div class='mt-repeater-hotel-input super_deluxe col-xxl-2 col-md-3 my-2' >
 																<label><strong>Super Deluxe:</strong></label>
 																<textarea name="hotel_super_deluxe" required class='form-control'></textarea>
 															</div>
-															<div class='mt-repeater-hotel-input luxury   col-md-2' >
+															<div class='mt-repeater-hotel-input luxury col-xxl-2 col-md-3 my-2' >
 																<label><strong>Luxury:</strong></label>
 																<textarea name="hotel_luxury" required class='form-control'></textarea>
 															</div>
-															<div class="mt-repeater-hotel-input col-md-1">
+															<div class="mt-repeater-hotel-input col-md-1 my-2">
+																<label for="" class="control-label d-none d-xxl-block">&nbsp;</label>
 																<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																	<i class="fa fa-close"></i> Delete</a>
+																	<i class="fa-solid fa-trash-can"></i></i>
+																</a>
 															</div>
 														</div> <!-- row -->
 													</div>
 												</div>
 												<p></p>
-												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-add">
+												<a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-hotel-add">
 												<i class="fa-solid fa-plus"></i> Add Hotel</a>
-											</div>						
+											</div>		
+											<hr>				
 											<div class="mt-repeater-hotel-note tour_field_repeater">
 												<div data-repeater-list="hotel_note_meta">
 													<label class="control-label">Add Hotel Note*: </label>
 												<?php $count_hotel_notes = count( $hotel_notes );
 													if( !empty( $hotel_notes ) ){ ?>
 														<?php for ( $i = 0; $i < $count_hotel_notes; $i++ ) { ?>
-															<div data-repeater-item class="mt-repeater-hotel-note-item form-group">
+															<div data-repeater-item class="mt-repeater-hotel-note-item form-group row">
 																<!-- jQuery Repeater Container -->
-																<div class="mt-repeater-hotel-note-input col-md-9">
+																<div class="mt-repeater-hotel-note-input col-10">
 																	<div class="mt-repeater-hotel-note-input">
 																		<input required type="text" name="hotel_note_meta[<?php echo $i; ?>][hotel_note]" class="form-control" value="<?php echo $hotel_notes[$i]["hotel_notes"] ;?>" /> 
 																	</div>
 																</div>
-																<div class="mt-repeater-hotel-note-input col-md-3">
+																<div class="mt-repeater-hotel-note-input col-2">
 																	<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																	<i class="fa fa-close"></i> Delete</a>
+																	<i class="fa-solid fa-trash-can"></i></i></a>
 																</div>
 															</div>
 														<?php } ?>	
 													<?php }else{ ?>
-														<div data-repeater-item class="mt-repeater-hotel-note-item form-group">
+														<div data-repeater-item class="mt-repeater-hotel-note-item form-group row">
 															<!-- jQuery Repeater Container -->
-															<div class="mt-repeater-hotel-note-input col-md-9">
+															<div class="mt-repeater-hotel-note-input col-10">
 																<div class="mt-repeater-hotel-note-input">
 																	<input required type="text" name="hotel_note" class="form-control" value="" /> 
 																</div>
 															</div>
-															<div class="mt-repeater-hotel-note-input col-md-3">
+															<div class="mt-repeater-hotel-note-input col-2">
 																<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																<i class="fa fa-close"></i> Delete</a>
+																<i class="fa-solid fa-trash-can"></i></i></a>
 															</div>
 														</div>
 													<?php } ?>	
 												</div>
-												<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-hotel-note">
+												<a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-hotel-note">
 												<i class="fa-solid fa-plus"></i> Add Note</a>
 											</div>
 										</div>
