@@ -983,6 +983,8 @@
    			$sql = "SELECT i.*, c.customer_name, c.customer_contact,c.customer_contact FROM itinerary as i LEFT JOIN ac_invoices as inv on ( i.customer_id = inv.lead_id) INNER JOIN customers_inquery as c ON ( i.customer_id = c.customer_id ) WHERE i.iti_close_status = 1 AND i.del_status = 0 AND i.iti_status = 9 AND inv.id is NULL group by i.iti_id";
    			$q = $this->db->query($sql);
    			$data['pending_invoices'] = $q->result();
+			// $invoices = "SELECT * FROM `tblclients`  as tcl LEFT JOIN tblcontacts as tcon on (tcl.id = tcon.userid) where tcl.iti_id = 21
+			//    dump($invoices);die;
    			$this->load->view('inc/header');
    			$this->load->view('inc/sidebar');
    			$this->load->view('accounts/invoices/pending_invoices', $data);

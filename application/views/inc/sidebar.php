@@ -293,6 +293,12 @@
                          </a>
                          <ul class="sub-menu">
                              <li class="nav-item  ">
+                                 <a href="http://localhost/perfex/admin/invoices/invoice" class="nav-link ">
+                                     <i class="fa fa-file" aria-hidden="true"></i>
+                                     <span class="title">Create invoices</span>
+                                 </a>
+                             </li>
+                             <li class="nav-item  ">
                                  <a href="<?php echo site_url("accounts/invoices"); ?>" class="nav-link ">
                                      <i class="fa fa-file" aria-hidden="true"></i>
                                      <span class="title">Confirm Invoices</span>

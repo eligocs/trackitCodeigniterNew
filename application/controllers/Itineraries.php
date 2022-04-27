@@ -2292,14 +2292,13 @@ class Itineraries extends CI_Controller {
 				);
 
 
-				// $accountData = array(
-				// 	'name' => $customer_name,
-				// 	'email' => $customer_email,
-				// 	'phone' => $customer_contact,
-				// 	'group_id' => '3',
-				// 	'group_name' => 'customer',
-				// 	'company' => $customer_name,
-				// );
+				$accountData = array(
+					'company' => $customer_name,
+					'phonenumber' => $customer_contact,
+					'iti_id' => $iti_id,
+					// 'group_name' => 'customer',
+					// 'company' => $customer_name,
+				);
 				
 				//payment_screenshot/client_aadhar_card
 				
@@ -2342,7 +2341,10 @@ class Itineraries extends CI_Controller {
 				$pay_id = $this->global_model->getdata("iti_payment_details", array( "iti_id" => $iti_id ) );
 				if( empty( $pay_id ) ){
 					$insert_payment_details = $this->global_model->insert_data( "iti_payment_details", $payData );
-					// $this->global_model->insert_data_account_table( "track_companies", $accountData );
+					$insert_user_id =	$this->global_model->insert_data_account_table("tblclients", $accountData);
+					if( $insert_user_id){
+						 $contact =  $this->global_model->insert_data_account_contact_table( "tblcontacts", $insert_user_id, $customer_id );
+					 }
 					if ( !$insert_payment_details ){
 						$res = array('status' => false, 'msg' => "Payment not updated please try again later!");
 						die( json_encode($res) );

@@ -705,6 +705,7 @@
 		$ci = & get_instance();
 		$where = array();
 		$res = $ci->global_model->getdata("settings", $where, "agent_discount");
+		// $res = $ci->global_model->getdata("settings", $where);
 		if( $res ){
 			$return = $res;
 		}else{
@@ -3140,6 +3141,7 @@ function calculateAgetnDiscountPer($rate_meta, $percentageValue){
 
 
 	function check_agent_discount_price_set($iti){
+
 		$ci =& get_instance();
 		$ci->db->select('*');
         $ci->db->from('itinerary');

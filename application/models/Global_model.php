@@ -19,10 +19,48 @@ class Global_Model extends CI_Model
     }
 
 	//insert Data
+	// public function insert_data_account_table($tablename, $data_array) {
+	// 	$db2 = $this->load->database('account', TRUE);
+    //     if ( $db2->insert($tablename, $data_array) ) {
+    //         $id = $db2->insert_id();
+	// 		$result = $id;
+    //     } else {
+    //         $result = false;
+    //     }
+    //     return $result;
+    // }
 	public function insert_data_account_table($tablename, $data_array) {
-		$db2 = $this->load->database('account', TRUE);
-        if ( $db2->insert($tablename, $data_array) ) {
-            $id = $db2->insert_id();
+        if ( $this->db->insert($tablename, $data_array) ) {
+			$id = $this->db->insert_id();
+			$result = $id;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+
+	public function insert_data_account_contact_table($tablename, $user_id, $customers_inquery_id) {
+		if (  $user_id) {
+			$this->db->select('*'); 
+			$this->db->from('tblclients'); 
+			$this->db->where('userid', $user_id ); 
+			$q = $this->db->get();
+			$res = $q->row(); 
+			$this->db->select('*'); 
+			$this->db->from('customers_inquery'); 
+			$this->db->where('customer_id', $customers_inquery_id ); 
+			$d = $this->db->get();
+			$contact = $d->row(); 
+			if($res){
+				$userDetail = array(
+					'userid' => $res->userid,
+					// 'company' => $res->company,
+					'email' => $contact->customer_email,
+					'phonenumber' => $res->phonenumber,
+				);
+				$this->db->insert($tablename, $userDetail);
+			}
+			$id = $this->db->insert_id();
 			$result = $id;
         } else {
             $result = false;

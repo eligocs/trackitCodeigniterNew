@@ -50,7 +50,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
                 $n = str_replace(' ', '_', $f_n);
                 $file_name = $iti_id . "_audio_{$cus_id}_"  . $n;
 
-                $config['allowed_types'] = 'mp3';
+                $config['allowed_types'] = 'mp3|amr';
                 $config['upload_path'] = $doc_path;
                 $config['file_name'] = $file_name;
                 $this->load->library('upload', $config);
@@ -73,7 +73,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
                                 'iti_id' => $iti_id,
                                 'created_date' => current_datetime(),
                         );
-                     $insert_id =   $this->AudioModel->AudioInsertdata($callrecord);
+                     $insert_id =   $this->AudioModel->AudioInsertdata($data);
                         if($insert_id){
                             $message = [
                                 'status' => 200,
