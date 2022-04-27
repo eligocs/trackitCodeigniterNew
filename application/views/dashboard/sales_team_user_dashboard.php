@@ -29,47 +29,63 @@
             }	
             ?>
          <?php if( !empty( $users_data ) && is_admin_or_manager() ){ ?>
-         <div class="page-bar text-center switchUser">
-            <form id="switchDashboard" class="form-inline">
-               <div class="form-group">
-                  <label for="sales_user_id">Select Date:</label>
-                  <input type="text" required class="form-control" id="date_pick" value="<?php echo $get_date; ?>" />
+         <div class="bg-white mb-5 rounded-4 shadow-sm switchUser">
+            <form id="switchDashboard" class="form-inline mb-0">
+               <div class="row">
+                  <div class="col-md-5 my-2">
+                     <div class="form-group">
+                        <label class="control-label" for="sales_user_id">Select Date:</label>
+                        <input type="text" required class="form-control" id="date_pick" value="<?php echo $get_date; ?>" />
+                     </div>
+                  </div>
+                  <div class="col-md-5 my-2">
+                     <div class="form-group">
+                        <label class="control-label" for="sales_user_id">Select Sales Team User*:</label>
+                        <select required class="form-control" id='sales_user_id' name="user_id">
+                           <option value="">Select User</option>
+                           <?php foreach( $users_data as $user ){ ?>
+                           <option <?php if( $user->user_id == $sales_user_id){ echo "selected"; } ?> value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
+                           <?php } ?>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-md-2 my-2">
+                     <button id="sbmt" type="submit" class="btn btn-primary mt-md-4 mt-0"><i class="fa fa-search"></i> Search</button>
+                  </div>
                </div>
-               <div class="form-group">
-                  <label for="sales_user_id">Select Sales Team User*:</label>
-                  <select required class="form-control" id='sales_user_id' name="user_id">
-                     <option value="">Select User</option>
-                     <?php foreach( $users_data as $user ){ ?>
-                     <option <?php if( $user->user_id == $sales_user_id){ echo "selected"; } ?> value="<?php echo $user->user_id; ?>"><?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?></option>
-                     <?php } ?>
-                  </select>
-               </div>
-               <button id="sbmt" type="submit" class="btn btn-success"><i class="fa fa-search"></i> Submit</button>
             </form>
          </div>
          <?php }else if( $teammem = is_teamleader() ){ ?>
-         <div class="page-bar text-center switchUser">
-            <form id="switchDashboard" class="form-inline">
-               <div class="form-group">
-                  <label for="sales_user_id">Select Date:</label>
-                  <input type="text" required class="form-control" id="date_pick" value="<?php echo $get_date; ?>" />
+         <div class="bg-white mb-5 rounded-4 shadow-sm switchUser">
+            <form id="switchDashboard" class="form-inline mb-0">
+               <div class="row">
+                  <div class="col-md-5 my-2">
+                     <div class="form-group">
+                        <label class="control-label" for="sales_user_id">Select Date:</label>
+                        <input type="text" required class="form-control" id="date_pick" value="<?php echo $get_date; ?>" />
+                     </div>
+                  </div>
+                  <div class="col-md- my-2">
+                     <div class="form-group">
+                        <label class="control-label" for="sales_user_id">Select Team Member*:</label>
+                        <select required class="form-control" id='sales_user_id' name="user_id">
+                           <option value="">Select Teammeber</option>
+                           <?php foreach( $teammem as $user ){ ?>
+                           <option <?php if( $user == $sales_user_id){ echo "selected"; } ?> value="<?php echo $user; ?>"><?php echo get_user_name($user); ?></option>
+                           <?php } ?>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-md-2">
+                     <button id="sbmt" type="submit" class="btn btn-primary mt-md-4 mt-0"><i class="fa fa-search"></i> Search</button>
+                  </div>
                </div>
-               <div class="form-group">
-                  <label for="sales_user_id">Select Team Member*:</label>
-                  <select required class="form-control" id='sales_user_id' name="user_id">
-                     <option value="">Select Teammeber</option>
-                     <?php foreach( $teammem as $user ){ ?>
-                     <option <?php if( $user == $sales_user_id){ echo "selected"; } ?> value="<?php echo $user; ?>"><?php echo get_user_name($user); ?></option>
-                     <?php } ?>
-                  </select>
-               </div>
-               <button id="sbmt" type="submit" class="btn btn-success"><i class="fa fa-search"></i> Submit</button>
             </form>
          </div>
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption">User Name: <?php echo $u_name; ?> Full Name: <?php echo $user_fname; ?> Dashboard ( Sales Team User )</div>
-               <a class="btn btn-success pull-right" href="<?php echo site_url("agents/myteammembers"); ?>" title="Back">Back</a>
+               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents/myteammembers"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
             </div>
          </div>
          <?php } ?>
@@ -77,7 +93,7 @@
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption">User Name: <?php echo $u_name; ?> Full Name: <?php echo $user_fname; ?> Dashboard ( Sales Team User )</div>
-               <a class="btn btn-success pull-right" href="<?php echo site_url("dashboard/user_dashboard"); ?>" title="Back">Back</a>
+               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("dashboard/user_dashboard"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
             </div>
          </div>
          <?php } ?>
@@ -103,7 +119,7 @@
          <!-- Todays status-->
          <div class="portlet box blue">
             <div class="portlet-title">
-               <div class="caption"><i class="fa fa-calendar"></i>Today's Status <strong class="red"><?php echo display_month_name($get_date); ?></strong></div>
+               <div class="caption"><i class="fa fa-calendar"></i>Today's Status <strong><?php echo display_month_name($get_date); ?></strong></div>
             </div>
             <?php $todAy = date("Y-m-d"); ?>
             <div class="todayssection">
@@ -112,7 +128,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-chart-column"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -127,7 +143,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-phone-volume"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -142,7 +158,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-phone-slash text-danger"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -157,7 +173,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=8"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-user-xmark text-danger"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -172,7 +188,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers"). "/?todayStatus={$todAy}&leadStatus=unwork"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-xmark text-danger"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -193,7 +209,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-envelope-circle-check"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -208,7 +224,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=pending"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-spinner"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -223,7 +239,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=9"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-thumbs-up"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -238,7 +254,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=7"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-file-circle-xmark"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -253,7 +269,7 @@
                      <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentRevised&quotation=true"; ?>">
                            <div class="visual">
-                              <i class="fa fa-bar-chart-o"></i>
+                              <i class="fa-solid fa-repeat"></i>
                            </div>
                            <div class="details">
                               <div class="number">
@@ -272,7 +288,7 @@
                         <div class="callCountBlock">
                            <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>">
                               <div class="visual">
-                                 <i class="fa fa-bar-chart-o"></i>
+                                 <i class="fa-solid fa-repeat"></i>
                               </div>
                               <div class="details">
                                  <div class="number">
@@ -287,7 +303,7 @@
                         <div class="callCountBlock">
                            <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revApproved"; ?>">
                               <div class="visual">
-                                 <i class="fa fa-bar-chart-o"></i>
+                                 <i class="fa-solid fa-spell-check"></i>
                               </div>
                               <div class="details">
                                  <div class="number">
@@ -302,7 +318,7 @@
                         <div class="callCountBlock">
                            <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revDecline"; ?>">
                               <div class="visual">
-                                 <i class="fa fa-bar-chart-o"></i>
+                                 <i class="fa-solid fa-file-circle-exclamation"></i>
                               </div>
                               <div class="details">
                                  <div class="number">
@@ -317,7 +333,7 @@
                         <div class="callCountBlock">
                            <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=revDeclineLeads"; ?>">
                               <div class="visual">
-                                 <i class="fa fa-bar-chart-o"></i>
+                                 <i class="fa-solid fa-file-signature"></i>
                               </div>
                               <div class="details">
                                  <div class="number">

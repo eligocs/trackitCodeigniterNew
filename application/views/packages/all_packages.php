@@ -17,7 +17,7 @@
          <div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm">
             <form class="mb-0" role="form" id="filter_frm" method="post">
 				<div class="row">
-					<div class="col-md-4 my-2">
+					<div class="col-md-6 col-lg-4 col-sm-6 my-2">
 						<label class="control-label">State</label>
 						<div class="form-group">
 							<select name='state' class='form-control' id='stateID'>
@@ -31,7 +31,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-md-4 my-2">
+					<div class="col-md-6 col-lg-4 col-sm-6 my-2">
 						<label class="control-label">Package Category </label>
 						<div class="form-group">
 							<select name="p_cat_id" id="cat_id" class="form-control">
@@ -47,8 +47,8 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-md-4 my-2">
-						<label class="control-label d-none d-md-block" for="">&nbsp;</label>
+					<div class="col-md-12 col-lg-4 my-2">
+						<label class="control-label d-none d-lg-block" for="">&nbsp;</label>
 						<button type="submit" class="btn btn-success uppercase add_user"><i class="fa-solid fa-filter"></i> Filter</button>
 						<a href="javascript:void(0);" class="btn btn-success uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
 					</div>

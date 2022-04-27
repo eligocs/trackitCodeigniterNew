@@ -69,236 +69,240 @@ $this_month = date("Y-m");
                 </div>
                 <!-- Todays status-->
                 <div class="todayssection">
-                    <div class="col-md-20">
-                        <div class="callCountBlock">
-                            <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}"; ?>">
-                                <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        <span data-counter="counterup" data-value="<?php echo isset($totalContLeadsToday) ? $totalContLeadsToday : 0; ?>">0</span>
+                    <div class="row">
+                        <div class="col-xxl-3 col-xl-4 col-md-6">
+                            <div class="callCountBlock">
+                                <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}"; ?>">
+                                    <div class="visual">
+                                        <i class="fa-solid fa-chart-column"></i>
                                     </div>
-                                    <div class="desc"> Total Leads </div>
-                                </div>
-                            </a>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="<?php echo isset($totalContLeadsToday) ? $totalContLeadsToday : 0; ?>">0</span>
+                                        </div>
+                                        <div class="desc"> Total Leads </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-md-6">
+                            <div class="callCountBlock">
+                                <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>">
+                                    <div class="visual">
+                                        <i class="fa-solid fa-phone-volume"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="<?php echo isset($totalPickCallsToday) ? $totalPickCallsToday : 0; ?>">0</span>
+                                        </div>
+                                        <div class="desc"> Total Call <br>Picked </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-md-6">
+                            <div class="callCountBlock">
+                                <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>">
+                                    <div class="visual">
+                                        <i class="fa-solid fa-phone-slash text-danger"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="<?php echo isset($totalNotPickCallsToday) ?  $totalNotPickCallsToday : 0; ?>">0</span>
+                                        </div>
+                                        <div class="desc"> Total Call <br>Not Picked </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-md-6">
+                            <div class="callCountBlock">
+                                <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=8"; ?>">
+                                    <div class="visual">
+                                        <i class="fa-solid fa-user-xmark text-danger"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="<?php echo isset($totalDecLeadsToday) ? $totalDecLeadsToday : 0; ?>">0</span>
+                                        </div>
+                                        <div class="desc"> Total Declined <br>Leads </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-md-6">
+                            <div class="callCountBlock">
+                                <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=unwork"; ?>">
+                                    <div class="visual">
+                                        <i class="fa-solid fa-xmark text-danger"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="<?php echo isset($totalUnworkLeadsToday) ? $totalUnworkLeadsToday : 0; ?>">0</span>
+                                        </div>
+                                        <div class="desc"> Unwork<br> Leads </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-20">
-                        <div class="callCountBlock">
-                            <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>">
-                                <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        <span data-counter="counterup" data-value="<?php echo isset($totalPickCallsToday) ? $totalPickCallsToday : 0; ?>">0</span>
-                                    </div>
-                                    <div class="desc"> Total Call <br>Picked </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-20">
-                        <div class="callCountBlock">
-                            <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>">
-                                <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        <span data-counter="counterup" data-value="<?php echo isset($totalNotPickCallsToday) ?  $totalNotPickCallsToday : 0; ?>">0</span>
-                                    </div>
-                                    <div class="desc"> Total Call <br>Not Picked </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-20">
-                        <div class="callCountBlock">
-                            <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=8"; ?>">
-                                <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        <span data-counter="counterup" data-value="<?php echo isset($totalDecLeadsToday) ? $totalDecLeadsToday : 0; ?>">0</span>
-                                    </div>
-                                    <div class="desc"> Total Declined <br>Leads </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-20">
-                        <div class="callCountBlock">
-                            <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=unwork"; ?>">
-                                <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        <span data-counter="counterup" data-value="<?php echo isset($totalUnworkLeadsToday) ? $totalUnworkLeadsToday : 0; ?>">0</span>
-                                    </div>
-                                    <div class="desc"> Unwork<br> Leads </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
                     <div class="load-more-dashboard text-center">
                         <button type="button" data-target_id="todays_full_stats" class="btn_blue_outline btn  pulse view_all_stat_btn"><i class="fa fa-angle-down"></i> View All
                             Stats</button>
                     </div>
                     <div id="todays_full_stats" style="display: none;">
-                        <div class="col-md-20">
-                            <div class="callCountBlock">
-                                <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="<?php echo isset($totalQuotSentToday) ? $totalQuotSentToday : 0; ?>">0</span>
-                                        </div>
-                                        <div class="desc"> Quotations<br> Sent </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-20">
-                            <div class="callCountBlock">
-                                <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=pending"; ?>">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="<?php echo isset($totalWorkingItiToday) ? $totalWorkingItiToday : 0; ?>">0</span>
-                                        </div>
-                                        <div class="desc"> Total Working <br>Itineraries </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-20">
-                            <div class="callCountBlock">
-                                <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=9"; ?>">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="<?php echo isset($totalApprovedItiToday) ? $totalApprovedItiToday : 0; ?>">0</span>
-                                        </div>
-                                        <div class="desc"> Total Approved <br>Itineraries </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-20">
-                            <div class="callCountBlock">
-                                <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=7"; ?>">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="<?php echo isset($totalDecItiToday) ? $totalDecItiToday : 0; ?>">0</span>
-                                        </div>
-                                        <div class="desc"> Total Declined <br>Itineraries </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-20">
-                            <div class="callCountBlock">
-                                <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=QsentRevised&quotation=true"; ?>">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="<?php echo isset($totalRevQuotSentToday) ? $totalRevQuotSentToday : 0; ?>">0</span>
-                                        </div>
-                                        <div class="desc"> Revised Quotations <br> Sent </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr>
-                        <!---------------------------------Revised section ---------------------------->
-                        <div class="today_revised_section">
-                            <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-xxl-3 col-xl-4 col-md-6">
                                 <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>">
+                                    <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>">
                                         <div class="visual">
-                                            <i class="fa fa-bar-chart-o"></i>
+                                            <i class="fa-solid fa-envelope-circle-check"></i>
                                         </div>
                                         <div class="details">
                                             <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastQuotSentToday) ? $pastQuotSentToday : 0; ?>">0</span>
+                                                <span data-counter="counterup" data-value="<?php echo isset($totalQuotSentToday) ? $totalQuotSentToday : 0; ?>">0</span>
+                                            </div>
+                                            <div class="desc"> Quotations<br> Sent </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-xl-4 col-md-6">
+                                <div class="callCountBlock">
+                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=pending"; ?>">
+                                        <div class="visual">
+                                            <i class="fa-solid fa-spinner"></i>
+                                        </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <span data-counter="counterup" data-value="<?php echo isset($totalWorkingItiToday) ? $totalWorkingItiToday : 0; ?>">0</span>
+                                            </div>
+                                            <div class="desc"> Total Working <br>Itineraries </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-xl-4 col-md-6">
+                                <div class="callCountBlock">
+                                    <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=9"; ?>">
+                                        <div class="visual">
+                                            <i class="fa-solid fa-thumbs-up"></i>
+                                        </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <span data-counter="counterup" data-value="<?php echo isset($totalApprovedItiToday) ? $totalApprovedItiToday : 0; ?>">0</span>
+                                            </div>
+                                            <div class="desc"> Total Approved <br>Itineraries </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-xl-4 col-md-6">
+                                <div class="callCountBlock">
+                                    <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=7"; ?>">
+                                        <div class="visual">
+                                            <i class="fa-solid fa-file-circle-xmark"></i>
+                                        </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <span data-counter="counterup" data-value="<?php echo isset($totalDecItiToday) ? $totalDecItiToday : 0; ?>">0</span>
+                                            </div>
+                                            <div class="desc"> Total Declined <br>Itineraries </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-xl-4 col-md-6">
+                                <div class="callCountBlock">
+                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=QsentRevised&quotation=true"; ?>">
+                                        <div class="visual">
+                                            <i class="fa-solid fa-repeat"></i>
+                                        </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <span data-counter="counterup" data-value="<?php echo isset($totalRevQuotSentToday) ? $totalRevQuotSentToday : 0; ?>">0</span>
                                             </div>
                                             <div class="desc"> Revised Quotations <br> Sent </div>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revApproved"; ?>">
-                                        <div class="visual">
-                                            <i class="fa fa-bar-chart-o"></i>
-                                        </div>
-                                        <div class="details">
-                                            <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastApprovedItiToday) ? $pastApprovedItiToday : 0; ?>">0</span>
+                        </div>
+                        <hr>
+                        <!---------------------------------Revised section ---------------------------->
+                        <div class="today_revised_section">
+                            <div class="row">
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
+                                    <div class="callCountBlock">
+                                        <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>">
+                                            <div class="visual">
+                                                <i class="fa-solid fa-repeat"></i>
                                             </div>
-                                            <div class="desc">Revised Approved <br>Itineraries </div>
-                                        </div>
-                                    </a>
+                                            <div class="details">
+                                                <div class="number">
+                                                    <span data-counter="counterup" data-value="<?php echo isset($pastQuotSentToday) ? $pastQuotSentToday : 0; ?>">0</span>
+                                                </div>
+                                                <div class="desc"> Revised Quotations <br> Sent </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revDecline"; ?>">
-                                        <div class="visual">
-                                            <i class="fa fa-bar-chart-o"></i>
-                                        </div>
-                                        <div class="details">
-                                            <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastDeclineItiToday) ? $pastDeclineItiToday : 0; ?>">0</span>
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
+                                    <div class="callCountBlock">
+                                        <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revApproved"; ?>">
+                                            <div class="visual">
+                                                <i class="fa-solid fa-spell-check"></i>
                                             </div>
-                                            <div class="desc">Revised Declined <br>Itineraries </div>
-                                        </div>
-                                    </a>
+                                            <div class="details">
+                                                <div class="number">
+                                                    <span data-counter="counterup" data-value="<?php echo isset($pastApprovedItiToday) ? $pastApprovedItiToday : 0; ?>">0</span>
+                                                </div>
+                                                <div class="desc">Revised Approved <br>Itineraries </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=revDeclineLeads"; ?>">
-                                        <div class="visual">
-                                            <i class="fa fa-bar-chart-o"></i>
-                                        </div>
-                                        <div class="details">
-                                            <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastDecLeadsToday) ? $pastDecLeadsToday : 0; ?>">0</span>
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
+                                    <div class="callCountBlock">
+                                        <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$todAy}&leadStatus=revDecline"; ?>">
+                                            <div class="visual">
+                                                <i class="fa-solid fa-file-circle-exclamation"></i>
                                             </div>
-                                            <div class="desc">Declined <br>Revised Leads </div>
-                                        </div>
-                                    </a>
+                                            <div class="details">
+                                                <div class="number">
+                                                    <span data-counter="counterup" data-value="<?php echo isset($pastDeclineItiToday) ? $pastDeclineItiToday : 0; ?>">0</span>
+                                                </div>
+                                                <div class="desc">Revised Declined <br>Itineraries </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
+                                    <div class="callCountBlock">
+                                        <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=revDeclineLeads"; ?>">
+                                            <div class="visual">
+                                                <i class="fa-solid fa-file-signature"></i>
+                                            </div>
+                                            <div class="details">
+                                                <div class="number">
+                                                    <span data-counter="counterup" data-value="<?php echo isset($pastDecLeadsToday) ? $pastDecLeadsToday : 0; ?>">0</span>
+                                                </div>
+                                                <div class="desc">Declined <br>Revised Leads </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--Todays full stat -->
                     <!---------------------------------End Todays Revised section ---------------------------->
-                    <div class="clearfix"></div>
+                   
                 </div>
                 <!-- End Today section -->
             </div>
             <!--portlet close -->
-            <div class="clearfix"></div>
+           
             <?php /*
             <!--AMENDMENT PRICE SECTION-->
             <div class="portlet box blue">
@@ -1126,7 +1130,7 @@ $this_month = date("Y-m");
                     </div>
                 </div>
             </div>
-            <div class="clearfix"></div>
+           
             <?php /* if( is_gm() ){  ?>
                 <!--ABOVE 40K PACKAGES PRICE SECTION-->
                 <div class="portlet box blue">
@@ -1263,7 +1267,7 @@ $this_month = date("Y-m");
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
+                           
                             <div class="col-lg-6 col-xs-12 col-sm-12">
                                 <div class="portlet light bordered">
                                     <div class="portlet-title red_background">
@@ -1333,7 +1337,7 @@ $this_month = date("Y-m");
                     </div>
                 </div>
                 <!--END PENDING PRICE SECTION-->
-                <div class="clearfix"></div>
+               
                 <?php } */
             ?>
             <?php if (is_sales_manager()) {  ?>
@@ -1465,7 +1469,7 @@ $this_month = date("Y-m");
                     </div>
                 </div>
                 <!--END PENDING PRICE SECTION-->
-                <div class="clearfix"></div>
+               
             <?php } ?>
 
             <div class="total-leads-for-month">
@@ -1476,11 +1480,11 @@ $this_month = date("Y-m");
                         </div>
                         <div class="portlet-body">
                             <div class="row">
-                                <div class="col-md-20">
+                                <div class="col-md-3">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?leadfrom={$from}&leadto={$to}"; ?>">
                                             <div class="visual">
-                                                <i class="fa fa-shopping-cart"></i>
+                                                <i class="fa-solid fa-chart-column"></i>
                                             </div>
                                             <div class="details">
                                                 <div class="number">
@@ -1491,11 +1495,11 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-20">
+                                <div class="col-md-3">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callpicked"; ?>">
                                             <div class="visual">
-                                                <i class="fa fa-bar-chart-o"></i>
+                                                <i class="fa-solid fa-phone-volume"></i>
                                             </div>
                                             <div class="details">
                                                 <div class="number">
@@ -1506,11 +1510,11 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-20">
+                                <div class="col-md-3">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callnotpicked"; ?>">
                                             <div class="visual">
-                                                <i class="fa fa-bar-chart-o"></i>
+                                                <i class="fa-solid fa-phone-slash text-danger"></i>
                                             </div>
                                             <div class="details">
                                                 <div class="number">
@@ -1521,11 +1525,11 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-20">
+                                <div class="col-md-3">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=8"; ?>">
                                             <div class="visual">
-                                                <i class="fa fa-bar-chart-o"></i>
+                                                <i class="fa-solid fa-user-xmark text-danger"></i>
                                             </div>
                                             <div class="details">
                                                 <div class="number">
@@ -1536,11 +1540,11 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-20">
+                                <div class="col-md-3">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=unwork"; ?>">
                                             <div class="visual">
-                                                <i class="fa fa-bar-chart-o"></i>
+                                                <i class="fa-solid fa-xmark text-danger"></i>
                                             </div>
                                             <div class="details">
                                                 <div class="number">
@@ -1551,17 +1555,17 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
-                                <div class="load-more-dashboard text-center">
-                                    <button type="button" data-target_id="month_full_stat" class="btn pulse btn_blue_outline view_all_stat_btn"><i class="fa fa-angle-down"></i> View
-                                        All Stats</button>
-                                </div>
-                                <div id="month_full_stat" style="display: none;">
-                                    <div class="col-md-20">
+                            </div>
+                            <div class="load-more-dashboard text-center">
+                                <button type="button" data-target_id="month_full_stat" class="btn pulse btn_blue_outline view_all_stat_btn"><i class="fa fa-angle-down"></i> View All Stats</button>
+                            </div>
+                            <div id="month_full_stat" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-3">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=Qsent&quotation=true"; ?>">
                                                 <div class="visual">
-                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <i class="fa-solid fa-envelope-circle-check"></i>
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
@@ -1572,11 +1576,11 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-20">
+                                    <div class="col-md-3">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=pending"; ?>">
                                                 <div class="visual">
-                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <i class="fa-solid fa-spinner"></i>
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
@@ -1587,11 +1591,11 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-20">
+                                    <div class="col-md-3">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=9"; ?>">
                                                 <div class="visual">
-                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <i class="fa-solid fa-thumbs-up"></i>
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
@@ -1602,11 +1606,11 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-20">
+                                    <div class="col-md-3">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=7"; ?>">
                                                 <div class="visual">
-                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <i class="fa-solid fa-file-circle-xmark"></i>
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
@@ -1617,11 +1621,11 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-20">
+                                    <div class="col-md-3">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=QsentRevised&quotation=true"; ?>">
                                                 <div class="visual">
-                                                    <i class="fa fa-bar-chart-o"></i>
+                                                    <i class="fa-solid fa-repeat"></i>
                                                 </div>
                                                 <div class="details">
                                                     <div class="number">
@@ -1632,15 +1636,16 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="clearfix"></div>
-                                    <hr>
-                                    <!---------------------------------Revised section Month---------------------------->
-                                    <div class="month_revised_section">
+                                </div>
+                                <hr>
+                                <!---------------------------------Revised section Month---------------------------->
+                                <div class="month_revised_section">
+                                    <div class="row">
                                         <div class="col-md-3">
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?leadfrom={$from}&leadto={$to}&leadStatus=QsentPastMonth&quotation=true"; ?>">
                                                     <div class="visual">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fa-solid fa-repeat"></i>
                                                     </div>
                                                     <div class="details">
                                                         <div class="number">
@@ -1655,7 +1660,7 @@ $this_month = date("Y-m");
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?leadfrom={$from}&leadto={$to}&leadStatus=revApprovedMonth"; ?>">
                                                     <div class="visual">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fa-solid fa-spell-check"></i>
                                                     </div>
                                                     <div class="details">
                                                         <div class="number">
@@ -1670,7 +1675,7 @@ $this_month = date("Y-m");
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?leadfrom={$from}&leadto={$to}&leadStatus=revDeclineMonth"; ?>">
                                                     <div class="visual">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fa-solid fa-file-circle-exclamation"></i>
                                                     </div>
                                                     <div class="details">
                                                         <div class="number">
@@ -1685,7 +1690,7 @@ $this_month = date("Y-m");
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?leadfrom={$from}&leadto={$to}&leadStatus=revDeclineLeadsMonth"; ?>">
                                                     <div class="visual">
-                                                        <i class="fa fa-bar-chart-o"></i>
+                                                        <i class="fa-solid fa-file-signature"></i>
                                                     </div>
                                                     <div class="details">
                                                         <div class="number">
@@ -1698,9 +1703,8 @@ $this_month = date("Y-m");
                                         </div>
                                     </div>
                                 </div>
-                                <!--End month full stats-->
                             </div>
-                            <!-- row -->
+                            <!--End month full stats-->
                         </div>
                         <!-- portlet-body -->
                     </div>
@@ -1713,83 +1717,10 @@ $this_month = date("Y-m");
                     <div class="caption"><i class="icon-equalizer font-light" aria-hidden="true"></i> Statistics Section</div>
                 </div>
                 <div class="portlet-body">
-                    <div class="row dashboard-tables-all-info2">
-                        <div class="col-lg-12 col-xs-12 col-sm-12">
-                            <div class="portlet light ">
-                                <div class="portlet-body">
-                                    <!-- <div class="tab-content">
-                                <div class="col-md-6">
-                                    <div class="titile_section">
-                                        <h3 class="col-lg-12">ITINERARIES GRAPH</h3>
-                                        <div class="form-group col-lg-6">
-                                            <label for="sel1">Select Agent:</label>
-                                            <select class="form-control" id="agent_graph">
-                                                <option value="">All Agents</option>
-                                                <?php
-                                                if ($get_agents) {
-                                                    foreach ($get_agents as $agent) {
-                                                        echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-lg-6 pull-right">
-                                            <label for="sel1">Select Year:</label>
-                                            <select class="form-control" id="year_iti">
-                                                <?php
-                                                $current_year = date('Y');
-                                                for ($year = 2017; $year <=  $current_year; $year++) {
-                                                    $selected = $year == $current_year ? 'selected = selected' : '';
-                                                    echo "<option value={$year} {$selected} >{$year}</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body card-padding">
-                                        <div class="loader_iti processer"><img class="img-responsive"
-                                                src="<?php echo base_url(); ?>site/images/loader.gif" /></div>
-                                        <div id="iti_echarts_bar" style="height:400px;"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="titile_section">
-                                        <h3 class="col-lg-12">LEADS GRAPH</h3>
-                                        <div class="form-group col-lg-6">
-                                            <label for="sel1">Select Agent:</label>
-                                            <select class="form-control" id="agent_graph">
-                                                <option value="">All Agents</option>
-                                                <?php
-                                                if ($get_agents) {
-                                                    foreach ($get_agents as $agent) {
-                                                        echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-lg-6 pull-right">
-                                            <label for="seld1">Select Year:</label>
-                                            <select class="form-control" id="year_leads">
-                                                <?php
-                                                $current_year = date('Y');
-                                                for ($year1 = 2017; $year1 <=  $current_year; $year1++) {
-                                                    $selected = $year1 == $current_year ? 'selected = selected' : '';
-                                                    echo "<option value={$year1} {$selected} >{$year1}</option>";
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                        <div class="loader_lead processer"><img class="img-responsive"
-                                                src="<?php echo base_url(); ?>site/images/loader.gif" /></div>
-                                        <div id="leads_echarts_bar" style="height:400px;"></div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div> -->
+                    <div class="dashboard-tables-all-info2">
+                        <div class="portlet light ">
+                            <div class="portlet-body">
+                                <!-- <div class="tab-content">
                                     <div class="col-md-6">
                                         <div class="titile_section">
                                             <h3 class="col-lg-12">ITINERARIES GRAPH</h3>
@@ -1807,7 +1738,80 @@ $this_month = date("Y-m");
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-6 pull-right">
-                                                <label for="sel1">Select Date:</label>
+                                                <label for="sel1">Select Year:</label>
+                                                <select class="form-control" id="year_iti">
+                                                    <?php
+                                                    $current_year = date('Y');
+                                                    for ($year = 2017; $year <=  $current_year; $year++) {
+                                                        $selected = $year == $current_year ? 'selected = selected' : '';
+                                                        echo "<option value={$year} {$selected} >{$year}</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body card-padding">
+                                            <div class="loader_iti processer"><img class="img-responsive"
+                                                    src="<?php echo base_url(); ?>site/images/loader.gif" /></div>
+                                            <div id="iti_echarts_bar" style="height:400px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="titile_section">
+                                            <h3 class="col-lg-12">LEADS GRAPH</h3>
+                                            <div class="form-group col-lg-6">
+                                                <label for="sel1">Select Agent:</label>
+                                                <select class="form-control" id="agent_graph">
+                                                    <option value="">All Agents</option>
+                                                    <?php
+                                                    if ($get_agents) {
+                                                        foreach ($get_agents as $agent) {
+                                                            echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6 pull-right">
+                                                <label for="seld1">Select Year:</label>
+                                                <select class="form-control" id="year_leads">
+                                                    <?php
+                                                    $current_year = date('Y');
+                                                    for ($year1 = 2017; $year1 <=  $current_year; $year1++) {
+                                                        $selected = $year1 == $current_year ? 'selected = selected' : '';
+                                                        echo "<option value={$year1} {$selected} >{$year1}</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="loader_lead processer"><img class="img-responsive"
+                                                    src="<?php echo base_url(); ?>site/images/loader.gif" /></div>
+                                            <div id="leads_echarts_bar" style="height:400px;"></div>
+                                        </div>
+                                    </div>
+                                
+                                </div> -->
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="titile_section row">
+                                            <h3 class="col-lg-12">Itineraries Graph</h3>
+                                            <div class="form-group col-lg-6">
+                                                <label class="control-label" for="sel1">Select Agent:</label>
+                                                <select class="form-control" id="agent_graph">
+                                                    <option value="">All Agents</option>
+                                                    <?php
+                                                    if ($get_agents) {
+                                                        foreach ($get_agents as $agent) {
+                                                            echo "<option value={$agent->user_id} >{$agent->user_name}</option>";
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6 pull-right">
+                                                <label class="control-label" for="sel1">Select Date:</label>
                                                 <input type="text" autocomplete="off" class="form-control daterange dateHide" id="daterangelead" name="daterangelead" value="" />
                                             </div>
                                         </div>
@@ -1816,10 +1820,10 @@ $this_month = date("Y-m");
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="titile_section">
-                                            <h3 class="col-lg-12">LEADS GRAPH</h3>
+                                        <div class="titile_section row">
+                                            <h3 class="col-lg-12">Leads Graph</h3>
                                             <div class="form-group col-lg-6">
-                                                <label for="sel1">Select Agent:</label>
+                                                <label class="control-label" for="sel1">Select Agent:</label>
                                                 <select class="form-control" id="agent_graph_lead">
                                                     <option value="">All Agents</option>
                                                     <?php
@@ -1832,20 +1836,20 @@ $this_month = date("Y-m");
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-6 pull-right">
-                                                <label for="sel1">Select Date:</label>
+                                                <label class="control-label" for="sel1">Select Date:</label>
                                                 <input type="text" autocomplete="off" class="form-control daterange dateHide" id="leadsDate" name="daterangelead" value="" />
                                             </div>
                                         </div>
                                         <div class="portlet-body">
                                             <div id="main" style="height: 400px"></div>
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+               
             </div>
             <br>
             <br>

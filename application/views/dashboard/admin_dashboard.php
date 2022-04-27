@@ -74,7 +74,7 @@ $this_month = date("Y-m");
                         //$mtarget = 10; 
                         //$mbooked = 10;
                         $percentage =  !empty($mtarget) ?  floor(($mbooked / $mtarget) * 100) : 0; ?>
-                <div class='header_target_section'>
+                <!-- <div class='header_target_section'>
                     <a href="<?php echo base_url("incentive"); ?>" title="Go to incentive page">
                         <div class="progress" style="max-width:100%; min-width:250px;">
                             <span class="target"><span>Booked: <?php echo $mbooked; ?></span> / <span>Target:
@@ -85,7 +85,7 @@ $this_month = date("Y-m");
                             </div>
                         </div>
                     </a>
-                </div>
+                </div> -->
                 <?php } else if ($h_user_role == 96) { ?>
                 <!--check teamleader-->
                 <?php if (!empty(get_teamleader())) {
