@@ -46,20 +46,32 @@ class Audio extends \Restserver\Libraries\REST_Controller
             
             // file_put_contents('audio.mp3', base64_decode($data));
             if( isset( $_FILES['callAudio']['name'] ) && !empty( $_FILES['callAudio']['name'] ) ){  
-                $type = pathinfo($_FILES['callAudio'], PATHINFO_EXTENSION);
-                $data = file_get_contents($_FILES['callAudio']);
-                dump($data);die;
-                $encode = base64_encode($_FILES['callAudio']);
+                // $data =  base64_encode( file_get_contents( $_FILES['callAudio'] ) );
+                define('UPLOAD_DIR', $doc_path);
+
+                $path = $_FILES['callAudio']['tmp_name'];
+                $type = pathinfo($path, PATHINFO_EXTENSION);
+                $data = file_get_contents($path);
+                $base64 = base64_encode($data);
+
+                $rea1 = base64_decode($base64);
+
                 $f_n = $_FILES['callAudio']['name'];
-                $n = str_replace(' ', '_', $f_n);
+                $n = str_replace(' ', '_', $rea1);
                 $file_name = $iti_id . "_audio_{$cus_id}_"  . $n;
 
-                $config['allowed_types'] = 'mp3';
+                file_put_contents('audio.mp3', base64_decode($base64));
+                $file= UPLOAD_DIR .uniqid().'.mp3';
+                 $res = file_put_contents($file, $base64);
+                dump($res);die;
+                
+                // $config['allowed_types'] = 'mp3';
                 $config['upload_path'] = $doc_path;
                 $config['file_name'] = $file_name;
                 $this->load->library('upload', $config);
                 
-                if(!$this->upload->do_upload('callAudio')){
+                if(!$this->upload->do_upload($rea1)){
+                   
 						$err = $this->upload->display_errors();
                         $message = [
                             'status' => 500,
