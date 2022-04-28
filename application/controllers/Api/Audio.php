@@ -44,29 +44,53 @@ class Audio extends \Restserver\Libraries\REST_Controller
             
             $file_prefix = date("Y") . "/".  date("m") . "/" . $cus_id . "/";
             
-            // file_put_contents('audio.mp3', base64_decode($data));
-            if( isset( $_FILES['callAudio']['name'] ) && !empty( $_FILES['callAudio']['name'] ) ){  
-                // $data =  base64_encode( file_get_contents( $_FILES['callAudio'] ) );
+            if( isset( $_POST['audiocall'] ) && !empty( $_POST['audiocall'] ) ){  
                 define('UPLOAD_DIR', $doc_path);
+                // $path = $_FILES['callAudio']['tmp_name'];
+                // $type = pathinfo($path, PATHINFO_EXTENSION);
+                // $data = file_get_contents($path);
+                // $base64 = base64_encode($data); 
+                $base64 = $_POST['audiocall'];              
+                $file_name = $iti_id . "_audio_{$cus_id}_";
+                $file= UPLOAD_DIR . $file_name. uniqid() . '.mp3';
+                $filename= $file_name.  uniqid() . '.mp3';
+                $res = file_put_contents($file, base64_decode($base64));
+                if($res){
+                        $data =  array(
+                            'cus_id' => $cus_id,
+                            'audio' => $filename,
+                            'status' => 0,
+                            'iti_id' => $iti_id,
+                            'created_date' => current_datetime(),
+                    );
+                    $insert_id =   $this->AudioModel->AudioInsertdata($data);
+                    if($insert_id){
+                        $message = [
+                            'status' => 200,
+                            'data' => $iti_id ,
+                            'message' => "Recoding Save successful"
+                        ];
+                        $this->response($message, REST_Controller::HTTP_OK);
+                    }else{
+                        $message = [
+                            'status' => 500,
+                            'data' => [] ,
+                            'message' => "Fail to save image in database."
+                        ];
+                        $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+                    }
+                }else{
+                    $message = [
+                        'status' => 500,
+                        'data' => 'Some Error!' ,
+                        'message' => "Fail to upload file."
+                    ];
+                    $this->response($message, REST_Controller::HTTP_NOT_FOUND);
 
-                $path = $_FILES['callAudio']['tmp_name'];
-                $type = pathinfo($path, PATHINFO_EXTENSION);
-                $data = file_get_contents($path);
-                $base64 = base64_encode($data);
-
-                $rea1 = base64_decode($base64);
-
-                $f_n = $_FILES['callAudio']['name'];
-                $n = str_replace(' ', '_', $rea1);
-                $file_name = $iti_id . "_audio_{$cus_id}_"  . $n;
-
-                file_put_contents('audio.mp3', base64_decode($base64));
-                $file= UPLOAD_DIR .uniqid().'.mp3';
-                 $res = file_put_contents($file, $base64);
-                dump($res);die;
+                }
                 
                 // $config['allowed_types'] = 'mp3';
-                $config['upload_path'] = $doc_path;
+                /*$config['upload_path'] = $doc_path;
                 $config['file_name'] = $file_name;
                 $this->load->library('upload', $config);
                 
@@ -106,7 +130,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
                             $this->response($message, REST_Controller::HTTP_NOT_FOUND);
                         }
 					}
-					unset($config);
+					unset($config);*/
                 }else{
                     $message = [
                         'status' => 500,
