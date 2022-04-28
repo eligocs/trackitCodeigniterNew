@@ -17,12 +17,12 @@
             <form role="form" id="editHotel" enctype="multipart/form-data">
                 <div class="bg-white p-3 rounded-4 shadow-sm">
                     <div class="row">
-                        <div class="form-group col-md-3 my-2">
+                        <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Name*:</label>
                             <input type="text" placeholder="Hotel Name" name="name" class="form-control"
                                 value="<?php echo $hotel->hotel_name; ?>" />
                         </div>
-                        <div class="form-group col-md-3 my-2">
+                        <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Country*: </label>
                             <select name="country" class="form-control country">
                                 <option value="">Select Country</option>
@@ -36,7 +36,7 @@
                             ?>
                             </select>
                         </div>
-                        <div id="state_list" class="col-md-3 my-2">
+                        <div id="state_list" class="col-xxl-3 col-xl-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel State*: </label>
                                 <select name="state" class="form-control state">
@@ -52,7 +52,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div id="city_list" class="col-md-3 my-2">
+                        <div id="city_list" class="col-xxl-3 col-xl-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel City*: </label>
                                 <select name="city" class="form-control city">
@@ -69,7 +69,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group col-md-3 my-2">
+                        <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Category*</label>
                             <select name="category" class="form-control cat">
                                 <option value="">Select Category</option>
@@ -86,29 +86,32 @@
 
                         </div>
 
-                        <div class="form-group col-md-3 my-2">
+                        <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Email*</label>
                             <input id="mulit_email" type="text"
                                 placeholder="Email for multi email.eg: hotel@test.com,hotel2@test.com" name="email"
                                 class="form-control" value="<?php echo $hotel->hotel_email; ?>" />
                         </div>
-                        <div class="form-group col-md-3 my-2">
+
+                        <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Address*</label>
                             <textarea name="address" class="form-control"
                                 placeholder="Hotel Full Address"><?php echo $hotel->hotel_address; ?></textarea>
                         </div>
 
-                        <div class="form-group col-md-3 my-2">
+                        <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Contact Number*</label>
                             <input type="text" placeholder="Hotel Phone Number" name="contact" class="form-control"
                                 value="<?php echo $hotel->hotel_contact; ?>" />
                         </div>
-                        <div class="form-group col-md-3 my-2">
+
+                        <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Website</label>
                             <input type="text" placeholder="Website Link" name="website" class="form-control"
                                 value="<?php echo $hotel->hotel_website; ?>" />
                         </div>
-                        <div class="col-md-3 my-2">
+
+                        <div class="col-xxl-3 col-xl-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Room Category*</label>
                                 <select name="room_category[]" class="form-control cat select2" multiple>

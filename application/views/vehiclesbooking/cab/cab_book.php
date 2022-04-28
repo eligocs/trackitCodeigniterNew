@@ -1,8 +1,8 @@
-<!-- Begain page-container -->
+<!-- Begin page-container -->
 <div class="page-container">
-	<!-- Begain page-content-wrapper -->
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
-		<!-- Begain page-content -->
+		<!-- Begin page-content -->
 		<div class="page-content">
 			<div class="portlet box blue">
 				<div class="portlet-title">
@@ -47,14 +47,14 @@
 				</div>
 			</div>	
 					
-			<div class="bg-white p-3 rounded-4 shadow-sm">
-				<!--Show hotel booking if any-->
-				<?php if( $existing_bookings ){  ?>
-				<div class="portlet box blue">
-					<div class="portlet-title">
-						<div class="caption"><i class="fa fa-calendar"></i>Existing Cab Booking Against This Itinerary</div>
-					</div>
+			<!--Show hotel booking if any-->
+			<?php if( $existing_bookings ){  ?>
+			<div class="portlet box blue mt-5">
+				<div class="portlet-title">
+					<div class="caption"><i class="fa fa-calendar"></i>Existing Cab Booking Against This Itinerary</div>
 				</div>
+			</div>
+			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table class="table table-bordered table-hover">
 						<thead class="thead-default">
@@ -97,7 +97,7 @@
 			
 				<form class="form-horizontal" role="form" id="BookCab">
 					<div class="row">
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Select Vehicle*</label>
 								<select required name="inp[cab_id]" class="form-control vehicle col-md-4">
@@ -114,7 +114,8 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4 my-2">
+
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="transporter_list form-group">
 								<label class="control-label">Select Transporter*</label> 
 								<select disabled required name="inp[transporter_id]" class="form-control transporter">
@@ -124,14 +125,14 @@
 							</div>
 						</div>
 
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Total Travellers*: </label> 
 								<input type="text" required class="form-control" name="inp[total_travellers]" value="<?php echo $total_tra; ?>">
 							</div>
 						</div>
 							
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Booking Date*: </label> 
 								<div class="input-group input-daterange">
@@ -142,7 +143,7 @@
 							</div>
 						</div>
 							
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Reporting/Departure Time*</label>
 								<div class="input-group input-large">
@@ -154,35 +155,35 @@
 							</div>
 						</div>
 						
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Booking Duration*: </label> 
 								<input type="text" readonly required name="inp[booking_duration]" id="booking_duration" class="form-control" value="">
 							</div>
 						</div>
 						
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Picking Location*</label> 
 								<input type="text" required name="inp[pic_location]" id="pic_location" placeholder="Picking Location" class="form-control" value="">
 							</div>
 						</div>
 					
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Dropping Location*: </label>
 								<input type="text" required name="inp[drop_location]" id="drop_location" placeholder="Droping Location" class="form-control" value="">
 							</div>
 						</div>
 										
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Cab Rate (Per/day)*: </label>
 								<input required type="text" placeholder="Cab Rate" name="inp[cab_rate]" class="form-control cab_rate clearfield" value="0"/>
 							</div> 
 						</div>
 					
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Total Cabs*: </label>
 									<select required disabled name="inp[total_cabs]" class="form-control total_cabs clearfield">
@@ -194,28 +195,28 @@
 							</div>
 						</div>
 
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Total Cabs Cost (per/day)*: </label>
 								<input readonly required type="text" placeholder="Cab Total Cost per/day" id ="cab_total_cost" class="form-control cab_total_cost clearfield" value=""/>
 							</div>
 						</div>
 						
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label"><strong>Inclusion Charges:</strong></label>
 								<input class="form-control" id="extra_charges" type="text" placeholder="eg. 100" name="inp[extra_charges]" value="0">
 							</div>	 
 						</div>
 
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label"><strong>Total Days*:</strong></label>
 								<input readonly type="text" required id="total_days" class="form-control" value="0">
 							</div>
 						</div>
 
-						<div class="col-md-4 my-2">
+						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label"><strong>Total Cost*:</strong></label>
 								<a href="javascript: void(0)" id="calculate_cost">Calculate</a>

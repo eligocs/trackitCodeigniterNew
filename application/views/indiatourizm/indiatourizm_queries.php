@@ -40,7 +40,6 @@
 				</div>
 			</div>
 		</div>
-		
 	</div>
 </div>
 <!-- END page-container -->
@@ -56,21 +55,23 @@ strong.btn.btn-success.assign_btn {
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">Close</button>
 				<h4 class="modal-title">Assign Leads</h4>
-				Client Language : <strong id="lang"></strong>
+				<span>Client Language : </span> <strong id="lang"></strong>
+				<button type="button" class="close" data-dismiss="modal">Close</button>
 			</div>
 			<div class="modal-body"> 
 				<form id="assign_lead_form">
-					<div class="clearfix">
 					<div class="row ">
-						<div class="form-group col-md-6">
-							<label class="control-label">Assign To*</label>
-							<br>
-							<label><input class="form-control assign_to" type="radio" id="assing_teamleader" required name="assign_to" value="teamleader">Teamleader</label>&nbsp;&nbsp;&nbsp;
-							<label><input class="form-control assign_to" type="radio" id="assing_agent" required name="assign_to" value="agent">Agent</label> 
+						<div class="form-group col-md-6 my-2">
+							<label class="control-label d-block">Assign To*</label>
+							<label class="control-label me-3">
+								<input class="form-check-input me-1 assign_to" type="radio" id="assing_teamleader" required name="assign_to" value="teamleader">Teamleader
+							</label>
+							<label class="control-label me-3">
+								<input class="form-check-input me-1 assign_to" type="radio" id="assing_agent" required name="assign_to" value="agent">Agent
+							</label> 
 						</div>
-						<div class="form-group col-md-6 agent_select" style="display: none;">
+						<div class="form-group col-md-6 my-2 agent_select" style="display: none;">
 							<label class="control-label">Assign To Agent*</label>
 							<select required name="agent_id" class="form-control">
 								<option  value="">Select Sales Team Agents</option>
@@ -88,7 +89,7 @@ strong.btn.btn-success.assign_btn {
 								?>
 							</select>
 						</div>
-						<div class="form-group col-md-6 team_leaders_select" style="display: none;">
+						<div class="form-group col-md-6 my-2 team_leaders_select" style="display: none;">
 							<label class="control-label">Assign To Team Leader*</label>
 							<select required name="leader_id" class="form-control">
 								<option  value="">Select Teamleader</option>
@@ -105,10 +106,9 @@ strong.btn.btn-success.assign_btn {
 								} ?>
 							</select>
 						</div>
-						</div>
-						<div class="row">
+
 						<?php $get_cus_type = get_customer_type(); ?>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-6 my-2">
 							<label class="control-label">Customer Type*</label>
 							<select required name="customer_type" class="form-control" id="cus_type">
 								<option value="">Select Customer Type</option>
@@ -122,40 +122,34 @@ strong.btn.btn-success.assign_btn {
 								<option value="2">Reference</option-->
 							</select> 
 						</div>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-6 my-2">
 							<label class="control-label">Destination*</label>
 							<input type="text" required name="destination" id="destination" class="form-control">
 						</div>
-						</div>
-						<div class="row ">
-						<div class="form-group col-md-6">
+
+						<div class="form-group col-md-6 my-2">
 							<label class="control-label">Name*</label>
 							<input type="text" required name="name" id="cname" class="form-control">
 						</div>
 						
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-6 my-2">
 							<label class="control-label">Email*</label>
 							<input type="text" required name="email" id="cemail" class="form-control">
 						</div>
-						</div>
-						<div class="row ">
-						<div class="form-group col-md-6">
+
+						<div class="form-group col-md-6 my-2">
 							<label class="control-label">Mobile*</label>
 							<input type="text" required name="mobile" id="cmobile" class="form-control">
 						</div>
-						
-						
-						</div>
-						
-						<div class="form-actions">
+
+						<div class="form-actions col-md-12 my-2">
 							<input type="hidden" id="id" value="" name="id">
 							<input type="submit" class='btn btn-green' id="continue_package" value="Assign Lead" >
 						</div>
-					</div>	
-					<div id="pack_response"></div>	
+					</div>
+					<div id="pack_response"></div>
 				</form>	
-			</div>
-			<div class="modal-footer"></div>
+			</div>	
 		</div>
 	</div>
 </div>
@@ -165,14 +159,13 @@ strong.btn.btn-success.assign_btn {
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">Close</button>
 				<h4 class="modal-title">Assign Leads</h4>
+				<button type="button" class="close" data-dismiss="modal">Close</button>
 			</div>
 			<div class="modal-body"> 
 				<form id="teamleader_frm">
-					<div class="clearfix">
 					<div class="row ">
-						<div class="form-group col-md-6 team_leaders_select">
+						<div class="form-group col-md-12 my-2 team_leaders_select">
 							<label class="control-label">Assign To Team Leader*</label>
 							<select required name="leader_id" class="form-control">
 								<option  value="">Select Teamleader</option>
@@ -191,7 +184,7 @@ strong.btn.btn-success.assign_btn {
 							</select>
 						</div>
 					</div>
-					<div class="form-actions">
+					<div class="form-actions my-2">
 						<input type="hidden" id="ids" value="" name="ids">
 						<input type="submit" class='btn btn-green' id="assign_teambtn" value="Assign Lead" >
 					</div>
@@ -199,7 +192,6 @@ strong.btn.btn-success.assign_btn {
 					<div id="pack_response_aj"></div>	
 				</form>	
 			</div>
-			<div class="modal-footer"></div>
 		</div>
 	</div>
 </div>

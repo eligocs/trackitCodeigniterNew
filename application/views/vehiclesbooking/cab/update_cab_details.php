@@ -16,7 +16,7 @@
                 <div class="bg-white p-3 rounded-4 shadow-sm">
                     <form class="form-horizontal" role="form" id="edit_cab_booking">
                         <div class="row">
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select Vehicle*</label>
                                     <select disabled required class="form-control vehicle col-md-4">
@@ -34,7 +34,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="transporter_list">
                                     <label class="control-label">Select Transporter*</label>
                                     <?php //dump( get_all_transporter_by_vehicle_id($cab_booking->cab_id) ); echo $cab_booking->transporter_id; ?>
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Travellers*: </label>
                                     <input type="text" disabled required class="form-control"
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Booking Date*: </label>
                                     <div class="input-group input-daterange">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Reporting/Departure Time*</label>
                                     <div class="input-group input-large">
@@ -92,7 +92,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Booking Duration*: </label>
                                     <input type="text" readonly required id="booking_duration" class="form-control"
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Picking Location*</label>
                                     <input type="text" disabled required id="pic_location" placeholder="Picking Location"
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Dropping Location*: </label>
                                     <input type="text" required disabled id="drop_location" placeholder="Droping Location"
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Cab Rate (Per/day)*: </label>
                                     <input required disabled type="text" placeholder="Cab Rate"
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Cabs*: </label>
                                     <select required disabled class="form-control total_cabs clearfield">
@@ -141,7 +141,7 @@
                             </div>
 
                             <?php $total_cost = $cab_booking->cab_rate * $cab_booking->total_cabs; ?>
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Cabs Cost (per/day)*: </label>
                                     <input readonly required type="text" placeholder="Cab Total Cost per/day"
@@ -150,7 +150,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label"><strong>Inclusion Charges:</strong></label>
                                     <input class="form-control" disabled id="extra_charges" type="text" placeholder="eg. 100"
@@ -158,16 +158,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <label class="control-label"><strong>Total Days*:</strong></label>
                                 <input readonly type="text" required id="total_days" class="form-control"
                                     value="<?php echo isset($cab_booking->booking_duration) ? $cab_booking->booking_duration : 0; ?>">
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 my-2">
                                 <label class="control-label"><strong>Total Cost*:</strong></label>
-                                <input readonly class="form-control clearfield" required id="total_cost" type="number"
-                                    value="<?php echo isset($cab_booking->total_cost) ? $cab_booking->total_cost : 0; ?>">
+                                <input readonly class="form-control clearfield" required id="total_cost" type="number" value="<?php echo isset($cab_booking->total_cost) ? $cab_booking->total_cost : 0; ?>">
                             </div>
                             
                             <?php 
@@ -178,31 +177,25 @@
                                 $cab_meta = unserialize( $cab_booking->cab_meta ); 
                                 $count_cab_meta = !empty($cab_meta) ? count( $cab_meta ) : ''; ?>
                             
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Enter Cab Number ( Cab <?php echo $i+1; ?> ) : </label>
-                                    <input type='text' required name='cab_meta[<?php echo $i; ?>][taxi_number]'
-                                        class="form-control" placeholder='Enter Cab Number'
-                                        value="<?php echo isset($cab_meta[$i]['taxi_number']) ? $cab_meta[$i]['taxi_number'] : ""; ?>">
+                                    <input type='text' required name='cab_meta[<?php echo $i; ?>][taxi_number]' class="form-control" placeholder='Enter Cab Number' value="<?php echo isset($cab_meta[$i]['taxi_number']) ? $cab_meta[$i]['taxi_number'] : ""; ?>">
                                 </div>
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Enter Driver Name ( Cab <?php echo $i+1; ?> ): </label>
-                                    <input required type='text' name='cab_meta[<?php echo $i; ?>][driver_name]'
-                                        class="form-control" placeholder='Enter Driver Name'
-                                        value="<?php if(isset($cab_meta[$i]['driver_name']) ){ echo $cab_meta[$i]['driver_name']; } ?>">
+                                    <input required type='text' name='cab_meta[<?php echo $i; ?>][driver_name]' class="form-control" placeholder='Enter Driver Name' value="<?php if(isset($cab_meta[$i]['driver_name']) ){ echo $cab_meta[$i]['driver_name']; } ?>">
                                 </div>
 
                             </div>
 
-                            <div class="col-md-4 my-2">
+                            <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Enter Driver Contact ( Cab <?php echo $i+1; ?> ): </label>
-                                    <input required type='text' name='cab_meta[<?php echo $i; ?>][driver_contact]'
-                                        class="form-control" placeholder='Enter Driver Contact'
-                                        value="<?php if(isset($cab_meta[$i]['driver_contact']) ){ echo $cab_meta[$i]['driver_contact']; } ?>">
+                                    <input required type='text' name='cab_meta[<?php echo $i; ?>][driver_contact]' class="form-control" placeholder='Enter Driver Contact' value="<?php if(isset($cab_meta[$i]['driver_contact']) ){ echo $cab_meta[$i]['driver_contact']; } ?>">
                                 </div>
                             </div>
                             

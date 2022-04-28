@@ -11,8 +11,7 @@
                     <div class="caption"><i class="fa fa-users"></i>Itinerary ID : <?php echo $pay->iti_id; ?>
                         { Package Type: <strong class=""> <?php echo check_iti_type( $pay->iti_id ); ?></strong> }
                     </div>
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("payments"); ?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("payments"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
             <div class="">
@@ -111,42 +110,43 @@
                 <div class="col-md-12 bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="portlet-body ">
                         <div class="customer-details">
-                            <div class="well well-sm bg_lightpurple padding_10">
-                                <h3 class="text-white">&nbsp;Payment Details</h3>
+                            <div class="bg-purple-plum-opacity p-2 text-white">
+                                <h3 class="fs-6 mb-0">Payment Details</h3>
                             </div>
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>Itinerary Id</th>
-                                    <td><?php echo $pay->iti_id; ?></td>
-                                    <th>Customer Name</th>
-                                    <td><?php echo $pay->customer_name; ?></td>
-                                    <th>Customer Contact</th>
-                                    <td><?php echo $pay->customer_contact; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Customer Email</th>
-                                    <td><?php echo $pay->customer_email; ?></td>
-                                    <th>Package Cost</th>
-                                    <td><?php echo number_format($pay->total_package_cost) . " /-"; ?></td>
-                                    <th>Advance Received (as 1st installment)</th>
-                                    <td> <?php echo number_format($pay->advance_recieved) . " /-"; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Advance Received Date (as 1st installment)</th>
-                                    <td><?php echo $pay->booking_date; ?></td>
-                                    <th>Next Installment Amount</th>
-                                    <td><?php echo $pay->next_payment; ?></td>
-                                    <th>Next Installment Date</th>
-                                    <td><?php echo display_month_name( $pay->next_payment_due_date ); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Balance Pending</th>
-                                    <td><?php echo number_format( $pay->total_balance_amount ) . " /-"; ?></td>
-                                    <th>Travel Date</th>
-                                    <td><?php echo display_month_name($pay->travel_date); ?></td>
-                                </tr>
-                            </table>
-
+                            <div class="table-responsive">
+                                <table class="table table-bordered table_details table-sm">
+                                    <tr class="text-nowrap">
+                                        <th>Itinerary Id</th>
+                                        <td><?php echo $pay->iti_id; ?></td>
+                                        <th>Customer Name</th>
+                                        <td><?php echo $pay->customer_name; ?></td>
+                                        <th>Customer Contact</th>
+                                        <td><?php echo $pay->customer_contact; ?></td>
+                                    </tr>
+                                    <tr class="text-nowrap">
+                                        <th>Customer Email</th>
+                                        <td><?php echo $pay->customer_email; ?></td>
+                                        <th>Package Cost</th>
+                                        <td><?php echo number_format($pay->total_package_cost) . " /-"; ?></td>
+                                        <th>Advance Received (as 1st installment)</th>
+                                        <td> <?php echo number_format($pay->advance_recieved) . " /-"; ?></td>
+                                    </tr>
+                                    <tr class="text-nowrap">
+                                        <th>Advance Received Date (as 1st installment)</th>
+                                        <td><?php echo $pay->booking_date; ?></td>
+                                        <th>Next Installment Amount</th>
+                                        <td><?php echo $pay->next_payment; ?></td>
+                                        <th>Next Installment Date</th>
+                                        <td><?php echo display_month_name( $pay->next_payment_due_date ); ?></td>
+                                    </tr>
+                                    <tr class="text-nowrap">
+                                        <th>Balance Pending</th>
+                                        <td><?php echo number_format( $pay->total_balance_amount ) . " /-"; ?></td>
+                                        <th>Travel Date</th>
+                                        <td><?php echo display_month_name($pay->travel_date); ?></td>
+                                    </tr>
+                                </table>
+                            </div>
                             <!-- <div class="colum_table">
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Itinerary Id:</strong></div>
@@ -350,13 +350,14 @@
 				$advance_rec = $pay->advance_recieved;
 				$total_amount_received = $advance_rec + $pay_received; 
 				?>
+
                 <!--if iti not closed -->
                 <?php if( $pay->iti_close_status == 0 ){ ?>
-                <div class="col-md-12 custom_card margin-top-10">
+                <div class="bg-white p-3 rounded-4 shadow-sm">
                     <div class="portlet-body">
                         <div class="table-responsive">
-                            <table>
-                                <tr>
+                            <table class="table table-bordered table-sm">
+                                <tr class="text-nowrap">
                                     <th>Total Package Cost</th>
                                     <td><?php echo number_format($pay->total_package_cost) . " /-"; ?></td>
                                     <th>Total Payment Received</th>
@@ -366,7 +367,7 @@
                                     <th>Advance Received Date</th>
                                     <td><?php echo display_month_name( $pay->booking_date ); ?></td>
                                 </tr>
-                                <tr>
+                                <tr class="text-nowrap">
                                     <?php if( !empty( $pay->second_payment_bal ) ){ ?>
                                     <?php $pd = $pay->second_pay_status == "paid" ? "<strong class='green'>PAID</strong>" : "<strong class='red'>UNPAID</strong>"; ?>
                                     <th>Second Installment Amount</th>
@@ -385,12 +386,13 @@
                             </table>
                         </div>
                         <div class="customer-details">
-                            <div class="colum_table ">
+                            <!-- <div class="colum_table ">
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Total Package Cost:</strong></div>
                                     <div class="col-md-4 form_vr">
                                         <?php echo number_format($pay->total_package_cost) . " /-"; ?></strong></div>
                                 </div>
+
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Total Payment Received:</strong></div>
                                     <div class="col-md-4 form_vr">
@@ -402,6 +404,7 @@
                                     <div class="col-md-4 form_vr">
                                         <?php echo number_format($pay->advance_recieved) . " /-"; ?></div>
                                 </div>
+
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Advance Received Date:</strong></div>
                                     <div class="col-md-4 form_vr">
@@ -410,12 +413,14 @@
 
                                 <?php if( !empty( $pay->second_payment_bal ) ){ ?>
                                 <?php $pd = $pay->second_pay_status == "paid" ? "<strong class='green'>PAID</strong>" : "<strong class='red'>UNPAID</strong>"; ?>
+                                
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Second Installment Amount:
                                             (<?php echo $pd; ?>) </strong></div>
                                     <div class="col-md-4 form_vr">
                                         <?php echo number_format($pay->second_payment_bal) . " /-"; ?></div>
                                 </div>
+
                                 <div class="col-md-12 col-lg-6">
                                     <div class="col-md-8 form_vl"><strong>Second Installment Date:</strong></div>
                                     <div class="col-md-4 form_vr">
@@ -482,8 +487,62 @@
                                             class='red'><?php echo number_format($r_amount) . " /-"; ?></strong></div>
                                 </div>
                                 <?php } ?>
-
-                            </div> <!-- row -->
+                            </div>  -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-sm table_details">
+                                    <tr class="text-nowrap">
+                                        <th>Total Package Cost</th>
+                                        <td><?php echo number_format($pay->total_package_cost) . " /-"; ?></td>
+                                        <th>Total Payment Received</th>
+                                        <td><?php echo number_format($total_amount_received) . " /-"; ?></td>
+                                        <th>Advance Received</th>
+                                        <td><?php echo number_format($pay->advance_recieved) . " /-"; ?></td>
+                                    </tr>
+                                    <tr class="text-nowrap">
+                                        <th>Advance Received Date</th>
+                                        <td><?php echo display_month_name( $pay->booking_date ); ?></td>
+                                        <?php if( !empty( $pay->second_payment_bal ) ){ ?>
+                                        <?php $pd = $pay->second_pay_status == "paid" ? "<strong class='green'>PAID</strong>" : "<strong class='red'>UNPAID</strong>"; ?>
+                                        <th>Second Installment Amount <strong>(<?php echo $pd; ?>) </strong> </th>
+                                        <td> <?php echo number_format($pay->second_payment_bal) . " /-"; ?></td>
+                                        <th>Second Installment Date</th>
+                                        <td><?php echo display_month_name( $pay->second_payment_date ); ?></td>
+                                        <?php } ?>
+                                    </tr>
+                                    <?php if( !empty( $pay->third_payment_bal ) ){ ?>
+                                    <?php $pd = $pay->third_pay_status == "paid" ? "<strong class='green'>PAID</strong>" : "<strong class='red'>UNPAID</strong>"; ?>
+                                    <tr class="text-nowrap">
+                                        <th>Third Installment Amount <strong>(<?php echo $pd; ?>)</strong> </th>
+                                        <td> <?php echo number_format($pay->third_payment_bal) . " /-"; ?></td>
+                                        <th>Third Installment Date</th>
+                                        <td><?php echo display_month_name ( $pay->third_payment_date ); ?></td>
+                                        <?php } ?>
+                                        <?php if( !empty( $pay->final_payment_bal ) ){ ?>
+                                        <?php $pd = $pay->final_pay_status == "paid" ? "<strong class='green'>PAID</strong>" : "<strong class='red'>UNPAID</strong>"; ?>
+                                        <th>Final Installment Amount <strong>(<?php echo $pd; ?>)</strong></th>
+                                        <td><?php echo number_format($pay->final_payment_bal) . " /-"; ?></td>
+                                    </tr>
+                                    <tr class="text-nowrap">
+                                        <th>Final Installment Date</th>
+                                        <td><?php echo display_month_name( $pay->final_payment_date ); ?></td>
+                                        <?php } ?>
+                                        <?php if( !empty( $pay->total_discount ) ){ ?>
+                                        <th>Total Discount</th>
+                                        <td><?php echo number_format($pay->total_discount) . " /-"; ?></td>
+                                        <?php } ?>
+                                        <th>Balance Pending</th>
+                                        <td><?php echo number_format($pay->total_balance_amount) . " /-"; ?></td>
+                                    </tr>
+                                    <tr class="text-nowrap">
+                                        <th>Approval Note</th>
+                                        <td><?php echo $pay->approved_note; ?></td>
+                                        <?php if( $refund_transaction ){ ?>
+                                        <th>Refund Amount</th>
+                                        <td><?php echo number_format($r_amount) . " /-"; ?></td>
+                                        <?php } ?>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -510,7 +569,7 @@
 						?>
             <!--postpone payment-->
             <!-- Pending Vouchers  -->
-            <div class="custom_card">
+            <div class="bg-white p-3 rounded-4 shadow-sm">
                 <div class="portlet ">
                     <div class="portlet-title tabbable-line">
                         <div class="caption">

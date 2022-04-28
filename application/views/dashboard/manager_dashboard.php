@@ -10,11 +10,12 @@ $this_month = date("Y-m");
 ?>
 <?php $todAy = date("Y-m-d"); ?>
 <!-- BEGIN CONTENT User Role: 96 -->
-
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper sales_team_dashboard">
-        <!-- BEGIN CONTENT BODY -->
-        <div class="page-content">
+        <!-- Begin page-content -->
+        <div class="page-content p-4">
             <!-- BEGIN PAGE HEADER-->
             <div class="theme-panel hidden-xs hidden-sm">
                 <div class="toggler"> </div>
@@ -31,23 +32,9 @@ $this_month = date("Y-m");
                     <div class="th_response"></div>
                 </div>
             </div>
-                <!--div class="more-info-right-sidebar">
-                <button class="btn blue sidebar-button btn-side-1" data-toggle="modal" data-target="#myModal1"><i class="fa fa-users"></i> Lead Follow Up</button>
-                <button class="btn blue sidebar-button btn-side-2" data-toggle="modal" data-target="#myModal2"><i class="fa fa-map"></i> Holiday Follow Up</button>
-                </div-->
-                <!-- <nav class="quick-nav">
-                    <a class="quick-nav-trigger" href="javascript: void(0)">
-                        <span aria-hidden="true"></span>
-                    </a>
-                    <ul class="sidebar-buttons">
-                        <li><button class="btn sidebar-button btn-side-1 cal_toggle_btn" data-target="myModal1"><i class="fa fa-users"></i> Lead Follow Up</button></li>
-                        li><button class="btn sidebar-button btn-side-2 cal_toggle_btn" data-target="myModal2"><i class="fa fa-map"></i> Holiday Follow Up</button></li
-                    </ul>
-                    <span aria-hidden="true" class="quick-nav-bg"></span>
-                </nav> -->
-                <?php
-                    $this->load->view('dashboard/followupnav');
-                ?>
+            <?php
+                $this->load->view('dashboard/followupnav');
+            ?>
             <div class="quick-nav-overlay"></div>
             <!-- BEGIN PAGE BAR -->
             <div class="page-bar">
@@ -228,7 +215,6 @@ $this_month = date("Y-m");
                                 </div>
                             </div>
                         </div>
-                        <hr>
                         <!---------------------------------Revised section ---------------------------->
                         <div class="today_revised_section">
                             <div class="row">
@@ -1480,7 +1466,7 @@ $this_month = date("Y-m");
                         </div>
                         <div class="portlet-body">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?leadfrom={$from}&leadto={$to}"; ?>">
                                             <div class="visual">
@@ -1495,7 +1481,7 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callpicked"; ?>">
                                             <div class="visual">
@@ -1510,7 +1496,7 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callnotpicked"; ?>">
                                             <div class="visual">
@@ -1525,7 +1511,7 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=8"; ?>">
                                             <div class="visual">
@@ -1540,7 +1526,7 @@ $this_month = date("Y-m");
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-xxl-3 col-xl-4 col-md-6">
                                     <div class="callCountBlock">
                                         <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=unwork"; ?>">
                                             <div class="visual">
@@ -1561,7 +1547,7 @@ $this_month = date("Y-m");
                             </div>
                             <div id="month_full_stat" style="display: none;">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-xxl-3 col-xl-4 col-md-6">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=Qsent&quotation=true"; ?>">
                                                 <div class="visual">
@@ -1576,7 +1562,7 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-xxl-3 col-xl-4 col-md-6">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=pending"; ?>">
                                                 <div class="visual">
@@ -1591,7 +1577,7 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-xxl-3 col-xl-4 col-md-6">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=9"; ?>">
                                                 <div class="visual">
@@ -1606,7 +1592,7 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-xxl-3 col-xl-4 col-md-6">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=7"; ?>">
                                                 <div class="visual">
@@ -1621,7 +1607,7 @@ $this_month = date("Y-m");
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-xxl-3 col-xl-4 col-md-6">
                                         <div class="callCountBlock">
                                             <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=QsentRevised&quotation=true"; ?>">
                                                 <div class="visual">
@@ -1637,11 +1623,10 @@ $this_month = date("Y-m");
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
                                 <!---------------------------------Revised section Month---------------------------->
                                 <div class="month_revised_section">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-xxl-3 col-xl-4 col-md-6">
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?leadfrom={$from}&leadto={$to}&leadStatus=QsentPastMonth&quotation=true"; ?>">
                                                     <div class="visual">
@@ -1656,7 +1641,7 @@ $this_month = date("Y-m");
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-xxl-3 col-xl-4 col-md-6">
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?leadfrom={$from}&leadto={$to}&leadStatus=revApprovedMonth"; ?>">
                                                     <div class="visual">
@@ -1671,7 +1656,7 @@ $this_month = date("Y-m");
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-xxl-3 col-xl-4 col-md-6">
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?leadfrom={$from}&leadto={$to}&leadStatus=revDeclineMonth"; ?>">
                                                     <div class="visual">
@@ -1686,7 +1671,7 @@ $this_month = date("Y-m");
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-xxl-3 col-xl-4 col-md-6">
                                             <div class="callCountBlock">
                                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?leadfrom={$from}&leadto={$to}&leadStatus=revDeclineLeadsMonth"; ?>">
                                                     <div class="visual">
@@ -1855,29 +1840,15 @@ $this_month = date("Y-m");
             <br>
             <br>
             <!--End Chart Section-->
-        </div><!-- END CONTENT -->
-    </div>
-</div>
-
-<!-- END CONTAINER -->
-<!-- CUSTOMER FOLLOW UP -->
-<!-- <div class="modal right fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel2">CUSTOMER FOLLOW UP</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-md-12 column calander-section" id="customer_folloup_cal_section">
-                    <div id='calendar_customer_followup' class='calender_dashboard'></div>
-                </div>
-            </div>
         </div>
+        <!-- End page-content -->
     </div>
-</div> -->
-<!-- modal -->
-<!-- ITINERARIES FOLLOW UP -->
+    <!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+
+
+<!-- CUSTOMER FOLLOW UP -->
 <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

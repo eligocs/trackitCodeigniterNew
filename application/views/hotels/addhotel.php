@@ -5,8 +5,11 @@
   border: 2px dashed;
 }
 </style>
+<!-- Begin page-container -->
 <div class="page-container customer_content">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <?php //echo get_country_name(101);	?>
             <div class="portlet box blue">
@@ -15,13 +18,12 @@
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotels"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
-
+            <!-- Begin Form -->
             <form role="form" id="addHotel" enctype="multipart/form-data">
-
+                <!-- Begin portlet-body -->
                 <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                     <div class="row">
-
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Country*</label>
                                 <select name="country" class="form-control country">
@@ -37,7 +39,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div id="state_list">
                                 <div class='form-group'><label>State*:</label><select disabled name='state'
                                         class='form-control state'>
@@ -46,7 +48,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div id="city_list">
                                 <div class='form-group'><label>City*:</label><select name='city' disabled
                                         class='form-control city'>
@@ -55,7 +57,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Category*</label>
                                 <select name="category" class="form-control cat">
@@ -71,14 +73,14 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Name*</label>
                                 <input type="text" placeholder="Hotel Name" name="name" class="form-control" value="" />
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Email*</label>
                                 <input type="text"
@@ -87,7 +89,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Address*</label>
                                 <textarea name="address" class="form-control"
@@ -95,7 +97,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Contact Number*</label>
                                 <input type="text" placeholder="Hotel Phone Number" name="contact" class="form-control"
@@ -103,7 +105,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Website</label>
                                 <input type="text" placeholder="Website Link" name="website" class="form-control"
@@ -111,7 +113,22 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-4 my-2">
+                        <div class="col-xl-4 col-md-6 col-sm-6 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Room Category*</label>
+                                <select name="room_category[]" class="form-control cat select2" multiple> 
+                                    <?php $room_cats = get_room_categories();
+                                        if($room_cats){
+                                            foreach( $room_cats as $cat ){ 
+                                                echo '<option value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
+                                            }
+                                        }
+						            ?> 
+                                </select> 
+                            </div>
+                        </div>
+
+                        <div class="col-12 my-2">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
                                     <img alt="" class="img-responsive" src="" />
@@ -133,22 +150,6 @@
                             </div>
                         </div>
 
-                       
-                        <div class="col-md-4 my-2">
-                            <div class="form-group">
-                                <label class="control-label">Room Category*</label>
-                                <select name="room_category[]" class="form-control cat select2" multiple> 
-                                    <?php $room_cats = get_room_categories();
-                                        if($room_cats){
-                                            foreach( $room_cats as $cat ){ 
-                                                echo '<option value="'. $cat->room_cat_id . '">' . $cat->room_cat_name . '</option>';
-                                            }
-                                        }
-						            ?> 
-                                </select> 
-                            </div>
-                        </div>
-
                         <div class="col-md-12 my-2">
                             <div class="margiv-top-10">
                                 <button type="submit" class="btn btn-primary add_hotel"><i class="fa-solid fa-plus"></i> Add Hotel</button>
@@ -156,15 +157,19 @@
                         </div>
                     </div> <!-- row -->                    
                     <div id="addresEd" class="sam_res"></div>
+                </div>
+                <!-- End portlet body -->
             </form>
-        </div><!-- portlet body -->
-    </div> <!-- portlet -->
+            <!-- End Form -->
+        </div> 
+        <!-- End page-content -->
+    </div>
+    <!-- End page-content-wrapper -->
+</div>
+<!-- End page-container -->
+</div>
 
-</div>
-<!-- END CONTENT BODY -->
-</div>
-<!-- Modal -->
-</div>
+<!-- Java Script code  -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($) {

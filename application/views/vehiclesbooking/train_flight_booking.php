@@ -6,11 +6,11 @@
 	$total_tra .= !empty($iti->child) ? " Child: {$iti->child} ( Age: {$iti->child_age} )" : ""; 
 	?>
 
-<!-- Begain page-container -->
+<!-- Begin page-container -->
 <div class="page-container tour-info-booking">
-	<!-- Begain page-content-wrapper -->
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
-		<!-- Begain page-content -->
+		<!-- Begin page-content -->
 		<div class="page-content">
 			<div class="portlet box blue mb0">
 				<div class="portlet-title">

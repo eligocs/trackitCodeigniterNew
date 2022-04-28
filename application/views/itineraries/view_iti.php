@@ -126,7 +126,7 @@
             <?php } 
             else if($iti->iti_status == 6 ){ ?>
             <!-- Rejected Reason -->
-            <div class="custom_card margin-bottom-20 text-center">
+            <div class="custom_card  text-center">
                 <h2 class="red">Rejected Itinerary</h2>
                 <p class="red">Reason: <strong><?php echo $iti->iti_reject_comment; ?></strong></p>
             </div>
@@ -237,7 +237,7 @@
                     <!-- portlet body -->
                 </div>
                 <!-- portlet -->
-                <div class="clearfix"></div>
+            
                 <div class="portlet box blue">
                     <div class="portlet-title">
                         <div class="custom_title"><i class="fa fa-calendar"></i> Hotel Details</div>
@@ -542,7 +542,7 @@
                             </div>
                             <?php } ?>
                         </ul>
-                        <div class="clearfix"></div>
+                    
                     </div>
                 </div>
                 <hr>
@@ -617,7 +617,7 @@
                             <p><span class="red">Note: </span><?php echo $pay_detail->approved_note; ?></p>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
+                
                 </div>
                 <hr>
                 <!--end payment sceenshot status-->
@@ -786,9 +786,9 @@
                	$i++;
                }
                } ?>
-                <div class="clearfix"></div>
+            
 
-                <div class="inquery_section custom_card">
+                <div class="inquery_section bg-white rounded-4 p-3 shadow-sm">
                     <!--show amendment button for sales team and manager-->
                     <?php 
                   //Check if final installment received or not
@@ -815,7 +815,7 @@
                     //   dump($old_itineraries);
                     //   && $old_itineraries && count($old_itineraries) <= 4
                   	if( $total_amendments < 3  && get_iti_booking_status($iti->iti_id) == 0 ) {
-                //   	if( $total_amendments < 3  && get_iti_booking_status($iti->iti_id) == 0 ) {
+                    //   	if( $total_amendments < 3  && get_iti_booking_status($iti->iti_id) == 0 ) {
                   		//Check iti amendment table if iti approved
                   		$check_amd_app_iti = $this->global_model->getdata( 'iti_amendment_temp', array("iti_id" => $iti->iti_id, "del_status" => 0, "new_package_cost !=" => 0 ), "id" );
                   		
@@ -829,27 +829,27 @@
                   		echo "<div class='clearfix'></div>";
                   		echo "<div class='row amendment_clone_btn' style='margin-top: 10px;'><a href='". base_url("itineraries/clone_iti_to_amendment/{$iti->iti_id}/{$create_old_iti}") ."' class='btn btn-success amdment_btn' title='click to amendment in itinerary'>Click Here To Clone And Amendment In Itinerary</a></div>";
                   	}	
-                  }
-                  ?>
-                    <div class='clearfix'></div>
+                    }
+                    ?>
+                   
                     <!--View Parent Itinerary Button -->
                     <?php
-                  $view_parent_btn = $dupChildBtn = "";
-                  if( !empty( $iti->parent_iti_id  ) ){
-                  	//Count All Child Itineraries
-                  	$countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->parent_iti_id, "del_status" => 0) );
-                  	
-                  	$parent_view_link = iti_view_link($iti->parent_iti_id);
-                  	$view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
-                  	
-                  	if( $countChildIti < 6 ){
-                  		$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success child_clone' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>";
-                  	}
-                  }
-                  ?>
+                    $view_parent_btn = $dupChildBtn = "";
+                    if( !empty( $iti->parent_iti_id  ) ){
+                        //Count All Child Itineraries
+                        $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->parent_iti_id, "del_status" => 0) );
+                        
+                        $parent_view_link = iti_view_link($iti->parent_iti_id);
+                        $view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
+                        
+                        if( $countChildIti < 6 ){
+                            $dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success child_clone' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>";
+                        }
+                    }
+                    ?>
                     <!--if amendment is done show old itinerary-->
                     <div class="mb-3">
-                        Status: <strong class="success_pill"><?php echo $lead_status ?></strong>
+                        <strong class="badge bg-purple-studio-opacity px-3 py-1"><?php echo $lead_status ?></strong>
                     </div>
                     <?php if( !empty( $old_itineraries ) && $iti->is_amendment != 0 ){ 
                   $old_count = 1;
@@ -880,53 +880,51 @@
                 <!-- Call log section appears if itinerary sent to client And status is publish And not booked or declined -->
                 <?php if( ( $iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" && $user_role != 97 ) || $book_status  == 3  ){ ?>
                 <!-- Call log section -->
-                <div class="call_log" id="call_log_section">
+                <div class="call_log mt-3 rounded-4 shadow-sm" id="call_log_section">
                     <form id="call_detais_form" enctype="multipart/form-data">
                         <div class="call_type_seciton">
-                            <label class="radio-inline" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
-                                <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle"
-                                    type="radio" name="callType" value="Picked call">Picked call
+                            <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
+                                <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
                             </label>
-                            <label class="radio-inline" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
-                                <input class="radio_toggle" data-id="call_not_picked_panel" required
-                                    id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not
-                                picked</label>
-                            <label class="radio-inline" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
-                                <input class="radio_toggle" data-id="close_lead_panel" required id="close_lead"
-                                    type="radio" name="callType" value="Close lead">Decline Itinerary</label>
-                            <label class="radio-inline">
-                                <input class="radio_toggle" <?php echo $book_status == 3 ? "checked" : ""; ?>
-                                    data-id="booked_lead_panel" required id="booked_lead" type="radio" name="callType"
-                                    value="Booked lead">Booked Itinerary</label>
+                            <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
+                                <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
+                            </label>
+                            <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
+                                <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="Close lead">Decline Itinerary
+                            </label>
+                            <label class="radio-inline me-3 mb-3">
+                                <input class="radio_toggle form-check-input me-2" <?php echo $book_status == 3 ? "checked" : ""; ?> data-id="booked_lead_panel" required id="booked_lead" type="radio" name="callType" value="Booked lead">Booked Itinerary
+                            </label>
                         </div>
                         <div id="panel_detail_section">
                             <div class="call_type_res" id="picked_call_panel">
                                 <!--picked call panel-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="comment">Call summary<span style="color:red;">*</span>:</label>
-                                        <textarea required class="form-control" rows="3" name="callSummary"
-                                            id="callSummary"></textarea>
+                                <div class="row">
+                                    <div class="col-md-12 my-2">
+                                        <div class="form-group">
+                                            <label class="control-label" for="comment">Call summary<span style="color:red;">*</span>:</label>
+                                            <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="checkbox">
-                                        <label><input id="nxtCallCk" type="checkbox" value="">Next call time</label>
+                                    <div class="col-md-6 my-2">
+                                        <div class="checkbox">
+                                            <label class="control-label">
+                                                <input class="form-check-input me-2" id="nxtCallCk" type="checkbox" value="">Next calling time and date <sup class="text-danger">*</sup>
+                                            </label>
+                                        </div>
+                                        <div id="next_call_cal">
+                                            <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
+                                        </div>
                                     </div>
-                                    <div id="next_call_cal">
-                                        <label>Next calling time and date<span style="color:red;">*</span>:</label>
-                                        <input size="16" required type="text" value="" name="nextCallTime" readonly
-                                            class="form-control form_datetime">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Lead prospect<span style="color:red;">*</span></label>
-                                        <select required class="form-control" name="txtProspect">
-                                            <option value="Hot">Hot</option>
-                                            <option value="Warm">Warm</option>
-                                            <option value="Cold">Cold</option>
-                                        </select>
+                                    <div class="col-md-6 my-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
+                                            <select required class="form-control" name="txtProspect">
+                                                <option value="Hot">Hot</option>
+                                                <option value="Warm">Warm</option>
+                                                <option value="Cold">Cold</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -934,45 +932,40 @@
                             <div class="call_type_res" id="call_not_picked_panel">
                                 <!--call_not_picked panel-->
                                 <div class="col-md-12">
-                                    <label class="radio-inline">
-                                        <input required type="radio" name="callSummaryNotpicked"
-                                            class="call_type_not_answer" value="Switched off">Switched off
+                                    <label class="radio-inline control-label me-3">
+                                        <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Switched off">Switched off
                                     </label>
-                                    <label class="radio-inline">
-                                        <input required type="radio" name="callSummaryNotpicked"
-                                            class="call_type_not_answer" value="Not reachable">Not reachable
+                                    <label class="radio-inline control-label me-3">
+                                        <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not reachable">Not reachable
                                     </label>
-                                    <label class="radio-inline">
-                                        <input required type="radio" name="callSummaryNotpicked"
-                                            class="call_type_not_answer" value="Not answering">Not answering
+                                    <label class="radio-inline control-label me-3">
+                                        <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not answering">Not answering
                                     </label>
                                     <div class="nxt_call">
-                                        <div class="col-md-6">
-                                            <label>Next calling time and date<span style="color:red;">*</span>:</label>
-                                            <input size="16" required type="text" value="" readonly
-                                                name="nextCallTimeNotpicked" class="form-control form_datetime">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Lead prospect<span style="color:red;">*</span></label>
-                                                <select required class="form-control" name="txtProspectNotpicked">
-                                                    <option value="Hot">Hot</option>
-                                                    <option value="Warm">Warm</option>
-                                                    <option value="Cold">Cold</option>
-                                                </select>
+                                        <div class="row">
+                                            <div class="col-md-6 my-3">
+                                                <label class="control-label">Next calling time and date <sup class="text-danger">*</sup> :</label>
+                                                <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
+                                            </div>
+                                            <div class="col-md-6 my-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Lead prospect <sup class="text-danger">*</sup></label>
+                                                    <select required class="form-control" name="txtProspectNotpicked">
+                                                        <option value="Hot">Hot</option>
+                                                        <option value="Warm">Warm</option>
+                                                        <option value="Cold">Cold</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-">
-                                                <div class="form-group">
-                                                    <label for="comment">Comment<span
-                                                            style="color:red;">*</span>:</label>
-                                                    <textarea required class="form-control" rows="3" name="comment"
-                                                        id="comment"></textarea>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-md-12 my-2">
+                                            <div class="form-group">
+                                                <label class="control-label" for="comment">Comment
+                                                    <sup class="text-danger">*</sup> :
+                                                </label>
+                                                <textarea required class="form-control" rows="3" name="comment" id="comment"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -983,209 +976,207 @@
                             <input type="hidden" name="firstdate" id="fist_tour_date" value="<?= get_iti_tour_start_date($iti->iti_id) ?>">
                             <div class="call_type_res" id="booked_lead_panel"
                                 style="display: <?php echo $book_status == 3 ? "block" : "none"; ?>">
-                                <div class="col-md-12">
+                                <div>
                                     <div class="call_type_secitontest">
-                                        <label class="radio-inline">
-                                            <input required class="is_travel_date" type="radio" name="is_travel_date"
-                                                value="fixed">Fixed Travel Date
+                                        <label class="radio-inline control-label me-3">
+                                            <input required class="is_travel_date form-check-input me-2" type="radio" name="is_travel_date" value="fixed">Fixed Travel Date
                                         </label>
-                                        <label class="radio-inline">
-                                            <input required class="is_travel_date" type="radio" name="is_travel_date"
-                                                value="notfixed">Not Fixed Travel Date
+                                        <label class="radio-inline control-label me-3">
+                                            <input required class="is_travel_date form-check-input me-2" type="radio" name="is_travel_date" value="notfixed">Not Fixed Travel Date
                                         </label>
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
+                            
                                 <div class="booking_section" style="display:none;">
                                     <?php 
-                              $get_iti_package_category = get_iti_package_category();
-                              ?>
+                                    $get_iti_package_category = get_iti_package_category();
+                                    ?>
                                     <div class="frm_section">
                                         <div class="spinner_load" style="display: none;">
                                             <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
                                             <span class="sr-only">Loading...</span>
                                         </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-3">
-                                            <!--agent margin-->
-                                            <label for="usr">Package Category<span style="color:red;"> *</span>:</label>
-                                            <?php echo package_category_select_html( $iti->iti_id ); ?>
-                                        </div>
-                                        <?php $get_tax = get_tax();
-                                         $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
-                                        <div class="form-group col-md-2">
-                                            <label for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
-                                            <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label class=""><strong>Package Type*:</strong></label>
-                                            <select required name="package_type_iti" class="form-control">
-                                                <option value="">Choose Package Type</option>
-                                                <option value="Honeymoon Package">Honeymoon Package</option>
-                                                <option value="Fixed Departure">Fixed Departure</option>
-                                                <option value="Group Package">Group Package</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                        </div>
-                                       <div class="form-group col-md-3">
-                                            <label for="usr">Total Package Cost<span style="color:red;">
-                                                    *</span>:</label>
-                                            <input type="number" readonly required class="form-control"
-                                                id="fnl_amount_tax" title="Total package cost after inc. tax"
-                                                placeholder="Total package cost after inc. tax" data-tax="<?php echo $tax; ?>" data-original-price="" name="final_amount">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label class=""><strong>Booking Date*:</strong></label>
-                                            <input required readonly="readonly" data-date-format="yyyy-mm-dd"
-                                                class="input-group form-control" id="booking_date" type="text" value=""
-                                                name="booking_date" />
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="form-group col-md-6">
-                                            <label class=""><strong>Advance Received:</strong>* <span
-                                                    id="fiftyPer"></span></label>
-                                            <input required type="number" id="pack_advance_recieve"
-                                                name="advance_recieve" placeholder="Advance Received. eg: 5000"
-                                                class="form-control" value="">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label class=""><strong>Transaction Date(1st installment):</strong>
-                                                *</label>
-                                            <input required readonly="readonly" data-date-format="yyyy-mm-dd"
-                                                class="input-group form-control transaction_date" id="transaction_date"
-                                                type="text" value="" name="transaction_date" />
-                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="form-group col-md-6 my-2">
+                                                <!--agent margin-->
+                                                <label class="control-label" for="usr">Package Category
+                                                    <sup class="text-danger">*</sup> :</label>
+                                                <?php echo package_category_select_html( $iti->iti_id ); ?>
+                                            </div>
+                                            <?php $get_tax = get_tax();
+                                            $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label" for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
+                                                <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label"><strong>Package Type 
+                                                    <sup class="text-danger">*</sup> :</strong>
+                                                </label>
+                                                <select required name="package_type_iti" class="form-control">
+                                                    <option value="">Choose Package Type</option>
+                                                    <option value="Honeymoon Package">Honeymoon Package</option>
+                                                    <option value="Fixed Departure">Fixed Departure</option>
+                                                    <option value="Group Package">Group Package</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label" for="usr">Total Package Cost
+                                                    <sup class="text-danger">*</sup> :
+                                                </label>
+                                                <input type="number" readonly required class="form-control" id="fnl_amount_tax" title="Total package cost after inc. tax" placeholder="Total package cost after inc. tax" data-tax="<?php echo $tax; ?>" data-original-price="" name="final_amount">
+                                            </div>
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label"><strong>Booking Date*:</strong></label>
+                                                <input required readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control" id="booking_date" type="text" value="" name="booking_date" />
+                                            </div>
+                                        
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label"><strong>Advance Received:</strong> <sup class="text-danger">*</sup> <span id="fiftyPer"></span>
+                                                </label>
+                                                <input required type="number" id="pack_advance_recieve" name="advance_recieve" placeholder="Advance Received. eg: 5000" class="form-control" value="">
+                                            </div>
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label">
+                                                    <strong>Transaction Date(1st installment):</strong> <sup class="text-danger">*</sup>
+                                                </label>
+                                                <input required readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control transaction_date" id="transaction_date" type="text" value="" name="transaction_date" />
+                                            </div>
                                         </div>
                                         <!--Payment Details -->
                                         <div id="due_payment_section" class="row">
-                                            <div class="form-group col-md-6">
-                                                <label class=""><strong>Second Installment Amount:</strong></label>
-                                                <input type="text" readonly id="next_pay_balance"
-                                                    data-date-format="yyyy-mm-dd" name="next_payment_bal"
-                                                    placeholder="Second Payment Balance" class="form-control" value="">
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label"><strong>Second Installment Amount:</strong></label>
+                                                <input type="text" readonly id="next_pay_balance" data-date-format="yyyy-mm-dd" name="next_payment_bal" placeholder="Second Payment Balance" class="form-control" value="">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label class=""><strong>Second Installment Due Date:</strong></label>
-                                                <input readonly="readonly" data-date-format="yyyy-mm-dd"
-                                                    class="input-group form-control date_picker" id="next_payment_date"
-                                                    type="text" value="" name="next_payment_date" />
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label"><strong>Second Installment Due Date:</strong></label>
+                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker" id="next_payment_date" type="text" value="" name="next_payment_date" />
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label class=""><strong>3rd Installment Amount:</strong><span
-                                                        id="pendingBal"></span></label>
-                                                <input type="number" readonly id="third_payment_bal"
-                                                    name="third_payment_bal" placeholder="Third Payment Amount"
-                                                    class="form-control" value="">
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label">
+                                                    <strong>3rd Installment Amount:</strong><span id="pendingBal"></span>
+                                                </label>
+                                                <input type="number" readonly id="third_payment_bal" name="third_payment_bal" placeholder="Third Payment Amount" class="form-control" value="">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label class=""><strong>3rd Installment Due Date:</strong></label>
-                                                <input readonly="readonly" data-date-format="yyyy-mm-dd"
-                                                    class="input-group form-control date_picker_validation date_picker"
-                                                    id="third_payment_date" type="text" value=""
-                                                    name="third_payment_date" />
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label">
+                                                    <strong>3rd Installment Due Date:</strong>
+                                                </label>
+                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="third_payment_date" type="text" value="" name="third_payment_date" />
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label class=""><strong>Final Installment:</strong></label>
-                                                <input type="number" readonly id="final_payment_bal"
-                                                    name="final_payment_bal" placeholder="Final Installment Amount"
-                                                    class="form-control" value="">
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label"><strong>Final Installment:</strong></label>
+                                                <input type="number" readonly id="final_payment_bal" name="final_payment_bal" placeholder="Final Installment Amount" class="form-control" value="">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label class=""><strong>Final Installment Due Date:</strong></label>
-                                                <input readonly="readonly" data-date-format="yyyy-mm-dd"
-                                                    class="input-group form-control date_picker_validation date_picker"
-                                                    id="final_payment_date" type="text" value=""
-                                                    name="final_payment_date" />
+
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label">
+                                                    <strong>Final Installment Due Date:</strong>
+                                                </label>
+                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="final_payment_date" type="text" value="" name="final_payment_date" />
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label class=""><strong>Total Balance Remaining:</strong></label>
-                                                <input type="text" required readonly id="balance_pay" name="total_balance"
-                                                    placeholder="" class="form-control" value="">
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label">
+                                                    <strong>Total Balance Remaining:</strong>
+                                                </label>
+                                                <input type="text" required readonly id="balance_pay" name="total_balance" placeholder="" class="form-control" value="">
                                             </div>
-                                            <div class="form-group col-md-6" id="ttravel_date">
-                                                <label class=""><strong>Travel Date*:</strong></label>
-                                                <input readonly required data-date-format="yyyy-mm-dd"
-                                                    class="input-group form-control" id="travel_date"
-                                                    type="text" value="" name="travel_date" />
+
+                                            <div class="form-group col-md-6 my-2" id="ttravel_date">
+                                                <label class="control-label">
+                                                    <strong>Travel Date <sup class="text-danger">*</sup> :</strong>
+                                                </label>
+                                                <input readonly required data-date-format="yyyy-mm-dd" class="input-group form-control" id="travel_date" type="text" value="" name="travel_date" />
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <div class="form-group2">
-                                                    <label class=" "><strong>Bank Name*:</strong></label>
+                                            
+                                            <div class="form-group col-md-6 my-2">
+                                                <div class="form-group">
+                                                    <label class="control-label "><strong>Bank Name <sup class="text-danger">*</sup> :</strong></label>
                                                     <input required class="form-control" id="bank_name" type="text"
                                                         placeholder="eg: HDFC, ICIC" name="bank_name" value="">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label for="usr">Please Enter Approval Note:<span style="color:red;">
-                                                        *</span>:</label>
-                                                <textarea required class="form-control"
-                                                    placeholder="Please Enter Approval Note"
-                                                    name="iti_note_booked"></textarea>
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label" for="usr">Please Enter Approval Note:
+                                                    <sup class="text-center">*</sup> :
+                                                </label>
+                                                <textarea required class="form-control" placeholder="Please Enter Approval Note" name="iti_note_booked"></textarea>
                                             </div>
-                                            <div class="clearfix"></div>
+                                        
                                             <!--upload aadhar card section-->
-                                            <div class="form-group col-md-6">
-                                                <div class="form-group2">
-                                                    <label class=" "><strong>Client Aadhar Card:</strong> <span
-                                                            class="red">(Max size 2 MB) </span></label>
-                                                    <input class="form-control" id="client_aadhar_card" type="file"
-                                                        name="client_aadhar_card">
+                                            <div class="form-group col-md-6 my-2">
+                                                <div class="form-group">
+                                                    <label class="control-label ">
+                                                        <strong>Client Aadhar Card:</strong> 
+                                                        <span class="red">(Max size 2 MB) </span>
+                                                    </label>
+                                                    <input class="form-control" id="client_aadhar_card" type="file" name="client_aadhar_card">
                                                 </div>
                                                 <img id="client_aadhar_card_priview" style="display: none;" width="100"
                                                     height="100" />
                                             </div>
                                             <!--end upload aadhar card section-->
                                             <!--upload aadhar Payment card section-->
-                                            <div class="form-group col-md-6">
-                                                <div class="form-group2">
-                                                    <label class=" "><strong>Payment Screenshot*:</strong> <span
-                                                            class="red">(Max size 2 MB) </span></label>
-                                                    <input required class="form-control" id="payment_screenshot" type="file"
-                                                        name="payment_screenshot">
-                                                </div>
-                                                <img id="payment_screenshot_priview" style="display: none;" width="100"
-                                                    height="100" />
+                                            <div class="form-group col-md-6 my-2">
+                                                <label class="control-label ">
+                                                    <strong>Payment Screenshot*:</strong> 
+                                                    <span class="red">(Max size 2 MB) </span>
+                                                </label>
+                                                <input required class="form-control" id="payment_screenshot" type="file" name="payment_screenshot">
+                                                <img id="payment_screenshot_priview" style="display: none;" width="100" height="100" />
                                             </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-md-12 other_docs margin-bottom-20">
+                                        
+                                            <div class="col-md-12 my-2 other_docs">
                                                 <a href="javascript:;" id="add_other_docs_btn"
                                                     class="btn btn-success mt-repeater-add addrep">
-                                                    <i class="fa-solid fa-plus"></i> Add Other Docs</a><span class="red"
-                                                    style="font-size: 10px;"> Please upload only ( jpg|jpeg|png|pdf ) files
-                                                    and not more than 2MB.</span>
+                                                    <i class="fa-solid fa-plus"></i> Add Other Docs
+                                                </a>
+                                                <span class="red d-block my-1" style="font-size: 10px;"> 
+                                                    Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.
+                                                </span>
                                                 <div class="other_docs_sec" style="display:none;">
-                                                    <div class="col-md-4">
-                                                        <div class="form-group2">
-                                                            <label class=" "><strong>Other Documents:</strong></label>
-                                                            <input class="form-control" required type="file"
-                                                                name="iti_clients_docs[]">
+                                                    <div class="row">
+                                                        <div class="col-md-4 my-2">
+                                                            <div class="form-group">
+                                                                <label class="control-label ">
+                                                                    <strong>Other Documents:</strong>
+                                                                </label>
+                                                                <input class="form-control" required type="file" name="iti_clients_docs[]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 my-2">
+                                                            <label class="control-label ">
+                                                                <strong>Document Title:</strong>
+                                                            </label>
+                                                            <input class="form-control" required type="text" name="doc_comment[]">
+                                                        </div>
+                                                        <div class="col-md-4 my-2">
+                                                            <div class="mt-repeater-input margin-top-20">
+                                                                <a href="javascript:;" data-repeater-delete
+                                                                    class="btn btn-danger del_upload"
+                                                                    style="position:relative;">
+                                                                    fa-solid fa-trash-can Delete
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <label class=" "><strong>Document Title:</strong></label>
-                                                        <input class="form-control" required type="text"
-                                                            name="doc_comment[]">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="mt-repeater-input margin-top-20">
-                                                            <a href="javascript:;" data-repeater-delete
-                                                                class="btn btn-danger del_upload"
-                                                                style="position:relative;">
-                                                                <i class="fa fa-close"></i> Delete</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="clearfix"></div>
                                                 </div>
-                                                <div class="clearfix"></div>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <div class="clearfix"></div>
                                 </div>
                                 <!--booking section-->
                                 <!--End Payment Details -->
@@ -1193,26 +1184,28 @@
                             <!--end booked_lead panel-->
                             <div class="call_type_res" id="close_lead_panel">
                                 <!--close_lead_panel panel-->
-                                <div class="form-group col-md-6">
-                                    <select required class="form-control" name="iti_note_decline">
-                                        <option value="">Select Reason</option>
-                                        <option value="Booked with someone else">Booked with someone else</option>
-                                        <option value="Not interested">Not interested</option>
-                                        <option value="Price is high">Price is high</option>
-                                        <option value="Not answering call from 1 week">Not answering call from 1 week
-                                        </option>
-                                        <option value="Plan cancelled">Plan cancelled</option>
-                                        <option value="Wrong number">Wrong number</option>
-                                        <option value="Denied to post lead">Denied to post lead</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="form-group col-md-6">
-                                    <div class="form-group">
-                                        <label for="comment">Decline Comment:</label>
-                                        <textarea class="form-control" rows="3" name="decline_comment"
-                                            id="decline_comment"></textarea>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="" class="control-label">Selcect Decline Reason</label>
+                                        <select required class="form-control" name="iti_note_decline">
+                                            <option value="">Select Reason</option>
+                                            <option value="Booked with someone else">Booked with someone else</option>
+                                            <option value="Not interested">Not interested</option>
+                                            <option value="Price is high">Price is high</option>
+                                            <option value="Not answering call from 1 week">Not answering call from 1 week
+                                            </option>
+                                            <option value="Plan cancelled">Plan cancelled</option>
+                                            <option value="Wrong number">Wrong number</option>
+                                            <option value="Denied to post lead">Denied to post lead</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="comment">Decline Comment:</label>
+                                            <textarea class="form-control" rows="3" name="decline_comment"
+                                                id="decline_comment"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1225,11 +1218,11 @@
                         <input type="hidden" name="parent_iti_id" value="<?php echo $iti->parent_iti_id; ?>">
                         <input type="hidden" name="agent_id" value="<?php echo $iti->agent_id; ?>">
                         <input type="hidden" name="iti_type" value="1">
-                        <div class="margiv-top-10">
+                        <div class="mt-3">
                             <button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
                             <button class="btn red uppercase cancle_bnt">Cancel</button>
                         </div>
-                        <div class="clearfix"></div>
+                    
                         <div class="resPonse"></div>
                     </form>
                 </div>

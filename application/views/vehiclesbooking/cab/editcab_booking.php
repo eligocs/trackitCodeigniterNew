@@ -1,5 +1,8 @@
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <?php $cab_booking = $cab_booking[0];  ?>
             <?php if($cab_booking){ ?>
@@ -8,191 +11,156 @@
                     <div class="caption"><i class="fa fa-bus"></i>Transporter Name:
                         <strong><?php echo get_transporter_name($cab_booking->transporter_id); ?></strong>
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("vehiclesbooking"); ?>" title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("vehiclesbooking"); ?>" title="Back">
+                        <i class="fa-solid fa-reply"></i> Back
+                    </a>
                 </div>
             </div>
-            <div class="custom_card">
-                <form class="form-horizontal" role="form" id="edit_cab_booking">
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label class="">Select Vehicle*</label>
-                            <select required name="inp[cab_id]" class="form-control vehicle col-md-4">
-                                <option value="">Choose Vehicle</option>
-                                <?php $cars = get_car_categories(); 
-						if( $cars ){
-							foreach($cars as $car){
-								$selected = isset($cab_booking->cab_id) && $car->id == $cab_booking->cab_id ? "selected=selected" : "";
-								echo '<option value = "'.$car->id .'" '.$selected.' >'.$car->car_name.'</option>';
-							}
-						}else{
-							echo '<option value="">No vehicle available. </option>';
-						}
-					?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="transporter_list">
-                            <label>Select Transporter*</label>
-                            <?php //dump( get_all_transporter_by_vehicle_id($cab_booking->cab_id) ); echo $cab_booking->transporter_id; ?>
-                            <select required name="inp[transporter_id]" class="form-control transporter">
-                                <option value="">Select Transporter</option>
-                                <?php $transporter = get_all_transporter_by_vehicle_id($cab_booking->cab_id); 
-						if( $transporter ){
-							foreach($transporter as $tra){
-								$selected = isset($cab_booking->transporter_id) && $tra->id == $cab_booking->transporter_id ? "selected=selected" : "";
-								echo '<option value = "'.$tra->id .'" '.$selected.' >'.$tra->trans_name.'</option>';
-							}
-						}else{
-							echo '<option value="">No Transporters available. </option>';
-						}
-					?>
-                            </select>
-                            <div class="rhRes"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label class="">Total Travellers*: </label>
-                            <input type="text" required class="form-control" name="inp[total_travellers]"
-                                value="<?php echo isset($cab_booking->total_travellers) ? $cab_booking->total_travellers : ""; ?>">
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label class="">Booking Date*: </label>
-                            <div class="clearfix"></div>
-                            <div class="input-group input-daterange">
-                                <input readonly required type="text" class="form-control" name="inp[picking_date]"
-                                    value="<?php echo isset($cab_booking->picking_date) ? $cab_booking->picking_date : ""; ?>"
-                                    id="check_in">
-                                <span class="input-group-addon hotel_addon"> to </span>
-                                <input readonly required type="text" class="form-control" name="inp[droping_date]"
-                                    value="<?php echo isset($cab_booking->droping_date) ? $cab_booking->droping_date : ""; ?>"
-                                    id="check_out">
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+                <form class="form-horizontal mb-0" role="form" id="edit_cab_booking">
+                    <div class="row">
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Select Vehicle*</label>
+                                <select required name="inp[cab_id]" class="form-control vehicle col-md-4">
+                                    <option value="">Choose Vehicle</option>
+                                    <?php $cars = get_car_categories(); 
+                                    if( $cars ){
+                                        foreach($cars as $car){
+                                            $selected = isset($cab_booking->cab_id) && $car->id == $cab_booking->cab_id ? "selected=selected" : "";
+                                            echo '<option value = "'.$car->id .'" '.$selected.' >'.$car->car_name.'</option>';
+                                        }
+                                    }else{
+                                        echo '<option value="">No vehicle available. </option>';
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label">Reporting/Departure Time*</label>
-                            <div class="input-group input-large">
-                                <span class="input-group-addon"> Rep. </span>
-                                <input name="inp[reporting_time]" type="text"
-                                    class="form-control timepicker timepicker-no-seconds"
-                                    value="<?php echo isset($cab_booking->reporting_time) ? $cab_booking->reporting_time : ""; ?>" />
-                                <span class="input-group-addon"> Dep.</span>
-                                <input name="inp[departure_time]" type="text"
-                                    class="form-control timepicker timepicker-no-seconds"
-                                    value="<?php echo isset($cab_booking->departure_time) ? $cab_booking->departure_time : ""; ?>" />
+                        <div class="col-md-4 my-2">
+                            <div class="transporter_list">
+                                <label class="control-label">Select Transporter*</label>
+                                <select required name="inp[transporter_id]" class="form-control transporter">
+                                    <option value="">Select Transporter</option>
+                                    <?php $transporter = get_all_transporter_by_vehicle_id($cab_booking->cab_id); 
+                                        if( $transporter ){
+                                            foreach($transporter as $tra){
+                                                $selected = isset($cab_booking->transporter_id) && $tra->id == $cab_booking->transporter_id ? "selected=selected" : "";
+                                                echo '<option value = "'.$tra->id .'" '.$selected.' >'.$tra->trans_name.'</option>';
+                                            }
+                                        }else{
+                                            echo '<option value="">No Transporters available. </option>';
+                                        }
+                                    ?>
+                                </select>
+                                <div class="rhRes"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label class="">Booking Duration*: </label>
-                            <input type="text" readonly required name="inp[booking_duration]" id="booking_duration"
-                                class="form-control"
-                                value="<?php echo isset($cab_booking->booking_duration) ? $cab_booking->booking_duration : ""; ?>">
+
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Total Travellers*: </label>
+                                <input type="text" required class="form-control" name="inp[total_travellers]" value="<?php echo isset($cab_booking->total_travellers) ? $cab_booking->total_travellers : ""; ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label class="">Picking Location*</label>
-                            <input type="text" required name="inp[pic_location]" id="pic_location"
-                                placeholder="Picking Location" class="form-control"
-                                value="<?php echo isset($cab_booking->pic_location) ? $cab_booking->pic_location : ""; ?>">
+                        
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Booking Date*: </label>
+                                <div class="input-group input-daterange">
+                                    <input readonly required type="text" class="form-control" name="inp[picking_date]" value="<?php echo isset($cab_booking->picking_date) ? $cab_booking->picking_date : ""; ?>" id="check_in">
+                                    <span class="input-group-addon hotel_addon"> to </span>
+                                    <input readonly required type="text" class="form-control" name="inp[droping_date]" value="<?php echo isset($cab_booking->droping_date) ? $cab_booking->droping_date : ""; ?>" id="check_out">
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label>Dropping Location*: </label>
-                            <input type="text" required name="inp[drop_location]" id="drop_location"
-                                placeholder="Droping Location" class="form-control"
-                                value="<?php echo isset($cab_booking->drop_location) ? $cab_booking->drop_location : "";?>">
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Reporting/Departure Time*</label>
+                                <div class="input-group input-large">
+                                    <span class="input-group-addon"> Rep. </span>
+                                    <input name="inp[reporting_time]" type="text" class="form-control timepicker timepicker-no-seconds" value="<?php echo isset($cab_booking->reporting_time) ? $cab_booking->reporting_time : ""; ?>" />
+                                    <span class="input-group-addon"> Dep.</span>
+                                    <input name="inp[departure_time]" type="text" class="form-control timepicker timepicker-no-seconds" value="<?php echo isset($cab_booking->departure_time) ? $cab_booking->departure_time : ""; ?>" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="clearfix"></div>
-
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label class=" ">Cab Rate (Per/day)*: </label>
-                            <input required type="text" placeholder="Cab Rate" name="inp[cab_rate]"
-                                class="form-control cab_rate clearfield"
-                                value="<?php echo isset($cab_booking->cab_rate) ? $cab_booking->cab_rate : 0; ?>" />
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Booking Duration*: </label>
+                                <input type="text" readonly required name="inp[booking_duration]" id="booking_duration" class="form-control" value="<?php echo isset($cab_booking->booking_duration) ? $cab_booking->booking_duration : ""; ?>">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label>Total Cabs*: </label>
-                            <select required name="inp[total_cabs]" class="form-control total_cabs clearfield">
-                                <option value=''>Select Cabs</option>
-                                <?php for( $i=1 ; $i<=10; $i++ ){
-							$selected = isset($cab_booking->total_cabs) && $i == $cab_booking->total_cabs ? "selected=selected" : "";
-							echo "<option value=" . $i . " $selected > ". $i . "</option>";
-						} ?>
-                            </select>
+                        
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Picking Location*</label>
+                                <input type="text" required name="inp[pic_location]" id="pic_location" placeholder="Picking Location" class="form-control" value="<?php echo isset($cab_booking->pic_location) ? $cab_booking->pic_location : ""; ?>">
+                            </div>
                         </div>
-                    </div>
-                    <?php $total_cost = $cab_booking->cab_rate * $cab_booking->total_cabs; ?>
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label>Total Cabs Cost (per/day)*: </label>
-                            <input readonly required type="text" placeholder="Cab Total Cost per/day"
-                                id="cab_total_cost" class="form-control cab_total_cost clearfield"
-                                value="<?php echo !empty($total_cost) ? $total_cost : 0; ?>" />
+
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Dropping Location*: </label>
+                                <input type="text" required name="inp[drop_location]" id="drop_location" placeholder="Droping Location" class="form-control" value="<?php echo isset($cab_booking->drop_location) ? $cab_booking->drop_location : "";?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-4">
-                        <div class="form-group2">
-                            <label class=" "><strong>Inclusion Charges:</strong></label>
-                            <input class="form-control" id="extra_charges" type="text" placeholder="eg. 100"
-                                name="inp[extra_charges]"
-                                value="<?php echo isset($cab_booking->extra_charges) ? $cab_booking->extra_charges : 0; ?>">
+
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Cab Rate (Per/day)*: </label>
+                                <input required type="text" placeholder="Cab Rate" name="inp[cab_rate]" class="form-control cab_rate clearfield" value="<?php echo isset($cab_booking->cab_rate) ? $cab_booking->cab_rate : 0; ?>" />
+                            </div>
                         </div>
+
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Total Cabs*: </label>
+                                <select required name="inp[total_cabs]" class="form-control total_cabs clearfield">
+                                    <option value=''>Select Cabs</option>
+                                    <?php for( $i=1 ; $i<=10; $i++ ){
+                                        $selected = isset($cab_booking->total_cabs) && $i == $cab_booking->total_cabs ? "selected=selected" : "";
+                                        echo "<option value=" . $i . " $selected > ". $i . "</option>";
+                                    } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <?php $total_cost = $cab_booking->cab_rate * $cab_booking->total_cabs; ?>
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label">Total Cabs Cost (per/day)*: </label>
+                                <input readonly required type="text" placeholder="Cab Total Cost per/day" id="cab_total_cost" class="form-control cab_total_cost clearfield" value="<?php echo !empty($total_cost) ? $total_cost : 0; ?>" />
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 my-2">
+                            <div class="form-group">
+                                <label class="control-label"><strong>Inclusion Charges:</strong></label>
+                                <input class="form-control" id="extra_charges" type="text" placeholder="eg. 100" name="inp[extra_charges]" value="<?php echo isset($cab_booking->extra_charges) ? $cab_booking->extra_charges : 0; ?>">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 my-2">
+                            <label class="control-label"><strong>Total Days*:</strong></label>
+                            <input readonly type="text" required id="total_days" class="form-control" value="<?php echo isset($cab_booking->booking_duration) ? $cab_booking->booking_duration : 0; ?>">
+                        </div>
+
+                        <div class="col-md-4 my-2">
+                            <label class="control-label"><strong>Total Cost*:</strong></label>
+                            <a href="javascript: void(0)" id="calculate_cost">Calculate</a>
+                            <input readonly class="form-control clearfield" required id="total_cost" type="number" name="inp[total_cost]" value="<?php echo isset($cab_booking->total_cost) ? $cab_booking->total_cost : 0; ?>">
+                        </div>
+                    
+                        <div class="col-md-12 my-2">
+                            <button type="submit" class="btn green uppercase add_hotel">Update Changes</button>
+                        </div>
+                        <input type="hidden" name="booking_id" id="booking_id" value="<?php echo $cab_booking->id; ?>">
                     </div>
-                    <div class="col-md-4">
-                        <label class=""><strong>Total Days*:</strong></label>
-                        <input readonly type="text" required id="total_days" class="form-control"
-                            value="<?php echo isset($cab_booking->booking_duration) ? $cab_booking->booking_duration : 0; ?>">
-                    </div>
-                    <div class="col-md-4">
-                        <label class=""><strong>Total Cost*:</strong></label>
-                        <a href="javascript: void(0)" id="calculate_cost">Calculate</a>
-                        <input readonly class="form-control clearfield" required id="total_cost" type="number"
-                            name="inp[total_cost]"
-                            value="<?php echo isset($cab_booking->total_cost) ? $cab_booking->total_cost : 0; ?>">
-                    </div>
-
-                    <div class="clearfix"></div>
-                    <hr>
-
-                    <div class="margiv-top-10 col-md-12">
-
-                        <?php /* if( ( is_gm() || is_admin() ) && $cab_booking->is_approved_by_gm == 1 ){ ?>
-                        <input type="hidden" name='approve_pending' value="1">
-                        <button type="submit" class="btn green uppercase add_hotel"
-                            onclick="return confirm('Are you sure to approve Quotation? ')">Update And Approve
-                            Quotation</button>
-                        <?php }else{ ?>
-                        <button type="submit" class="btn green uppercase add_hotel">Update Changes</button>
-                        <?php } */ ?>
-
-                        <button type="submit" class="btn green uppercase add_hotel">Update Changes</button>
-
-                        <!--button type="submit" class="btn green uppercase book_cab">Update Changes</button-->
-                    </div>
-                    <input type="hidden" name="booking_id" id="booking_id" value="<?php echo $cab_booking->id; ?>">
                 </form>
-                <div class="clearfix"></div>
                 <div id="addresEd"></div>
             </div>
             <?php }else{
@@ -200,9 +168,12 @@
 			} ?>
 
         </div>
+        <!-- End page-content -->
     </div>
-    <!-- END CONTENT BODY -->
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
 <!-- Modal -->
 <script type="text/javascript">
 jQuery(document).ready(function($) {

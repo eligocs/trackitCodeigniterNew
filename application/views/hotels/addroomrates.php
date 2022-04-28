@@ -24,7 +24,7 @@ button#bElim {
                     method="post">
                     <?php //echo get_country_name(101);	?>
                     <div class="row">
-                        <div class="col-md-3 my-2">
+                        <div class="col-xl-3 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Country*</label>
                                 <select name="country" class="form-control country">
@@ -39,7 +39,8 @@ button#bElim {
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3 my-2">
+
+                        <div class="col-xl-3 col-sm-6 my-2">
                             <div id="state_list">
                                 <div class='form-group'><label class="control-label">State*:</label><select disabled name='state'
                                         class='form-control state'>
@@ -48,21 +49,27 @@ button#bElim {
                             </div>
                         </div>
 
-                        <div class="col-md-3 my-2">
+                        <div class="col-xl-3 col-sm-6 my-2">
                             <div id="city_list">
-                                <div class='form-group'><label class="control-label">City*:</label><select disabled name='city'
+                                <div class='form-group'>
+                                    <label class="control-label">City*:</label>
+                                    <select disabled name='city'
                                         class='form-control city'>
                                         <option value="">Select City</option>
-                                    </select></div>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-3 my-2">
+                        <div class="col-xl-3 col-sm-6 my-2">
                             <div id="hotel_list">
-                                <div class='form-group'><label class="control-label">Hotel*:</label><select disabled name='hotel'
+                                <div class='form-group'>
+                                    <label class="control-label">Hotel*:</label>
+                                    <select disabled name='hotel'
                                         class='form-control hotelForRates'>
                                         <option value="">Select Hotel</option>
-                                    </select></div>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

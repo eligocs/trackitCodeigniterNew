@@ -1,8 +1,8 @@
 <?php if( !empty($itinerary[0] ) ){ 			
 $iti = $itinerary[0]; ?>
-<!-- Begain page-container -->
+<!-- Begin page-container -->
 <div class="page-container">
-	<!-- Begain page-content-wrapper -->
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
 		<!-- End page-content -->
 		<div class="page-content">
@@ -15,7 +15,7 @@ $iti = $itinerary[0]; ?>
 					<a class="btn btn-outline-primary float-end" href="<?php echo site_url("packages"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
 				</div>
 			</div>
-			<!-- Begain portlet light -->
+			<!-- Begin portlet light -->
 			<div class="portlet light bordered" id="form_wizard_1">
 				<div class="portlet-body form">
 					<!--end Section Customer Section-->
@@ -350,7 +350,7 @@ $iti = $itinerary[0]; ?>
 									</div>
 								</div>
 								<div class="tab-pane" id="tab3">
-									<h3 class="block">Inclusion & Exclusion</h3>
+									<h4 class="fs-6">Inclusion & Exclusion</h4>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="mt-repeater-inc tour_field_repeater">
@@ -456,7 +456,7 @@ $iti = $itinerary[0]; ?>
 										<div class="col-md-12">
 											<!--Special Inclusion Section-->
 											<div class="mt-repeater-spinc tour_field_repeater_sp">
-												<h4 >Special Inclusions</h4>
+												<h4 class="fs-6">Special Inclusions</h4>
 												<div data-repeater-list="special_inc_meta">
 													<?php 
 														$sp_inc = unserialize($iti->special_inc_meta); 
@@ -665,7 +665,7 @@ $iti = $itinerary[0]; ?>
 		</div>
 		<!-- End page-content -->
 	</div>
-	<!-- Begain page-content-wrapper -->
+	<!-- Begin page-content-wrapper -->
 </div>
 <!-- End page-container -->
 </div>

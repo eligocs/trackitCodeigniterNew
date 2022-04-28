@@ -31,16 +31,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Account Name*</label>
-                                <input type="text" placeholder="Account Name" name="account_name" class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->account_name ) ? $account_listing[0]->account_name : ""; ?>"
-                                    required="required" />
+                                <label class="control-label">Account Name <sup class="text-danger">*</sup></label>
+                                <input type="text" placeholder="Account Name" name="account_name" class="form-control" value="<?php echo isset( $account_listing[0]->account_name ) ? $account_listing[0]->account_name : ""; ?>" required="required" />
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Account Type*</label>
+                                <label class="control-label">Account Type <sup class="text-danger">*</sup></label>
                                 <select name="account_type" class="form-control account_type" required="required">
                                     <option value="">Select Account Type</option>
                                     <option
@@ -55,35 +53,29 @@
 
                         <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 my-2 showon_bank <?php echo $show_bank; ?>">
                             <div class="form-group">
-                                <label class="control-label">Acount Number*</label>
-                                <input type="number" placeholder="Account Number" name="account_number"
-                                    class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->account_number ) ? $account_listing[0]->account_number : ""; ?>"
-                                    required="required" />
+                                <label class="control-label">Acount Number <sup class="text-danger">*</sup></label>
+                                <input type="number" placeholder="Account Number" name="account_number" class="form-control" value="<?php echo isset( $account_listing[0]->account_number ) ? $account_listing[0]->account_number : ""; ?>" required="required" />
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 my-2 showon_bank <?php echo $show_bank; ?>">
                             <div class="form-group">
-                                <label class="control-label">IFSC Code*</label>
-                                <input type="text" placeholder="IFSC Code" name="ifsc_code" class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->ifsc_code ) ? $account_listing[0]->ifsc_code : ""; ?>"
-                                    required="required" maxlength="20" />
+                                <label class="control-label">IFSC Code <sup class="text-danger">*</sup></label>
+                                <input type="text" placeholder="IFSC Code" name="ifsc_code" class="form-control" value="<?php echo isset( $account_listing[0]->ifsc_code ) ? $account_listing[0]->ifsc_code : ""; ?>" required="required" maxlength="20" />
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-xl-4 col-md-12 col-sm-12 my-2">
                             <div class="form-group">
-                                <label class="control-label">Address*</label>
-                                <textarea placeholder="Address" name="address" class="form-control"
-                                    required="required"><?php echo isset( $account_listing[0]->address ) ? $account_listing[0]->address : ""; ?></textarea>
-
+                                <label class="control-label">Address <sup class="text-danger">*</sup></label>
+                                <textarea placeholder="Address" name="address" class="form-control" required="required"><?php echo isset( $account_listing[0]->address ) ? $account_listing[0]->address : ""; ?></textarea>
                             </div>
-
                         </div>
+
                         <?php if(isset( $account_listing[0]->id ) ) {
 						$check_status = $account_listing[0]->acc_status == 1 ? "checked" : "";
 						?>
+
                         <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Black Listed ?</label>
@@ -96,9 +88,7 @@
                         <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Remarks</label>
-                                <textarea placeholder="Remarks" name="remarks" class="form-control"
-                                    required="required"><?php echo isset( $account_listing[0]->remarks ) ? $account_listing[0]->remarks : ""; ?></textarea>
-
+                                <textarea placeholder="Remarks" name="remarks" class="form-control" required="required"><?php echo isset( $account_listing[0]->remarks ) ? $account_listing[0]->remarks : ""; ?></textarea>
                             </div>
                         </div>
                     </div> <!-- row close -->

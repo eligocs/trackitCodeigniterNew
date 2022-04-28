@@ -82,7 +82,7 @@
                                 <a class="dashboard-stat dashboard-stat-v2 blue"
                                     href="<?php echo site_url("itineraries") . "/?todayStatus={$today_date}&leadStatus=approved"; ?>">
                                     <div class="visual">
-                                        <i class="fa fa-comments"></i>
+                                        <i class="fa-solid fa-clipboard-check"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">
@@ -99,7 +99,7 @@
                                 <a class="dashboard-stat dashboard-stat-v2 blue"
                                     href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=approved"; ?>">
                                     <div class="visual">
-                                        <i class="fa fa-comments"></i>
+                                        <i class="fa-solid fa-clipboard-check"></i>
                                     </div>
                                     <div class="details">
                                         <div class="number">

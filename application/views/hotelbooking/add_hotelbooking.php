@@ -1,8 +1,8 @@
-<!-- Begain page-container -->
+<!-- Begin page-container -->
 <div class="page-container">
-    <!-- Begain page-content-wrapper -->
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
-        <!-- Begain page-content -->
+        <!-- Begin page-content -->
         <div class="page-content">
             <?php if( $itinerary ){
 			$iti = $itinerary[0];	

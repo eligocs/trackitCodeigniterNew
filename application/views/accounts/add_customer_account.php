@@ -40,9 +40,10 @@
                     <div class="row">
                         <!--IF NEW CUSTOMER ACCOUNT DROPDOWN BOOKED ITI ID -->
                         <?php if( !isset( $account_listing[0]->id ) ){ ?>
+
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Select Booked Lead ID*</label>
+                                <label class="control-label">Select Booked Lead ID <sup class="text-danger">*</sup></label>
                                 <select name="iti_id" class="form-control" required id="select_iti_id">
                                     <option value="">Select</option>
                                     <?php if( isset( $pending_accounts ) && !empty( $pending_accounts ) ){ 
@@ -60,112 +61,103 @@
 
                         <?php if( isset( $booking_listing[0]->cus_account_id) && !empty( $booking_listing[0]->cus_account_id ) ){ ?>
                         <h5 class="text-center">Booking Ids: </h5>
+
                         <?php 
 							$co = 1;
-						foreach( $booking_listing as $booking_id ){
-							//chek if invoice generated
-							$del_b = "";
-							$check_invoice = is_invoice_generated( $booking_id->lead_id );
-							if( empty($check_invoice) && $co > 1 ){
-								$del_b = "<a href='javascript:void(0)' data-lead_id= '{$booking_id->lead_id}' class='del_booking_id' title='Delete Booking Id'><i class='fa fa-trash-o'></i> </a>";
-							}
-							
-							$iti_link = iti_view_single_link($booking_id->iti_id);
-							echo "<div class='text-center'>
-							Lead ID: <strong><a href='{$iti_link}' target='_blank' title='click to view'>{$booking_id->lead_id}</a></strong> &nbsp;&nbsp; {$del_b}
-							</div>";
-							$co++;
-						}
-						echo "<hr>";
-					} ?>
+                            foreach( $booking_listing as $booking_id ){
+                                //chek if invoice generated
+                                $del_b = "";
+                                $check_invoice = is_invoice_generated( $booking_id->lead_id );
+                                if( empty($check_invoice) && $co > 1 ){
+                                    $del_b = "<a href='javascript:void(0)' data-lead_id= '{$booking_id->lead_id}' class='del_booking_id' title='Delete Booking Id'><i class='fa fa-trash-o'></i> </a>";
+                                }
+                                
+                                $iti_link = iti_view_single_link($booking_id->iti_id);
+                                echo "<div class='text-center'>
+                                Lead ID: <strong><a href='{$iti_link}' target='_blank' title='click to view'>{$booking_id->lead_id}</a></strong> &nbsp;&nbsp; {$del_b}
+                                </div>";
+                                $co++;
+                            }
+                            echo "<hr>";
+                        } ?>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Customer Name*</label>
-                                <input type="text" placeholder="Customer Name" name="customer_name" class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->customer_name ) ? $account_listing[0]->customer_name : ""; ?>"
-                                    required="required" />
+                                <label class="control-label">Customer Name <sup class="text-danger">*</sup></label>
+                                <input type="text" placeholder="Customer Name" name="customer_name" class="form-control" value="<?php echo isset( $account_listing[0]->customer_name ) ? $account_listing[0]->customer_name : ""; ?>" required="required" />
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Customer Email*</label>
-                                <input type="email" placeholder="Customer Email" name="customer_email"
-                                    class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->customer_email ) ? $account_listing[0]->customer_email : ""; ?>"
-                                    required="required" />
+                                <label class="control-label">Customer Email <sup class="text-danger">*</sup></label>
+                                <input type="email" placeholder="Customer Email" name="customer_email" class="form-control" value="<?php echo isset( $account_listing[0]->customer_email ) ? $account_listing[0]->customer_email : ""; ?>" required="required" />
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Customer Contact*</label>
-                                <input type="text" placeholder="Customer Contact" name="customer_contact"
-                                    class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->customer_contact ) ? $account_listing[0]->customer_contact : ""; ?>"
-                                    required="required" />
+                                <label class="control-label">Customer Contact <sup class="text-danger">*</sup></label>
+                                <input type="text" placeholder="Customer Contact" name="customer_contact" class="form-control" value="<?php echo isset( $account_listing[0]->customer_contact ) ? $account_listing[0]->customer_contact : ""; ?>" required="required" />
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Customer Alternate Contact</label>
-                                <input type="text" placeholder="Customer Alternate Contact"
-                                    name="alternate_contact_number" class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->alternate_contact_number ) ? $account_listing[0]->alternate_contact_number : ""; ?>" />
+                                <input type="text" placeholder="Customer Alternate Contact" name="alternate_contact_number" class="form-control" value="<?php echo isset( $account_listing[0]->alternate_contact_number ) ? $account_listing[0]->alternate_contact_number : ""; ?>" />
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Select Country*</label>
+                                <label class="control-label">Select Country <sup class="text-danger">*</sup></label>
                                 <select required name="country_id" class="form-control country">
                                     <option value="">Choose Country</option>
                                     <?php $country = get_country_list();
-								if($country){
-									foreach( $country as $c ){
-										$selectedc = isset( $account_listing[0]->country_id ) && $account_listing[0]->country_id ==  $c->id ? "selected" : ""; 
-										echo "<option {$selectedc} value={$c->id}>{$c->name}</option>";
-									}
-								}
-								?>
+                                        if($country){
+                                            foreach( $country as $c ){
+                                                $selectedc = isset( $account_listing[0]->country_id ) && $account_listing[0]->country_id ==  $c->id ? "selected" : ""; 
+                                                echo "<option {$selectedc} value={$c->id}>{$c->name}</option>";
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Select State*</label>
+                                <label class="control-label">Select State <sup class="text-danger">*</sup></label>
                                 <select required name="state_id" class="form-control state">
                                     <option value="">Choose State</option>
                                     <?php 
-								if( isset( $account_listing[0]->country_id ) ){
-									$states = get_state_list( $account_listing[0]->country_id );
-									foreach( $states as $state ){
-										$selected = isset( $account_listing[0]->state_id ) && $account_listing[0]->state_id == $state->id ? "selected" : "";
-										echo "<option {$selected} value={$state->id}>{$state->name}</option>";
-									}
-								}
-								?>
+                                        if( isset( $account_listing[0]->country_id ) ){
+                                            $states = get_state_list( $account_listing[0]->country_id );
+                                            foreach( $states as $state ){
+                                                $selected = isset( $account_listing[0]->state_id ) && $account_listing[0]->state_id == $state->id ? "selected" : "";
+                                                echo "<option {$selected} value={$state->id}>{$state->name}</option>";
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Place of Supply*</label>
+                                <label class="control-label">Place of Supply <sup class="text-danger">*</sup></label>
                                 <select required name="place_of_supply_state_id" class="form-control">
                                     <option value="">Choose State</option>
                                     <?php 
-								$states = get_state_list( 101 );
-								if( $states ){
-									foreach( $states as $state ){
-										$selected = isset( $account_listing[0]->place_of_supply_state_id ) && $account_listing[0]->place_of_supply_state_id == $state->id ? "selected" : "";
-										echo "<option {$selected} value={$state->id}>{$state->name}</option>";
-									}
-								}
-								?>
+                                        $states = get_state_list( 101 );
+                                        if( $states ){
+                                            foreach( $states as $state ){
+                                                $selected = isset( $account_listing[0]->place_of_supply_state_id ) && $account_listing[0]->place_of_supply_state_id == $state->id ? "selected" : "";
+                                                echo "<option {$selected} value={$state->id}>{$state->name}</option>";
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -173,26 +165,21 @@
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Client GST</label>
-                                <input type="text" placeholder="Client GST NO" maxlength="16" name="client_gst"
-                                    class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->client_gst ) ? $account_listing[0]->client_gst : ""; ?>"
-                                    required="required" />
+                                <input type="text" placeholder="Client GST NO" maxlength="16" name="client_gst" class="form-control" value="<?php echo isset( $account_listing[0]->client_gst ) ? $account_listing[0]->client_gst : ""; ?>" required="required" />
                             </div>
                         </div>
                         
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Address*</label>
+                                <label class="control-label">Address <sup class="text-danger">*</sup></label>
                                 <textarea placeholder="Address" name="address" class="form-control" required="required"><?php echo isset( $account_listing[0]->address ) ? $account_listing[0]->address : ""; ?></textarea>
-
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
-                                <label class="control-label">Remarks*</label>
-                                <textarea placeholder="Remarks" name="remarks" class="form-control"
-                                    required="required"><?php echo isset( $account_listing[0]->remarks ) ? $account_listing[0]->remarks : ""; ?></textarea>
+                                <label class="control-label">Remarks <sup class="text-danger">*</sup></label>
+                                <textarea placeholder="Remarks" name="remarks" class="form-control" required="required"><?php echo isset( $account_listing[0]->remarks ) ? $account_listing[0]->remarks : ""; ?></textarea>
                             </div>
                         </div>
 
@@ -219,7 +206,7 @@
 
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2 shownewbooking">
                             <div class="form-group">
-                                <label class="control-label">Select New Booked Lead ID*</label>
+                                <label class="control-label">Select New Booked Lead ID <sup class="text-dange">*</sup></label>
                                 <select name="new_iti_id" class="form-control new_iti_id" required id="new_iti_id">
                                     <option value="">Select</option>
                                     <?php if( isset( $pending_accounts ) && !empty( $pending_accounts ) ){ 

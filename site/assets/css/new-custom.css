@@ -266,9 +266,19 @@ select.form-control:required:invalid {
 	margin: 5px !important;
 }
 
-.view_call_info .call_type_seciton label.radio-inline input[type=radio] {
-	/* margin-right: 5px; */
+/* Add Call log info */
+
+.view_call_info div#call_log_section {
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    background: aliceblue;
+    padding: 20px;
 }
+
+/* End Forms (lables and inputs) */
+
+
+
 
 /* ------------------------------------------------ */
 /* ---- Add/Edit Packages and Itinerary form Wizard */
@@ -408,7 +418,12 @@ select.form-control:required:invalid {
     ul#clickable_steps li {display: none;}
     
     ul#clickable_steps li.active {display: block;}
-         }
+
+	.portlet.light {
+		padding: 10px;
+	}
+
+}
 
 /* -------------------------------------- */
 /*------- Media Query Css End -------- */

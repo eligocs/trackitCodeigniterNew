@@ -26,7 +26,7 @@
                 <form class="mb-0" role="form" id="addCat" method="post" action="<?php echo site_url("customers/updatecustomertype/" ); ?>">
                     <div class="row">
                         <div class="form-group col-md-4 my-2">
-                            <label class="control-label">Customer Type*</label>
+                            <label class="control-label">Customer Type <sup class="text-danger">*</sup></label>
                             <input type="text" name="customer_type" placeholder="Customer Type. eg: Travel Partner"
                                 class="form-control"
                                 value="<?php echo isset( $customer_type[0]->name ) ? $customer_type[0]->name : set_value('customer_type'); ?>" />

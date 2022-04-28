@@ -369,67 +369,67 @@
 											
 											<!-- How to book package -->
 											<div class="tab-pane" id="tab_1_7">
-													<?php $term_meta = $terms[0];
-														//get data if exists
-														$book_package = isset($term_meta->book_package) ? unserialize( $term_meta->book_package) : ""; 
-														$count_book_package	= count( $book_package ); 
-														
-														//remove two element from array
-														$tour_list = $count_book_package - 2;
-														?>
-													<div class="row">
-													<div class="col-md-6">
-													<div class="form-group">
-														<label class="control-label"><strong>HOW TO BOOK PACKAGE HEADING </strong></label>
-														
-														<input name="group_book_pacakge_terms[heading]" required type="text" placeholder="How to book package heading" value="<?php if(isset($book_package["heading"]) ) { echo $book_package["heading"] ; } ?>" class="form-control" />
-														<hr>
-														<label class="control-label"><strong>HOW TO BOOK PACKAGE SUBHEADING </strong></label>
-														<input name="group_book_pacakge_terms[sub_heading]" required type="text" placeholder="How to book package sub heading" value="<?php if(isset($book_package["sub_heading"]) ){ echo $book_package["sub_heading"] ; } ?>" class="form-control" />
-														<hr>
-														<label class="control-label"><strong>HOW TO BOOK PACKAGE TERMS </strong></label>
-														<div class="form-group mt-repeater">
-															<div data-repeater-list="group_book_pacakge_terms">
-																<?php if( $tour_list > 0 ){ ?>
-																	<?php for ( $i = 0; $i < $tour_list; $i++ ) { ?>
-																		<div data-repeater-item class="mt-repeater-item mt-overflow my-3">
+												<?php $term_meta = $terms[0];
+												//get data if exists
+												$book_package = isset($term_meta->book_package) ? unserialize( $term_meta->book_package) : ""; 
+												$count_book_package	= count( $book_package ); 
+												
+												//remove two element from array
+												$tour_list = $count_book_package - 2;
+												?>
+												<div class="row">
+													<div class="col-md-6 my-3">
+														<div class="form-group">
+															<label class="control-label"><strong>HOW TO BOOK PACKAGE HEADING </strong></label>
+															
+															<input name="group_book_pacakge_terms[heading]" required type="text" placeholder="How to book package heading" value="<?php if(isset($book_package["heading"]) ) { echo $book_package["heading"] ; } ?>" class="form-control" />
+															<hr>
+															<label class="control-label"><strong>HOW TO BOOK PACKAGE SUBHEADING </strong></label>
+															<input name="group_book_pacakge_terms[sub_heading]" required type="text" placeholder="How to book package sub heading" value="<?php if(isset($book_package["sub_heading"]) ){ echo $book_package["sub_heading"] ; } ?>" class="form-control" />
+															<hr>
+															<label class="control-label"><strong>HOW TO BOOK PACKAGE TERMS </strong></label>
+															<div class="form-group mt-repeater">
+																<div data-repeater-list="group_book_pacakge_terms">
+																	<?php if( $tour_list > 0 ){ ?>
+																		<?php for ( $i = 0; $i < $tour_list; $i++ ) { ?>
+																			<div data-repeater-item class="mt-repeater-item mt-overflow my-3">
+																				<div class="mt-repeater-cell row">
+																					<div class="col-md-10">
+																						<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms]" required type="text" placeholder="Booking Terms Title" value="<?php echo isset($book_package[$i]["hotel_book_terms"]) ? $book_package[$i]["hotel_book_terms"] : "";?>" class="form-control my-2 mmt-repeater-input-inline" />
+																						
+																						<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms_right]" required type="text" placeholder="Booking Terms Value" value="<?php echo isset($book_package[$i]["hotel_book_terms_right"]) ? $book_package[$i]["hotel_book_terms_right"] : "";?>" class="form-control my-2 mmt-repeater-input-inline" />
+																					</div>
+																						
+																					<div class="col-md-2">
+																						<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline mt-5"> 
+																						<i class="fa-solid fa-trash-can"></i> </a>
+																					</div>
+																				</div>
+																			</div>	
+																		<?php } ?>	
+																	<?php }else{ ?>
+																		<div data-repeater-item class="mt-repeater-item  mt-overflow my-3">
 																			<div class="mt-repeater-cell row">
 																				<div class="col-md-10">
-																					<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms]" required type="text" placeholder="Booking Terms Title" value="<?php echo isset($book_package[$i]["hotel_book_terms"]) ? $book_package[$i]["hotel_book_terms"] : "";?>" class="form-control my-2 mmt-repeater-input-inline" />
+																					<input name="hotel_book_terms" required type="text" placeholder="Enter Booking title" class="form-control mmt-repeater-input-inline my-2" />
 																					
-																					<input name="group_book_pacakge_terms[<?php echo $i; ?>][hotel_book_terms_right]" required type="text" placeholder="Booking Terms Value" value="<?php echo isset($book_package[$i]["hotel_book_terms_right"]) ? $book_package[$i]["hotel_book_terms_right"] : "";?>" class="form-control my-2 mmt-repeater-input-inline" />
+																					<input name="hotel_book_terms_right" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline my-2" />
 																				</div>
-																					
 																				<div class="col-md-2">
-																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline mt-5"> 
-																					<i class="fa-solid fa-trash-can"></i> </a>
+																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline mt-5">
+																						<i class="fa-solid fa-trash-can"></i>
+																					</a>
 																				</div>
-																			</div>
-																		</div>	
-																	<?php } ?>	
-																<?php }else{ ?>
-																	<div data-repeater-item class="mt-repeater-item  mt-overflow my-3">
-																		<div class="mt-repeater-cell row">
-																			<div class="col-md-10">
-																				<input name="hotel_book_terms" required type="text" placeholder="Enter Booking title" class="form-control mmt-repeater-input-inline my-2" />
-																				
-																				<input name="hotel_book_terms_right" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline my-2" />
-																			</div>
-																			<div class="col-md-2">
-																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline mt-5">
-																					<i class="fa-solid fa-trash-can"></i>
-																				</a>
 																			</div>
 																		</div>
-																	</div>
-																<?php } ?>
+																	<?php } ?>
+																</div>
+																<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  ">
+																<i class="fa-solid fa-plus"></i> Add new</a>
 															</div>
-															<a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add  ">
-															<i class="fa-solid fa-plus"></i> Add new</a>
-														</div>
+														</div>	
 													</div>	
-													</div>	
-													<div class="col-md-6">
+													<div class="col-md-6 my-3">
 														<?php $term_meta_ad = $terms[0];
 														//get data if exists
 														$advance_pay_terms = isset($term_meta_ad->advance_payment_terms) ? unserialize( $term_meta_ad->advance_payment_terms) : ""; 
@@ -449,7 +449,7 @@
 																		<div data-repeater-item class="mt-repeater-item mt-overflow">
 																			<div class="mt-repeater-cell row">
 																				<div class="col-md-10 my-2">
-																				    <input name="group_pro_advance_pay[<?php echo $i; ?>][terms]" required type="text" placeholder="Hotel Booking Terms" value="<?php echo $advance_pay_terms[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
+																					<input name="group_pro_advance_pay[<?php echo $i; ?>][terms]" required type="text" placeholder="Hotel Booking Terms" value="<?php echo $advance_pay_terms[$i]["terms"] ;?>" class="form-control mmt-repeater-input-inline" />
 																				</div>
 																				<div class="col-md-2 my-2">
 																					<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
@@ -463,7 +463,7 @@
 																	<div data-repeater-item class="mt-repeater-item mt-overflow">
 																		<div class="mt-repeater-cell row">
 																			<div class="col-md-10 my-2">
-																			   <input name="terms" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline" />
+																			<input name="terms" required type="text" placeholder="Enter Booking terms" class="form-control mmt-repeater-input-inline" />
 																			</div>
 																			<div class="col-md-2 my-2">
 																				<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete mt-repeater-del-right mt-repeater-btn-inline">
@@ -478,8 +478,9 @@
 															<i class="fa-solid fa-plus"></i> Add new</a>
 														</div>
 													</div>
-													</div>
-											</div><!--end How to book package--->
+												</div>
+											</div>
+											<!--end How to book package--->
 											
 											<!-- Amendment Policy (Prepend/Postpend) -->
 											<div class="tab-pane" id="tab_1_8">

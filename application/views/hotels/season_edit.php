@@ -48,7 +48,7 @@
                                                 <div class="col-md-1 my-2">
                                                     <a href="javascript:;" data-repeater-delete
                                                     class="btn btn-danger mt-repeater-delete mt-repeater-del-left mt-repeater-btn-inline">
-                                                    <i class="fa-solid fa-trash-can"></i>
+                                                    fa-solid fa-trash-can
                                                     </a>
                                                 </div>
                                             </div>

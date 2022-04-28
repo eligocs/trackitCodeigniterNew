@@ -140,7 +140,7 @@ $this_month = date("Y-m");
                             <a target="_blank" class="dashboard-stat dashboard-stat-v2 blue"
                                 href="<?php echo site_url("agents?ustatus=active"); ?>">
                                 <div class="visual">
-                                    <i class="fa fa-comments"></i>
+                                    <i class="fa-solid fa-users-gear"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -157,7 +157,7 @@ $this_month = date("Y-m");
                             <a target="_blank" class="dashboard-stat dashboard-stat-v2 red"
                                 href="<?php echo site_url("customers"); ?>">
                                 <div class="visual">
-                                    <i class="fa-solid fa-chart-column"></i>
+                                <i class="fa-solid fa-users-viewfinder"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -174,7 +174,7 @@ $this_month = date("Y-m");
                             <a target="_blank" class="dashboard-stat dashboard-stat-v2 green"
                                 href="<?php echo site_url("itineraries"); ?>">
                                 <div class="visual">
-                                    <i class="fa fa-shopping-cart"></i>
+                                    <i class="fa-solid fa-clipboard-list"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
@@ -649,7 +649,7 @@ $this_month = date("Y-m");
                                         <a target="_blank" class="dashboard-stat dashboard-stat-v2 green"
                                             href="<?php echo site_url("customers") . "/?leadfrom={$from}&leadto={$to}"; ?>">
                                             <div class="visual">
-                                                <i class="fa fa-shopping-cart"></i>
+                                                <i class="fa-solid fa-chart-column"></i>
                                             </div>
                                             <div class="details">
                                                 <div class="number">

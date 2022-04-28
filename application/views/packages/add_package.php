@@ -254,7 +254,7 @@
 																	</div>
 																	<div class="mt-repeater-inc-input col-sm-2 col-2 ">
 																		<a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																		<i class="fa-solid fa-trash-can"></i></i>
+																		<i class="fa-solid fa-trash-can"></i>
 																		</a>
 																	</div>
 																</div>
@@ -292,7 +292,7 @@
 																		
 																		<div class="mt-repeater-exc-input col-sm-2 col-2 ">
 																			<a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																				<i class="fa-solid fa-trash-can"></i></i> </a>
+																				<i class="fa-solid fa-trash-can"></i> </a>
 																		</div>
 																	</div>
 																<?php } ?>
@@ -304,7 +304,7 @@
 																	</div>
 																	<div class="mt-repeater-exc-input col-sm-2 col-2 ">
 																		<a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																			<i class="fa-solid fa-trash-can"></i></i> </a>
+																			<i class="fa-solid fa-trash-can"></i> </a>
 																	</div>
 																</div>
 															<?php } ?>	
@@ -326,7 +326,7 @@
 																	</div>
 																	<div class="mt-repeater-spinc-input col-sm-2 col-2 ">
 																		<a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																			<i class="fa-solid fa-trash-can"></i></i></a>
+																			<i class="fa-solid fa-trash-can"></i></a>
 																	</div>
 																</div>
 															</div>
@@ -369,7 +369,7 @@
 															<div class="mt-repeater-hotel-input col-md-1 my-2">
 																<label for="" class="control-label d-none d-xxl-block">&nbsp;</label>
 																<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																	<i class="fa-solid fa-trash-can"></i></i>
+																	<i class="fa-solid fa-trash-can"></i>
 																</a>
 															</div>
 														</div> <!-- row -->
@@ -395,7 +395,7 @@
 																</div>
 																<div class="mt-repeater-hotel-note-input col-2">
 																	<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																	<i class="fa-solid fa-trash-can"></i></i></a>
+																	<i class="fa-solid fa-trash-can"></i></a>
 																</div>
 															</div>
 														<?php } ?>	
@@ -409,7 +409,7 @@
 															</div>
 															<div class="mt-repeater-hotel-note-input col-2">
 																<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-																<i class="fa-solid fa-trash-can"></i></i></a>
+																<i class="fa-solid fa-trash-can"></i></a>
 															</div>
 														</div>
 													<?php } ?>	
