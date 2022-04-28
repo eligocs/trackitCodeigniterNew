@@ -910,7 +910,7 @@
 
                                              <div class="del_rep">
                                                 <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete" style="position:relative;">
-                                                fa-solid fa-trash-can</a>
+                                                <i class="fa-solid fa-trash-can"></i></a>
                                              </div>
                                           </div>
                                           <?php } ?>
@@ -945,7 +945,7 @@
                                                          value="<?php echo $inclusion[$i]["tour_inc"]; ?>" />
                                                    </div>
                                                    <div class="mt-repeater-inc-input col-2 col-md-2">
-                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> fa-solid fa-trash-can</a>
+                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -957,7 +957,7 @@
                                                       <input required type="text" name="tour_inc" class="form-control" value="" />
                                                    </div>
                                                    <div class="mt-repeater-inc-input col-2 col-md-2">
-                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> fa-solid fa-trash-can</a>
+                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -985,7 +985,7 @@
                                                       value="<?php echo isset($exclusion[$i]["tour_exc"]) && !empty($exclusion[$i]["tour_exc"])  ? trim($exclusion[$i]["tour_exc"]) : ""; ?>" />
                                                 </div>
                                                 <div class="mt-repeater-exc-input col-md-2 col-2">
-                                                   <a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> fa-solid fa-trash-can </a>
+                                                   <a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> <i class="fa-solid fa-trash-can"></i> </a>
                                                 </div>
                                              </div>
                                              <?php }
@@ -999,7 +999,7 @@
                                                    <input required type="text" name="tour_exc" class="form-control" value="<?php echo isset($hotel_exc[$i]["hotel_exc"]) && !empty($hotel_exc[$i]["hotel_exc"]) ? trim($hotel_exc[$i]["hotel_exc"]) : ""; ?>" />
                                                 </div>
                                                 <div class="mt-repeater-exc-input col-md-2 col-2">
-                                                   <a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> fa-solid fa-trash-can </a>
+                                                   <a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger float-end mt-repeater-delete"> <i class="fa-solid fa-trash-can"></i> </a>
                                                 </div>
                                              </div>
                                              <?php }
@@ -1030,7 +1030,7 @@
                                                       <input type="text" name="tour_special_inc" class="form-control" value="<?php if (isset($sp_inc[$i]["tour_special_inc"])) { echo $sp_inc[$i]["tour_special_inc"]; } ?>" />
                                                    </div>
                                                    <div class="mt-repeater-spinc-input col-md-2 col-2">
-                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete float-end"> fa-solid fa-trash-can</a>
+                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete float-end"> <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -1058,7 +1058,7 @@
                                                       <input required type="text" name="benefit_inc" class="form-control" value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) { echo $benefits_inc[$i]["benefit_inc"]; } ?>" />
                                                    </div>
                                                    <div class="mt-repeater-spinc-input col-md-2 col-2">
-                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete float-end"> fa-solid fa-trash-can</a>
+                                                      <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete float-end"> <i class="fa-solid fa-trash-can"></i></a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -1078,7 +1078,7 @@
                                                    <a title="delete" href="javascript:;"
                                                       data-repeater-delete
                                                       class="btn btn-danger mt-repeater-delete float-end">
-                                                   fa-solid fa-trash-can </a>
+                                                   <i class="fa-solid fa-trash-can"></i> </a>
                                                 </div>
                                              </div>
                                              <?php } ?>
@@ -1144,7 +1144,7 @@
                                                 <label class="control-label d-none d-sm-block">&nbsp;</label>
                                                 <a href="javascript:;" data-repeater-delete
                                                    class="btn btn-danger mt-repeater-delete">
-                                                   fa-solid fa-trash-can
+                                                   <i class="fa-solid fa-trash-can"></i>
                                                 </a>
                                              </div>
                                           </div>
@@ -1377,7 +1377,7 @@
                                              <div class="mt-repeater-hotel-note-input col-sm-2 col-3">
                                                 <a href="javascript:;" data-repeater-delete
                                                    class="btn btn-danger mt-repeater-delete">
-                                                fa-solid fa-trash-can </a>
+                                                <i class="fa-solid fa-trash-can"></i> </a>
                                              </div>
                                           </div>
                                        </div>
@@ -1396,7 +1396,7 @@
                                              <div class="mt-repeater-hotel-note-input col-sm-2 col-3">
                                                 <a href="javascript:;" data-repeater-delete
                                                    class="btn btn-danger mt-repeater-delete">
-                                                fa-solid fa-trash-can</a>
+                                                <i class="fa-solid fa-trash-can"></i></a>
                                              </div>
                                           </div>
                                        </div>

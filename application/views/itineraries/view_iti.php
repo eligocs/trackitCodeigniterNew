@@ -1168,7 +1168,7 @@
                                                                 <a href="javascript:;" data-repeater-delete
                                                                     class="btn btn-danger del_upload"
                                                                     style="position:relative;">
-                                                                    fa-solid fa-trash-can Delete
+                                                                    <i class="fa-solid fa-trash-can"></i> Delete
                                                                 </a>
                                                             </div>
                                                         </div>
