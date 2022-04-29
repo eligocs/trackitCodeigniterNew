@@ -8,6 +8,18 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
       <link href="<?php echo base_url();?>site/assets/css/style_voucher.css" type="text/css" rel="stylesheet"/>
       <link rel="shortcut icon" type="image/x-icon" href="<?php echo site_url()  . 'site/images/' . favicon() ?>" />
+      <style>
+          #print_hs {
+    cursor: pointer;
+    background-color: #5e72e4;
+    color: antiquewhite;
+}
+@media print {
+  #print_hs {
+    display: none;
+  }
+}
+      </style>
    </head>
    <body>
       <?php 
