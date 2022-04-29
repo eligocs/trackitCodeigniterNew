@@ -17,7 +17,7 @@
         //    dump($data);die;
    			$this->load->view('inc/header');
    			$this->load->view('inc/sidebar');
-   			$this->load->view('AudioCall\callrecorde', $data);
+   			$this->load->view('AudioCall/callrecorde', $data);
    			$this->load->view('inc/footer');
    		
    	}

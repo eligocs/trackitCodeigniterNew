@@ -51,7 +51,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
                 // $data = file_get_contents($path);
                 // $base64 = base64_encode($data);   
                 $base64 = $_POST['audiocall'];              
-                $file_name = $iti_id . "_audio_{$cus_id}_";
+                $file_name = $iti_id . "audio_{$cus_id}_";
                 $file= UPLOAD_DIR . $file_name. uniqid() . '.mp3';
                 $filename= $file_name.  uniqid() . '.mp3';
                 $res = file_put_contents($file, base64_decode($base64));
