@@ -251,7 +251,7 @@ ol.unassign_list li:hover{    cursor: move;}
 						alert("Error! Please try again.");
 					}
 					
-					location.reload();
+					// location.reload();
 				},
 				error: function(e){
 					$(".fullpage_loader").hide();

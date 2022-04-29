@@ -449,6 +449,11 @@ class Global_Model extends CI_Model
 				$this->db->where( $key, $value );
 			}
 			$this->db->update($tablename , $data);
+			// $error = $this->db->error(); // Has keys 'code' and 'message'
+			// echo "<BR><BR>";
+			// print_r($error);
+			// echo "<BR><BR>";
+			// die;
 			return true;
         }else{
 // 			$error = $this->db->error(); print_r($error); die;

@@ -56,7 +56,12 @@
 						</ul>
 						
 					</li-->
-
+                    <li class="nav-item  ">
+                         <a href="<?php echo site_url("callrecord"); ?>" class="nav-link ">
+                            <i class="fa-solid fa-user-plus"></i>
+                             <span class="title">Call Records</span>
+                         </a>
+                     </li>
              <?php if( is_admin() ){ ?>
              <div class='sidebar_heading'>
                  <span> Leads/Sales </span>
