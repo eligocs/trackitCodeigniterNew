@@ -215,7 +215,7 @@ class Clientsection extends CI_Controller {
 				
 				if( is_admin() || is_manager() ){
 					//Delete
-					$row_delete = "<a href='javascript:void(0)' data-id = {$review->id} class='btn btn-danger ajax_delete_review' title='Delete Review'><i class='fa fa-trash-o'></i></a>";
+					$row_delete = "<a href='javascript:void(0)' data-id = {$review->id} class='btn btn-danger ajax_delete_review' title='Delete Review'><i class='fa-solid fa-trash-can'></i></a>";
 				}
 			
 				//edit
@@ -515,7 +515,7 @@ class Clientsection extends CI_Controller {
 				
 				if( is_admin() || is_manager() ){
 					//Delete
-					$row_delete = "<a href='javascript:void(0)' data-id = {$slider->id} class='btn btn-danger ajax_delete_review' title='Delete slide'><i class='fa fa-trash-o'></i></a>";
+					$row_delete = "<a href='javascript:void(0)' data-id = {$slider->id} class='btn btn-danger ajax_delete_review' title='Delete slide'><i class='fa-solid fa-trash-can'></i></a>";
 				}
 			
 				//edit
@@ -775,7 +775,7 @@ class Clientsection extends CI_Controller {
 				
 				if( is_admin() || is_manager() ){
 					//Delete
-					$row_delete = "<a href='javascript:void(0)' data-id = {$youtube->id} class='btn btn-danger ajax_delete_review' title='Delete slide'><i class='fa fa-trash-o'></i></a>";
+					$row_delete = "<a href='javascript:void(0)' data-id = {$youtube->id} class='btn btn-danger ajax_delete_review' title='Delete slide'><i class='fa-solid fa-trash-can'></i></a>";
 				}
 			
 				//edit
@@ -956,7 +956,7 @@ class Clientsection extends CI_Controller {
 				
 				if( is_admin() || is_manager() ){
 					//Delete
-					$row_delete = "<a href='javascript:void(0)' data-id = {$offer->id} class='btn btn-danger ajax_delete_review' title='Delete offer'><i class='fa fa-trash-o'></i></a>";
+					$row_delete = "<a href='javascript:void(0)' data-id = {$offer->id} class='btn btn-danger ajax_delete_review' title='Delete offer'><i class='fa-solid fa-trash-can'></i></a>";
 				}
 			
 				//edit

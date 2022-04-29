@@ -169,7 +169,7 @@ class Reference_customers extends CI_Controller {
 					$row[] = !empty( $customer->city ) ? get_city_name($customer->city) : "";
 					
 					if( is_admin() ){
-						$del = "<a title='delete' href='javascript:void(0)' data-id = {$customer->id} class='btn_trash ajax_delete_user'><i class='fa fa-trash-o'></i></a>";
+						$del = "<a title='delete' href='javascript:void(0)' data-id = {$customer->id} class='btn_trash ajax_delete_user'><i class='fa-solid fa-trash-can'></i></a>";
 					}
 					$btn = "<a title='edit' href=" . site_url("reference_customers/edit/{$customer->id}") . " class='btn_pencil ajax_edit_user_table' ><i class='fa-solid fa-pen-to-square'></i></a>"; 
 					$btn .= "<a title='edit' href=" . site_url("reference_customers/view/{$customer->id}") . " class='btn_eye' ><i class='fa-solid fa-eye'></i></a>"; 

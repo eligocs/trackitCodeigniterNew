@@ -425,7 +425,7 @@ class Vehiclesbooking extends CI_Controller {
 				} 
 				
 				if( is_admin() || is_gm() ){ 
-					$row_delete = "<a data-id={$booking_id} title='Delete Hotel Booking' href='javascript:void(0)' class='btn_trash ajax_delete_booking'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
+					$row_delete = "<a data-id={$booking_id} title='Delete Hotel Booking' href='javascript:void(0)' class='btn_trash ajax_delete_booking'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
 				}
 				
 				$row_edit = "";
@@ -518,7 +518,7 @@ class Vehiclesbooking extends CI_Controller {
 				//}
 				
 				if( ( $role == 97 && $veh_book->is_approved_by_gm == 0 ) || is_gm() || $role == 99  ){
-					$row_delete = "<a data-id={$booking_id} title='Delete Vehicle Booking' href='javascript:void(0)' class='btn_trash ajax_delete_booking'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
+					$row_delete = "<a data-id={$booking_id} title='Delete Vehicle Booking' href='javascript:void(0)' class='btn_trash ajax_delete_booking'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
 					$row_edit = "<a title='Edit' href=" . site_url("vehiclesbooking/editvtf/{$booking_id}/{$iti_id}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
 				}	
 				

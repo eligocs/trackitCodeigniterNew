@@ -46,7 +46,7 @@
 									<td> {$status}</td>
 									<td><a href=" . site_url("accounts/add_cus_account/{$account->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Edit or add new booking id' ><i class='fa-solid fa-pen-to-square'></i></a>
 									<a href=" . site_url("accounts/view_customer/{$account->id}") . " class='btn_eye' title='view' ><i class='fa-solid fa-eye'></i></a>
-									<a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa fa-trash-o'></i></a></td>
+									<a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa-solid fa-trash-can'></i></a></td>
 								</tr>";
 								$i++; 
 							}

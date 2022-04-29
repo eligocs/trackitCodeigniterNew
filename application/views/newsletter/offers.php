@@ -31,7 +31,7 @@
                            <td><?php echo $val->title1.','.$val->title2.','.$val->title3; ?></td>
                            <td><?php 
                               if(is_admin()){
-                              $row1 = "<a title='delete' href=". base_url('newsletters/deleteOffer/').$val->offerid. " data-id = {$val->offerid} class='btn btn-danger ajax_delete_newsletter'><i class='fa fa-trash-o'></i></a>";
+                              $row1 = "<a title='delete' href=". base_url('newsletters/deleteOffer/').$val->offerid. " data-id = {$val->offerid} class='btn btn-danger ajax_delete_newsletter'><i class='fa-solid fa-trash-can'></i></a>";
                               }
                               else{
                               	$row1="";

@@ -124,7 +124,7 @@ ol.unassign_list li:hover{    cursor: move;}
 												$mem_id = trim( $mem );
 												$dragble_class = count($memebers) > 1 ? "u_li" : "dr_list";
 												//delete button
-												$del_btn = count($memebers) > 1 ?  "<strong class='remove_member' ><i class='fa fa-trash-o'></i></strong>" : "";
+												$del_btn = count($memebers) > 1 ?  "<strong class='remove_member' ><i class='fa-solid fa-trash-can'></i></strong>" : "";
 												
 												echo "<li class='{$dragble_class}' data-tid='{$teamleader->id}' data-id='{$mem_id}' >" . ucfirst(get_user_name($mem)) . "{$del_btn}</li>";
 												$in++;

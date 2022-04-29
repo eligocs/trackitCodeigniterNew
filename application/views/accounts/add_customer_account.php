@@ -69,7 +69,7 @@
                                 $del_b = "";
                                 $check_invoice = is_invoice_generated( $booking_id->lead_id );
                                 if( empty($check_invoice) && $co > 1 ){
-                                    $del_b = "<a href='javascript:void(0)' data-lead_id= '{$booking_id->lead_id}' class='del_booking_id' title='Delete Booking Id'><i class='fa fa-trash-o'></i> </a>";
+                                    $del_b = "<a href='javascript:void(0)' data-lead_id= '{$booking_id->lead_id}' class='del_booking_id' title='Delete Booking Id'><i class='fa-solid fa-trash-can'></i> </a>";
                                 }
                                 
                                 $iti_link = iti_view_single_link($booking_id->iti_id);

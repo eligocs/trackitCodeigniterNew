@@ -44,7 +44,7 @@
 									
 									//Remove delete option
 									/* if( $i > 4 ){
-										echo " <a href='javascript:void(0)' class='btn btn-danger ajax_delete_roomcategory'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
+										echo " <a href='javascript:void(0)' class='btn btn-danger ajax_delete_roomcategory'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
 									} */
 									
 								echo "</td></tr>";

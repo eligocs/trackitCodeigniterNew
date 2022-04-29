@@ -71,24 +71,24 @@
                         <a class="dashboard-stat dashboard-stat-v2 green"
                             href="<?php echo site_url("payments"). "/?todayStatus={$today_date}&payStatus=pending"; ?>">
                             <div class="visual">
-                                <i class="fa fa-shopping-cart"></i>
+                                <i class="fa-solid fa-money-bill-transfer"></i>
                             </div>
                             <div class="details">
                                 <div class="number">
-                                    <span data-counter="counterup"
-                                        data-value="<?php echo isset($pendingPaymentsToday) ? $pendingPaymentsToday : 0; ?>">0</span>
+                                    <span data-counter="counterup" data-value="<?php echo isset($pendingPaymentsToday) ? $pendingPaymentsToday : 0; ?>">0</span>
                                 </div>
                                 <div class="desc"> Payment Pending <br>Today </div>
                             </div>
                         </a>
                     </div>
                 </div>
+
                 <div class="col-lg-6 col-xxl-3 col-xl-4">
                     <div class="callCountBlock">
                         <a class="dashboard-stat dashboard-stat-v2 blue"
                             href="<?php echo site_url("payments"). "/?todayStatus={$today_date}&payStatus=pay_received"; ?>">
                             <div class="visual">
-                                <i class="fa fa-comments"></i>
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
                             </div>
                             <div class="details">
                                 <div class="number">
@@ -106,7 +106,7 @@
                         <a class="dashboard-stat dashboard-stat-v2 green"
                             href="<?php echo site_url("payments"). "/?todayStatus={$this_month}&payStatus=pending"; ?>">
                             <div class="visual">
-                                <i class="fa fa-shopping-cart"></i>
+                                <i class="fa-solid fa-money-bill-transfer"></i>
                             </div>
                             <div class="details">
                                 <div class="number">
@@ -124,7 +124,7 @@
                         <a class="dashboard-stat dashboard-stat-v2 blue"
                             href="<?php echo site_url("payments"). "/?todayStatus={$this_month}&payStatus=pay_received"; ?>">
                             <div class="visual">
-                                <i class="fa fa-comments"></i>
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
                             </div>
                             <div class="details">
                                 <div class="number">
@@ -142,7 +142,7 @@
                         <a class="dashboard-stat dashboard-stat-v2 blue"
                             href="<?php echo site_url("itineraries") . "/?todayStatus={$today_date}&leadStatus=approved"; ?>">
                             <div class="visual">
-                                <i class="fa fa-comments"></i>
+                                <i class="fa-solid fa-clipboard-check"></i>
                             </div>
                             <div class="details">
                                 <div class="number">
@@ -160,12 +160,11 @@
                         <a class="dashboard-stat dashboard-stat-v2 blue"
                             href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=approved"; ?>">
                             <div class="visual">
-                                <i class="fa fa-comments"></i>
+                                <i class="fa-solid fa-calendar-days"></i>
                             </div>
                             <div class="details">
                                 <div class="number">
-                                    <span data-counter="counterup"
-                                        data-value="<?php echo isset($totalApprovedItiMonth) ? $totalApprovedItiMonth : 0; ?>">0</span>
+                                    <span data-counter="counterup" data-value="<?php echo isset($totalApprovedItiMonth) ? $totalApprovedItiMonth : 0; ?>">0</span>
                                 </div>
                                 <div class="desc"> Iti Booked <br> This Month </div>
                             </div>

@@ -63,7 +63,7 @@
                         			<td><a href=" . site_url("accounts/update_receipt/{$invoice->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Update Invoice' ><i class='fa-solid fa-pen-to-square'></i></a>
                         			<a href=" . site_url("accounts/view_receipt/{$invoice->id}") . " class='btn_eye' title='view' ><i class='fa-solid fa-eye'></i></a>
                         				{$client_v}
-                        			<a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa fa-trash-o'></i></a></td>
+                        			<a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa-solid fa-trash-can'></i></a></td>
                         			<td> {$agent}</td>
                         		</tr>";
                         		$i++; 

@@ -388,7 +388,7 @@ class Hotels extends CI_Controller {
 					
 					if( is_admin()){
 						//Delete
-						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$hotel->id} class=' btn_trash ajax_delete_hotel'><i class='fa fa-trash-o'></i></a>";
+						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$hotel->id} class=' btn_trash ajax_delete_hotel'><i class='fa-solid fa-trash-can'></i></a>";
 					}
 					
 					if( $user['role'] != '96' ){
@@ -441,7 +441,7 @@ class Hotels extends CI_Controller {
 					
 					if( is_admin() ){
 						//Delete
-						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$rate->htr_id} class='btn_trash ajax_delete_hotelroomrates'><i class='fa fa-trash-o'></i></a>";
+						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$rate->htr_id} class='btn_trash ajax_delete_hotelroomrates'><i class='fa-solid fa-trash-can'></i></a>";
 					}
 		
 					// edit 

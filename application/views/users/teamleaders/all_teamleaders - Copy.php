@@ -95,7 +95,7 @@ span.ua_agent {
 									echo "<td>" . get_user_name( $teamleader->leader_created_by ) . "</td>";
 									echo "<td>
 										<a href='{$editUrl}' class='btn btn-success' title='view/edit teamleaders'><i class='fa-solid fa-pen-to-square'></i><a>
-										<a href='javascript:void(0)' data-id={$teamleader->id} class='btn btn-danger ajax_delete_user' title='delete teamleaders'><i class='fa fa-trash-o'></i><a>
+										<a href='javascript:void(0)' data-id={$teamleader->id} class='btn btn-danger ajax_delete_user' title='delete teamleaders'><i class='fa-solid fa-trash-can'></i><a>
 									</td>";
 								echo "</tr>";
 								$counter++;

@@ -429,7 +429,7 @@ class Customers extends CI_Controller {
 				
 				if( $role == 99 ){
 					//Delete
-					$row_delete = "<a href='javascript:void(0)' data-id = {$customer->customer_id} class='btn_trash ajax_delete_customer' title='Delete Customer'><i class='fa fa-trash-o'></i></a>";
+					$row_delete = "<a href='javascript:void(0)' data-id = {$customer->customer_id} class='btn_trash ajax_delete_customer' title='Delete Customer'><i class='fa-solid fa-trash-can'></i></a>";
 				}
 				
 				if( $role == 99 || $role == 98 ){

@@ -382,7 +382,7 @@ class Customers extends CI_Controller {
 				
 				if( is_admin() ){
 					//Delete
-					$row_delete = "<a href='javascript:void(0)' data-id = {$customer->customer_id} class='btn btn-danger ajax_delete_customer' title='Delete Customer'><i class='fa fa-trash-o'></i></a>";
+					$row_delete = "<a href='javascript:void(0)' data-id = {$customer->customer_id} class='btn btn-danger ajax_delete_customer' title='Delete Customer'><i class='fa-solid fa-trash-can'></i></a>";
 				}
 				
 				if( is_admin_or_manager() ){

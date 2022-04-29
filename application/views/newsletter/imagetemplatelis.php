@@ -31,7 +31,7 @@
                            <td><?php echo $val->img_name; ?></td>
                            <td><?php 
                               if(is_admin()){
-                              $row1 = "<a title='delete' href=". base_url('newsletters/deleteImgTemplate/').$val->id. " data-id = {$val->id} class='btn btn-danger ajax_delete_newsletter'><i class='fa fa-trash-o'></i></a>";
+                              $row1 = "<a title='delete' href=". base_url('newsletters/deleteImgTemplate/').$val->id. " data-id = {$val->id} class='btn btn-danger ajax_delete_newsletter'><i class='fa-solid fa-trash-can'></i></a>";
                               }
                               else{
                               	$row1="";

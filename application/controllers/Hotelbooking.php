@@ -199,7 +199,7 @@ class Hotelbooking extends CI_Controller {
 				}
 				
 				if( is_admin() ){ 
-					$row_delete = "<a data-id={$booking_id} title='Delete Hotel Booking' href='javascript:void(0)' class='btn_trash ajax_delete_booking'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
+					$row_delete = "<a data-id={$booking_id} title='Delete Hotel Booking' href='javascript:void(0)' class='btn_trash ajax_delete_booking'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
 				}
 				
 				$view_mail = "<a title='Mail view' href=" . site_url("hotelbooking/view_mail/{$booking_id}/{$iti_id}") . " class='btn btn-success' >Mail View</a>";

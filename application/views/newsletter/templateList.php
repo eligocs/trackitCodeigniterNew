@@ -33,7 +33,7 @@
                            <td><?php if($val->template_type == 1){ $typ = "Holiday"; }else{ $typ =  "Accomodation";} echo $typ;?></td>
                            <td><?php 
                               if(is_admin()){
-                              $row1 = "<a title='delete' href=". base_url('newsletters/deleteTemplate/').$val->id. " data-id = {$val->id} class='btn btn-danger ajax_delete_newsletter'><i class='fa fa-trash-o'></i></a>";
+                              $row1 = "<a title='delete' href=". base_url('newsletters/deleteTemplate/').$val->id. " data-id = {$val->id} class='btn btn-danger ajax_delete_newsletter'><i class='fa-solid fa-trash-can'></i></a>";
                               }
                               else{
                               	$row1="";

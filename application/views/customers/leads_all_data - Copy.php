@@ -406,7 +406,7 @@ div#quotation_type_section, #readyQuotation {
 													if( $pub_status == "publish" || $pub_status == "price pending" ){
 														//delete itinerary button only for admin
 														if( is_admin_or_manager() && empty( $countChildIti ) ){ 
-															$row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger ajax_delete_iti'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
+															$row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger ajax_delete_iti'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
 														}
 														//Check for iti status
 														if( isset( $iti->booking_status ) && $iti->booking_status != 0 ){
@@ -452,7 +452,7 @@ div#quotation_type_section, #readyQuotation {
 													}else{ 
 														//if itinerary in draft hide buttons for sales team
 														$btns =  $btn_edit . "
-															<a data-id={$iti_id} title='Delete Itinerary Permanent' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
+															<a data-id={$iti_id} title='Delete Itinerary Permanent' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
 													}
 													
 													//get iti sent status

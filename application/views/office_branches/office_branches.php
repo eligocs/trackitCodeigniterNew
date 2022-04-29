@@ -42,7 +42,7 @@
 									<td> {$branch->branch_name}</td>
 									<td> {$branch->branch_address} </td>
 									<td> {$branch->branch_contact} </td>
-									<td><a href=" . site_url("terms/edit_branch/{$branch->branch_id}") . " class='btn_eye' ><i class='fa-solid fa-eye'></i></a><a href='javascript:void(0)' class='btn_trash ajax_delete_branch'><i class='fa fa-trash-o'></i></a></td>
+									<td><a href=" . site_url("terms/edit_branch/{$branch->branch_id}") . " class='btn_eye' ><i class='fa-solid fa-eye'></i></a><a href='javascript:void(0)' class='btn_trash ajax_delete_branch'><i class='fa-solid fa-trash-can'></i></a></td>
 								</tr>";
 								$i++; 
 							}	

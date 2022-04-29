@@ -37,7 +37,7 @@
 
                                     <?php if( $cat->super_category != 1 ){ ?>
                                     <a title="delete" href="javascript:void(0)" data-id="<?php echo $cat->id;?>"
-                                        class='btn_trash ajax_delete_cat'><i class='fa fa-trash-o'></i></a>
+                                        class='btn_trash ajax_delete_cat'><i class='fa-solid fa-trash-can'></i></a>
                                     <?php } ?>
 
                                 </td>

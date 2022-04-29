@@ -117,7 +117,7 @@ class Vehicles extends CI_Controller {
 					$row[] = $vehicle->car_rate ? $vehicle->car_rate . " /-" : '';
 					if( is_admin() ){
 						//Delete
-						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$vehicle->id} class='btn_trash ajax_delete_cabs'><i class='fa fa-trash-o'></i></a>";
+						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$vehicle->id} class='btn_trash ajax_delete_cabs'><i class='fa-solid fa-trash-can'></i></a>";
 					}
 					
 					//edit
@@ -175,7 +175,7 @@ class Vehicles extends CI_Controller {
 					$row[] = $c;
 					if( is_admin() ){
 						//Delete
-						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$trans->id} class='btn_trash ajax_delete_trans'><i class='fa fa-trash-o'></i></a>";
+						$row_delete = "<a title='delete' href='javascript:void(0)' data-id = {$trans->id} class='btn_trash ajax_delete_trans'><i class='fa-solid fa-trash-can'></i></a>";
 					}
 					//edit
 					$edit = "<a title='edit' href=" . site_url("vehicles/transporteredit/{$trans->id}") . " class='btn_pencil' ><i class='fa-solid fa-pen-to-square'></i></a>";

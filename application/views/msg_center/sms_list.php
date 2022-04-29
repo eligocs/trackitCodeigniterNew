@@ -65,7 +65,7 @@
                      <a title='Send Message' href="<?php echo site_url("msg_center/resend_message/{$msg->id}"); ?> " class=' btn_send' ><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
                      <?php 
                         if( is_admin() ){ ?>
-                     <a title='delete' href='javascript:void(0)' data-id = <?php echo $msg->id; ?> class='btn_trash ajax_delete_newsletter'><i class='fa fa-trash-o'></i></a>
+                     <a title='delete' href='javascript:void(0)' data-id = <?php echo $msg->id; ?> class='btn_trash ajax_delete_newsletter'><i class='fa-solid fa-trash-can'></i></a>
                      <?php } ?>
                      </div>
                         </td>

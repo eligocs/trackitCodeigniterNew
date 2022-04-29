@@ -371,7 +371,7 @@
 												<a href="<?php echo $doc_path . $doc->file_url; ?>" target="_blank" class="btn btn-success" style="position:relative;">
 												<i class="fa-solid fa-eye"></i></a>
 												<a href="javascript: void(0);" class="btn btn-danger del_client_docs" data-id ="<?php echo $doc->id; ?>" style="position:relative;">
-												<i class="fa fa-trash-o"></i></a>
+												<i class="fa-solid fa-trash-can"></i></a>
 											</td>
 											<?php 	
 										echo "</tr>";	

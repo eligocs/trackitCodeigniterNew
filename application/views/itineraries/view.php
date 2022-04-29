@@ -437,7 +437,7 @@
                                                 <i class="fa-solid fa-eye"></i></a>
                                             <a href="javascript: void(0);" class="btn_trash del_client_docs"
                                                 data-id="<?php echo $doc->id; ?>" style="position:relative;">
-                                                <i class="fa fa-trash-o"></i></a>
+                                                <i class="fa-solid fa-trash-can"></i></a>
                                             </td>
                                             <?php 	
                                     echo "</tr>";	
@@ -721,7 +721,7 @@
                                                 <i class="fa-solid fa-eye"></i></a>
                                             <a href="javascript: void(0);" class="btn btn-danger del_client_docs"
                                                 data-id="<?php echo $doc->id; ?>" style="position:relative;">
-                                                <i class="fa fa-trash-o"></i></a>
+                                                <i class="fa-solid fa-trash-can"></i></a>
                                             </td>
                                             <?php 	
                                     echo "</tr>";	

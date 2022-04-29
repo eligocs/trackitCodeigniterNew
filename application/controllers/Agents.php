@@ -222,7 +222,7 @@ class Agents extends CI_Controller {
 					$row[] = $agent->user_status;
 					
 					if( is_admin() ){
-						$row1 = "<a title='delete' href='javascript:void(0)' data-id = {$agent->user_id} class='btn_trash ajax_delete_user'><i class='fa fa-trash-o'></i></a>";
+						$row1 = "<a title='delete' href='javascript:void(0)' data-id = {$agent->user_id} class='btn_trash ajax_delete_user'><i class='fa-solid fa-trash-can'></i></a>";
 					}
 					
 					$rowedit = "<a title='edit' href=" . site_url("agents/editagent/{$agent->user_id}") . " class='btn_pencil btn ajax_edit_user_table' ><i class='fa-solid fa-pen-to-square'></i></a>";

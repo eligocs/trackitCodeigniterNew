@@ -242,7 +242,7 @@
                                 <td><?php echo $receipt->amount_received ?></td>
                                 <?php echo "<td><a href=" . site_url("accounts/update_receipt/{$receipt->id}") . " class='btn_pencil margin-right-10 ajax_edit_hotel_table'  target='_blank' title='Update receipt' ><i class='fa-solid fa-pen-to-square'></i></a>
 												<a href=" . site_url("accounts/view_receipt/{$receipt->id}") . " class='btn_eye' target='_blank' title='view' ><i class='fa-solid fa-eye'></i></a>
-												<a href='javascript:void(0)' data-id='{$receipt->id}'' class='btn_trash ajax_delete_bank'><i class='fa fa-trash-o'></i></a></td>"; ?>
+												<a href='javascript:void(0)' data-id='{$receipt->id}'' class='btn_trash ajax_delete_bank'><i class='fa-solid fa-trash-can'></i></a></td>"; ?>
                             <tr>
                                 <?php 
 										$indx++;
@@ -315,7 +315,7 @@
                                             href="javascript: void(0)"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <!--a title="Delete" data-id="<?php echo $pay_trans->tra_id; ?>"
                                             class="btn_trash del_trans" target="_blank" href="javascript: void(0)"><i
-                                                class="fa fa-trash-o"></i></a-->
+                                                class="fa-solid fa-trash-can"></i></a-->
                                     </td>
                                 </tr>
                                 <?php 

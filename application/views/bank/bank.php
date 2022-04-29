@@ -59,7 +59,7 @@
                         
                         			<td><a href=" . site_url("bank/edit/{$bank->bank_id}") . " class='btn_pencil ajax_edit_hotel_table' ><i class='fa-solid fa-pen-to-square'></i></a></td>
                         
-                        			<td><a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa fa-trash-o'></i></a></td>
+                        			<td><a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa-solid fa-trash-can'></i></a></td>
                         
                         		</tr>";
                         

@@ -65,7 +65,7 @@
 										<td>
 										<a title='edit' href="<?php echo site_url()."agents/edit_user_area/".$view->user;?>" class='btn btn-success ajax_edit_user_table' ><i class='fa-solid fa-pen-to-square'></i></a>
 										<?php //if( is_admin() ){ ?>
-											<a title='delete' data-id = "<?php echo $view->id; ?>" href="" class='btn btn-danger ajax_delete_user' ><i class='fa fa fa-trash-o'></i></a>
+											<a title='delete' data-id = "<?php echo $view->id; ?>" href="" class='btn btn-danger ajax_delete_user' ><i class='fa fa-solid fa-trash-can'></i></a>
 										<?php //} ?>
 										</td>
 									</tr>

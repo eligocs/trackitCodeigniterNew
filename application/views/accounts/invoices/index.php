@@ -53,7 +53,7 @@
 										</a>";
 										
 										if( $user_role == 93 ){
-											echo "<a data-id='{$invoice->id}' href='javascript:void(0)' class='btn btn-danger delete_invoice' target='_blank' title='Delete Invoice' ><i class='fa fa-trash-o'></i></a>";
+											echo "<a data-id='{$invoice->id}' href='javascript:void(0)' class='btn btn-danger delete_invoice' target='_blank' title='Delete Invoice' ><i class='fa-solid fa-trash-can'></i></a>";
 										}
 										
 									echo "</td></tr>";
