@@ -6,117 +6,126 @@
 }
 </style>
 
-   <div class="page-container itinerary-view view_call_info">
+<!-- Begin page-container -->
+<div class="page-container itinerary-view view_call_info">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <?php if( !empty($itinerary ) ){ 
-            $iti = $itinerary[0];
-            //iti payement book status
-            $book_status = get_iti_booking_status( $iti->iti_id );
-            // dump($book_status);die;
+                $iti = $itinerary[0];
+                //iti payement book status
+                $book_status = get_iti_booking_status( $iti->iti_id );
+                // dump($book_status);die;
+                
+                $lFollow = "";			
+                $amdment_btn = "";
+                $iti_status = $iti->iti_status;
+                $iti_note = $iti->followup_status;
+                
+                $is_amendment = $amendment_note = "";
+                //show amendment note if revised itinerary
+                if( $iti->is_amendment == 2 ){ 
+                    $is_amendment = "<h3 class='text-center red'>REVISED ITINERARY</h3>";
+                    $amendment_cmt = $this->global_model->getdata( "iti_amendment_temp", array( "iti_id" => $iti->iti_id ) );
+                    $amendment_note = !empty( $amendment_cmt ) ? "<p class='red'>Amendment: {$amendment_cmt[0]->review_comment}</p>" : "";
+                } 
+                
+                if( $iti_status == 9 ){
+                    $lead_status = "Booked";
+                    $lead_note = $iti_note;
+                }elseif( $iti_status == 7 ){
+                    $lead_status = "Closed";
+                    $lead_note = $iti_note;
+                }else{
+                    $lead_status = "Working";
+                    $lead_note = "";
+                }
             
-            $lFollow = "";			
-            $amdment_btn = "";
-            $iti_status = $iti->iti_status;
-            $iti_note = $iti->followup_status;
-            
-            $is_amendment = $amendment_note = "";
-            //show amendment note if revised itinerary
-            if( $iti->is_amendment == 2 ){ 
-            	$is_amendment = "<h3 class='text-center red'>REVISED ITINERARY</h3>";
-            	$amendment_cmt = $this->global_model->getdata( "iti_amendment_temp", array( "iti_id" => $iti->iti_id ) );
-            	$amendment_note = !empty( $amendment_cmt ) ? "<p class='red'>Amendment: {$amendment_cmt[0]->review_comment}</p>" : "";
-            } 
-            
-            if( $iti_status == 9 ){
-            	$lead_status = "Booked";
-            	$lead_note = $iti_note;
-            }elseif( $iti_status == 7 ){
-            	$lead_status = "Closed";
-            	$lead_note = $iti_note;
-            }else{
-            	$lead_status = "Working";
-            	$lead_note = "";
-            }
-            
-            //Get customer info
-            $get_customer_info = get_customer( $iti->customer_id ); 
-            $customer_name 	= $customer_contact = $customer_email = $ref_name = $ref_contact = $cus_type = "";
-            $country_name 	= isset($get_customer_info[0]) ? get_country_name($get_customer_info[0]->country_id) : "";
-            $state_name 	= isset($get_customer_info[0]) ? get_state_name($get_customer_info[0]->state_id) : "";
-            if( $get_customer_info ){
-            	$cust = $get_customer_info[0];
-            	$customer_name 		= $cust->customer_name;
-            	$customer_contact 	= $cust->customer_contact;
-            	$customer_email		= $cust->customer_email;
-            	
-            	$cus_type 			= get_customer_type_name($cust->customer_type);
-            	if( $cust->customer_type == 2 ){
-            		$ref_name = "< Ref. Name: " . $cust->reference_name;
-            		$ref_contact = " Ref. Contact: " . $cust->reference_contact_number . " >";
-            	}
-            }	
+                //Get customer info
+                $get_customer_info = get_customer( $iti->customer_id ); 
+                $customer_name 	= $customer_contact = $customer_email = $ref_name = $ref_contact = $cus_type = "";
+                $country_name 	= isset($get_customer_info[0]) ? get_country_name($get_customer_info[0]->country_id) : "";
+                $state_name 	= isset($get_customer_info[0]) ? get_state_name($get_customer_info[0]->state_id) : "";
+                if( $get_customer_info ){
+                    $cust = $get_customer_info[0];
+                    $customer_name 		= $cust->customer_name;
+                    $customer_contact 	= $cust->customer_contact;
+                    $customer_email		= $cust->customer_email;
+                    
+                    $cus_type 			= get_customer_type_name($cust->customer_type);
+                    if( $cust->customer_type == 2 ){
+                        $ref_name = "< Ref. Name: " . $cust->reference_name;
+                        $ref_contact = " Ref. Contact: " . $cust->reference_contact_number . " >";
+                    }
+                }	
             ?>
+
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-users"></i> <strong>Lead Id: </strong><span
-                            class="text-white"><?php echo $iti->customer_id; ?></span> &nbsp; &nbsp;
+                        <i class="fa fa-users"></i> 
+                        <strong>Lead Id: </strong>
+                        <span class="text-white"><?php echo $iti->customer_id; ?></span> &nbsp; &nbsp;
                         <?php if( is_admin_or_manager() ){ ?>
-                        <strong class=''>Lead Type: </strong> <span><?php echo $cus_type; ?></span>
-                        <?php echo $ref_name . $ref_contact; ?>
+                            <strong class=''>Lead Type: </strong> <span><?php echo $cus_type; ?></span>
+                            <?php echo $ref_name . $ref_contact; ?>
                         <?php } ?>
                         <!--client country / state -->
                         <?php echo !empty($country_name) ? " From: <span>" . $country_name . " ( $state_name ) </span>" : ""; ?>
                         Q. Type: <strong>
                             <?php echo check_iti_type( $iti->iti_id ) . ' ( ' . $iti->iti_package_type . ')'; ?></strong>
                     </div>
-                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("itineraries"); ?>"
-                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
            
-            <?php if( $iti->iti_status == 9 && isset( $paymentDetails[0] ) && !empty( $paymentDetails[0] )){ 
-            $pay_detail = $paymentDetails[0];
-            //echo $is_amendment . $amendment_note; 
-            //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";	
-            $is_gst_final = "";	
-            echo $is_amendment . $amendment_note;
-            echo !empty($pay_detail->iti_package_type) ? "<h4 class='text-center red uppercase'>{$pay_detail->iti_package_type}</h4>" : "";
-            if( $pay_detail->iti_booking_status == 0 ){
-            	echo '<h1 class="text-center green uppercase">Booked Itinerary</h1>';
-            }else if( $pay_detail->iti_booking_status == 1 ){
-            	echo '<h1 class="text-center uppercase">Itinerary On Hold</h1>';
-            }else{
-            	echo '<h1 class="text-center  uppercase">Itinerary Rejected By Manager</h1>';
-            	echo "<p class='text-center'><strong> Reason: </strong> {$pay_detail->approved_note}</p>";
-            } ?>
-            <div class="mt-element-step">
-                <div class="row step-background-thin ">
-                    <div class="col-md-4 bg-grey-steel mt-step-col error ">
-                        <div class="mt-step-number">1</div>
-                        <div class="mt-step-title uppercase font-grey-cascade"><strong>INR
-                                <?php echo $iti->final_amount; ?>/-</strong></div>
-                        <div class="mt-step-content font-grey-cascade">Package Final Cost: <span
-                                style="color: #fff;">(<?php echo $is_gst_final;  ?>)</span></div>
-                    </div>
-                    <div class="col-md-4 bg-grey-steel mt-step-col active">
-                        <div class="mt-step-number">2</div>
-                        <div class="mt-step-title uppercase font-grey-cascade">
-                            <strong><?php echo $iti->approved_package_category; ?></strong>
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <?php if( $iti->iti_status == 9 && isset( $paymentDetails[0] ) && !empty( $paymentDetails[0] )){ 
+                    $pay_detail = $paymentDetails[0];
+                    //echo $is_amendment . $amendment_note; 
+                    //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";	
+                    $is_gst_final = "";	
+                    echo $is_amendment . $amendment_note;
+                    echo !empty($pay_detail->iti_package_type) ? "<h4 class='text-center red uppercase'>{$pay_detail->iti_package_type}</h4>" : "";
+                    if( $pay_detail->iti_booking_status == 0 ){
+                        echo '<h1 class="text-center fs-5 green uppercase">Booked Itinerary</h1>';
+                    }else if( $pay_detail->iti_booking_status == 1 ){
+                        echo '<h1 class="text-center fs-5 uppercase">Itinerary On Hold</h1>';
+                    }else{
+                        echo '<h1 class="text-center fs-5  uppercase">Itinerary Rejected By Manager</h1>';
+                        echo "<p class='text-center'><strong> Reason: </strong> {$pay_detail->approved_note}</p>";
+                } ?>
+                <div class="mt-element-step">
+                    <div class="row justify-content-between step-background-thin ">
+                        <div class="col-md-4 bg-grey-steel mt-step-col error ">
+                            <div class="mt-step-number">1</div>
+                            <div class="mt-step-title uppercase font-grey-cascade">
+                                <strong>INR <?php echo $iti->final_amount; ?>/-</strong>
+                            </div>
+                            <div class="mt-step-content font-grey-cascade">Package Final Cost: 
+                                <span style="color: #fff;">(<?php echo $is_gst_final;  ?>)</span>
+                            </div>
                         </div>
-                        <div class="mt-step-content font-grey-cascade">Package Category</div>
-                    </div>
-                    <div class="col-md-4 bg-grey-steel mt-step-col done">
-                        <?php $t_date = get_travel_date($iti->iti_id); ?>
-                        <div class="mt-step-number">3</div>
-                        <div class="mt-step-title uppercase font-grey-cascade">
-                            <?php echo !empty($t_date) ? $t_date : "--/--/----"; ?></strong></div>
-                        <div class="mt-step-content font-grey-cascade">Travel Date</div>
+                        <div class="col-md-4 bg-grey-steel mt-step-col active">
+                            <div class="mt-step-number">2</div>
+                            <div class="mt-step-title uppercase font-grey-cascade">
+                                <strong><?php echo $iti->approved_package_category; ?></strong>
+                            </div>
+                            <div class="mt-step-content font-grey-cascade">Package Category</div>
+                        </div>
+                        <div class="col-md-4 bg-grey-steel mt-step-col done">
+                            <?php $t_date = get_travel_date($iti->iti_id); ?>
+                            <div class="mt-step-number">3</div>
+                            <div class="mt-step-title uppercase font-grey-cascade">
+                                <strong><?php echo !empty($t_date) ? $t_date : "--/--/----"; ?></strong></div>
+                            <div class="mt-step-content font-grey-cascade">Travel Date</div>
+                        </div>
                     </div>
                 </div>
             </div>
             <?php }
+            
             //Declined Reason -->
             else if($iti->iti_status == 7 ){ ?>
             <div class="well well-sm text-center">
@@ -131,36 +140,30 @@
                 <p class="red">Reason: <strong><?php echo $iti->iti_reject_comment; ?></strong></p>
             </div>
             <?php } ?>
-            <div class="header_table table-responsive custom_card margin-bottom-40">
-                <table class="table table-bordered">
-                    <tr>
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm table_details">
+                    <tr class="text-nowrap">
                         <th>Lead Id</th>
                         <td><?php echo $iti->customer_id; ?></td>
-                    </tr>
-                    <tr>
                         <th>Lead Type</th>
                         <td><?php echo $cus_type; ?></td>
                     </tr>
-                    <tr>
+                    <tr class="text-nowrap">
                         <th>From</th>
                         <td><?php echo !empty($country_name) ? "<span>" . $country_name . " ( $state_name ) </span>" : ""; ?>
                         </td>
-                    </tr>
-                    <tr>
                         <th>Q. Type</th>
                         <td><?php echo check_iti_type( $iti->iti_id ) . ' ( ' . $iti->iti_package_type . ')'; ?></td>
                     </tr>
-                    <tr>
+                    <tr class="text-nowrap">
                         <th>Status</th>
                         <td><?= $lead_status ?> Itinerary</td>
-                    </tr>
-                    <tr>
                         <th>Final Package Cost</th>
-                        <td>INR
-                            <?php echo $iti->final_amount; ?>/- </td>
+                        <td>INR <?php echo $iti->final_amount; ?>/- </td>
                     </tr>
                 </table>
             </div>
+
             <div class="row2">
                 <div class="portlet box blue">
                     <div class="portlet-title">
@@ -485,9 +488,9 @@
                     <!-- portlet body -->
                 </div>
                 <!-- portlet -->
-                <div class="custom_card">
-                    <div class="tour_des bg_white outline_none">
-                        <ul class="p-0 row">
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-3">
+                    <div class="tour_des">
+                        <ul class="p-0 mb-0">
                             <div class="row">
                             <li class="col-md-4">
                                 <div class=" list-group-item"><strong> Itinerary Id: </strong><span
@@ -548,10 +551,10 @@
                 <hr>
                 <!--Payment Detais section-->
                 <?php 
-               if( isset( $paymentDetails  ) && !empty( $paymentDetails ) &&  ( $iti->iti_status == 9 || $book_status == 3 ) ){ 
-               	$pay_detail = $paymentDetails[0]; 
-               	//$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";
-               	$is_gst_final = "";
+                    if( isset( $paymentDetails  ) && !empty( $paymentDetails ) &&  ( $iti->iti_status == 9 || $book_status == 3 ) ){ 
+                        $pay_detail = $paymentDetails[0]; 
+                        //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";
+                        $is_gst_final = "";
                	?>
                 <div class="custom_card">
                     <div id="update_iti_hold_status">
@@ -1264,12 +1267,15 @@
             redirect("404");
             } ?>
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
     <style>
-    #editModal {
-        top: 20%;
-    }
+        #editModal {
+            top: 20%;
+        }
     </style>
+
     <!-- Modal -->
     <div id="editModal" class="modal" role="dialog">
         <div class="modal-dialog">
@@ -1286,8 +1292,10 @@
             </div>
         </div>
     </div>
-    <!-- END CONTENT BODY -->
+    <!-- End Modal -->
 </div>
+<!-- End page-container -->
+
 <style>
 #call_log_section {
     display: none;
@@ -1304,16 +1312,12 @@
 #next_call_cal {
     display: none;
 }
-
-.tour_des {
-    background: #faebcc;
-    padding-top: 20px;
-    padding-bottom: 40px;
-}
 </style>
+
+
 <!-- Booking Payment Script -->
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
 
 
     //delete client docs
@@ -1811,7 +1815,7 @@ jQuery(document).ready(function($) {
 </script>
 <!-- End Booking Payment Script -->
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     //reset all fields
     function resetForm() {
         $("#call_detais_form").find("input[type=text],input[type=number], textarea,select").val("");
@@ -1978,8 +1982,9 @@ jQuery(document).ready(function($) {
 
 });
 </script>
+
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     //open modal on duplicate iti btn click
     $(document).on("click", ".duplicateItiBtn", function(e) {
         e.preventDefault();

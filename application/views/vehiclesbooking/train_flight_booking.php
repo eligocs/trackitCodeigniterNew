@@ -83,7 +83,7 @@
 					<div class="col-md-12">
 						<h4 class="align-items-center d-flex justify-content-between mb-3">
 						Tour Info (<?php echo  ucfirst($booking_type) . " Booking Details"?>) 
-						<a title='View' href="<?php echo site_url("itineraries/view_iti/{$iti->iti_id}/{$iti->temp_key}"); ?> " target="_blank" class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i>View Quotation</a></h4>
+						<a title='View' href="<?php echo site_url("itineraries/view_iti/{$iti->iti_id}/{$iti->temp_key}"); ?> " target="_blank" class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i> View Quotation</a></h4>
 					</div>
 				
 					<div class="col-md-4 my-2">

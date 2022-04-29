@@ -22,24 +22,24 @@
 			?>
 
 			<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-				<h1 class="text-center">Tour Info</h1>
+				<h1 class="text-center fs-5">Tour Info</h1>
 				<div class="row">
-					<div class="col-md-4 my-2">
+					<div class="col-xl-4 col-md-6 my-2">
 						<div class="note note-success mb-0">
 							<?php echo "<strong>Itinerary Id:</strong>  " . $iti->iti_id ; ?>
 						</div>
 					</div>
-					<div class="col-md-4 my-2">
+					<div class="col-xl-4 col-md-6 my-2">
 						<div class="note note-success mb-0">
 							<?php echo "<strong>Cab Category:</strong>  " . get_car_name($iti->cab_category); ?>
 						</div>
 					</div>
-					<div class="col-md-4 my-2">
+					<div class="col-xl-4 col-md-6 my-2">
 						<div class="note note-success mb-0">
 							<?php echo "<strong>Total Travellers:</strong> " . $total_tra; ?>
 						</div>
 					</div> 
-					<div class="col-md-4 my-2">
+					<div class="col-xl-4 col-md-6 my-2">
 						<div class="note note-success mb-0">
 							<?php echo "<strong>Package Routing: </strong> " . $iti->package_routing; ?>
 						</div>
@@ -54,6 +54,7 @@
 					<div class="caption"><i class="fa fa-calendar"></i>Existing Cab Booking Against This Itinerary</div>
 				</div>
 			</div>
+
 			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table class="table table-bordered table-hover">
@@ -92,9 +93,11 @@
 						</tbody>
 					</table>
 				</div>	
-				<?php } ?>
-				<!--End hotel booking if any-->
-			
+			</div>
+
+			<?php } ?>
+			<!--End hotel booking if any-->
+			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<form class="form-horizontal" role="form" id="BookCab">
 					<div class="row">
 						<div class="col-xl-4 col-md-6 my-2">
@@ -236,11 +239,10 @@
 					<input type="hidden" name="inp[agent_id]" value="<?php echo $agent_id; ?>">
 					<input type="hidden" id="submit_type" value="9">
 				</form>
-				<?php }else{
-					redirect(404);
-				} ?>
 			</div>
-			<!-- END CONTENT BODY -->
+			<?php }else{
+				redirect(404);
+			} ?>
 		</div>
 		<!-- End page-content -->
 	</div>

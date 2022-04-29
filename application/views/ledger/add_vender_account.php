@@ -30,77 +30,66 @@
                     <div class="caption">
                         <i class="fa-solid fa-plus"></i>Add Vednder Account Details
                     </div>
-                    <a class="btn btn-success" href="<?php echo site_url("ledger");?>" title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("ledger");?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
 
             </div>
-            <div class="portlet-body custom_card">
-                <div class="row">
-                    <form id="addAcc_frm">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Name*</label>
-                                <input type="text" placeholder="Vendor Name" name="name" class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->name ) ? $account_listing[0]->name : ""; ?>"
-                                    required="required" />
+            <form id="addAcc_frm">
+                <div class="portlet-body">
+                    <div class="bg-white p-3 rounded-4 shadow-sm">
+                        <div class="row">
+                            <div class="col-md-4 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Name*</label>
+                                    <input type="text" placeholder="Vendor Name" name="name" class="form-control" value="<?php echo isset( $account_listing[0]->name ) ? $account_listing[0]->name : ""; ?>" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Email*</label>
+                                    <input type="email" placeholder="Email" name="email" class="form-control" value="<?php echo isset( $account_listing[0]->email ) ? $account_listing[0]->email : ""; ?>" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Contact*</label>
+                                    <input type="text" placeholder="Contact" name="contact" class="form-control" value="<?php echo isset( $account_listing[0]->contact ) ? $account_listing[0]->contact : ""; ?>" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Alternate Contact</label>
+                                    <input type="text" placeholder="Alternate Contact" name="alternate_contact_number" class="form-control" value="<?php echo isset( $account_listing[0]->alternate_contact_number ) ? $account_listing[0]->alternate_contact_number : ""; ?>" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Address*</label>
+                                    <textarea placeholder="Address" name="address" class="form-control" required="required"><?php echo isset( $account_listing[0]->address ) ? $account_listing[0]->address : ""; ?></textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Remarks*</label>
+                                    <textarea placeholder="Remarks" name="remarks" class="form-control" required="required"><?php echo isset( $account_listing[0]->remarks ) ? $account_listing[0]->remarks : ""; ?></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 my-2">
+                                <input type="hidden" name="id"
+                                    value="<?php echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
+                                <button type="submit" class="btn green uppercase add_Bank">Update Account</button>
                             </div>
                         </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Email*</label>
-                                <input type="email" placeholder="Email" name="email" class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->email ) ? $account_listing[0]->email : ""; ?>"
-                                    required="required" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Contact*</label>
-                                <input type="text" placeholder="Contact" name="contact" class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->contact ) ? $account_listing[0]->contact : ""; ?>"
-                                    required="required" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Alternate Contact</label>
-                                <input type="text" placeholder="Alternate Contact" name="alternate_contact_number"
-                                    class="form-control"
-                                    value="<?php echo isset( $account_listing[0]->alternate_contact_number ) ? $account_listing[0]->alternate_contact_number : ""; ?>" />
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Address*</label>
-                                <textarea placeholder="Address" name="address" class="form-control"
-                                    required="required"><?php echo isset( $account_listing[0]->address ) ? $account_listing[0]->address : ""; ?></textarea>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Remarks*</label>
-                                <textarea placeholder="Remarks" name="remarks" class="form-control"
-                                    required="required"><?php echo isset( $account_listing[0]->remarks ) ? $account_listing[0]->remarks : ""; ?></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <input type="hidden" name="id"
-                                value="<?php echo isset( $account_listing[0]->id ) ? $account_listing[0]->id : ""; ?>">
-                            <button type="submit" class="btn green uppercase add_Bank">Update Account</button>
-                        </div>
-                </div>
-            </div> <!-- row close -->
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-            <div id="res"></div>
+                    </div>
+                </div> 
+                <div id="res"></div>
             </form>
         </div><!-- portlet body -->
     </div> <!-- portlet -->

@@ -1,5 +1,8 @@
+<!-- End page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
+		<!-- Begin page-content -->
 		<div class="page-content">
 			<!-- BEGIN SAMPLE TABLE PORTLET-->
 			<?php $message = $this->session->flashdata('success'); 
@@ -14,55 +17,61 @@
 				</div>
 			</div>
 			<div class="portlet-body">
-				<div class="table-responsive second_custom_card">
-					<table class="table table-striped display ">
-						<thead>
-							<tr>
-								<th> # </th>
-								<th> Acc. ID</th>
-								<th> Name</th>
-								<th> Email  </th>
-								<th> Contact </th>
-								<th> Address </th>
-								<th> Status</th>
-								<th> Action </th>								
-							</tr>
-						</thead>
-						<tbody>
-						<div id="res"></div>
-						<?php 
-						if( isset($account_listing) && !empty( $account_listing ) ){
-							$i = 1;
-							foreach($account_listing as $account) {
-								$status = $account->status == 1 ? "Blacklist" : "Active";
-							echo " 
-								<tr data-id={$account->id}>
-									<td> {$i} </td>
-									<td>{$account->id}</td>
-									<td> {$account->name}</td>
-									<td> {$account->email} </td>
-									<td> {$account->contact} </td>
-									<td> {$account->address}</td>
-									<td> {$status}</td>
-									<td><a href=" . site_url("ledger/add_vendor_account/{$account->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Edit or add new booking id' ><i class='fa-solid fa-pen-to-square'></i></a>
-									<a href=" . site_url("ledger/view_vendor/{$account->id}") . " class='btn_eye' title='view' ><i class='fa-solid fa-eye'></i></a>
-									<a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa-solid fa-trash-can'></i></a></td>
-								</tr>";
-								$i++; 
-							}
-						}else{
-							echo "<tr>";							
-								echo "<td colspan=9>No Data Found !</td>";							
-							echo "</tr>";
-						} ?>
-						</tbody>
-					</table>
+				<div class="bg-white p-3 rounded-4 shadow-sm">
+					<div class="table-responsive">
+						<table class="table table-striped display ">
+							<thead>
+								<tr>
+									<th> # </th>
+									<th> Acc. ID</th>
+									<th> Name</th>
+									<th> Email  </th>
+									<th> Contact </th>
+									<th> Address </th>
+									<th> Status</th>
+									<th> Action </th>								
+								</tr>
+							</thead>
+							<tbody>
+							<div id="res"></div>
+							<?php 
+							if( isset($account_listing) && !empty( $account_listing ) ){
+								$i = 1;
+								foreach($account_listing as $account) {
+									$status = $account->status == 1 ? "Blacklist" : "Active";
+								echo " 
+									<tr data-id={$account->id}>
+										<td> {$i} </td>
+										<td>{$account->id}</td>
+										<td> {$account->name}</td>
+										<td> {$account->email} </td>
+										<td> {$account->contact} </td>
+										<td> {$account->address}</td>
+										<td> {$status}</td>
+										<td><a href=" . site_url("ledger/add_vendor_account/{$account->id}") . " class='btn_pencil ajax_edit_hotel_table' title='Edit or add new booking id' ><i class='fa-solid fa-pen-to-square'></i></a>
+										<a href=" . site_url("ledger/view_vendor/{$account->id}") . " class='btn_eye' title='view' ><i class='fa-solid fa-eye'></i></a>
+										<a href='javascript:void(0)' class='btn_trash ajax_delete_bank'><i class='fa-solid fa-trash-can'></i></a></td>
+									</tr>";
+									$i++; 
+								}
+							}else{
+								echo "<tr>";							
+									echo "<td colspan=9>No Data Found !</td>";							
+								echo "</tr>";
+							} ?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-			</div>
+		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
+
 <!-- Modal -->
 <script type="text/javascript">
 jQuery(document).ready(function($){

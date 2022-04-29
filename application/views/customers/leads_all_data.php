@@ -647,7 +647,7 @@ div#quotation_type_section,
             <div class="bg-white p-3 rounded-4 shadow-sm mt-4">
                 <div class="row">
                     <div class="col-md-8 col-xxl-9">
-                        <h3 class="text-center uppercase">Take Follow up</h3>
+                        <h3 class="mb-3 fs-6 uppercase">Take Follow up</h3>
                         <div class="customer_followup">
                             <!-- Process for customer followup  -->
                             <?php if( is_admin_or_manager_or_sales() && $customer->cus_status == 0 ){ ?>
@@ -1436,7 +1436,7 @@ div#quotation_type_section,
                     </div>
                     <div class="col-md-4 col-xxl-3">
                         <!--leads followup details-->
-                        <h3 class="text-center uppercase">Follow up history</h3>
+                        <h3 class="text-center uppercase fs-6">Follow up history</h3>
                         <div class="iti_leads_followup_section">
                             <?php if( isset( $itineary_followup ) && !empty( $itineary_followup ) ){
                         $count = 1;

@@ -1,4 +1,4 @@
-<div class="page-container itinerary-view view_call_info">
+<div class="page-container view_call_info">
     <div class="page-content-wrapper">
         <div class="page-content">
             <?php if( !empty($payment ) ){ 

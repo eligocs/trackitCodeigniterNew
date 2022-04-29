@@ -51,34 +51,33 @@ $f_cost =  !empty($iti->final_amount)  && $iti->iti_status == 9  && get_iti_book
     <input type="hidden" name="withoutMrg" value="<?= calculate_total_reverse_margin($f_cost, $tax) ?>" id="sp">
     <div class="row">
         <div class="form-group col-md-6 my-2">
-            <label for="email">Cab:</label>
+            <label class="control-label" for="email">Cab:</label>
             <input type="number" value="<?= !empty($dataEdit->cab_price) ?  $dataEdit->cab_price : '' ?>" class="form-control calCab"  name="cab_price">
         </div>
 
         <div class="form-group col-md-6 my-2">
-            <label for="cc_email">Hotel:</label>
+            <label class="control-label" for="cc_email">Hotel:</label>
             <input type="number" value="<?= !empty($dataEdit->hotel_price) ?  $dataEdit->hotel_price : '' ?>" class="form-control calhotel"  name="hotel_price">
         </div>
 
         <div class="form-group col-md-6 my-2">
-            <label for="bcc_email">Volvo:</label>
+            <label class="control-label" for="bcc_email">Volvo:</label>
             <input type="number" value="<?= !empty($dataEdit->volvo_price) ?  $dataEdit->volvo_price : '' ?>" class="form-control calvolvo"  name="volvo_price">
         </div>
         <div class="form-group col-md-6 my-2">
-            <label for="bcc_email">Flight:</label>
+            <label class="control-label" for="bcc_email">Flight:</label>
             <input type="number" value="<?= !empty($dataEdit->flight_price) ?  $dataEdit->flight_price : '' ?>" class="form-control calflight"  name="flight_price">
         </div>
         <div class="form-group col-md-6 my-2">
-            <label for="bcc_email">Train:</label>
+            <label class="control-label" for="bcc_email">Train:</label>
             <input type="number" value="<?= !empty($dataEdit->train_price) ?  $dataEdit->train_price : '' ?>" class="form-control caltrain"  name="train_price">
         </div>
         <div class="form-group col-md-6 my-2">
-            <label for="bcc_email">Other:</label>
+            <label class="control-label" for="bcc_email">Other:</label>
             <input type="number" value="<?= !empty($dataEdit->other_price) ?  $dataEdit->other_price : '' ?>" class="form-control calother"  name="other_price">
         </div>
         <div class="form-group col-md-6 my-2">
-
-            <label for="sub">Total Expenses:<a href="#" class="totalexpen"> calculate </a></label>
+            <label class="control-label" for="sub">Total Expenses:<a href="#" class="totalexpen"> calculate </a></label>
             <input type="number" required class="form-control subtotal"  name="total_cost" value="<?= !empty($dataEdit->total_cost) ?  $dataEdit->total_cost : '' ?>" readonly>
         </div>
         <div class="form-group col-md-6  my-2 <?= !empty($dataEdit->is_loss_profit) ?  'showproandloss' : 'profitvalue' ;?>">
@@ -94,11 +93,11 @@ $f_cost =  !empty($iti->final_amount)  && $iti->iti_status == 9  && get_iti_book
             <span class="lossin_per" style="<?= ($dataEdit->is_loss_profit == 2) ? 'display:block' : '' ; ?>">Loss in %</span> </label> </label>
             <input type="profit_loss_per" required class="form-control prrofit_per"  name="profit_per" value="<?= !empty($dataEdit->total_margin_per) ?  $dataEdit->total_margin_per : '' ?>" readonly>
         </div>
+        <input type="hidden" required class="form-control is_loss_profit"  name="is_loss_profit" value="">
+        <input type="hidden" required class="form-control" name="iti_id" value="<?= $iti->iti_id ?>">
+        <div class="col-md-12 my-2">
+            <button type="submit" class="btn btn-success disabled stormrg">Store Margin</button>
+        </div>
     </div>
-    <input type="hidden" required class="form-control is_loss_profit"  name="is_loss_profit" value="">
-    <input type="hidden" required class="form-control" name="iti_id" value="<?= $iti->iti_id ?>">
-    <div class="clearfix"></div>
-    <hr>
-    <button type="submit" class="btn btn-success disabled stormrg">Store Margin</button>
 </form>
 

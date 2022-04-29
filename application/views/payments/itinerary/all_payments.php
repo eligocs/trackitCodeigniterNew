@@ -1,140 +1,117 @@
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
+            if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+            ?>
             <?php
-			if( isset( $_GET["todayStatus"] ) ){	
-				$todayStatus = $_GET["todayStatus"];
-				$first_day_this_month = $todayStatus; 
-				$last_day_this_month  = $todayStatus;
-				$hideClass = "hideFilter";
-			}else{
-				$todayStatus = "";
-				$first_day_this_month = ""; 
-				$last_day_this_month  = "";
-				$hideClass = "";
-			}
-		?>
+                if( isset( $_GET["todayStatus"] ) ){	
+                    $todayStatus = $_GET["todayStatus"];
+                    $first_day_this_month = $todayStatus; 
+                    $last_day_this_month  = $todayStatus;
+                    $hideClass = "hideFilter";
+                }else{
+                    $todayStatus = "";
+                    $first_day_this_month = ""; 
+                    $last_day_this_month  = "";
+                    $hideClass = "";
+                }
+            ?>
             <div class="portlet box blue" style="margin-bottom:0;">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-users"></i>All Payments
+                    <i class="fa-solid fa-money-check-dollar"></i> All Payments
                     </div>
                 </div>
             </div>
 
-            <div class=" ">
-                <div class="second_custom_card  margin-bottom-20">
-                    <!--start filter section-->
-                    <form id="form-filter" class="bg_white form-horizontal padding_zero <?php echo $hideClass; ?>">
-                        <div class="actions custom_filter">
-                            <div class="row">
-                                <!-- <div class="col-sm-2">
-								<label>Filter: </label>
-							</div>	 -->
-                                <div class="col-md-3">
-                                    <label>Filter: </label>
-                                    <!--Calender-->
-                                    <input type="text" class="form-control" id="daterange" autocomplete="off"
-                                        name="dateRange" value="" required />
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <!--start filter form-->
+                <form id="form-filter" class="form-horizontal mb-0 <?php echo $hideClass; ?>">
+                    <div class="actions">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-4 my-2">
+                                <div class="form-group">
+                                    <label class="control-label">Filter: </label>
+                                    <input type="text" class="form-control" id="daterange" autocomplete="off" name="dateRange" value="" required />
                                 </div>
-                                <!--End-->
-
-                                <div class="col-md-3">
-                                    <div class="fillter_box">
-										<label for="">&nbsp;</label>
-                                        <select name="filter" id="" class="form-control">
-                                            <option  value="all" id="all">All</option>
-                                            <option  value="pay_received" id="received">Received</option>
-                                            <option  value="complete" id="complete">Complete</option>
-                                            <option  value="refund" id="refund">Refund </option>
-                                            <option  value="travel_date" id="travel_date">TD</option>
-                                            <option  value="pm_ci" id="pm_ci">Closed</option>
-                                            <option  value="pm_oi" id="pm_oi">Open</option>
-                                            <option title="Pending Payment Confirmation"
-                                                value="pending_confirm" id="pending_confirm">PPC</option>
-                                        </select>
-                                    </div>
-
-
-                                    <!-- <div class="btn-group btn-group-justified" data-toggle="buttons">
-											<label class="btn btn-primary custom_active"><input type="radio" name="filter" value="all" id="all"/>All</label>
-											<label class="btn btn-success custom_active"><input type="radio" name="filter" value="pending" id="pending" />Pending</label>
-											<label class="btn btn-primary purple custom_active"><input type="radio" name="filter" value="pay_received" id="received" />Received</label>
-											<label class="btn btn-danger custom_active"><input type="radio" name="filter" value="complete" id="complete" />Complete</label>
-											<label class="btn btn-blue custom_active">
-												<input type="radio" name="filter" value="refund" id="refund" />Refund</label>
-											<label title="Travel Date" class="btn btn-default btn-danger custom_active"><input type="radio" name="filter" value="travel_date" id="travel_date" />TD</label>
-											<label title="Closed Itineraris" class="btn btn-default btn-danger custom_active"><input type="radio" name="filter" value="pm_ci" id="pm_ci" />Closed</label>
-											<label title="Open Itineraris" class="btn btn-success  purple custom_active"><input type="radio" name="filter" value="pm_oi" id="pm_oi" />Open</label>
-											<label class="btn btn-danger custom_active" title="Pending payment confirmation" ><input type="radio" name="filter" title="Pending Payment Confirmation" value="pending_confirm" id="pending_confirm" />PPC</label>
-										</div>	 -->
-                                </div>
-
-                                <div class="col-md-3">
-                                    <input type="hidden" name="date_from" id="date_from"
-                                        data-date_from="<?php if( isset( $_GET['leadfrom'] ) ){ echo $_GET['leadfrom'] ; }else {echo $first_day_this_month; } ?>"
-                                        value="">
-                                    <input type="hidden" name="date_to" id="date_to"
-                                        data-date_to="<?php if( isset( $_GET['leadto'] ) ){ echo $_GET['leadto'] ; }else{ echo $last_day_this_month; } ?>"
-                                        value="">
-                                    <input type="hidden" name="filter_val" id="filter_val"
-                                        value="<?php if( isset( $_GET['payStatus'] ) ){ echo $_GET['payStatus']; }else{ echo "all";	} ?> ">
-                                    <input type="hidden" name="todayStatus" id="todayStatus"
-                                        value="<?php echo $todayStatus; ?>">
-										<label class="d_block" for="">&nbsp;</label>
-										<input type="submit" class="btn btn-success" value="Filter">
-                                </div>
-								<!-- <div class="col-md-2">
-									<label for="">&nbsp;</label>
-									<input type="submit" class="btn btn-success btn-block" value="Filter">
-								</div> -->
                             </div>
 
-                    </form>
-                    <!--End filter section-->
-                </div>
-            </div>
+                            <div class="col-xl-3 col-md-4 my-2">
+                                <div class="fillter_box form-group">
+                                    <label class="control-label" for="">Payment Status</label>
+                                    <select name="filter" id="" class="form-control">
+                                        <option  value="all" id="all">All</option>
+                                        <option  value="pay_received" id="received">Received</option>
+                                        <option  value="complete" id="complete">Complete</option>
+                                        <option  value="refund" id="refund">Refund </option>
+                                        <option  value="travel_date" id="travel_date">TD</option>
+                                        <option  value="pm_ci" id="pm_ci">Closed</option>
+                                        <option  value="pm_oi" id="pm_oi">Open</option>
+                                        <option title="Pending Payment Confirmation"
+                                            value="pending_confirm" id="pending_confirm">PPC</option>
+                                    </select>
+                                </div>
+                            </div>
 
-            <div class="portlet-body custom_card margin-bottom-25">
-                <div class="table-responsive">
-                    <table id="payments" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th> Iti ID </th>
-                                <th> Type </th>
-                                <th> Customer Name </th>
-                                <th> Customer Contact </th>
-                                <th> Package Cost </th>
-                                <th> Balance</th>
-                                <th> Next Due Date</th>
-                                <th> Status</th>
-                                <th> Action </th>
-                                <th> Pay. Confirm Status </th>
-                                <th> TD </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <div class="loader"></div>
-                            <div id="res"></div>
-                            <!--DataTable Goes here-->
-                        </tbody>
-                    </table>
+                            <div class="col-xl-3 col-md-4 my-2">
+                                <input type="hidden" name="date_from" id="date_from" data-date_from="<?php if( isset( $_GET['leadfrom'] ) ){ echo $_GET['leadfrom'] ; }else {echo $first_day_this_month; } ?>"
+                                    value="">
+                                <input type="hidden" name="date_to" id="date_to" data-date_to="<?php if( isset( $_GET['leadto'] ) ){ echo $_GET['leadto'] ; }else{ echo $last_day_this_month; } ?>" value="">
+                                <input type="hidden" name="filter_val" id="filter_val" value="<?php if( isset( $_GET['payStatus'] ) ){ echo $_GET['payStatus']; }else{ echo "all";	} ?> ">
+                                <input type="hidden" name="todayStatus" id="todayStatus" value="<?php echo $todayStatus; ?>">
+                                <label class="d-none d-md-block control-label" for="">&nbsp;</label>
+                                <input type="submit" class="btn btn-success" value="Filter">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--End filter form-->
+            </div>
+            <!-- Begin portlet-body -->
+            <div class="portlet-body">
+                <div class="bg-white rounded-4 p-3 shadow-sm">
+                    <div class="table-responsive">
+                        <table id="payments" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Iti ID </th>
+                                    <th> Type </th>
+                                    <th> Customer Name </th>
+                                    <th> Customer Contact </th>
+                                    <th> Package Cost </th>
+                                    <th> Balance</th>
+                                    <th> Next Due Date</th>
+                                    <th> Status</th>
+                                    <th> Action </th>
+                                    <th> Pay. Confirm Status </th>
+                                    <th> TD </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <div class="loader"></div>
+                                <div id="res"></div>
+                                <!--DataTable Goes here-->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <!-- End portlet-body -->
         </div>
-
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
-</div>
+<!-- End page-container -->
+
+
 <div id="myModal" class="modal" role="dialog"></div>
-
-
 <script type="text/javascript">
 var table;
 $(document).ready(function() {

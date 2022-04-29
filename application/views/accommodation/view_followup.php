@@ -1,8 +1,10 @@
 <!--link href="<?php echo base_url();?>site/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" />
 <script src="<?php echo base_url();?>site/assets/js/lightbox-plus-jquery.min.js" type="text/javascript"></script-->
-
+<!-- Begin page-container -->
 <div class="page-container itinerary-view view_call_info">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <?php if( !empty($itinerary ) ){ 
 				$iti = $itinerary[0];
@@ -49,12 +51,11 @@
 						$ref_contact = " Ref. Contact: " . $cust->reference_contact_number . " >";
 					}
 				}	
-				?>
+            ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-users"></i> <strong>Lead Id: </strong><span
-                            class=""><?php echo $iti->customer_id; ?></span> &nbsp; &nbsp;
-
+                    <div class="caption"><i class="fa fa-users"></i> <strong>Lead Id: </strong>
+                        <span class=""><?php echo $iti->customer_id; ?></span> &nbsp; &nbsp;
                         <?php if( is_admin_or_manager() ){ ?>
                         <strong class=''>Lead Type: </strong> <span class=''><?php echo $cus_type; ?></span>
                         <?php echo $ref_name . $ref_contact; ?>
@@ -64,26 +65,27 @@
                         Q. Type: <strong class="">
                             <?php echo check_iti_type( $iti->iti_id ) . ' ( ' . $iti->iti_package_type . ')'; ?></strong>
                     </div>
-                    <a class="btn btn-success pull-right" href="<?php echo site_url("itineraries"); ?>"
-                        title="Back">Back</a>
+                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("itineraries"); ?>"
+                        title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
 
             <?php if( $iti->iti_status == 9 && isset( $paymentDetails[0] ) && !empty( $paymentDetails[0] )){ 
-					$pay_detail = $paymentDetails[0];
-					//echo $is_amendment . $amendment_note; 
-					//$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";	
-					$is_gst_final = "";	
-						echo $is_amendment . $amendment_note;
-						echo !empty($pay_detail->iti_package_type) ? "<h4 class='text-center red uppercase'>{$pay_detail->iti_package_type}</h4>" : "";
-						if( $pay_detail->iti_booking_status == 0 ){
-							echo '<h1 class="text-center green uppercase">Booked Itinerary</h1>';
-						}else if( $pay_detail->iti_booking_status == 1 ){
-							echo '<h1 class="text-center red uppercase">Itinerary On Hold</h1>';
-						}else{
-							echo '<h1 class="text-center red uppercase">Itinerary Rejected By Manager</h1>';
-							echo "<p class='text-center'><strong class='red'> Reason: </strong> {$pay_detail->approved_note}</p>";
-						} ?>
+                $pay_detail = $paymentDetails[0];
+                //echo $is_amendment . $amendment_note; 
+                //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";	
+                $is_gst_final = "";	
+                echo $is_amendment . $amendment_note;
+                echo !empty($pay_detail->iti_package_type) ? "<h4 class='text-center red uppercase'>{$pay_detail->iti_package_type}</h4>" : "";
+                if( $pay_detail->iti_booking_status == 0 ){
+                    echo '<h1 class="text-center green uppercase">Booked Itinerary</h1>';
+                }else if( $pay_detail->iti_booking_status == 1 ){
+                    echo '<h1 class="text-center red uppercase">Itinerary On Hold</h1>';
+                }else{
+                    echo '<h1 class="text-center red uppercase">Itinerary Rejected By Manager</h1>';
+                    echo "<p class='text-center'><strong class='red'> Reason: </strong> {$pay_detail->approved_note}</p>";
+                } 
+            ?>
 
             <div class="mt-element-step">
                 <div class="row step-background-thin ">
@@ -111,8 +113,8 @@
                 </div>
             </div>
             <?php }
-				//Declined Reason -->
-				else if($iti->iti_status == 7 ){ ?>
+            //Declined Reason -->
+            else if($iti->iti_status == 7 ){ ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <h3 class="custom_title">Declined Itinerary</h3>
@@ -136,255 +138,249 @@
                 </div>
             </div>
             <?php } ?>
+            <?php // echo $greeting; ?>
 
-            <div class="row2">
-                <?php // echo $greeting; ?>
+            <div class="portlet box blue margin-top-40">
+                <div class="portlet-title">
+                    <h3 class="custom_title">Package Overview</h3>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered ">
+                            <tbody>
+                                <tr class="thead-inverse">
+                                    <td width="33%"><strong>Name of Package</strong></td>
+                                    <td width="33%"><strong>Routing</strong></td>
+                                    <td width="33%"><strong>No of Travelers</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $iti->package_name; ?></td>
+                                    <td><?php echo $iti->package_routing; ?></td>
+                                    <td>
+                                        <div class="traveller-info">
+                                            <?php
+                                        echo "<strong> Adults: </strong> " . $iti->adults; 
+                                        if( !empty( $iti->child ) ){
+                                            echo "  <strong> No. of Child: </strong> " . $iti->child; 
+                                            echo " (" . $iti->child_age .")"; 
+                                        }
+                                        ?>
+                                        </div>
+                                    </td>
+                                </tr>
 
-                <div class="portlet box blue margin-top-40">
-                    <div class="portlet-title">
-                        <h3 class="custom_title">Package Overview</h3>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered ">
-                                <tbody>
-                                    <tr class="thead-inverse">
-                                        <td width="33%"><strong>Name of Package</strong></td>
-                                        <td width="33%"><strong>Routing</strong></td>
-                                        <td width="33%"><strong>No of Travelers</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><?php echo $iti->package_name; ?></td>
-                                        <td><?php echo $iti->package_routing; ?></td>
-                                        <td>
-                                            <div class="traveller-info">
-                                                <?php
-                                            echo "<strong> Adults: </strong> " . $iti->adults; 
-                                            if( !empty( $iti->child ) ){
-                                                echo "  <strong> No. of Child: </strong> " . $iti->child; 
-                                                echo " (" . $iti->child_age .")"; 
-                                            }
-                                            ?>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr class="thead-inverse">
+                                    <td><strong>Tour Start Date</strong></td>
+                                    <td><strong>Tour End Date</strong></td>
+                                    <td><strong>Total Nights</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $iti->t_start_date; ?></td>
+                                    <td><?php echo $iti->t_end_date; ?></td>
+                                    <td><?php echo $iti->total_nights . " Nights"; ?></td>
 
-                                    <tr class="thead-inverse">
-                                        <td><strong>Tour Start Date</strong></td>
-                                        <td><strong>Tour End Date</strong></td>
-                                        <td><strong>Total Nights</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><?php echo $iti->t_start_date; ?></td>
-                                        <td><?php echo $iti->t_end_date; ?></td>
-                                        <td><?php echo $iti->total_nights . " Nights"; ?></td>
-
-                                    </tr>
-                                    <tr class="thead-inverse">
-                                        <td><strong>Created</strong></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td><?php echo date("d F,Y", strtotime($iti->added)); ?></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                </tr>
+                                <tr class="thead-inverse">
+                                    <td><strong>Created</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo date("d F,Y", strtotime($iti->added)); ?></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>   
 
-                <div class="clearfix"></div>
-
-                <div class="portlet box blue">
-                    <div class="portlet-title">
-                        <h3 class="custom_title">Hotel Details</h3>
-                    </div>
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <h3 class="custom_title">Hotel Details</h3>
+                </div>
 
                     <?php //Insert Rate meta if price is empty
-				
-				$hotel_meta = unserialize($iti->hotel_meta); 
-				$check_hotel_cat = array();
-				$check_hotel_cat = !empty($hotel_meta) ? array_column($hotel_meta, "hotel_inner_meta" ) : "";
-				
-				//Get all category
-				$all_hotel_cats = [];
-				foreach( $check_hotel_cat as $date => $array ) {
-					$all_hotel_cats = array_merge($all_hotel_cats, array_column($array, "hotel_category"));
-				}
-				
-				/* echo "<pre>";
-					print_r( $all_hotel_cats );
-				echo "</pre>"; */
-				
-				$is_standard	= !empty($all_hotel_cats) && in_array("Standard", $all_hotel_cats) ? TRUE : FALSE;
-				$is_deluxe		= !empty($all_hotel_cats) && in_array("Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
-				$is_s_deluxe 	= !empty($all_hotel_cats) && in_array("Super Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
-				$is_luxury 		= !empty($all_hotel_cats) && in_array("Luxury", $all_hotel_cats ) ? TRUE : FALSE; 
-					
-					
+                    $hotel_meta = unserialize($iti->hotel_meta); 
+                    $check_hotel_cat = array();
+                    $check_hotel_cat = !empty($hotel_meta) ? array_column($hotel_meta, "hotel_inner_meta" ) : "";
+                    
+                    //Get all category
+                    $all_hotel_cats = [];
+                    foreach( $check_hotel_cat as $date => $array ) {
+                        $all_hotel_cats = array_merge($all_hotel_cats, array_column($array, "hotel_category"));
+                    }
+                    
+                    /* echo "<pre>";
+                        print_r( $all_hotel_cats );
+                    echo "</pre>"; */
+                    
+                    $is_standard	= !empty($all_hotel_cats) && in_array("Standard", $all_hotel_cats) ? TRUE : FALSE;
+                    $is_deluxe		= !empty($all_hotel_cats) && in_array("Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
+                    $is_s_deluxe 	= !empty($all_hotel_cats) && in_array("Super Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
+                    $is_luxury 		= !empty($all_hotel_cats) && in_array("Luxury", $all_hotel_cats ) ? TRUE : FALSE; 
+                        
+                
 
-					$standard_html = "";
-					$deluxe_html = "";
-					$super_deluxe_html = "";
-					$luxury_html = "";
-					//print_r( $hotel_meta );
-					if( !empty( $hotel_meta ) ){
-						$count_hotel = count( $hotel_meta ); 
-							/* print_r( $hotel_meta ); */
-							if( $count_hotel > 0 ){
-								for ( $i = 0; $i < $count_hotel; $i++ ) {
-									
-									$hotel_location = $hotel_meta[$i]["hotel_location"];
-									$check_in 		= $hotel_meta[$i]["check_in"];
-									$check_out 		= $hotel_meta[$i]["check_out"];
-									$total_room 	= $hotel_meta[$i]["total_room"];
-									$total_nights 	= $hotel_meta[$i]["total_nights"];
-									$extra_bed 		= !empty( $hotel_meta[$i]['extra_bed'] ) ? " + <strong>" . $hotel_meta[$i]['extra_bed'] . " </strong> Extra Bed" : "";
-									
-									$hotel_inner_meta = $hotel_meta[$i]["hotel_inner_meta"];
-									//Fetch hotel inner meta
-									$count_innermeta = count( $hotel_inner_meta );
-									//print_r($hotel_inner_meta);
-									
-									if( !empty( $count_innermeta ) ){
-										for( $ii = 0 ; $ii < $count_innermeta ; $ii++ ){
-											$hotel_category	= $hotel_inner_meta[$ii]["hotel_category"];
-											$room_category 	= $hotel_inner_meta[$ii]["room_category"];
-											$hotel_name 	= $hotel_inner_meta[$ii]["hotel_name"];
-											$meal_plan 		= $hotel_inner_meta[$ii]["meal_plan"];
-											
-											//hotel details html category wise
-											switch( $hotel_category ){
-												case "Standard":
-													$standard_html .= "<tr>
-														<td>{$hotel_location}</td>
-														<td>Deluxe</td>
-														<td>{$check_in}</td>
-														<td>{$check_out}</td>
-														<td>{$hotel_name}</td>
-														<td>{$room_category}</td>
-														<td>{$meal_plan}</td>
-														<td>{$total_room}{$extra_bed}</td>
-														<td>{$total_nights}</td>
-													</tr>";
-												break;
-												case "Deluxe":
-													$deluxe_html .= "<tr>
-														<td>{$hotel_location}</td>
-														<td>Super Deluxe</td>
-														<td>{$check_in}</td>
-														<td>{$check_out}</td>
-														<td>{$hotel_name}</td>
-														<td>{$room_category}</td>
-														<td>{$meal_plan}</td>
-														<td>{$total_room}{$extra_bed}</td>
-														<td>{$total_nights}</td>
-													</tr>";
-												break;
-												case "Super Deluxe":
-													$super_deluxe_html .= "<tr>
-														<td>{$hotel_location}</td>
-														<td>Luxury</td>
-														<td>{$check_in}</td>
-														<td>{$check_out}</td>
-														<td>{$hotel_name}</td>
-														<td>{$room_category}</td>
-														<td>{$meal_plan}</td>
-														<td>{$total_room}{$extra_bed}</td>
-														<td>{$total_nights}</td>
-													</tr>";
-												break;
-												case "Luxury":
-													$luxury_html .= "<tr>
-														<td>{$hotel_location}</td>
-														<td>Super Luxury</td>
-														<td>{$check_in}</td>
-														<td>{$check_out}</td>
-														<td>{$hotel_name}</td>
-														<td>{$room_category}</td>
-														<td>{$meal_plan}</td>
-														<td>{$total_room}{$extra_bed}</td>
-														<td>{$total_nights}</td>
-													</tr>";
-												break;
-												default:
-													continue2;
-												break;
-											}
-										}
-									}
-									
-									
-								}
-								if( $is_standard ) {
-									echo "<div class='portlet-body'><div class='well well-sm'><h3>Deluxe</h3></div>";
-									echo "<div class='table-responsive'><table class='table table-bordered'><tr>
-										<th>City</th>
-										<th>Hotel Category</th>
-										<th>Check In</th>
-										<th>Check Out</th>
-										<th>Hotel</th>
-										<th>Room Category</th>
-										<th>Plan</th>
-										<th>Room</th>
-										<th>N/T</th>
-									</tr>";
-									echo $standard_html . "</table></div></div>";
-								}
-								if( $is_deluxe ){
-									echo "<div class='portlet-body'><div class='well well-sm'><h3>Super Deluxe</h3></div>";
-									echo "<div class='table-responsive'><table class='table table-bordered'><tr>
-										<th>City</th>
-										<th>Hotel Category</th>
-										<th>Check In</th>
-										<th>Check Out</th>
-										<th>Hotel</th>
-										<th>Room Category</th>
-										<th>Plan</th>
-										<th>Room</th>
-										<th>N/T</th>
-									</tr>";
-									echo $deluxe_html . "</table></div></div>";
-								}
-								if( $is_s_deluxe ){
-									echo "<div class='portlet-body'><div class='well well-sm'><h3>Luxury</h3></div>";
-									echo "<div class='table-responsive'><table class='table table-bordered'><tr>
-										<th>City</th>
-										<th>Hotel Category</th>
-										<th>Check In</th>
-										<th>Check Out</th>
-										<th>Hotel</th>
-										<th>Room Category</th>
-										<th>Plan</th>
-										<th>Room</th>
-										<th>N/T</th>
-									</tr>";
-									echo $super_deluxe_html . "</table></div></div>";
-								}
-								if( $is_luxury ){
-									echo "<div class='portlet-body'><div class='well well-sm'><h3>Super Luxury</h3></div>";
-									echo "<div class='table-responsive'><table class='table table-bordered'><tr>
-										<th>City</th>
-										<th>Hotel Category</th>
-										<th>Check In</th>
-										<th>Check Out</th>
-										<th>Hotel</th>
-										<th>Room Category</th>
-										<th>Plan</th>
-										<th>Room</th>
-										<th>N/T</th>
-									</tr>";
-									echo $luxury_html . "</table></div></div>";
-								}
-							} ?>
+                    $standard_html = "";
+                    $deluxe_html = "";
+                    $super_deluxe_html = "";
+                    $luxury_html = "";
+                    //print_r( $hotel_meta );
+                    if( !empty( $hotel_meta ) ){
+                        $count_hotel = count( $hotel_meta ); 
+                            /* print_r( $hotel_meta ); */
+                            if( $count_hotel > 0 ){
+                                for ( $i = 0; $i < $count_hotel; $i++ ) {
+                                    
+                                    $hotel_location = $hotel_meta[$i]["hotel_location"];
+                                    $check_in 		= $hotel_meta[$i]["check_in"];
+                                    $check_out 		= $hotel_meta[$i]["check_out"];
+                                    $total_room 	= $hotel_meta[$i]["total_room"];
+                                    $total_nights 	= $hotel_meta[$i]["total_nights"];
+                                    $extra_bed 		= !empty( $hotel_meta[$i]['extra_bed'] ) ? " + <strong>" . $hotel_meta[$i]['extra_bed'] . " </strong> Extra Bed" : "";
+                                    
+                                    $hotel_inner_meta = $hotel_meta[$i]["hotel_inner_meta"];
+                                    //Fetch hotel inner meta
+                                    $count_innermeta = count( $hotel_inner_meta );
+                                    //print_r($hotel_inner_meta);
+                                    
+                                    if( !empty( $count_innermeta ) ){
+                                        for( $ii = 0 ; $ii < $count_innermeta ; $ii++ ){
+                                            $hotel_category	= $hotel_inner_meta[$ii]["hotel_category"];
+                                            $room_category 	= $hotel_inner_meta[$ii]["room_category"];
+                                            $hotel_name 	= $hotel_inner_meta[$ii]["hotel_name"];
+                                            $meal_plan 		= $hotel_inner_meta[$ii]["meal_plan"];
+                                            
+                                            //hotel details html category wise
+                                            switch( $hotel_category ){
+                                                case "Standard":
+                                                    $standard_html .= "<tr>
+                                                        <td>{$hotel_location}</td>
+                                                        <td>Deluxe</td>
+                                                        <td>{$check_in}</td>
+                                                        <td>{$check_out}</td>
+                                                        <td>{$hotel_name}</td>
+                                                        <td>{$room_category}</td>
+                                                        <td>{$meal_plan}</td>
+                                                        <td>{$total_room}{$extra_bed}</td>
+                                                        <td>{$total_nights}</td>
+                                                    </tr>";
+                                                break;
+                                                case "Deluxe":
+                                                    $deluxe_html .= "<tr>
+                                                        <td>{$hotel_location}</td>
+                                                        <td>Super Deluxe</td>
+                                                        <td>{$check_in}</td>
+                                                        <td>{$check_out}</td>
+                                                        <td>{$hotel_name}</td>
+                                                        <td>{$room_category}</td>
+                                                        <td>{$meal_plan}</td>
+                                                        <td>{$total_room}{$extra_bed}</td>
+                                                        <td>{$total_nights}</td>
+                                                    </tr>";
+                                                break;
+                                                case "Super Deluxe":
+                                                    $super_deluxe_html .= "<tr>
+                                                        <td>{$hotel_location}</td>
+                                                        <td>Luxury</td>
+                                                        <td>{$check_in}</td>
+                                                        <td>{$check_out}</td>
+                                                        <td>{$hotel_name}</td>
+                                                        <td>{$room_category}</td>
+                                                        <td>{$meal_plan}</td>
+                                                        <td>{$total_room}{$extra_bed}</td>
+                                                        <td>{$total_nights}</td>
+                                                    </tr>";
+                                                break;
+                                                case "Luxury":
+                                                    $luxury_html .= "<tr>
+                                                        <td>{$hotel_location}</td>
+                                                        <td>Super Luxury</td>
+                                                        <td>{$check_in}</td>
+                                                        <td>{$check_out}</td>
+                                                        <td>{$hotel_name}</td>
+                                                        <td>{$room_category}</td>
+                                                        <td>{$meal_plan}</td>
+                                                        <td>{$total_room}{$extra_bed}</td>
+                                                        <td>{$total_nights}</td>
+                                                    </tr>";
+                                                break;
+                                                default:
+                                                    continue2;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                                if( $is_standard ) {
+                                    echo "<div class='portlet-body'><div class='well well-sm'><h3>Deluxe</h3></div>";
+                                    echo "<div class='table-responsive'><table class='table table-bordered'><tr>
+                                        <th>City</th>
+                                        <th>Hotel Category</th>
+                                        <th>Check In</th>
+                                        <th>Check Out</th>
+                                        <th>Hotel</th>
+                                        <th>Room Category</th>
+                                        <th>Plan</th>
+                                        <th>Room</th>
+                                        <th>N/T</th>
+                                    </tr>";
+                                    echo $standard_html . "</table></div></div>";
+                                }
+                                if( $is_deluxe ){
+                                    echo "<div class='portlet-body'><div class='well well-sm'><h3>Super Deluxe</h3></div>";
+                                    echo "<div class='table-responsive'><table class='table table-bordered'><tr>
+                                        <th>City</th>
+                                        <th>Hotel Category</th>
+                                        <th>Check In</th>
+                                        <th>Check Out</th>
+                                        <th>Hotel</th>
+                                        <th>Room Category</th>
+                                        <th>Plan</th>
+                                        <th>Room</th>
+                                        <th>N/T</th>
+                                    </tr>";
+                                    echo $deluxe_html . "</table></div></div>";
+                                }
+                                if( $is_s_deluxe ){
+                                    echo "<div class='portlet-body'><div class='well well-sm'><h3>Luxury</h3></div>";
+                                    echo "<div class='table-responsive'><table class='table table-bordered'><tr>
+                                        <th>City</th>
+                                        <th>Hotel Category</th>
+                                        <th>Check In</th>
+                                        <th>Check Out</th>
+                                        <th>Hotel</th>
+                                        <th>Room Category</th>
+                                        <th>Plan</th>
+                                        <th>Room</th>
+                                        <th>N/T</th>
+                                    </tr>";
+                                    echo $super_deluxe_html . "</table></div></div>";
+                                }
+                                if( $is_luxury ){
+                                    echo "<div class='portlet-body'><div class='well well-sm'><h3>Super Luxury</h3></div>";
+                                    echo "<div class='table-responsive'><table class='table table-bordered'><tr>
+                                        <th>City</th>
+                                        <th>Hotel Category</th>
+                                        <th>Check In</th>
+                                        <th>Check Out</th>
+                                        <th>Hotel</th>
+                                        <th>Room Category</th>
+                                        <th>Plan</th>
+                                        <th>Room</th>
+                                        <th>N/T</th>
+                                    </tr>";
+                                    echo $luxury_html . "</table></div></div>";
+                                }
+                            } ?>
 
                     <?php } ?>
-                </div>
-
             </div>
+
             <div class="portlet box blue margin-top-50">
                 <div class="portlet-title">
                     <h3 class="custom_title">Rates</h3>
@@ -596,72 +592,89 @@
                 </div>
             </div>
 
-            <div class="custom_card">
-                <div class="tour_des bg_white outline_none">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-3">
+                <div class="tour_des">
                     <ul class="list-group">
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong> Itinerary Id: </strong><span
-                                    class="badge badge-success">
-                                    <?php echo $iti->iti_id; ?></p> </span></div>
-                        </li>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong> Name:</strong> <span class="badge badge-success">
-                                    <?php echo $customer_name; ?> </span></div>
-                        </li>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong> Phone: </strong><span class="badge badge-success">
-                                    <?php echo $customer_contact; ?> </span></div>
-                        </li>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong> Email: </strong><span class="badge badge-success">
-                                    <?php echo $customer_email; ?> </span></div>
-                        </li>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong> Agent: </strong><span class="badge badge-success">
-                                    <?php echo get_user_name($iti->agent_id); ?> </span></div>
-                        </li>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong> Prospect: </strong><span class="badge badge-success">
-                                    <?php echo !empty($followUpData) ? $followUpData[0]->itiProspect : "" ; ?> </span>
-                            </div>
-                        </li>
+                        <div class="row">
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong> Itinerary Id: </strong>
+                                    <span class="badge badge-success"> <?php echo $iti->iti_id; ?></p> </span>
+                                </div>
+                            </li>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong> Name: </strong> 
+                                    <span class="badge badge-success"> <?php echo $customer_name; ?> </span>
+                                </div>
+                            </li>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong> Phone: </strong>
+                                    <span class="badge badge-success"> <?php echo $customer_contact; ?> </span>
+                                </div>
+                            </li>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong> Email: </strong>
+                                    <span class="badge badge-success"> <?php echo $customer_email; ?> </span>
+                                </div>
+                            </li>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong> Agent: </strong>
+                                    <span class="badge badge-success"> <?php echo get_user_name($iti->agent_id); ?> </span>
+                                </div>
+                            </li>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong> Prospect: </strong>
+                                    <span class="badge badge-success"> <?php echo !empty($followUpData) ? $followUpData[0]->itiProspect : "" ; ?> </span>
+                                </div>
+                            </li>
 
-                        <?php if(  $iti_status ==7 ){ ?>
-                        <li class="col-md-4 list-group-item">
-                            <div class=" list-group-item"><strong>Decline Reason: </strong> <?php echo $lead_note; ?>
-                            </div>
-                        </li>
-                        <li class="col-md-4 list-group-item"><strong>Decline Comment: </strong>
-                            <?php echo $iti->decline_comment; ?></li>
-                        <?php } ?>
+                            <?php if(  $iti_status ==7 ){ ?>
+                            <li class="col-md-4 list-group-item">
+                                <div class=" list-group-item"><strong>Decline Reason: </strong> <?php echo $lead_note; ?>
+                                </div>
+                            </li>
+                            <li class="col-md-4 list-group-item"><strong>Decline Comment: </strong>
+                                <?php echo $iti->decline_comment; ?></li>
+                            <?php } ?>
 
-                        <?php if(  $iti_status == 9 ){ ?>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong>Final Amount: </strong> <span
-                                    class="badge badge-success"><?php echo iti_final_cost($iti->iti_id); ?></span></div>
-                        </li>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong>Package Category: </strong> <span
-                                    class="badge badge-success"><?php echo $iti->approved_package_category; ?></span>
-                            </div>
-                        </li>
-                        <li class="col-md-4">
-                            <div class=" list-group-item"><strong>Comment: </strong> <span
-                                    class="badge badge-success"><?php echo $lead_note; ?></span></div>
-                        </li>
-                        <?php } ?>
-                    </ul>
-
-                    <div class="clearfix"></div>
+                            <?php if(  $iti_status == 9 ){ ?>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong>Final Amount: </strong> 
+                                    <span class="badge badge-success"><?php echo iti_final_cost($iti->iti_id); ?></span>
+                                </div>
+                            </li>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong>Package Category: </strong> 
+                                    <span class="badge badge-success"><?php echo $iti->approved_package_category; ?></span>
+                                </div>
+                            </li>
+                            <li class="col-md-4">
+                                <div class=" list-group-item">
+                                    <strong>Comment: </strong> 
+                                    <span class="badge badge-success"><?php echo $lead_note; ?></span>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </div>
+                    </ul>                    
                 </div>
             </div>
+
             <!--Payment Detais section-->
             <?php 
-					if( isset( $paymentDetails  ) && !empty( $paymentDetails ) &&  ( $iti->iti_status == 9 || $book_status == 3 ) ){ 
-						$pay_detail = $paymentDetails[0]; 
-						//$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";
-						$is_gst_final = "";
-						?>
+                if( isset( $paymentDetails  ) && !empty( $paymentDetails ) &&  ( $iti->iti_status == 9 || $book_status == 3 ) ){ 
+                $pay_detail = $paymentDetails[0]; 
+                //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";
+                $is_gst_final = "";
+            ?>
+
             <div class="portlet box blue margin-top-50" id="update_iti_hold_status">
                 <div class="portlet-title">
                     <h4 class="custom_title">Advance Received Details</h4>
@@ -731,7 +744,7 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix"></div>
+            
             <!--end payment sceenshot status-->
             <?php } ?>
             <!--End Payment Details section-->
@@ -739,12 +752,13 @@
             <!--service team section if user_role == 97 and iti is booked -->
             <!--Show hotel booking if any-->
             <?php if( $user_role == 97 && $iti->iti_status == 9 ){
-						//Check hotel / volvo booking status
-						$hotel_booking_status 		= is_hotel_booking_done( $iti->iti_id );
-						$vtf_booking_status			= is_vtf_booking_done( $iti->iti_id );
-						$total_payment_recieved_percentage = get_iti_pay_receive_percentage( $iti->iti_id );
-						$is_voucher_confirm			 = is_voucher_confirm( $iti->iti_id );
-					?>
+                //Check hotel / volvo booking status
+                $hotel_booking_status 		= is_hotel_booking_done( $iti->iti_id );
+                $vtf_booking_status			= is_vtf_booking_done( $iti->iti_id );
+                $total_payment_recieved_percentage = get_iti_pay_receive_percentage( $iti->iti_id );
+                $is_voucher_confirm			 = is_voucher_confirm( $iti->iti_id );
+            ?>
+
             <?php $add_hotel_booking_link = base_url("hotelbooking/add/{$iti->iti_id}"); ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
@@ -825,243 +839,169 @@
                     </div>
                 </div>
             </div>
-
             <!--End hotel booking if any-->
-            <?php /*
-					<!--step line start-->
-					
-					<?php $pay_class 	=  $total_payment_recieved_percentage >= 50 ? "done" : "error"; ?>
-            <?php $hotel_class	 =  !empty( $hotel_booking_status ) ? "done" : "error"; ?>
-            <?php $vtf_class	 =  !empty($vtf_booking_status) ? "done" : "error"; ?>
-            <div class="mt-element-step">
-                <div class="row step-line">
-                    <div class="mt-step-desc">
-                        <div class="font-dark bold uppercase text-center">
-                            <h2>BOOKING STATUS</h2>
-                        </div>
-                        <div class="caption-desc font-grey-cascade"></div>
-                        <br />
-                    </div>
-                    <div class="col-md-6 mt-step-col <?php echo $hotel_class; ?>">
-                        <div class="mt-step-number bg-white">
-                            <i class="fa fa-bed"></i>
-                        </div>
-                        <div class="mt-step-title uppercase font-grey-cascade">Hotel Booking</div>
-                    </div>
-                    <div class="col-md-6 mt-step-col <?php echo $pay_class; ?>">
-                        <div class="mt-step-number bg-white">
-                            <i class="fa fa-inr"></i>
-                        </div>
-                        <div class="mt-step-title uppercase font-grey-cascade">Payments</div>
-                        <div class="mt-step-content font-grey-cascade">Min. Fifty Percentage Amount
-                            ( Received Amount: <?php echo $total_payment_recieved_percentage; ?>% )</div>
-                    </div>
-                </div>
-
-                <!--show confirm voucher button if hotel and volovo/train/flight booking confirmed-->
-                <?php if( $is_voucher_confirm ){
-							echo "<p class='text-center green'><strong>Voucher has been Confirmed.</strong></p>";
-						}else if( $hotel_booking_status ){ ?>
-                <div class="text-center confirm_voucher">
-                    <button type="submit" data-iti_id="<?php echo $iti->iti_id; ?>"
-                        class="btn green uppercase cnfrim_voucher" title="Confirm Voucher">Confirm Voucher</button>
-                    <p style="font-size:12px; color: red;"><strong>Note: </strong>To confirm voucher make sure that the
-                        payment is received greater than <strong>50%</strong>.</p>
-                </div>
-                <div id="confirmVoucherModal" class="modal" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">Close</button>
-                                <h4 class="modal-title">Confirm Voucher</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form id="frm_confirm_voucher">
-                                    <div class="form-group">
-                                        <label for="comment">Comment<span style="color:red;">*</span>:</label>
-                                        <textarea required class="form-control" rows="3"
-                                            name="agent_comment"></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="iti_id" value="<?php echo $iti->iti_id; ?>">
-                                        <input type="submit" class='btn btn-green' id="clone_current_iti"
-                                            title='Confirm Voucher' value="Confirm Voucher" />
-                                    </div>
-                                    <div class="cnf_res"></div>
-                                </form>
-                            </div>
-                            <div class="modal-footer"></div>
-                        </div>
-                    </div>
-                </div>
-                <?php } ?>
-            </div>
-            */ ?>
-            <!--End step line start-->
             <?php } ?>
-            <!--end hotel booking section-->
 
             <!--show child itineraries if exists -->
             <?php 
-					$dupBtn = "";
-					$countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
-					
-					//Get if Itinerary is parent or childIt
-					$p_iti = empty( $parent_iti ) ? "Parent" : "Child";
-					//Count All Child Itineraries
-					//clone button
-					if( $countChildIti < 6  && $iti->iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" ){
-						$dupBtn = "<a title='Duplicate Itinerary' href=" . site_url("itineraries/duplicate/{$iti->iti_id}") . " class='btn btn-success' ><i class='fa fa-files-o' aria-hidden='true'></i></a>"; 
-					}	
-					//get last followup
-					$last_followUp_iti = isset( $lastFollow ) && !empty( $lastFollow ) ? trim($lastFollow) : 0;
-					//current followup iti id
-					$lFollow = $last_followUp_iti == $iti->iti_id ? "<strong class='green'>Last Followup On Current Itinerary</strong>" : "";
-					$i=1;
-					//Count All Child Itineraries
-					$countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
-					$dupChildBtn = "";
-					if( !empty( $childItinerary ) ){
-						echo "<h2 class='text-center'><strong>CHILD ITINERARIES</strong></h2>";
-						foreach( $childItinerary as $c_iti ){
-						//get iti_status
-						$row_delete = "";
-						$btncmt = "";
-						$iti_status = $c_iti->iti_status;
-						$parent_iti = $c_iti->parent_iti_id;
-						$iti_id = $c_iti->iti_id;
-						$key = $c_iti->temp_key;
-						$pub_status = $c_iti->publish_status;
-						//current followup iti id
-						$curFollow = $last_followUp_iti == $iti_id ? "last_follow" : "";
-						
-						//get discount rate request
-						$discount_request = $c_iti->discount_rate_request;
-						$discReq = $discount_request == 1 ? "<strong class='red'> (Price Discount Request) </stron>" : " ";
-						//Get Pulish status
-						if( $pub_status == "publish" ){
-							$p_status = "<div class='btn btn-success green'>" . ucfirst($pub_status) . "</div>";
-							$p_status .= $discReq;
-						}elseif( $pub_status == "price pending" ){
-							$p_status = "<div class='btn btn-danger blue'>" . ucfirst($pub_status) . "</div>";
-							$p_status .= $discReq;
-						}else{
-							$p_status = "<div class='btn btn-danger red'>" . ucfirst($pub_status) . "</div>";
-						}
-						
-						/* count iti sent status */
-						$iti_sent = $c_iti->email_count;
-						$sent_status = $iti_sent > 0 ? "$iti_sent Time Sent" : "Not Sent";
-						
-						//Show duplicate button for child itinerary
-					 	if( !empty( $parent_iti ) && $countChildIti < 6 ){
-							$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti_id}&parent_iti_id={$parent_iti}" ) ." class='btn btn-success child_clone'><i class='fa fa-files-o' aria-hidden='true'></i></a>";
-						}	 
-						
-						//if price is updated remove edit for agent
-						if( ($c_iti->pending_price == 2 || $c_iti->pending_price == 4) && $user_role == 96 ){
-							$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
-						}else{
-							$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
-						}
-						
-						$btn_view = "<a title='View' target='_blank' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
-						$btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
-						$btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
+                $dupBtn = "";
+                $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
+                
+                //Get if Itinerary is parent or childIt
+                $p_iti = empty( $parent_iti ) ? "Parent" : "Child";
+                //Count All Child Itineraries
+                //clone button
+                if( $countChildIti < 6  && $iti->iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" ){
+                    $dupBtn = "<a title='Duplicate Itinerary' href=" . site_url("itineraries/duplicate/{$iti->iti_id}") . " class='btn btn-success' ><i class='fa fa-files-o' aria-hidden='true'></i></a>"; 
+                }	
+                //get last followup
+                $last_followUp_iti = isset( $lastFollow ) && !empty( $lastFollow ) ? trim($lastFollow) : 0;
+                //current followup iti id
+                $lFollow = $last_followUp_iti == $iti->iti_id ? "<strong class='green'>Last Followup On Current Itinerary</strong>" : "";
+                $i=1;
+                //Count All Child Itineraries
+                $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
+                $dupChildBtn = "";
+                if( !empty( $childItinerary ) ){
+                    echo "<h2 class='text-center'><strong>CHILD ITINERARIES</strong></h2>";
+                    foreach( $childItinerary as $c_iti ){
+                    //get iti_status
+                    $row_delete = "";
+                    $btncmt = "";
+                    $iti_status = $c_iti->iti_status;
+                    $parent_iti = $c_iti->parent_iti_id;
+                    $iti_id = $c_iti->iti_id;
+                    $key = $c_iti->temp_key;
+                    $pub_status = $c_iti->publish_status;
+                    //current followup iti id
+                    $curFollow = $last_followUp_iti == $iti_id ? "last_follow" : "";
+                    
+                    //get discount rate request
+                    $discount_request = $c_iti->discount_rate_request;
+                    $discReq = $discount_request == 1 ? "<strong class='red'> (Price Discount Request) </stron>" : " ";
+                    //Get Pulish status
+                    if( $pub_status == "publish" ){
+                        $p_status = "<div class='btn btn-success green'>" . ucfirst($pub_status) . "</div>";
+                        $p_status .= $discReq;
+                    }elseif( $pub_status == "price pending" ){
+                        $p_status = "<div class='btn btn-danger blue'>" . ucfirst($pub_status) . "</div>";
+                        $p_status .= $discReq;
+                    }else{
+                        $p_status = "<div class='btn btn-danger red'>" . ucfirst($pub_status) . "</div>";
+                    }
+                    
+                    /* count iti sent status */
+                    $iti_sent = $c_iti->email_count;
+                    $sent_status = $iti_sent > 0 ? "$iti_sent Time Sent" : "Not Sent";
+                    
+                    //Show duplicate button for child itinerary
+                    if( !empty( $parent_iti ) && $countChildIti < 6 ){
+                        $dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti_id}&parent_iti_id={$parent_iti}" ) ." class='btn btn-success child_clone'><i class='fa fa-files-o' aria-hidden='true'></i></a>";
+                    }	 
+                    
+                    //if price is updated remove edit for agent
+                    if( ($c_iti->pending_price == 2 || $c_iti->pending_price == 4) && $user_role == 96 ){
+                        $btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
+                    }else{
+                        $btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i></a>";
+                    }
+                    
+                    $btn_view = "<a title='View' target='_blank' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
+                    $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
+                    $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
 
-						if( !empty( $c_iti->client_comment_status ) && $c_iti->client_comment_status == 1 ){
-							$btncmt = "<a data-id={$iti_id} data-key={$key} title='Client Comment' href='javascript:void(0)' class='btn btn-success ajax_iti_status red'><span class='blink'><i class='fa fa fa-comment-o' aria-hidden='true'></i>  New Comment</span></a>";
-						}
-						
-						//if itinerary status is publish
-						if( $pub_status == "publish" || $pub_status == "price pending" ){
-							//delete itinerary button only for admin
-							if( ( is_admin() || is_manager() ) && !empty( $parent_iti ) && ( $last_followUp_iti != $iti_id ) ){ 
-								$row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
-							}
-							//echo "<td>{$btn_edit} {$btn_view} {$row_delete} {$it_status}{$dupBtn}</td>";
-						}
-						//echo "</tr>";
-						echo "<div class='col-md-4'>
-							<div class='itinerary-blocks {$curFollow}'>
-							<div class='package_name'><div>{$btncmt}</div>{$c_iti->package_name}<div style='font-size:13px;'>{$c_iti->added}</div></div>
-							<div class='hover_section'>
-								{$btn_edit}
-								{$btn_view}
-								{$p_status}
-								{$row_delete}
-								{$dupChildBtn}
-							</div>
-							</div>
-						</div>";
-						
-						$i++;
-					}
-				} ?><div class="clearfix"></div>
+                    if( !empty( $c_iti->client_comment_status ) && $c_iti->client_comment_status == 1 ){
+                        $btncmt = "<a data-id={$iti_id} data-key={$key} title='Client Comment' href='javascript:void(0)' class='btn btn-success ajax_iti_status red'><span class='blink'><i class='fa fa fa-comment-o' aria-hidden='true'></i>  New Comment</span></a>";
+                    }
+                    
+                    //if itinerary status is publish
+                    if( $pub_status == "publish" || $pub_status == "price pending" ){
+                        //delete itinerary button only for admin
+                        if( ( is_admin() || is_manager() ) && !empty( $parent_iti ) && ( $last_followUp_iti != $iti_id ) ){ 
+                            $row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
+                        }
+                        //echo "<td>{$btn_edit} {$btn_view} {$row_delete} {$it_status}{$dupBtn}</td>";
+                    }
+                    //echo "</tr>";
+                    echo "<div class='col-md-4'>
+                        <div class='itinerary-blocks {$curFollow}'>
+                        <div class='package_name'><div>{$btncmt}</div>{$c_iti->package_name}<div style='font-size:13px;'>{$c_iti->added}</div></div>
+                        <div class='hover_section'>
+                            {$btn_edit}
+                            {$btn_view}
+                            {$p_status}
+                            {$row_delete}
+                            {$dupChildBtn}
+                        </div>
+                        </div>
+                    </div>";
+                    
+                    $i++;
+                    }
+				} 
+            ?>
 
 
-            <div class="inquery_section custom_card">
+            <div class="inquery_section bg-white p-3 rounded-4 shadow-sm">
                 <!--show amendment button for sales team and manager-->
                 <?php 
-						//Check if final installment received or not
-						//dump( $amendment_itineraries  );
-						$total_amendments = !empty( $amendment_itineraries ) ? sizeof($amendment_itineraries) : 0 ;
-						//if( $iti_status == 9 && ( $user_role == 96 || is_admin_or_manager() ) ){
-						if( $iti_status == 9 && ( $user_role == 96 || is_admin_or_manager() ) && $iti->iti_close_status == 0 ){
-							echo '<p style="font-size:12px; color: red;" class="alert alert-danger"><strong>Note: </strong>You can create only three amendments of each itinerary.When amendment is approved you can\'t create new amendment.</p>';
-							
-							if( !empty( $amendment_itineraries ) && $iti->is_amendment != 2 ){
-								$cnt = 1;
-								foreach( $amendment_itineraries as $amend ){
-									$view_btn= "<a target='_blank' href='". base_url("itineraries/view_amendment/{$amend->id}") ."' class='btn btn-success' title='click to amendment View Itinerary'>Click Here To View Amendment {$cnt}</a>";
-									
-									$client_view = "<a target='_blank' href='". base_url("promotion/amendment_view/{$amend->id}/{$amend->iti_id}/{$amend->temp_key}") ."' class='btn btn-danger' title='Client View'>Client View {$cnt}</a>";
-									
-									echo "<div class='col-md-4 margin-bottom-40 margin-top-40'>{$view_btn} {$client_view}</div>";
-									$cnt++;
-								}
-							}
-							
-							//show create amendment button if amendment less than 2
-							//if( $total_amendments < 3 && $iti->is_amendment != 2 ) {
-							if( $total_amendments < 3 && count($old_itineraries) <= 4 ) {
-								//Check iti amendment table if iti approved
-								$check_amd_app_iti = $this->global_model->getdata( 'iti_amendment_temp', array("iti_id" => $iti->iti_id, "del_status" => 0, "new_package_cost !=" => 0 ), "id" );
-								
-								if( ($check_amd_app_iti &&  empty( $total_amendments ) ) || empty( $total_amendments ) ){
-									$create_old_iti = "insert_old";
-								}else{
-									$create_old_iti = "no";
-								}
-								
-								//dump( $check_amditi );
-								echo "<div class='clearfix'></div>";
-								echo "<div class='row amendment_clone_btn margin-bottom-25' style='margin-top: 10px;'><a href='". base_url("itineraries/clone_iti_to_amendment/{$iti->iti_id}/{$create_old_iti}") ."' class='btn btn-success amdment_btn' title='click to amendment in itinerary'>Click Here To Clone And Amendment In Itinerary</a></div>";
-							}	
-						}
-						?>
-                <div class='clearfix'></div>
-
+                    //Check if final installment received or not
+                    //dump( $amendment_itineraries  );
+                    $total_amendments = !empty( $amendment_itineraries ) ? sizeof($amendment_itineraries) : 0 ;
+                    //if( $iti_status == 9 && ( $user_role == 96 || is_admin_or_manager() ) ){
+                    if( $iti_status == 9 && ( $user_role == 96 || is_admin_or_manager() ) && $iti->iti_close_status == 0 ){
+                        echo '<p style="font-size:12px; color: red;" class="alert alert-danger"><strong>Note: </strong>You can create only three amendments of each itinerary.When amendment is approved you can\'t create new amendment.</p>';
+                        
+                        if( !empty( $amendment_itineraries ) && $iti->is_amendment != 2 ){
+                            $cnt = 1;
+                            foreach( $amendment_itineraries as $amend ){
+                                $view_btn= "<a target='_blank' href='". base_url("itineraries/view_amendment/{$amend->id}") ."' class='btn btn-success' title='click to amendment View Itinerary'>Click Here To View Amendment {$cnt}</a>";
+                                
+                                $client_view = "<a target='_blank' href='". base_url("promotion/amendment_view/{$amend->id}/{$amend->iti_id}/{$amend->temp_key}") ."' class='btn btn-danger' title='Client View'>Client View {$cnt}</a>";
+                                
+                                echo "<div class='col-md-4 margin-bottom-40 margin-top-40'>{$view_btn} {$client_view}</div>";
+                                $cnt++;
+                            }
+                        }
+                        
+                        //show create amendment button if amendment less than 2
+                        //if( $total_amendments < 3 && $iti->is_amendment != 2 ) {
+                        if( $total_amendments < 3 && count($old_itineraries) <= 4 ) {
+                            //Check iti amendment table if iti approved
+                            $check_amd_app_iti = $this->global_model->getdata( 'iti_amendment_temp', array("iti_id" => $iti->iti_id, "del_status" => 0, "new_package_cost !=" => 0 ), "id" );
+                            
+                            if( ($check_amd_app_iti &&  empty( $total_amendments ) ) || empty( $total_amendments ) ){
+                                $create_old_iti = "insert_old";
+                            }else{
+                                $create_old_iti = "no";
+                            }
+                            
+                            //dump( $check_amditi );
+                            echo "<div class=''></div>";
+                            echo "<div class='row amendment_clone_btn margin-bottom-25' style='margin-top: 10px;'><a href='". base_url("itineraries/clone_iti_to_amendment/{$iti->iti_id}/{$create_old_iti}") ."' class='btn btn-success amdment_btn' title='click to amendment in itinerary'>Click Here To Clone And Amendment In Itinerary</a></div>";
+                        }	
+                    }
+                ?>
                 <!--View Parent Itinerary Button -->
                 <?php
-							$view_parent_btn = $dupChildBtn = "";
-							if( !empty( $iti->parent_iti_id  ) ){
-								//Count All Child Itineraries
-								$countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->parent_iti_id, "del_status" => 0) );
-								
-								$parent_view_link = iti_view_link($iti->parent_iti_id);
-								$view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
-								
-								if( $countChildIti < 6 ){
-									$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success' ><i class='fa fa-files-o' aria-hidden='true'></i></a>";
-								}	
-							}
-						?>
+                    $view_parent_btn = $dupChildBtn = "";
+                    if( !empty( $iti->parent_iti_id  ) ){
+                        //Count All Child Itineraries
+                        $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->parent_iti_id, "del_status" => 0) );
+                        
+                        $parent_view_link = iti_view_link($iti->parent_iti_id);
+                        $view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
+                        
+                        if( $countChildIti < 6 ){
+                            $dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success' ><i class='fa fa-files-o' aria-hidden='true'></i></a>";
+                        }	
+                    }
+                ?>
+
                 <!--if amendment is done show old itinerary-->
                 <?php if( !empty( $old_itineraries ) && $iti->is_amendment != 0 ){ 
-							$old_count = 1;
-							foreach( $old_itineraries as $old_iti ){ ?>
+                    $old_count = 1;
+                    foreach( $old_itineraries as $old_iti ){ ?>
                 <a title='View Old Quotation' target="_blank"
                     href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> "
                     class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation
@@ -1174,7 +1114,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
+                                
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-md-">
@@ -1205,7 +1145,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
+                            
                             <div class="booking_section" style="display:none;">
                                 <?php 
 												$get_iti_package_category = get_iti_package_category();
@@ -1291,7 +1231,7 @@
                                             name="booking_date" />
                                     </div>
 
-                                    <div class="clearfix"></div>
+                                    
                                     <div class="form-group col-md-6">
                                         <label class=""><strong>Advance Received:</strong>* <span
                                                 id="fiftyPer"></span></label>
@@ -1306,7 +1246,7 @@
                                             class="input-group form-control transaction_date" id="transaction_date"
                                             type="text" value="" name="transaction_date" />
                                     </div>
-                                    <div class="clearfix"></div>
+                                    
 
                                     <!--Payment Details -->
                                     <div id="due_payment_section">
@@ -1379,7 +1319,7 @@
                                         <textarea required class="form-control" placeholder="Please Enter Approval Note"
                                             name="iti_note_booked"></textarea>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    
                                     <!--upload aadhar card section-->
                                     <div class="form-group col-md-6">
                                         <div class="form-group2">
@@ -1403,7 +1343,7 @@
                                         <img id="payment_screenshot_priview" style="display: none;" width="100"
                                             height="100" />
                                     </div>
-                                    <div class="clearfix"></div>
+                                    
                                     <div class="col-md-12 other_docs margin-bottom-20">
                                         <a href="javascript:;" id="add_other_docs_btn"
                                             class="btn btn-success mt-repeater-add addrep">
@@ -1429,12 +1369,12 @@
                                                         <i class="fa fa-close"></i> Delete</a>
                                                 </div>
                                             </div>
-                                            <div class="clearfix"></div>
+                                            
                                         </div>
-                                        <div class="clearfix"></div>
+                                        
                                     </div>
                                 </div>
-                                <div class="clearfix"></div>
+                                
                             </div>
                             <!--booking section-->
                             <!--End Payment Details -->
@@ -1457,7 +1397,7 @@
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
-                            <div class="clearfix"></div>
+                            
                             <div class="form-group col-md-6">
                                 <div class="form-group">
                                     <label for="comment">Decline Comment:</label>
@@ -1479,13 +1419,13 @@
                         <button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
                         <button class="btn red uppercase cancle_bnt">Cancel</button>
                     </div>
-                    <div class="clearfix"></div>
+                    
                     <div class="resPonse"></div>
                 </form>
             </div>
             <?php  }   ?>
 
-            <div class="clearfix"></div>
+            
             <?php if( !empty( $followUpData ) ){ ?>
             <div class="panel-group accordion" id="accordion3">
                 <?php
@@ -1514,41 +1454,40 @@
             </div>
             <?php } ?>
         </div>
+        <!-- End page-content -->
     </div>
-    <!-- END CONTENT BODY -->
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
 <div class="loader"></div>
+
 <style>
-.mt-element-step .step-line .mt-step-number>i {
-    top: 78%;
-}
+    .mt-element-step .step-line .mt-step-number>i {
+        top: 78%;
+    }
+
+    #call_log_section {
+        display: none;
+    }
+
+    #close_lead_panel,
+    #booked_lead_panel,
+    #call_not_picked_panel,
+    #picked_call_panel,
+    .nxt_call {
+        display: none
+    }
+
+    #next_call_cal {
+        display: none;
+    }
+
 </style>
-<style>
-#call_log_section {
-    display: none;
-}
 
-#close_lead_panel,
-#booked_lead_panel,
-#call_not_picked_panel,
-#picked_call_panel,
-.nxt_call {
-    display: none
-}
-
-#next_call_cal {
-    display: none;
-}
-
-.tour_des {
-    background: #faebcc;
-    padding-top: 20px;
-    padding-bottom: 40px;
-}
-</style>
 <!-- Booking Payment Script -->
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
 
     //delete client docs
     $(".del_client_docs").click(function(e) {
@@ -2032,7 +1971,7 @@ jQuery(document).ready(function($) {
 </script>
 <!-- End Booking Payment Script -->
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     //reset all fields
     function resetForm() {
         $("#call_detais_form").find("input[type=text],input[type=number], textarea,select").val("");
@@ -2201,7 +2140,7 @@ jQuery(document).ready(function($) {
 });
 </script>
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     $('.confirm_booking_btn').on('click', function() {
         var _this_title = $(this).attr("title");
         if (confirm('Are you sure to ' + _this_title +

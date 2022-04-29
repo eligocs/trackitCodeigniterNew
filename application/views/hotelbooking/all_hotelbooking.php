@@ -1,5 +1,8 @@
+<!-- Begin page-container -->
 <div class="page-container">
+   <!-- Begin page-content-wrapper -->
    <div class="page-content-wrapper">
+      <!-- Begin page-content -->
       <div class="page-content">
          <!-- BEGIN SAMPLE TABLE PORTLET-->
          <?php $message = $this->session->flashdata('success'); 
@@ -14,7 +17,7 @@
             </div>
          </div>
          <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-            <!--start filter section-->
+            <!--Begin filter section-->
             <form id="form-filter" class="form-horizontal mb-0">
                <div class="actions row ">
                   <div class="form-group col-md-3">
@@ -41,36 +44,44 @@
             </form>
             <!--End filter section-->	
          </div>
+         <!-- Begin portlet-body -->
          <div class="portlet-body">
-            <div class="table-responsive custom_card">
-               <table id= "hotels-booking" class="table table-striped display white_space_fix">
-                  <thead>
-                     <tr>
-                        <th> # </th>
-                        <th> ID </th>
-                        <th> Iti ID </th>
-                        <th> G/Name </th>
-                        <th> City </th>
-                        <th> Hotel Name </th>
-                        <th> Room Cat</th>
-                        <th> Checkin Date </th>
-                        <th> Total Cost </th>
-                        <th>Sent Status</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                        <th>Agent</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <!--datatables goes here-->
-                  </tbody>
-               </table>
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+               <div class="table-responsive">
+                  <table id= "hotels-booking" class="table table-striped display white_space_fix">
+                     <thead>
+                        <tr>
+                           <th> # </th>
+                           <th> ID </th>
+                           <th> Iti ID </th>
+                           <th> G/Name </th>
+                           <th> City </th>
+                           <th> Hotel Name </th>
+                           <th> Room Cat</th>
+                           <th> Checkin Date </th>
+                           <th> Total Cost </th>
+                           <th>Sent Status</th>
+                           <th>Status</th>
+                           <th>Action</th>
+                           <th>Agent</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <!--datatables goes here-->
+                     </tbody>
+                  </table>
+               </div>
             </div>
+            <!-- End portlet-body -->
          </div>
       </div>
+      <!-- End page-content -->
    </div>
-   <!-- END CONTENT BODY -->
+   <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
+
 <div id="myModal" class="modal" role="dialog"></div>
 <!-- Modal -->
 <script type="text/javascript">

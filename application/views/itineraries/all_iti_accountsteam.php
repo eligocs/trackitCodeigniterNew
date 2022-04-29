@@ -1,57 +1,60 @@
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
-		?>
+                if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
+            ?>
             <!--error message-->
             <?php $err = $this->session->flashdata('error'); 
-		if($err){ echo '<span class="help-block help-block-error2 red">'.$err.'</span>';}
-		?>
+                if($err){ echo '<span class="help-block help-block-error2 red">'.$err.'</span>';}
+            ?>
             <?php $sales_team_agents = get_all_sales_team_agents(); ?>
+
             <div class="portlet box blue" style="margin-bottom:0;">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-users"></i>
-                        All Booked Itineraries
+                    <i class="fa-solid fa-book"></i> All Booked Itineraries
                     </div>
 
                 </div>
             </div>
-            <div class="filter-box custom_card margin-bottom-30">
-                <div class="row clearfix">
-                    <?php
-				$hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
-				if( isset( $_GET["todayStatus"] ) ){	
-					$first_day_this_month = $_GET["todayStatus"];
-					$last_day_this_month  = $_GET["todayStatus"];
-				}else{
-					$first_day_this_month = "";
-					$last_day_this_month  = "";
-				}
-				?>
-                    <!--start filter section-->
-                    <form id="form-filter" class="bg_white flex1 form-horizontal margin_bottom_0 padding_10<?php echo $hideClass; ?>">
-                        <div class="actions custom_filter">
 
+            <div class="bg-white rounded-4 p-3 shado-sm mb-4">
+                <div class="row">
+                    <?php
+                        $hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
+                        if( isset( $_GET["todayStatus"] ) ){	
+                            $first_day_this_month = $_GET["todayStatus"];
+                            $last_day_this_month  = $_GET["todayStatus"];
+                        }else{
+                            $first_day_this_month = "";
+                            $last_day_this_month  = "";
+                        }
+                    ?>
+                    <!--start filter section-->
+                    <form id="form-filter" class="form-horizontal mb-0 <?php echo $hideClass; ?>">
+                        <div class="actions">
                             <div class="row">
                                 <!--Calender-->
-                                <div class="col-md-3"> <strong>Filter: </strong><br>
-                                    <input type="text" autocomplete="off" class="form-control" id="daterange"
-                                        name="dateRange" value="" required />
+                                <div class="col-md-3 my-2"> 
+                                    <label for="" class="control-label"><strong>Filter: </strong></label>
+                                    <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
                                 </div>
                                 <!--End-->
-                                <div class="col-md-3"> <strong>ITI Type: </strong><br>
+                                <div class="col-md-3 my-2">
+                                    <label for="" class="control-label"><strong>ITI Type: </strong></label>
                                     <select name="iti_type" class="form-control" id="iti_type">
                                         <option value="">All</option>
                                         <option value="1">Holidays</option>
                                         <option value="2">Accommodation</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3"><strong>&nbsp; </strong><br>
-
-									<div class="filter_box">
+                                <div class="col-md-3 my-2">
+                                    <label for="" class="control-label"><strong> Itinerary Status: </strong></label>
+									<div class="form-group">
 										<select class="form-control" name="" id="">
 											<option name="filter" value="all" id="all">All</option>
 											<option name="filter" value="9" id="approved">Approved</option>
@@ -59,40 +62,14 @@
 											<option name="filter" value="pending_invoice" id="pending_invoice">Pending Bank Rec.</option>
 										</select>
 									</div>
-
-                                    <!-- <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-default btn-primary custom_active"><input type="radio"
-                                                name="filter" value="all" id="all" />All</label>
-                                        <label class="btn btn-default btn-success custom_active"><input type="radio"
-                                                name="filter" value="9" id="approved" />Approved</label>
-
-                                        <label title="Travel Date"
-                                            class="btn btn-default btn-danger custom_active"><input type="radio"
-                                                name="filter" value="travel_date" id="travel_date" />Travel Date</label>
-
-                                        <label title="Pending Bank Receipt"
-                                            class="btn btn-default btn-success custom_active"><input type="radio"
-                                                name="filter" value="pending_invoice" id="pending_invoice" />Pending
-                                            Bank Rec.</label>
-                                    </div> -->
-
-
-                                    <input type="hidden" name="date_from" id="date_from"
-                                        data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
-                                        value="">
-                                    <input type="hidden" name="date_to" id="date_to"
-                                        data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"] ; } else{ echo $last_day_this_month; }  ?>"
-                                        value="">
-                                    <input type="hidden" name="filter_val" id="filter_val"
-                                        value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>">
-                                    <input type="hidden" id="quotation"
-                                        value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false"; } ?>">
-                                    <input type="hidden" name="todayStatus" id="todayStatus"
-                                        value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
-
+                                    <input type="hidden" name="date_from" id="date_from" data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>" value="">
+                                    <input type="hidden" name="date_to" id="date_to" data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"] ; } else{ echo $last_day_this_month; }  ?>" value="">
+                                    <input type="hidden" name="filter_val" id="filter_val" value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>">
+                                    <input type="hidden" id="quotation" value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false"; } ?>">
+                                    <input type="hidden" name="todayStatus" id="todayStatus" value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
                                 </div>
-								<div class="col-md-3">
-									<label class="d_block margin_bottom_0" for="">&nbsp;</label>
+								<div class="col-md-3 my-2">
+									<label class="control-label d-block" for="">&nbsp;</label>
 									<input type="submit" class="btn btn-success" value="Filter">
 								</div>
                             </div>
@@ -101,58 +78,63 @@
                     <!--End filter section-->
                 </div>
             </div>
-            <div class="portlet-body custom_card">
-                <div class="table-responsive">
-                    <table id="itinerary" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th> Iti ID </th>
-                                <th> Type </th>
-                                <th> Lead ID </th>
-                                <th> Name </th>
-                                <th> Contact</th>
-                                <th> Package Name </th>
-                                <th> Travel Date</th>
-                                <th> Close Status</th>
-                                <th> Voucher Status </th>
-                                <th> Action </th>
-                                <th> Agent </th>
-                                <th> Temp. T/Date</th>
-                                <th> Sent</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th> # </th>
-                                <th> Iti ID </th>
-                                <th> Type </th>
-                                <th> Lead ID </th>
-                                <th> Name </th>
-                                <th> Contact</th>
-                                <th> Package Name </th>
-                                <th> Travel Date</th>
-                                <th> Close Status</th>
-                                <th> Voucher Status </th>
-                                <th> Action </th>
-                                <th> Agent </th>
-                                <th> Temp. T/Date</th>
-                                <th> Sent</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <div class="loader"></div>
-                            <div id="res"></div>
-                            <!--DataTable Goes here-->
-                        </tbody>
-                    </table>
+            <!-- Begin Portlet-body -->
+            <div class="portlet-body">
+                <div class="bg-white p-3 rounded-4 shadow-sm">
+                    <div class="table-responsive">
+                        <table id="itinerary" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Iti ID </th>
+                                    <th> Type </th>
+                                    <th> Lead ID </th>
+                                    <th> Name </th>
+                                    <th> Contact</th>
+                                    <th> Package Name </th>
+                                    <th> Travel Date</th>
+                                    <th> Close Status</th>
+                                    <th> Voucher Status </th>
+                                    <th> Action </th>
+                                    <th> Agent </th>
+                                    <th> Temp. T/Date</th>
+                                    <th> Sent</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Iti ID </th>
+                                    <th> Type </th>
+                                    <th> Lead ID </th>
+                                    <th> Name </th>
+                                    <th> Contact</th>
+                                    <th> Package Name </th>
+                                    <th> Travel Date</th>
+                                    <th> Close Status</th>
+                                    <th> Voucher Status </th>
+                                    <th> Action </th>
+                                    <th> Agent </th>
+                                    <th> Temp. T/Date</th>
+                                    <th> Sent</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <div class="loader"></div>
+                                <div id="res"></div>
+                                <!--DataTable Goes here-->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <!-- End Portlet-body -->
         </div>
-
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
+<!-- End page-container -->
+
 </div>
 
 <style>
