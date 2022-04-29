@@ -71,12 +71,13 @@
                <div class="col-md-12">
                   <div class="Confirmation_voucher">
                      <strong>
-                        <p style="text-transform: uppercase;"><?php echo $receipt_type; ?> Receipt</p>
+                        <p style="text-transform: uppercase;"><?php echo $receipt_type; ?> Receipt</p
                      </strong>
                   </div>
                </div>
             </div>
          </div>
+         <button onclick="window.print()" id="print_hs">Print</button>
          <div class="from_details">
             <div class="container">
                <div class="row">

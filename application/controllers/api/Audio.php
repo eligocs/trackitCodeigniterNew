@@ -49,7 +49,7 @@ class Audio extends \Restserver\Libraries\REST_Controller
                 // $path = $_FILES['callAudio']['tmp_name'];
                 // $type = pathinfo($path, PATHINFO_EXTENSION);
                 // $data = file_get_contents($path);
-                // $base64 = base64_encode($data); 
+                // $base64 = base64_encode($data);   
                 $base64 = $_POST['audiocall'];              
                 $file_name = $iti_id . "_audio_{$cus_id}_";
                 $file= UPLOAD_DIR . $file_name. uniqid() . '.mp3';
