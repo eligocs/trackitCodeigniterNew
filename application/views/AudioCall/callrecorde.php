@@ -38,7 +38,7 @@
 										<td> {$callrecord->cus_id}</td>
 										<td> {$callrecord->iti_id} </td>							
 										<td> <audio controls>
-                                            <source src='{$callrecord->audio}' type='audio/mp3'>
+                                            <source src='<?php echo base_url();?>site/assets/audio/' . {$callrecord->audio} type='audio/mp3'>
                                             Your browser does not support the audio tag.
                                             </audio> </td>							
 									</tr>";
