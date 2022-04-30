@@ -44,21 +44,20 @@ class Audio extends \Restserver\Libraries\REST_Controller
             
             $file_prefix = date("Y") . "/".  date("m") . "/" . $cus_id . "/";
             
-            if( isset( $_POST['audiocall'] ) && !empty( $_POST['audiocall'] ) ){  
+            if( isset( $_FILES['audiocall']) && !empty( $_FILES['audiocall'] ) ){  
                 define('UPLOAD_DIR', $doc_path);
                 // $path = $_FILES['callAudio']['tmp_name'];
                 // $type = pathinfo($path, PATHINFO_EXTENSION);
                 // $data = file_get_contents($path);
                 // $base64 = base64_encode($data);   
                 $base64 = $_POST['audiocall'];              
-                $file_name = $iti_id . "audio_{$cus_id}_";
-                $file= UPLOAD_DIR . $file_name. uniqid() . '.mp3';
-                $filename= $file_name.  uniqid() . '.mp3';
+                $file_name = $iti_id . "audio_{$cus_id}_" .  uniqid() . '.mp3';
+                $file= UPLOAD_DIR . $file_name;
                 $res = file_put_contents($file, base64_decode($base64));
                 if($res){
                         $data =  array(
                             'cus_id' => $cus_id,
-                            'audio' => $filename,
+                            'audio' => $file_name,
                             'status' => 0,
                             'iti_id' => $iti_id,
                             'created_date' => current_datetime(),

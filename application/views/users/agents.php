@@ -163,7 +163,7 @@ $(document).ready(function() {
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "order": [], //Initial no order.
         language: {
-            search: "<strong>Search By Itinerary/Customer ID:</strong>",
+            search: "<strong>Search By User Id/User Name:</strong>",
             searchPlaceholder: "Search..."
         },
         // Load data for the table's content from an Ajax source

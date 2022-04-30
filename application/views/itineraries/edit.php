@@ -69,7 +69,7 @@
                               <th>Travel Date</th>
                               <td>
                                  <?php if (isset($cust->travel_date)) {
-                                    echo $cust->travel_date;
+                                    echo date("d/m/Y", strtotime($cust->travel_date));
                                     } ?>
                               </td>
                               <th>Package Type</th>
@@ -295,43 +295,46 @@
                                     <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
                                           <label class="control-label">Quotation Date <span class="required"> * </span> </label>
-                                          <input required readonly="readonly" class="input-group form-control quatation_date" id="quatation_date" size="16" type="text" value="<?php if (isset($iti->quatation_date) && !empty($iti->quatation_date)) { echo $iti->quatation_date; } else { echo date("m/d/Y"); } ?>" name="quatation_date" />
+                                          <input required readonly class="input-group form-control quatation_date" id="quatation_date" size="16" type="text" value="<?php if (isset($iti->quatation_date) && !empty($iti->quatation_date)) { echo $iti->quatation_date; } else { echo date("m/d/Y"); } ?>" name="quatation_date" />
                                        </div>
                                     </div>
                                     <div class="col-xl-4 col-md-6 my-2">
                                        <div class="form-group">
                                           <label class="control-label">Package Type <span class="required"> * </span> </label>
+                                          <!-- <input type="text"  value="<?= $cust->package_type ?>" readonly class="form-control"> -->
                                           <select required name="iti_package_type"
                                              class="form-control">
                                              <option value="">Choose Package Type</option>
                                              <option
-                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == "Honeymoon Package" ? 'selected' : '' ?>
-                                                value="Honeymoon Package">Honeymoon Package</option>
+                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == 'Honeymoon Package' ? 'selected' : isset($cust->package_type) && $cust->package_type == 'Honeymoon Package' ? 'selected' : ''?>
+                                                value="Honeymoon Package"><?= $cust->package_type ?></option>
                                              <option
-                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == "Fixed Departure" ? 'selected' : '' ?>
+                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == "Fixed Departure" ? 'selected' : isset($cust->package_type) && $cust->package_type == 'Fixed Departure' ? 'selected' : '' ?>
                                                 value="Fixed Departure">Fixed Departure</option>
                                              <option
-                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == "Group Package" ? 'selected' : '' ?>
+                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == "Group Package" ? 'selected' : isset($cust->package_type) && $cust->package_type == 'Group Package' ? 'selected' : '' ?>
                                                 value="Group Package">Group Package</option>
                                              <option
-                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == "Other" ? 'selected' : '' ?>
+                                                <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == "Other" ? 'selected' : isset($cust->package_type) && $cust->package_type == 'Other' ? 'selected' : '' ?>
                                                 value="Other">Other</option>
                                           </select>
                                        </div>
                                     </div>
                                     <div class="col-xl-4 col-md-12 my-2">
                                        <div class="form-group">
-                                          <label class="control-label">No. Persons
-                                          <span class="required"> * </span>
-                                          </label>
                                           <div class="row">
                                              <div class="col-md-4 mb-3 mb-md-0">
+                                                <label class="control-label">No. Persons
+                                                   <sup class="text-danger">*</sup>
+                                                </label>
                                                 <input type="text" required class="form-control" name="adults" value="<?php if (isset($iti->adults)) { echo $iti->adults; } ?>" placeholder="Total no. of  adults eg: 2" />
                                              </div>
                                              <div class="col-md-4 mb-3 mb-md-0">
+                                                <label for="" class="control-label">Total No. Child</label>
                                                 <input type="text" class="form-control" name="child" value="<?php if (isset($iti->child)) { echo $iti->child; } ?>" placeholder="Total child" />
                                              </div>
                                              <div class="col-md-4">
+                                                <label for="" class="control-label">Child Age</label>
                                                 <input type="text" class="form-control" name="child_age" value="<?php if (isset($iti->child_age)) { echo $iti->child_age; } ?>" placeholder="child age: eg. 12,15,18." />
                                              </div>
                                           </div>
@@ -350,9 +353,9 @@
                                        ?>
                                     <div class="col-xl-4 col-md-12 my-2">
                                        <div class="form-group">
-                                          <label class="control-label">Room Category <span class="required"> * </span> </label>
                                           <div  class="row">
                                              <div class="col-md-6 mb-3 mb-md-0">
+                                                <label class="control-label">Room Category <span class="required"> * </span> </label>
                                                 <select title="Select Room Category" required
                                                    name="rooms_meta[room_category]" class="form-control">
                                                    <option value="">Select Room Category</option>
@@ -371,8 +374,14 @@
                                                       ?>
                                                 </select>
                                              </div>
+                                             <?php 
+                                             // dump($cust->total_rooms);
+                                             // die;
+                                             ?>
                                              <div class="col-md-6">
-                                                <select title="Select Total Rooms" required
+                                             <label class="control-label">No. of Rooms </label>
+                                                <input type="number" value="<?= $cust->total_rooms ?>" redonly class="form-control">
+                                                <!-- <select title="Select Total Rooms" required
                                                    name="rooms_meta[total_rooms]" class="form-control">
                                                    <option value="">No. of Rooms</option>
                                                    <option value="00" <?php if ($total_rooms == "00") {
@@ -387,7 +396,7 @@
                                                       }
                                                       ?>
                                                    <option value="60+">60+</option>
-                                                </select>
+                                                </select> -->
                                              </div>
                                           </div>
                                        </div>
@@ -797,8 +806,8 @@
                                              for ($i = 0; $i < $count_day; $i++) { ?>
                                           <div data-repeater-item
                                              class="mt-repeater-item daywise_section">
-                                             <!--strong>Day: </strong><strong class="sta_d"><?php //echo $i+1; 
-                                                ?></strong-->
+                                             <!-- <strong>Day: </strong><strong class="sta_d"><?php echo $i+1; 
+                                                ?></strong> -->
                                              <div class="row">
                                                 <div class="col-md-2 my-2">
                                                    <div class="form-group">
@@ -807,8 +816,8 @@
                                                          class="required"> * </span>
                                                       <input required placeholder="Day 1"
                                                          type="text" name="tour_day"
-                                                         class="form-control"
-                                                         value="<?php echo isset($tourData[$i]['tour_day']) && !empty($tourData[$i]['tour_day']) ? trim($tourData[$i]['tour_day']) : ""; ?>" />
+                                                         class="form-control sta_d"
+                                                         value="<?php echo isset($tourData[$i]['tour_day']) && !empty($tourData[$i]['tour_day']) ? trim($tourData[$i]['tour_day']) : $i+1; ?>" />
                                                    </div>
                                                 </div>
 
@@ -819,7 +828,7 @@
                                                       <input required readonly="readonly"
                                                          class="input-group form-control tour_dt"
                                                          id="tour_dt" size="16" type="text"
-                                                         value="<?php echo isset($tourData[$i]['tour_date']) && !empty($tourData[$i]['tour_date']) ? trim($tourData[$i]['tour_date']) : ""; ?>"
+                                                         value="<?php echo isset($tourData[$i]['tour_date']) && !empty($tourData[$i]['tour_date']) ? trim($tourData[$i]['tour_date']) : date("d/m/Y", strtotime($cust->travel_date)) ?>"
                                                          name="tour_date" />
                                                    </div>
                                                 </div>
@@ -1055,7 +1064,7 @@
                                              <div data-repeater-item class="mt-repeater-spinc-item form-group">
                                                 <div class="mt-repeater-spinc-cell row mb-3">
                                                    <div class="mt-repeater-spinc-input col-md-10 col-10">
-                                                      <input required type="text" name="benefit_inc" class="form-control" value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) { echo $benefits_inc[$i]["benefit_inc"]; } ?>" />
+                                                      <input  type="text" name="benefit_inc" class="form-control" value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) { echo $benefits_inc[$i]["benefit_inc"]; } ?>" />
                                                    </div>
                                                    <div class="mt-repeater-spinc-input col-md-2 col-2">
                                                       <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete float-end"> <i class="fa-solid fa-trash-can"></i></a>
@@ -1070,7 +1079,7 @@
                                              <div data-repeater-item class="mt-repeater-exc-item form-group row mb-3">
                                                 <!-- jQuery Repeater Container -->
                                                 <div class="mt-repeater-exc-input col-md-10 col-10">
-                                                   <input required type="text" name="benefit_inc"
+                                                   <input  type="text" name="benefit_inc"
                                                       class="form-control"
                                                       value="<?php echo isset($get_booking_benefits[$i]["benefit_inc"]) ? $get_booking_benefits[$i]["benefit_inc"] : ''; ?>" />
                                                 </div>
@@ -1425,6 +1434,8 @@
                                  <a href="javascript:;" class="btn btn-primary button-next"> Save & Continue
                                  <i class="fa fa-angle-right"></i>
                                  </a>
+                                 <a href="<?php site_url('itineraries/pdf/21/fEv1WEzi_20220427_1651034061') ?>"
+                                    class="btn btn-success" target="_blank">Client Views</a>
                                  <a href="javascript:;" id="SubmitForm"
                                     class="btn btn-success button-submit">Submit</a>
                                  <!--input type="submit" class="btn green button-submit" value="Submit"-->
@@ -1549,9 +1560,11 @@
        });
    
        //$(".tour_dt").datepicker({startDate: '-1d', format: "dd/mm/yyyy"});
-       $(".quatation_date").datepicker({
-           startDate: '-1d'
-       });
+         var date = new Date();
+         date.setDate(date.getDate());
+      //  $(".quatation_date").datepicker({
+      //    startDate: date,
+      //  });
    
        FormWizard.init();
    });
@@ -1808,11 +1821,19 @@
    
                            //end set preview
    
-                           var ddd = $(this).prev(".mt-repeater-item").find(".sta_d")
-                               .text();
-                           $(this).find(".sta_d").text(+ddd + +1);
-                           $(this).find(".del_rep").show();
-                           $(this).show();
+                           // var ddd = $(this).prev(".mt-repeater-item").find(".sta_d")
+                           //     .val(ddd);
+                           var ddd = tour_data["tour_meta"][0]["tour_day"];
+                               if($.isNumeric(ddd)){
+                                  $(this).find(".sta_d").val(+ddd + +1);
+                                  $(this).find(".del_rep").show();
+                                  $(this).show();
+                               }else{
+                                 $(this).find(".sta_d").val(1);
+                                  $(this).find(".del_rep").show();
+                                  $(this).show();
+
+                               }
                            nexti++;
                        },
                        hide: function(deleteElement) {
@@ -1849,10 +1870,10 @@
                                            'DD/MM/YYYY');
                                    $(this).find(".tour_dt").val(nextDate1);
                                    /*substract day*/
-                                   var nexD = $(this).find(".sta_d").text(),
+                                   var nexD = $(this).find(".sta_d").val(),
                                        ss = 1;
                                    var dSub = nexD - ss;
-                                   $(this).find(".sta_d").text(dSub);
+                                   $(this).find(".sta_d").val(dSub);
                                    ss++;
                                });
    

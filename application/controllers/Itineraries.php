@@ -3506,6 +3506,12 @@ class Itineraries extends CI_Controller {
 // 		}	
 // 	}
 	
+		// public function iti_pdf_client_View(){
+		// 	$iti_id = trim($this->uri->segment(3));
+		// 	$temp_key = trim($this->uri->segment(4));
+		// 	if( !empty( $iti_id ) && !empty($temp_key) ){
+			
+		// }
 	
 		public function pdf(){
 		$iti_id = trim($this->uri->segment(3));

@@ -2291,9 +2291,10 @@ jQuery(document).ready(function($) {
     $(document).on("click", ".editPop", function() {
         $("#editModal").show();
     });
-
+    var date = new Date();
+    date.setDate(date.getDate());
     $("#travel_date").datepicker({
-        startDate: "-2d",
+        startDate: date,
         format: "mm/dd/yyyy",
     });
     $(".date_picker").datepicker({
