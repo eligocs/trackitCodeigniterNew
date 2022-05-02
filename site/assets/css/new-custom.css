@@ -30,6 +30,16 @@ a {
 	text-decoration: none;
 }
 
+/* Font Weight */
+
+.fw-400{
+	font-weight: 400;
+}
+
+.fw-500{
+	font-weight: 500;
+}
+
 
 /* modal button */
 

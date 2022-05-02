@@ -256,8 +256,124 @@
                     </div>
                 </div>
                 <?php } ?>
-                <div class="table-responsive">
 
+                <div class="table-responsive mt-4" style="min-height: 200px;">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <div class="d-flex mb-3">
+                                    <div class="">
+                                        <p class="fs-7 fw-bold mb-2 mt-0">#121500</p>
+                                        <span title="Holiday Type" class="badge bg-success me-2">
+                                        <strong class="white">Holiday</strong> 
+                                        </span>
+                                    </div>
+                                    <div class="ms-2">
+                                        <p class="fs-7 mb-2 mt-0 text-primary"><strong>SANDEEP THORAT</strong></p>
+                                        <span title="Holiday Type" class="badge bg-danger me-2">
+                                        <strong class="white">Declined</strong> 
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="bg-light d-flex">
+                                    <div class="border-end my-1">
+                                        <p class="mt-0 mb-2 text-secondary">requirement </p>
+                                        <div>
+                                        <i class="me-2 fa-solid fa-plane-departure text-primary"></i>
+                                        <i class="me-2 fa-solid fa-hotel text-muted"></i>
+                                        <i class="me-2 fa-solid fa-taxi text-primary"></i>
+                                        <i class="me-2 fa-solid fa-train-subway text-muted"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ms-2">
+                                        <div class="my-1">
+                                        <strong class="d-block fs-7 mb-2">8219227004</strong>
+                                        </div>
+                                        <div class="pt-1">
+                                        <i class="fa-envelope fa-solid text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mb-3">
+                                    <div class="mb-2">
+                                        <strong class="fs-7">Himahal Pradesh </strong> 
+                                        <span class="badge bg-yellow-haze ms-3">
+                                        <strong class="">Fixed Departure</strong>
+                                        </span>
+                                    </div>
+                                    <div class="">
+                                        <span class="text-secondary">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
+                                    </div>
+                                </div>
+                                <div class="bg-light">
+                                    <p class="m-0 mb-2 text-secondary">travellers</p>
+                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
+                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
+                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mb-2">
+                                    <p class="m-0 fs-6 fw-bold m-0">01-Jan-2022</p>
+                                    <span class="text-secondary">Till 06-Jan (5N / 6D)</span>
+                                </div>
+                                <div class="bg-light">
+                                    <span class="fs-7 text-muted">assigned to</span>
+                                    <a class="text-primary d-block fw-bold" href="">Devender Verma</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mb-2">
+                                    <p class="m-0 fs-6">
+                                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                                        <strong> 1,35,000/-</strong>
+                                    </p>
+                                    <span class="text-secondary">Total</span>
+                                </div>
+                                <div class="bg-light">
+                                    <span class="text-secondary fs-7">Created on </span>
+                                    <p class="m-0 text-dark fw-400">04-Feb-2022</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mb-2">
+                                    <p class="my-1 fs-7 text-secondary"><span>Call</span> <span>28-Feb-2022</span></p>
+                                    <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
+                                </div>
+                                <div class="bg-light">
+                                    <p class="my-1 fs-7 text-secondary">last call on</p>
+                                    <p class="my-1 text-dark">
+                                        <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb-2022 06:00 PM
+                                    </p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-gear"></i> Action </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        </li>
+                                        <li>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                        </li>
+                                        <li>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                                        </li>
+                                        <li>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-clone"></i> Clone</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+
+                <div class="table-responsive mt-5">
                     <table id="itinerary2" class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -269,71 +385,13 @@
                                 <th> Sent Status</th>                                
                                 <th>Created on </th>
                                 <th> Action </th>
-                            </tr>
-
-                           
+                            </tr>                          
                         </thead>
                         <tbody>
                             <div class="loader"></div>
                             <div id="res"></div>
                         </tbody>
                     </table>
-                        </div>
-
-                    <div class="table-responsive">
-
-                    <!-- <table id="itinerary" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th> Iti ID </th>
-                                <th> Type </th>
-                                <th> Lead ID </th>
-                                <th> Customer Name </th>
-                                <th> Contact</th>
-                                <th> Package Name </th>
-                                <th> Temp. T/Date</th>
-                                <th> Travel Date</th>
-                                <th> Action </th>
-                                <th> Sent Status</th>
-                                <th> Publish Status</th>
-                                <?php //if( $user_role != 96 ){ ?>
-                                <th> Agent </th>
-                                <?php //} ?>
-                                <th> Iti status </th>
-                            </tr>
-                        </thead>
-
-
-                        <tfoot>
-                            <tr>
-                                <th> # </th>
-                                <th> Iti ID </th>
-                                <th> Type </th>
-                                <th> Lead ID </th>
-                                <th> Customer Name </th>
-                                <th> Contact</th>
-                                <th> Package Name </th>
-                                <th> Temp. T/Date</th>
-                                <th> Travel Date</th>
-                                <th> Publish Status</th>
-                                <th> Action </th>
-                                <th> Sent Status</th>
-                                <?php //if( $user_role != 96 ){ ?>
-                                <th> Agent </th>
-                                <?php //} ?>
-                                <th> Iti status </th>
-                            </tr>
-
-                        </tfoot>
-                        <tbody>
-
-
-                            <div class="loader"></div>
-                            <div id="res"></div>
-                           
-                        </tbody>
-                    </table> -->
                 </div>
             </div>
         </div>
@@ -437,8 +495,11 @@
         </div>
     </div>
 </div>
+
+
 <script type="text/javascript">
 jQuery(document).ready(function($) {
+
     //export btn click
     $(document).on("click", ".export_btn", function(e) {
         e.preventDefault();
@@ -546,9 +607,10 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
+
 <script type="text/javascript">
-var table;
-$(document).ready(function() {
+    var table;
+    $(document).ready(function() {
     var table;
     var tableFilter;
     //Custom Filter
@@ -641,8 +703,9 @@ $(document).ready(function() {
     });
 });
 </script>
+
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     //btn toggle
     $(document).on("click", ".optionToggleBtn", function(e) {
         e.preventDefault();
@@ -747,8 +810,9 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
+
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     //open modal on duplicate iti btn click
     $(document).on("click", ".duplicateItiBtn", function(e) {
         e.preventDefault();
