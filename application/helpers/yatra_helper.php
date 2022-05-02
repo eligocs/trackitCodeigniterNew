@@ -3521,21 +3521,21 @@ function getBookingDate($iti_id){
 
 }
 
-function pdf_img(){
-		$ci =& get_instance();
-		$ci->db->select('pdf_img'); 
-		$ci->db->from('homepage_setting'); 
-		// $ci->db->where('iti_id',); 
-		$q = $ci->db->get();
-		$res = $q->row(); 
-		if( $res ){
-			return $res;
-		}else{
-			$res = '';
-		}
+function pdf_img($cus_id){
+if($cus_id){ 
+	$ci =& get_instance();
+	$ci->db->select('pdf_img'); 
+	$ci->db->from('itinerary'); 
+	$ci->db->where('customer_id', $cus_id); 
+	$q = $ci->db->get();
+	$res = $q->row(); 
+	if( $res ){
 		return $res;
-
-
+	}else{
+		$res = '';
+	}
+	return $res;
+}
 }
 
 

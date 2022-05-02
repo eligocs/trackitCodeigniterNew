@@ -119,15 +119,15 @@ class Homepage extends CI_Controller {
 					}else{
 						$data = $this->upload->data();
 						$img_fname = $data['file_name'];
-						$id=1;
-						$where = array("id"=>$id);	
+						$id=$_POST['cus_id'];
+						$where = array("customer_id"=>$id);	
 						$data = array( "pdf_img" => $file_name );
-						$result = $this->global_model->update_data("homepage_setting", $where, $data);
+						$result = $this->global_model->update_data("itinerary", $where, $data);
 						$res = array('status' => true, 'msg' => "Image uploded ");
 						header('Content-Type: application/json');
 						 echo json_encode( $res );
 					}
-				// unset($config);
+				unset($config);
 				
 				// $data = $_POST['pdf_img'];		
 				// list($type, $data) = explode(';', $data);
