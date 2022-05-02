@@ -62,8 +62,7 @@ class Homepage extends CI_Controller {
 
 	public function do_upload(){
 		if(isset($_POST['type'])){
-			$data = $_POST['image'];
-			
+			$data = $_POST['image'];		
 			list($type, $data) = explode(';', $data);
 			list(, $data)      = explode(',', $data);
 			
@@ -78,9 +77,9 @@ class Homepage extends CI_Controller {
 				echo 'success';
 			}else{
 				echo "error";
-				} 
-						die();
-		}else{
+			} 
+			die();
+		}else if($_POST['image']){
 			$data = $_POST['image'];
 			
 			list($type, $data) = explode(';', $data);
@@ -98,8 +97,55 @@ class Homepage extends CI_Controller {
 				echo 'success';
 			}else{
 				echo "error";
-				} 
-						die();
+			} 
+			die();
+			}
+			else if( isset($_FILES["file"]["name"]) && !empty($_FILES["file"]["name"]) ){
+				$name = $_FILES["file"]["name"];
+				$n = str_replace(' ', '_', $name);
+				$file_name = time() . "_" . $n; 
+				$config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]).'/site/images/';
+				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['max_size'] = 1024 * 2;
+				$config['max_width']  = 779;
+				$config['max_height'] = 740;
+				$config['file_name'] = $file_name;
+					$this->load->library('upload', $config);
+					if(!$this->upload->do_upload('file')){
+						$err = $this->upload->display_errors();
+						$res = array('status' => false, 'msg' => 'The image you are attempting to upload doesn t fit into the allowed dimensions');
+						header('Content-Type: application/json');
+						 echo json_encode( $res );
+					}else{
+						$data = $this->upload->data();
+						$img_fname = $data['file_name'];
+						$id=1;
+						$where = array("id"=>$id);	
+						$data = array( "pdf_img" => $file_name );
+						$result = $this->global_model->update_data("homepage_setting", $where, $data);
+						$res = array('status' => true, 'msg' => "Image uploded ");
+						header('Content-Type: application/json');
+						 echo json_encode( $res );
+					}
+				// unset($config);
+				
+				// $data = $_POST['pdf_img'];		
+				// list($type, $data) = explode(';', $data);
+				// list(, $data)      = explode(',', $data);
+				
+				// $data = base64_decode($data);
+				// $imageName = 'pdf_img'.time().'.png';
+				// file_put_contents('site/images/'.$imageName, $data);
+				// $data = array( "pdf_img" => $imageName );
+				// $id=1;
+				// $where = array("id"=>$id);	
+				// $result = $this->global_model->update_data("homepage_setting", $where, $data);
+				// if( $result ){
+				// 	echo 'success';
+				// }else{
+				// 	echo "error";
+				// } 
+				// die();	
 			}
 		}
 	
