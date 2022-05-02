@@ -1,20 +1,15 @@
 /* -------------------- */
-
-
 /*---- utility Css ---- */
-
-
 /* -------------------- */
-
 
 /* --- All Buttons Css --- */
 
 .btn-outline-warning:hover {
-    color: #fff !important;
+	color: #fff !important;
 }
 
 .btn-outline-info:hover {
-    color: #fff !important;
+	color: #fff !important;
 }
 
 
@@ -23,201 +18,183 @@
 .page-content .btn,
 .page-content a,
 .btn {
-    font-size: 12px;
-    border-radius: 2px !important;
+	font-size: 12px;
+	border-radius: 2px !important;
 }
 
 .radio_filter_btns label.btn.btn-default.custom_active input[type=radio] {
-    display: none;
+	display: none;
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 
 /* modal button */
 
 .modal button {
-    font-size: 12px !important;
-    border-radius: 2px !important;
+	font-size: 12px !important;
+	border-radius: 2px !important;
 }
 
 .white_space_fix {
-    white-space: nowrap !important;
+	white-space: nowrap !important;
 }
 
 
+
 /* ----------------------------- */
-
-
 /* ---- page-common-header  ---- */
-
-
 /* ----------------------------- */
 
 .page-header.navbar {
-    background-color: #fff !important;
+	background-color: #fff !important;
 }
 
 .page-common-header .page-header.navbar-fixed-top {
-    position: fixed;
-    top: 0;
-    background: #eff5ff !important;
+	position: fixed;
+	top: 0;
+	background: #eff5ff !important;
 }
 
 .navbar .header_target_section {
-    display: block
+	display: block
 }
 
 .page-header.navbar .page-logo {
-    left: 8px;
+	left: 8px;
 }
 
 .page-header-inner .menu-toggler.sidebar-toggler {
-    background: transparent;
+	background: transparent;
 }
 
 .page-sidebar .sidebar-toggler,
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler {
-    margin: 0;
+	margin: 0;
 }
 
 .page-header-inner>* {
-    display: block;
+	display: block;
 }
 
 .header_target_section .progress {
-    width: 280px;
+	width: 280px;
 }
 
 
 /* dropdown-user */
 
 .top-menu .dropdown-user.open .dropdown-menu {
-    display: block;
-    position: absolute;
-    top: 100%;
+	display: block;
+	position: absolute;
+	top: 100%;
 }
 
 
 .page-header.navbar.navbar-fixed-top,
 .page-header.navbar.navbar-static-top {
-    z-index: 10;
+	z-index: 10;
 }
 
 
 /* --------------------------- */
-
-
 /* --- main_page_container --- */
-
-
 /* --------------------------- */
 
 .main_page_container {
-    margin-top: 50px;
-    padding-top: 10px;
+	margin-top: 50px;
+	padding-top: 10px;
 }
 
 
 /* ----------------------------------- */
-
-
 /* page-sidebar-wrapper / page-sidebar */
-
-
 /* ----------------------------------- */
 
 .page-sidebar-wrapper li.nav-item {
-    list-style: none;
-    width: 220px;
+	list-style: none;
+	width: 220px;
 }
 
 .collapse:not(.show) {
-    display: block;
+	display: block;
 }
 
 
 /* -------------------------------------------- */
-
-
 /* --- page-container / page-content-wraper --- */
-
-
 /* -------------------------------------------- */
 
 .page-content-wrapper .page-content {
-    margin-left: 0;
+	margin-left: 0;
 }
 
 .hide {
-    display: none;
+	display: none;
 }
 
 .page-container .page-content-wrapper .page-content {
-    padding: 10px;
+	padding: 10px;
 }
 
 
 /*--- Show Modal --- */
 
 .modal.in {
-    opacity: 1 !important;
+	opacity: 1 !important;
 }
 
 .modal.fade .modal-dialog {
-    transform: translate(0, -6px) !important;
+	transform: translate(0, -6px) !important;
 }
 
 
 /* protlet box Caption  */
 
 .portlet-title .caption {
-    font-size: 16px !important;
+	font-size: 16px !important;
 }
 
 
 /* Bar Chart trigger */
 
 .quick-nav-chart {
-    margin-right: 70px;
+	margin-right: 70px;
 }
 
 .quick-nav-wraper {
-    position: fixed;
-    z-index: 10103;
-    top: 50px;
-    right: 10px;
-    /* margin-top: -230px; */
-    /* pointer-events: none; */
+	position: fixed;
+	z-index: 10103;
+	top: 50px;
+	right: 10px;
+	/* margin-top: -230px; */
+	/* pointer-events: none; */
 }
 
 .quick-nav-chart img.modal-target {
-    width: 40px;
+	width: 40px;
 }
 
 .portlet.light {
-    padding: 12px 20px 15px;
-    background-color: #fff;
+	padding: 12px 20px 15px;
+	background-color: #fff;
 }
 
 
+
 /* ------------------------------- */
-
-
 /* table-responsive and table css */
-
-
 /* -------------------------------  */
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    color: #fff !important;
+	color: #fff !important;
 }
 
 .table-responsive {
-    /* margin-bottom: 0; */
+	/* margin-bottom: 0; */
 }
 
 .dataTables_wrapper .dataTables_length,
@@ -225,79 +202,75 @@ a {
 .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_processing,
 .dataTables_wrapper .dataTables_paginate {
-    margin: 15px 0;
+	margin: 15px 0;
 }
 
 table.table.table_details th,
 table.table.table_details td {
-    border: 1px solid #e9e9e9 !important;
+	border: 1px solid #e9e9e9 !important;
 }
 
 .table:not(.table-sm) td {
-    height: 40px !important;
+	height: 40px !important;
 }
 
 .table_details th {
-    font-weight: 500 !important;
-    background: #f9f9f9;
+	font-weight: 500 !important;
+	background: #f9f9f9;
 }
 
 
 /* Table Icons */
 
 .table tr td a i {
-    margin: 3px 5px;
+	margin: 3px 5px;
 }
 
 
 /* ----------------------------------- */
-
-
 /* ---- Forms (lables and inputs) ---- */
-
-
 /* ----------------------------------- */
 
 .form-control {
-    border: 1px solid #cbc9c9;
-    height: 36px;
-    padding: 4px 4px 4px 11px;
-    font-size: 14px;
-    color: #2a2727;
-    border-radius: 3px;
+	border: 1px solid #cbc9c9;
+	height: 36px;
+	padding: 4px 4px 4px 11px;
+	font-size: 14px;
+	color: #2a2727;
+	border-radius: 3px;
 }
 
 label.control-label {
-    font-size: 13px;
-    margin-bottom: 3px;
-    color: #797070;
+	font-size: 13px;
+	margin-bottom: 3px;
+	color: #797070;
 }
 
 .form-control::placeholder {
-    color: #938f8f;
-    font-size: 13px;
-    font-weight: 300;
+	color: #938f8f;
+	font-size: 13px;
+	font-weight: 300;
 }
 
 select.form-control {
-    padding-top: 6px !important;
+	padding-top: 6px !important;
 }
 
 select.form-control option {
-    color: #2a2727;
-    font-size: 15px;
+	color: #2a2727;
+	font-size: 15px;
 }
 
 select.form-control:required:invalid {
-    color: #938f8f;
-    font-size: 13px;
-    font-weight: 300;
+	color: #938f8f;
+	font-size: 13px;
+	font-weight: 300;
 }
 
 .error {
-    margin-bottom: 3px;
-    font-weight: 400;
-    font-size: 12px;
+	margin-bottom: 3px;
+	font-weight: 400;
+	font-size: 12px;
 }
 
 
@@ -305,193 +278,206 @@ select.form-control:required:invalid {
 
 .without_extra_bed_section .col-md-4,
 .extra_bed_section .col-md-4 {
-    display: block !important;
+	display: block !important;
 }
 
 
 /* select2 */
 
 .select2 {
-    width: 100% !important;
+	width: 100% !important;
 }
 
 .input-group-addon {
-    margin: 5px !important;
+	margin: 5px !important;
 }
 
 
 /* Add Call log info */
 
 .view_call_info div#call_log_section {
-    /* margin-top: 20px; */
-    /* margin-bottom: 20px; */
-    background: aliceblue;
-    padding: 20px;
+	/* margin-top: 20px; */
+	/* margin-bottom: 20px; */
+	background: aliceblue;
+	padding: 20px;
 }
-
-
+/* ------------------------------ */
 /* End Forms (lables and inputs) */
+/* ------------------------------ */
+
 
 
 /* ------------------------------------------------ */
-
-
 /* ---- Add/Edit Packages and Itinerary form Wizard */
-
-
 /* ------------------------------------------------ */
 
 #itiForm_form .nav li.active {
-    margin: 0 auto;
-    text-align: center;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .form-wizard div#bar {
-    left: 0;
+	left: 0;
 }
 
 .form-wizard h3 {
-    font-size: 15px;
-    font-weight: 500;
+	font-size: 15px;
+	font-weight: 500;
 }
 
 .form-wizard .steps>li>a.step .desc {
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 #itiForm_Frm .btn-group.flight_train_btns input[type="radio"] {
-    display: none;
+	display: none;
 }
 
 .btn-group.flight_train_btns label {
-    margin: 0 15px;
+	margin: 0 15px;
 }
 
 
+/* Repeater delete button */
+
+.delete_repeater {
+	position: absolute;
+	right: 13px;
+	top: 0px;
+	padding: 10px 12px;
+}
+
+.repeater_wrapper input {
+	padding-right: 50px;
+}
+
+/* ----------------------------------------------------------- */
 /* ----- End Add/Edit Packages and Itinerary form Wizard ---- */
+/* ----------------------------------------------------------- */
 
 
 /* --------------------------*/
-
-
 /* --- page-footer Start --- */
-
-
 /* ------------------------- */
 
 .footer_text {
-    font-size: 30px;
+	font-size: 30px;
 }
 
 .page-footer {
-    position: relative;
-    z-index: 999;
-    background: #eff5fe;
-    margin-bottom: 20px;
-    width: calc(100% - 288px);
-    left: 268px;
-    margin-top: 11px;
+	position: relative;
+	z-index: 999;
+	background: #eff5fe;
+	margin-bottom: 20px;
+	width: calc(100% - 288px);
+	left: 268px;
+	margin-top: 11px;
 }
-
-
+/* ------------------------ */
 /* --- End  page-footer --- */
+/* ------------------------ */
+
 
 
 /* dashboard tabs  */
 
 .panel-heading2 .nav-tabs li {
-    margin: 0 10px !important;
+	margin: 0 10px !important;
 }
 
 .badge>a {
-    font-size: inherit;
+	font-size: inherit;
 }
 
 .fs-7 {
-    font-size: 0.8rem !important;
+	font-size: 0.8rem !important;
 }
 
 
 /* -------------------------------------- */
-
-
 /*------- Media Query Css Start -------- */
-
-
 /* -------------------------------------- */
 
 @media only screen and (min-width: 992px) {
-    /* sidebar-wrapper and page-contaner  */
-    .page-sidebar-wrapper {
-        flex: 0 0 250px;
-        /* margin-top: 30px; */
-    }
-    .page-container {
-        width: calc(100% - 251px);
-    }
-    .page-sidebar-closed .page-container {
-        width: calc(100% - 60px);
-        margin-left: 10px;
-    }
-    .page-sidebar-closed .page-sidebar-wrapper {
-        flex: 0 0 60px !important;
-    }
-    .page-sidebar-closed .sidebar_heading {
-        display: none;
-    }
-    .page-sidebar-menu-closed li.nav-item {
-        width: fit-content;
-    }
-    .page-sidebar-closed .page-sidebar.navbar-collapse.collapse::-webkit-scrollbar {
-        width: 3px !important;
-    }
-    .page-sidebar-closed .page-sidebar,
-    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {
-        /* width: 60px !important; */
-        padding: 0 8px;
-    }
+
+	/* sidebar-wrapper and page-contaner  */
+	.page-sidebar-wrapper {
+		flex: 0 0 250px;
+		/* margin-top: 30px; */
+	}
+
+	.page-container {
+		width: calc(100% - 251px);
+	}
+
+	.page-sidebar-closed .page-container {
+		width: calc(100% - 60px);
+		margin-left: 10px;
+	}
+
+	.page-sidebar-closed .page-sidebar-wrapper {
+		flex: 0 0 60px !important;
+	}
+
+	.page-sidebar-closed .sidebar_heading {
+		display: none;
+	}
+
+	.page-sidebar-menu-closed li.nav-item {
+		width: fit-content;
+	}
+
+	.page-sidebar-closed .page-sidebar.navbar-collapse.collapse::-webkit-scrollbar {
+		width: 3px !important;
+	}
+
+	.page-sidebar-closed .page-sidebar,
+	.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {
+		/* width: 60px !important; */
+		padding: 0 8px;
+	}
 }
 
 @media only screen and (max-width: 992px) {
-    .page-container {
-        width: 100% !important;
-    }
+	.page-container {
+		width: 100% !important;
+	}
 }
 
 @media screen and (max-width: 768px) {
-    .header_target_section .progress {
-        width: 150px;
-    }
+	.header_target_section .progress {
+		width: 150px;
+	}
 }
 
 @media (max-width: 992px) {
-    table.table.table-bordered.table-sm tr.text-nowrap {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    table.table.table-bordered.table-sm tr.text-nowrap th,
-    table.table.table-bordered.table-sm tr.text-nowrap td {
-        flex: 0 0 50%;
-    }
-    .table-bordered>:not(caption)>* {
-        border-width: 0 1px;
-    }
-    ul#clickable_steps li {
-        display: none;
-    }
-    ul#clickable_steps li.active {
-        display: block;
-    }
-    .portlet.light {
-        padding: 10px;
-    }
+	table.table.table-bordered.table-sm tr.text-nowrap {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	table.table.table-bordered.table-sm tr.text-nowrap th,
+	table.table.table-bordered.table-sm tr.text-nowrap td {
+		flex: 0 0 50%;
+	}
+
+	.table-bordered>:not(caption)>* {
+		border-width: 0 1px;
+	}
+
+	ul#clickable_steps li {
+		display: none;
+	}
+
+	ul#clickable_steps li.active {
+		display: block;
+	}
+
+	.portlet.light {
+		padding: 10px;
+	}
 }
 
-
 /* -------------------------------------- */
-
-
 /*------- Media Query Css End -------- */
-
-
 /* -------------------------------------- */

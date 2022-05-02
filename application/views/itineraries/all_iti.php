@@ -271,62 +271,18 @@
                                 <th> Action </th>
                             </tr>
 
-                            <tr>
-                                
-                                <td>
-                                    <span title="Lead Id" class="badge bg-light text-dark me-2"> Lead ID : 4545</span>
-                                    <div title="Client Name" class="fw-bold my-3"> Rahul CHOUKOTIYA </div>
-                                    <div class="other_info d-flex">
-                                        <!-- <span title="Itinerary Id" class="badge bg-primary iti_id mx-1"> 
-                                           Iti ID : 5677
-                                        </span> -->
-                                        <span title="Holiday Type" class="badge bg-success me-2"> Holiday </span>
-                                        <span title="Phone Number" class="badge bg-primary me-2"> 
-                                            <a href="tel:+8989281754" class="text-white">8989281754</a>
-                                        </span>
-                                    </div>
-                                </td>
-
-
-                                <td >
-                                    <div class="d-flex">
-                                <span   class="badge bg-light text-dark me-1 my-1 fs-7" title="Adult">
-                                      2 <i class="fa-solid fa-user text-black-50" ></i>
-                                </span>      
-                                <span   class="badge bg-light text-dark me-1 my-1 fs-7" title="Children">
-                                      1 <i class="fa-solid fa-child text-black-50" ></i>
-                                 </span>
-                                <span  class="badge bg-light text-dark me-1 my-1 fs-7" title="Baby">     
-                                    3 <i class="fa-solid fa-baby text-black-50" ></i>
-                                </span>
-                                </div>
-                                </td>
-
-                                <td> Shimla Manali Tour Chandigarh Shimla 2 Days Manali 3 Days Dropping Chandigarh </td>
-                               
-                                <td> 13/09/2022
-                                 <span   class="badge bg-light text-dark me-1 my-1 fs-7">
-                                    assigned to : Rajani Sharma
-                                </span>   
-
-                                </td>
-                                <td> Not Send/ 1 Times Sent</td>
-                             
-                                
-                                <td> 12 Jan 2022 </td>
-                                <td> 
-                                <a href="" class="btn btn-success optionToggleBtn">View</a>
-                                <div class="optionTogglePanel" style="display: none;"><a title="Edit" href="http://192.168.1.10/trackitCodeigniterNew/itineraries/edit/87/nvZCYZK4_20211120_1637386288" class="btn_pencil"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a><a target="_blank" title="View" href="http://192.168.1.10/trackitCodeigniterNew/itineraries/view_iti/87/nvZCYZK4_20211120_1637386288" class="btn_eye"><i class="fa-solid fa-eye" aria-hidden="true"></i></a><a target="_blank" title="View Pdf" href="http://192.168.1.10/trackitCodeigniterNew/itineraries/pdf/87/nvZCYZK4_20211120_1637386288" class="btn_pdf"><i class="fa-solid fa-file-pdf"></i></a><a data-id="87" title="Delete Itinerary" href="javascript:void(0)" class="btn_trash ajax_delete_iti"><i class="fa-solid fa-trash-can" aria-hidden="true"></i></a><a title="itinerary declined" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"></i></a></div>
-                                </td>
-                            </tr>
+                           
                         </thead>
-
+                        <tbody>
+                            <div class="loader"></div>
+                            <div id="res"></div>
+                        </tbody>
                     </table>
                         </div>
 
                     <div class="table-responsive">
 
-                    <table id="itinerary" class="table table-striped table-hover">
+                    <!-- <table id="itinerary" class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th> # </th>
@@ -375,9 +331,9 @@
 
                             <div class="loader"></div>
                             <div id="res"></div>
-                            <!--DataTable Goes here-->
+                           
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>
