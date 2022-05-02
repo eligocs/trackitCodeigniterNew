@@ -1,10 +1,5 @@
 <!--link href="<?php echo base_url();?>site/assets/css/lightbox.min.css" rel="stylesheet" type="text/css" />
    <script src="<?php echo base_url();?>site/assets/js/lightbox-plus-jquery.min.js" type="text/javascript"></script-->
-   <style>
-   .row.amendment_clone_btn {
-    margin: 20px;
-}
-</style>
 
 <!-- Begin page-container -->
 <div class="page-container itinerary-view view_call_info">
@@ -80,9 +75,9 @@
                 </div>
             </div>
            
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                <?php if( $iti->iti_status == 9 && isset( $paymentDetails[0] ) && !empty( $paymentDetails[0] )){ 
-                    $pay_detail = $paymentDetails[0];
+            <?php if( $iti->iti_status == 9 && isset( $paymentDetails[0] ) && !empty( $paymentDetails[0] )){ ?>
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                    <?php $pay_detail = $paymentDetails[0];
                     //echo $is_amendment . $amendment_note; 
                     //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";	
                     $is_gst_final = "";	
@@ -95,7 +90,7 @@
                     }else{
                         echo '<h1 class="text-center fs-5  uppercase">Itinerary Rejected By Manager</h1>';
                         echo "<p class='text-center'><strong> Reason: </strong> {$pay_detail->approved_note}</p>";
-                } ?>
+                    } ?>
                 <div class="mt-element-step">
                     <div class="row justify-content-between step-background-thin ">
                         <div class="col-md-4 bg-grey-steel mt-step-col error ">
@@ -140,450 +135,458 @@
                 <p class="red">Reason: <strong><?php echo $iti->iti_reject_comment; ?></strong></p>
             </div>
             <?php } ?>
-            <div class="table-responsive">
-                <table class="table table-bordered table-sm table_details">
-                    <tr class="text-nowrap">
-                        <th>Lead Id</th>
-                        <td><?php echo $iti->customer_id; ?></td>
-                        <th>Lead Type</th>
-                        <td><?php echo $cus_type; ?></td>
-                    </tr>
-                    <tr class="text-nowrap">
-                        <th>From</th>
-                        <td><?php echo !empty($country_name) ? "<span>" . $country_name . " ( $state_name ) </span>" : ""; ?>
-                        </td>
-                        <th>Q. Type</th>
-                        <td><?php echo check_iti_type( $iti->iti_id ) . ' ( ' . $iti->iti_package_type . ')'; ?></td>
-                    </tr>
-                    <tr class="text-nowrap">
-                        <th>Status</th>
-                        <td><?= $lead_status ?> Itinerary</td>
-                        <th>Final Package Cost</th>
-                        <td>INR <?php echo $iti->final_amount; ?>/- </td>
-                    </tr>
-                </table>
-            </div>
 
-            <div class="row2">
-                <div class="portlet box blue">
-                    <div class="portlet-title">
-                        <div class="custom_title"><i class="fa fa-calendar"></i> Package Overview</div>
-                        <?php //dump(get_iti_last_price_before_booking( $iti->iti_id ) ); ?>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="table-responsive">
-                            <table class="table table table-bordered">
-                                <tbody>
-                                    <tr class="thead-inverse">
-                                        <td><strong>Name of Package</strong></td>
-                                        <td><strong>Routing</strong></td>
-                                        <td><strong>Duration</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><?php echo $iti->package_name; ?></td>
-                                        <td><?php echo $iti->package_routing; ?></td>
-                                        <td><?php echo $iti->duration; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Total Travellers</strong></td>
-                                        <td><strong>Cab</strong></td>
-                                        <td><strong>Quotation Date</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <?php
-                                    echo "<strong> Adults: </strong> " . $iti->adults; 
-                                    if( !empty( $iti->child ) ){
-                                    	echo "<strong> No. of Child: </strong> " . $iti->child; 
-                                    	echo "<strong> Child age: </strong> " . $iti->child_age; 
-                                    }
-                                    ?>
-                                        </td>
-                                        <td><?php echo get_car_name($iti->cab_category); ?></td>
-                                        <td><?php echo display_date_month_name($iti->quatation_date); ?>
-                                        </td>
-                                    </tr>
-                                    <!--rooms meta section -->
-                                    <?php
-                              $room_category = $total_rooms = $with_extra_bed  = $without_extra_bed = "-";
-                              if( isset( $iti->rooms_meta) && !empty( $iti->rooms_meta ) ){
-                              	$rooms_meta 	= unserialize( $iti->rooms_meta );
-                              	$room_category 	= isset($rooms_meta["room_category"]) && !empty( $rooms_meta["room_category"] ) ? get_roomcat_name($rooms_meta["room_category"]) : "-";
-                              	$total_rooms 		= isset($rooms_meta["total_rooms"]) && !empty( $rooms_meta["total_rooms"] ) ? $rooms_meta["total_rooms"] : "-";
-                              	$with_extra_bed 	= isset($rooms_meta["with_extra_bed"]) && !empty( $rooms_meta["with_extra_bed"] ) ? $rooms_meta["with_extra_bed"] : "-";
-                              	$without_extra_bed 	= isset($rooms_meta["without_extra_bed"]) && !empty( $rooms_meta["without_extra_bed"] )  ? $rooms_meta["without_extra_bed"] : "-";
-                              }  ?>
-                                    <tr>
-                                        <td><strong>Room Category</strong></td>
-                                        <td><strong>No. Of Rooms</strong></td>
-                                        <td><strong>With Extra Bed</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><?php echo $room_category; ?></td>
-                                        <td><?php echo $total_rooms; ?></td>
-                                        <td><?php echo $with_extra_bed; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Without Extra Bed</strong></td>
-                                        <td>Iti Created</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong><?php echo $without_extra_bed; ?></strong></td>
-                                        <td><?php echo date("d F,Y", strtotime($iti->added)); ?></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- portlet body -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-5">
+                <div class="table-responsive mb-0">
+                    <table class="table table-bordered table-sm table_details mb-0">
+                        <tr class="text-nowrap">
+                            <th>Lead Id</th>
+                            <td><?php echo $iti->customer_id; ?></td>
+                            <th>Lead Type</th>
+                            <td><?php echo $cus_type; ?></td>
+                        </tr>
+                        <tr class="text-nowrap">
+                            <th>From</th>
+                            <td><?php echo !empty($country_name) ? "<span>" . $country_name . " ( $state_name ) </span>" : ""; ?>
+                            </td>
+                            <th>Q. Type</th>
+                            <td><?php echo check_iti_type( $iti->iti_id ) . ' ( ' . $iti->iti_package_type . ')'; ?></td>
+                        </tr>
+                        <tr class="text-nowrap">
+                            <th>Status</th>
+                            <td><?= $lead_status ?> Itinerary</td>
+                            <th>Final Package Cost</th>
+                            <td>INR <?php echo $iti->final_amount; ?>/- </td>
+                        </tr>
+                    </table>
                 </div>
-                <!-- portlet -->
-            
-                <div class="portlet box blue">
-                    <div class="portlet-title">
-                        <div class="custom_title"><i class="fa fa-calendar"></i> Hotel Details</div>
-                    </div>
-                    <?php 
-                  $f_cost =  !empty( $iti->final_amount )  && $iti->iti_status == 9  && get_iti_booking_status($iti->iti_id) == 0  ? "<strong class='green'> " . number_format($iti->final_amount) . " /-</strong> " : "";
-                  
-                  //echo $f_cost;
-                  //if final price exists strike all price
-                  //$strike_class_final = !empty( $iti->final_amount ) ? "strikeLine" : "";
-                  $strike_class_final = !empty( $iti->final_amount ) && $iti->iti_status == 9 ? "strikeLine" : "";
-                  ?>
-                    <div class="portlet-body">
-                        <?php 
-                     $hotel_meta = unserialize($iti->hotel_meta); 
-                     if( !empty( $hotel_meta ) ){
-                     	$count_hotel = count( $hotel_meta ); ?>
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead class="thead-default">
-                                    <tr class="thead-inverse">
-                                        <th> Hotel Category</th>
-                                        <th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
-                                        <th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
-                                        <th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
-                                        <th> <?= totalHotelCategory()[3]->hotel_category_name ?></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-                              /* print_r( $hotel_meta ); */
-                              if( $count_hotel > 0 ){
-                              	for ( $i = 0; $i < $count_hotel; $i++ ) {
-                              		echo "<tr><td><strong>" .$hotel_meta[$i]["hotel_location"] . "</strong></td><td>";
-                              			$hotel_standard =  $hotel_meta[$i]["hotel_standard"];
-                              			echo $hotel_standard;
-                              		echo "</td><td>";
-                              			$hotel_deluxe =  $hotel_meta[$i]["hotel_deluxe"];
-                              			echo $hotel_deluxe;
-                              		echo "</td><td>";
-                              			$hotel_super_deluxe =  $hotel_meta[$i]["hotel_super_deluxe"];
-                              			echo $hotel_super_deluxe;
-                              		echo "</td><td>";
-                              			$hotel_luxury =  $hotel_meta[$i]["hotel_luxury"];
-                              			echo $hotel_luxury;
-                              		echo "</td></tr>";
-                              	} 	
-                              	//Rate meta
-                              	$rate_meta 	  = unserialize($iti->rates_meta);
-                              	$strike_class = !empty( $discountPriceData ) ? "strikeLine" : " ";
-                              	//print_r( $rate_meta );
-                              	$iti_close_status = $iti->iti_close_status;
-                              	//print_r( $rate_meta );
-                              	if( empty($iti_close_status) ){
-                              	if( !empty( $rate_meta ) ){
-                              		if( $iti->pending_price == 4 ){
-                              			echo "<tr><td  colspan=5 class='red'>Awaiting price verfication from super manager.</td></tr>"; 
-                              		}else{
-                              			$per_person_ratemeta 	= unserialize($iti->per_person_ratemeta);
-                              			//$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
-                              			$inc_gst = "";
-                              			$below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "(Below BP.)" : "";
-                              			$bbp_css = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "bbptr" : "";
-                              
-                              			//get percentage added by agent
-                              			$agent_price_percentage = !empty($iti->agent_price) ? $iti->agent_price : 0;
-                              			$agent_sp = $agent_dp = $agent_sdp = $agent_lp = "";
-                              			//if percentage exists
-                              			if( $agent_price_percentage ){
-                              				$as_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . ( $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
-                              				$ad_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . ($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
-                              				$asd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . ( $per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage/100 ) . " Per/Person" : "";
-                              				$al_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . ( $per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage/100 ) . " Per/Person" : "";
-                              
-                              				//child rates
-                              				$achild_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " .  number_format( $per_person_ratemeta["child_standard_rates"]  + $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage/100  ) . "/- Per Child" : "";
-                              				
-                              				$achild_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
-                              				
-                              				$achild_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
-                              				
-                              				$achild_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " .   number_format( $per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";													
-                              				
-                              				$astandard_rates = !empty( $rate_meta["standard_rates"]) ? number_format($rate_meta["standard_rates"] + $rate_meta["standard_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              				
-                              				$adeluxe_rates = !empty( $rate_meta["deluxe_rates"]) ? number_format($rate_meta["deluxe_rates"] + $rate_meta["deluxe_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              				
-                              				$asuper_deluxe_rates = !empty( $rate_meta["super_deluxe_rates"]) ? number_format($rate_meta["super_deluxe_rates"] + $rate_meta["super_deluxe_rates"] * $agent_price_percentage / 100  ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              				$arate_luxry = !empty( $rate_meta["luxury_rates"]) ? number_format($rate_meta["luxury_rates"] + $rate_meta["luxury_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              				
-                              				$agent_sp = "<br><strong class='aprice'> AP( " . $astandard_rates . "</strong> <br> {$as_pp} <br> {$achild_s_pp} )";
-                              				$agent_dp = "<br><strong class='aprice'> AP( " . $adeluxe_rates . "</strong> <br> {$ad_pp} <br> {$achild_d_pp} )";
-                              				$agent_sdp = "<br><strong class='aprice'> AP( " . $asuper_deluxe_rates . "</strong> <br> {$asd_pp} <br> {$achild_sd_pp} )";
-                              				$agent_lp = "<br><strong class='aprice'> AP( " . $arate_luxry . "</strong> <br> {$al_pp} <br> {$achild_l_pp} )";
-                              			}
-                              			
-                              			//get per person price
-                              			$s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
-                              			
-                              			$d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
-                              			
-                              			$sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
-                              			
-                              			$l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
-                              			
-                              			//child rates
-                              			$child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
-                              			$child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
-                              			
-                              			$child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
-                              			
-                              			$child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
-                              			
-                              		
-                              			$standard_rates = !empty( $rate_meta["standard_rates"]) ? "RS. " . number_format($rate_meta["standard_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              			
-                              			$deluxe_rates = !empty( $rate_meta["deluxe_rates"]) ? "RS. " . number_format($rate_meta["deluxe_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              			
-                              			$super_deluxe_rates = !empty( $rate_meta["super_deluxe_rates"]) ? "RS. " . number_format($rate_meta["super_deluxe_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              			
-                              			$rate_luxry = !empty( $rate_meta["luxury_rates"]) ? "RS. " . number_format($rate_meta["luxury_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
-                              			
-                              			echo "<tr class='{$strike_class} {$strike_class_final} {$bbp_css}'><td>Price {$below_base_price}</td>
-                              					<td>		
-                              						<strong> BP( " . $standard_rates . "</strong>  {$s_pp}  {$child_s_pp} )
-                              						{$agent_sp}
-                              					</td>
-                              					<td>
-                              						<strong>BP( " . $deluxe_rates . "</strong>  {$d_pp} {$child_d_pp} )
-                              						{$agent_dp}
-                              					</td>
-                              					<td>
-                              						<strong>BP( " . $super_deluxe_rates . "</strong>  {$sd_pp} {$child_sd_pp} )
-                              						{$agent_sdp}
-                              					</td>
-                              					<td>
-                              						<strong>BP(  " . $rate_luxry . "</strong>  {$l_pp} {$child_l_pp} )
-                              						{$agent_lp}
-                              					</td></tr>";
-                              					
-                              		}		
-                              	}else{
-                              		echo "<tr><td><strong class='red'>Price</strong></td>
-                              				<td>
-                              					<strong class='red'> Coming Soon </strong>
-                              				</td>
-                              				<td>
-                              					<strong class='red'> Coming Soon</strong>
-                              				</td>
-                              				<td>
-                              					<strong class='red'> Coming Soon </strong>
-                              				</td>
-                              				<td>
-                              					<strong class='red'> Coming Soon </strong>
-                              				</td></tr>";
-                              	}
-                              	//discount data
-                              	if( !empty( $discountPriceData ) ){
-                              		foreach( $discountPriceData as $price ){
-                              			$agent_price_percentage = !empty($price->agent_price) ? $price->agent_price : 0;
-                              			$sent_status = $price->sent_status;
-                              			//get per person price
-                              			$per_person_ratemeta 	= unserialize($price->per_person_ratemeta);
-                              			//$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
-                              			$inc_gst = "";
-                              			
-                              			$below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "(Below BP.)" : "";
-                              			$bbp_css = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "bbptr" : "";
-                              			
-                              			$agent_sp = $agent_dp = $agent_sdp = $agent_lp = "";
-                              			//if percentage exists
-                              			if( $agent_price_percentage ){
-                              				$ad_s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"] ) ? "RS. " . number_format( $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
-                              				$ad_d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
-                              				$ad_sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage/100) . "/- Per Person" : "";
-                              				$ad_l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
-                              				
-                              				//child rates
-                              				$ad_child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_standard_rates"] +  $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
-                              				$ad_child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage/100) . "/- Per Child" : "";
-                              				$ad_child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
-                              				$ad_child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";			
-                              				
-                              				//get rates
-                              				$ad_s_price = !empty( $price->standard_rates) ? number_format($price->standard_rates + $price->standard_rates * $agent_price_percentage/100 ) . "/- {$inc_gst} <br> {$ad_s_pp} <br> {$ad_child_s_pp}" : "<strong class='red'>On Request</strong>";
-                              				
-                              				$ad_d_price = !empty( $price->deluxe_rates) ? number_format($price->deluxe_rates + $price->deluxe_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_d_pp} <br> {$ad_child_d_pp}" : "<strong class='red'>On Request</strong>";
-                              				
-                              				$ad_sd_price = !empty( $price->super_deluxe_rates) ? number_format($price->super_deluxe_rates + $price->super_deluxe_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_sd_pp} <br> {$ad_child_sd_pp}"  : "<strong class='red'>On Request</strong>";
-                              				
-                              				$ad_l_price = !empty( $price->luxury_rates) ? number_format($price->luxury_rates + $price->luxury_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_l_pp} <br> {$ad_child_l_pp}"  : "<strong class='red'>On Request</strong>";
-                              				
-                              				$agent_sp = "<br><strong class='aprice'> AP( " . $ad_s_price . "</strong>)";
-                              				$agent_dp = "<br><strong class='aprice'>  AP( " . $ad_d_price . "</strong>)";
-                              				$agent_sdp = "<br><strong class='aprice'> AP( " . $ad_sd_price . "</strong>)";
-                              				$agent_lp = "<br><strong class='aprice'>  AP( " . $ad_l_price . "</strong>)";
-                              			}
-                              			
-                              			
-                              			$s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"] ) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
-                              			$d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
-                              			$sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
-                              			$l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
-                              			
-                              			//child rates
-                              			$child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
-                              			$child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
-                              			$child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
-                              			$child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
-                              			
-                              			$s_price = !empty( $price->standard_rates) ? number_format($price->standard_rates) . "/- {$inc_gst} <br> {$s_pp} <br> {$child_s_pp}" : "<strong class='red'>N/A</strong>";
-                              			
-                              			$d_price = !empty( $price->deluxe_rates) ? number_format($price->deluxe_rates) . "/- {$inc_gst}<br> {$d_pp} <br> {$child_d_pp}" : "<strong class='red'>N/A</strong>";
-                              			
-                              			$sd_price = !empty( $price->super_deluxe_rates) ? number_format($price->super_deluxe_rates) . "/- {$inc_gst}<br> {$sd_pp} <br> {$child_sd_pp}"  : "<strong class='red'>N/A</strong>";
-                              			
-                              			$l_price = !empty( $price->luxury_rates) ? number_format($price->luxury_rates) . "/- {$inc_gst}<br> {$l_pp} <br> {$child_l_pp}"  : "<strong class='red'>N/A</strong>";
-                              			
-                              			$count_price = count( $discountPriceData );
-                              			$strike_class = ($price !== end($discountPriceData) && $count_price > 1 ) ? "strikeLine" : "";
-                              			
-                              			echo "<tr class='{$strike_class} {$strike_class_final} {$bbp_css}'><td>Price {$below_base_price}</td>
-                              			<td>BP( <strong>" . $s_price . "</strong>) {$agent_sp} </td>";
-                              			echo "<td> BP (<strong>" . $d_price . "</strong>) {$agent_dp} </td>";
-                              			echo "<td> BP (<strong>" . $sd_price . "</strong>) {$agent_sdp} </td>";
-                              			echo "<td> BP (<strong>" . $l_price . "</strong>) {$agent_lp} </td></tr>";
-                              		}
-                              	} 
-                              	} 
-                              
-                              	$rate_comment = isset( $iti->rate_comment ) && $iti->pending_price == 2 && $iti->discount_rate_request == 0 ? $iti->rate_comment : "";
-                                $approved_price_date = isset($iti->approved_price_date) && $iti->approved_price_date ? date("d.m.Y h:i A", strtotime( $iti->approved_price_date )) : '';
-                                
-                                if( $approved_price_date ){
-                                    echo "<tr><td colspan=5><p class='green margin_zero'><strong>Price updated on: </strong>{$approved_price_date} </td></tr>";
+            </div>
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <div class="custom_title"><i class="fa fa-calendar"></i> Package Overview</div>
+                    <?php //dump(get_iti_last_price_before_booking( $iti->iti_id ) ); ?>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table table-bordered">
+                            <tbody>
+                                <tr class="thead-inverse">
+                                    <td><strong>Name of Package</strong></td>
+                                    <td><strong>Routing</strong></td>
+                                    <td><strong>Duration</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $iti->package_name; ?></td>
+                                    <td><?php echo $iti->package_routing; ?></td>
+                                    <td><?php echo $iti->duration; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total Travellers</strong></td>
+                                    <td><strong>Cab</strong></td>
+                                    <td><strong>Quotation Date</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php
+                                echo "<strong> Adults: </strong> " . $iti->adults; 
+                                if( !empty( $iti->child ) ){
+                                    echo "<strong> No. of Child: </strong> " . $iti->child; 
+                                    echo "<strong> Child age: </strong> " . $iti->child_age; 
                                 }
-                              	echo "<tr><td colspan=5><p class='red margin_bottom_0'><strong>Note: </strong>{$rate_comment} </td></tr>";
-                              	echo "<tr><td colspan=5><p class='red margin_bottom_0'><strong>Final Package Cost: </strong>{$f_cost} </td></tr>";
-                              } ?>
-                                </tbody>
-                            </table>
+                                ?>
+                                    </td>
+                                    <td><?php echo get_car_name($iti->cab_category); ?></td>
+                                    <td><?php echo display_date_month_name($iti->quatation_date); ?>
+                                    </td>
+                                </tr>
+                                <!--rooms meta section -->
+                                <?php
+                            $room_category = $total_rooms = $with_extra_bed  = $without_extra_bed = "-";
+                            if( isset( $iti->rooms_meta) && !empty( $iti->rooms_meta ) ){
+                            $rooms_meta 	= unserialize( $iti->rooms_meta );
+                            $room_category 	= isset($rooms_meta["room_category"]) && !empty( $rooms_meta["room_category"] ) ? get_roomcat_name($rooms_meta["room_category"]) : "-";
+                            $total_rooms 		= isset($rooms_meta["total_rooms"]) && !empty( $rooms_meta["total_rooms"] ) ? $rooms_meta["total_rooms"] : "-";
+                            $with_extra_bed 	= isset($rooms_meta["with_extra_bed"]) && !empty( $rooms_meta["with_extra_bed"] ) ? $rooms_meta["with_extra_bed"] : "-";
+                            $without_extra_bed 	= isset($rooms_meta["without_extra_bed"]) && !empty( $rooms_meta["without_extra_bed"] )  ? $rooms_meta["without_extra_bed"] : "-";
+                            }  ?>
+                                <tr>
+                                    <td><strong>Room Category</strong></td>
+                                    <td><strong>No. Of Rooms</strong></td>
+                                    <td><strong>With Extra Bed</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $room_category; ?></td>
+                                    <td><?php echo $total_rooms; ?></td>
+                                    <td><?php echo $with_extra_bed; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Without Extra Bed</strong></td>
+                                    <td>Iti Created</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo $without_extra_bed; ?></strong></td>
+                                    <td><?php echo date("d F,Y", strtotime($iti->added)); ?></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- portlet body -->
+            </div>
+            <!-- portlet -->
+        
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <div class="custom_title"><i class="fa fa-calendar"></i> Hotel Details</div>
+                </div>
+                <?php 
+                $f_cost =  !empty( $iti->final_amount )  && $iti->iti_status == 9  && get_iti_booking_status($iti->iti_id) == 0  ? "<strong class='green'> " . number_format($iti->final_amount) . " /-</strong> " : "";
+                
+                //echo $f_cost;
+                //if final price exists strike all price
+                //$strike_class_final = !empty( $iti->final_amount ) ? "strikeLine" : "";
+                $strike_class_final = !empty( $iti->final_amount ) && $iti->iti_status == 9 ? "strikeLine" : "";
+                ?>
+                <div class="portlet-body">
+                    <?php 
+                    $hotel_meta = unserialize($iti->hotel_meta); 
+                    if( !empty( $hotel_meta ) ){
+                    $count_hotel = count( $hotel_meta ); ?>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-default">
+                                <tr class="thead-inverse">
+                                    <th> Hotel Category</th>
+                                    <th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
+                                    <th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
+                                    <th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
+                                    <th> <?= totalHotelCategory()[3]->hotel_category_name ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                            /* print_r( $hotel_meta ); */
+                            if( $count_hotel > 0 ){
+                            for ( $i = 0; $i < $count_hotel; $i++ ) {
+                                echo "<tr><td><strong>" .$hotel_meta[$i]["hotel_location"] . "</strong></td><td>";
+                                    $hotel_standard =  $hotel_meta[$i]["hotel_standard"];
+                                    echo $hotel_standard;
+                                echo "</td><td>";
+                                    $hotel_deluxe =  $hotel_meta[$i]["hotel_deluxe"];
+                                    echo $hotel_deluxe;
+                                echo "</td><td>";
+                                    $hotel_super_deluxe =  $hotel_meta[$i]["hotel_super_deluxe"];
+                                    echo $hotel_super_deluxe;
+                                echo "</td><td>";
+                                    $hotel_luxury =  $hotel_meta[$i]["hotel_luxury"];
+                                    echo $hotel_luxury;
+                                echo "</td></tr>";
+                            } 	
+                            //Rate meta
+                            $rate_meta 	  = unserialize($iti->rates_meta);
+                            $strike_class = !empty( $discountPriceData ) ? "strikeLine" : " ";
+                            //print_r( $rate_meta );
+                            $iti_close_status = $iti->iti_close_status;
+                            //print_r( $rate_meta );
+                            if( empty($iti_close_status) ){
+                            if( !empty( $rate_meta ) ){
+                                if( $iti->pending_price == 4 ){
+                                    echo "<tr><td  colspan=5 class='red'>Awaiting price verfication from super manager.</td></tr>"; 
+                                }else{
+                                    $per_person_ratemeta 	= unserialize($iti->per_person_ratemeta);
+                                    //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
+                                    $inc_gst = "";
+                                    $below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "(Below BP.)" : "";
+                                    $bbp_css = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "bbptr" : "";
+                            
+                                    //get percentage added by agent
+                                    $agent_price_percentage = !empty($iti->agent_price) ? $iti->agent_price : 0;
+                                    $agent_sp = $agent_dp = $agent_sdp = $agent_lp = "";
+                                    //if percentage exists
+                                    if( $agent_price_percentage ){
+                                        $as_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? " Rs." . ( $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
+                                        $ad_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? " Rs." . ($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage/100 ). " Per/Person" : "";
+                                        $asd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? " Rs." . ( $per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage/100 ) . " Per/Person" : "";
+                                        $al_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? " Rs." . ( $per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage/100 ) . " Per/Person" : "";
+                            
+                                        //child rates
+                                        $achild_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " .  number_format( $per_person_ratemeta["child_standard_rates"]  + $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage/100  ) . "/- Per Child" : "";
+                                        
+                                        $achild_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                        
+                                        $achild_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format( $per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                        
+                                        $achild_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " .   number_format( $per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";													
+                                        
+                                        $astandard_rates = !empty( $rate_meta["standard_rates"]) ? number_format($rate_meta["standard_rates"] + $rate_meta["standard_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $adeluxe_rates = !empty( $rate_meta["deluxe_rates"]) ? number_format($rate_meta["deluxe_rates"] + $rate_meta["deluxe_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $asuper_deluxe_rates = !empty( $rate_meta["super_deluxe_rates"]) ? number_format($rate_meta["super_deluxe_rates"] + $rate_meta["super_deluxe_rates"] * $agent_price_percentage / 100  ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        $arate_luxry = !empty( $rate_meta["luxury_rates"]) ? number_format($rate_meta["luxury_rates"] + $rate_meta["luxury_rates"] * $agent_price_percentage / 100 ) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $agent_sp = "<br><strong class='aprice'> AP( " . $astandard_rates . "</strong> <br> {$as_pp} <br> {$achild_s_pp} )";
+                                        $agent_dp = "<br><strong class='aprice'> AP( " . $adeluxe_rates . "</strong> <br> {$ad_pp} <br> {$achild_d_pp} )";
+                                        $agent_sdp = "<br><strong class='aprice'> AP( " . $asuper_deluxe_rates . "</strong> <br> {$asd_pp} <br> {$achild_sd_pp} )";
+                                        $agent_lp = "<br><strong class='aprice'> AP( " . $arate_luxry . "</strong> <br> {$al_pp} <br> {$achild_l_pp} )";
+                                    }
+                                    
+                                    //get per person price
+                                    $s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"]) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
+                                    
+                                    $d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
+                                    
+                                    $sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
+                                    
+                                    $l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
+                                    
+                                    //child rates
+                                    $child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
+                                    $child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
+                                    
+                                    $child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
+                                    
+                                    $child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
+                                    
+                                
+                                    $standard_rates = !empty( $rate_meta["standard_rates"]) ? "RS. " . number_format($rate_meta["standard_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                    
+                                    $deluxe_rates = !empty( $rate_meta["deluxe_rates"]) ? "RS. " . number_format($rate_meta["deluxe_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                    
+                                    $super_deluxe_rates = !empty( $rate_meta["super_deluxe_rates"]) ? "RS. " . number_format($rate_meta["super_deluxe_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                    
+                                    $rate_luxry = !empty( $rate_meta["luxury_rates"]) ? "RS. " . number_format($rate_meta["luxury_rates"]) . "/- {$inc_gst}" : "<strong class='red'>On Request</strong>";
+                                    
+                                    echo "<tr class='{$strike_class} {$strike_class_final} {$bbp_css}'><td>Price {$below_base_price}</td>
+                                            <td>		
+                                                <strong> BP( " . $standard_rates . "</strong>  {$s_pp}  {$child_s_pp} )
+                                                {$agent_sp}
+                                            </td>
+                                            <td>
+                                                <strong>BP( " . $deluxe_rates . "</strong>  {$d_pp} {$child_d_pp} )
+                                                {$agent_dp}
+                                            </td>
+                                            <td>
+                                                <strong>BP( " . $super_deluxe_rates . "</strong>  {$sd_pp} {$child_sd_pp} )
+                                                {$agent_sdp}
+                                            </td>
+                                            <td>
+                                                <strong>BP(  " . $rate_luxry . "</strong>  {$l_pp} {$child_l_pp} )
+                                                {$agent_lp}
+                                            </td></tr>";
+                                            
+                                }		
+                            }else{
+                                echo "<tr><td><strong class='red'>Price</strong></td>
+                                        <td>
+                                            <strong class='red'> Coming Soon </strong>
+                                        </td>
+                                        <td>
+                                            <strong class='red'> Coming Soon</strong>
+                                        </td>
+                                        <td>
+                                            <strong class='red'> Coming Soon </strong>
+                                        </td>
+                                        <td>
+                                            <strong class='red'> Coming Soon </strong>
+                                        </td></tr>";
+                            }
+                            //discount data
+                            if( !empty( $discountPriceData ) ){
+                                foreach( $discountPriceData as $price ){
+                                    $agent_price_percentage = !empty($price->agent_price) ? $price->agent_price : 0;
+                                    $sent_status = $price->sent_status;
+                                    //get per person price
+                                    $per_person_ratemeta 	= unserialize($price->per_person_ratemeta);
+                                    //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
+                                    $inc_gst = "";
+                                    
+                                    $below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "(Below BP.)" : "";
+                                    $bbp_css = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? "bbptr" : "";
+                                    
+                                    $agent_sp = $agent_dp = $agent_sdp = $agent_lp = "";
+                                    //if percentage exists
+                                    if( $agent_price_percentage ){
+                                        $ad_s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"] ) ? "RS. " . number_format( $per_person_ratemeta["standard_rates"] +  $per_person_ratemeta["standard_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
+                                        $ad_d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"] +  $per_person_ratemeta["deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
+                                        $ad_sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"] +  $per_person_ratemeta["super_deluxe_rates"] * $agent_price_percentage/100) . "/- Per Person" : "";
+                                        $ad_l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"] +  $per_person_ratemeta["luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Person" : "";
+                                        
+                                        //child rates
+                                        $ad_child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_standard_rates"] +  $per_person_ratemeta["child_standard_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                        $ad_child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_deluxe_rates"] +  $per_person_ratemeta["child_deluxe_rates"] * $agent_price_percentage/100) . "/- Per Child" : "";
+                                        $ad_child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_super_deluxe_rates"] +  $per_person_ratemeta["child_super_deluxe_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";
+                                        $ad_child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["child_luxury_rates"] +  $per_person_ratemeta["child_luxury_rates"] * $agent_price_percentage/100 ) . "/- Per Child" : "";			
+                                        
+                                        //get rates
+                                        $ad_s_price = !empty( $price->standard_rates) ? number_format($price->standard_rates + $price->standard_rates * $agent_price_percentage/100 ) . "/- {$inc_gst} <br> {$ad_s_pp} <br> {$ad_child_s_pp}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $ad_d_price = !empty( $price->deluxe_rates) ? number_format($price->deluxe_rates + $price->deluxe_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_d_pp} <br> {$ad_child_d_pp}" : "<strong class='red'>On Request</strong>";
+                                        
+                                        $ad_sd_price = !empty( $price->super_deluxe_rates) ? number_format($price->super_deluxe_rates + $price->super_deluxe_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_sd_pp} <br> {$ad_child_sd_pp}"  : "<strong class='red'>On Request</strong>";
+                                        
+                                        $ad_l_price = !empty( $price->luxury_rates) ? number_format($price->luxury_rates + $price->luxury_rates * $agent_price_percentage/100) . "/- {$inc_gst} <br> {$ad_l_pp} <br> {$ad_child_l_pp}"  : "<strong class='red'>On Request</strong>";
+                                        
+                                        $agent_sp = "<br><strong class='aprice'> AP( " . $ad_s_price . "</strong>)";
+                                        $agent_dp = "<br><strong class='aprice'>  AP( " . $ad_d_price . "</strong>)";
+                                        $agent_sdp = "<br><strong class='aprice'> AP( " . $ad_sd_price . "</strong>)";
+                                        $agent_lp = "<br><strong class='aprice'>  AP( " . $ad_l_price . "</strong>)";
+                                    }
+                                    
+                                    
+                                    $s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"] ) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
+                                    $d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
+                                    $sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
+                                    $l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
+                                    
+                                    //child rates
+                                    $child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
+                                    $child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
+                                    $child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
+                                    $child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
+                                    
+                                    $s_price = !empty( $price->standard_rates) ? number_format($price->standard_rates) . "/- {$inc_gst} <br> {$s_pp} <br> {$child_s_pp}" : "<strong class='red'>N/A</strong>";
+                                    
+                                    $d_price = !empty( $price->deluxe_rates) ? number_format($price->deluxe_rates) . "/- {$inc_gst}<br> {$d_pp} <br> {$child_d_pp}" : "<strong class='red'>N/A</strong>";
+                                    
+                                    $sd_price = !empty( $price->super_deluxe_rates) ? number_format($price->super_deluxe_rates) . "/- {$inc_gst}<br> {$sd_pp} <br> {$child_sd_pp}"  : "<strong class='red'>N/A</strong>";
+                                    
+                                    $l_price = !empty( $price->luxury_rates) ? number_format($price->luxury_rates) . "/- {$inc_gst}<br> {$l_pp} <br> {$child_l_pp}"  : "<strong class='red'>N/A</strong>";
+                                    
+                                    $count_price = count( $discountPriceData );
+                                    $strike_class = ($price !== end($discountPriceData) && $count_price > 1 ) ? "strikeLine" : "";
+                                    
+                                    echo "<tr class='{$strike_class} {$strike_class_final} {$bbp_css}'><td>Price {$below_base_price}</td>
+                                    <td>BP( <strong>" . $s_price . "</strong>) {$agent_sp} </td>";
+                                    echo "<td> BP (<strong>" . $d_price . "</strong>) {$agent_dp} </td>";
+                                    echo "<td> BP (<strong>" . $sd_price . "</strong>) {$agent_sdp} </td>";
+                                    echo "<td> BP (<strong>" . $l_price . "</strong>) {$agent_lp} </td></tr>";
+                                }
+                            } 
+                            } 
+                            
+                            $rate_comment = isset( $iti->rate_comment ) && $iti->pending_price == 2 && $iti->discount_rate_request == 0 ? $iti->rate_comment : "";
+                            $approved_price_date = isset($iti->approved_price_date) && $iti->approved_price_date ? date("d.m.Y h:i A", strtotime( $iti->approved_price_date )) : '';
+                            
+                            if( $approved_price_date ){
+                                echo "<tr><td colspan=5><p class='green margin_zero'><strong>Price updated on: </strong>{$approved_price_date} </td></tr>";
+                            }
+                            echo "<tr><td colspan=5><p class='red margin_bottom_0'><strong>Note: </strong>{$rate_comment} </td></tr>";
+                            echo "<tr><td colspan=5><p class='red margin_bottom_0'><strong>Final Package Cost: </strong>{$f_cost} </td></tr>";
+                            } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php } ?>
+                </div>
+                <!-- portlet body -->
+            </div>
+            <!-- portlet -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-3">
+                <div class="tour_des">
+                    <ul class="p-0 mb-0">
+                        <div class="row">
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong> Itinerary Id: </strong><span
+                                    class="badge badge-success"> <?php echo $iti->iti_id; ?></p> </span></div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong> Name:</strong> <span class="badge badge-success">
+                                    <?php echo $customer_name; ?> </span></div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong> Phone: </strong><span
+                                    class="badge badge-success"> <?php echo $customer_contact; ?> </span></div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong> Email: </strong><span
+                                    class="badge badge-success"> <?php echo $customer_email; ?> </span></div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong> Agent: </strong><span
+                                    class="badge badge-success"> <?php echo get_user_name($iti->agent_id); ?>
+                                </span></div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong> Prospect: </strong><span
+                                    class="badge badge-success">
+                                    <?php echo !empty($followUpData) ? $followUpData[0]->itiProspect : "" ; ?>
+                                </span></div>
+                        </li>
+                        <?php if(  $iti_status ==7 ){ ?>
+                        <li class="col-md-4 list-group-item">
+                            <div class=" list-group-item"><strong>Decline Reason: </strong>
+                                <?php echo $lead_note; ?></div>
+                        </li>
+                        <li class="col-md-4 list-group-item"><strong>Decline Comment: </strong>
+                            <?php echo $iti->decline_comment; ?></li>
+                        <?php } ?>
+                        <?php if(  $iti_status == 9 ){ ?>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong>Final Amount: </strong> <span
+                                    class="badge badge-success"><?php echo iti_final_cost($iti->iti_id); ?></span>
+                            </div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong>Package Category: </strong> <span
+                                    class="badge badge-success"><?php echo $iti->approved_package_category; ?></span>
+                            </div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class=" list-group-item"><strong>Comment: </strong> <span
+                                    class="badge badge-success"><?php echo $lead_note; ?></span></div>
+                        </li>
                         </div>
                         <?php } ?>
-                    </div>
-                    <!-- portlet body -->
+                    </ul>
                 </div>
-                <!-- portlet -->
-                <div class="bg-white p-3 rounded-4 shadow-sm mb-3">
+            </div>
+            <hr>
+            <!--Payment Detais section-->
+            <?php 
+                if( isset( $paymentDetails  ) && !empty( $paymentDetails ) &&  ( $iti->iti_status == 9 || $book_status == 3 ) ){ 
+                    $pay_detail = $paymentDetails[0]; 
+                    //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";
+                    $is_gst_final = "";
+            ?>
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+                <div id="update_iti_hold_status">
+                    <h4>Advance Received Details</h4>
                     <div class="tour_des">
-                        <ul class="p-0 mb-0">
-                            <div class="row">
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong> Itinerary Id: </strong><span
-                                        class="badge badge-success"> <?php echo $iti->iti_id; ?></p> </span></div>
-                            </li>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong> Name:</strong> <span class="badge badge-success">
-                                        <?php echo $customer_name; ?> </span></div>
-                            </li>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong> Phone: </strong><span
-                                        class="badge badge-success"> <?php echo $customer_contact; ?> </span></div>
-                            </li>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong> Email: </strong><span
-                                        class="badge badge-success"> <?php echo $customer_email; ?> </span></div>
-                            </li>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong> Agent: </strong><span
-                                        class="badge badge-success"> <?php echo get_user_name($iti->agent_id); ?>
-                                    </span></div>
-                            </li>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong> Prospect: </strong><span
-                                        class="badge badge-success">
-                                        <?php echo !empty($followUpData) ? $followUpData[0]->itiProspect : "" ; ?>
-                                    </span></div>
-                            </li>
-                            <?php if(  $iti_status ==7 ){ ?>
-                            <li class="col-md-4 list-group-item">
-                                <div class=" list-group-item"><strong>Decline Reason: </strong>
-                                    <?php echo $lead_note; ?></div>
-                            </li>
-                            <li class="col-md-4 list-group-item"><strong>Decline Comment: </strong>
-                                <?php echo $iti->decline_comment; ?></li>
-                            <?php } ?>
-                            <?php if(  $iti_status == 9 ){ ?>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong>Final Amount: </strong> <span
-                                        class="badge badge-success"><?php echo iti_final_cost($iti->iti_id); ?></span>
-                                </div>
-                            </li>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong>Package Category: </strong> <span
-                                        class="badge badge-success"><?php echo $iti->approved_package_category; ?></span>
-                                </div>
-                            </li>
-                            <li class="col-md-4">
-                                <div class=" list-group-item"><strong>Comment: </strong> <span
-                                        class="badge badge-success"><?php echo $lead_note; ?></span></div>
-                            </li>
-                            </div>
-                            <?php } ?>
-                        </ul>
-                    
-                    </div>
-                </div>
-                <hr>
-                <!--Payment Detais section-->
-                <?php 
-                    if( isset( $paymentDetails  ) && !empty( $paymentDetails ) &&  ( $iti->iti_status == 9 || $book_status == 3 ) ){ 
-                        $pay_detail = $paymentDetails[0]; 
-                        //$is_gst_final = $pay_detail->is_gst == 1 ? "GST Inc." : "GST Extra";
-                        $is_gst_final = "";
-               	?>
-                <div class="custom_card">
-                    <div id="update_iti_hold_status">
-                        <h4>Advance Received Details</h4>
-                        <div class="tour_des">
-                            <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-3 my-2">
                                 <p><strong>Total Cost: </strong> <?php echo iti_final_cost($iti->iti_id); ?></p>
                             </div>
-                            <div class="col-md-3">
-                                <p><strong>Advance Received: </strong>
-                                    <?php echo number_format($pay_detail->advance_recieved); ?></p>
+                            <div class="col-md-3 my-2">
+                                <p>
+                                    <strong>Advance Received: </strong>
+                                    <?php echo number_format($pay_detail->advance_recieved); ?>
+                                </p>
                             </div>
-                            <div class="col-md-3">
-                                <p><strong>Booking Date: </strong>
+                            <div class="col-md-3 my-2">
+                                <p>
+                                    <strong>Booking Date: </strong>
                                     <?php echo !empty( $pay_detail->booking_date ) ? display_month_name( $pay_detail->booking_date ) : ""; ?>
                                 </p>
                             </div>
-                            <div class="col-md-3">
-                                <p><strong>Balance: </strong>
-                                    <?php echo number_format($pay_detail->total_balance_amount) . " /-"; ?></p>
+                            <div class="col-md-3 my-2">
+                                <p>
+                                    <strong>Balance: </strong>
+                                    <?php echo number_format($pay_detail->total_balance_amount) . " /-"; ?>
+                                </p>
                             </div>
                         </div>
-                        <!--show payment screenshot details-->
-                        <!-- client_aadhar_card payment_screenshot -->
+                    </div>
+                    <!--show payment screenshot details-->
+                    <!-- client_aadhar_card payment_screenshot -->
+                    <div class="row">
                         <?php $doc_path =  base_url() .'site/assets/client_docs/';
-							$aadhar_card_img = !empty( $pay_detail->client_aadhar_card ) ? $pay_detail->client_aadhar_card : "";
-							$payment_screenshot = !empty( $pay_detail->payment_screenshot ) ? $pay_detail->payment_screenshot : "";
-							?>
-                        <div class="col-md-4">
+                            $aadhar_card_img = !empty( $pay_detail->client_aadhar_card ) ? $pay_detail->client_aadhar_card : "";
+                            $payment_screenshot = !empty( $pay_detail->payment_screenshot ) ? $pay_detail->payment_screenshot : "";
+                        ?>
+                        <div class="col-md-4 my-2">
                             <h3>Aadhar Card Screenshot</h3>
                             <?php if($aadhar_card_img){ ?>
                             <a href="<?php echo $doc_path . $aadhar_card_img; ?>" class="example-image-link"
@@ -592,11 +595,11 @@
                                     class="image-responsive example-image">
                             </a>
                             <?php }else{
-							echo "<strong class='red'>Aadhar card Not Updated</strong>";
-							//echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
-							} ?>
+                            echo "<strong class='red'>Aadhar card Not Updated</strong>";
+                            //echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
+                            } ?>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <h3>Payment Screenshot</h3>
                             <?php if($payment_screenshot){ ?>
                             <a target="_blank" href="<?php echo $doc_path . $payment_screenshot; ?>"
@@ -606,574 +609,574 @@
                                     class="image-responsive">
                             </a>
                             <?php }else{
-							echo "<strong class='red'>Payment Screenshot Not Updated</strong>";
-							//echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
-							} ?>
+                            echo "<strong class='red'>Payment Screenshot Not Updated</strong>";
+                            //echo '<img src=" ' . $doc_path . 'dummy.jpg" width="150" height="150" class="image-responsive">';
+                            } ?>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <h3>Iti Status</h3>
                             <?php if( $pay_detail->iti_booking_status == 0 ){ 
-									echo '<strong class="green">APPROVED</strong>';
-									}else{
-									echo "<strong class='red'>ON HOLD</strong>";
-									} ?>
+                                    echo '<strong class="green">APPROVED</strong>';
+                                    }else{
+                                    echo "<strong class='red'>ON HOLD</strong>";
+                                    } ?>
                             <p><span class="red">Note: </span><?php echo $pay_detail->approved_note; ?></p>
                         </div>
                     </div>
-                
                 </div>
-                <hr>
-                <!--end payment sceenshot status-->
-                <?php } ?>
-                <!--End Payment Details section-->
-                <!--show child itineraries if exists -->
-                <?php 
-               $dupBtn ="";
-               $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
+            </div>
+            <hr>
+            <!--end payment sceenshot status-->
+            <?php } ?>
+            <!--End Payment Details section-->
+            <!--show child itineraries if exists -->
+            <?php 
+            $dupBtn ="";
+            $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
                
-               //Get if Itinerary is parent or childIt
-               $p_iti = empty( $parent_iti ) ? "Parent" : "Child";
-               //Count All Child Itineraries
-               //clone button
-               if( $countChildIti < 6  && $iti->iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" && $book_status != 3 ){
-               	$dupBtn = "<a title='Duplicate Itinerary' href=" . site_url("itineraries/duplicate/{$iti->iti_id}") . " class='btn btn-success duplicateItiBtn' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>"; ?>
-                <!-- Modal Duplicate Itinerary-->
-                <div id="duplicatePakcageModal" class="modal" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">Close</button>
-                                <h4 class="modal-title">Select Package</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form id="createIti">
-                                    <div class="">
-                                        <?php $prePackages = get_all_packages(); ?>
-                                        <?php $getPackCat = get_package_categories(); ?>
-                                        <?php $state_list = get_indian_state_list(); ?>
-                                        <div class="form-group">
-                                            <label>Select Package Category*</label>
-                                            <select required name="package_cat_id" class="form-control" id="pkg_cat_id">
-                                                <option value="">Choose Package</option>
-                                                <?php if( $getPackCat ){ ?>
-                                                <?php foreach($getPackCat as $pCat){ ?>
-                                                <option value="<?php echo $pCat->p_cat_id ?>">
-                                                    <?php echo $pCat->package_cat_name; ?></option>
-                                                <?php } ?>
-                                                <?php }	?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Select State*</label>
-                                            <select required disabled name="satate_id" class="form-control"
-                                                id="state_id">
-                                                <option value="">Select State</option>
-                                                <?php if( $state_list ){ 
-                                       foreach($state_list as $state){
-                                       	echo '<option value="'.$state->id.'">'.$state->name.'</option>';
-                                       }
-                                       } ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Select Package*</label>
-                                            <select required disabled name="packages" class="form-control" id="pkg_id">
-                                                <option value="">Choose Package</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-actions">
-                                            <input type="hidden" id="cust_id" value="<?php echo $iti->customer_id; ?>">
-                                            <input type="hidden" id="iti_id" value="<?php echo $iti->iti_id; ?>">
-                                            <input type="submit" class='btn btn-green disabledBtn' id="continue_package"
-                                                value="Continue">
-                                        </div>
+            //Get if Itinerary is parent or childIt
+            $p_iti = empty( $parent_iti ) ? "Parent" : "Child";
+            //Count All Child Itineraries
+            //clone button
+            if( $countChildIti < 6  && $iti->iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" && $book_status != 3 ){
+            $dupBtn = "<a title='Duplicate Itinerary' href=" . site_url("itineraries/duplicate/{$iti->iti_id}") . " class='btn btn-success duplicateItiBtn' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>"; ?>
+            <!-- Modal Duplicate Itinerary-->
+            <div id="duplicatePakcageModal" class="modal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">Close</button>
+                            <h4 class="modal-title">Select Package</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="createIti">
+                                <div class="">
+                                    <?php $prePackages = get_all_packages(); ?>
+                                    <?php $getPackCat = get_package_categories(); ?>
+                                    <?php $state_list = get_indian_state_list(); ?>
+                                    <div class="form-group">
+                                        <label>Select Package Category*</label>
+                                        <select required name="package_cat_id" class="form-control" id="pkg_cat_id">
+                                            <option value="">Choose Package</option>
+                                            <?php if( $getPackCat ){ ?>
+                                            <?php foreach($getPackCat as $pCat){ ?>
+                                            <option value="<?php echo $pCat->p_cat_id ?>">
+                                                <?php echo $pCat->package_cat_name; ?></option>
+                                            <?php } ?>
+                                            <?php }	?>
+                                        </select>
                                     </div>
-                                    <div id="pack_response"></div>
-                                </form>
-                                <hr>
-                                <h2><strong>OR</strong></h2>
-                                <div class="form-group">
-                                    <a href="<?php echo site_url("itineraries/duplicate/{$iti->iti_id}"); ?>"
-                                        class='btn btn-green disabledBtn' id="clone_current_iti"
-                                        title='Clone Itinerary'><i class='fa fa-plus'></i> Clone Current Itinerary</a>
+                                    <div class="form-group">
+                                        <label>Select State*</label>
+                                        <select required disabled name="satate_id" class="form-control"
+                                            id="state_id">
+                                            <option value="">Select State</option>
+                                            <?php if( $state_list ){ 
+                                    foreach($state_list as $state){
+                                    echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+                                    }
+                                    } ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Select Package*</label>
+                                        <select required disabled name="packages" class="form-control" id="pkg_id">
+                                            <option value="">Choose Package</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-actions">
+                                        <input type="hidden" id="cust_id" value="<?php echo $iti->customer_id; ?>">
+                                        <input type="hidden" id="iti_id" value="<?php echo $iti->iti_id; ?>">
+                                        <input type="submit" class='btn btn-green disabledBtn' id="continue_package"
+                                            value="Continue">
+                                    </div>
+                                </div>
+                                <div id="pack_response"></div>
+                            </form>
+                            <hr>
+                            <h2><strong>OR</strong></h2>
+                            <div class="form-group">
+                                <a href="<?php echo site_url("itineraries/duplicate/{$iti->iti_id}"); ?>"
+                                    class='btn btn-green disabledBtn' id="clone_current_iti"
+                                    title='Clone Itinerary'><i class='fa fa-plus'></i> Clone Current Itinerary</a>
+                            </div>
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+            <?php }	
+            //get last followup
+            $last_followUp_iti = isset( $lastFollow ) && !empty( $lastFollow ) ? trim($lastFollow) : 0;
+            //current followup iti id
+            $lFollow = $last_followUp_iti == $iti->iti_id ? "<strong class='green'>Last Followup On Current Itinerary</strong>" : "";
+            $i=1;
+            //Count All Child Itineraries
+            $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
+            $dupChildBtn = "";
+            if( !empty( $childItinerary ) ){
+            echo "<div class='portlet box blue row'> <div class='portlet-body'> <h2 class='text-center'><strong>CHILD ITINERARIES</strong></h2>";
+            foreach( $childItinerary as $c_iti ){
+                //get iti_status
+                $row_delete = "";
+                $btncmt = "";
+                $iti_status = $c_iti->iti_status;
+                $parent_iti = $c_iti->parent_iti_id;
+                $iti_id = $c_iti->iti_id;
+                $key = $c_iti->temp_key;
+                $pub_status = $c_iti->publish_status;
+                //current followup iti id
+                $curFollow = $last_followUp_iti == $iti_id ? "last_follow" : "";
+                
+                //get discount rate request
+                $discount_request = $c_iti->discount_rate_request;
+                $discReq = $discount_request == 1 ? "<strong class='red'> (Price Discount Request) </stron>" : " ";
+                //Get Pulish status
+                if( $pub_status == "publish" ){
+                    $p_status = "<div class='btn btn-success green'>" . ucfirst($pub_status) . "</div>";
+                    $p_status .= $discReq;
+                }elseif( $pub_status == "price pending" ){
+                    $p_status = "<div class='btn btn-danger blue'>" . ucfirst($pub_status) . "</div>";
+                    $p_status .= $discReq;
+                }else{
+                    $p_status = "<div class='btn btn-danger red'>" . ucfirst($pub_status) . "</div>";
+                }
+                
+                /* count iti sent status */
+                $iti_sent = $c_iti->email_count;
+                $sent_status = $iti_sent > 0 ? "$iti_sent Time Sent" : "Not Sent";
+                
+                //Show duplicate button for child itinerary
+                    if( !empty( $parent_iti ) && $countChildIti < 6 ){
+                    $dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti_id}&parent_iti_id={$parent_iti}" ) ." class='btn btn-success child_clone'><i class='fa-solid fa-copy'></i> Duplicate Itinerary </a> ";
+                }	 
+                
+                //if price is updated remove edit for agent
+                if( ($c_iti->pending_price == 2 || $c_iti->pending_price == 4) && $user_role == 96 ){
+                    $btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i> Edit</a>";
+                }else{
+                    $btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i> Edit</a>";
+                }
+                
+                $btn_view = "<a title='View' target='_blank' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
+                // $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
+                // $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
+                $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/pdf/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-file-pdf'></i></a>";
+            
+                if( !empty( $c_iti->client_comment_status ) && $c_iti->client_comment_status == 1 ){
+                    $btncmt = "<a data-id={$iti_id} data-key={$key} title='Client Comment' href='javascript:void(0)' class='btn btn-success ajax_iti_status red'><span class='blink'><i class='fa fa fa-comment-o' aria-hidden='true'></i>  New Comment</span></a>";
+                }
+                
+                //if itinerary status is publish
+                if( $pub_status == "publish" || $pub_status == "price pending" ){
+                    //delete itinerary button only for admin
+                    if( ( is_admin() || is_manager() ) && !empty( $parent_iti ) && ( $last_followUp_iti != $iti_id ) ){ 
+                        $row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa-solid fa-trash-can'></i></a>";
+                    }
+                    //echo "<td>{$btn_edit} {$btn_view} {$row_delete} {$it_status}{$dupBtn}</td>";
+                }
+                //echo "</tr>";
+                echo "<div class='col-md-4'>
+                    <div class='itinerary-blocks {$curFollow}'>
+                    <div class='package_name'><div>{$btncmt}</div>{$c_iti->package_name}<div style='font-size:13px;'>{$c_iti->added}</div></div>
+                    <div class='hover_section'>
+                        {$btn_edit}
+                        {$btn_view}
+                        {$p_status}
+                        {$row_delete}
+                        {$dupChildBtn}
+                    </div>
+                    </div>
+                </div></div></div>";
+                
+                $i++;
+            }
+            } ?>
+        
+
+            <div class="inquery_section bg-white rounded-4 p-3 shadow-sm">
+                <!--show amendment button for sales team and manager-->
+                <?php 
+                //Check if final installment received or not
+                $total_amendments = !empty( $amendment_itineraries ) ? sizeof($amendment_itineraries) : 0 ;
+                if( $iti_status == 9 && ( $user_role == 96 || is_admin_or_manager() ) && $iti->iti_close_status == 0 ){
+                //   dump( $iti_status  );
+                echo '<p style="font-size:12px; color: red;" class="alert alert alert_warning"><strong>Note: </strong>You can create only three amendments of each itinerary.When amendment is approved you can\'t create new amendment.</p>';
+                
+                if( !empty( $amendment_itineraries ) && $iti->is_amendment != 2 ){
+                    echo"<div class='row'>";
+                    $cnt = 1;
+                    foreach( $amendment_itineraries as $amend ){
+                        $view_btn= "<a target='_blank' href='". base_url("itineraries/view_amendment/{$amend->id}") ."' class='btn btn-primary' title='click to amendment View Itinerary'><i class='fa-solid fa-eye'></i> Click Here To View Amendment {$cnt}</a>";
+                        
+                        $client_view = "<a target='_blank' href='". base_url("promotion/amendment_view/{$amend->id}/{$amend->iti_id}/{$amend->temp_key}") ."' class='btn btn-secondary' title='Client View'><i class='fa-solid fa-eye'></i> Client View {$cnt}</a>";
+                        
+                        echo "<div class='col-md-4 my-2'>{$view_btn} {$client_view}</div>";
+                        $cnt++;
+                    }
+                    echo"</div>";
+                }
+                
+                //show create amendment button if amendment less than 2
+                //get_iti_booking_status == 0 booked
+                //iti amendment only if iti booked
+                //   dump($old_itineraries);
+                //   && $old_itineraries && count($old_itineraries) <= 4
+                if( $total_amendments < 3  && get_iti_booking_status($iti->iti_id) == 0 ) {
+                //   	if( $total_amendments < 3  && get_iti_booking_status($iti->iti_id) == 0 ) {
+                    //Check iti amendment table if iti approved
+                    $check_amd_app_iti = $this->global_model->getdata( 'iti_amendment_temp', array("iti_id" => $iti->iti_id, "del_status" => 0, "new_package_cost !=" => 0 ), "id" );
+                    
+                    if( ($check_amd_app_iti &&  empty( $total_amendments ) ) || empty( $total_amendments ) ){
+                        $create_old_iti = "insert_old";
+                    }else{
+                        $create_old_iti = "no";
+                    }
+                    
+                    //dump( $check_amditi );
+                    echo "<div class='amendment_clone_btn text-center my-3'><a href='". base_url("itineraries/clone_iti_to_amendment/{$iti->iti_id}/{$create_old_iti}") ."' class='amdment_btn btn btn-info text-white' title='click to amendment in itinerary'><i class='fa-solid fa-clone'></i> Click Here To Clone And Amendment In Itinerary</a></div>";
+                }	
+                }
+                ?>
+                
+                <!--View Parent Itinerary Button -->
+                <?php
+                $view_parent_btn = $dupChildBtn = "";
+                if( !empty( $iti->parent_iti_id  ) ){
+                    //Count All Child Itineraries
+                    $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->parent_iti_id, "del_status" => 0) );
+                    
+                    $parent_view_link = iti_view_link($iti->parent_iti_id);
+                    $view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
+                    
+                    if( $countChildIti < 6 ){
+                        $dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success child_clone' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>";
+                    }
+                }
+                ?>
+                <!--if amendment is done show old itinerary-->
+                <div class="mb-3">
+                    <strong class="badge bg-purple-studio-opacity px-3 py-1"><?php echo $lead_status ?></strong>
+                </div>
+                <?php if( !empty( $old_itineraries ) && $iti->is_amendment != 0 ){ 
+                $old_count = 1;
+                foreach( $old_itineraries as $old_iti ){ ?>
+                <a title='View Old Quotation' target="_blank"
+                    href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> "
+                    class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation
+                    <?php echo $old_count; ?></a>
+                <?php $old_count++; } 
+                } ?>
+                <a class="btn btn-success" target="_blank"
+                    href="<?php echo site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}"); ?>"
+                    title="View Quotation"><i class='fa-solid fa-eye' aria-hidden='true'></i> View Quotation</a>
+                <!-- get_iti_booking_status( $iti->iti_id )  != 3 -->
+                <?php if( empty($iti_status) && $iti->email_count > 0 && $iti->publish_status == "publish"  ){ ?>
+                <a class="btn btn-danger" href="#" id="add_call_btn" title="Add Call Info"><i class="fa-solid fa-phone"></i> Add Call Info</a>
+                <?php } ?>
+                
+                <!--show duplicate button if parent iti -->
+                <?php echo $dupBtn; ?>
+                <?php echo $lFollow; ?>
+                <?php echo $view_parent_btn; ?>
+                <?php echo $dupChildBtn; ?>
+                <p style="margin-bottom:0;" class="alert alert_warning"><strong>Note: </strong>You can only take the
+                    itinerary follow up if itinerary sent to customer And itinerary in working stage.</p>
+            </div>
+
+            <!-- Call log section appears if itinerary sent to client And status is publish And not booked or declined -->
+            <?php if( ( $iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" && $user_role != 97 ) || $book_status  == 3  ){ ?>
+            <!-- Call log section -->
+            <div class="call_log mt-3 rounded-4 shadow-sm" id="call_log_section">
+                <form id="call_detais_form" enctype="multipart/form-data">
+                    <div class="call_type_seciton">
+                        <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
+                            <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
+                        </label>
+                        <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
+                            <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
+                        </label>
+                        <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
+                            <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="Close lead">Decline Itinerary
+                        </label>
+                        <label class="radio-inline me-3 mb-3">
+                            <input class="radio_toggle form-check-input me-2" <?php echo $book_status == 3 ? "checked" : ""; ?> data-id="booked_lead_panel" required id="booked_lead" type="radio" name="callType" value="Booked lead">Booked Itinerary
+                        </label>
+                    </div>
+                    <div id="panel_detail_section">
+                        <div class="call_type_res" id="picked_call_panel">
+                            <!--picked call panel-->
+                            <div class="row">
+                                <div class="col-md-12 my-2">
+                                    <div class="form-group">
+                                        <label class="control-label" for="comment">Call summary<span style="color:red;">*</span>:</label>
+                                        <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-2">
+                                    <div class="checkbox">
+                                        <label class="control-label">
+                                            <input class="form-check-input me-2" id="nxtCallCk" type="checkbox" value="">Next calling time and date <sup class="text-danger">*</sup>
+                                        </label>
+                                    </div>
+                                    <div id="next_call_cal">
+                                        <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-2">
+                                    <div class="form-group">
+                                        <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
+                                        <select required class="form-control" name="txtProspect">
+                                            <option value="Hot">Hot</option>
+                                            <option value="Warm">Warm</option>
+                                            <option value="Cold">Cold</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="modal-footer"></div>
                         </div>
-                    </div>
-                </div>
-                <?php }	
-               //get last followup
-               $last_followUp_iti = isset( $lastFollow ) && !empty( $lastFollow ) ? trim($lastFollow) : 0;
-               //current followup iti id
-               $lFollow = $last_followUp_iti == $iti->iti_id ? "<strong class='green'>Last Followup On Current Itinerary</strong>" : "";
-               $i=1;
-               //Count All Child Itineraries
-               $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->iti_id, "del_status" => 0) );
-               $dupChildBtn = "";
-               if( !empty( $childItinerary ) ){
-               	echo "<div class='portlet box blue row'> <div class='portlet-body'> <h2 class='text-center'><strong>CHILD ITINERARIES</strong></h2>";
-               	foreach( $childItinerary as $c_iti ){
-               	//get iti_status
-               	$row_delete = "";
-               	$btncmt = "";
-               	$iti_status = $c_iti->iti_status;
-               	$parent_iti = $c_iti->parent_iti_id;
-               	$iti_id = $c_iti->iti_id;
-               	$key = $c_iti->temp_key;
-               	$pub_status = $c_iti->publish_status;
-               	//current followup iti id
-               	$curFollow = $last_followUp_iti == $iti_id ? "last_follow" : "";
-               	
-               	//get discount rate request
-               	$discount_request = $c_iti->discount_rate_request;
-               	$discReq = $discount_request == 1 ? "<strong class='red'> (Price Discount Request) </stron>" : " ";
-               	//Get Pulish status
-               	if( $pub_status == "publish" ){
-               		$p_status = "<div class='btn btn-success green'>" . ucfirst($pub_status) . "</div>";
-               		$p_status .= $discReq;
-               	}elseif( $pub_status == "price pending" ){
-               		$p_status = "<div class='btn btn-danger blue'>" . ucfirst($pub_status) . "</div>";
-               		$p_status .= $discReq;
-               	}else{
-               		$p_status = "<div class='btn btn-danger red'>" . ucfirst($pub_status) . "</div>";
-               	}
-               	
-               	/* count iti sent status */
-               	$iti_sent = $c_iti->email_count;
-               	$sent_status = $iti_sent > 0 ? "$iti_sent Time Sent" : "Not Sent";
-               	
-               	//Show duplicate button for child itinerary
-                	if( !empty( $parent_iti ) && $countChildIti < 6 ){
-               		$dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti_id}&parent_iti_id={$parent_iti}" ) ." class='btn btn-success child_clone'><i class='fa-solid fa-copy'></i> Duplicate Itinerary </a> ";
-               	}	 
-               	
-               	//if price is updated remove edit for agent
-               	if( ($c_iti->pending_price == 2 || $c_iti->pending_price == 4) && $user_role == 96 ){
-               		$btn_edit = "<a title='Edit' href='javascript: void(0)' class='btn btn-success editPop' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i> Edit</a>";
-               	}else{
-               		$btn_edit = "<a title='Edit' href=" . site_url("itineraries/edit/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-pen-to-square' aria-hidden='true'></i> Edit</a>";
-               	}
-               	
-               	$btn_view = "<a title='View' target='_blank' href=" . site_url("itineraries/view_iti/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-eye' aria-hidden='true'></i></a>";
-               	// $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/package/{$iti_id}/{$key}") . " class='btn btn-success' >Client view</a>";
-               	// $btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/itinerary/{$iti_id}/{$key}") . " class='btn btn-success' >Client view New</a>";
-               	$btn_view .= "<a title='View' target='_blank' href=" . site_url("promotion/pdf/{$iti_id}/{$key}") . " class='btn btn-success' ><i class='fa-solid fa-file-pdf'></i></a>";
-               
-               	if( !empty( $c_iti->client_comment_status ) && $c_iti->client_comment_status == 1 ){
-               		$btncmt = "<a data-id={$iti_id} data-key={$key} title='Client Comment' href='javascript:void(0)' class='btn btn-success ajax_iti_status red'><span class='blink'><i class='fa fa fa-comment-o' aria-hidden='true'></i>  New Comment</span></a>";
-               	}
-               	
-               	//if itinerary status is publish
-               	if( $pub_status == "publish" || $pub_status == "price pending" ){
-               		//delete itinerary button only for admin
-               		if( ( is_admin() || is_manager() ) && !empty( $parent_iti ) && ( $last_followUp_iti != $iti_id ) ){ 
-               			$row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn btn-danger delete_iti_permanent'><i class='fa-solid fa-trash-can'></i></a>";
-               		}
-               		//echo "<td>{$btn_edit} {$btn_view} {$row_delete} {$it_status}{$dupBtn}</td>";
-               	}
-               	//echo "</tr>";
-               	echo "<div class='col-md-4'>
-               		<div class='itinerary-blocks {$curFollow}'>
-               		<div class='package_name'><div>{$btncmt}</div>{$c_iti->package_name}<div style='font-size:13px;'>{$c_iti->added}</div></div>
-               		<div class='hover_section'>
-               			{$btn_edit}
-               			{$btn_view}
-               			{$p_status}
-               			{$row_delete}
-               			{$dupChildBtn}
-               		</div>
-               		</div>
-               	</div></div></div>";
-               	
-               	$i++;
-               }
-               } ?>
-            
-
-                <div class="inquery_section bg-white rounded-4 p-3 shadow-sm">
-                    <!--show amendment button for sales team and manager-->
-                    <?php 
-                  //Check if final installment received or not
-                  $total_amendments = !empty( $amendment_itineraries ) ? sizeof($amendment_itineraries) : 0 ;
-                  if( $iti_status == 9 && ( $user_role == 96 || is_admin_or_manager() ) && $iti->iti_close_status == 0 ){
-                    //   dump( $iti_status  );
-                  	echo '<p style="font-size:12px; color: red;" class="alert alert alert_warning"><strong>Note: </strong>You can create only three amendments of each itinerary.When amendment is approved you can\'t create new amendment.</p>';
-                  	
-                  	if( !empty( $amendment_itineraries ) && $iti->is_amendment != 2 ){
-                  		$cnt = 1;
-                  		foreach( $amendment_itineraries as $amend ){
-                  			$view_btn= "<a target='_blank' href='". base_url("itineraries/view_amendment/{$amend->id}") ."' class='btn btn-success' title='click to amendment View Itinerary'>Click Here To View Amendment {$cnt}</a>";
-                  			
-                  			$client_view = "<a target='_blank' href='". base_url("promotion/amendment_view/{$amend->id}/{$amend->iti_id}/{$amend->temp_key}") ."' class='btn btn-danger' title='Client View'>Client View {$cnt}</a>";
-                  			
-                  			echo "<div class='col-md-4'>{$view_btn} {$client_view}</div>";
-                  			$cnt++;
-                  		}
-                  	}
-                  	
-                  	//show create amendment button if amendment less than 2
-                  	//get_iti_booking_status == 0 booked
-                  	//iti amendment only if iti booked
-                    //   dump($old_itineraries);
-                    //   && $old_itineraries && count($old_itineraries) <= 4
-                  	if( $total_amendments < 3  && get_iti_booking_status($iti->iti_id) == 0 ) {
-                    //   	if( $total_amendments < 3  && get_iti_booking_status($iti->iti_id) == 0 ) {
-                  		//Check iti amendment table if iti approved
-                  		$check_amd_app_iti = $this->global_model->getdata( 'iti_amendment_temp', array("iti_id" => $iti->iti_id, "del_status" => 0, "new_package_cost !=" => 0 ), "id" );
-                  		
-                  		if( ($check_amd_app_iti &&  empty( $total_amendments ) ) || empty( $total_amendments ) ){
-                  			$create_old_iti = "insert_old";
-                  		}else{
-                  			$create_old_iti = "no";
-                  		}
-                  		
-                  		//dump( $check_amditi );
-                  		echo "<div class='clearfix'></div>";
-                  		echo "<div class='row amendment_clone_btn' style='margin-top: 10px;'><a href='". base_url("itineraries/clone_iti_to_amendment/{$iti->iti_id}/{$create_old_iti}") ."' class='btn btn-success amdment_btn' title='click to amendment in itinerary'>Click Here To Clone And Amendment In Itinerary</a></div>";
-                  	}	
-                    }
-                    ?>
-                   
-                    <!--View Parent Itinerary Button -->
-                    <?php
-                    $view_parent_btn = $dupChildBtn = "";
-                    if( !empty( $iti->parent_iti_id  ) ){
-                        //Count All Child Itineraries
-                        $countChildIti = $this->global_model->count_all( 'itinerary', array("parent_iti_id" => $iti->parent_iti_id, "del_status" => 0) );
-                        
-                        $parent_view_link = iti_view_link($iti->parent_iti_id);
-                        $view_parent_btn = "<a class='btn btn-success' target='_blank' href='{$parent_view_link}' title='View Parent Quotation'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Parent Itinerary</a>";
-                        
-                        if( $countChildIti < 6 ){
-                            $dupChildBtn = "<a title='Duplicate Current Itinerary' href=" . site_url("itineraries/duplicate_child_iti/?iti_id={$iti->iti_id}&parent_iti_id={$iti->parent_iti_id}" ) ." class='btn btn-success child_clone' ><i class='fa-solid fa-copy'></i> Duplicate Itinerary</a>";
-                        }
-                    }
-                    ?>
-                    <!--if amendment is done show old itinerary-->
-                    <div class="mb-3">
-                        <strong class="badge bg-purple-studio-opacity px-3 py-1"><?php echo $lead_status ?></strong>
-                    </div>
-                    <?php if( !empty( $old_itineraries ) && $iti->is_amendment != 0 ){ 
-                  $old_count = 1;
-                  foreach( $old_itineraries as $old_iti ){ ?>
-                    <a title='View Old Quotation' target="_blank"
-                        href=" <?php echo site_url("itineraries/view_old_iti/{$old_iti->id}") ; ?> "
-                        class='btn btn-danger'><i class='fa-solid fa-eye' aria-hidden='true'></i> View Old Quotation
-                        <?php echo $old_count; ?></a>
-                    <?php $old_count++; } 
-                  } ?>
-                    <a class="btn btn-success" target="_blank"
-                        href="<?php echo site_url("itineraries/view/{$iti->iti_id}/{$iti->temp_key}"); ?>"
-                        title="View Quotation"><i class='fa-solid fa-eye' aria-hidden='true'></i> View Quotation</a>
-                    <!-- get_iti_booking_status( $iti->iti_id )  != 3 -->
-                    <?php if( empty($iti_status) && $iti->email_count > 0 && $iti->publish_status == "publish"  ){ ?>
-                    <a class="btn btn-danger" href="#" id="add_call_btn" title="Add Call Info"><i class="fa-solid fa-phone"></i> Add Call Info</a>
-                    <?php } ?>
-                    
-                    <!--show duplicate button if parent iti -->
-                    <?php echo $dupBtn; ?>
-                    <?php echo $lFollow; ?>
-                    <?php echo $view_parent_btn; ?>
-                    <?php echo $dupChildBtn; ?>
-                    <p style="margin-bottom:0;" class="alert alert_warning"><strong>Note: </strong>You can only take the
-                        itinerary follow up if itinerary sent to customer And itinerary in working stage.</p>
-                </div>
-
-                <!-- Call log section appears if itinerary sent to client And status is publish And not booked or declined -->
-                <?php if( ( $iti_status == 0 && $iti->email_count > 0 && $iti->publish_status == "publish" && $user_role != 97 ) || $book_status  == 3  ){ ?>
-                <!-- Call log section -->
-                <div class="call_log mt-3 rounded-4 shadow-sm" id="call_log_section">
-                    <form id="call_detais_form" enctype="multipart/form-data">
-                        <div class="call_type_seciton">
-                            <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
-                                <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
-                            </label>
-                            <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
-                                <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
-                            </label>
-                            <label class="radio-inline me-3 mb-3" style="display: <?php echo $book_status == 3 ? "none" : ""; ?>">
-                                <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="Close lead">Decline Itinerary
-                            </label>
-                            <label class="radio-inline me-3 mb-3">
-                                <input class="radio_toggle form-check-input me-2" <?php echo $book_status == 3 ? "checked" : ""; ?> data-id="booked_lead_panel" required id="booked_lead" type="radio" name="callType" value="Booked lead">Booked Itinerary
-                            </label>
-                        </div>
-                        <div id="panel_detail_section">
-                            <div class="call_type_res" id="picked_call_panel">
-                                <!--picked call panel-->
+                        <!--end picked call panel-->
+                        <div class="call_type_res" id="call_not_picked_panel">
+                            <!--call_not_picked panel-->
+                            <div class="col-md-12">
+                                <label class="radio-inline control-label me-3">
+                                    <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Switched off">Switched off
+                                </label>
+                                <label class="radio-inline control-label me-3">
+                                    <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not reachable">Not reachable
+                                </label>
+                                <label class="radio-inline control-label me-3">
+                                    <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not answering">Not answering
+                                </label>
+                                <div class="nxt_call">
+                                    <div class="row">
+                                        <div class="col-md-6 my-3">
+                                            <label class="control-label">Next calling time and date <sup class="text-danger">*</sup> :</label>
+                                            <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
+                                        </div>
+                                        <div class="col-md-6 my-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Lead prospect <sup class="text-danger">*</sup></label>
+                                                <select required class="form-control" name="txtProspectNotpicked">
+                                                    <option value="Hot">Hot</option>
+                                                    <option value="Warm">Warm</option>
+                                                    <option value="Cold">Cold</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12 my-2">
                                         <div class="form-group">
-                                            <label class="control-label" for="comment">Call summary<span style="color:red;">*</span>:</label>
-                                            <textarea required class="form-control" rows="3" name="callSummary" id="callSummary"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 my-2">
-                                        <div class="checkbox">
-                                            <label class="control-label">
-                                                <input class="form-check-input me-2" id="nxtCallCk" type="checkbox" value="">Next calling time and date <sup class="text-danger">*</sup>
+                                            <label class="control-label" for="comment">Comment
+                                                <sup class="text-danger">*</sup> :
                                             </label>
-                                        </div>
-                                        <div id="next_call_cal">
-                                            <input size="16" required type="text" value="" name="nextCallTime" readonly class="form-control form_datetime">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 my-2">
-                                        <div class="form-group">
-                                            <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
-                                            <select required class="form-control" name="txtProspect">
-                                                <option value="Hot">Hot</option>
-                                                <option value="Warm">Warm</option>
-                                                <option value="Cold">Cold</option>
-                                            </select>
+                                            <textarea required class="form-control" rows="3" name="comment" id="comment"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--end picked call panel-->
-                            <div class="call_type_res" id="call_not_picked_panel">
-                                <!--call_not_picked panel-->
-                                <div class="col-md-12">
+                        </div>
+                        <!--end call not picked panel-->
+                        <!--booked_lead_panel panel If itinerary booked-->
+                        <input type="hidden" name="firstdate" id="fist_tour_date" value="<?= get_iti_tour_start_date($iti->iti_id) ?>">
+                        <div class="call_type_res" id="booked_lead_panel"
+                            style="display: <?php echo $book_status == 3 ? "block" : "none"; ?>">
+                            <div>
+                                <div class="call_type_secitontest">
                                     <label class="radio-inline control-label me-3">
-                                        <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Switched off">Switched off
+                                        <input required class="is_travel_date form-check-input me-2" type="radio" name="is_travel_date" value="fixed">Fixed Travel Date
                                     </label>
                                     <label class="radio-inline control-label me-3">
-                                        <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not reachable">Not reachable
+                                        <input required class="is_travel_date form-check-input me-2" type="radio" name="is_travel_date" value="notfixed">Not Fixed Travel Date
                                     </label>
-                                    <label class="radio-inline control-label me-3">
-                                        <input required type="radio" name="callSummaryNotpicked" class="call_type_not_answer form-check-input me-2" value="Not answering">Not answering
-                                    </label>
-                                    <div class="nxt_call">
-                                        <div class="row">
-                                            <div class="col-md-6 my-3">
-                                                <label class="control-label">Next calling time and date <sup class="text-danger">*</sup> :</label>
-                                                <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
-                                            </div>
-                                            <div class="col-md-6 my-3">
-                                                <div class="form-group">
-                                                    <label class="control-label">Lead prospect <sup class="text-danger">*</sup></label>
-                                                    <select required class="form-control" name="txtProspectNotpicked">
-                                                        <option value="Hot">Hot</option>
-                                                        <option value="Warm">Warm</option>
-                                                        <option value="Cold">Cold</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                </div>
+                            </div>
+                        
+                            <div class="booking_section" style="display:none;">
+                                <?php 
+                                $get_iti_package_category = get_iti_package_category();
+                                ?>
+                                <div class="frm_section">
+                                    <div class="spinner_load" style="display: none;">
+                                        <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="form-group col-md-6 my-2">
+                                            <!--agent margin-->
+                                            <label class="control-label" for="usr">Package Category
+                                                <sup class="text-danger">*</sup> :</label>
+                                            <?php echo package_category_select_html( $iti->iti_id ); ?>
+                                        </div>
+                                        <?php $get_tax = get_tax();
+                                        $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label" for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
+                                            <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label"><strong>Package Type 
+                                                <sup class="text-danger">*</sup> :</strong>
+                                            </label>
+                                            <select required name="package_type_iti" class="form-control">
+                                                <option value="">Choose Package Type</option>
+                                                <option value="Honeymoon Package">Honeymoon Package</option>
+                                                <option value="Fixed Departure">Fixed Departure</option>
+                                                <option value="Group Package">Group Package</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label" for="usr">Total Package Cost
+                                                <sup class="text-danger">*</sup> :
+                                            </label>
+                                            <input type="number" readonly required class="form-control" id="fnl_amount_tax" title="Total package cost after inc. tax" placeholder="Total package cost after inc. tax" data-tax="<?php echo $tax; ?>" data-original-price="" name="final_amount">
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label"><strong>Booking Date*:</strong></label>
+                                            <input required readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control" id="booking_date" type="text" value="" name="booking_date" />
+                                        </div>
+                                    
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label"><strong>Advance Received:</strong> <sup class="text-danger">*</sup> <span id="fiftyPer"></span>
+                                            </label>
+                                            <input required type="number" id="pack_advance_recieve" name="advance_recieve" placeholder="Advance Received. eg: 5000" class="form-control" value="">
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label">
+                                                <strong>Transaction Date(1st installment):</strong> <sup class="text-danger">*</sup>
+                                            </label>
+                                            <input required readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control transaction_date" id="transaction_date" type="text" value="" name="transaction_date" />
+                                        </div>
+                                    </div>
+                                    <!--Payment Details -->
+                                    <div id="due_payment_section" class="row">
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label"><strong>Second Installment Amount:</strong></label>
+                                            <input type="text" readonly id="next_pay_balance" data-date-format="yyyy-mm-dd" name="next_payment_bal" placeholder="Second Payment Balance" class="form-control" value="">
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label"><strong>Second Installment Due Date:</strong></label>
+                                            <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker" id="next_payment_date" type="text" value="" name="next_payment_date" />
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label">
+                                                <strong>3rd Installment Amount:</strong><span id="pendingBal"></span>
+                                            </label>
+                                            <input type="number" readonly id="third_payment_bal" name="third_payment_bal" placeholder="Third Payment Amount" class="form-control" value="">
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label">
+                                                <strong>3rd Installment Due Date:</strong>
+                                            </label>
+                                            <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="third_payment_date" type="text" value="" name="third_payment_date" />
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label"><strong>Final Installment:</strong></label>
+                                            <input type="number" readonly id="final_payment_bal" name="final_payment_bal" placeholder="Final Installment Amount" class="form-control" value="">
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label">
+                                                <strong>Final Installment Due Date:</strong>
+                                            </label>
+                                            <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="final_payment_date" type="text" value="" name="final_payment_date" />
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12 my-2">
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label">
+                                                <strong>Total Balance Remaining:</strong>
+                                            </label>
+                                            <input type="text" required readonly id="balance_pay" name="total_balance" placeholder="" class="form-control" value="">
+                                        </div>
+
+                                        <div class="form-group col-md-6 my-2" id="ttravel_date">
+                                            <label class="control-label">
+                                                <strong>Travel Date <sup class="text-danger">*</sup> :</strong>
+                                            </label>
+                                            <input readonly required data-date-format="yyyy-mm-dd" class="input-group form-control" id="travel_date" type="text" value="" name="travel_date" />
+                                        </div>
+                                        
+                                        <div class="form-group col-md-6 my-2">
                                             <div class="form-group">
-                                                <label class="control-label" for="comment">Comment
-                                                    <sup class="text-danger">*</sup> :
-                                                </label>
-                                                <textarea required class="form-control" rows="3" name="comment" id="comment"></textarea>
+                                                <label class="control-label "><strong>Bank Name <sup class="text-danger">*</sup> :</strong></label>
+                                                <input required class="form-control" id="bank_name" type="text"
+                                                    placeholder="eg: HDFC, ICIC" name="bank_name" value="">
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end call not picked panel-->
-                            <!--booked_lead_panel panel If itinerary booked-->
-                            <input type="hidden" name="firstdate" id="fist_tour_date" value="<?= get_iti_tour_start_date($iti->iti_id) ?>">
-                            <div class="call_type_res" id="booked_lead_panel"
-                                style="display: <?php echo $book_status == 3 ? "block" : "none"; ?>">
-                                <div>
-                                    <div class="call_type_secitontest">
-                                        <label class="radio-inline control-label me-3">
-                                            <input required class="is_travel_date form-check-input me-2" type="radio" name="is_travel_date" value="fixed">Fixed Travel Date
-                                        </label>
-                                        <label class="radio-inline control-label me-3">
-                                            <input required class="is_travel_date form-check-input me-2" type="radio" name="is_travel_date" value="notfixed">Not Fixed Travel Date
-                                        </label>
-                                    </div>
-                                </div>
-                            
-                                <div class="booking_section" style="display:none;">
-                                    <?php 
-                                    $get_iti_package_category = get_iti_package_category();
-                                    ?>
-                                    <div class="frm_section">
-                                        <div class="spinner_load" style="display: none;">
-                                            <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
-                                            <span class="sr-only">Loading...</span>
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label" for="usr">Please Enter Approval Note:
+                                                <sup class="text-center">*</sup> :
+                                            </label>
+                                            <textarea required class="form-control" placeholder="Please Enter Approval Note" name="iti_note_booked"></textarea>
                                         </div>
-                                        <div class="row mt-3">
-                                            <div class="form-group col-md-6 my-2">
-                                                <!--agent margin-->
-                                                <label class="control-label" for="usr">Package Category
-                                                    <sup class="text-danger">*</sup> :</label>
-                                                <?php echo package_category_select_html( $iti->iti_id ); ?>
-                                            </div>
-                                            <?php $get_tax = get_tax();
-                                            $tax = !empty( $get_tax ) ? trim($get_tax) : 0;	?>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label" for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
-                                                <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label"><strong>Package Type 
-                                                    <sup class="text-danger">*</sup> :</strong>
-                                                </label>
-                                                <select required name="package_type_iti" class="form-control">
-                                                    <option value="">Choose Package Type</option>
-                                                    <option value="Honeymoon Package">Honeymoon Package</option>
-                                                    <option value="Fixed Departure">Fixed Departure</option>
-                                                    <option value="Group Package">Group Package</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label" for="usr">Total Package Cost
-                                                    <sup class="text-danger">*</sup> :
-                                                </label>
-                                                <input type="number" readonly required class="form-control" id="fnl_amount_tax" title="Total package cost after inc. tax" placeholder="Total package cost after inc. tax" data-tax="<?php echo $tax; ?>" data-original-price="" name="final_amount">
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label"><strong>Booking Date*:</strong></label>
-                                                <input required readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control" id="booking_date" type="text" value="" name="booking_date" />
-                                            </div>
-                                        
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label"><strong>Advance Received:</strong> <sup class="text-danger">*</sup> <span id="fiftyPer"></span>
-                                                </label>
-                                                <input required type="number" id="pack_advance_recieve" name="advance_recieve" placeholder="Advance Received. eg: 5000" class="form-control" value="">
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label">
-                                                    <strong>Transaction Date(1st installment):</strong> <sup class="text-danger">*</sup>
-                                                </label>
-                                                <input required readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control transaction_date" id="transaction_date" type="text" value="" name="transaction_date" />
-                                            </div>
-                                        </div>
-                                        <!--Payment Details -->
-                                        <div id="due_payment_section" class="row">
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label"><strong>Second Installment Amount:</strong></label>
-                                                <input type="text" readonly id="next_pay_balance" data-date-format="yyyy-mm-dd" name="next_payment_bal" placeholder="Second Payment Balance" class="form-control" value="">
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label"><strong>Second Installment Due Date:</strong></label>
-                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker" id="next_payment_date" type="text" value="" name="next_payment_date" />
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label">
-                                                    <strong>3rd Installment Amount:</strong><span id="pendingBal"></span>
-                                                </label>
-                                                <input type="number" readonly id="third_payment_bal" name="third_payment_bal" placeholder="Third Payment Amount" class="form-control" value="">
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label">
-                                                    <strong>3rd Installment Due Date:</strong>
-                                                </label>
-                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="third_payment_date" type="text" value="" name="third_payment_date" />
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label"><strong>Final Installment:</strong></label>
-                                                <input type="number" readonly id="final_payment_bal" name="final_payment_bal" placeholder="Final Installment Amount" class="form-control" value="">
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label">
-                                                    <strong>Final Installment Due Date:</strong>
-                                                </label>
-                                                <input readonly="readonly" data-date-format="yyyy-mm-dd" class="input-group form-control date_picker_validation date_picker" id="final_payment_date" type="text" value="" name="final_payment_date" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label">
-                                                    <strong>Total Balance Remaining:</strong>
-                                                </label>
-                                                <input type="text" required readonly id="balance_pay" name="total_balance" placeholder="" class="form-control" value="">
-                                            </div>
-
-                                            <div class="form-group col-md-6 my-2" id="ttravel_date">
-                                                <label class="control-label">
-                                                    <strong>Travel Date <sup class="text-danger">*</sup> :</strong>
-                                                </label>
-                                                <input readonly required data-date-format="yyyy-mm-dd" class="input-group form-control" id="travel_date" type="text" value="" name="travel_date" />
-                                            </div>
-                                            
-                                            <div class="form-group col-md-6 my-2">
-                                                <div class="form-group">
-                                                    <label class="control-label "><strong>Bank Name <sup class="text-danger">*</sup> :</strong></label>
-                                                    <input required class="form-control" id="bank_name" type="text"
-                                                        placeholder="eg: HDFC, ICIC" name="bank_name" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-md-6 my-2">
-                                                <label class="control-label" for="usr">Please Enter Approval Note:
-                                                    <sup class="text-center">*</sup> :
-                                                </label>
-                                                <textarea required class="form-control" placeholder="Please Enter Approval Note" name="iti_note_booked"></textarea>
-                                            </div>
-                                        
-                                            <!--upload aadhar card section-->
-                                            <div class="form-group col-md-6 my-2">
-                                                <div class="form-group">
-                                                    <label class="control-label ">
-                                                        <strong>Client Aadhar Card:</strong> 
-                                                        <span class="red">(Max size 2 MB) </span>
-                                                    </label>
-                                                    <input class="form-control" id="client_aadhar_card" type="file" name="client_aadhar_card">
-                                                </div>
-                                                <img id="client_aadhar_card_priview" style="display: none;" width="100"
-                                                    height="100" />
-                                            </div>
-                                            <!--end upload aadhar card section-->
-                                            <!--upload aadhar Payment card section-->
-                                            <div class="form-group col-md-6 my-2">
+                                    
+                                        <!--upload aadhar card section-->
+                                        <div class="form-group col-md-6 my-2">
+                                            <div class="form-group">
                                                 <label class="control-label ">
-                                                    <strong>Payment Screenshot*:</strong> 
+                                                    <strong>Client Aadhar Card:</strong> 
                                                     <span class="red">(Max size 2 MB) </span>
                                                 </label>
-                                                <input required class="form-control" id="payment_screenshot" type="file" name="payment_screenshot">
-                                                <img id="payment_screenshot_priview" style="display: none;" width="100" height="100" />
+                                                <input class="form-control" id="client_aadhar_card" type="file" name="client_aadhar_card">
                                             </div>
-                                        
-                                            <div class="col-md-12 my-2 other_docs">
-                                                <a href="javascript:;" id="add_other_docs_btn"
-                                                    class="btn btn-success mt-repeater-add addrep">
-                                                    <i class="fa-solid fa-plus"></i> Add Other Docs
-                                                </a>
-                                                <span class="red d-block my-1" style="font-size: 10px;"> 
-                                                    Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.
-                                                </span>
-                                                <div class="other_docs_sec" style="display:none;">
-                                                    <div class="row">
-                                                        <div class="col-md-4 my-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label ">
-                                                                    <strong>Other Documents:</strong>
-                                                                </label>
-                                                                <input class="form-control" required type="file" name="iti_clients_docs[]">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4 my-2">
+                                            <img id="client_aadhar_card_priview" style="display: none;" width="100"
+                                                height="100" />
+                                        </div>
+                                        <!--end upload aadhar card section-->
+                                        <!--upload aadhar Payment card section-->
+                                        <div class="form-group col-md-6 my-2">
+                                            <label class="control-label ">
+                                                <strong>Payment Screenshot*:</strong> 
+                                                <span class="red">(Max size 2 MB) </span>
+                                            </label>
+                                            <input required class="form-control" id="payment_screenshot" type="file" name="payment_screenshot">
+                                            <img id="payment_screenshot_priview" style="display: none;" width="100" height="100" />
+                                        </div>
+                                    
+                                        <div class="col-md-12 my-2 other_docs">
+                                            <a href="javascript:;" id="add_other_docs_btn"
+                                                class="btn btn-success mt-repeater-add addrep">
+                                                <i class="fa-solid fa-plus"></i> Add Other Docs
+                                            </a>
+                                            <span class="red d-block my-1" style="font-size: 10px;"> 
+                                                Please upload only ( jpg|jpeg|png|pdf ) files and not more than 2MB.
+                                            </span>
+                                            <div class="other_docs_sec" style="display:none;">
+                                                <div class="row">
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="form-group">
                                                             <label class="control-label ">
-                                                                <strong>Document Title:</strong>
+                                                                <strong>Other Documents:</strong>
                                                             </label>
-                                                            <input class="form-control" required type="text" name="doc_comment[]">
+                                                            <input class="form-control" required type="file" name="iti_clients_docs[]">
                                                         </div>
-                                                        <div class="col-md-4 my-2">
-                                                            <div class="mt-repeater-input margin-top-20">
-                                                                <a href="javascript:;" data-repeater-delete
-                                                                    class="btn btn-danger del_upload"
-                                                                    style="position:relative;">
-                                                                    <i class="fa-solid fa-trash-can"></i> Delete
-                                                                </a>
-                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-4 my-2">
+                                                        <label class="control-label ">
+                                                            <strong>Document Title:</strong>
+                                                        </label>
+                                                        <input class="form-control" required type="text" name="doc_comment[]">
+                                                    </div>
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="mt-repeater-input margin-top-20">
+                                                            <a href="javascript:;" data-repeater-delete
+                                                                class="btn btn-danger del_upload"
+                                                                style="position:relative;">
+                                                                <i class="fa-solid fa-trash-can"></i> Delete
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1181,88 +1184,85 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--booking section-->
-                                <!--End Payment Details -->
                             </div>
-                            <!--end booked_lead panel-->
-                            <div class="call_type_res" id="close_lead_panel">
-                                <!--close_lead_panel panel-->
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for="" class="control-label">Selcect Decline Reason</label>
-                                        <select required class="form-control" name="iti_note_decline">
-                                            <option value="">Select Reason</option>
-                                            <option value="Booked with someone else">Booked with someone else</option>
-                                            <option value="Not interested">Not interested</option>
-                                            <option value="Price is high">Price is high</option>
-                                            <option value="Not answering call from 1 week">Not answering call from 1 week
-                                            </option>
-                                            <option value="Plan cancelled">Plan cancelled</option>
-                                            <option value="Wrong number">Wrong number</option>
-                                            <option value="Denied to post lead">Denied to post lead</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label" for="comment">Decline Comment:</label>
-                                            <textarea class="form-control" rows="3" name="decline_comment"
-                                                id="decline_comment"></textarea>
-                                        </div>
+                            <!--booking section-->
+                            <!--End Payment Details -->
+                        </div>
+                        <!--end booked_lead panel-->
+                        <div class="call_type_res" id="close_lead_panel">
+                            <!--close_lead_panel panel-->
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="" class="control-label">Selcect Decline Reason</label>
+                                    <select required class="form-control" name="iti_note_decline">
+                                        <option value="">Select Reason</option>
+                                        <option value="Booked with someone else">Booked with someone else</option>
+                                        <option value="Not interested">Not interested</option>
+                                        <option value="Price is high">Price is high</option>
+                                        <option value="Not answering call from 1 week">Not answering call from 1 week
+                                        </option>
+                                        <option value="Plan cancelled">Plan cancelled</option>
+                                        <option value="Wrong number">Wrong number</option>
+                                        <option value="Denied to post lead">Denied to post lead</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="comment">Decline Comment:</label>
+                                        <textarea class="form-control" rows="3" name="decline_comment"
+                                            id="decline_comment"></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <!--end close_lead_panel-->
                         </div>
-                        <!--panel_section end-->
-                        <input type="hidden" name="iti_id" id="hid_iti_id" value="<?php echo $iti->iti_id; ?>">
-                        <input type="hidden" name="temp_key" id="hid_temp_key" value="<?php echo $iti->temp_key; ?>">
-                        <input type="hidden" name="customer_id" value="<?php echo $iti->customer_id; ?>">
-                        <input type="hidden" name="parent_iti_id" value="<?php echo $iti->parent_iti_id; ?>">
-                        <input type="hidden" name="agent_id" value="<?php echo $iti->agent_id; ?>">
-                        <input type="hidden" name="iti_type" value="1">
-                        <div class="mt-3">
-                            <button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
-                            <button class="btn red uppercase cancle_bnt">Cancel</button>
-                        </div>
-                    
-                        <div class="resPonse"></div>
-                    </form>
-                </div>
-                <?php  }   ?>
-                <?php if( !empty( $followUpData ) ){ ?>
-                <hr>
-                <div class="custom_card">
-                    <div class="panel-group accordion" id="accordion3">
-                        <?php
-                  $count = 1;
-                  foreach( $followUpData as $callDetails ){ ?>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse"
-                                        data-parent="#accordion3"
-                                        href="#collapse_3_<?php echo $count;?>"><?php echo $callDetails->currentCallTime;?></a>
-                                </h4>
-                            </div>
-                            <div id="collapse_3_<?php echo $count;?>" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p><strong>Itinerary Id:</strong> <?php echo $callDetails->iti_id;?></p>
-                                    <p><strong><?php echo $callDetails->callType;?></strong></p>
-                                    <p><strong>Call summary:</strong> <?php echo $callDetails->callSummary;?></p>
-                                    <p><strong>Next Call Time:</strong> <?php echo $callDetails->nextCallDate;?></p>
-                                    <p><strong>Comment:</strong> <?php echo $callDetails->comment;?></p>
-                                    <p><strong><?php echo $callDetails->itiProspect;?></strong></p>
-                                </div>
-                            </div>
-                        </div>
-                        <?php $count++; ?>
-                        <?php } ?>
+                        <!--end close_lead_panel-->
                     </div>
-                </div>
-
-                <?php } ?>
+                    <!--panel_section end-->
+                    <input type="hidden" name="iti_id" id="hid_iti_id" value="<?php echo $iti->iti_id; ?>">
+                    <input type="hidden" name="temp_key" id="hid_temp_key" value="<?php echo $iti->temp_key; ?>">
+                    <input type="hidden" name="customer_id" value="<?php echo $iti->customer_id; ?>">
+                    <input type="hidden" name="parent_iti_id" value="<?php echo $iti->parent_iti_id; ?>">
+                    <input type="hidden" name="agent_id" value="<?php echo $iti->agent_id; ?>">
+                    <input type="hidden" name="iti_type" value="1">
+                    <div class="mt-3">
+                        <button type="submit" id="submit_frm" class="btn green uppercase submit_frm">Submit</button>
+                        <button class="btn red uppercase cancle_bnt">Cancel</button>
+                    </div>
+                
+                    <div class="resPonse"></div>
+                </form>
             </div>
+            <?php  }   ?>
+            <?php if( !empty( $followUpData ) ){ ?>
+            <hr>
+            <div class="bg-white p-3 rounded-4 shadow-sm">
+                <div class="accordion" id="accordion3">
+                    <?php
+                    $count = 1;
+                    foreach( $followUpData as $callDetails ){ ?>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h4>
+                                <a class="accordion-button" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_<?php echo $count;?>"><?php echo $callDetails->currentCallTime;?> </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_3_<?php echo $count;?>" class="accordion-collapse">
+                            <div class="accordion-body">
+                                <p><strong>Itinerary Id:</strong> <?php echo $callDetails->iti_id;?></p>
+                                <p><strong><?php echo $callDetails->callType;?></strong></p>
+                                <p><strong>Call summary:</strong> <?php echo $callDetails->callSummary;?></p>
+                                <p><strong>Next Call Time:</strong> <?php echo $callDetails->nextCallDate;?></p>
+                                <p><strong>Comment:</strong> <?php echo $callDetails->comment;?></p>
+                                <p><strong><?php echo $callDetails->itiProspect;?></strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $count++; ?>
+                    <?php } ?>
+                </div>
+            </div>
+            <?php } ?>
             <?php }else{
             redirect("404");
             } ?>
@@ -1270,11 +1270,6 @@
         <!-- End page-content -->
     </div>
     <!-- End page-content-wrapper -->
-    <style>
-        #editModal {
-            top: 20%;
-        }
-    </style>
 
     <!-- Modal -->
     <div id="editModal" class="modal" role="dialog">
@@ -1296,22 +1291,29 @@
 </div>
 <!-- End page-container -->
 
+
+
 <style>
-#call_log_section {
-    display: none;
-}
 
-#close_lead_panel,
-#booked_lead_panel,
-#call_not_picked_panel,
-#picked_call_panel,
-.nxt_call {
-    display: none
-}
+    #editModal {
+        top: 20%;
+    }
 
-#next_call_cal {
-    display: none;
-}
+    #call_log_section {
+        display: none;
+    }
+
+    #close_lead_panel,
+    #booked_lead_panel,
+    #call_not_picked_panel,
+    #picked_call_panel,
+    .nxt_call {
+        display: none
+    }
+
+    #next_call_cal {
+        display: none;
+    }
 </style>
 
 

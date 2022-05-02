@@ -117,7 +117,7 @@
          <!-- End ManyChat Button Booster -->
          
          <!-- Todays status-->
-         <div class="portlet box blue">
+         <div class="portlet box blue mb-5">
             <div class="portlet-title">
                <div class="caption"><i class="fa fa-calendar"></i>Today's Status <strong><?php echo display_month_name($get_date); ?></strong></div>
             </div>
@@ -356,81 +356,60 @@
          <!---------------------------------End Todays Revised section ---------------------------->
          
          <!--AMENDMENT PRICE SECTION-->
-         <div class="portlet box blue">
+         <div class="portlet box blue mb-5">
             <div class="portlet-title">
-               <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> AMENDMENT SECTION</div>
+               <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> Amendment Section</div>
             </div>
             <div class="portlet-body">
                <div class="row dashboard-tables-all-info">
-                  <div class="col-lg-6 col-xs-12 col-sm-12">
-                     <div class="portlet light bordered">
-                        <div class="portlet-title">
-                           <div class="caption">
-                              <i class="icon-equalizer font-dark hide"></i>
-                              <span class="caption-subject font-dark bold uppercase">AMENDMENT PENDING RATES</span>
-                           </div>
+                  <div class="col-md-12">
+                     <div class="panel">
+                        <div class="panel-heading2">
+                              <ul class="nav nav-tabs">
+                                 <li class="active"><a href="#amend_pend_rate" data-toggle="tab"> Amendment Pending Rates</a></li>
+                                 <li><a href="#amend_appr_rates" data-toggle="tab">Amendment Approved Rates</a></li>
+                              </ul>
                         </div>
-                        <div class="portlet-body">
-                           <div class="tab-content">
-                              <div class="tab-pane active" id="tab_actions_pending pending-rate1">
-                                 <?php //print_r( $itiPendingRates ); ?>
-                                 <div class="dashboard-scroll">
-                                    <table class="table table-hover d-table table-fixed">
-                                       <tr>
-                                          <th>Name</th>
-                                          <th>Package</th>
-                                          <th>Contact</th>
-                                          <th>Action</th>
-                                       </tr>
-                                       <?php if( isset($amendmentPendingRates) && !empty($amendmentPendingRates) ) { 
-                                          foreach( $amendmentPendingRates as $aRates ){ 	?>
-                                       <tr>
-                                          <td colspan="4"><span class="lead_app arrow_bottom"><?php echo $aRates->package_name; ?></span></td>
-                                       </tr>
-                                       <tr>
-                                          <td><?php echo $aRates->customer_name; ?></td>
-                                          <td><?php echo $aRates->package_name; ?></td>
-                                          <td><?php echo $aRates->customer_contact; ?></td>
-                                          <td><a class="btn btn-custom" target="_blank" href="<?php echo site_url("itineraries/view_amendment/{$aRates->id}"); ?>">View</a></td>
-                                       </tr>
-                                       <?php } 
-                                          }else{ ?>	
-                                       <tr>
-                                          <td colspan="4" class="text-center">
-                                             <div class="mt-comment-text"> No Data found. </div>
-                                          </td>
-                                       </tr>
-                                       <?php } ?> 
-                                    </table>
-                                 </div>
-                              </div>
-                              <button type="button" class="btn purple view_table_data"><i class="fa fa-angle-down"></i> View All</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-lg-6 col-xs-12 col-sm-12">
-                     <div class="portlet light bordered">
-                        <div class="portlet-title">
-                           <div class="caption">
-                              <i class="icon-equalizer font-dark hide"></i>
-                              <span class="caption-subject font-dark bold uppercase">AMENDMENT APPROVED RATES</span>
-                           </div>
-                        </div>
-                        <div class="portlet-body">
-                           <div class="tab-content">
-                              <div class="tab-pane active" id="tab_actions_pending approved-rate1">
-                                 <div class="dashboard-scroll">
-                                    <table class="table table-bordered table-striped d-table table-fixed">
-                                       <thead>
+                        <div class="panel-body padding-0">
+                           <div class="dashboard-scroll">
+                              <div class="tab-content">
+                                 <div class="tab-pane  in active" id="amend_pend_rate">
+                                    <table class="table">
                                           <tr>
                                              <th>Name</th>
                                              <th>Package</th>
                                              <th>Contact</th>
                                              <th>Action</th>
                                           </tr>
-                                       </thead>
-                                       <tbody>
+                                          <?php if( isset($amendmentPendingRates) && !empty($amendmentPendingRates) ) { 
+                                             foreach( $amendmentPendingRates as $aRates ){ 	?>
+                                          <tr>
+                                             <td colspan="4"><span class="lead_app arrow_bottom"><?php echo $aRates->package_name; ?></span></td>
+                                          </tr>
+                                          <tr>
+                                             <td><?php echo $aRates->customer_name; ?></td>
+                                             <td><?php echo $aRates->package_name; ?></td>
+                                             <td><?php echo $aRates->customer_contact; ?></td>
+                                             <td><a class="btn btn-custom" target="_blank" href="<?php echo site_url("itineraries/view_amendment/{$aRates->id}"); ?>">View</a></td>
+                                          </tr>
+                                          <?php } 
+                                             }else{ ?>	
+                                          <tr>
+                                             <td colspan="4" class="text-center">
+                                                <div class="mt-comment-text"> No Data found. </div>
+                                             </td>
+                                          </tr>
+                                          <?php } ?> 
+                                    </table>
+                                 </div>
+                                 <div class="tab-pane " id="amend_appr_rates">
+                                    <table class="table">
+                                          <tr>
+                                             <th>Name</th>
+                                             <th>Package</th>
+                                             <th>Contact</th>
+                                             <th>Action</th>
+                                          </tr>
                                           <?php if( isset($amendmentAprRates) && !empty($amendmentAprRates) ) { 
                                              foreach( $amendmentAprRates as $apRates ){ 	?>
                                           <tr>
@@ -450,11 +429,9 @@
                                              </td>
                                           </tr>
                                           <?php } ?> 
-                                       </tbody>
                                     </table>
                                  </div>
                               </div>
-                              <button type="button" class="btn purple view_table_data"><i class="fa fa-angle-down"></i> View All</button>									
                            </div>
                         </div>
                      </div>
@@ -462,34 +439,30 @@
                </div>
             </div>
          </div>
-         
          <!--END AMENDMENT PRICE SECTION-->
          <!-- End Today section -->
-         <div class="r2ow">
-            <!-- Total Leads of the Day -->
-            <div class="portlet box blue">
-               <div class="portlet-title">
-                  <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> Follow Up Section</div>
-               </div>
-               <div class="portlet-body">
-                  <div class="row dashboard-tables-all-info">
-                     <!-- Total Leads of the Day -->
-                     <div class="col-lg-6 col-xs-12 col-sm-12">
-                        <div class="portlet light bordered">
-                           <div class="portlet-title">
-                              <div class="caption">
-                                 <i class="icon-equalizer font-dark hide"></i>
-                                 <span class="caption-subject font-dark bold uppercase">Total Leads Of The Day</span>
-                              </div>
-                              <!--div class="tools title-cover">
-                                 <a href="" class="expand "><i class="fa a-arrow-circle-down"></i> </a>
-                                 </div-->
-                           </div>
-                           <div class="portlet-body"  >
-                              <div class="dashboard-scroll">
-                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="portlet_comments_1">
-                                       <table class="table table-bordered table-striped d-table">
+
+         <!-- Begin Follow up Section -->
+         <div class="portlet box blue mb-5">
+            <div class="portlet-title">
+               <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> Follow Up Section</div>
+            </div>
+            <div class="portlet-body">
+               <div class="row dashboard-tables-all-info">
+                  <!-- Total Leads of the Day -->
+                  <div class="col-md-12">
+                     <div class="panel">
+                        <div class="panel-heading2">
+                              <ul class="nav nav-tabs">
+                                 <li class="active"><a href="#leads_of_day" data-toggle="tab">Total Leads Of The Day</a></li>
+                                 <li><a href="#followup_of_day" data-toggle="tab">Follow up of the day</a></li>
+                              </ul>
+                        </div>
+                        <div class="panel-body">
+                           <div class="dashboard-scroll">
+                              <div class="tab-content">
+                                 <div class="tab-pane  in active" id="leads_of_day">
+                                    <table class="table">
                                           <tr>
                                              <th>Name</th>
                                              <th>Email</th>
@@ -508,39 +481,16 @@
                                           <?php } 
                                              }else{ ?>	
                                           <tr>
-                                             <td colspan="4">
+                                             <td colspan="4" class="text-center">
                                                 <div class="mt-comment-text"> No Data found. </div>
                                              </td>
                                           </tr>
                                           <?php } ?>
                                           <!-- END: Picked call section -->
-                                       </table>
-                                    </div>
-                                    <button type="button" class="btn purple view_table_data"><i class="fa fa-angle-down"></i> View All</button>
+                                    </table>
                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6 col-xs-12 col-sm-12">
-                        <div class="portlet light bordered">
-                           <!--div class="portlet-title tabbable-line">
-                              <div class="caption">
-                                 <i class="icon-bubbles font-dark hide"></i>
-                                 <span class="caption-subject font-dark bold uppercase">Follow up of the day</span>
-                              </div>
-                              </div-->
-                           <div class="portlet-title">
-                              <div class="caption">
-                                 <i class="icon-equalizer font-dark hide"></i>
-                                 <span class="caption-subject font-dark bold uppercase">Follow up of the day</span>
-                              </div>
-                           </div>
-                           <div class="portlet-body">
-                              <div class="dashboard-scroll">
-                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="portlet_comments_1">
-                                       <table class="table table-bordered table-striped d-table">
+                                 <div class="tab-pane " id="followup_of_day">
+                                    <table class="table">
                                           <tr>
                                              <th>Name</th>
                                              <th>Contact No</th>
@@ -588,42 +538,46 @@
                                           <?php } 
                                              }else{ ?>	
                                           <tr>
-                                             <td colspan="5">
+                                             <td colspan="5" class="text-center">
                                                 <div class="mt-comment-text"> No Data found. </div>
                                              </td>
                                           </tr>
                                           <?php } ?>
                                           <!-- END: Picked call section -->
-                                       </table>
-                                    </div>
-                                    <button type="button" class="btn purple view_table_data"><i class="fa fa-angle-down"></i> View All</button>
+                                    </table>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                     
-                     <!--Rates section-->
-                     <div class="col-lg-6 col-xs-12 col-sm-12">
-                        <div class="portlet light bordered">
-                           <!--div class="portlet-title tabbable-line">
-                              <div class="caption">
-                                 <i class=" icon-social-twitter font-dark hide"></i>
-                                 <span class="caption-subject font-dark bold uppercase">Pending Rates</span>
-                              </div>
-                              </div-->
-                           <div class="portlet-title">
-                              <div class="caption">
-                                 <i class="icon-equalizer font-dark hide"></i>
-                                 <span class="caption-subject font-dark bold uppercase">Pending Rates</span>
-                              </div>
-                           </div>
-                           <div class="portlet-body">
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End Follow Up Section -->
+         
+         <!-- Begin Rates section-->
+         <div class="portlet box blue mb-5">
+            <div class="portlet-title">
+               <div class="caption">
+                  Rates Section
+               </div>
+            </div>    
+            <div class="portlet-body">
+               <div class="row dashboard-tables-all-info">
+                  <div class="col-md-12">
+                     <div class="panel">
+                        <div class="panel-heading2">
+                           <ul class="nav nav-tabs">
+                              <li class="active"><a href="#rates_pending" data-toggle="tab">Total Leads Of The Day</a></li>
+                              <li><a href="#rates_approv" data-toggle="tab">Follow up of the day</a></li>
+                           </ul>
+                        </div>
+                        <div class="panel-body">
+                           <div class="dashboard-scroll">
                               <div class="tab-content">
-                                 <div class="tab-pane active" id="tab_actions_pending pending-rate1">
-                                    <?php //print_r( $itiPendingRates ); ?>
-                                    <div class="dashboard-scroll">
-                                       <table class="table table-bordered table-striped d-table">
+                                 <div class="tab-pane  in active" id="rates_pending">
+                                    <table class="table">
                                           <tr>
                                              <th>Package Name</th>
                                              <th>Name</th>
@@ -652,33 +606,10 @@
                                              </td>
                                           </tr>
                                           <?php } ?> 
-                                       </table>
-                                    </div>
+                                    </table>
                                  </div>
-                                 <button type="button" class="btn purple view_table_data"><i class="fa fa-angle-down"></i> View All</button>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-lg-6 col-xs-12 col-sm-12">
-                        <div class="portlet light bordered">
-                           <!--div class="portlet-title tabbable-line">
-                              <div class="caption">
-                                 <i class=" icon-social-twitter font-dark hide"></i>
-                                 <span class="caption-subject font-dark bold uppercase">Approved Rates</span>
-                              </div>
-                              </div-->
-                           <div class="portlet-title">
-                              <div class="caption">
-                                 <i class="icon-equalizer font-dark hide"></i>
-                                 <span class="caption-subject font-dark bold uppercase">Approved Rates</span>
-                              </div>
-                           </div>
-                           <div class="portlet-body">
-                              <div class="tab-content">
-                                 <div class="tab-pane active" id="tab_actions_pending approved-rate1">
-                                    <div class="dashboard-scroll">
-                                       <table class="table table-bordered table-striped d-table">
+                                 <div class="tab-pane " id="rates_approv">
+                                    <table class="table">
                                           <tr>
                                              <th>Package Name</th>
                                              <th>Name</th>
@@ -709,259 +640,259 @@
                                              </td>
                                           </tr>
                                           <?php } ?>
-                                       </table>
-                                    </div>
+                                    </table>
                                  </div>
-                                 <button type="button" class="btn purple view_table_data"><i class="fa fa-angle-down"></i> View All</button>									
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-            </div>
-            
-            <div class="total-leads-for-month">
-               <div class="month_section">
-                  <div class="portlet box blue">
-                     <div class="portlet-title">
-                        <div class="caption"><i class="fa fa-file-text-o" aria-hidden="true"></i> Month's Status</div>
+            </div>                             
+         </div>                                      
+         <!-- End Rates section -->
+         
+
+         <div class="total-leads-for-month">
+            <div class="month_section">
+               <div class="portlet box blue">
+                  <div class="portlet-title">
+                     <div class="caption"><i class="fa fa-file-text-o" aria-hidden="true"></i> Month's Status</div>
+                  </div>
+                  <div class="portlet-body">
+                     <div class="row">
+                        <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                           <div class="callCountBlock">
+                              <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?leadfrom={$from}&leadto={$to}"; ?>">
+                                 <div class="visual">
+                                    <i class="fa fa-shopping-cart"></i>
+                                 </div>
+                                 <div class="details">
+                                    <div class="number">
+                                       <span data-counter="counterup" data-value="<?php echo isset($totalLeadsMonth) ? $totalLeadsMonth : 0; ?>">0</span>
+                                    </div>
+                                    <div class="desc"> Total Leads </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                           <div class="callCountBlock">
+                              <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callpicked"; ?>">
+                                 <div class="visual">
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                 </div>
+                                 <div class="details">
+                                    <div class="number">
+                                       <span data-counter="counterup" data-value="<?php echo isset($totalPickCallsMonth) ? $totalPickCallsMonth : 0; ?>">0</span> 
+                                    </div>
+                                    <div class="desc"> Total Call <br>Picked </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                           <div class="callCountBlock">
+                              <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callnotpicked"; ?>">
+                                 <div class="visual">
+                                    <i class="fa-solid fa-phone-slash text-danger"></i>
+                                 </div>
+                                 <div class="details">
+                                    <div class="number">
+                                       <span data-counter="counterup" data-value="<?php echo isset($totalNotPickCallsMonth) ? $totalNotPickCallsMonth : 0; ?>">0</span> 
+                                    </div>
+                                    <div class="desc"> Total Call <br>Not Picked </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                           <div class="callCountBlock">
+                              <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=8"; ?>">
+                                 <div class="visual">
+                                    <i class="fa-solid fa-user-large-slash text-danger"></i>
+                                 </div>
+                                 <div class="details">
+                                    <div class="number">
+                                       <span data-counter="counterup" data-value="<?php echo isset($totalDecLeadsMonth) ? $totalDecLeadsMonth : 0; ?>">0</span> 
+                                    </div>
+                                    <div class="desc"> Total Declined <br>Leads </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
+                        <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                           <div class="callCountBlock">
+                              <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers"). "/?todayStatus={$this_month}&leadStatus=unwork"; ?>">
+                                 <div class="visual">
+                                    <i class="fa-solid fa-xmark text-danger"></i>
+                                 </div>
+                                 <div class="details">
+                                    <div class="number">
+                                       <span data-counter="counterup" data-value="<?php echo isset($totalUnworkLeadsMonth) ? $totalUnworkLeadsMonth : 0; ?>">0</span> 
+                                    </div>
+                                    <div class="desc"> Total Unwork<br> Leads </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
                      </div>
-                     <div class="portlet-body">
+                     
+                     <div class="load-more-dashboard text-center">
+                        <button type="button" data-target_id="month_full_stat" class="btn btn-primary view_all_stat_btn"><i class="fa fa-angle-down"></i> View All Stats</button>
+                     </div>
+
+                     <div id="month_full_stat" style="display: none;">
                         <div class="row">
                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
                               <div class="callCountBlock">
-                                 <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?leadfrom={$from}&leadto={$to}"; ?>">
+                                 <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries"). "/?todayStatus={$this_month}&leadStatus=Qsent&quotation=true"; ?>">
                                     <div class="visual">
-                                       <i class="fa fa-shopping-cart"></i>
+                                       <i class="fa-solid fa-envelope-circle-check"></i>
                                     </div>
                                     <div class="details">
                                        <div class="number">
-                                          <span data-counter="counterup" data-value="<?php echo isset($totalLeadsMonth) ? $totalLeadsMonth : 0; ?>">0</span>
+                                          <span data-counter="counterup" data-value="<?php echo isset($totalQuotSentMonth) ? $totalQuotSentMonth : 0; ?>">0</span> 
                                        </div>
-                                       <div class="desc"> Total Leads </div>
+                                       <div class="desc"> Quotations<br> Sent </div>
                                     </div>
                                  </a>
                               </div>
                            </div>
                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
                               <div class="callCountBlock">
-                                 <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callpicked"; ?>">
+                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=pending"; ?>">
                                     <div class="visual">
-                                       <i class="fa-solid fa-phone-volume"></i>
+                                       <i class="fa-solid fa-spinner"></i>
                                     </div>
                                     <div class="details">
                                        <div class="number">
-                                          <span data-counter="counterup" data-value="<?php echo isset($totalPickCallsMonth) ? $totalPickCallsMonth : 0; ?>">0</span> 
+                                          <span data-counter="counterup" data-value="<?php echo isset($totalWorkingItiMonth) ? $totalWorkingItiMonth : 0; ?>">0</span> 
                                        </div>
-                                       <div class="desc"> Total Call <br>Picked </div>
+                                       <div class="desc"> Total Working <br>Itineraries </div>
                                     </div>
                                  </a>
                               </div>
                            </div>
                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
                               <div class="callCountBlock">
-                                 <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=callnotpicked"; ?>">
+                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=9"; ?>">
                                     <div class="visual">
-                                       <i class="fa-solid fa-phone-slash text-danger"></i>
+                                       <i class="fa-solid fa-thumbs-up"></i>
                                     </div>
                                     <div class="details">
                                        <div class="number">
-                                          <span data-counter="counterup" data-value="<?php echo isset($totalNotPickCallsMonth) ? $totalNotPickCallsMonth : 0; ?>">0</span> 
+                                          <span data-counter="counterup" data-value="<?php echo isset($totalApprovedItiMonth) ? $totalApprovedItiMonth : 0; ?>">0</span> 
                                        </div>
-                                       <div class="desc"> Total Call <br>Not Picked </div>
+                                       <div class="desc"> Total Approved <br>Itineraries </div>
                                     </div>
                                  </a>
                               </div>
                            </div>
                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
                               <div class="callCountBlock">
-                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=8"; ?>">
+                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=7"; ?>">
                                     <div class="visual">
-                                       <i class="fa-solid fa-user-large-slash text-danger"></i>
+                                       <i class="fa-solid fa-file-circle-xmark"></i>
                                     </div>
                                     <div class="details">
                                        <div class="number">
-                                          <span data-counter="counterup" data-value="<?php echo isset($totalDecLeadsMonth) ? $totalDecLeadsMonth : 0; ?>">0</span> 
+                                          <span data-counter="counterup" data-value="<?php echo isset($totalDecItiMonth) ? $totalDecItiMonth : 0; ?>">0</span> 
                                        </div>
-                                       <div class="desc"> Total Declined <br>Leads </div>
+                                       <div class="desc"> Total Declined <br>Itineraries  </div>
                                     </div>
                                  </a>
                               </div>
                            </div>
                            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
                               <div class="callCountBlock">
-                                 <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("customers"). "/?todayStatus={$this_month}&leadStatus=unwork"; ?>">
+                                 <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries"). "/?todayStatus={$this_month}&leadStatus=QsentRevised&quotation=true"; ?>">
                                     <div class="visual">
-                                       <i class="fa-solid fa-xmark text-danger"></i>
+                                       <i class="fa-solid fa-repeat"></i>
                                     </div>
                                     <div class="details">
                                        <div class="number">
-                                          <span data-counter="counterup" data-value="<?php echo isset($totalUnworkLeadsMonth) ? $totalUnworkLeadsMonth : 0; ?>">0</span> 
+                                          <span data-counter="counterup" data-value="<?php echo isset($totalRevQuotSentMonth) ? $totalRevQuotSentMonth : 0; ?>">0</span> 
                                        </div>
-                                       <div class="desc"> Total Unwork<br> Leads </div>
+                                       <div class="desc"> Revised Quotations <br> Sent  </div>
                                     </div>
                                  </a>
                               </div>
                            </div>
                         </div>
-                        
-                        <div class="load-more-dashboard text-center">
-                           <button type="button" data-target_id="month_full_stat" class="btn btn-primary view_all_stat_btn"><i class="fa fa-angle-down"></i> View All Stats</button>
-                        </div>
-
-                        <div id="month_full_stat" style="display: none;">
+                        <!---------------------------------Revised section Month---------------------------->
+                        <div class="month_revised_section">
                            <div class="row">
                               <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
                                  <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries"). "/?todayStatus={$this_month}&leadStatus=Qsent&quotation=true"; ?>">
-                                       <div class="visual">
-                                          <i class="fa-solid fa-envelope-circle-check"></i>
-                                       </div>
-                                       <div class="details">
-                                          <div class="number">
-                                             <span data-counter="counterup" data-value="<?php echo isset($totalQuotSentMonth) ? $totalQuotSentMonth : 0; ?>">0</span> 
-                                          </div>
-                                          <div class="desc"> Quotations<br> Sent </div>
-                                       </div>
-                                    </a>
-                                 </div>
-                              </div>
-                              <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                 <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=pending"; ?>">
-                                       <div class="visual">
-                                          <i class="fa-solid fa-spinner"></i>
-                                       </div>
-                                       <div class="details">
-                                          <div class="number">
-                                             <span data-counter="counterup" data-value="<?php echo isset($totalWorkingItiMonth) ? $totalWorkingItiMonth : 0; ?>">0</span> 
-                                          </div>
-                                          <div class="desc"> Total Working <br>Itineraries </div>
-                                       </div>
-                                    </a>
-                                 </div>
-                              </div>
-                              <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                 <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=9"; ?>">
-                                       <div class="visual">
-                                          <i class="fa-solid fa-thumbs-up"></i>
-                                       </div>
-                                       <div class="details">
-                                          <div class="number">
-                                             <span data-counter="counterup" data-value="<?php echo isset($totalApprovedItiMonth) ? $totalApprovedItiMonth : 0; ?>">0</span> 
-                                          </div>
-                                          <div class="desc"> Total Approved <br>Itineraries </div>
-                                       </div>
-                                    </a>
-                                 </div>
-                              </div>
-                              <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                 <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=7"; ?>">
-                                       <div class="visual">
-                                          <i class="fa-solid fa-file-circle-xmark"></i>
-                                       </div>
-                                       <div class="details">
-                                          <div class="number">
-                                             <span data-counter="counterup" data-value="<?php echo isset($totalDecItiMonth) ? $totalDecItiMonth : 0; ?>">0</span> 
-                                          </div>
-                                          <div class="desc"> Total Declined <br>Itineraries  </div>
-                                       </div>
-                                    </a>
-                                 </div>
-                              </div>
-                              <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                 <div class="callCountBlock">
-                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries"). "/?todayStatus={$this_month}&leadStatus=QsentRevised&quotation=true"; ?>">
+                                    <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries"). "/?todayStatus={$this_month}&leadStatus=QsentPast&quotation=true"; ?>">
                                        <div class="visual">
                                           <i class="fa-solid fa-repeat"></i>
                                        </div>
                                        <div class="details">
                                           <div class="number">
-                                             <span data-counter="counterup" data-value="<?php echo isset($totalRevQuotSentMonth) ? $totalRevQuotSentMonth : 0; ?>">0</span> 
+                                             <span data-counter="counterup" data-value="<?php echo isset($pastQuotSentMonth) ? $pastQuotSentMonth : 0; ?>">0</span> 
                                           </div>
-                                          <div class="desc"> Revised Quotations <br> Sent  </div>
+                                          <div class="desc"> Revised Quotations <br> Sent </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                              <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                                 <div class="callCountBlock">
+                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=revApproved"; ?>">
+                                       <div class="visual">
+                                          <i class="fa-solid fa-spell-check"></i>
+                                       </div>
+                                       <div class="details">
+                                          <div class="number">
+                                             <span data-counter="counterup" data-value="<?php echo isset($pastApprovedItiMonth) ? $pastApprovedItiMonth : 0; ?>">0</span> 
+                                          </div>
+                                          <div class="desc"> Total Revised Approved <br>Itineraries </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                              <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                                 <div class="callCountBlock">
+                                    <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=revDecline"; ?>">
+                                       <div class="visual">
+                                          <i class="fa-solid fa-file-circle-exclamation"></i>
+                                       </div>
+                                       <div class="details">
+                                          <div class="number">
+                                             <span data-counter="counterup" data-value="<?php echo isset($pastDeclineItiMonth) ? $pastDeclineItiMonth : 0; ?>">0</span> 
+                                          </div>
+                                          <div class="desc"> Total Revised Declined <br>Itineraries </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                              <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
+                                 <div class="callCountBlock">
+                                    <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=revDeclineLeads"; ?>">
+                                       <div class="visual">
+                                          <i class="fa-solid fa-file-signature"></i>
+                                       </div>
+                                       <div class="details">
+                                          <div class="number">
+                                             <span data-counter="counterup" data-value="<?php echo isset($pastDecLeadsMonth) ? $pastDecLeadsMonth : 0; ?>">0</span> 
+                                          </div>
+                                          <div class="desc"> Total Revised Declined <br>Leads  </div>
                                        </div>
                                     </a>
                                  </div>
                               </div>
                            </div>
-                           <!---------------------------------Revised section Month---------------------------->
-                           <div class="month_revised_section">
-                              <div class="row">
-                                 <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                    <div class="callCountBlock">
-                                       <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries"). "/?todayStatus={$this_month}&leadStatus=QsentPast&quotation=true"; ?>">
-                                          <div class="visual">
-                                             <i class="fa-solid fa-repeat"></i>
-                                          </div>
-                                          <div class="details">
-                                             <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastQuotSentMonth) ? $pastQuotSentMonth : 0; ?>">0</span> 
-                                             </div>
-                                             <div class="desc"> Revised Quotations <br> Sent </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                    <div class="callCountBlock">
-                                       <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=revApproved"; ?>">
-                                          <div class="visual">
-                                             <i class="fa-solid fa-spell-check"></i>
-                                          </div>
-                                          <div class="details">
-                                             <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastApprovedItiMonth) ? $pastApprovedItiMonth : 0; ?>">0</span> 
-                                             </div>
-                                             <div class="desc"> Total Revised Approved <br>Itineraries </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                    <div class="callCountBlock">
-                                       <a class="dashboard-stat dashboard-stat-v2 purple" href="<?php echo site_url("itineraries") . "/?todayStatus={$this_month}&leadStatus=revDecline"; ?>">
-                                          <div class="visual">
-                                             <i class="fa-solid fa-file-circle-exclamation"></i>
-                                          </div>
-                                          <div class="details">
-                                             <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastDeclineItiMonth) ? $pastDeclineItiMonth : 0; ?>">0</span> 
-                                             </div>
-                                             <div class="desc"> Total Revised Declined <br>Itineraries </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6">
-                                    <div class="callCountBlock">
-                                       <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo site_url("customers") . "/?todayStatus={$this_month}&leadStatus=revDeclineLeads"; ?>">
-                                          <div class="visual">
-                                             <i class="fa-solid fa-file-signature"></i>
-                                          </div>
-                                          <div class="details">
-                                             <div class="number">
-                                                <span data-counter="counterup" data-value="<?php echo isset($pastDecLeadsMonth) ? $pastDecLeadsMonth : 0; ?>">0</span> 
-                                             </div>
-                                             <div class="desc"> Total Revised Declined <br>Leads  </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
                         </div>
-                        <!--End month full stats-->
                      </div>
-                     <!-- portlet-body -->		
+                     <!--End month full stats-->
                   </div>
+                  <!-- portlet-body -->		
                </div>
-               <!---------------------------------End Todays Revised section ---------------------------->
-               
             </div>
+            <!---------------------------------End Todays Revised section ---------------------------->
+            
          </div>
       </div>
       <!-- End page-content -->
