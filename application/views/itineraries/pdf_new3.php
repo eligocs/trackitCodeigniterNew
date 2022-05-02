@@ -34,7 +34,7 @@ if (!empty($itinerary)) {
     // $path = base_url() . 'site/assets/bg_banner.jpg';
     // $type = pathinfo($path, PATHINFO_EXTENSION);
     // $data = file_get_contents($path);
-    // $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    // $mainBagImgbase64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
 
     $cariconPath = base_url() . 'site/blue/car.svg';
@@ -70,7 +70,8 @@ if (!empty($itinerary)) {
     $hotel_data = file_get_contents($hotelPath);
     $hotel_base64 = 'data:image/' . $hotel_type . ';base64,' . base64_encode($hotel_data);
 
-    $pdfImgPath = base_url() . 'site/images/' . pdf_img()->pdf_img;
+    $img = !empty(pdf_img($iti->customer_id)->pdf_img) ? base_url() . 'site/images/' . pdf_img($iti->customer_id)->pdf_img  :    $path = base_url() . 'site/assets/bg_banner.jpg'; 
+    $pdfImgPath = $img;
     $pdfImagtype = pathinfo($pdfImgPath, PATHINFO_EXTENSION);
     $pdfData = file_get_contents($pdfImgPath);
     $base64 = 'data:image/' . $pdfImagtype . ';base64,' . base64_encode($pdfData);

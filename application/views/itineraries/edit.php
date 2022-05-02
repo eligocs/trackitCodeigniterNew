@@ -1275,12 +1275,12 @@
 																<div class="col">
 																	<div id="upload-demo" style="width:400px;">
 																	</div>
-
+                                                                    <input type="hidden" name="id"  id="cus_id" value = "<?= $iti->customer_id ?>">
 																	<div class="form-group col-md-6">
-                                                      <label class="control-label">Pdf Image:</label>
-                                                      <div id="dx" class="dropzone" required>
-                                                      </div>
-                                                   </div>
+                                                                        <label class="control-label">Pdf Image:</label>
+                                                                        <div id="dx" class="dropzone" required>
+                                                                        </div>
+                                                                    </div>
 
 																	<div class="margin-top-10 clearfix">
 																		<span class="label label-danger">NOTE!
@@ -1291,7 +1291,6 @@
 																	</div>
 																</div>
 															</div>
-															
 														</form>
 														<div id="changePicRes"></div>
                                                 </div>
@@ -2322,6 +2321,17 @@ jQuery(document).ready(function($) {
 
 });
 
+
+
+            // const uploadBtn = document.querySelector('#sbmtbutton');
+            //     uploadBtn.addEventListener('click', () => {
+            //         const acceptedFiles = myDropzone.getAcceptedFiles();
+            //         for (let i = 0; i < acceptedFiles.length; i++) {
+            //             myDropzone.processFile(acceptedFiles[i])
+            //         }
+            //     })
+
+
         Dropzone.autoDiscover = false;
         var uploadedDocumentMap = {};
         window.onload = function() {
@@ -2362,23 +2372,46 @@ jQuery(document).ready(function($) {
                     }
                 },
                 url: "<?php echo base_url('homepage/do_upload'); ?>",
+                
                 init: function() {
-                    this.on("success", function(file, res){
-                       if( res.status == false){
+
+                    this.on("addedfile", function() {
+                        //Do something before the file gets processed.
+                    })
+                    this.on("sending", function(file, xhr, formData){
+                        //Do something when the file gets processed.
+                        //This is a good time to append additional information to the formData. It's where I add tags to make the image searchable.
+                        formData.append('cus_id', $("#cus_id").val())
+                    }),
+                    this.on("success", function(file, res) {
+                        if( res.status == false){
                         alert(res.msg);
                        }else{
                         alert(res.msg);
                        }
+                        //Do something after the file has been successfully processed e.g. remove classes and make things go back to normal. 
+                    }),
+                    this.on("error", function(file, errorMessage, xhr) {
+                        //Do something if there is an error.
+                        //This is where I like to alert to the user what the error was and reload the page after. 
+                        alert(errorMessage);
 
-                         $('#recipe_img').append('<input type="hidden" name="images" value="' + file.name + '">');
-                        uploadedDocumentMap[file.name] = file.name
+                    })
+                    // this.on("success", function(file, res){
+                    //    if( res.status == false){
+                    //     alert(res.msg);
+                    //    }else{
+                    //     alert(res.msg);
+                    //    }
+
+                    //      $('#recipe_img').append('<input type="hidden" name="images" value="' + file.name + '">');
+                    //     uploadedDocumentMap[file.name] = file.name
 
 
-                        $(file.previewTemplate).find('.des').attr('data-id', res.id);
-                    });
+                    //     $(file.previewTemplate).find('.des').attr('data-id', res.id);
+                    // });
                     this.on("error", function(file, data) {
-                        /* this.removeFile(file);
-                        swal(data, " ", "error"); */
+                      
                     });
 
                 }
@@ -2387,7 +2420,7 @@ jQuery(document).ready(function($) {
             var dropzone = new Dropzone('#dx', dropzoneOptions);
 
             dropzone.removeAllFiles();
-            //dropzone.handleFiles(files);
+            
             dropzone.processQueue();
         }
 
