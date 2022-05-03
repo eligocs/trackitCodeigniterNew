@@ -18,20 +18,113 @@
     display: none;
 }
 
-.featured-img {min-height: 250px; background-position: center center; position: relative;}
-.upload-img {right:  5px;bottom:  5px; padding: 5px;min-width: 100px;}
-.upload-img a {color: #fff;}
-.package-title {bottom: 5px; color: #fff;padding: 5px 10px;max-width: 80%;left: 5px}
-ul.attachments li {flex: 0 0 20%;margin-bottom: 14px;}
-ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-style: none;justify-content: flex-start;}
-.thumbnail img {max-width: 200px;max-height: 200px;}
-.pdf-preview {right: 0;padding: 5px;color: #fff;}
-.pdf-preview a {color: #fff;}
-.pdf-preview svg {width: 20px;}
+.featured-img {
+    min-height: 250px;
+    background-position: center center;
+    position: relative;
+}
 
+.upload-img {
+    right: 5px;
+    bottom: 5px;
+    padding: 5px;
+    min-width: 100px;
+}
+
+.upload-img a {
+    color: #fff;
+}
+
+.package-title {
+    bottom: 5px;
+    color: #fff;
+    padding: 5px 10px;
+    max-width: 80%;
+    left: 5px
+}
+
+ul.attachments li {
+    flex: 0 0 20%;
+    margin-bottom: 14px;
+}
+
+ul.attachments {
+    flex: 0 0 25%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style: none;
+    justify-content: flex-start;
+}
+
+.thumbnail img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.pdf-preview {
+    right: 0;
+    padding: 5px;
+    color: #fff;
+}
+
+.pdf-preview a {
+    color: #fff;
+}
+
+.pdf-preview svg {
+    width: 20px;
+}
+
+.file-drop-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 450px;
+  max-width: 100%;
+  padding: 25px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  transition: 0.2s;
+  /* &.is-active {
+    background-color: rgba(255, 255, 255, 0.05);
+  } */
+}
+
+.fake-btn {
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin-right: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.file-msg {
+  font-size: small;
+  font-weight: 300;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css" />\
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.js"></script>
+<link rel="stylesheet" href="<?php echo base_url(); ?>site/assets/css/croppie.css">
+<script src="<?php echo base_url(); ?>site/assets/js/croppie.js"></script>
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -46,23 +139,29 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                 </div>
             </div>
 
-        <div class="featured-img" style="background-image:url(https://images.unsplash.com/photo-1469474968028-56623f02e42e)">
-            <div class="package-title position-absolute bg-blue-ebonyclay-opacity">
-                Shimla Manali Via Rohtang 5 Days 4 Nights
-            </div>
-            
-            <div class="upload-img position-absolute bg-blue-ebonyclay-opacity">
-                 <a title="Edit" href="" data-bs-toggle="modal" data-bs-target="#featuredImg"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Change featured photo</a>
-            </div>
+            <div class="featured-img"
+                style="background-image:url(https://images.unsplash.com/photo-1469474968028-56623f02e42e)">
+                <div class="package-title position-absolute bg-blue-ebonyclay-opacity">
+                    Shimla Manali Via Rohtang 5 Days 4 Nights
+                </div>
 
-            <div class="pdf-preview position-absolute">
-            <a target="_blank" title="Preview PDF" href="http://192.168.1.6/trackitCodeigniterNew/itineraries/pdf/23/1qiFfm4G_20220502_1651472182" class="">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
-                        <g>
-                    <path style="fill:#E9E9E0;" d="M36.985,0H7.963C7.155,0,6.5,0.655,6.5,1.926V55c0,0.345,0.655,1,1.463,1h40.074 c0.808,0,1.463-0.655,1.463-1V12.978c0-0.696-0.093-0.92-0.257-1.085L37.607,0.257C37.442,0.093,37.218,0,36.985,0z"/>
-                        <polygon style="fill:#D9D7CA;" points="37.5,0.151 37.5,12 49.349,12 	"/>
-                        <path style="fill:#CC4B4C;" d="M19.514,33.324L19.514,33.324c-0.348,0-0.682-0.113-0.967-0.326
+                <div class="upload-img position-absolute bg-blue-ebonyclay-opacity">
+                    <a title="Edit" href="" data-bs-toggle="modal" data-bs-target="#featuredImg"><i
+                            class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Change featured photo</a>
+                </div>
+
+                <div class="pdf-preview position-absolute">
+                    <a target="_blank" title="Preview PDF"
+                        href="http://192.168.1.6/trackitCodeigniterNew/itineraries/pdf/23/1qiFfm4G_20220502_1651472182"
+                        class="">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56 56"
+                            style="enable-background:new 0 0 56 56;" xml:space="preserve">
+                            <g>
+                                <path style="fill:#E9E9E0;"
+                                    d="M36.985,0H7.963C7.155,0,6.5,0.655,6.5,1.926V55c0,0.345,0.655,1,1.463,1h40.074 c0.808,0,1.463-0.655,1.463-1V12.978c0-0.696-0.093-0.92-0.257-1.085L37.607,0.257C37.442,0.093,37.218,0,36.985,0z" />
+                                <polygon style="fill:#D9D7CA;" points="37.5,0.151 37.5,12 49.349,12 	" />
+                                <path style="fill:#CC4B4C;" d="M19.514,33.324L19.514,33.324c-0.348,0-0.682-0.113-0.967-0.326
                         c-1.041-0.781-1.181-1.65-1.115-2.242c0.182-1.628,2.195-3.332,5.985-5.068c1.504-3.296,2.935-7.357,3.788-10.75
                         c-0.998-2.172-1.968-4.99-1.261-6.643c0.248-0.579,0.557-1.023,1.134-1.215c0.228-0.076,0.804-0.172,1.016-0.172
                         c0.504,0,0.947,0.649,1.261,1.049c0.295,0.376,0.964,1.173-0.373,6.802c1.348,2.784,3.258,5.62,5.088,7.562
@@ -73,32 +172,35 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                         M35.813,23.756c0.815,0.627,1.014,0.944,1.547,0.944c0.234,0,0.901-0.01,1.21-0.441c0.149-0.209,0.207-0.343,0.23-0.415
                         c-0.123-0.065-0.286-0.197-1.175-0.197C37.12,23.648,36.485,23.67,35.813,23.756z M28.343,17.174
                         c-0.715,2.474-1.659,5.145-2.674,7.564c2.09-0.811,4.362-1.519,6.496-2.02C30.815,21.15,29.466,19.192,28.343,17.174z
-                        M27.736,8.712c-0.098,0.033-1.33,1.757,0.096,3.216C28.781,9.813,27.779,8.698,27.736,8.712z"/>
-                
-                    <path style="fill:#CC4B4C;" d="M48.037,56H7.963C7.155,56,6.5,55.345,6.5,54.537V39h43v15.537C49.5,55.345,48.845,56,48.037,56z"/>
-                        <g>
-                        <path style="fill:#FFFFFF;" d="M17.385,53h-1.641V42.924h2.898c0.428,0,0.852,0.068,1.271,0.205
+                        M27.736,8.712c-0.098,0.033-1.33,1.757,0.096,3.216C28.781,9.813,27.779,8.698,27.736,8.712z" />
+
+                                <path style="fill:#CC4B4C;"
+                                    d="M48.037,56H7.963C7.155,56,6.5,55.345,6.5,54.537V39h43v15.537C49.5,55.345,48.845,56,48.037,56z" />
+                                <g>
+                                    <path style="fill:#FFFFFF;" d="M17.385,53h-1.641V42.924h2.898c0.428,0,0.852,0.068,1.271,0.205
                             c0.419,0.137,0.795,0.342,1.128,0.615c0.333,0.273,0.602,0.604,0.807,0.991s0.308,0.822,0.308,1.306
                             c0,0.511-0.087,0.973-0.26,1.388c-0.173,0.415-0.415,0.764-0.725,1.046c-0.31,0.282-0.684,0.501-1.121,0.656
                             s-0.921,0.232-1.449,0.232h-1.217V53z M17.385,44.168v3.992h1.504c0.2,0,0.398-0.034,0.595-0.103
                             c0.196-0.068,0.376-0.18,0.54-0.335c0.164-0.155,0.296-0.371,0.396-0.649c0.1-0.278,0.15-0.622,0.15-1.032
                             c0-0.164-0.023-0.354-0.068-0.567c-0.046-0.214-0.139-0.419-0.28-0.615c-0.142-0.196-0.34-0.36-0.595-0.492
-                            c-0.255-0.132-0.593-0.198-1.012-0.198H17.385z"/>
-                    <path style="fill:#FFFFFF;" d="M32.219,47.682c0,0.829-0.089,1.538-0.267,2.126s-0.403,1.08-0.677,1.477s-0.581,0.709-0.923,0.937
+                            c-0.255-0.132-0.593-0.198-1.012-0.198H17.385z" />
+                                    <path style="fill:#FFFFFF;"
+                                        d="M32.219,47.682c0,0.829-0.089,1.538-0.267,2.126s-0.403,1.08-0.677,1.477s-0.581,0.709-0.923,0.937
                             s-0.672,0.398-0.991,0.513c-0.319,0.114-0.611,0.187-0.875,0.219C28.222,52.984,28.026,53,27.898,53h-3.814V42.924h3.035
                             c0.848,0,1.593,0.135,2.235,0.403s1.176,0.627,1.6,1.073s0.74,0.955,0.95,1.524C32.114,46.494,32.219,47.08,32.219,47.682z
                             M27.352,51.797c1.112,0,1.914-0.355,2.406-1.066s0.738-1.741,0.738-3.09c0-0.419-0.05-0.834-0.15-1.244
-                            c-0.101-0.41-0.294-0.781-0.581-1.114s-0.677-0.602-1.169-0.807s-1.13-0.308-1.914-0.308h-0.957v7.629H27.352z"/>
-                    <path style="fill:#FFFFFF;" d="M36.266,44.168v3.172h4.211v1.121h-4.211V53h-1.668V42.924H40.9v1.244H36.266z"/>
-                    </g>
-                 </g>
-                </svg>    
-         </a>
-            </div>
+                            c-0.101-0.41-0.294-0.781-0.581-1.114s-0.677-0.602-1.169-0.807s-1.13-0.308-1.914-0.308h-0.957v7.629H27.352z" />
+                                    <path style="fill:#FFFFFF;"
+                                        d="M36.266,44.168v3.172h4.211v1.121h-4.211V53h-1.668V42.924H40.9v1.244H36.266z" />
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
 
 
 
-        </div> <!-- featured-img close-->
+            </div> <!-- featured-img close-->
 
 
 
@@ -106,7 +208,8 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                 <div class="portlet-body form">
                     <form id="itiForm_Frm">
                         <div class="form-horizontal over" id="itiForm_form">
-                            <h3 class="package-details-heading m-0 mb-2 package-details-heading position-static">Package details</h3>
+                            <h3 class="package-details-heading m-0 mb-2 package-details-heading position-static">Package
+                                details</h3>
                             <!--Customer info Section-->
                             <?php $get_customer_info = get_customer($iti->customer_id);
                         $cust = $get_customer_info[0];
@@ -378,7 +481,7 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                             name="quatation_date" />
                                                     </div>
                                                 </div>
-                                             
+
                                                 <div class="col-xl-4 col-md-6 my-2">
                                                     <div class="form-group">
                                                         <label class="control-label">Package Type <span
@@ -1175,7 +1278,7 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                         <div class="tab-pane" id="tab3">
                                             <h6 class="fs-6">Inclusion & Exclusion</h6>
                                             <div class="row">
-                                               <!-- Begin Inclusions -->
+                                                <!-- Begin Inclusions -->
                                                 <div class="col-md-6 my-3">
                                                     <div class="mt-repeater-inc tour_field_repeater">
                                                         <h3>Inclusion</h3>
@@ -1186,31 +1289,48 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                                $count_inc = count($inclusion);
                                                                for ($i = 0; $i < $count_inc; $i++) {        
                                                             ?>
-                                                            <div data-repeater-item class="mt-repeater-inc-item form-group">
+                                                            <div data-repeater-item
+                                                                class="mt-repeater-inc-item form-group">
                                                                 <div class="mt-repeater-inc-cell row mb-3">
-                                                                    <div class="mt-repeater-inc-input col-12 position-relative">
-                                                                        <input required type="text" name="tour_inc" class="form-control" value="<?php echo $inclusion[$i]["tour_inc"]; ?>" />
+                                                                    <div
+                                                                        class="mt-repeater-inc-input col-12 position-relative">
+                                                                        <input required type="text" name="tour_inc"
+                                                                            class="form-control"
+                                                                            value="<?php echo $inclusion[$i]["tour_inc"]; ?>" />
                                                                         <div class="mt-repeater-inc-input">
-                                                                           <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger  mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i></a>
+                                                                            <a href="javascript:;" title="delete"
+                                                                                data-repeater-delete
+                                                                                class="btn btn-danger  mt-repeater-delete delete_repeater">
+                                                                                <i
+                                                                                    class="fa-solid fa-trash-can"></i></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <?php } ?>
                                                             <?php } else { ?>
-                                                            <div data-repeater-item class="mt-repeater-inc-item form-group">
+                                                            <div data-repeater-item
+                                                                class="mt-repeater-inc-item form-group">
                                                                 <div class="mt-repeater-inc-cell row mb-3">
-                                                                    <div class="mt-repeater-inc-input col-12 position-relative">
-                                                                        <input required type="text" name="tour_inc" class="form-control" value="" />
+                                                                    <div
+                                                                        class="mt-repeater-inc-input col-12 position-relative">
+                                                                        <input required type="text" name="tour_inc"
+                                                                            class="form-control" value="" />
                                                                         <div class="mt-repeater-inc-input">
-                                                                           <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i></a>
+                                                                            <a href="javascript:;" title="delete"
+                                                                                data-repeater-delete
+                                                                                class="btn btn-danger mt-repeater-delete delete_repeater">
+                                                                                <i
+                                                                                    class="fa-solid fa-trash-can"></i></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <?php } ?>
                                                         </div>
-                                                        <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-inc-add"> <i class="fa-solid fa-plus"></i></a>
+                                                        <a href="javascript:;" data-repeater-create
+                                                            class="btn btn-primary mt-repeater-inc-add"> <i
+                                                                class="fa-solid fa-plus"></i></a>
                                                     </div>
                                                 </div>
                                                 <!-- End Inclusions -->
@@ -1226,33 +1346,49 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                                $count_exc = count($exclusion);
                                                                for ($i = 0; $i < $count_exc; $i++) { 
                                                             ?>
-                                                            <div data-repeater-item class="mt-repeater-exc-item form-group row mb-3">
-                                                               <!-- jQuery Repeater Container -->
-                                                               <div class="mt-repeater-exc-input col-md-12 position-relative">
-                                                                  <input required type="text" name="tour_exc" class="form-control" value="<?php echo isset($exclusion[$i]["tour_exc"]) && !empty($exclusion[$i]["tour_exc"])  ? trim($exclusion[$i]["tour_exc"]) : ""; ?>" />
-                                                                  <div class="mt-repeater-exc-input">
-                                                                     <a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger delete_repeater mt-repeater-delete"> <i class="fa-solid fa-trash-can"></i> </a>
-                                                                  </div>
-                                                               </div>
+                                                            <div data-repeater-item
+                                                                class="mt-repeater-exc-item form-group row mb-3">
+                                                                <!-- jQuery Repeater Container -->
+                                                                <div
+                                                                    class="mt-repeater-exc-input col-md-12 position-relative">
+                                                                    <input required type="text" name="tour_exc"
+                                                                        class="form-control"
+                                                                        value="<?php echo isset($exclusion[$i]["tour_exc"]) && !empty($exclusion[$i]["tour_exc"])  ? trim($exclusion[$i]["tour_exc"]) : ""; ?>" />
+                                                                    <div class="mt-repeater-exc-input">
+                                                                        <a title="delete" href="javascript:;"
+                                                                            data-repeater-delete
+                                                                            class="btn btn-danger delete_repeater mt-repeater-delete">
+                                                                            <i class="fa-solid fa-trash-can"></i> </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <?php }
                                                             } else {
                                                             //get exclusion
                                                             $count_hotel_exc    = !empty($hotel_exc) ? count($hotel_exc) : 1;
                                                             for ($i = 0; $i < $count_hotel_exc; $i++) { ?>
-                                                            <div data-repeater-item class="mt-repeater-exc-item form-group row mb-3">
-                                                               <!-- jQuery Repeater Container -->
-                                                               <div class="mt-repeater-exc-input col-md-12 position-relative">
-                                                                  <input required type="text" name="tour_exc" class="form-control" value="<?php echo isset($hotel_exc[$i]["hotel_exc"]) && !empty($hotel_exc[$i]["hotel_exc"]) ? trim($hotel_exc[$i]["hotel_exc"]) : ""; ?>" />
-                                                                  <div class="mt-repeater-exc-input">
-                                                                        <a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i> </a>
-                                                                  </div>
-                                                               </div>
+                                                            <div data-repeater-item
+                                                                class="mt-repeater-exc-item form-group row mb-3">
+                                                                <!-- jQuery Repeater Container -->
+                                                                <div
+                                                                    class="mt-repeater-exc-input col-md-12 position-relative">
+                                                                    <input required type="text" name="tour_exc"
+                                                                        class="form-control"
+                                                                        value="<?php echo isset($hotel_exc[$i]["hotel_exc"]) && !empty($hotel_exc[$i]["hotel_exc"]) ? trim($hotel_exc[$i]["hotel_exc"]) : ""; ?>" />
+                                                                    <div class="mt-repeater-exc-input">
+                                                                        <a title="delete" href="javascript:;"
+                                                                            data-repeater-delete
+                                                                            class="btn btn-danger mt-repeater-delete delete_repeater">
+                                                                            <i class="fa-solid fa-trash-can"></i> </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <?php }
                                                             } ?>
                                                         </div>
-                                                        <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-add"> <i class="fa-solid fa-plus"></i> </a>
+                                                        <a href="javascript:;" data-repeater-create
+                                                            class="btn btn-primary mt-repeater-add"> <i
+                                                                class="fa-solid fa-plus"></i> </a>
                                                     </div>
                                                 </div>
                                                 <!-- End Exclusions -->
@@ -1262,28 +1398,39 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                             <div class="row">
                                                 <!-- Begin Special Inclusions -->
                                                 <div class="col-md-6">
-                                                   <div class="mt-repeater-spinc tour_field_repeater_sp">
-                                                      <h3>Special Inclusions</h3>
-                                                      <div class="repeater_wrapper" data-repeater-list="special_inc_meta">
-                                                         <?php
+                                                    <div class="mt-repeater-spinc tour_field_repeater_sp">
+                                                        <h3>Special Inclusions</h3>
+                                                        <div class="repeater_wrapper"
+                                                            data-repeater-list="special_inc_meta">
+                                                            <?php
                                                             $sp_inc     = isset($iti->special_inc_meta) ? unserialize($iti->special_inc_meta) : "";
                                                             $count_sp_inc = !empty($sp_inc) ? count($sp_inc) : 1;
                                                             for ($i = 0; $i < $count_sp_inc; $i++) { 
                                                          ?>
-                                                         <div data-repeater-item class="mt-repeater-spinc-item form-group">
-                                                            <div class="mt-repeater-spinc-cell row mb-3">
-                                                               <div class="mt-repeater-spinc-input col-md-12 position-relative">
-                                                                  <input type="text" name="tour_special_inc" class="form-control" value="<?php if (isset($sp_inc[$i]["tour_special_inc"])) { echo $sp_inc[$i]["tour_special_inc"]; } ?>" />
-                                                                  <div class="mt-repeater-spinc-input">
-                                                                     <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i></a>
-                                                                  </div>
-                                                               </div>
+                                                            <div data-repeater-item
+                                                                class="mt-repeater-spinc-item form-group">
+                                                                <div class="mt-repeater-spinc-cell row mb-3">
+                                                                    <div
+                                                                        class="mt-repeater-spinc-input col-md-12 position-relative">
+                                                                        <input type="text" name="tour_special_inc"
+                                                                            class="form-control"
+                                                                            value="<?php if (isset($sp_inc[$i]["tour_special_inc"])) { echo $sp_inc[$i]["tour_special_inc"]; } ?>" />
+                                                                        <div class="mt-repeater-spinc-input">
+                                                                            <a href="javascript:;" title="delete"
+                                                                                data-repeater-delete
+                                                                                class="btn btn-danger mt-repeater-delete delete_repeater">
+                                                                                <i
+                                                                                    class="fa-solid fa-trash-can"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                         </div>
-                                                         <?php } ?>
-                                                      </div>
-                                                      <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-spinc-add"> <i class="fa-solid fa-plus"></i></a>
-                                                   </div>
+                                                            <?php } ?>
+                                                        </div>
+                                                        <a href="javascript:;" data-repeater-create
+                                                            class="btn btn-primary mt-repeater-spinc-add"> <i
+                                                                class="fa-solid fa-plus"></i></a>
+                                                    </div>
                                                 </div>
                                                 <!--END Special Inclusions -->
 
@@ -1291,22 +1438,31 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                 <div class="col-md-6 my-3 my-md-0">
                                                     <div class="mt-repeater-spinc tour_field_repeater_sp">
                                                         <h3>Benefits of Booking With Us </h3>
-                                                        <div class="repeater_wrapper" data-repeater-list="booking_benefits_meta">
+                                                        <div class="repeater_wrapper"
+                                                            data-repeater-list="booking_benefits_meta">
                                                             <?php
                                                                $benefits_inc = !empty($iti->booking_benefits_meta) ? unserialize($iti->booking_benefits_meta) : '';
                                                                if (!empty($benefits_inc)) {
                                                                $count_benefit_inc = count($benefits_inc);
                                                                for ($i = 0; $i < $count_benefit_inc; $i++) {        
                                                             ?>
-                                                            <div data-repeater-item class="mt-repeater-spinc-item form-group">
-                                                               <div class="mt-repeater-spinc-cell row mb-3">
-                                                                  <div class="mt-repeater-spinc-input col-md-12 position-relative">
-                                                                     <input type="text" name="benefit_inc" class="form-control" value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) { echo $benefits_inc[$i]["benefit_inc"]; } ?>" />
-                                                                     <div class="mt-repeater-spinc-input">
-                                                                        <a href="javascript:;" title="delete" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i></a>
-                                                                     </div>
-                                                                  </div>
-                                                               </div>
+                                                            <div data-repeater-item
+                                                                class="mt-repeater-spinc-item form-group">
+                                                                <div class="mt-repeater-spinc-cell row mb-3">
+                                                                    <div
+                                                                        class="mt-repeater-spinc-input col-md-12 position-relative">
+                                                                        <input type="text" name="benefit_inc"
+                                                                            class="form-control"
+                                                                            value="<?php if (isset($benefits_inc[$i]["benefit_inc"])) { echo $benefits_inc[$i]["benefit_inc"]; } ?>" />
+                                                                        <div class="mt-repeater-spinc-input">
+                                                                            <a href="javascript:;" title="delete"
+                                                                                data-repeater-delete
+                                                                                class="btn btn-danger mt-repeater-delete delete_repeater">
+                                                                                <i
+                                                                                    class="fa-solid fa-trash-can"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <?php } ?>
                                                             <?php } else {
@@ -1317,17 +1473,25 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                             <div data-repeater-item
                                                                 class="mt-repeater-exc-item form-group row mb-3">
                                                                 <!-- jQuery Repeater Container -->
-                                                               <div class="mt-repeater-exc-input col-md-12 position-relative">
-                                                                  <input type="text" name="benefit_inc" class="form-control" value="<?php echo isset($get_booking_benefits[$i]["benefit_inc"]) ? $get_booking_benefits[$i]["benefit_inc"] : ''; ?>" />
-                                                                  <div class="mt-repeater-exc-input">
-                                                                    <a title="delete" href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i> </a>
-                                                                  </div>
-                                                               </div>
+                                                                <div
+                                                                    class="mt-repeater-exc-input col-md-12 position-relative">
+                                                                    <input type="text" name="benefit_inc"
+                                                                        class="form-control"
+                                                                        value="<?php echo isset($get_booking_benefits[$i]["benefit_inc"]) ? $get_booking_benefits[$i]["benefit_inc"] : ''; ?>" />
+                                                                    <div class="mt-repeater-exc-input">
+                                                                        <a title="delete" href="javascript:;"
+                                                                            data-repeater-delete
+                                                                            class="btn btn-danger mt-repeater-delete delete_repeater">
+                                                                            <i class="fa-solid fa-trash-can"></i> </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <?php } ?>
                                                             <?php } ?>
                                                         </div>
-                                                        <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-spinc-add"> <i class="fa-solid fa-plus"></i></a>
+                                                        <a href="javascript:;" data-repeater-create
+                                                            class="btn btn-primary mt-repeater-spinc-add"> <i
+                                                                class="fa-solid fa-plus"></i></a>
                                                     </div>
                                                 </div>
                                                 <!-- END BENEFITES OF BOOK WITH us -->
@@ -1336,34 +1500,7 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                         <div class="tab-pane removeMargin" id="tab4">
                                             <h3 class="block">Hotel Details</h3>
                                             <div class="mt-repeater-hotel tour_field_repeater">
-                                               <!------------------------------------->
-                                               <div class="tab-pane" id="tab_1_2">
-														<form class="mb-0" role="form" id="recipe_img"
-															enctype="multipart/form-data">
-															<div class="form-group row">
-																<div class="col">
-																	<div id="upload-demo" style="width:400px;">
-																	</div>
-                                                                    <input type="hidden" name="id"  id="cus_id" value = "<?= $iti->customer_id ?>">
-																	<div class="form-group col-md-6">
-                                                                        <label class="control-label">Pdf Image:</label>
-                                                                        <div id="dx" class="dropzone" required>
-                                                                        </div>
-                                                                    </div>
-
-																	<div class="margin-top-10 clearfix">
-																		<span class="label label-danger">NOTE!
-																		</span>
-																		<span>&nbsp; &nbsp; Image size not
-																			bigger then  (779 X
-																			740).</span>
-																	</div>
-																</div>
-															</div>
-														</form>
-														<div id="changePicRes"></div>
-                                                </div>
-                                                <!------------------------------------->
+                                              
                                                 <div data-repeater-list="hotel_meta">
                                                     <?php
                                                 $hotel_meta = isset($iti->hotel_meta) ? unserialize($iti->hotel_meta) : "";
@@ -1460,8 +1597,8 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                         class='mt-repeater-hotel-input standard  form-group col-xl-3 col-sm-6 my-2'>
                                                         <label
                                                             class="control-label"><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
-                                                        <input name="rate_meta[standard_rates]" type="number" <?= $required ?>
-                                                            class='form-control'
+                                                        <input name="rate_meta[standard_rates]" type="number"
+                                                            <?= $required ?> class='form-control'
                                                             value="<?php if (isset($rates_meta["standard_rates"])) echo $rates_meta["standard_rates"]; ?>"></input>
                                                     </div>
                                                     <div
@@ -1470,8 +1607,8 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                             class="control-label"><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
                                                         <input
                                                             value="<?php if (isset($rates_meta["deluxe_rates"])) echo $rates_meta["deluxe_rates"]; ?>"
-                                                            name="rate_meta[deluxe_rates]" <?= $required ?> type="number"
-                                                            class='form-control'></input>
+                                                            name="rate_meta[deluxe_rates]" <?= $required ?>
+                                                            type="number" class='form-control'></input>
                                                     </div>
                                                     <div
                                                         class='mt-repeater-hotel-input super_deluxe form-group col-xl-3 col-sm-6 my-2'>
@@ -1479,8 +1616,8 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                             class="control-label"><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
                                                         <input
                                                             value="<?php if (isset($rates_meta["super_deluxe_rates"])) echo $rates_meta["super_deluxe_rates"]; ?>"
-                                                            name="rate_meta[super_deluxe_rates]" <?= $required ?> type="number"
-                                                            class='form-control'></input>
+                                                            name="rate_meta[super_deluxe_rates]" <?= $required ?>
+                                                            type="number" class='form-control'></input>
                                                     </div>
                                                     <div
                                                         class='mt-repeater-hotel-input luxury form-group col-xl-3 col-sm-6 my-2'>
@@ -1488,8 +1625,8 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
                                                             class="control-label"><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
                                                         <input
                                                             value="<?php if (isset($rates_meta["luxury_rates"]))  echo $rates_meta["luxury_rates"]; ?>"
-                                                            name="rate_meta[luxury_rates]" type="number" <?= $required ?>
-                                                            class='form-control'></input>
+                                                            name="rate_meta[luxury_rates]" type="number"
+                                                            <?= $required ?> class='form-control'></input>
                                                     </div>
                                                     <?php
                                           //get per person price
@@ -1789,6 +1926,160 @@ ul.attachments {flex: 0 0 25%;display: flex;flex-wrap: wrap;width: 100%;list-sty
         </div>
     </div>
 </div>
+</div>
+<div class="modal" id="featuredImg">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <!-- <h4 class="modal-title">Modal Heading</h4> -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#imgUpload">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#imgLibrary">Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#searchImg">Search</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="imgUpload" class="container tab-pane active"><br>
+                        <h3>Upload</h3>
+                        <div>
+
+                            <form class="mb-0" role="form" id="changePic" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <div id="upload-demo" style="width:400px;">
+                                        </div>
+                                        <div class="file-drop-area">
+                                            <span class="fake-btn">Choose files</span>
+                                            <span class="file-msg">or drag and drop files here</span>
+                                            <input class="file-input" type="file" id="profile_pic" multiple>
+                                        </div>
+                                        <div class="margin-top-10 clearfix">
+                                            <span class="label label-danger">NOTE!
+                                            </span>
+                                            <span>&nbsp; &nbsp; Image size not
+                                                bigger then 1 MB and size (779 X
+                                                                        740).</span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail" style="width: 350px; height: 200px;">
+                                                <img alt="" class="img-responsive"
+                                                    src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="margin-top-10 clearfix"></div>
+                                <hr>
+                                <div class="margin-top-10">
+                                    <input type="hidden" id="avatar_user_id" name="user_id"
+                                        value="<?php echo $u_data->user_id;?>" />
+                                    <button type="submit" class="btn green uppercase upload-result">Update
+                                        Profile</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="imgLibrary" class="container tab-pane fade"><br>
+                        <h3>Library </h3>
+
+                        <ul class="attachments">
+                            <li>
+
+                                <div class="thumbnail">
+
+                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Tips-to-enhance-Website-visibility--300x201.jpg"
+                                        class="img-responsive img-thumbnail">
+
+                                </div>
+
+                            </li>
+                            <li>
+
+                                <div class="thumbnail">
+
+                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Play-Keywords-Smartly-300x201.jpg"
+                                        class="img-responsive img-thumbnail">
+
+                                </div>
+
+
+                            </li>
+                            <li>
+
+                                <div class="thumbnail">
+
+                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Content-is-the-King-300x214.jpg"
+                                        draggable class="img-responsive img-thumbnail">
+
+                                </div>
+                            </li>
+                            <li>
+
+                                <div class="thumbnail">
+
+                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Mobile-friendly-Website-300x201.jpg"
+                                        draggable class="img-responsive img-thumbnail">
+                                </div>
+                            </li>
+                            <li>
+
+                                <div class="thumbnail">
+
+                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Sitemap-to-Increase-Visibility-300x201.jpg"
+                                        draggable class="img-responsive img-thumbnail">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="attachment-preview js--select-attachment type-image subtype-png landscape">
+                                    <div class="thumbnail">
+
+                                        <img src="https://www.eligocs.com/wp-content/uploads/2021/11/Bell-Alarm_1.png"
+                                            draggable class="img-responsive img-thumbnail">
+                                    </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <div id="searchImg" class="container tab-pane fade"><br>
+                        <h3>Search</h3>
+                        <form action="/action_page.php">
+                            <div class="mb-3 mt-3">
+                                <label for="search">Search:</label>
+                                <input type="search" class="form-control" id="ImgSearch"
+                                    placeholder="Search uploaded Images" name="imgsearch">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
 $(document).on("click",
@@ -2390,210 +2681,194 @@ jQuery(document).ready(function($) {
 
 });
 
-        Dropzone.autoDiscover = false;
-        var uploadedDocumentMap = {};
-        window.onload = function() {
-            //var drop = $('#dz-preview-template').html();
 
-             var dropzoneOptions = {
-                items: '.dz-preview',
-                cursor: 'move',
-                opacity: 0.5,
-                containment: "parent",
-                distance: 20,
-                tolerance: 'pointer',
-                update: function(e, ui) {
-                    // do what you want
+var $fileInput = $('.file-input');
+var $droparea = $('.file-drop-area');
+
+// highlight drag area
+$fileInput.on('dragenter focus click', function() {
+    $droparea.addClass('is-active');
+});
+
+// back to normal state
+$fileInput.on('dragleave blur drop', function() {
+    $droparea.removeClass('is-active');
+});
+
+// change inner text
+$fileInput.on('change', function() {
+    var filesCount = $(this)[0].files.length;
+    var $textContainer = $(this).prev();
+
+    if (filesCount === 1) {
+        // if single file is selected, show file name
+        var fileName = $(this).val().split('\\').pop();
+        $textContainer.text(fileName);
+    } else {
+        // otherwise show number of files
+        $textContainer.text(filesCount + ' files selected');
+    }
+});
+
+
+/* Dropzone.autoDiscover = false;
+ var uploadedDocumentMap = {};
+ window.onload = function() {
+     //var drop = $('#dz-preview-template').html();
+
+      var dropzoneOptions = {
+         items: '.dz-preview',
+         cursor: 'move',
+         opacity: 0.5,
+         containment: "parent",
+         distance: 20,
+         tolerance: 'pointer',
+         update: function(e, ui) {
+             // do what you want
+         },
+         dictDefaultMessage: 'Select Only one Recipe Images And Not More Than 2 MB',
+         paramName: "file",
+         maxFilesize: 2, // MB
+         maxFiles: 1,
+         addRemoveLinks: true,
+         acceptedFiles: ".jpeg,.jpg,.png,.gif",
+
+         //previewsContainer: '.visualizacao',
+         //
+         //previewTemplate: '<div class="dz-preview dz-file-preview"> <div class="row"> <div class="col-md-4"> <div class="dz-image"> <img //data-dz-thumbnail/> </div></div><div class="col-md-8"> <textarea class="form-control des" row="3" ></textarea></div></div>',
+         thumbnail: function(file, dataUrl) {
+             if (file.previewElement) {
+                 file.previewElement.classList.remove("dz-file-preview");
+                 var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+                 for (var i = 0; i < images.length; i++) {
+                     var thumbnailElement = images[i];
+                     thumbnailElement.alt = file.name;
+                     thumbnailElement.src = dataUrl;
+                 }
+                 setTimeout(function() {
+                     file.previewElement.classList.add("dz-image-preview");
+                 }, 1);
+             }
+         },
+         // url: "<?php echo base_url('homepage/do_upload'); ?>",
+         
+         init: function() {
+
+             this.on("addedfile", function() {
+                 //Do something before the file gets processed.
+             })
+             this.on("sending", function(file, xhr, formData){
+                 //Do something when the file gets processed.
+                 //This is a good time to append additional information to the formData. It's where I add tags to make the image searchable.
+                 formData.append('cus_id', $("#cus_id").val())
+             }),
+             this.on("success", function(file, res) {
+                 if( res.status == false){
+                 alert(res.msg);
+                }else{
+                 alert(res.msg);
+                }
+                 //Do something after the file has been successfully processed e.g. remove classes and make things go back to normal. 
+             }),
+             this.on("error", function(file, errorMessage, xhr) {
+                 //Do something if there is an error.
+                 //This is where I like to alert to the user what the error was and reload the page after. 
+                 alert(errorMessage);
+
+             })
+             // this.on("success", function(file, res){
+             //    if( res.status == false){
+             //     alert(res.msg);
+             //    }else{
+             //     alert(res.msg);
+             //    }
+
+             //      $('#recipe_img').append('<input type="hidden" name="images" value="' + file.name + '">');
+             //     uploadedDocumentMap[file.name] = file.name
+
+
+             //     $(file.previewTemplate).find('.des').attr('data-id', res.id);
+             // });
+             this.on("error", function(file, data) {
+               
+             });
+
+         }
+     };
+
+     var dropzone = new Dropzone('#profile_pic', dropzoneOptions);
+
+     dropzone.removeAllFiles();
+     
+     dropzone.processQueue();
+ }*/
+
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 339,
+        height: 370,
+        type: 'rectangle'
+    },
+    boundary: {
+        width: 450,
+        height: 400,
+    }
+});
+
+$('#profile_pic').on('change', function() {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function() {
+            console.log('jQuery bind complete');
+        });
+
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+
+$('.upload-result').on('click', function(ev) {
+    ev.preventDefault();
+    var id = $("#cus_id").val()
+    // var res = $("#changePicRes");
+    // if ($('#profile_pic').val() == '') {
+    //     res.html(
+    //         '<div class="alert alert-danger"><strong>Error! </strong>Please Select the file! </div>'
+    //     );
+    // } else {
+        $uploadCrop.croppie('result', {
+            type: 'canvas',
+            size: { width: 779, height: 740 }
+        }).then(function(resp) {
+            $.ajax({
+                url: "<?php echo base_url('homepage/do_upload'); ?>",
+                type: "POST",
+                data: {
+                    "pdf_img": resp,
+                    'cus_id': id
                 },
-                dictDefaultMessage: 'Select Only one Recipe Images And Not More Than 2 MB',
-                paramName: "file",
-                maxFilesize: 2, // MB
-                maxFiles: 1,
-                addRemoveLinks: true,
-                acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                success: function(data) {
+                    if (data == "success") {
 
-                //previewsContainer: '.visualizacao',
-                //
-                //previewTemplate: '<div class="dz-preview dz-file-preview"> <div class="row"> <div class="col-md-4"> <div class="dz-image"> <img //data-dz-thumbnail/> </div></div><div class="col-md-8"> <textarea class="form-control des" row="3" ></textarea></div></div>',
-                thumbnail: function(file, dataUrl) {
-                    if (file.previewElement) {
-                        file.previewElement.classList.remove("dz-file-preview");
-                        var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
-                        for (var i = 0; i < images.length; i++) {
-                            var thumbnailElement = images[i];
-                            thumbnailElement.alt = file.name;
-                            thumbnailElement.src = dataUrl;
-                        }
-                        setTimeout(function() {
-                            file.previewElement.classList.add("dz-image-preview");
-                        }, 1);
+                    
+                    } else {
+                        
                     }
                 },
-                url: "<?php echo base_url('homepage/do_upload'); ?>",
-                
-                init: function() {
-
-                    this.on("addedfile", function() {
-                        //Do something before the file gets processed.
-                    })
-                    this.on("sending", function(file, xhr, formData){
-                        //Do something when the file gets processed.
-                        //This is a good time to append additional information to the formData. It's where I add tags to make the image searchable.
-                        formData.append('cus_id', $("#cus_id").val())
-                    }),
-                    this.on("success", function(file, res) {
-                        if( res.status == false){
-                        alert(res.msg);
-                       }else{
-                        alert(res.msg);
-                       }
-                        //Do something after the file has been successfully processed e.g. remove classes and make things go back to normal. 
-                    }),
-                    this.on("error", function(file, errorMessage, xhr) {
-                        //Do something if there is an error.
-                        //This is where I like to alert to the user what the error was and reload the page after. 
-                        alert(errorMessage);
-
-                    })
-                    // this.on("success", function(file, res){
-                    //    if( res.status == false){
-                    //     alert(res.msg);
-                    //    }else{
-                    //     alert(res.msg);
-                    //    }
-
-                    //      $('#recipe_img').append('<input type="hidden" name="images" value="' + file.name + '">');
-                    //     uploadedDocumentMap[file.name] = file.name
-
-
-                    //     $(file.previewTemplate).find('.des').attr('data-id', res.id);
-                    // });
-                    this.on("error", function(file, data) {
-                      
-                    });
-
+                error: function(e) {
+                    //console.log(e);
+                    res.html(
+                        '<div class="alert alert-danger"><strong>Error!</strong>Please Try again later! </div>'
+                    );
                 }
-            };
-
-            var dropzone = new Dropzone('#dx', dropzoneOptions);
-
-            dropzone.removeAllFiles();
-            
-            dropzone.processQueue();
-        }
-
+            });
+        });
+    // }
+});
 </script>
 <?php } else {
    redirect("itineraries");
    } ?>
-
-
-
-<div class="modal" id="featuredImg">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <!-- <h4 class="modal-title">Modal Heading</h4> -->
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-      <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="tab" href="#imgUpload">Upload</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#imgLibrary">Library</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="tab" href="#searchImg">Search</a>
-    </li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div id="imgUpload" class="container tab-pane active"><br>
-      <h3>Upload</h3>
-      <div>Drag and Drop Image here....</div>
-    </div>
-    <div id="imgLibrary" class="container tab-pane fade"><br>
-      <h3>Library </h3>
-      
-    <ul class="attachments">
-        <li>
-            
-                <div class="thumbnail">
-                 
-                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Tips-to-enhance-Website-visibility--300x201.jpg"  class="img-responsive img-thumbnail">
-                   
-                </div>
-        
-        </li>
-        <li>
-            
-                <div class="thumbnail">
-          
-                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Play-Keywords-Smartly-300x201.jpg"  class="img-responsive img-thumbnail" >
-             
-                </div>
- 
-            
-        </li>
-        <li>
-            
-                <div class="thumbnail">
-                
-                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Content-is-the-King-300x214.jpg" draggable class="img-responsive img-thumbnail">
-      
-            </div>
-        </li>
-        <li>
-            
-                <div class="thumbnail">
-                    
-                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Mobile-friendly-Website-300x201.jpg" draggable class="img-responsive img-thumbnail">
-            </div>
-        </li>
-        <li >
-            
-                <div class="thumbnail">
-                
-                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Sitemap-to-Increase-Visibility-300x201.jpg" draggable class="img-responsive img-thumbnail">
-            </div>
-        </li>
-        <li>
-            <div class="attachment-preview js--select-attachment type-image subtype-png landscape">
-                <div class="thumbnail">
-            
-                    <img src="https://www.eligocs.com/wp-content/uploads/2021/11/Bell-Alarm_1.png" draggable class="img-responsive img-thumbnail">
-            </div>
-        </li>
-        
-    </ul>
-    </div>
-
-
-    <div id="searchImg" class="container tab-pane fade"><br>
-      <h3>Search</h3>
-        <form action="/action_page.php">
-            <div class="mb-3 mt-3">
-            <label for="search">Search:</label>
-            <input type="search" class="form-control" id="ImgSearch" placeholder="Search uploaded Images" name="imgsearch">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-  </div>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
