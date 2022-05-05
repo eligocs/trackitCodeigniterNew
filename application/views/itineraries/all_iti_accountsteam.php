@@ -19,10 +19,15 @@
                     <i class="fa-solid fa-book"></i> All Booked Itineraries
                     </div>
 
+                    <!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2" title="Filter" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-4 p-3 shado-sm mb-4">
+            <!-- Begin filter_collapse -->
+            <div class="bg-white rounded-4 p-3 shado-sm mb-4 collapse" id="filter_collapse">
                 <div class="row">
                     <?php
                         $hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
@@ -34,7 +39,7 @@
                             $last_day_this_month  = "";
                         }
                     ?>
-                    <!--start filter section-->
+                    <!--start filter form-->
                     <form id="form-filter" class="form-horizontal mb-0 <?php echo $hideClass; ?>">
                         <div class="actions">
                             <div class="row">
@@ -75,9 +80,11 @@
                             </div>
                         </div>
                     </form>
-                    <!--End filter section-->
+                    <!--End filter form-->
                 </div>
             </div>
+            <!-- End filter_collapse -->
+            
             <!-- Begin Portlet-body -->
             <div class="portlet-body">
                 <div class="bg-white p-3 rounded-4 shadow-sm">
@@ -135,7 +142,6 @@
 </div>
 <!-- End page-container -->
 
-</div>
 
 <style>
 .yellow_row {

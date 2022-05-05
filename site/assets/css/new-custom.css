@@ -1,3 +1,43 @@
+:root {
+	--primary-color: #377dff;
+	--secondary-color: #e53270;
+	--green-color: #4bd800;
+}
+
+
+/** layout.min.css **/
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-family: 'Inter', sans-serif;
+}
+
+
+body.default:before {
+	content: " ";
+	background: #5e72e4;
+	z-index: 1;
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(332deg, #ffffff 50%, #5e72e4 50%);
+	/* background-image: linear-gradient(332deg, #1a1a1a 50%, #5e72e4 50%); */
+}
+
+
+body {
+	font-size: 10px;
+}
+
+
 /* -------------------- */
 /*---- utility Css ---- */
 /* -------------------- */
@@ -32,11 +72,11 @@ a {
 
 /* Font Weight */
 
-.fw-400{
+.fw-400 {
 	font-weight: 400;
 }
 
-.fw-500{
+.fw-500 {
 	font-weight: 500;
 }
 
@@ -63,18 +103,15 @@ a {
 }
 
 .page-common-header .page-header.navbar-fixed-top {
-	position: fixed;
-	top: 0;
-	background: #eff5ff !important;
+	/* position: fixed;
+	top: 0; */
+	background: transparent !important;
 }
 
 .navbar .header_target_section {
 	display: block
 }
 
-.page-header.navbar .page-logo {
-	left: 8px;
-}
 
 .page-header-inner .menu-toggler.sidebar-toggler {
 	background: transparent;
@@ -85,13 +122,49 @@ a {
 	margin: 0;
 }
 
-.page-header-inner>* {
-	display: block;
-}
 
 .header_target_section .progress {
 	width: 280px;
 }
+
+.header_target_section .progress {
+	line-height: 15px;
+	font-size: 10px;
+	font-weight: 600;
+	background: #ff5722;
+	position: relative;
+}
+
+span.target {
+	position: absolute;
+	top: 50%;
+	/* right: 10px; */
+	margin: auto;
+	text-align: center;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 500;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-top: -1px;
+	width: 100%;
+}
+
+
+.logo-top {
+	margin-top: 5px;
+	max-width: 150px;
+}
+
+
+.dropdown-menu>li>a {
+	padding: 8px 16px;
+	color: #6f6f6f;
+	display: block;
+	font-weight: 300;
+	font-size: 14px;
+}
+
 
 
 /* dropdown-user */
@@ -103,10 +176,62 @@ a {
 }
 
 
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-user>.dropdown-menu {
+	min-width: 138px;
+}
+
+
+
 .page-header.navbar.navbar-fixed-top,
 .page-header.navbar.navbar-static-top {
 	z-index: 10;
 }
+
+
+.header_right_part {
+	background: #eff5ff;
+	width: calc(100% - 275px);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+	padding: 0 15px;
+	margin-right: 10px;
+}
+
+.page-header-inner {
+	flex: 0 0 240px;
+	height: 50px;
+}
+
+.page-sidebar-closed .page-header-inner {
+	flex: 0 0 74px !important;
+	overflow: hidden;
+}
+
+.page-sidebar-closed .page-header-inner .page-logo {
+	width: 63px;
+}
+
+.page-sidebar-closed .page-logo>a {
+	display: none;
+}
+
+.page-sidebar-closed .header_right_part {
+	width: calc(100% - 96px);
+}
+
+.page-header-inner .page-logo {
+	width: 238px;
+	padding-left: 20px;
+	left: 8px;
+	background: #ffffff;
+	height: 50px;
+	position: fixed;
+}
+
+/* --- ENd page-common-header */
+
 
 
 /* --------------------------- */
@@ -114,8 +239,10 @@ a {
 /* --------------------------- */
 
 .main_page_container {
-	margin-top: 50px;
-	padding-top: 10px;
+	/* margin-top: 50px;
+	padding-top: 10px; */
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 
@@ -128,8 +255,14 @@ a {
 	width: 220px;
 }
 
-.collapse:not(.show) {
-	display: block;
+.page-header.navbar .menu-toggler.sidebar-toggler {
+	/* float: right; */
+	/* margin: 19px 0 0 */
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 14px;
+	cursor: pointer;
 }
 
 
@@ -311,6 +444,7 @@ select.form-control:required:invalid {
 	background: aliceblue;
 	padding: 20px;
 }
+
 /* ------------------------------ */
 /* End Forms (lables and inputs) */
 /* ------------------------------ */
@@ -383,6 +517,7 @@ select.form-control:required:invalid {
 	left: 268px;
 	margin-top: 11px;
 }
+
 /* ------------------------ */
 /* --- End  page-footer --- */
 /* ------------------------ */
@@ -490,4 +625,5 @@ select.form-control:required:invalid {
 
 /* -------------------------------------- */
 /*------- Media Query Css End -------- */
+
 /* -------------------------------------- */

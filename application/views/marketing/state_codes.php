@@ -1,4 +1,6 @@
+<!-- Begin page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<!-- BEGIN SAMPLE TABLE PORTLET-->
@@ -10,11 +12,16 @@
 					<div class="caption">
 						<i class="fa fa-building"></i>All State/city
 					</div>
+					
+					<!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2" title="Filter codes by state/city" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
 				</div>
 			</div>	
 			
-			<!--Filter-->
-			<div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4">
+			<!--Begin filter_collapse-->
+			<div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
 				<form class="mb-0" role="form" id="filter_frm" method="post">
 					<div class="row">
 						<div class="col-md-6 my-2">
@@ -43,8 +50,9 @@
 				</form>	
 				<div class="res"></div>
 			</div>
-			<!--End Filter-->
-			
+			<!--End filter_collapse-->
+
+			<!-- Begin portlet-body / data-table -->
 			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table id="packageslist" class="table table-striped display">
@@ -75,11 +83,12 @@
 					</table>
 				</div>
 			</div>
+			<!-- End portlet-body / data-table -->
 		</div>
 	</div>
 </div>
-<!-- END CONTENT BODY -->
-</div>
+<!-- End page-container -->
+
 
 <div id="myModal" class="modal" role="dialog"></div>
 <script type="text/javascript">

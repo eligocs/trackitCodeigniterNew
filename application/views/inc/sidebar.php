@@ -1,6 +1,9 @@
  <!-- BEGIN SIDEBAR -->
  <div class="page-sidebar-wrapper">
      <div class="page-sidebar navbar-collapse collapse">
+
+
+     
          <?php 
             /* Get User role admin = 99, manager = 98, sales team = 97, service team = 96 */
             $role = get_user_role(); ?>

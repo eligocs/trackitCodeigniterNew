@@ -1,6 +1,9 @@
 <?php $todAy = date("Y-m-d"); ?>
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
@@ -27,10 +30,10 @@
                     <?php } ?>
                 </div>
             </div>
-            
-            <div class="portlet-body custom_card">
+            <!-- Begin portlet-body -->
+            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <?php if( is_admin_or_manager() ){ ?>
-                <div class="row clearfix">
+                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="sales_user_id">Select Sales Team User:</label>
@@ -53,7 +56,7 @@
                 </div>
                 <?php }else if( is_teamleader() ){
 				$team_members = is_teamleader(); ?>
-                <div class="row clearfix">
+                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="sales_user_id">Select Team Member:</label>
@@ -121,77 +124,77 @@
                     </table>
                 </div>
             </div>
+            <!-- End portlet-body -->
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
-</div>
-<style>
-/* .yellow_row {
-    background-color: yellow !important;
-} */
+<!-- End page-container -->
 
-.hold_row {
-    background-color: pink !important;
-}
+<style>
+    .hold_row {
+        background-color: pink !important;
+    }
+
+    #editModal,
+    #duplicatePakcageModal {
+        top: 20%;
+    }
 </style>
 
 <div id="myModal" class="modal" role="dialog"></div>
-<style>
-#editModal,
-#duplicatePakcageModal {
-    top: 20%;
-}
-</style>
+
 <script type="text/javascript">
-//update iti del status
-jQuery(document).ready(function($) {
-    $(document).on("click", ".ajax_delete_iti", function() {
-        var id = $(this).attr("data-id");
-        if (confirm("Are you sure?")) {
-            $.ajax({
-                url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_delete_iti?id=" + id,
-                type: "GET",
-                data: id,
-                dataType: 'json',
-                cache: false,
-                success: function(r) {
-                    if (r.status = true) {
-                        location.reload();
-                        //console.log("ok" + r.msg);
-                        //console.log(r.msg);
-                    } else {
-                        alert("Error! Please try again.");
+    //update iti del status
+    jQuery(document).ready(function($) {
+        $(document).on("click", ".ajax_delete_iti", function() {
+            var id = $(this).attr("data-id");
+            if (confirm("Are you sure?")) {
+                $.ajax({
+                    url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_delete_iti?id=" + id,
+                    type: "GET",
+                    data: id,
+                    dataType: 'json',
+                    cache: false,
+                    success: function(r) {
+                        if (r.status = true) {
+                            location.reload();
+                            //console.log("ok" + r.msg);
+                            //console.log(r.msg);
+                        } else {
+                            alert("Error! Please try again.");
+                        }
                     }
-                }
-            });
-        }
-    });
-    //delete permanently Draft Itineraries
-    $(document).on("click", ".delete_iti_permanent", function() {
-        var id = $(this).attr("data-id");
-        if (confirm("Are you sure?")) {
-            $.ajax({
-                url: "<?php echo base_url(); ?>" + "itineraries/delete_iti_permanently?id=" +
-                    id,
-                type: "GET",
-                data: id,
-                dataType: 'json',
-                cache: false,
-                success: function(r) {
-                    if (r.status = true) {
-                        location.reload();
-                        //console.log("ok" + r.msg);
-                        //console.log(r.msg);
-                    } else {
-                        alert("Error! Please try again.");
+                });
+            }
+        });
+        //delete permanently Draft Itineraries
+        $(document).on("click", ".delete_iti_permanent", function() {
+            var id = $(this).attr("data-id");
+            if (confirm("Are you sure?")) {
+                $.ajax({
+                    url: "<?php echo base_url(); ?>" + "itineraries/delete_iti_permanently?id=" +
+                        id,
+                    type: "GET",
+                    data: id,
+                    dataType: 'json',
+                    cache: false,
+                    success: function(r) {
+                        if (r.status = true) {
+                            location.reload();
+                            //console.log("ok" + r.msg);
+                            //console.log(r.msg);
+                        } else {
+                            alert("Error! Please try again.");
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
+        });
     });
-});
 </script>
+
 <script type="text/javascript">
 var table;
 $(document).ready(function() {

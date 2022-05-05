@@ -21,16 +21,21 @@
                     $hideClass = "";
                 }
             ?>
-            <div class="portlet box blue" style="margin-bottom:0;">
+            <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                    <i class="fa-solid fa-money-check-dollar"></i> All Payments
+                        <i class="fa-solid fa-money-check-dollar"></i> All Payments
                     </div>
+
+                    <!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2" title="Filter Payments" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                <!--start filter form-->
+            <!--start filter form-->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                 <form id="form-filter" class="form-horizontal mb-0 <?php echo $hideClass; ?>">
                     <div class="actions">
                         <div class="row">
@@ -70,8 +75,9 @@
                         </div>
                     </div>
                 </form>
-                <!--End filter form-->
             </div>
+            <!--End filter form-->
+
             <!-- Begin portlet-body -->
             <div class="portlet-body">
                 <div class="bg-white rounded-4 p-3 shadow-sm">

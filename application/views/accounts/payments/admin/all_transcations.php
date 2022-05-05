@@ -1,7 +1,9 @@
+<!-- Begin page-container -->
 <div class="page-container">
+   <!-- Begin page-content-wrapper -->
    <div class="page-content-wrapper">
+      <!-- Begin page-content -->
       <div class="page-content">
-         <!-- BEGIN SAMPLE TABLE PORTLET-->
          <?php $message = $this->session->flashdata('success'); 
             if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
             ?>
@@ -11,11 +13,16 @@
                   <i class="fa fa-inr"></i>All Online Transactions
                </div>
                <a class="btn btn-primary float-end" href="<?php echo site_url("accounts/create_payment_link"); ?>" title="All Invoice"><i class="fa-solid fa-plus"></i> Create Payment Link</a>
+               <!-- Show hide filter button -->
+               <button  class="btn float-end me-2 p-2" title="Filter Online Transactions" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+               </button>
             </div>
          </div>
+         <!-- Begin Portlet-body -->
          <div class="portlet-body">
             <!--start filter section-->
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                <form id="form-filter" class="form-horizontals mb-0">
                   <div class="actions custom_filter">
                      <div class="row">
@@ -56,6 +63,7 @@
                </form>
             </div>
             <!--End filter section-->	
+            <!-- Begin data-table Section -->
             <div class="bg-white p-3 rounded-4 shadow-sm">
                <div class="table-responsive">
                   <table class="table table-striped display">
@@ -80,11 +88,16 @@
                   </table>
                </div>
             </div>
+            <!-- End data-table Section -->
          </div>
+         <!-- End Portlet-body -->
       </div>
+      <!-- End page-content -->
    </div>
-   <!-- END CONTENT BODY -->
+   <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
 <!-- Modal -->
 <script type="text/javascript">
    jQuery(document).ready(function($){

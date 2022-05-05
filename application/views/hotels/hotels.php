@@ -1,30 +1,35 @@
+<!-- Begin page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
+		<!-- Begin page-content -->
 		<div class="page-content">
 		 <!-- BEGIN SAMPLE TABLE PORTLET-->
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption"> <i class="fa-solid fa-hotel"></i> All Hotels </div>
 					<a class="btn btn-primary float-end" href="<?php echo site_url("hotels/add"); ?>" title="add hotel"><i class="fa-solid fa-plus"></i> Add Hotel</a>
+					
+					<!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2" title="Filter" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
 				</div>
 			</div>	
 			<!--Show success message if hotel edit/add -->
 			<?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
-			<?php 
-				//dump(hotel_categories());
-				//dump(get_indian_state_list());
-			?>
+			<!-- Begin portlet-body -->
 			<div class="portlet-body">
-				<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-					<!--start filter section-->
+				<!-- Begin filter_collapse -->
+				<div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
 					<form id="form-filter" class="form-horizontal mb-0">
 						<div class="actions custom_filter form-inline">
 							<!--strong>Filter: </strong-->
 							<div class="row" data-toggle="buttons">
 								<!--label class="control-label">Select State*</label-->
-								<div class="col-md-3">
+								<div class="col-md-3 my-2">
 									<select title="Select State" data-toggle="tooltip" required name="state" class="form-control state">
 										<option value="">Choose state</option>
 										<?php $states = get_indian_state_list();
@@ -37,13 +42,13 @@
 									</select>
 								</div>
 								<!--label class="control-label">Select City*</label-->
-								<div class="col-md-3">
+								<div class="col-md-3 my-2">
 									<select required title="Select City." data-toggle="tooltip" name="city" class="form-control city">
 										<option value="">Select City</option>
 									</select>
 								</div>
 								<!--label class="control-label">Select Hotel Category*</label-->
-								<div class="col-md-3">
+								<div class="col-md-3 my-2">
 									<select required title="Select Hotel Category"  name="hotel_cat" class="form-control hotel_cat">
 										<option value="all">All category</option>
 										<?php $h_category = hotel_categories();
@@ -56,7 +61,7 @@
 									</select>
 								</div>
 								<!--End-->
-								<div class="col-md-3">
+								<div class="col-md-3 my-2">
 									<input type="hidden" id="city_id" value="" />
 									<input type="hidden" id="hotel_cat" value="all" />
 									<input type="submit" class="btn btn-success" value="Filter">
@@ -64,8 +69,11 @@
 								</div>
 							</div>	
 						</div>
-					</form><!--End filter section-->
+					</form>
 				</div> 
+				<!-- End filter_collapse -->
+
+				<!-- Begin data-table section -->
 				<div class="table-responsive bg-white p-3 rounded-4 shadow-sm">
 					<table id="hotels" class="table table-striped display white_space_fix">
 						<thead>
@@ -87,9 +95,13 @@
 						</tbody>
 					</table>
 				</div>
+				<!-- End data-table section -->
 			</div>
+			<!-- End portlet-body -->
 		</div>
+		<!-- End page-content -->
 	</div>
+	<!-- End page-content-wrapper -->
 </div>
 <!-- END page-container -->
 

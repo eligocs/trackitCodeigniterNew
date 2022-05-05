@@ -1,5 +1,8 @@
+<!-- Begin page-container -->
 <div class="page-container">
+   <!-- Begin page-content-wrapper -->
    <div class="page-content-wrapper">
+      <!-- Begin page-content -->
       <div class="page-content">
          <!-- BEGIN SAMPLE TABLE PORTLET-->
          <div class="portlet box blue">
@@ -8,6 +11,11 @@
                   <i class="fa-solid fa-users"></i> All Reference Customers
                </div>
                <a class="btn btn-primary float-end" href="<?php echo site_url("Reference_customers/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add Reference Customer</a>
+               
+               <!-- Show hide filter button -->
+               <button  class="btn float-end me-2 p-2" title="Filter Refrence Customers" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                  <i class="fa-solid fa-filter fs-5"></i>
+               </button>
             </div>
          </div>
          <!--Show success message if hotel edit/add -->
@@ -17,8 +25,8 @@
          <?php $eerr = $this->session->flashdata('error'); 
             if($eerr){ echo '<span class="help-block help-block-success"><span class="red">'.$eerr.'</span></span>'; }
             ?>
-         <!--Filter-->
-         <div class="cat_wise_filter bg-white cat_wise_filter p-3 rounded-4 shadow-sm mb-4">
+         <!--Begin filter_collapse-->
+         <div class="cat_wise_filter bg-white cat_wise_filter p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
             <form class="mb-0" role="form" id="filter_frm" method="post">
                <div class="row">
                   <div class="col-md-4 my-2">
@@ -46,7 +54,8 @@
             </form>
             <div class="res"></div>
          </div>
-         <!--End Filter-->
+         <!--End filter_collapse-->
+
          <div class="filter_city_list"></div>
          <!--city filter-->
          <div class="loader"></div>
@@ -99,10 +108,12 @@
             </div>
          </div>
       </div>
+      <!-- End page-content -->
    </div>
+   <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
-</div>
+<!-- End page-container -->
+
 <style>
    .city_filter .btn:hover {
    background-color: #32c5d2 !important;
@@ -111,6 +122,7 @@
    background-color: #32c5d2 !important;
    }
 </style>
+
 <script type="text/javascript">
    jQuery(document).ready(function($){
    $(document).on("click", ".ajax_delete_user",function(){

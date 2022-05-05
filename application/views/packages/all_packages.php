@@ -1,91 +1,103 @@
+<!-- Begin page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
    <div class="page-content-wrapper">
-      <div class="page-content">
-         <!-- BEGIN SAMPLE TABLE PORTLET-->
-         <?php $message = $this->session->flashdata('success'); 
-            if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-            ?>
-         <div class="portlet box blue">
-            <div class="portlet-title">
-               <div class="caption">
-                  <i class="fa fa-users"></i>All Packages
-               </div>
-               <a class="btn btn-primary float-end" href="<?php echo site_url("packages/add"); ?>" title="Add Package"><i class="fa-solid fa-plus"></i> Add Package</a>
-            </div>
-         </div>
-         <!--Filter-->
-         <div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm">
-            <form class="mb-0" role="form" id="filter_frm" method="post">
-				<div class="row">
-					<div class="col-md-6 col-lg-4 col-sm-6 my-2">
-						<label class="control-label">State</label>
-						<div class="form-group">
-							<select name='state' class='form-control' id='stateID'>
-								<option value="">All States</option>
-								<?php $state_list = get_indian_state_list(); 
-								if( $state_list ){
-									foreach($state_list as $state){
-										echo '<option value="'.$state->id.'">'.$state->name.'</option>';
-									}
-								} ?>
-							</select>
-						</div>
+	   <!-- Begin page-content -->
+      	<div class="page-content">
+			<!-- BEGIN SAMPLE TABLE PORTLET-->
+			<?php $message = $this->session->flashdata('success'); 
+				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+			?>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-users"></i>All Packages
 					</div>
-					<div class="col-md-6 col-lg-4 col-sm-6 my-2">
-						<label class="control-label">Package Category </label>
-						<div class="form-group">
-							<select name="p_cat_id" id="cat_id" class="form-control">
-								<option value="">All Package Category</option>
-								<?php 
-								$cats = get_package_categories();
-								if( $cats ){
-								foreach($cats as $cat){
-									echo '<option value = "'.$cat->p_cat_id .'" >'.$cat->package_cat_name.'</option>';
-									}
-								}
-								?>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-12 col-lg-4 my-2">
-						<label class="control-label d-none d-lg-block" for="">&nbsp;</label>
-						<button type="submit" class="btn btn-success uppercase add_user"><i class="fa-solid fa-filter"></i> Filter</button>
-						<a href="javascript:void(0);" class="btn btn-success uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
-					</div>
-			   </div>
-            </form>
-            <div class="res"></div>
-         </div>
+				    <a class="btn btn-primary float-end" href="<?php echo site_url("packages/add"); ?>" title="Add Package"><i class="fa-solid fa-plus"></i> Add Package</a>
 
-         <hr>
-
-		 <div class="bg-white p-3 rounded-4 shadow-sm">
-			<div class="table-responsive">
-				<table id="packages" class="table table-striped display">
-					<thead>
-						<tr>
-							<th> # </th>
-							<th> Package ID </th>
-							<th> Package Name </th>
-							<th> State </th>
-							<th> Category </th>
-							<th> Publish Status</th>
-							<th> Package Created</th>
-							<th> Action </th>
-						</tr>
-					</thead>
-					<tbody>
-						<div class="loader"></div>
-						<div id="res"></div>
-						<!--DataTable Goes here-->
-					</tbody>
-				</table>
+					<!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2 " title="Filter Packages" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
+				</div>
 			</div>
-		 </div>
+
+			<!--Begin filter section-->
+			<div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
+				<form class="mb-0" role="form" id="filter_frm" method="post">
+					<div class="row">
+						<div class="col-md-6 col-lg-4 col-sm-6 my-2">
+							<label class="control-label">State</label>
+							<div class="form-group">
+								<select name='state' class='form-control' id='stateID'>
+									<option value="">All States</option>
+									<?php $state_list = get_indian_state_list(); 
+									if( $state_list ){
+										foreach($state_list as $state){
+											echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+										}
+									} ?>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4 col-sm-6 my-2">
+							<label class="control-label">Package Category </label>
+							<div class="form-group">
+								<select name="p_cat_id" id="cat_id" class="form-control">
+									<option value="">All Package Category</option>
+									<?php 
+									$cats = get_package_categories();
+									if( $cats ){
+									foreach($cats as $cat){
+										echo '<option value = "'.$cat->p_cat_id .'" >'.$cat->package_cat_name.'</option>';
+										}
+									}
+									?>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12 col-lg-4 my-2">
+							<label class="control-label d-none d-lg-block" for="">&nbsp;</label>
+							<button type="submit" class="btn btn-success uppercase add_user"><i class="fa-solid fa-filter"></i> Filter</button>
+							<a href="javascript:void(0);" class="btn btn-success uppercase reset_filter"><i class="fa fa-refresh"></i> Reset</a>
+						</div>
+					</div>
+				</form>
+				<div class="res"></div>
+			</div>
+			<!-- End filter section -->
+
+			<!-- Begin data-table section -->
+			<div class="bg-white p-3 rounded-4 shadow-sm">
+				<div class="table-responsive">
+					<table id="packages" class="table table-striped display">
+						<thead>
+							<tr>
+								<th> # </th>
+								<th> Package ID </th>
+								<th> Package Name </th>
+								<th> State </th>
+								<th> Category </th>
+								<th> Publish Status</th>
+								<th> Package Created</th>
+								<th> Action </th>
+							</tr>
+						</thead>
+						<tbody>
+							<div class="loader"></div>
+							<div id="res"></div>
+							<!--DataTable Goes here-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- End data-table section -->
       </div>
+	  <!-- End page-content -->
    </div>
+   <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
+<!-- End page-container -->
 </div>
 
 <div id="myModal" class="modal" role="dialog"></div>

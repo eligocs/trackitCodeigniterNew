@@ -2,15 +2,16 @@
  ?>
 
  <style>
-
-.requirment {display: block;}
-
-.requirment div {display: block;}
-
-table.iti-data.table td {padding: 0;border-right: 1px solid #f8f9fa;}
+    .requirment {display: block;}
+    .requirment div {display: block;}
+    table.iti-data.table td {padding: 0;border-right: 1px solid #f8f9fa;}
  </style>
+
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
@@ -35,182 +36,182 @@ table.iti-data.table td {padding: 0;border-right: 1px solid #f8f9fa;}
                     <a class="btn btn-primary float-end" href="<?php echo site_url("customers"); ?>" title="add Itineraries"><i class="fa-solid fa-plus"></i> Add
                         Itinerary</a>
                     <?php } ?>
+                    
+                    <!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2 " title="Filter Itineraries" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
                 </div>
             </div>
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                <div class="filter-box">
-                    <div class="row3  ">
-                        <?php
-                     $hideClass = "";
-                     if( isset( $_GET["todayStatus"] ) ){	
-                     	$first_day_this_month = $_GET["todayStatus"];
-                     	$last_day_this_month  = $_GET["todayStatus"];
-                     }else{
-                     	$first_day_this_month = "";
-                     	$last_day_this_month  = "";
-                     }
-                     ?>
-                        <?php if( $user_role == 97 ){
-                     $hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
-                     
-                     ?>
-                        <!--start filter section-->
-                        <form id="form-filter" class=" form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
-                            <div class="actions custom_filter">
-                                <div class="row">
-                                    <!--Calender-->
-                                    <div class="col-md-3 my-2">
-                                        <label for="" class="control-label"><strong>Filter: </strong></label>
-                                        <input type="text" autocomplete="off" class="form-control" id="daterange"
-                                            name="dateRange" value="" required />
-                                    </div>
-                                    <!--End-->
-                                    <div class="col-md-3 my-2">
-                                        <label for="" class="control-label"><strong>Itinerary Type: </strong></label>
-                                        <select name="iti_type" class="form-control" id="iti_type">
-                                            <option value="">All</option>
-                                            <option value="1">Holidays</option>
-                                            <option value="2">Accommodation</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 my-2">
-                                        <label class="control-label" for="">&nbsp;</label>
-                                        <select class="form-control" name="" id="">
-                                            <option name="filter" value="all" id="all">All</option>
-                                            <option name="filter" value="9" id="approved">Approved</option>
-                                            <option name="filter" value="revised" id="revised">Revised</option>
-                                            <option name="filter" value="travel_date" id="travel_date">TD</option>
-                                        </select>
-                                        <!-- <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-default btn-primary custom_active"><input type="radio"
-                                                    name="filter" value="all" id="all" />All</label>
-                                            <label class="btn btn-default btn-success custom_active"><input type="radio"
-                                                    name="filter" value="9" id="approved" />Approved</label>
-                                            <label class="btn btn-default purple custom_active"><input type="radio"
-                                                    name="filter" value="revised" id="revised" />Revised</label>
-                                            <label title="Travel Date"
-                                                class="btn btn-default btn-danger custom_active"><input type="radio"
-                                                    name="filter" value="travel_date" id="travel_date" />TD</label>
-                                        </div> -->
-                                        <input type="hidden" name="date_from" id="date_from"
-                                            data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
-                                            value="">
-                                        <input type="hidden" name="date_to" id="date_to"
-                                            data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"] ; } else{ echo $last_day_this_month; }  ?>"
-                                            value="">
-                                        <input type="hidden" name="filter_val" id="filter_val"
-                                            value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>">
-                                        <input type="hidden" id="quotation"
-                                            value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false"; } ?>">
-                                        <input type="hidden" name="todayStatus" id="todayStatus"
-                                            value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
-                                    </div>
-                                    <div class="col-md-3 my-2">
-                                        <label class="control-label" for="">&nbsp;</label>
-                                        <input type="submit" class="btn btn-success" value="Filter">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!--End filter section-->
-                        <?php }else{ ?>
-                        <!--start filter section-->
-                        <form id="form-filter" class="form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
-                            <div class="actions custom_filter">
-                                <div class="row">
-                                    <!--Calender-->
-                                    <div class="col-md-3"> <strong>Filter: </strong><br>
-                                        <input type="text" autocomplete="off" class="form-control" id="daterange"
-                                            name="dateRange" value="" required />
-                                    </div>
-                                    <!--End-->
-                                    <div class="col-md-3">
-                                        <label>Itinerary Type: </label>
-                                        <select name="iti_type" class="form-control" id="iti_type">
-                                            <option value="">All</option>
-                                            <option value="1">Holidays</option>
-                                            <option value="2">Accommodation</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="filter_box">
-                                            <label>&nbsp; </label>
-                                            <select name="filtername" class="form-control">
-                                                <option value="all">All</option>
-                                                <option value="draft">Draft</option>
-                                                <option value="hold">Hold</option>
-                                                <option value="pending">Working</option>
-                                                <option value="notwork">Not Process</option>
-                                                <option value="7">Declined</option>
-                                                <option value="9">Approved</option>
-                                                <option value="travel_date">TD</option>
-                                                <option value="temp_travel_date">TTD </option>
-                                                <option value="revised">Amendment</option>
-                                                <option value="agent_margen_20">
-                                                    AM>=20%</option>
-                                            </select>
-                                        </div>
-                                        <!-- <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-primary custom_active"><input type="radio"
-                                                    name="filter" value="all" id="all" />All</label>
-                                            <label class="btn btn-primary custom_active"><input type="radio"
-                                                    name="filter" value="draft" id="declined" />Draft</label>
-                                            <label class="btn btn-primary custom_active"
-                                                style="background-color: pink !important; color: black;"><input
-                                                    type="radio" name="filter" value="hold" id="hold" />Hold</label>
-                                            <label class="btn btn-primary custom_active"><input type="radio"
-                                                    name="filter" value="pending" id="pending" />Working</label>
-                                            <label class="btn btn-primary custom_active"
-                                                style="background-color: yellow !important; color: black;"><input
-                                                    type="radio" name="filter" value="notwork" id="notwork" />Not
-                                                Process</label>
-                                            <label class="btn btn-primary custom_active"><input type="radio"
-                                                    name="filter" value="7" id="declined" />Declined</label>
-                                            <label class="btn btn-primary custom_active"
-                                                style="background-color: green !important; color: white;"><input
-                                                    type="radio" name="filter" value="9"
-                                                    id="approved" />Approved</label>
-                                            <label title="Travel Date" class="btn btn-primary custom_active"><input
-                                                    type="radio" name="filter" value="travel_date"
-                                                    id="travel_date" />TD</label>
-                                            <label title="Temp. Travel Date" class="btn btn-primary custom_active"
-                                                style="background-color: gray !important; color: white;"><input
-                                                    type="radio" name="filter" value="temp_travel_date"
-                                                    id="temp_travel_date" />TTD</label>
-                                            <label class="btn btn-primary custom_active"><input type="radio"
-                                                    name="filter" value="revised" id="amendment" />Amendment</label>
-                                            <label style="background-color: green !important; color: white;"
-                                                title="Agent Margin Greater than 20%"
-                                                class="btn btn-primary custom_active"><input type="radio" name="filter"
-                                                    value="agent_margen_20" id="agent_margen_20" />AM>=20%</label>
-                                        </div> -->
-                                        <input type="hidden" name="date_from" id="date_from"
-                                            data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
-                                            value="">
-                                        <input type="hidden" name="date_to" id="date_to"
-                                            data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"]; } else{ echo $last_day_this_month; }  ?>"
-                                            value="">
-                                        <input type="hidden" name="filter_val" id="filter_val"
-                                            value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>" />
-                                        <input type="hidden" id="quotation"
-                                            value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false";} ?>" />
-                                        <input type="hidden" name="todayStatus" id="todayStatus"
-                                            value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>" />
 
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="">&nbsp;</label>
-                                        <input type="submit" class="btn btn-success d_block" value="Filter">
-                                    </div>
-                                </div>
-                                <!-- row -->
+            <!-- Begin Filter Section -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
+                <?php
+                    $hideClass = "";
+                    if( isset( $_GET["todayStatus"] ) ){	
+                        $first_day_this_month = $_GET["todayStatus"];
+                        $last_day_this_month  = $_GET["todayStatus"];
+                    }else{
+                        $first_day_this_month = "";
+                        $last_day_this_month  = "";
+                    }
+                ?>
+                <?php if( $user_role == 97 ){
+                    $hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
+                ?>
+                <form id="form-filter" class=" form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
+                    <div class="actions custom_filter">
+                        <div class="row">
+                            <!--Calender-->
+                            <div class="col-md-3 my-2">
+                                <label for="" class="control-label"><strong>Filter: </strong></label>
+                                <input type="text" autocomplete="off" class="form-control" id="daterange"
+                                    name="dateRange" value="" required />
                             </div>
-                        </form>
-                        <!--End filter section-->
-                        <?php } ?>
+                            <!--End-->
+                            <div class="col-md-3 my-2">
+                                <label for="" class="control-label"><strong>Itinerary Type: </strong></label>
+                                <select name="iti_type" class="form-control" id="iti_type">
+                                    <option value="">All</option>
+                                    <option value="1">Holidays</option>
+                                    <option value="2">Accommodation</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <label class="control-label" for="">&nbsp;</label>
+                                <select class="form-control" name="" id="">
+                                    <option name="filter" value="all" id="all">All</option>
+                                    <option name="filter" value="9" id="approved">Approved</option>
+                                    <option name="filter" value="revised" id="revised">Revised</option>
+                                    <option name="filter" value="travel_date" id="travel_date">TD</option>
+                                </select>
+                                <!-- <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default btn-primary custom_active"><input type="radio"
+                                            name="filter" value="all" id="all" />All</label>
+                                    <label class="btn btn-default btn-success custom_active"><input type="radio"
+                                            name="filter" value="9" id="approved" />Approved</label>
+                                    <label class="btn btn-default purple custom_active"><input type="radio"
+                                            name="filter" value="revised" id="revised" />Revised</label>
+                                    <label title="Travel Date"
+                                        class="btn btn-default btn-danger custom_active"><input type="radio"
+                                            name="filter" value="travel_date" id="travel_date" />TD</label>
+                                </div> -->
+                                <input type="hidden" name="date_from" id="date_from"
+                                    data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
+                                    value="">
+                                <input type="hidden" name="date_to" id="date_to"
+                                    data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"] ; } else{ echo $last_day_this_month; }  ?>"
+                                    value="">
+                                <input type="hidden" name="filter_val" id="filter_val"
+                                    value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>">
+                                <input type="hidden" id="quotation"
+                                    value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false"; } ?>">
+                                <input type="hidden" name="todayStatus" id="todayStatus"
+                                    value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
+                            </div>
+                            <div class="col-md-3 my-2">
+                                <label class="control-label d-block" for="">&nbsp;</label>
+                                <input type="submit" class="btn btn-success" value="Filter">
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
+                <?php }else{ ?>
+                <form id="form-filter" class="form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
+                    <div class="actions custom_filter">
+                        <div class="row">
+                            <!--Calender-->
+                            <div class="col-md-3"> <strong>Filter: </strong><br>
+                                <input type="text" autocomplete="off" class="form-control" id="daterange"
+                                    name="dateRange" value="" required />
+                            </div>
+                            <!--End-->
+                            <div class="col-md-3">
+                                <label>Itinerary Type: </label>
+                                <select name="iti_type" class="form-control" id="iti_type">
+                                    <option value="">All</option>
+                                    <option value="1">Holidays</option>
+                                    <option value="2">Accommodation</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="filter_box">
+                                    <label>&nbsp; </label>
+                                    <select name="filtername" class="form-control">
+                                        <option value="all">All</option>
+                                        <option value="draft">Draft</option>
+                                        <option value="hold">Hold</option>
+                                        <option value="pending">Working</option>
+                                        <option value="notwork">Not Process</option>
+                                        <option value="7">Declined</option>
+                                        <option value="9">Approved</option>
+                                        <option value="travel_date">TD</option>
+                                        <option value="temp_travel_date">TTD </option>
+                                        <option value="revised">Amendment</option>
+                                        <option value="agent_margen_20">
+                                            AM>=20%</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary custom_active"><input type="radio"
+                                            name="filter" value="all" id="all" />All</label>
+                                    <label class="btn btn-primary custom_active"><input type="radio"
+                                            name="filter" value="draft" id="declined" />Draft</label>
+                                    <label class="btn btn-primary custom_active"
+                                        style="background-color: pink !important; color: black;"><input
+                                            type="radio" name="filter" value="hold" id="hold" />Hold</label>
+                                    <label class="btn btn-primary custom_active"><input type="radio"
+                                            name="filter" value="pending" id="pending" />Working</label>
+                                    <label class="btn btn-primary custom_active"
+                                        style="background-color: yellow !important; color: black;"><input
+                                            type="radio" name="filter" value="notwork" id="notwork" />Not
+                                        Process</label>
+                                    <label class="btn btn-primary custom_active"><input type="radio"
+                                            name="filter" value="7" id="declined" />Declined</label>
+                                    <label class="btn btn-primary custom_active"
+                                        style="background-color: green !important; color: white;"><input
+                                            type="radio" name="filter" value="9"
+                                            id="approved" />Approved</label>
+                                    <label title="Travel Date" class="btn btn-primary custom_active"><input
+                                            type="radio" name="filter" value="travel_date"
+                                            id="travel_date" />TD</label>
+                                    <label title="Temp. Travel Date" class="btn btn-primary custom_active"
+                                        style="background-color: gray !important; color: white;"><input
+                                            type="radio" name="filter" value="temp_travel_date"
+                                            id="temp_travel_date" />TTD</label>
+                                    <label class="btn btn-primary custom_active"><input type="radio"
+                                            name="filter" value="revised" id="amendment" />Amendment</label>
+                                    <label style="background-color: green !important; color: white;"
+                                        title="Agent Margin Greater than 20%"
+                                        class="btn btn-primary custom_active"><input type="radio" name="filter"
+                                            value="agent_margen_20" id="agent_margen_20" />AM>=20%</label>
+                                </div> -->
+                                <input type="hidden" name="date_from" id="date_from"
+                                    data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
+                                    value="">
+                                <input type="hidden" name="date_to" id="date_to"
+                                    data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"]; } else{ echo $last_day_this_month; }  ?>"
+                                    value="">
+                                <input type="hidden" name="filter_val" id="filter_val"
+                                    value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>" />
+                                <input type="hidden" id="quotation"
+                                    value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false";} ?>" />
+                                <input type="hidden" name="todayStatus" id="todayStatus"
+                                    value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>" />
+
+                            </div>
+                            <div class="col-md-3">
+                                <label for="" class="control-label d-block">&nbsp;</label>
+                                <input type="submit" class="btn btn-success d_block" value="Filter">
+                            </div>
+                        </div>
+                        <!-- row -->
+                    </div>
+                </form>
+                <?php } ?>
             </div>
+            <!-- End Filter Section -->
+
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <?php if( is_admin_or_manager() ){ ?>
                 <div class="row ">
@@ -524,9 +525,12 @@ table.iti-data.table td {padding: 0;border-right: 1px solid #f8f9fa;}
                 </div>
             </div>
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
+<!-- End page-container -->
+
 </div>
 <style>
 /* .yellow_row {

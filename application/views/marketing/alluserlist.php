@@ -1,16 +1,24 @@
+<!-- Begin page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
+		<!-- Begin page-content -->
 		<div class="page-content">
-		 <!-- BEGIN SAMPLE TABLE PORTLET-->
 			<div class="portlet box blue">
 				<div class="portlet-title">
 					<div class="caption">
 						<i class="fa-solid fa-users"></i> All Marketing Users
 					</div>
 					<a class="btn btn-primary float-end" href="<?php echo site_url("marketing/add"); ?>" title="add user"><i class="fa-solid fa-plus"></i> Add Marketing User</a>
+					
+					<!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2" title="Filter Marketing Users" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
 				</div>
 			</div>
-			<div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4">
+			<!-- Begin Filter_collapse -->
+			<div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
 				<!--check if no area assign to service and sales team ; -->
 				<?php if( ( $user_role == 96 || $user_role == 97 ) &&  !$check_assign_area ){ 
 					echo "<p>No area assign to you.Please Contact your manager.</p>";
@@ -22,7 +30,7 @@
 					if($eerr){ echo '<span class="help-block help-block-success"><span class="red">'.$eerr.'</span></span>'; }
 				?>
 				<?php if( !is_salesteam() && !is_serviceteam() ){ ?>
-				<!--Filter-->
+				<!--form Filter-->
 				<form role="form" id="filter_frm" method="post">
 					<div class="row">
 						<div class="col-md-3">
@@ -74,11 +82,13 @@
 						<input type="hidden" id="todayStatus" value="<?php echo $todayStatus; ?>" />
 					</div>
 				</form>	
+				<!-- End form filter -->
 				<div class="res"></div>
 			</div>
-			<!--End Filter-->
-			<div class="filter_city_list"></div><!--city filter-->
-			<div class="bg-white p-3 rounded-4 shadow-sm">
+			<!-- End Filter_collapse -->
+			<div class="filter_city_list"></div>
+			<!-- Begin Portlet-body -->
+			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="upload_user_section">
 					<form class="" action="<?php echo base_url(); ?>marketing/import_marketing_users" method="post"  name="upload_excel" enctype="multipart/form-data">
 						<!-- File Button -->
@@ -104,39 +114,39 @@
 					</form>
 				</div>
 				<?php } ?>
-				<div class="clearfix"></div>	
-				<div class="portlet-body">
-					<div class="table-responsive">
-						<table class="table table-striped display" id="table" cellspacing="0" width="100%">
-							<thead>
-								<tr>
-									<th> # </th>
-									<th> Name </th>
-									<th> State</th>
-									<th> City</th>
-									<th> Company Name</th>
-									<th> Email </th>
-									<th> Contact </th>
-									<th> Marketing Category </th>
-									<th> Action </th>
-									<th> Agent </th>
-								</tr>
-							</thead>
-							<tbody>
-							<!--Data table -->
-							</tbody>
-						</table>
-					</div>
+				<!-- Begin data-data table section -->
+				<div class="table-responsive">
+					<table class="table table-striped display" id="table" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th> # </th>
+								<th> Name </th>
+								<th> State</th>
+								<th> City</th>
+								<th> Company Name</th>
+								<th> Email </th>
+								<th> Contact </th>
+								<th> Marketing Category </th>
+								<th> Action </th>
+								<th> Agent </th>
+							</tr>
+						</thead>
+						<tbody>
+						<!--Data table -->
+						</tbody>
+					</table>
 				</div>
+				<!-- End data-data table section -->
 			</div>
+			<!-- End Portlet-body -->
 			<?php } ?>
 		</div>
 		<!-- End page-content -->
 	</div>
 	<!-- End page-content-wrapper -->
 </div>
-</div>
 <!-- End page-container -->
+</div>
 
 
 

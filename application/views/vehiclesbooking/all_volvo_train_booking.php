@@ -1,5 +1,8 @@
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
@@ -11,10 +14,15 @@
                     <i class="fa-solid fa-bus"></i> All Vehicles Bookings
                     </div>
                     <a class="btn btn-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle"><i class="fa-solid fa-book"></i> Book Volvo/Train/Flight</a>
+
+                    <!-- Show hide filter button -->
+					<button  class="btn float-end me-2 p-2 " title="Filter Vehicles Bookings" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+							<i class="fa-solid fa-filter fs-5"></i>
+					</button>
                 </div>
             </div>
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                <!--start filter section-->
+            <!--Begin filter section-->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                 <form id="form-filter" class="form-horizontal mb-0">
                     <div class="actions custom_filter row">
                         <div class="col-md-6 col-xl-3 my-2">
@@ -58,8 +66,10 @@
                     </div>
                     <input type="hidden" name="filter_val" id="filter_val" value="all">
                 </form>
-                <!--End filter section-->
             </div>
+            <!--End filter section-->
+
+            <!-- Begin portlet-body -->
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <div class="table-responsive">
                     <table id="vehicles_booking" class="table table-striped display">
@@ -81,6 +91,7 @@
                     </table>
                 </div>
             </div>
+            <!-- End portlet-body -->
         </div>
         <!-- End page-content -->
     </div>

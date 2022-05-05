@@ -50,9 +50,9 @@ $this_month = date("Y-m");
             </div>
             <!-- END PAGE BAR -->
             <h1 class="page-title"> Manager Dashboard</h1>
-            <div class="portlet box blue">
+            <div class="portlet box blue mb-5">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-calendar"></i>Today's Status</div>
+                    <div class="custom_title"><i class="fa fa-calendar"></i>Today's Status</div>
                 </div>
                 <!-- Todays status-->
                 <div class="todayssection">
@@ -356,9 +356,9 @@ $this_month = date("Y-m");
             <!--end on hold iti section-->
             <!-- END DASHBOARD STATS 1-->
             <!--AMENDMENT PRICE SECTION-->
-            <div class="portlet box blue">
+            <div class="portlet box blue mb-5">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> AMENDMENT SECTION</div>
+                    <div class="custom_title"><i class="fa fa-handshake-o" aria-hidden="true"></i> AMENDMENT SECTION</div>
                 </div>
                 <div class="portlet-body">
                     <div class="row dashboard-tables-all-info">
@@ -456,9 +456,9 @@ $this_month = date("Y-m");
                 </div>
             </div>
             <!--END AMENDMENT PRICE SECTION-->
-            <div class="portlet box blue">
+            <div class="portlet box blue mb-5">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> Follow Up Section</div>
+                    <div class="custom_title"><i class="fa fa-handshake-o" aria-hidden="true"></i> Follow Up Section</div>
                 </div>
                 <div class="portlet-body">
                     <div class="row dashboard-tables-all-info">
@@ -1053,21 +1053,15 @@ $this_month = date("Y-m");
                     </div>
                 </div>
             </div>
-            <div class="portlet box blue">
+            <div class="portlet box blue mb-5">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> Today's CHECKOUT </div>
+                    <div class="custom_title"><i class="fa fa-handshake-o" aria-hidden="true"></i> Today's CHECKOUT </div>
                 </div>
                 <div class="portlet-body">
                     <div class="row dashboard-tables-all-info">
                         <!--TODAYS CHECKOUT-->
                         <div class="col-lg-12 col-xs-12 col-sm-12">
                             <div class="portlet light ">
-                                <div class="portlet-title" style="background: green;">
-                                    <div class="caption">
-                                        <i class="icon-equalizer font-dark hide"></i>
-                                        <span class="caption-subject font-dark bold uppercase">TODAY'S CHECKOUT</span>
-                                    </div>
-                                </div>
                                 <div class="portlet-body">
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab_actions_pending pending-rate1">
@@ -1328,9 +1322,9 @@ $this_month = date("Y-m");
             ?>
             <?php if (is_sales_manager()) {  ?>
                 <!--ABOVE 40K PACKAGES PRICE SECTION-->
-                <div class="portlet box blue">
+                <div class="portlet box blue mb-5">
                     <div class="portlet-title">
-                        <div class="caption">ABOVE 40K PACKAGES SECTION</div>
+                        <div class="custom_title">ABOVE 40K PACKAGES SECTION</div>
                     </div>
                     <div class="portlet-body">
                         <div class="row dashboard-tables-all-info">
@@ -1458,11 +1452,11 @@ $this_month = date("Y-m");
                
             <?php } ?>
 
-            <div class="total-leads-for-month">
+            <div class="total-leads-for-month mb-5">
                 <div class="month_section">
                     <div class="portlet box blue">
                         <div class="portlet-title">
-                            <div class="caption"><i class="fa fa-handshake-o" aria-hidden="true"></i> Month's Status</div>
+                            <div class="custom_title"><i class="fa fa-handshake-o" aria-hidden="true"></i> Month's Status</div>
                         </div>
                         <div class="portlet-body">
                             <div class="row">
@@ -1695,11 +1689,12 @@ $this_month = date("Y-m");
                     </div>
                 </div>
             </div>
+
             <!--Chart Section-->
             <?php $get_agents = get_all_sales_team_agents(); ?>
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="icon-equalizer font-light" aria-hidden="true"></i> Statistics Section</div>
+                    <div class="custom_title"><i class="icon-equalizer font-light" aria-hidden="true"></i> Statistics Section</div>
                 </div>
                 <div class="portlet-body">
                     <div class="dashboard-tables-all-info2">

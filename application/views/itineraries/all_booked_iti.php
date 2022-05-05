@@ -19,6 +19,11 @@
                         <strong id="altPassTemp" class='hide'><?php echo $rev_link; ?></strong>
                     </div>
                     <?php } ?>
+
+                    <!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2 " title="Filter Itineraries" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
                 </div>
             </div>
             <?php
@@ -33,7 +38,7 @@
             }
             ?>
             <!--sort by agent -->
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                 <!--start filter section-->
                 <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible mb-0">
                     <div class="row">
@@ -87,19 +92,22 @@
                             <label class="control-label d-block" for="">&nbsp;</label>
                             <input type="submit" class="btn btn-success" value="Filter">
                             <?php if( $user_role == 99 || $user_role == 98 ){ ?>
-                                    <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
-                                        class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
-                                        Export</a>
+                                <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
+                                    class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
+                                    Export</a>
                             <?php } ?>
                         </div>
                     </div>
                 </form>
             </div>
+
+            <!-- loding spinner -->
             <div class="spinner_load" style="display: none;">
                 <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
                 <span class="sr-only">Loading...</span>
             </div>
-            <!--export button for admin and manager-->
+            
+            <!-- Begin portlet-body / data-table -->
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <div class="table-responsive">
                     <table id="itinerary" class="table table-striped display">
@@ -128,6 +136,7 @@
                     </table>
                 </div>
             </div>
+            <!-- End portlet-body / data table -->
         </div>
         <!-- end page-content -->
     </div>

@@ -13,13 +13,17 @@
 					<div class="caption">
 						<i class="fa fa-cogs"></i>All Profit And Loss
 					</div>
+					<!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2" title="Filter Profit & loss By user" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
 				</div>
 			</div>
 			<!-- Begin portlet-body -->
 			<div class="portlet-body">
 				<!-- form Filter -->
 				<form action="" class="mb-0">
-					<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+					<div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
 						<div class="row">
 							<div class="col-xl-3 col-md-4 my-2">
 								<div class="form-group">
@@ -64,6 +68,8 @@
 					<!-- End Hidden inputs -->
 				</form>
 				<!-- End Form filter -->
+
+				<!-- Begin data-table section -->
 				<div class="bg-white p-3 rounded-4 shadow-sm">
 					<div class="table-responsive">
 						<table id="profit_loss" class="table table-striped display">
@@ -163,6 +169,7 @@
 					</div>
 					<!-- End Profit and Loss Section -->
 				</div>
+				<!-- End data-table section -->
 			</div>
 			<!-- End portlet-body -->
 		</div>

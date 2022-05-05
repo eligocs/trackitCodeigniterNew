@@ -1,47 +1,57 @@
+<!-- Begin page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
+		<!-- Begin page-content -->
 		<div class="page-content">
-		<!-- BEGIN SAMPLE TABLE PORTLET-->
-		<?php $message = $this->session->flashdata('success'); 
-		if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-		?>
-		<div class="portlet box blue">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-bus"></i>All Cab Bookings
+			<?php $message = $this->session->flashdata('success'); 
+			if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+			?>
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa-solid fa-taxi"></i> All Cab Bookings
+					</div>
+					<a class="btn btn-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle"><i class="fa-solid fa-taxi"></i> Book Cab</a>
+
+					<!-- Show hide filter button -->
+					<button  class="btn float-end me-2 p-2 " title="Filter Cab Bookings" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+							<i class="fa-solid fa-filter fs-5"></i>
+					</button>
 				</div>
-				<a class="btn btn-primary float-end" href="<?php echo site_url("itineraries"); ?>" title="Book Vehicle"><i class="fa-solid fa-book"></i> Book Cab</a>
 			</div>
-		</div>
-		<!--start filter section-->
-		<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-			<form id="form-filter" class="form-horizontal">
-				<div class="actions row">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="control-label"><strong>Filter: </strong></label>
-							<input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" title="Travel date filter" placeholder='Travel date' />
-							<input type="hidden" name="date_from" id="date_from">
-							<input type="hidden" name="date_to" id="date_to">
+			<!--Begin filter section-->
+			<div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
+				<form id="form-filter" class="form-horizontal">
+					<div class="actions row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="control-label"><strong>Filter: </strong></label>
+								<input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" title="Travel date filter" placeholder='Travel date' />
+								<input type="hidden" name="date_from" id="date_from">
+								<input type="hidden" name="date_to" id="date_to">
+							</div>
+						</div>
+						<div class="col-md-8">
+						<div class="radio_filter_btns" data-toggle="buttons">
+							<label for="" class="control-label d-block">&nbsp;</label>
+							<label class="btn btn-default custom_active active"><input type="radio" name="filter" value="all" checked="checked" id="all"/>All</label>
+							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="upcomming" id="upcomming" />Upcomming</label>
+							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="past" id="past" />Past</label>
+							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="approved" id="approved" />Approved</label>
+							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="declined" id="declined" />Declined</label>
+							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="cancel" id="cancel" />Cancel</label>
+							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending" id="pending" />Pending</label>
+							<!--label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending_gm" id="pending_gm" />Pending GM</label-->
+						</div>
 						</div>
 					</div>
-					<div class="col-md-8">
-					<div class="radio_filter_btns" data-toggle="buttons">
-						<label for="" class="control-label d-block">&nbsp;</label>
-						<label class="btn btn-default custom_active active"><input type="radio" name="filter" value="all" checked="checked" id="all"/>All</label>
-						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="upcomming" id="upcomming" />Upcomming</label>
-						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="past" id="past" />Past</label>
-						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="approved" id="approved" />Approved</label>
-						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="declined" id="declined" />Declined</label>
-						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="cancel" id="cancel" />Cancel</label>
-						<label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending" id="pending" />Pending</label>
-						<!--label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending_gm" id="pending_gm" />Pending GM</label-->
-					</div>
-					</div>
-				</div>
-				<input type="hidden" name="filter_val" id="filter_val" value="all">
-			</form><!--End filter section-->	
-		</div>
+					<input type="hidden" name="filter_val" id="filter_val" value="all">
+				</form><!--End filter section-->	
+			</div>
+			<!-- End filter section -->
+			
+			<!-- Begin Portlet-body -->
 			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
 					<table id= "vehicles_booking" class="table table-striped display">
@@ -67,13 +77,17 @@
 				</div>
 			</div>
 		</div>
+		<!-- End page-content -->
 	</div>
-	<!-- END CONTENT BODY -->
+	<!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
+
 <div id="myModal" class="modal" role="dialog"></div>
 <!-- Modal -->
 <script type="text/javascript">
-jQuery(document).ready(function($){
+	jQuery(document).ready(function($){
 	$(document).on("click",".ajax_delete_booking",function(){
 		var id = $(this).attr("data-id");
 		if (confirm("Are you sure?")) {
@@ -130,8 +144,8 @@ jQuery(document).ready(function($){
 });
 </script>
 <script type="text/javascript">
-var table;
-$(document).ready(function() {
+	var table;
+	$(document).ready(function() {
 		$("#daterange").daterangepicker({
 		locale: {
 			format: 'YYYY-MM-DD'

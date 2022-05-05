@@ -1,5 +1,8 @@
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <div class="portlet box blue">
@@ -8,9 +11,16 @@
                     <i class="fa-solid fa-users"></i> All Users
                     </div>
                     <a class="btn btn-primary float-end" href="<?php echo site_url("agents/addagent"); ?>" title="add agent"><i class="fa-solid fa-plus"></i> Add User</a>
+                    
+                    <!-- Show hide filter button -->
+                    <button  class="btn float-end me-2 p-2" title="Filter Users" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                        <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
                 </div>
             </div>
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+
+            <!-- Begin filter_collapse -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                 <?php 
                $ustatus = "";
                if( isset( $_GET['ustatus'] ) && !empty( $_GET['ustatus'] ) ){
@@ -55,6 +65,9 @@
                     </div>
                 </form>
             </div>
+            <!-- End filter_collapse -->
+
+            <!-- Begin portlet-body -->
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <div class="table-responsive">
                     <table class="table table-striped display" id="table" cellspacing="0" width="100%">
@@ -78,11 +91,14 @@
                     </table>
                 </div>
             </div>
+            <!-- End portlet-body -->
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
-<!-- END CONTENT BODY -->
-</div>
+<!-- End page-container -->
+
 <!-- Modal -->
 <script type="text/javascript">
 jQuery(document).ready(function($) {

@@ -62,7 +62,7 @@
             <!-- BEGIN DASHBOARD STATS 1-->
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-calendar"></i>Today's Status</div>
+                    <div class="custom_title"><i class="fa fa-calendar"></i>Today's Status</div>
                 </div>
             </div>
             <div class="row">
@@ -214,7 +214,7 @@
             <!--AMENDMENT SECTION-->
             <div class="portlet box blue margin-top-40">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-inr"></i>Today's Payment</div>
+                    <div class="custom_title"><i class="fa fa-inr"></i>Today's Payment</div>
                 </div>
                 <div class="portlet-body">
                     <div class="row dashboard-tables-all-info">
@@ -320,9 +320,9 @@
             <div class="col-lg-12 col-xs-12 col-sm-12 padding-0">
                 <div class="portlet box blue">
                     <div class="portlet-title">
-                        <div class="caption">
+                        <div class="custom_title">
                             <i class="icon-bubbles font-dark hide"></i>
-                            <span class="caption-subject font-dark bold uppercase">Refund Pending</span>
+                            <span class="caption-subject bold">Refund Pending</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -378,16 +378,16 @@
             <!--LATEST AMENDMENT SECTION-->
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-calendar"></i>LATEST AMENDMENT</div>
+                    <div class="custom_title"><i class="fa fa-calendar"></i>LATEST AMENDMENT</div>
                 </div>
             </div>
             <div class="row dashboard-tables-all-info">
                 <div class="col-lg-12 col-xs-12 col-sm-12">
                     <div class="portlet box blue">
                         <div class="portlet-title">
-                            <div class="caption">
-                                <i class="icon-bubbles font-dark hide"></i>
-                                <span class="caption-subject font-dark bold uppercase">Last 20 Amendments</span>
+                            <div class="custom_title">
+                                <i class="icon-bubbles hide"></i>
+                                <span class="caption-subject  bold">Last 20 Amendments</span>
                             </div>
                         </div>
                         <div class="portlet-body">

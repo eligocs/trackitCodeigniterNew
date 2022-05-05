@@ -73,7 +73,7 @@
 
             <div class="portlet box blue margin-top-40">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-calendar"></i>Today's Status</div>
+                    <div class="custom_title"><i class="fa fa-calendar"></i>Today's Status</div>
                 </div>
                 <div class="portlet-body">
                     <div class="row">
@@ -120,7 +120,7 @@
                 <!--AMENDMENT SECTION-->
                 <div class="portlet box blue mt-5">
                     <div class="portlet-title">
-                        <div class="caption"><i class="fa fa-calendar"></i>LATEST AMENDMENT</div>
+                        <div class="custom_title"><i class="fa fa-calendar"></i>LATEST AMENDMENT</div>
                     </div>
                     <div class="portlet-body">
                         <div class="row dashboard-tables-all-info">
@@ -184,7 +184,7 @@
                 <!-- Pending Vouchers  -->
                 <div class="portlet box blue mt-5">
                     <div class="portlet-title">
-                        <div class="caption"><i class="fa fa-calendar"></i>LATEST VOUCHERS</div>
+                        <div class="custom_title"><i class="fa fa-calendar"></i>LATEST VOUCHERS</div>
                     </div>
                     <div class="portlet-body">
                         <div class="row dashboard-tables-all-info">
