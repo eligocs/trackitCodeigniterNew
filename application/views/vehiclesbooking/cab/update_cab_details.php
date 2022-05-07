@@ -19,7 +19,7 @@
                             <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select Vehicle*</label>
-                                    <select disabled required class="form-control vehicle col-md-4">
+                                    <select disabled required class="form-control form-select vehicle col-md-4">
                                         <option value="">Choose Vehicle</option>
                                         <?php $cars = get_car_categories(); 
                                             if( $cars ){
@@ -38,7 +38,7 @@
                                 <div class="transporter_list">
                                     <label class="control-label">Select Transporter*</label>
                                     <?php //dump( get_all_transporter_by_vehicle_id($cab_booking->cab_id) ); echo $cab_booking->transporter_id; ?>
-                                    <select disabled required class="form-control transporter">
+                                    <select disabled required class="form-control form-select transporter">
                                         <option value="">Select Transporter</option>
                                         <?php $transporter = get_all_transporter_by_vehicle_id($cab_booking->cab_id); 
                                         if( $transporter ){
@@ -130,7 +130,7 @@
                             <div class="col-xl-4 col-md-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Cabs*: </label>
-                                    <select required disabled class="form-control total_cabs clearfield">
+                                    <select required disabled class="form-control form-select total_cabs clearfield">
                                         <option value=''>Select Cabs</option>
                                         <?php for( $i=1 ; $i<=10; $i++ ){
                                     $selected = isset($cab_booking->total_cabs) && $i == $cab_booking->total_cabs ? "selected=selected" : "";

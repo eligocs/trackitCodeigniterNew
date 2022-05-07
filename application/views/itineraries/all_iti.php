@@ -1,12 +1,5 @@
 <?php $todAy = date("Y-m-d");
  ?>
-
- <style>
-    .requirment {display: block;}
-    .requirment div {display: block;}
-    table.iti-data.table td {padding: 0;border-right: 1px solid #f8f9fa;}
- </style>
-
 <!-- Begin page-container -->
 <div class="page-container">
     <!-- Begin page-content-wrapper -->
@@ -43,7 +36,7 @@
                     </button>
                 </div>
             </div>
-
+           
             <!-- Begin Filter Section -->
             <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                 <?php
@@ -212,13 +205,156 @@
             </div>
             <!-- End Filter Section -->
 
+            <!-- Begin demo table design -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <div class="table-responsive">
+                    <table class="table data-table-large">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="d-flex justify-content-between px-1 w-100">
+                                            <div class="requirment">
+                                                <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">#121500</p>
+                                                <span>/</span>
+                                                <p title="Lead Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">#545</p>
+                                                <div title="Holiday Type" class="badge bg-success mb-1 me-2">
+                                                    <strong class="white">Holiday</strong> 
+                                                </div>
+                                                <div title="Holiday Type" class="fs-8 me-2 text-danger">
+                                                    <strong class="" title="Lead Status
+                                                        ">Declined</strong> 
+                                                </div>
+                                            </div>
+                                            <div class="ms-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1">SANDEEP THORAT</strong>
+                                                    <span title="Leads From" class="text-primary">Google Ads</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                            <div class="border-end flex-grow-1">
+                                                <p class="fs-7 mb-2 mt-0 text-secondary">requirement </p>
+                                                <div>
+                                                    <i class="me-2 fa-solid fa-plane-departure text-primary"></i>
+                                                    <i class="me-2 fa-solid fa-hotel text-muted"></i>
+                                                    <i class="me-2 fa-solid fa-taxi text-primary"></i>
+                                                    <i class="me-2 fa-solid fa-train-subway text-muted"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1 ms-2">
+                                                <div class="my-1">
+                                                    <span class="d-block fs-7 mb-2">8219227004</span>
+                                                </div>
+                                                <div>
+                                                    <span title="sent 2 times" class="bg-info fs-8 px-2 rounded-3 text-white">2</span>
+                                                   <span>
+                                                   <i class="fa-envelope fa-solid text-primary" title="sandeepthorat4547@gmail.com"></i>
+                                                   </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-2">
+                                            <div class="mb-2">
+                                                <strong class="d-block fs-7">Himahal Pradesh </strong> 
+                                                <span class="badge bg-yellow-haze mt-2">
+                                                <strong class="">Fixed Departure</strong>
+                                                </span>
+                                            </div>
+                                            <div class="package-title">
+                                                <span class="text-secondary fs-7">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
+                                            <span class="badge fs-7 pb-0 text-dark" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
+                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
+                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="mb-2 px-2">
+                                            <p class="fw-bold m-0">01-Jan-2022</p>
+                                            <span class="fs-8 text-secondary">Till 06-Jan (5N / 6D)</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+                                            <a class="text-primary d-block fw-bold" href="" title="View Agent">Devender Verma</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="mb-2 px-2">
+                                            <p class="fs-7 m-0">
+                                                <i class="fa-solid fa-indian-rupee-sign"></i>
+                                                <strong> 1,35,000/-</strong>
+                                            </p>
+                                            <span class="fs-8 text-secondary">Total</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+                                            <p class="fs-8 fw-400 m-0 text-dark">04-Feb-2022</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="mb-2 px-2">
+                                            <p class="my-1 fs-7 text-secondary"><span>Next Call</span> <span>28-Feb</span></p>
+                                            <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
+                                            <p class="fs-7 fs-8 my-1 text-dark">
+                                                <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb 06:00 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fa-solid fa-clone"></i> Clone</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>            
+            <!-- End end demo table design -->
+
             <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <?php if( is_admin_or_manager() ){ ?>
                 <div class="row ">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="sales_user_id">Select Sales Team User:</label>
-                            <select required class="form-control select_user" id='sales_user_id' name="user_id">
+                            <label class="control-label" for="sales_user_id" class>Select Sales Team User:</label>
+                            <select required class="form-control form-select select_user" id='sales_user_id' name="user_id">
                                 <option value="">All Users</option>
                                 <?php foreach( $sales_team_agents as $user ){ ?>
                                 <option value="<?php echo $user->user_id; ?>">
@@ -267,243 +403,7 @@
                 </div>
                 <?php } ?>
 
-                <div class="table-responsive mt-4" style="min-height: 200px;">
-                <table class="iti-data table">
-                        <tbody><tr>
-                            <td>
-                                <div class="d-flex align-bottom align-content-between flex-wrap h-100">
-                                <div class="d-flex justify-content-between mb-3 px-1 w-100">
-                                    <div class="requirment">
-                                        <p class="fs-7 fw-bold mb-2 mt-0">#121500</p>
-                                        <div title="Holiday Type" class="badge bg-success mb-1 me-2">
-                                            <strong class="white">Holiday</strong> 
-                                        </div>
-
-                                        <div title="Holiday Type" class="badge bg-danger me-2">
-                                         <strong class="white">Declined</strong> 
-                                        </div>
-                                    </div>
-                                    <div class="ms-2">
-                                        <p class="fs-7 mb-2 mt-0 text-primary"><strong>SANDEEP THORAT</strong></p>
-                                        
-                                    </div>
-                                </div>
-                                <div class="bg-light d-flex justify-content-between px-2 w-100">
-                                    <div class="border-end my-1">
-                                        <p class="mt-0 mb-2 text-secondary">requirement </p>
-                                        <div>
-                                        <i class="me-2 fa-solid fa-plane-departure text-primary"></i>
-                                        <i class="me-2 fa-solid fa-hotel text-muted"></i>
-                                        <i class="me-2 fa-solid fa-taxi text-primary"></i>
-                                        <i class="me-2 fa-solid fa-train-subway text-muted"></i>
-                                        </div>
-                                    </div>
-                                    <div class="ms-2">
-                                        <div class="my-1">
-                                        <strong class="d-block fs-7 mb-2">8219227004</strong>
-                                        </div>
-                                        <div class="pt-1">
-                                        <i class="fa-envelope fa-solid text-primary"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </td>
-                            <td><div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                <div class="mb-3">
-                                    <div class="mb-2">
-                                        <strong class="fs-7">Himahal Pradesh </strong> 
-                                        <span class="badge bg-yellow-haze ms-3">
-                                        <strong class="">Fixed Departure</strong>
-                                        </span>
-                                    </div>
-                                    <div class="">
-                                        <span class="text-secondary">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
-                                    </div>
-                                </div>
-                                <div class="bg-light px-2 w-100">
-                                    <p class="m-0 mb-2 text-secondary">travellers</p>
-                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
-                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
-                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
-                                </div></div>
-                            </td>
-                            <td>
-                                <div class="mb-2">
-                                    <p class="m-0 fs-6 fw-bold m-0">01-Jan-2022</p>
-                                    <span class="text-secondary">Till 06-Jan (5N / 6D)</span>
-                                </div>
-                                <div class="bg-light">
-                                    <span class="fs-7 text-muted">assigned to</span>
-                                    <a class="text-primary d-block fw-bold" href="">Devender Verma</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mb-2">
-                                    <p class="m-0 fs-6">
-                                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                                        <strong> 1,35,000/-</strong>
-                                    </p>
-                                    <span class="text-secondary">Total</span>
-                                </div>
-                                <div class="bg-light">
-                                    <span class="text-secondary fs-7">Created on </span>
-                                    <p class="m-0 text-dark fw-400">04-Feb-2022</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mb-2">
-                                    <p class="my-1 fs-7 text-secondary"><span>Call</span> <span>28-Feb-2022</span></p>
-                                    <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
-                                </div>
-                                <div class="bg-light">
-                                    <p class="my-1 fs-7 text-secondary">last call on</p>
-                                    <p class="my-1 text-dark">
-                                        <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb-2022 06:00 PM
-                                    </p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="dropdown">
-                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-gear"></i> Action </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-clone"></i> Clone</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody></table>
-
-                    <hr>            
-
-
-                    <table class="table">
-                        <tr>
-                            <td>
-                                <div class="d-flex mb-3">
-                                    <div class="">
-                                        <p class="fs-7 fw-bold mb-2 mt-0">#121500</p>
-                                        <span title="Holiday Type" class="badge bg-success me-2">
-                                        <strong class="white">Holiday</strong> 
-                                        </span>
-                                    </div>
-                                    <div class="ms-2">
-                                        <p class="fs-7 mb-2 mt-0 text-primary"><strong>SANDEEP THORAT</strong></p>
-                                        <span title="Holiday Type" class="badge bg-danger me-2">
-                                        <strong class="white">Declined</strong> 
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="bg-light d-flex">
-                                    <div class="border-end my-1">
-                                        <p class="mt-0 mb-2 text-secondary">requirement </p>
-                                        <div>
-                                        <i class="me-2 fa-solid fa-plane-departure text-primary"></i>
-                                        <i class="me-2 fa-solid fa-hotel text-muted"></i>
-                                        <i class="me-2 fa-solid fa-taxi text-primary"></i>
-                                        <i class="me-2 fa-solid fa-train-subway text-muted"></i>
-                                        </div>
-                                    </div>
-                                    <div class="ms-2">
-                                        <div class="my-1">
-                                        <strong class="d-block fs-7 mb-2">8219227004</strong>
-                                        </div>
-                                        <div class="pt-1">
-                                        <i class="fa-envelope fa-solid text-primary"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mb-3">
-                                    <div class="mb-2">
-                                        <strong class="fs-7">Himahal Pradesh </strong> 
-                                        <span class="badge bg-yellow-haze ms-3">
-                                        <strong class="">Fixed Departure</strong>
-                                        </span>
-                                    </div>
-                                    <div class="">
-                                        <span class="text-secondary">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
-                                    </div>
-                                </div>
-                                <div class="bg-light">
-                                    <p class="m-0 mb-2 text-secondary">travellers</p>
-                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
-                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
-                                    <span class="badge bg-light text-dark me-1 my-1 fs-7" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mb-2">
-                                    <p class="m-0 fs-6 fw-bold m-0">01-Jan-2022</p>
-                                    <span class="text-secondary">Till 06-Jan (5N / 6D)</span>
-                                </div>
-                                <div class="bg-light">
-                                    <span class="fs-7 text-muted">assigned to</span>
-                                    <a class="text-primary d-block fw-bold" href="">Devender Verma</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mb-2">
-                                    <p class="m-0 fs-6">
-                                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                                        <strong> 1,35,000/-</strong>
-                                    </p>
-                                    <span class="text-secondary">Total</span>
-                                </div>
-                                <div class="bg-light">
-                                    <span class="text-secondary fs-7">Created on </span>
-                                    <p class="m-0 text-dark fw-400">04-Feb-2022</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="mb-2">
-                                    <p class="my-1 fs-7 text-secondary"><span>Call</span> <span>28-Feb-2022</span></p>
-                                    <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
-                                </div>
-                                <div class="bg-light">
-                                    <p class="my-1 fs-7 text-secondary">last call on</p>
-                                    <p class="my-1 text-dark">
-                                        <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb-2022 06:00 PM
-                                    </p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="dropdown">
-                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-gear"></i> Action </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-                                        </li>
-                                        <li>
-                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-clone"></i> Clone</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                
-
-                <div class="table-responsive mt-5">
+                <div class="table-responsive">
                     <table id="itinerary2" class="table table-striped table-hover">
                         <thead>
                             <tr>

@@ -41,7 +41,7 @@
                      <?php $get_cus_type = get_customer_type(); ?>
                      <div class="form-group">
                         <label class="control-label">Customer Type <sup class="text-danger">*</sup></label>
-                        <select required name="inp[customer_type]" class="form-control" id="cus_type" required>
+                        <select required name="inp[customer_type]" class="form-control form-select" id="cus_type" required>
                            <option value="" selected disabled>Select Customer Type</option>
                            <!--<option value="0">Direct Customer</option>-->
                            <?php if( !empty( $get_cus_type ) ){
@@ -76,7 +76,7 @@
                   <div class="col-md-4 col-sm-6 my-2">
                      <div class="form-group">
                         <label class="control-label">Assign To <sup class="text-danger">*</sup></label>
-                        <select  name="inp[agent_id]" class="form-control" required>
+                        <select  name="inp[agent_id]" class="form-control form-select" required>
                            <option  value="" selected disabled>Select Sales Team Agents</option>
                            <?php if( is_admin_or_manager() ){
                            //   $agents = get_all_sales_team_agents();
@@ -127,6 +127,7 @@
                   </div>
 
                   <hr class="my-3">
+                  
                   <div class="col-md-12 my-2">
                      <div class="form-group">
                         <label for="address" class="control-label">Address</label>
@@ -134,6 +135,7 @@
                         <span class="bg-light d-inline-block fs-7 mt-0 text-muted">Note : <em>Required only for Invoice.</em></span>
                      </div>
                   </div>
+
                   <div class="col-md-12 my-2">
                      <button type="submit" class="btn green uppercase add_Customer">Add Customer</button>
                   </div>

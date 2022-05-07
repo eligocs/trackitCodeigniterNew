@@ -455,7 +455,7 @@ ul.attachments {
                                                     <div class="form-group">
                                                         <label class="control-label">Cab <span class="required"> *
                                                             </span> </label>
-                                                        <select required name="cab_category" class="form-control">
+                                                        <select required name="cab_category" class="form-control form-select">
                                                             <option value="">Choose Car Category</option>
                                                             <?php $cars = get_car_categories(); if ($cars) { foreach ($cars as $car) { ?>
                                                             <option <?php if ($iti->cab_category == $car->id) { ?>
@@ -487,7 +487,7 @@ ul.attachments {
                                                         <label class="control-label">Package Type <span
                                                                 class="required"> * </span> </label>
                                                         <!-- <input type="text"  value="<?= $cust->package_type ?>" readonly class="form-control"> -->
-                                                        <select required name="iti_package_type" class="form-control">
+                                                        <select required name="iti_package_type" class="form-control form-select">
                                                             <option value="">Choose Package Type</option>
                                                             <option
                                                                 <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == 'Honeymoon Package' ? 'selected' : isset($cust->package_type) && $cust->package_type == 'Honeymoon Package' ? 'selected' : ''?>
@@ -550,23 +550,17 @@ ul.attachments {
                                                             <div class="col-md-6 mb-3 mb-md-0">
                                                                 <label class="control-label">Room Category <span
                                                                         class="required"> * </span> </label>
-                                                                <select title="Select Room Category" required
-                                                                    name="rooms_meta[room_category]"
-                                                                    class="form-control">
+                                                                <select title="Select Room Category" required name="rooms_meta[room_category]" class="form-control form-select">
                                                                     <option value="">Select Room Category</option>
-                                                                    <option value="00" <?php if ($room_category == "00") {
-                                                      echo "selected='selected'";
-                                                      } ?>>
-                                                                        0
-                                                                    </option>
+                                                                    <option value="00" <?php if ($room_category == "00") { echo "selected='selected'"; } ?>> 0 </option>
                                                                     <?php $room_cats = get_room_categories();
-                                                      if ($room_cats) {
-                                                          foreach ($room_cats as $cat) {
-                                                              $selected = $room_category == $cat->room_cat_id ? "selected='selected'" : "";
-                                                              echo '<option ' . $selected . ' value = "' . $cat->room_cat_id . '" >' . $cat->room_cat_name . '</option>';
-                                                          }
-                                                      }
-                                                      ?>
+                                                                        if ($room_cats) {
+                                                                            foreach ($room_cats as $cat) {
+                                                                                $selected = $room_category == $cat->room_cat_id ? "selected='selected'" : "";
+                                                                                echo '<option ' . $selected . ' value = "' . $cat->room_cat_id . '" >' . $cat->room_cat_name . '</option>';
+                                                                            }
+                                                                        }
+                                                                        ?>
                                                                 </select>
                                                             </div>
                                                             <?php 
@@ -578,7 +572,7 @@ ul.attachments {
                                                                 <input type="number" value="<?= $cust->total_rooms ?>"
                                                                     redonly class="form-control">
                                                                 <!-- <select title="Select Total Rooms" required
-                                                   name="rooms_meta[total_rooms]" class="form-control">
+                                                   name="rooms_meta[total_rooms]" class="form-control form-select">
                                                    <option value="">No. of Rooms</option>
                                                    <option value="00" <?php if ($total_rooms == "00") {
                                                       echo "selected='selected'";
@@ -603,27 +597,25 @@ ul.attachments {
                                                             bed</label>
                                                         <div class="row">
                                                             <div class="col-md-6 mb-3 mb-md-0">
-                                                                <select title="Select with extra bed"
-                                                                    name="rooms_meta[with_extra_bed]"
-                                                                    class="form-control">
+                                                                <select title="Select with extra bed" name="rooms_meta[with_extra_bed]" class="form-control form-select">
                                                                     <option value="">Select Extra Bed</option>
                                                                     <option value="00" <?php if ($with_extra_bed == "00") {
-                                                      echo "selected='selected'";
-                                                      } ?>>
-                                                                        0
-                                                                    </option>
-                                                                    <?php
-                                                      for ($eb = 1; $eb <= 60; $eb++) {
-                                                          $sele_wr = $with_extra_bed == $eb ? "selected='selected'" : "";
-                                                          echo '<option ' . $sele_wr . ' value = "' . $eb . '" >' . $eb . '</option>';
-                                                      }
-                                                      ?>
+                                                                        echo "selected='selected'";
+                                                                        } ?>>
+                                                                                            0
+                                                                                        </option>
+                                                                                        <?php
+                                                                        for ($eb = 1; $eb <= 60; $eb++) {
+                                                                            $sele_wr = $with_extra_bed == $eb ? "selected='selected'" : "";
+                                                                            echo '<option ' . $sele_wr . ' value = "' . $eb . '" >' . $eb . '</option>';
+                                                                        }
+                                                                        ?>
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <select title="Select without extra bed"
                                                                     name="rooms_meta[without_extra_bed]"
-                                                                    class="form-control">
+                                                                    class="form-control form-select">
                                                                     <option value="">Select Without Extra Bed</option>
                                                                     <option value="00" <?php if ($without_extra_bed == "00") {
                                                       echo "selected='selected'";
@@ -783,7 +775,7 @@ ul.attachments {
                                                                 class="control-label col-md-4 col-sm-4 text-sm-end">Class
                                                                 <span class="required"> * </span> </label>
                                                             <div class="col-md-8 col-sm-8">
-                                                                <select required name="f_class" class="form-control">
+                                                                <select required name="f_class" class="form-control form-select">
                                                                     <option value="">Choose Class</option>
                                                                     <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Economy") {
                                                       echo "selected";
@@ -1024,7 +1016,7 @@ ul.attachments {
                                                                 <span class="required"> * </span>
                                                             </label>
                                                             <div class="col-md-8 col-sm-8">
-                                                                <select required name="t_class" class="form-control">
+                                                                <select required name="t_class" class="form-control form-select">
                                                                     <option value="">Choose Class</option>
                                                                     <option <?php if (isset($train->train_class) && $train->train_class  == "1AC") {
                                                          echo "selected";
@@ -1196,7 +1188,7 @@ ul.attachments {
                                                                     <label class="control-label">Meal Plan</label> <sup
                                                                         class="text-danger">*</sup>
                                                                     <select required name="meal_plan"
-                                                                        class="form-control">
+                                                                        class="form-control form-select">
                                                                         <option value="">Choose Meal Plan</option>
                                                                         <option value="Breakfast Only"
                                                                             <?php if (isset($tourData[$i]['meal_plan']) && $tourData[$i]['meal_plan'] == "Breakfast Only") { ?>
@@ -1833,48 +1825,39 @@ ul.attachments {
                                                     <label class="control-label"> <strong>Add Hotel Note:</strong>
                                                     </label>
                                                     <?php
-                                          $hotel_note_meta = isset($iti->hotel_note_meta) ? unserialize($iti->hotel_note_meta) : "";
-                                          if (!empty($hotel_note_meta)) {
-                                              $count_hotel_meta = count($hotel_note_meta);
-                                              for ($i = 0; $i < $count_hotel_meta; $i++) { ?>
-                                                    <div data-repeater-item
-                                                        class="mt-repeater-hotel-note-item form-group">
+                                                    $hotel_note_meta = isset($iti->hotel_note_meta) ? unserialize($iti->hotel_note_meta) : "";
+                                                    if (!empty($hotel_note_meta)) {
+                                                        $count_hotel_meta = count($hotel_note_meta);
+                                                        for ($i = 0; $i < $count_hotel_meta; $i++) { ?>
+                                                    <div data-repeater-item class="mt-repeater-hotel-note-item form-group">
                                                         <!-- jQuery Repeater Container -->
-                                                        <div class="row">
-                                                            <div class="mt-repeater-hotel-note-input col-sm-10 col-9">
+                                                        <div class="row mb-3">
+                                                            <div class="mt-repeater-hotel-note-input col-sm-12 position-relative">
                                                                 <div class="mt-repeater-hotel-note-input">
-                                                                    <input required type="text" name="hotel_note"
-                                                                        class="form-control"
-                                                                        value="<?php echo isset($hotel_note_meta[$i]["hotel_note"]) ? trim($hotel_note_meta[$i]["hotel_note"]) : ""; ?>" />
+                                                                    <input required type="text" name="hotel_note" class="form-control" value="<?php echo isset($hotel_note_meta[$i]["hotel_note"]) ? trim($hotel_note_meta[$i]["hotel_note"]) : ""; ?>" />
+                                                                    <div class="mt-repeater-hotel-note-input">
+                                                                        <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i> </a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="mt-repeater-hotel-note-input col-sm-2 col-3">
-                                                                <a href="javascript:;" data-repeater-delete
-                                                                    class="btn btn-danger mt-repeater-delete">
-                                                                    <i class="fa-solid fa-trash-can"></i> </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <?php }
-                                          } else { ?>
-                                                    <?php $count_hotel_notes =  !empty($hotel_notes) ? count($hotel_notes) : 1;
-                                          for ($i = 0; $i < $count_hotel_notes; $i++) { ?>
+                                                        } else { ?>
+                                                        <?php $count_hotel_notes =  !empty($hotel_notes) ? count($hotel_notes) : 1;
+                                                        for ($i = 0; $i < $count_hotel_notes; $i++) { 
+                                                            ?>
                                                     <div data-repeater-item
                                                         class="mt-repeater-hotel-note-item form-group">
                                                         <!-- jQuery Repeater Container -->
-                                                        <div class="row">
-                                                            <div class="mt-repeater-hotel-note-input col-sm-10 col-9">
+                                                        <div class="row mb-3">
+                                                            <div class="mt-repeater-hotel-note-input col-sm-12 position-relative">
                                                                 <div class="mt-repeater-hotel-note-input">
-                                                                    <input required type="text"
-                                                                        name="hotel_note_meta[<?php echo $i; ?>][hotel_note]"
-                                                                        class="form-control"
-                                                                        value="<?php echo isset($hotel_notes[$i]["hotel_notes"]) ? $hotel_notes[$i]["hotel_notes"] : ""; ?>" />
+                                                                    <input required type="text" name="hotel_note_meta[<?php echo $i; ?>][hotel_note]" class="form-control" value="<?php echo isset($hotel_notes[$i]["hotel_notes"]) ? $hotel_notes[$i]["hotel_notes"] : ""; ?>" />
+                                                                    <div class="mt-repeater-hotel-note-input">
+                                                                        <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i></a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="mt-repeater-hotel-note-input col-sm-2 col-3">
-                                                                <a href="javascript:;" data-repeater-delete
-                                                                    class="btn btn-danger mt-repeater-delete">
-                                                                    <i class="fa-solid fa-trash-can"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>

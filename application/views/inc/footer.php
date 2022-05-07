@@ -216,9 +216,12 @@ jQuery(document).ready(function($) {
 	    <div class="scroll-to-top">
 	        <i class="icon-arrow-up"></i>
 	    </div>
+		
+		<div class="tool_tip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div>
 	</div>
 	<!-- END FOOTER -->
-
 	<?php 
 			$segment_one =  $this->uri->segment(1);
 			$current_url = base_url(uri_string());
@@ -250,9 +253,7 @@ jQuery(document).ready(function($) {
 	<script src="<?php echo base_url();?>site/assets/js/jquery.cookie.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>site/assets/js/sweetalert.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>site/assets/js/script_themes.js" type="text/javascript"></script>
-	<?php /*<script src="<?php echo base_url();?>site/assets/js/quick-sidebar.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>site/assets/js/quick-nav.min.js" type="text/javascript"></script> */ ?>
-
+	
 	<!--call chart script for dashboard only -->
 	<?php 
 		if( ( $segment_one == "dashboard" || $current_url == base_url() ) && is_admin_or_manager()){ ?>
@@ -262,10 +263,6 @@ jQuery(document).ready(function($) {
 	<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/Animated.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>site/assets/chart/admin_chart.js" type="text/javascript"></script>
 	<script src="<?php echo base_url(); ?>site/assets/chart/funelChart/funelchart.js" type="text/javascript"></script>
-	<!-- <script src="<?php echo base_url();?>site/assets/echarts-en.min.js" type="text/javascript"></script> -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"> </script> -->
-	<!-- <script src="<?php echo base_url();?>site/assets/js/echarts/echarts.js" type="text/javascript"></script>
-			<script src="<?php echo base_url();?>site/assets/js/charts_dashboard.js" type="text/javascript"></script> -->
 	<?php 
 		}
 		?>
@@ -293,45 +290,46 @@ jQuery(document).ready(function($) {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 	</script>
-		
 	<!-- END THEME LAYOUT SCRIPTS -->
 
-
+		
 	<script>
-function showTime() {
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var day = date.getDay(); // 0 - 6
-    var session = "AM";
+		function showTime() {
+			var date = new Date();
+			var h = date.getHours(); // 0 - 23
+			var m = date.getMinutes(); // 0 - 59
+			var s = date.getSeconds(); // 0 - 59
+			var day = date.getDay(); // 0 - 6
+			var session = "AM";
 
-    var weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
+			var weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
 
 
-    if (h >= 12) session = "PM";
+			if (h >= 12) session = "PM";
 
-    if (h == 0) {
-        h = 12;
-    }
+			if (h == 0) {
+				h = 12;
+			}
 
-    if (h > 12) {
-        h = h - 12;
-    }
+			if (h > 12) {
+				h = h - 12;
+			}
 
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
+			h = (h < 10) ? "0" + h : h;
+			m = (m < 10) ? "0" + m : m;
+			s = (s < 10) ? "0" + s : s;
 
-    var time = weekday + "  " + h + ":" + m + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
+			var time = weekday + "  " + h + ":" + m + ":" + s + " " + session;
+			document.getElementById("MyClockDisplay").innerText = time;
+			document.getElementById("MyClockDisplay").textContent = time;
 
-    setTimeout(showTime, 1000);
+			setTimeout(showTime, 1000);
 
-}
-//    showTime();
-
+		}
+		//    showTime();
+		$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 	</script>
 
 

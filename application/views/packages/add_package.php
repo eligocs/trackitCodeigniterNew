@@ -68,7 +68,7 @@
 														<div class="col-md-11">
 															<?php $state_list = get_indian_state_list(); 
 															if( $state_list ){
-																echo "<select name='state' class='form-control' id='state'>";
+																echo "<select name='state' class='form-control form-select' id='state'>";
 																	echo '<option value="">Select State</option>';
 																	foreach($state_list as $state){
 																		echo '<option value="'.$state->id.'">'.$state->name.'</option>';
@@ -106,7 +106,7 @@
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-11">
-															<select name="p_cat_id" required class="form-control">
+															<select name="p_cat_id" required class="form-control form-select">
 																<option value="">Select Package Category</option>
 																<?php 
 																	$cats = get_package_categories();
@@ -153,7 +153,7 @@
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-11">
-															<select required name="cab_category" class="form-control">
+															<select required name="cab_category" class="form-control form-select">
 																<option value="">Choose Car Category</option>
 																<?php $cars = get_car_categories(); 
 																	if( $cars ){
@@ -208,7 +208,7 @@
 																<div class="mt-repeater-input form-group">
 																	<label class="control-label">Meal Plan</label><span class="required"> * </span>
 																	
-																	<select required name="meal_plan" class="form-control">
+																	<select required name="meal_plan" class="form-control form-select">
 																		<option value="">Choose Meal Plan</option>
 																		<option value="Breakfast Only">Breakfast Only</option>
 																		<option value="Breakfast & Dinner">Breakfast & Dinner</option>

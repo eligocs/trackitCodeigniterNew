@@ -41,7 +41,7 @@
                                     Customer Account*
                                     <!--span style="color: red; font-size: 10px;">Note: if you not find customer in list create new account in customer account section.</span-->
                                 </label>
-                                <select name="customer_acc_id" class="form-control" required id="select_lead_id">
+                                <select name="customer_acc_id" class="form-control form-select" required id="select_lead_id">
                                     <option value="">Select</option>
                                     <?php 
 								foreach( $customer_accounts as $account ){
@@ -58,7 +58,7 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Receipt Type*</label>
-                                <select name="receipt_type" class="form-control" required id="receipt_type">
+                                <select name="receipt_type" class="form-control form-select" required id="receipt_type">
                                     <option value="">Select</option>
                                     <option value="bank">Bank</option>
                                     <option value="cash">Cash</option>
@@ -69,7 +69,7 @@
                         <div class="col-md-4 my-2">
                             <div class="form-group">
                                 <label class="control-label">Account Name*</label>
-                                <select name="account_type_id" class="form-control" required id="account_name">
+                                <select name="account_type_id" class="form-control form-select" required id="account_name">
                                     <option value="">Select</option>
 
                                 </select>

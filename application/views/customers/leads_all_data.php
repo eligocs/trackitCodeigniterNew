@@ -55,8 +55,12 @@ div#quotation_type_section,
     overflow: visible !important;
 }
 </style>
+
+<!-- Begin page-container -->
 <div class="page-container customer_view_section view_call_info">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
             <?php if( isset($customer[0]) && !empty($customer[0])) {
             $customer = $customer[0];
@@ -650,6 +654,29 @@ div#quotation_type_section,
                         <h3 class="mb-3 fs-6 uppercase">Take Follow up</h3>
                         <div class="customer_followup">
                             <!-- Process for customer followup  -->
+                            
+                            <!-- Begin requirements section -->
+                            <!-- <div class="add_requirements mb-4">
+                                <label class="control-label d-block" for="">Requirements</label>
+                                <input type="checkbox" class="btn-check" id="flight" autocomplete="off"> 
+                                <label class="btn btn-outline-secondary me-2" for="flight">
+                                    <i class="fa-solid fa-plane-departure"></i>
+                                </label>
+                                <input type="checkbox" class="btn-check" id="hotel" autocomplete="off"> 
+                                <label class="btn btn-outline-secondary mx-2" for="hotel">
+                                    <i class="fa-solid fa-hotel"></i>
+                                </label>
+                                <input type="checkbox" class="btn-check" id="taxi" autocomplete="off"> 
+                                <label class="btn btn-outline-secondary mx-2" for="taxi">
+                                    <i class="fa-solid fa-taxi"></i>
+                                </label>
+                                <input type="checkbox" class="btn-check" id="train" autocomplete="off"> 
+                                <label class="btn btn-outline-secondary mx-2" for="train">
+                                    <i class="fa-solid fa-train"></i>
+                                </label>
+                            </div> -->
+                            <!-- End requirements Section -->                       
+
                             <?php if( is_admin_or_manager_or_sales() && $customer->cus_status == 0 ){ ?>
                             <div id="customer_f" class="col-md-12 clearfix" style="display: block;">
                                 <a class="btn btn-danger" href="#" id="add_call_btn" title="Add followup"> <i class="fa-solid fa-phone"></i> Add Call Info</a>
@@ -663,14 +690,14 @@ div#quotation_type_section,
                                                 <span class="sr-only">Loading...</span>
                                             </div>
                                             <div class="call_type_seciton mb-3">
-                                                <label class="radio-inline mx-2">
+                                                <label class="radio-inline control-label mx-2">
                                                     <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
                                                 </label>
-                                                <label class="radio-inline mx-2">
+                                                <label class="radio-inline control-label mx-2">
                                                     <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
                                                 </label>
                                                 
-                                                <label class="radio-inline mx-2">
+                                                <label class="radio-inline control-label mx-2">
                                                     <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="8">Decline
                                                 </label>
                                             </div>
@@ -678,7 +705,7 @@ div#quotation_type_section,
                                                 <div class="call_type_res" id="picked_call_panel">
                                                     <!--picked call panel-->
                                                     <div class="row">
-                                                        <div class="col-md-12 my-2">
+                                                        <div class="col-md-6 my-2">
                                                             <div class="form-group">
                                                                 <label class="control-label" for="comment">Call summary<span
                                                                         style="color:red;">*</span>:</label>
@@ -686,11 +713,12 @@ div#quotation_type_section,
                                                                     name="callSummary" id="callSummary"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md- 12 my-2">
+                                                        <div class="col-md-6 my-2">
                                                             <div class="form-group">
-                                                                <label>Lead prospect<span
-                                                                        style="color:red;">*</span></label>
-                                                                <select required class="form-control" name="txtProspect">
+                                                                <label class="control-label">Lead prospect
+                                                                    <sup class="text-danger">*</sup>
+                                                                </label>
+                                                                <select required class="form-control form-select" name="txtProspect">
                                                                     <option value="Hot">Hot</option>
                                                                     <option value="Warm">Warm</option>
                                                                     <option value="Cold">Cold</option>
@@ -699,7 +727,7 @@ div#quotation_type_section,
                                                         </div>
                                                         <div class="col-md-12 my-2">
                                                             <div class="checkbox1 mb-2">
-                                                                <label>
+                                                                <label class="control-label">
                                                                     <input id="nxtCallCk" type="radio" class="book_query form-check-input" name="book_query" required value=""> Next calling time and date <sup class="text-danger">*</sup>
                                                                 </label>
                                                             </div>
@@ -708,11 +736,13 @@ div#quotation_type_section,
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 my-2">
-                                                            <label for="readyQuotation"><input id="readyQuotation" class="book_query form-check-input" name="book_query" required type="radio" value="9"> Ready for quotation</label>
+                                                            <label class="control-label" for="readyQuotation">
+                                                                <input id="readyQuotation" class="book_query form-check-input" name="book_query" required type="radio" value="9"> Ready for quotation
+                                                            </label>
                                                         </div>
                                                         <!--Quotation Type Holidays/Accommodation/Cab-->
                                                         <div id="quotation_type_section" class="mt-1">
-                                                            <label class="radio-inline" for="holidays">
+                                                            <label class="radio-inline control-label" for="holidays">
                                                                 <input id="holidays" class="quotation_type form-check-input" name="quotation_type" required type="radio" value="holidays"> Holidays 
                                                             </label>
                                                         </div>
@@ -751,9 +781,9 @@ div#quotation_type_section,
                                                                     <input size="16" required type="text" value="" readonly name="nextCallTimeNotpicked" class="form-control form_datetime">
                                                                 </div>
                                                                 <div class="form-group col-md-6 my-3">
-                                                                    <label>Lead prospect<span
+                                                                    <label class="control-label">Lead prospect<span
                                                                             style="color:red;">*</span></label>
-                                                                    <select required class="form-control"
+                                                                    <select required class="form-control form-select"
                                                                         name="txtProspectNotpicked">
                                                                         <option value="Hot">Hot</option>
                                                                         <option value="Warm">Warm</option>
@@ -770,7 +800,7 @@ div#quotation_type_section,
                                                     <div class="row">
                                                         <div class="form-group col-md-6 my-3">
                                                             <label class="control-label" for="">Select Decline Reason <sup class="text-danger">*</sup></label>
-                                                            <select required class="form-control" name="decline_reason">
+                                                            <select required class="form-control form-select" name="decline_reason">
                                                                 <option value="">Select Reason</option>
                                                                 <option value="Booked with someone else">Booked with someone else</option>
                                                                 <option value="Not interested">Not interested</option>
@@ -795,6 +825,7 @@ div#quotation_type_section,
                                             </div>
                                             <!--panel_section end-->
                                             
+                                            <!-- Begin customer_info_panel -->
                                             <div id="customer_info_panel">
                                                 <div class="row mt-3">
                                                     <div class="col-lg-6 col-md-6 my-2">
@@ -829,7 +860,7 @@ div#quotation_type_section,
                                                         <div class="form-group row">
                                                             <div class="col-sm-6">
                                                                 <label class="control-label" for="">Package Type *:</label>
-                                                                <select required name="package_type" class="form-control">
+                                                                <select required name="package_type" class="form-control form-select">
                                                                     <option value="">Choose Package Type</option>
                                                                     <option value="Honeymoon Package">Honeymoon Package
                                                                     </option>
@@ -848,7 +879,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label" for="">No. of rooms *:</label>
-                                                            <select required name="total_rooms" class="form-control">
+                                                            <select required name="total_rooms" class="form-control form-select">
                                                                 <option value="">Select Rooms</option>
                                                                 <?php 
                                                                     for( $i=1 ; $i <=60 ; $i++ ){
@@ -893,7 +924,7 @@ div#quotation_type_section,
                                                         <div class="form-group row">
                                                             <div class="col-sm-6">
                                                                 <label class="control-label" for="">Package By *:</label>
-                                                                <select required name="package_by" class="form-control">
+                                                                <select required name="package_by" class="form-control form-select">
                                                                     <option value="">Choose Package By</option>
                                                                     <option value="Car">Car</option>
                                                                     <option value="Volvo">Volvo</option>
@@ -911,7 +942,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label" for="">Meal Plan *:</label>
-                                                            <select required name="meal_plan" class="form-control">
+                                                            <select required name="meal_plan" class="form-control form-select">
                                                                 <option value="">Choose Meal Plan</option>
                                                                 <option value="Breakfast Only">Breakfast Only</option>
                                                                 <option value="Breakfast & Dinner">Breakfast & Dinner
@@ -935,7 +966,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2 hide_accommodation">
                                                         <div class="form-group">
                                                             <label class="control-label" for="">Car type for sightseeing *:</label>
-                                                            <select required name="car_type_sightseen" class="form-control">
+                                                            <select required name="car_type_sightseen" class="form-control form-select">
                                                                 <option value="">Choose Car Category</option>
                                                                 <?php $cars = get_car_categories(); 
                                                                 if( $cars ){
@@ -951,7 +982,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label" for="">Hotel type *:</label>
-                                                            <select required name="hotel_type" class="form-control">
+                                                            <select required name="hotel_type" class="form-control form-select">
                                                                 <option value="">Choose Hotel Category</option>
                                                                 <option value="Deluxe">2 Star</option>
                                                                 <option value="Super Deluxe">3 Star</option>
@@ -964,7 +995,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label">Select Country*</label>
-                                                            <select required name="country" class="form-control country">
+                                                            <select required name="country" class="form-control country form-select">
                                                                 <option value="">Choose Country</option>
                                                                             <?php $country = get_country_list();
                                                                 if($country){
@@ -981,7 +1012,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label">Select State*</label>
-                                                            <select required name="state" class="form-control state">
+                                                            <select required name="state" class="form-control state form-select">
                                                                 <option value="">Choose State</option>
                                                                         <?php $states = get_indian_state_list();
                                                                 if($states){
@@ -997,7 +1028,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label" for="">Budget Approx *:</label>
-                                                            <select required name="budget" class="form-control">
+                                                            <select required name="budget" class="form-control form-select">
                                                                 <option value="">Choose Budget</option>
                                                                 <option value="0-5000">0-5000</option>
                                                                 <option value="5001-15000">5001 - 15000</option>
@@ -1013,16 +1044,50 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label" for="">Meal Plan Type :</label>
-                                                            <select  name="meal_plan_type" class="form-control">
+                                                            <select  name="meal_plan_type" class="form-control form-select">
                                                                 <option value="">Choose</option>
                                                                 <option value="Veg">Veg</option>
                                                                 <option value="Non-Veg">Non-Veg</option>
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <!-- Begin add_requirements -->
+                                                    <div class="col-md-12 my-2">
+                                                        <label class="control-label d-block" for="">
+                                                            <strong>Requirements</strong>
+                                                            <sup class="text-danger">*</sup>
+                                                        </label>
+                                                        <div class="add_requirements">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" value="" id="hotel">
+                                                                <label class="control-label ms-2" for="hotel">
+                                                                    <i class="fa-solid fa-hotel"></i> Hotel
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" value="" id="cab">
+                                                                <label class="control-label ms-2" for="cab">
+                                                                <i class="fa-solid fa-taxi"></i> Cab
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" value="" id="train">
+                                                                <label class="control-label ms-2" for="train">
+                                                                <i class="fa-solid fa-train"></i> Train
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" value="" id="flight">
+                                                                <label class="control-label ms-2" for="flight">
+                                                                <i class="fa-solid fa-plane-departure"></i> Flight
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End add_requirements -->
                                                 </div>
                                             </div>
-                                            <!--End customer info Section-->
+                                            <!--End customer_info_panel-->
                                             
                                         </div>
                                         <input type="hidden" name="customer_id"
@@ -1056,22 +1121,22 @@ div#quotation_type_section,
                                             <span class="sr-only">Loading...</span>
                                         </div>
                                         <div class="call_type_seciton">
-                                            <label class="radio-inline mb-3 me-3">
+                                            <label class="radio-inline control-label mb-3 me-3">
                                                 <input data-id="picked_call_panel" required id="picked_call" class="radio_toggle form-check-input me-2" type="radio" name="callType" value="Picked call">Picked call
                                             </label>
-                                            <label class="radio-inline mb-3 me-3">
+                                            <label class="radio-inline control-label mb-3 me-3">
                                                 <input class="radio_toggle form-check-input me-2" data-id="call_not_picked_panel" required id="call_not_picked" type="radio" name="callType" value="Call not picked">Call not picked
                                             </label>
-                                            <label class="radio-inline mb-3 me-3">
+                                            <label class="radio-inline control-label mb-3 me-3">
                                                 <input class="radio_toggle form-check-input me-2" data-id="close_lead_panel" required id="close_lead" type="radio" name="callType" value="Close lead">Decline Itinerary
                                             </label>
-                                            <label class="radio-inline mb-3 me-3">
+                                            <label class="radio-inline control-label mb-3 me-3">
                                                 <input class="radio_toggle form-check-input me-2" data-id="booked_lead_panel" required id="booked_lead" type="radio" name="callType" value="Booked lead">Booked Itinerary
                                             </label>
                                             <!--iti id listing-->
                                             <div class="form-group mt-2">
                                                 <label class="control-label" for="usr">Iti Id <sup class="text-danger">*</sup> :</label>
-                                                <select required class="form-control" name="iti_id"
+                                                <select required class="form-control form-select" name="iti_id"
                                                     id="iti_followup_change">
                                                     <option value="">Select Iti ID</option>
                                                     <?php if( isset( $itineraries ) && !empty( $itineraries ) ){
@@ -1112,7 +1177,7 @@ div#quotation_type_section,
                                                     <div class="col-md-6 mt-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Lead prospect<span style="color:red;">*</span></label>
-                                                            <select required class="form-control" name="txtProspect">
+                                                            <select required class="form-control form-select" name="txtProspect">
                                                                 <option value="Hot">Hot</option>
                                                                 <option value="Warm">Warm</option>
                                                                 <option value="Cold">Cold</option>
@@ -1148,9 +1213,10 @@ div#quotation_type_section,
                                                             </div>
                                                             <div class="col-md-6 my-3">
                                                                 <div class="form-group">
-                                                                    <label>Lead prospect<span
-                                                                            style="color:red;">*</span></label>
-                                                                    <select required class="form-control"
+                                                                    <label class="control-label">Lead prospect
+                                                                        <sup class="text-danger">*</sup>
+                                                                    </label>
+                                                                    <select required class="form-control form-select"
                                                                         name="txtProspectNotpicked">
                                                                         <option value="Hot">Hot</option>
                                                                         <option value="Warm">Warm</option>
@@ -1195,7 +1261,7 @@ div#quotation_type_section,
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label" for="usr">Package Category <sup class="text-danger">*</sup> :</label>
                                                             <div id="appCatListDiv">
-                                                                <select required class='form-control' id='appCatList'
+                                                                <select required class='form-control form-select' id='appCatList'
                                                                     name='approved_package_category'>
                                                                     <option value="">Select package category</option>
                                                                     <?php  if($get_iti_package_category){
@@ -1228,7 +1294,7 @@ div#quotation_type_section,
 
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label">Package Type*:</label>
-                                                            <select required name="package_type_iti" class="form-control">
+                                                            <select required name="package_type_iti" class="form-control form-select">
                                                                 <option value="">Choose Package Type</option>
                                                                 <option value="Honeymoon Package">Honeymoon Package</option>
                                                                 <option value="Fixed Departure">Fixed Departure</option>
@@ -1382,7 +1448,7 @@ div#quotation_type_section,
                                                 <div class="row">
                                                     <div class="form-group col-md-6">
                                                         <label class="control-label" for="">Select Decline Reason</label>
-                                                        <select required class="form-control" name="iti_note_decline">
+                                                        <select required class="form-control form-select" name="iti_note_decline">
                                                             <option value="">Select Reason</option>
                                                             <option value="Booked with someone else">Booked with someone
                                                                 else</option>
@@ -1581,8 +1647,11 @@ div#quotation_type_section,
             </div>
             <!--end followup section -->
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
 
 </div>
 <!--End page-container-->
@@ -1602,7 +1671,7 @@ div#quotation_type_section,
                         <?php $state_list = get_indian_state_list(); ?>
                         <div class="form-group col-md-12 my-2">
                             <label class="control-label">Select Package Category*</label>
-                            <select required name="package_cat_id" class="form-control" id="pkg_cat_id">
+                            <select required name="package_cat_id" class="form-control form-select" id="pkg_cat_id">
                                 <option value="">Choose Package</option>
                                 <?php if( $getPackCat ){ ?>
                                 <?php foreach($getPackCat as $pCat){ ?>
@@ -1614,7 +1683,7 @@ div#quotation_type_section,
                         </div>
                         <div class="form-group col-md-12 my-2">
                             <label class="control-label">Select State*</label>
-                            <select required disabled name="satate_id" class="form-control" id="state_id">
+                            <select required disabled name="satate_id" class="form-control form-select" id="state_id">
                                 <option value="">Select State</option>
                                 <?php if( $state_list ){ 
                            foreach($state_list as $state){
@@ -1625,7 +1694,7 @@ div#quotation_type_section,
                         </div>
                         <div class="form-group col-md-12 my-2">
                             <label class="control-label">Select Package</label>
-                            <select required disabled name="packages" class="form-control" id="pkg_id">
+                            <select required disabled name="packages" class="form-control form-select" id="pkg_id">
                                 <option value="">Choose Package</option>
                             </select>
                         </div>
@@ -1703,7 +1772,7 @@ div#quotation_type_section,
                         <?php $state_list = get_indian_state_list(); ?>
                         <div class="form-group">
                             <label class="control-label">Select Package Category*</label>
-                            <select required name="package_cat_id" class="form-control" id="dup_pkg_cat_id">
+                            <select required name="package_cat_id" class="form-control form-select" id="dup_pkg_cat_id">
                                 <option value="">Choose Package</option>
                                 <?php if( $getPackCat ){ ?>
                                 <?php foreach($getPackCat as $pCat){ ?>
@@ -1715,7 +1784,7 @@ div#quotation_type_section,
                         </div>
                         <div class="form-group">
                             <label class="control-label">Select State*</label>
-                            <select required disabled name="satate_id" class="form-control" id="dup_state_id">
+                            <select required disabled name="satate_id" class="form-control form-select" id="dup_state_id">
                                 <option value="">Select State</option>
                                 <?php if( $state_list ){ 
                            foreach($state_list as $state){
@@ -1726,7 +1795,7 @@ div#quotation_type_section,
                         </div>
                         <div class="form-group">
                             <label class="control-label">Select Package*</label>
-                            <select required disabled name="packages" class="form-control" id="dup_pkg_id">
+                            <select required disabled name="packages" class="form-control form-select" id="dup_pkg_id">
                                 <option value="">Choose Package</option>
                             </select>
                         </div>

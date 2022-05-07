@@ -103,7 +103,7 @@
 						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Select Vehicle*</label>
-								<select required name="inp[cab_id]" class="form-control vehicle col-md-4">
+								<select required name="inp[cab_id]" class="form-control form-select vehicle col-md-4">
 									<option value="">Choose Vehicle</option>
 									<?php $cars = get_car_categories(); 
 										if( $cars ){
@@ -121,7 +121,7 @@
 						<div class="col-xl-4 col-md-6 my-2">
 							<div class="transporter_list form-group">
 								<label class="control-label">Select Transporter*</label> 
-								<select disabled required name="inp[transporter_id]" class="form-control transporter">
+								<select disabled required name="inp[transporter_id]" class="form-control form-select transporter">
 									<option value="">Select Transporter</option>
 								</select>
 								<div class="rhRes"></div>
@@ -189,7 +189,7 @@
 						<div class="col-xl-4 col-md-6 my-2">
 							<div class="form-group">
 								<label class="control-label">Total Cabs*: </label>
-									<select required disabled name="inp[total_cabs]" class="form-control total_cabs clearfield">
+									<select required disabled name="inp[total_cabs]" class="form-control form-select total_cabs clearfield">
 										<option value=''>Select Cabs</option>
 									<?php for( $i=1 ; $i<=10; $i++ ){
 										echo '<option value=' . $i . '> '. $i . '</option>';

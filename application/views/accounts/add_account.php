@@ -39,7 +39,7 @@
                         <div class="col-lg-6 col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Account Type <sup class="text-danger">*</sup></label>
-                                <select name="account_type" class="form-control account_type" required="required">
+                                <select name="account_type" class="form-control account_type form-select" required="required">
                                     <option value="">Select Account Type</option>
                                     <option
                                         <?php echo isset( $account_listing[0]->account_type ) && $account_listing[0]->account_type == "bank" ? "selected" : ""; ?>

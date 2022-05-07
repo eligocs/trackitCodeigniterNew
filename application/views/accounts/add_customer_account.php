@@ -44,7 +44,7 @@
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Booked Lead ID <sup class="text-danger">*</sup></label>
-                                <select name="iti_id" class="form-control" required id="select_iti_id">
+                                <select name="iti_id" class="form-control form-select" required id="select_iti_id">
                                     <option value="">Select</option>
                                     <?php if( isset( $pending_accounts ) && !empty( $pending_accounts ) ){ 
 										foreach( $pending_accounts as $account ){
@@ -112,7 +112,7 @@
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Country <sup class="text-danger">*</sup></label>
-                                <select required name="country_id" class="form-control country">
+                                <select required name="country_id" class="form-control country form-select">
                                     <option value="">Choose Country</option>
                                     <?php $country = get_country_list();
                                         if($country){
@@ -129,7 +129,7 @@
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select State <sup class="text-danger">*</sup></label>
-                                <select required name="state_id" class="form-control state">
+                                <select required name="state_id" class="form-control form-select state">
                                     <option value="">Choose State</option>
                                     <?php 
                                         if( isset( $account_listing[0]->country_id ) ){
@@ -147,7 +147,7 @@
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Place of Supply <sup class="text-danger">*</sup></label>
-                                <select required name="place_of_supply_state_id" class="form-control">
+                                <select required name="place_of_supply_state_id" class="form-control form-select">
                                     <option value="">Choose State</option>
                                     <?php 
                                         $states = get_state_list( 101 );
@@ -207,7 +207,7 @@
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2 shownewbooking">
                             <div class="form-group">
                                 <label class="control-label">Select New Booked Lead ID <sup class="text-dange">*</sup></label>
-                                <select name="new_iti_id" class="form-control new_iti_id" required id="new_iti_id">
+                                <select name="new_iti_id" class="form-control form-select new_iti_id" required id="new_iti_id">
                                     <option value="">Select</option>
                                     <?php if( isset( $pending_accounts ) && !empty( $pending_accounts ) ){ 
 										foreach( $pending_accounts as $account ){

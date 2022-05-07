@@ -19,7 +19,7 @@
                             <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select State*</label>
-                                    <select required name="state_id" class="form-control state" id='state'>
+                                    <select required name="state_id" class="form-control form-select state" id='state'>
                                         <option value="">Select state</option>
                                         <?php $state_list = get_indian_state_list(); 
                                         if( $state_list ){
@@ -34,7 +34,7 @@
                             <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select City*</label>
-                                    <select required name="hotelcity" class="form-control city">
+                                    <select required name="hotelcity" class="form-control form-select city">
                                         <option value="">Select City</option>
                                         <?php $cities = get_city_list($hotel_book->state_id);
                                         if($cities){
@@ -50,7 +50,7 @@
                             <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Select Hotel*</label>
-                                    <select required name="hotel" class="form-control" id="hotels_list">
+                                    <select required name="hotel" class="form-control form-select" id="hotels_list">
                                         <option value="">Select Hotel</option>
                                         <?php $hotels = get_hotel_list( $hotel_book->city_id );
                                 if($hotels){
@@ -73,7 +73,7 @@
                             <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Room Category*</label>
-                                    <select required name="room_type" class="form-control">
+                                    <select required name="room_type" class="form-control form-select">
                                         <option value="">Select Category</option>
                                         <?php $roomcat = get_room_categories();
                                         if($roomcat){
@@ -136,7 +136,7 @@
                                     <label class="control-label">Meal Plan *</label>
                                     <?php $mealPlans = get_all_mealplans();
                                     if($mealPlans){ ?>
-                                    <select name="meal_plan" required class="form-control">
+                                    <select name="meal_plan" required class="form-control form-select">
                                         <option value="">Choose Meal Plan</option>
                                         <?php foreach( $mealPlans as $mp ){
                                             $m_id = $mp->id ;
@@ -191,7 +191,7 @@
                             <div class="col-xl-3 col-md-4 col-sm-6 my-2">
                                 <div class="form-group">
                                     <label class="control-label">Total Rooms*: </label>
-                                    <select required name="total_rooms" class="form-control total_rooms clearfield">
+                                    <select required name="total_rooms" class="form-control form-select total_rooms clearfield">
                                         <option value=''>Select Rooms</option>
                                         <?php for( $i=1 ; $i<=15; $i++ ){
                                         $selected = isset($hotel_book->total_rooms) && $total_rooms == $i ? "selected=selected" : "";
@@ -221,7 +221,7 @@
                                     <div class="col-md-4 my-2">
                                         <div class="form-group">
                                             <label class="control-label">Extra Bed*: </label>
-                                            <select required name="extra_bed" class="form-control extra_bed clearfield">
+                                            <select required name="extra_bed" class="form-control form-select extra_bed clearfield">
                                                 <option value="">Select Extra Bed</option>
                                                 <?php $extra_bed = isset($hotel_book->extra_bed) ? $hotel_book->extra_bed : 0; for(  $eb = 1; $eb <= $total_rooms ; $eb++ ){ $selected = isset($hotel_book->extra_bed) && $extra_bed == $eb ? "selected=selected" : ""; echo '<option value="' . $eb . '" '. $selected .' > '. $eb . '</option>'; 
                                                 } ?>
@@ -258,7 +258,7 @@
                                     <div class="col-md-4 my-2">
                                         <div class="form-group">
                                             <label class="control-label">Without Extra Bed*: </label>
-                                            <select required name="without_extra_bed" class="form-control withour_extra_bed clearfield">
+                                            <select required name="without_extra_bed" class="form-control form-select withour_extra_bed clearfield">
                                                 <option value="">Select</option>
                                                 <?php $without_extra_bed = isset($hotel_book->without_extra_bed ) ? $hotel_book->without_extra_bed : 0; for(  $eb = 1; $eb <= 20 ; $eb++ ){ $selected = isset($hotel_book->without_extra_bed) && $without_extra_bed == $eb ? "selected=selected" : ""; echo '<option value="' . $eb . '" '. $selected .' > '. $eb . '</option>'; 
                                                 } ?>

@@ -1,23 +1,26 @@
 <style>
-/* .yellow_row {
-    background-color: yellow !important;
-} */
+    .hold_row {
+        background-color: pink !important;
+    }
 
-.hold_row {
-    background-color: pink !important;
-}
+    #pakcageModal {
+    top: 20%;
+    }
 </style>
 <?php $todAy = date("Y-m-d"); ?>
+
+<!-- Begin page-container -->
 <div class="page-container">
+    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
+        <!-- Begin page-content -->
         <div class="page-content">
-            <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
-            if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
+                if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
             ?>
             <!--error message-->
             <?php $err = $this->session->flashdata('error'); 
-            if($err){ echo '<span class="help-block help-block-error2 red">'.$err.'</span>';}
+                if($err){ echo '<span class="help-block help-block-error2 red">'.$err.'</span>';}
             ?>
             <?php $sales_team_agents = get_all_sales_team_agents(); ?>
             <div class="portlet box blue">
@@ -35,36 +38,37 @@
                     </button>
                 </div>
             </div>
+
             <?php
-            //Hide filter
-            //$hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
-            $hideClass = "";
-            if( isset( $todayStatus ) ){	
-            	$first_day_this_month = $todayStatus; 
-            	$last_day_this_month  = $todayStatus;
-            }else{
-            	$first_day_this_month = ""; 
-            	$last_day_this_month  = "";
-            }
+                //Hide filter
+                //$hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
+                $hideClass = "";
+                if( isset( $todayStatus ) ){	
+                    $first_day_this_month = $todayStatus; 
+                    $last_day_this_month  = $todayStatus;
+                }else{
+                    $first_day_this_month = ""; 
+                    $last_day_this_month  = "";
+                }
             ?>  
+
             <div class="portlet-body">
-                <!--sort by agent -->
-                <!-- Show hide filter Section -->
+                <!-- Begin filter_collapse Section -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
+                    <!--sort by agent -->
                     <?php
-                    //$hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
-                    if( isset( $_GET["todayStatus"] ) ){	
-                        $first_day_this_month = $_GET["todayStatus"];
-                        $last_day_this_month  = $_GET["todayStatus"];
-                    }else{
-                        $first_day_this_month = "";
-                        $last_day_this_month  = "";
-                    }
+                        //$hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
+                        if( isset( $_GET["todayStatus"] ) ){	
+                            $first_day_this_month = $_GET["todayStatus"];
+                            $last_day_this_month  = $_GET["todayStatus"];
+                        }else{
+                            $first_day_this_month = "";
+                            $last_day_this_month  = "";
+                        }
                     ?>
                     <?php if( $user_role == 97 ){ ?>
-                    <!--start filter section-->
                     <form id="form-filter" class="flex form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
-                        <div class="actions custom_filter">
+                        <div class="actions">
                             <div class="row">
                                 <!--Calender-->
                                 <div class="col-md-3 my-2"> 
@@ -112,11 +116,9 @@
                             </div>
                         </div>
                     </form>
-                    <!--End filter section-->
                     <?php }else{ ?>
-                    <!--start filter section-->
                     <form id="form-filter" class="form-horizontal margin_bottom_0  <?php echo $hideClass; ?>">
-                        <div class="actions custom_filter">
+                        <div class="actions">
                             <div class="row">
                                 <!--Calender-->
                                 <div class="col-md-3 my-2"> 
@@ -194,11 +196,143 @@
                             <!-- row -->
                         </div>
                     </form>
-                    <!--End filter section-->
                     <?php } ?>
                 </div>
-
+                <!-- End filter_collapse -->
                 
+                <!-- Begin demo table design -->
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                    <div class="table-responsive">
+                        <table class="table data-table-large">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="d-flex justify-content-between px-1 w-100">
+                                                <div class="requirment">
+                                                    <p class="fs-7 fw-bold mb-2 mt-0">#121500</p>
+                                                    <div title="Holiday Type" class="badge bg-success mb-1 me-2">
+                                                        <strong class="white">Warm</strong> 
+                                                    </div>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-danger">
+                                                        <strong class="" title="Lead Status
+                                                            ">Declined</strong> 
+                                                    </div>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <p class="fs-7 mb-2 mt-0 "><strong class="d-block mb-1">SANDEEP THORAT</strong>
+                                                        <span title="Leads From" class="text-primary">Travel Partner</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                                <div class="border-end flex flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 text-secondary">requirement </p>
+                                                    <div>
+                                                        <i class="me-2 fa-solid fa-plane-departure text-primary"></i>
+                                                        <i class="me-2 fa-solid fa-hotel text-muted"></i>
+                                                        <i class="me-2 fa-solid fa-taxi text-primary"></i>
+                                                        <i class="me-2 fa-solid fa-train-subway text-muted"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2 text-end">
+                                                    <div class="my-1">
+                                                        <span class="d-block fs-7 mb-2">8219227004</span>
+                                                    </div>
+                                                    <div class="pt-1">
+                                                        <i class="fa-envelope fa-solid text-primary"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="px-2">
+                                                <div class="mb-2">
+                                                    <strong class="d-block fs-7">Himahal Pradesh </strong> 
+                                                    <span class="badge bg-yellow-haze mt-2">
+                                                    <strong class="">Fixed Departure</strong>
+                                                    </span>
+                                                </div>
+                                                <div class="package-title">
+                                                    <span class="text-secondary fs-7">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
+                                                <span class="badge fs-7 pb-0 text-dark" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fw-bold m-0">01-Jan-2022</p>
+                                                <span class="fs-8 text-secondary">Till 06-Jan (5N / 6D)</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+                                                <a class="text-primary d-block fw-bold" href="">Devender Verma</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fs-7 m-0">
+                                                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                                                    <strong> 1,35,000/-</strong>
+                                                </p>
+                                                <span class="fs-8 text-secondary">Total</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+                                                <p class="fs-8 fw-400 m-0 text-dark">04-Feb-2022</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="my-1 fs-7 text-secondary"><span>Call</span> <span>28-Feb-2022</span></p>
+                                                <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
+                                                <p class="fs-7 fs-8 my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb 06:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-clone"></i> Clone</a>
+                                            </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- End demo table design -->
 
                 <!-- Table Section -->
                 <div class="bg-white p-3 rounded-4 shadow-sm">
@@ -298,16 +432,15 @@
                     </div>
                 </div>
             </div>
-            <!--  -->
         </div>
+        <!-- End page-content -->
     </div>
+    <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
 </div>
-<style>
-#pakcageModal {
-    top: 20%;
-}
-</style>
+
+
 <!-- package Modal -->
 <div id="pakcageModal" class="modal" role="dialog">
     <div class="modal-dialog">
@@ -369,8 +502,9 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     //export btn click
     $(document).on("click", ".export_btn", function(e) {
         e.preventDefault();
@@ -420,7 +554,7 @@ jQuery(document).ready(function($) {
 });
 </script>
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     var date_from = $("#date_from").attr("data-date_from");
     if (date_from != "") {
         $('#daterange').val($("#date_from").attr("data-date_from") + '-' + $("#date_to").attr("data-date_to"));
@@ -459,7 +593,7 @@ jQuery(document).ready(function($) {
 });
 </script>
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
     var table;
     var tableFilter;
     //Custom Filter
@@ -549,7 +683,7 @@ $(document).ready(function() {
 </script>
 <!-- Package Listing Modal -->
 <script type="text/javascript">
-jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
     var ajaxReq;
     var resp = $("#pack_response");
     //ajax request if predefined package choose

@@ -8,49 +8,40 @@
       <title><?php echo get_site_name(); ?></title>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+      
+      <!-- Bootstrap bootstrap@5.0.2 -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       
-      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-     
-      <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
-     <!--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"> -->
-
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!-- Font awesome 6.1.0 -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
       <!-- Inter Font family -->
      <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
 
       <link href="<?php echo base_url();?>site/assets/css/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-      <!-- <link href="<?php // echo base_url();?>site/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
       <link href="<?php echo base_url();?>site/assets/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
       <link href="<?php echo base_url();?>site/assets/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
       <link href="<?php echo base_url();?>site/assets/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
       <link href="<?php echo base_url();?>site/assets/css/daterangepicker.min.css" rel="stylesheet" type="text/css" />
-      <!-- <link href="<?php //echo base_url();?>site/assets/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" /> -->
       <link href="<?php echo base_url();?>site/assets/css/plugins.min.css" rel="stylesheet" type="text/css" />
-      <!-- <link href="<?php echo base_url();?>site/assets/css/layout.min.css" rel="stylesheet" type="text/css" /> -->
       <link href="<?php echo base_url();?>site/assets/css/sweetalert.min.css" rel="stylesheet" type="text/css" />
-      <!--link href="<?php //echo base_url();?>site/assets/css/jquery.multiselect.css" rel="stylesheet" type="text/css" /-->
       <link href="<?php echo base_url();?>site/assets/css/fullcalendar.min.css" rel="stylesheet" type="text/css" />
       <link href="<?php echo base_url();?>site/assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+
       <!--User Theme Style -->
       <?php $theme_style =  get_user_theme_style(); 
          $theme_css = !empty( $theme_style ) ? trim( $theme_style ) : "default";
-         ?>
-      <!-- <link href="<?php echo base_url();?>site/assets/css/<?php echo $theme_css ?>.css" data-style_colour = "<?php //echo $theme_css ?>" rel="stylesheet" type="text/css" id="style_color" /> -->
-      <!--End User Theme Style -->
+      ?>
       <!-- END THEME LAYOUT STYLES -->
+
       <link rel="shortcut icon" type="image/x-icon" href="<?php echo site_url()  . 'site/images/' . favicon() ?>" />
+      <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
       <script src="<?php echo base_url();?>site/assets/js/jquery.min.js" type="text/javascript"></script>
       <script src="<?php echo base_url();?>site/assets/js/jquery.validate.min.js" type="text/javascript"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
-      <!-- <link href="<?php echo base_url();?>site/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
-      <link href="<?php echo base_url();?>site/assets/css/custom.css" rel="stylesheet" type="text/css" />
-      <link href="<?php echo base_url();?>site/assets/css/custom-new.css" rel="stylesheet" type="text/css" /> -->
       <link href="<?php echo base_url();?>site/assets/css/track-scratch.css" rel="stylesheet" type="text/css" /> 
       <link href="<?php echo base_url();?>site/assets/css/new-custom.css" rel="stylesheet" type="text/css" /> 
-     
+
    </head>
    <!-- END HEAD -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white <?php echo $theme_css; ?>">
@@ -77,23 +68,23 @@
                <i class="fa-solid fa-bars"></i>
             </a>
          </div>
-         <?php 
-            //if saleteam user show monthly target
-            if( $h_user_role == 99 || $h_user_role == 98   ){
-               $mtarget = (int)get_total_target_by_month(); 
-               $mbooked = (int)get_agents_booked_packages();
-               //$mtarget = 10; 
-               //$mbooked = 10;
-               $percentage =  !empty( $mtarget ) ?  floor(($mbooked / $mtarget) * 100) : 0; 
-         ?>
-
          <div class="header_right_part">
+            <?php 
+               //if saleteam user show monthly target
+               if( $h_user_role == 99 || $h_user_role == 98   ){
+                  $mtarget = (int)get_total_target_by_month(); 
+                  $mbooked = (int)get_agents_booked_packages();
+                  //$mtarget = 10; 
+                  //$mbooked = 10;
+                  $percentage =  !empty( $mtarget ) ?  floor(($mbooked / $mtarget) * 100) : 0; 
+            ?>
+
             <!-- header_target_section -->
             <div class='header_target_section'>
                <a href="<?php echo base_url("incentive"); ?>" title="Go to incentive page">
                   <div class="progress">
                      <span class="target"><span >Booked: <?php echo $mbooked; ?></span> / <span>Target: <?php echo $mtarget; ?> </span></span>
-                     <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                     <div class="progress-bar bg-success progress-bar-striped active" role="progressbar"
                         aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentage; ?>%">
                      </div>
                   </div>
@@ -127,7 +118,7 @@
                <a href="<?php echo base_url("incentive"); ?>" title="Go to incentive page">
                   <div class="progress" style="max-width:100%; min-width:250px;">
                      <span class="target"><span  >Booked: <?php echo $mbooked; ?></span> / <span  >Target: <?php echo $mtarget; ?> </span></span>
-                     <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                     <div class="progress-bar bg-success progress-bar-striped active" role="progressbar"
                         aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentage; ?>%">
                      </div>
                   </div>

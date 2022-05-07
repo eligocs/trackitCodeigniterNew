@@ -27,7 +27,7 @@
                     <div class="actions custom_filter row">
                         <div class="col-md-6 col-xl-3 my-2">
                             <label>Filter: </label>
-                            <select class="form-control booking_type" name="booking_type">
+                            <select class="form-control form-select booking_type" name="booking_type">
                                 <option value="">All</option>
                                 <option value="volvo">Volvo</option>
                                 <option value="train">Train</option>

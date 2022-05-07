@@ -329,7 +329,7 @@
                         <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select State*</label>
-                                <select required name="state_id" class="form-control state" id='state'>
+                                <select required name="state_id" class="form-control form-select state" id='state'>
                                     <option value="">Select state</option>
                                     <?php $state_list = get_indian_state_list(); 
                                     if( $state_list ){
@@ -344,7 +344,7 @@
                         <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select City*</label>
-                                <select required name="hotelcity" class="form-control city">
+                                <select required name="hotelcity" class="form-control form-select city">
                                     <option value="">Select City</option>
                                 </select>
                             </div>
@@ -353,7 +353,7 @@
                         <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Hotel*</label>
-                                <select required name="hotel" class="form-control" id="hotels_list">
+                                <select required name="hotel" class="form-control form-select" id="hotels_list">
                                     <option value="">Select Hotel</option>
                                 </select>
                             </div>
@@ -362,7 +362,7 @@
                         <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Room Category*</label>
-                                <select required name="room_type" class="form-control">
+                                <select required name="room_type" class="form-control form-select">
                                     <option value="">Select Category</option>
                                     <?php $roomcat = get_room_categories();
                                         if($roomcat){
@@ -414,7 +414,7 @@
                                 <label class=" control-label">Meal Plan *</label>
                                 <?php $mealPlans = get_all_mealplans();
                                 if($mealPlans){ ?>
-                                <select name="meal_plan" required class="form-control">
+                                <select name="meal_plan" required class="form-control form-select">
                                     <option value="">Choose Meal Plan</option>
                                     <?php foreach( $mealPlans as $mp ){
                                         echo '<option value="'. $mp->id . '">' . $mp->name . '</option>';
@@ -445,7 +445,7 @@
                         <div class="col-md-4 col-xl-3 my-2">
                             <div class="form-group">
                                 <label class="control-label">Total Rooms*: </label>
-                                <select required name="total_rooms" class="form-control total_rooms clearfield">
+                                <select required name="total_rooms" class="form-control form-select total_rooms clearfield">
                                     <option value=''>Select Rooms</option>
                                     <?php for( $i=1 ; $i<=15; $i++ ){
                                     echo '<option value=' . $i . '> '. $i . '</option>';
@@ -485,7 +485,7 @@
 
                                 <div class="col-md-4 my-2">
                                     <label class=" control-label ">Extra Bed*: </label>
-                                    <select required name="extra_bed" class="form-control extra_bed clearfield">
+                                    <select required name="extra_bed" class="form-control form-select extra_bed clearfield">
                                         <option value="">Select Rooms First</option>
                                     </select>
                                 </div>
@@ -511,7 +511,7 @@
 
                                 <div class="col-md-4 my-2">
                                     <label class=" control-label">Without Extra Bed*: </label>
-                                    <select required name="without_extra_bed" class="form-control withour_extra_bed clearfield">
+                                    <select required name="without_extra_bed" class="form-control form-select withour_extra_bed clearfield">
                                         <option value="">Select</option>
                                         <?php for( $we = 1 ; $we <= 20 ; $we++ ){
                                             echo "<option value={$we}> {$we} </option>";

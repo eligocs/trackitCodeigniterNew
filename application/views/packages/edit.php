@@ -84,7 +84,7 @@ $iti = $itinerary[0]; ?>
 													<div class="col-md-11">
 														<?php $state_list = get_indian_state_list(); 
 														if( $state_list ){
-															echo "<select name='state' class='form-control' id='state'>";
+															echo "<select name='state' class='form-control form-select' id='state'>";
 																echo '<option value="">Select State</option>';
 																foreach($state_list as $state){
 																	$selected = $iti->state_id == $state->id ? "selected='selected'" : "";
@@ -126,7 +126,7 @@ $iti = $itinerary[0]; ?>
 														<span class="required"> * </span>
 													</label>
 													<div class="col-md-11">
-														<select required name="p_cat_id" class="form-control">
+														<select required name="p_cat_id" class="form-control form-select">
 															<option value="">Choose Package Category</option>
 															<?php $cats = get_package_categories(); 
 																if( $cats ){
@@ -175,7 +175,7 @@ $iti = $itinerary[0]; ?>
 														<span class="required"> * </span>
 													</label>
 													<div class="col-md-11">
-														<select required name="cab_category" class="form-control">
+														<select required name="cab_category" class="form-control form-select">
 															<option value="">Choose Car Category</option>
 															<?php $cars = get_car_categories(); 
 																if( $cars ){
@@ -235,7 +235,7 @@ $iti = $itinerary[0]; ?>
 
 																<div class="col-md-4 my-2">
 																	<label class="control-label">Meal Plan</label><span class="required"> * </span>
-																	<select required name="meal_plan" class="form-control">
+																	<select required name="meal_plan" class="form-control form-select">
 																		<option value="">Choose Meal Plan</option>
 																		<option value="Breakfast Only" <?php if ( $tourData[$i]['meal_plan'] == "Breakfast Only" ) { ?> selected="selected" <?php } ?> >Breakfast Only</option>
 																		<option <?php if ( $tourData[$i]['meal_plan'] == "Breakfast & Dinner" ) { ?> selected="selected" <?php } ?> value="Breakfast & Dinner"> Breakfast & Dinner</option>
@@ -315,7 +315,7 @@ $iti = $itinerary[0]; ?>
 															<div class="form-group">
 																<label class="control-label">Meal Plan</label><span class="required"> * </span>
 																
-																<select required name="meal_plan" class="form-control">
+																<select required name="meal_plan" class="form-control form-select">
 																	<option value="">Choose Meal Plan</option>
 																	<option value="Breakfast Only">Breakfast Only</option>
 																	<option value="Breakfast & Dinner">Breakfast & Dinner</option>
