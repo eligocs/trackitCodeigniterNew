@@ -26,7 +26,7 @@
                         <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Select Country*</label>
-                                <select name="country" class="form-control country">
+                                <select name="country" class="form-control form-select country">
                                     <option value="">Choose Country</option>
                                     <?php $country = get_country_list();
                                         if($country){
@@ -41,26 +41,28 @@
 
                         <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div id="state_list">
-                                <div class='form-group'><label>State*:</label><select disabled name='state'
-                                        class='form-control state'>
+                                <div class='form-group'><label>State*:</label>
+                                    <select disabled name='state' class='form-control form-select state'>
                                         <option value="">Select state</option>
-                                    </select></div>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div id="city_list">
-                                <div class='form-group'><label>City*:</label><select name='city' disabled
-                                        class='form-control city'>
+                                <div class='form-group'><label>City*:</label>
+                                    <select name='city' disabled class='form-control form-select city'>
                                         <option value="">Select City</option>
-                                    </select></div>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel Category*</label>
-                                <select name="category" class="form-control cat">
+                                <select name="category" class="form-control form-select cat">
                                     <option value="">Choose Category</option>
                                     <?php $hotels_cat = hotel_categories();
                                         if($hotels_cat){
@@ -116,7 +118,7 @@
                         <div class="col-xl-4 col-md-6 col-sm-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Room Category*</label>
-                                <select name="room_category[]" class="form-control cat select2" multiple> 
+                                <select name="room_category[]" class="form-control form-select cat select2" multiple> 
                                     <?php $room_cats = get_room_categories();
                                         if($room_cats){
                                             foreach( $room_cats as $cat ){ 

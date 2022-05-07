@@ -22,7 +22,7 @@
 						<div class="col-md-4 my-2">
 							<div class="form-group">
 								<label class="control-label">Max Person*</label>
-								<select name="max_person" class="form-control" required >
+								<select name="max_person" class="form-control form-select" required >
 									<option value="">Select Max Person</option>
 									<?php $max = $category->max_person; ?>
 									<?php for($i = 2 ; $i<= 40; $i++ ){

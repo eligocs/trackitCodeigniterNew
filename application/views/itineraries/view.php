@@ -59,15 +59,15 @@
             <div class="portlet box blue mb0">
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-users"></i>
-                        <strong>Lead Id: </strong><span class="text-white"> <?php echo $iti->customer_id; ?></span>
+                        <strong>Lead Id: </strong><span> <?php echo $iti->customer_id; ?></span>
                         &nbsp;
                         &nbsp;
                         <?php if( is_admin_or_manager() ){ ?>
-                        <strong>Lead Type: </strong><span class="text-white"><?php echo $cus_type; ?>&nbsp; &nbsp;
+                        <strong>Lead Type: </strong><span><?php echo $cus_type; ?>&nbsp; &nbsp;
                         </span> <?php echo $ref_name . $ref_contact; ?>
                         <?php } ?>
-                        <?php echo !empty($country_name) ? " From: <span class='text-white'>" . $country_name . " ( $state_name ) </span>" : ""; ?>
-                        Q. Type: <strong class="text-white">
+                        <?php echo !empty($country_name) ? " From: <span>" . $country_name . " ( $state_name ) </span>" : ""; ?>
+                        Q. Type: <strong>
                             <?php echo check_iti_type( $iti->iti_id ) . ' ( ' . $iti->iti_package_type . ')'; ?></strong>
                             &nbsp;
                         &nbsp;
@@ -75,7 +75,7 @@
                        $discountValue = !empty(discountparantIti($iti->iti_id)) ? discountparantIti($iti->iti_id) : '' ;
                             if($discountValue->parent_iti_id != 0){
                        ?>
-                        Q. Discount: <strong class="text-white">
+                        Q. Discount: <strong>
                             <?php echo $discountValue->parent_iti_id ?></strong>
                             <?php 
 
@@ -2513,7 +2513,7 @@
                                         <table class="table table-bordered tbl_policy_view">
                                             <thead class="thead-default">
                                                 <tr>
-                                                    <th class="text-white" colspan=3> Cancellation and Refund Policy </th>
+                                                    <th colspan=3> Cancellation and Refund Policy </th>
                                                 </tr>
                                             </thead>
                                             <tbody>';

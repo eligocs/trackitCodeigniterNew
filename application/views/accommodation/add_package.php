@@ -148,7 +148,7 @@
 									</div>
 									</div>
 									
-									<div class="clearfix"></div>
+									
 									<div class="col-md-6">
 										<div class="form-group margin-top-10">
 											<label class="control-label col-md-4">No. of Persons
@@ -172,7 +172,7 @@
 												<span class="required"> * </span>
 											</label>
 											<div class="col-md-8">
-												<select required name="iti_package_type" class="form-control">
+												<select required name="iti_package_type" class="form-control form-select">
 													<option value="">Choose Package Type</option>
 													<option value="Honeymoon Package">Honeymoon Package</option>
 													<option value="Fixed Departure">Fixed Departure</option>
@@ -183,7 +183,7 @@
 										</div>
 									</div>
 									
-									<div class="clearfix"></div>
+									
 								</div>
 								<div class="tab-pane " id="tab2">
 									<h3 class="block color-title text-center">Hotel Details</h3>
@@ -212,12 +212,12 @@
 										</div>
 									</div>
 									</div>
-									<div class="clearfix"></div>
+									
 									
 									<div class="mt-repeater-hotel tour_hotel_repeater">
 										<div data-repeater-list="hotel_meta" class="hotel_repeater">
 											<div data-repeater-item class="mt-repeater-hotel-item">
-												<div class="clearfix">
+												<div class="">
 													<div class='mt-repeater-hotel-input  col-md-3' >
 														<label><strong>Hotel City:</strong></label>
 														<input required type="text" name='hotel_location' class='form-control' placeholder="Eg. Shimla/Manali">
@@ -232,7 +232,7 @@
 													</div>	
 													<div class='mt-repeater-hotel-input col-md-2' >
 														<label><strong>Total Rooms:</strong></label>
-														<select required name="total_room" class="form-control">
+														<select required name="total_room" class="form-control form-select">
 															<option value="">Select Rooms</option>
 															<?php for( $i=1 ; $i <=100 ; $i++ ){ ?>
 																<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -247,7 +247,7 @@
 														<div class='mt-repeater-hotel-input' >
 														<label><strong>Extra Bed:</strong></label><br>
 														<label><input type="checkbox" class="extraCheck" value="Yes"> Add extra bed.</label>
-														<select required name="extra_bed" class="form-control extra_bed">
+														<select required name="extra_bed" class="form-control form-select extra_bed">
 															<option value="">Select Extra Bed</option>
 															<?php for( $eb=1 ; $eb <=100 ; $eb++ ){ ?>
 																<option value="<?php echo $eb; ?>"><?php echo $eb; ?></option>
@@ -257,11 +257,11 @@
 													</div>
 													
 													<div class="mt-innerrepeater-hotel inner_hotel_repeater">
-														<div data-repeater-list="hotel_inner_meta" class="clearfix hotel_inner">
+														<div data-repeater-list="hotel_inner_meta" class=" hotel_inner">
 															<div data-repeater-item class="mt-innerrepeater-hotel-item" >
 																<div class='mt-innerrepeater-hotel-input col-md-3' >
 																	<label><strong>Hotel Category:</strong></label>
-																	<select required name="hotel_category" class="form-control hotel_rate_cat">
+																	<select required name="hotel_category" class="form-control form-select hotel_rate_cat">
 																		<option value="">Choose Package Category</option>
 																		<option value="Standard">Deluxe</option>
 																		<option value="Deluxe">Super Deluxe</option>
@@ -272,7 +272,7 @@
 																
 																<div class='mt-innerrepeater-hotel-input col-md-2' >
 																	<label><strong>Room Category:</strong></label>
-																	<select required name="room_category" class="form-control">
+																	<select required name="room_category" class="form-control form-select">
 																		<option value="">Choose Room Category</option>
 																		<option value="Standard">Standard</option>
 																		<option value="Deluxe">Deluxe</option>
@@ -283,7 +283,7 @@
 																</div>
 																<div class='mt-innerrepeater-hotel-input col-md-2' >
 																	<label><strong>Choose Meal Plan:</strong></label>
-																	<select required name="meal_plan" class="form-control">
+																	<select required name="meal_plan" class="form-control form-select">
 																		<option value="">Choose Meal Plan</option>
 																		<option value="MAP">MAP</option>
 																		<option value="CP">CP</option>
@@ -302,11 +302,11 @@
 																	<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-innerrepeater-delete">
 																		<i class="fa fa-close"></i> Delete</a>
 																</div>
-																<div class="clearfix"></div>
+																
 															</div>
 														</div>
-														<div class="clearfix"></div>
-														<div class="col-md-12"><a href="javascript:;" data-repeater-create class="clearfix btn btn-success">
+														
+														<div class="col-md-12"><a href="javascript:;" data-repeater-create class=" btn btn-success">
 														<i class="fa-solid fa-plus"></i> Add New Category</a>
 														</div>
 													</div><!--End inner repeater-->
@@ -326,24 +326,25 @@
 									</div>
 									
 									<hr>
+									
 									<div class="mt-repeater-hotel-note tour_field_repeater">
 										<div data-repeater-list="hotel_note_meta">
 											<label class="control-label col-md-12"> Add Hotel Note: </label>
 										<?php $count_hotel_notes = count( $hotel_notes );
 											if( $count_hotel_notes > 0 && !empty( $hotel_notes ) ){ ?>
 												<?php for ( $i = 0; $i < $count_hotel_notes; $i++ ) { ?>
-													<div data-repeater-item class="mt-repeater-hotel-note-item form-group">
-														<!-- jQuery Repeater Container -->
-														<div class="mt-repeater-hotel-note-input col-md-9">
-															<div class="mt-repeater-hotel-note-input">
-																<input required type="text" name="hotel_note_meta[<?php echo $i; ?>][hotel_note]" class="form-control" value="<?php echo $hotel_notes[$i]["hotel_notes"] ;?>" /> 
-															</div>
-														</div>
-														<div class="mt-repeater-hotel-note-input col-md-3">
-															<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-															<i class="fa fa-close"></i> Delete</a>
+												<div data-repeater-item class="mt-repeater-hotel-note-item form-group">
+													<!-- jQuery Repeater Container -->
+													<div class="mt-repeater-hotel-note-input col-md-9">
+														<div class="mt-repeater-hotel-note-input">
+															<input required type="text" name="hotel_note_meta[<?php echo $i; ?>][hotel_note]" class="form-control" value="<?php echo $hotel_notes[$i]["hotel_notes"] ;?>" /> 
 														</div>
 													</div>
+													<div class="mt-repeater-hotel-note-input col-md-3">
+														<a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
+														<i class="fa fa-close"></i> Delete</a>
+													</div>
+												</div>
 												<?php } ?>	
 											<?php }else{ ?>
 												<div data-repeater-item class="mt-repeater-hotel-note-item form-group">
@@ -367,7 +368,7 @@
 								</div> <!-- tab2 -->
 								<div class="tab-pane" id="tab3">
 									<h3 class="block color-title text-center">Inclusion & Exclusion</h3>
-									<div class="clearfix"></div>
+									
 									<div class="col-md-6">
 										<div class="mt-repeater-inc tour_field_repeater">
 											<h4>Inclusion</h4>
@@ -388,7 +389,7 @@
 											<i class="fa-solid fa-plus"></i> Add</a>
 										</div>
 										
-										<div class="clearfix"></div>
+										
 										<div class="col-md-12">
 											<div class="col-md-12"><!--Special Inclusion Section-->
 												<div class="mt-repeater-spinc tour_field_repeater_sp">
@@ -487,7 +488,7 @@
 											<i class="fa-solid fa-plus"></i> Add</a>
 										</div>
 									</div>
-									<div class="clearfix"></div>
+									
 								</div>
 								<div class="tab-pane" id="tab4">
 									<div class="verify_msg">

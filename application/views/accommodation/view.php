@@ -63,7 +63,7 @@
 				}
 				?>
 
-            <div class="portlet box blue mb0">
+            <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-users"></i>
                         <strong>Lead Id: </strong><span class=""> <?php echo $iti->customer_id; ?></span> &nbsp; &nbsp;

@@ -61,7 +61,7 @@
                     <div class="caption">
                         <i class="fa fa-users"></i> 
                         <strong>Lead Id: </strong>
-                        <span class="text-white"><?php echo $iti->customer_id; ?></span> &nbsp; &nbsp;
+                        <span><?php echo $iti->customer_id; ?></span> &nbsp; &nbsp;
                         <?php if( is_admin_or_manager() ){ ?>
                             <strong class=''>Lead Type: </strong> <span><?php echo $cus_type; ?></span>
                             <?php echo $ref_name . $ref_contact; ?>

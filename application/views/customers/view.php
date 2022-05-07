@@ -262,21 +262,22 @@
                     </div>
                     <?php }elseif( $customer->cus_status == 8 ){ ?>
                     <!-- if customer decline query  -->
-                    <div class="custom_card">
+                    <div class="bg-white p-3 rounded-4 shadow-sm">
                         <h3 class="uppercase red font_size_18"><strong><?php echo $customer->quotation_type; ?> Package
                             </strong></h3>
                         <!--reassign lead if not followup taken-->
                         <?php if( is_admin_or_manager() ){ ?>
                         <?php $action =  isset( $_GET['action'] ) && $_GET['action'] == "reopen" ? "true" : ""; ?>
                         <div class="row">
-                            <label class="col-lg-4 d-flex align_items_center" for="btn_reopen">
-                                <input title="REOPEN LEAD" type="checkbox" <?php echo $action ? "checked" : ""; ?>
-                                    class="form-control repopen_lead" id="btn_reopen"> Reopen Lead
-                            </label>
-                            <div class="col-lg-8" id="reopen_lead"
+                            <div class="col-md-2">
+                                <label class="control-label" for="btn_reopen">
+                                    <input title="REOPEN LEAD" type="checkbox" <?php echo $action ? "checked" : ""; ?> class="form-check-input repopen_lead" id="btn_reopen"> Reopen Lead
+                                </label>
+                            </div>
+                            <div class="col-md-10" id="reopen_lead"
                                 style="display: <?php echo $action ? "block" : "none"; ?>;">
                                 <form id="frmreopen_lead" class="form-inline">
-                                    <div class="form-group">
+                                    <div class="form-group my-2">
                                         <label class="control-label">Assign To</label>
                                         <select required name="reassign_agent_id" class="form-control form-select">
                                             <option value="">Select Sales Team Agents</option>
@@ -297,28 +298,25 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label"></label>
                                         <input type="hidden" name="customer_id" type="text"
                                             value="<?php echo $customer->customer_id; ?>" />
-                                        <button type="submit" class="btn green uppercase edit_Customer">Reopen
-                                            Lead</button>
+                                        <button type="submit" class="btn green uppercase edit_Customer">Reopen Lead</button>
                                     </div>
 
                                     <div class="form-group">
                                         <div class='rres'></div>
                                     </div>
                                 </form>
-                                <div class='red'>Note: if you reopen this lead all related itineraries and followup will be deleted. </div>
+                                <div class='text-danger fs-7'>Note: if you reopen this lead all related itineraries and followup will be deleted. </div>
                             </div>
                         </div>
                         <?php } ?>
                         <!--edit additional information customer if exists -->
-                        <div class="well well-sm margin-top-20">
-                            <h3 class="font_size_18" style="margin: 0;">Query Decline By Customer</h3>
-                            <!-- Reopen Lead -->
+                        <div class="bg-light ps-2 py-2 mt-3">
+                            <h3 class="fs-6 m-0">Query Decline By Customer</h3>
                         </div>
-                        <p><strong>Reason: </strong> <?php echo $customer->decline_reason; ?> </p>
-                        <p><strong>Comment: </strong> <?php echo $customer->decline_comment; ?> </p>
+                        <p class="fs-7 my-2"><strong>Reason: </strong> <?php echo $customer->decline_reason; ?> </p>
+                        <p class="fs-7 my-2"><strong>Comment: </strong> <?php echo $customer->decline_comment; ?> </p>
                         <?php }else if( $role != 95 ){ ?>
                         <!-- Process for customer followup  -->
                         <div class="bg-white p-3 rounded-4 shadow-sm">
@@ -730,7 +728,7 @@
                                             $callType_status = $c_type;
                                             }
                                         ?>
-                                        <div>
+                                        <div class="bg-white p-3 rounded-4 shadow-sm my-3">
                                             <div class="mt-element-list">
                                                 <div class="mt-list-container list-todo" id="accordion1" role="tablist"
                                                     aria-multiselectable="true">

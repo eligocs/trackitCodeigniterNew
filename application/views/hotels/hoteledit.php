@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Country*: </label>
-                            <select name="country" class="form-control country">
+                            <select name="country" class="form-control form-select country">
                                 <option value="">Select Country</option>
                                 <?php $country = get_country_list();
                             if($country){ 
@@ -39,7 +39,7 @@
                         <div id="state_list" class="col-xxl-3 col-xl-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel State*: </label>
-                                <select name="state" class="form-control state">
+                                <select name="state" class="form-control form-select state">
                                     <option value="">Select State</option>
                                     <?php $states = get_state_list($hotel->country_id);
                                 if($states){
@@ -55,7 +55,7 @@
                         <div id="city_list" class="col-xxl-3 col-xl-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Hotel City*: </label>
-                                <select name="city" class="form-control city">
+                                <select name="city" class="form-control form-select city">
                                     <option value="">Select City</option>
                                     <?php $cities = get_city_list($hotel->state_id);
                                 if($cities){
@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-group col-xxl-3 col-xl-4 col-md-6 my-2">
                             <label class="control-label">Hotel Category*</label>
-                            <select name="category" class="form-control cat">
+                            <select name="category" class="form-control form-select cat">
                                 <option value="">Select Category</option>
                                 <?php $hotels_cat = hotel_categories();
                             if($hotels_cat){
@@ -114,7 +114,7 @@
                         <div class="col-xxl-3 col-xl-4 col-md-6 my-2">
                             <div class="form-group">
                                 <label class="control-label">Room Category*</label>
-                                <select name="room_category[]" class="form-control cat select2" multiple>
+                                <select name="room_category[]" class="form-control form-select cat select2" multiple>
                                     <?php $room_cats = get_room_categories();
                                         if($room_cats){
                                             if(!empty($hotel->room_category)){ 
@@ -179,7 +179,7 @@
                             <!-- <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">Room Category*</label>
-                                    <select name="room_category[]" class="form-control cat select2" multiple>
+                                    <select name="room_category[]" class="form-control form-select cat select2" multiple>
                                         <?php $room_cats = get_room_categories();
                                             if($room_cats){
                                                 if(!empty($hotel->room_category)){ 
@@ -254,7 +254,7 @@ jQuery(document).ready(function($) {
             }
         }).done(function(data) {
             $("#state_list").html(
-                "<div class='form-group'><label>State:</label><select name='state' class='form-control state'>" +
+                "<div class='form-group'><label>State:</label><select name='state' class='form-control form-select state'>" +
                 data + "</select></div>");
         }).error(function() {
             $("#state_list").html("Error! Please try again later!");
@@ -276,7 +276,7 @@ jQuery(document).ready(function($) {
             }
         }).done(function(data) {
             $("#city_list").html(
-                "<div class='form-group'><label>City:</label><select name='city' class='form-control city'>" +
+                "<div class='form-group'><label>City:</label><select name='city' class='form-control form-select city'>" +
                 data + "</select></div>");
         }).error(function() {
             $("#city_list").html("Error! Please try again later!");

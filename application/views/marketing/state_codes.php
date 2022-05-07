@@ -27,7 +27,7 @@
 						<div class="col-md-6 my-2">
 							<label class="control-label">Country </label>
 							<div class="form-group">
-								<select name='CD' class='form-control' id='cdd'>
+								<select name='CD' class='form-control form-select' id='cdd'>
 									<option value="">INDIA ( CODE: 101 )</option>
 								</select>	
 							</div>
@@ -35,7 +35,7 @@
 						<div class="col-md-6 my-2">
 							<label class="control-label">State </label>
 							<div class="form-group">
-								<select name='state' class='form-control' id='state'>
+								<select name='state' class='form-control form-select' id='state'>
 									<?php $state_list = get_indian_state_list(); 
 										if( $states ){
 											foreach($states as $state){

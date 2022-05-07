@@ -29,7 +29,7 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-users"></i>Customer Name: <?php echo $customer_name; ?>
-                        { Package Type: <strong class="text-white">
+                        { Package Type: <strong>
                             <?php echo check_iti_type( $iti->iti_id ); ?></strong> }
                     </div>
                     <a class="btn btn-success pull-right" href="<?php echo site_url("itineraries"); ?>"

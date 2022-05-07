@@ -1322,7 +1322,7 @@ div#quotation_type_section,
 
                                                         <div class="form-group col-md-6 my-2">
                                                             <label class="control-label" for="usr">Add GST <span style="color:red;"> (<?php echo $tax; ?>% Extra)</span>:</label>
-                                                            <input type="checkbox" id ="tx" name="is_gst" class="form-control" />
+                                                            <input type="checkbox" id ="tx" name="is_gst" class="form-check-input" />
                                                         </div>
                                                         
                                                         <div class="form-group col-md-6 my-2">

@@ -4276,9 +4276,6 @@ code {
     font-weight: 300 !important
 }
 
-.uppercase {
-    text-transform: uppercase !important
-}
 
 .no-space {
     margin: 0 !important;
@@ -25397,9 +25394,8 @@ body.stop-scrolling {
     border-bottom: 1px solid;
     border-bottom-style: dashed;
     border-color: #e7ecf1;
-    padding: 15px;
-    position: relative
-}
+    /* padding: 15px; */
+    position: relative;}
 
 .mt-element-list .list-todo.mt-list-container ul>.mt-list-item:last-child {
     border: none
@@ -37107,11 +37103,6 @@ table.dataTable.display tbody tr:hover {
     background: #fff !important;
 }
 
-.btn.btn-default.custom_active.active {
-    color: white;
-    background: #0d6efd;
-    /* border-radius: 5px !important; */
-}
 
 .font_size_20 {
     font-size: 20px !important;
@@ -37174,9 +37165,6 @@ hotelbooking-page .table>tbody>tr>td {
 
 
 
-.btn-group.flight_train_btns label {
-    margin: 0 15px;
-}
 
 .form_ft_caption {
     background: #e0296a;
@@ -37220,7 +37208,7 @@ hotelbooking-page .table>tbody>tr>td {
 .form_ft_btns .btn-default.custom_active.active {
     background: #5e72e4;
     border-color: #5e72e4;
-}
+color: var(--white-color);}
 
 .form_ft_btns .btn-default:hover {
     background: #eb3e79;

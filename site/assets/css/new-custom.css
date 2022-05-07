@@ -9,7 +9,17 @@
 	--white-color: #fff;
 	--orange-color: #ff5722;
 	--black-color: #000000;
+	--dark-purpule-color: #7460ee;
 }
+
+
+/* -------- Colours --------------- */
+.bg-dark-purpule{
+	background-color: var(--dark-purpule-color);
+}
+
+
+
 
 /** layout.min.css **/
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600&display=swap');
@@ -93,6 +103,10 @@ a {
 
 .white_space_fix {
 	white-space: nowrap !important;
+}
+
+.uppercase {
+    text-transform: uppercase !important;
 }
 
 /* font-awesome icons */
@@ -726,7 +740,7 @@ input[type="checkbox"] {
 /* Add Call log info */
 .view_call_info div#call_log_section {
 	/* background: aliceblue; */
-	padding: 20px;
+	/* padding: 20px; */
 }
 
 /* data-tables radio filter */
@@ -765,10 +779,6 @@ input[type="checkbox"] {
 
 #itiForm_Frm .btn-group.flight_train_btns input[type="radio"] {
 	display: none;
-}
-
-.btn-group.flight_train_btns label {
-	margin: 0 15px;
 }
 
 /* Repeater delete button */

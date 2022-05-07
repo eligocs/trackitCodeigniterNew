@@ -1,7 +1,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" rel="stylesheet"
     type="text/css" />
 <div class="page-container">
-    <div class="page-content-wrapper">
+    <div class="page-content-wrapper">z
         <div class="page-content">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
@@ -28,7 +28,7 @@
                         <div class="col-md-3 my-2">
                             <div class="form-group">
                                 <label class="control-label" for="sales_user_id">Select Sales Team User:</label>
-                                <select required class="form-control select_user" id='sales_user_id' name="user_id">
+                                <select required class="form-control form-select select_user" id='sales_user_id' name="user_id">
                                     <option value="">Select User</option>
                                     <?php foreach( $sales_team_agents as $user ){ ?>
                                     <option value="<?php echo $user->user_id; ?>">

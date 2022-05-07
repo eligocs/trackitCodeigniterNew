@@ -30,7 +30,7 @@
 							<div class="row" data-toggle="buttons">
 								<!--label class="control-label">Select State*</label-->
 								<div class="col-md-3 my-2">
-									<select title="Select State" data-toggle="tooltip" required name="state" class="form-control state">
+									<select title="Select State" data-toggle="tooltip" required name="state" class="form-control state form-select">
 										<option value="">Choose state</option>
 										<?php $states = get_indian_state_list();
 										if($states){
@@ -43,13 +43,13 @@
 								</div>
 								<!--label class="control-label">Select City*</label-->
 								<div class="col-md-3 my-2">
-									<select required title="Select City." data-toggle="tooltip" name="city" class="form-control city">
+									<select required title="Select City form-select" data-toggle="tooltip" name="city" class="form-control city">
 										<option value="">Select City</option>
 									</select>
 								</div>
 								<!--label class="control-label">Select Hotel Category*</label-->
 								<div class="col-md-3 my-2">
-									<select required title="Select Hotel Category"  name="hotel_cat" class="form-control hotel_cat">
+									<select required title="Select Hotel Category form-select"  name="hotel_cat" class="form-control hotel_cat">
 										<option value="all">All category</option>
 										<?php $h_category = hotel_categories();
 										if($h_category){

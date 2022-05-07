@@ -53,6 +53,20 @@
             ?>  
 
             <div class="portlet-body">
+                <!-- Begin Offcanvas -->
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">offcanvas 1</button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasTopLabel">Offcanvas top</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. In reprehenderit facilis ex quod cupiditate nisi non, aspernatur sint accusantium fugiat vel itaque minima accusamus! Adipisci obcaecati neque enim distinctio vero tempora, minima quae perferendis voluptate qui? Eius autem dignissimos quia placeat adipisci sequi officiis commodi illo nulla voluptate, accusantium magni!</strong>
+                    </div>
+                </div>
+                <!-- End Offcanvas -->
+
                 <!-- Begin filter_collapse Section -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                     <!--sort by agent -->
@@ -79,7 +93,7 @@
                                 <!--End-->
                                 <div class="col-md-3 my-2">
                                     <label class="control-label">Itinerary Type: </label>
-                                    <select name="iti_type" class="form-control" id="iti_type" required>
+                                    <select name="iti_type" class="form-control form-select" id="iti_type" required>
                                         <option value="" selected disabled>All</option>
                                         <option value="1">Holidays</option>
                                         <option value="2">Accommodation</option>
@@ -129,7 +143,7 @@
                                 <!--End-->
                                 <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Type:</label>
-                                    <select name="iti_type" class="form-control" id="iti_type" required>
+                                    <select name="iti_type" class="form-control form-select" id="iti_type" required>
                                         <option value="" selected disabled>All</option>
                                         <option value="1">Holidays</option>
                                         <option value="2">Accommodation</option>
@@ -137,7 +151,7 @@
                                 </div>
                                 <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Status:</label>
-                                    <select name="filterselcted" id="" class="form-control" required>
+                                    <select name="filterselcted" id="" class="form-control form-select" required>
                                         <option value="" selected disabled>Select Iti Status</option>
                                         <option  value="all" >All</option>
                                         <option  value="draft" >Draft</option>
@@ -210,9 +224,9 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="d-flex justify-content-between px-1 w-100">
                                                 <div class="requirment">
-                                                    <p class="fs-7 fw-bold mb-2 mt-0">#121500</p>
-                                                    <div title="Holiday Type" class="badge bg-success mb-1 me-2">
-                                                        <strong class="white">Warm</strong> 
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">#121500</p>
+                                                    <div title="Working on lead" class="badge bg-success mb-1 me-2">
+                                                        <strong class="white">working</strong> 
                                                     </div>
                                                     <div title="Holiday Type" class="fs-8 me-2 text-danger">
                                                         <strong class="" title="Lead Status
@@ -220,27 +234,26 @@
                                                     </div>
                                                 </div>
                                                 <div class="ms-2">
-                                                    <p class="fs-7 mb-2 mt-0 "><strong class="d-block mb-1">SANDEEP THORAT</strong>
-                                                        <span title="Leads From" class="text-primary">Travel Partner</span>
+                                                    <p class="fs-7 mb-2 mt-0 ">
+                                                        <strong class="d-block mb-1">SANDEEP THORAT</strong>
+                                                        <span title="Leads From" class="text-primary">Google Ads</span>
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="bg-light d-flex justify-content-between p-1 w-100">
-                                                <div class="border-end flex flex-grow-1">
-                                                    <p class="fs-7 mb-2 mt-0 text-secondary">requirement </p>
-                                                    <div>
-                                                        <i class="me-2 fa-solid fa-plane-departure text-primary"></i>
-                                                        <i class="me-2 fa-solid fa-hotel text-muted"></i>
-                                                        <i class="me-2 fa-solid fa-taxi text-primary"></i>
-                                                        <i class="me-2 fa-solid fa-train-subway text-muted"></i>
-                                                    </div>
+                                                <div class="border-end flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
+                                                    <div class="badge bg-info"><strong>Cold</strong></div>
                                                 </div>
-                                                <div class="flex-grow-1 ms-2 text-end">
+                                                <div class="flex-grow-1 ms-2">
                                                     <div class="my-1">
                                                         <span class="d-block fs-7 mb-2">8219227004</span>
                                                     </div>
-                                                    <div class="pt-1">
-                                                        <i class="fa-envelope fa-solid text-primary"></i>
+                                                    <div>
+                                                        <span title="sent 2 times" class="bg-info fs-8 px-2 rounded-3 text-white">2</span>
+                                                    <span>
+                                                    <i class="fa-envelope fa-solid text-primary" title="sandeepthorat4547@gmail.com"></i>
+                                                    </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -251,7 +264,7 @@
                                             <div class="px-2">
                                                 <div class="mb-2">
                                                     <strong class="d-block fs-7">Himahal Pradesh </strong> 
-                                                    <span class="badge bg-yellow-haze mt-2">
+                                                        <span class="badge bg-yellow-haze mt-2">
                                                     <strong class="">Fixed Departure</strong>
                                                     </span>
                                                 </div>
@@ -275,7 +288,8 @@
                                             </div>
                                             <div class="bg-light p-1 w-100">
                                                 <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
-                                                <a class="text-primary d-block fw-bold" href="">Devender Verma</a>
+                                                <a class="text-primary fw-bold" href="" title="View Agent">Devender Verma</a>
+                                                <button class="btn btn-secondary btn-sm ms-2"><i class="fa-solid fa-repeat"></i> Reassign</button>
                                             </div>
                                         </div>
                                     </td>
@@ -297,7 +311,7 @@
                                     <td>
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="mb-2 px-2">
-                                                <p class="my-1 fs-7 text-secondary"><span>Call</span> <span>28-Feb-2022</span></p>
+                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span> <span>28-Feb</span></p>
                                                 <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
                                             </div>
                                             <div class="bg-light p-1 w-100">
@@ -319,10 +333,126 @@
                                                 <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                            </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="d-flex justify-content-between px-1 w-100">
+                                                <div class="requirment">
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">#121500</p>
+                                                    <div title="Holiday Type" class="badge bg-danger mb-1 me-2">
+                                                        <strong class="white">Not Process</strong> 
+                                                    </div>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
+                                                        <strong class="" title="Lead Status
+                                                            ">Verified</strong> 
+                                                    </div>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <p class="fs-7 mb-2 mt-0 ">
+                                                        <strong class="d-block mb-1 uppercase">Amit Soni</strong>
+                                                        <span title="Leads From" class="text-primary">Reference</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                                <div class="border-end flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
+                                                    <div class="badge bg-warning"><strong>warm</strong></div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2">
+                                                    <div class="my-1">
+                                                        <span class="d-block fs-7 mb-2">8988225521</span>
+                                                    </div>
+                                                    <div>
+                                                        <span title="sent 2 times" class="bg-info fs-8 px-2 rounded-3 text-white">2</span>
+                                                    <span>
+                                                    <i class="fa-envelope fa-solid text-primary" title="sandeepthorat4547@gmail.com"></i>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="px-2">
+                                                <div class="mb-2">
+                                                    <strong class="d-block fs-7">Kerala </strong> 
+                                                        <span class="badge bg-dark-purpule mt-2">
+                                                    <strong class="">Group Tour</strong>
+                                                    </span>
+                                                </div>
+                                                <div class="package-title">
+                                                    <span class="text-secondary fs-7">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
+                                                <span class="badge fs-7 pb-0 text-dark" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fw-bold m-0">01-Jan-2022</p>
+                                                <span class="fs-8 text-secondary">Till 06-Jan (5N / 6D)</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+                                                <a class="text-primary fw-bold" href="" title="View Agent">Devender Verma</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fs-7 m-0">
+                                                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                                                    <strong> 1,35,000/-</strong>
+                                                </p>
+                                                <span class="fs-8 text-secondary">Total</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+                                                <p class="fs-8 fw-400 m-0 text-dark">04-Feb-2022</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span> <span>28-Feb</span></p>
+                                                <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
+                                                <p class="fs-7 fs-8 my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb 06:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-clone"></i> Clone</a>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
                                             </li>
                                             </ul>
                                         </div>
@@ -331,8 +461,8 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <!-- End demo table design -->
+                </div>            
+                <!-- End end demo table design -->
 
                 <!-- Table Section -->
                 <div class="bg-white p-3 rounded-4 shadow-sm">
@@ -341,7 +471,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label" for="sales_user_id">Select Sales Team User:</label>
-                                <select required class="form-control select_user" id='sales_user_id' name="user_id">
+                                <select required class="form-control form-select select_user" id='sales_user_id' name="user_id">
                                     <option value="">All Users</option>
                                     <?php foreach( $sales_team_agents as $user ){ ?>
                                     <option value="<?php echo $user->user_id; ?>">
@@ -389,7 +519,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="sales_user_id">Select Team Member:</label>
-                                <select required class="form-control select_user" id='sales_user_id' name="user_id">
+                                <select required class="form-control form-select select_user" id='sales_user_id' name="user_id">
                                     <option value="">All Teammembers</option>
                                     <?php echo "<option value={$user_id}>Myself</option>"; ?>
                                     <?php if( $team_members ){
@@ -457,7 +587,7 @@
                         <?php $state_list = get_indian_state_list(); ?>
                         <div class="form-group">
                             <label>Select Package Category*</label>
-                            <select required name="package_cat_id" class="form-control" id="pkg_cat_id">
+                            <select required name="package_cat_id" class="form-control form-select" id="pkg_cat_id">
                                 <option value="">Choose Package</option>
                                 <?php if( $getPackCat ){ ?>
                                 <?php foreach($getPackCat as $pCat){ ?>
@@ -469,7 +599,7 @@
                         </div>
                         <div class="form-group">
                             <label>Select State*</label>
-                            <select required disabled name="satate_id" class="form-control" id="state_id">
+                            <select required disabled name="satate_id" class="form-control form-select" id="state_id">
                                 <option value="">Select State</option>
                                 <?php if( $state_list ){ 
                            foreach($state_list as $state){
@@ -480,7 +610,7 @@
                         </div>
                         <div class="form-group">
                             <label>Select Package</label>
-                            <select required disabled name="packages" class="form-control" id="pkg_id">
+                            <select required disabled name="packages" class="form-control form-select" id="pkg_id">
                                 <option value="">Choose Package</option>
                             </select>
                         </div>

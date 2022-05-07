@@ -58,7 +58,7 @@
 							<div class="col-lg-4 col-md-6 my-2">
 								<div class="form-group">
 									<label class="control-label">Reassign To</label>
-									<select name="reassign_agent_id" class="form-control">
+									<select name="reassign_agent_id" class="form-control form-select">
 										<option  value="">Select Sales Team Agents</option>
 										<?php 
 											if( is_admin_or_manager() ){
@@ -128,7 +128,7 @@
 										<label class="control-label white_space_fix">Package Type*</label>
 										<?php $pkgType = $customer->package_type; ?>
 
-										<select required name="inp[package_type]" id="package_type" class="form-control">
+										<select required name="inp[package_type]" id="package_type" class="form-control form-select">
 											<option value="">Choose Package Type</option>
 											<option <?php if ( $pkgType == "Honeymoon Package" ) { ?> selected="selected" <?php } ?> value="Honeymoon Package">Honeymoon Package</option>
 											<option value="Fixed Departure" <?php if ( $pkgType == "Fixed Departure" ) { ?> selected="selected" <?php } ?>>Fixed Departure</option>
@@ -147,7 +147,7 @@
 								<div class="form-group">
 									<label class="control-label">Total Rooms*</label>
 									<?php $srooms =  isset($customer->total_rooms) ? $customer->total_rooms : ""; ?>
-									<select required class="form-control" name="inp[total_rooms]">
+									<select required class="form-control form-select" name="inp[total_rooms]">
 										<option value="">Select Rooms</option>
 										<?php for( $r=1 ; $r <=20 ; $r++ ){ ?>
 											<option value="<?php echo $r; ?>" <?php if( $srooms == $r ){ ?> selected="selected" <?php } ?> ><?php echo $r; ?></option>
@@ -184,7 +184,7 @@
 									<div class="col-sm-6">
 										<label class="control-label">Package By Car/volvo*</label>
 										<?php $pkgBy = $customer->package_car_type; ?>
-										<select required name="inp[package_car_type]" id="package_by" class="form-control">
+										<select required name="inp[package_car_type]" id="package_by" class="form-control form-select">
 											<option value="">Choose Package By</option>
 											<option <?php if ( $pkgBy == "Car" ) { ?> selected="selected" <?php } ?> value="Car">Car</option>
 											<option <?php if ( $pkgBy == "Volvo" ) { ?> selected="selected" <?php } ?> value="Volvo">Volvo</option>
@@ -201,7 +201,7 @@
 							<div class="col-lg-4 col-md-6 my-2">
 								<div class="form-group">
 									<label class="control-label">Meal Plan*</label>
-									<select required name="inp[meal_plan]" class="form-control">
+									<select required name="inp[meal_plan]" class="form-control form-select">
 										<option value="">Choose Meal Plan</option>
 										<option value="Breakfast Only" <?php if ( $customer->meal_plan == "Breakfast Only" ) { ?> selected="selected" <?php } ?> >Breakfast Only</option>
 										<option <?php if ( $customer->meal_plan == "Breakfast & Dinner" ) { ?> selected="selected" <?php } ?> value="Breakfast & Dinner"> Breakfast & Dinner</option>
@@ -221,7 +221,7 @@
 								<div class="form-group">
 									<label class="control-label">Car Type for sightseeing*</label>
 									<?php $car_type = isset($customer->car_type_sightseen) ? $customer->car_type_sightseen : ""; ?>
-									<select required name="inp[car_type_sightseen]" class="form-control">
+									<select required name="inp[car_type_sightseen]" class="form-control form-select">
 										<option value="">Choose Car Category</option>
 										<?php $cars = get_car_categories(); 
 											if( $cars ){
@@ -237,7 +237,7 @@
 							<div class="col-lg-4 col-md-6 my-2">
 								<div class="form-group">
 									<label class="control-label">Hotel Category*</label>
-									<select required name="inp[hotel_category]" class="form-control">
+									<select required name="inp[hotel_category]" class="form-control form-select">
 										<option value="">Choose hotel category</option>
 										<option <?php if ( $customer->hotel_category == "Deluxe" ) { ?> selected="selected" <?php } ?> value="Deluxe">Deluxe</option>
 										<option <?php if ( $customer->hotel_category == "Super Deluxe" ) { ?> selected="selected"  <?php } ?> value="Super Deluxe">Super Deluxe</option>
@@ -255,7 +255,7 @@
 							<div class="col-lg-4 col-md-6 my-2">
 								<div class="form-group">
 									<label class="control-label">Country*</label>
-									<select required name="inp[country_id]" class="form-control country">
+									<select required name="inp[country_id]" class="form-control form-select country">
 										<option value="">Select country</option>
 										<?php $country = get_country_list();
 										if($country){
@@ -271,7 +271,7 @@
 							<div class="col-lg-4 col-md-6 my-2">
 								<div class="form-group">
 									<label class="control-label">State*</label>
-									<select required name="inp[state_id]" class="form-control state">
+									<select required name="inp[state_id]" class="form-control form-select state">
 										<option value="">Select state</option>
 										<?php $states = get_state_list($customer->country_id);
 										if($states){
