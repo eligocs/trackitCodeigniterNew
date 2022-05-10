@@ -16,7 +16,7 @@
 
 					<!-- Show hide filter button -->
 					<button  class="btn float-end me-2 p-2 " title="Filter Cab Bookings" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
-							<i class="fa-solid fa-filter fs-5"></i>
+						<i class="fa-solid fa-filter fs-5"></i>
 					</button>
 				</div>
 			</div>
@@ -26,24 +26,24 @@
 					<div class="actions row">
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="control-label"><strong>Filter: </strong></label>
+								<label class="control-label">Filter: </label>
 								<input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" title="Travel date filter" placeholder='Travel date' />
 								<input type="hidden" name="date_from" id="date_from">
 								<input type="hidden" name="date_to" id="date_to">
 							</div>
 						</div>
 						<div class="col-md-8">
-						<div class="radio_filter_btns" data-toggle="buttons">
-							<label for="" class="control-label d-block">&nbsp;</label>
-							<label class="btn btn-default custom_active active"><input type="radio" name="filter" value="all" checked="checked" id="all"/>All</label>
-							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="upcomming" id="upcomming" />Upcomming</label>
-							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="past" id="past" />Past</label>
-							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="approved" id="approved" />Approved</label>
-							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="declined" id="declined" />Declined</label>
-							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="cancel" id="cancel" />Cancel</label>
-							<label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending" id="pending" />Pending</label>
-							<!--label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending_gm" id="pending_gm" />Pending GM</label-->
-						</div>
+							<div class="radio_filter_btns" data-toggle="buttons">
+								<label for="" class="control-label d-block">&nbsp;</label>
+								<label class="btn btn-default custom_active active"><input type="radio" name="filter" value="all" checked="checked" id="all"/>All</label>
+								<label class="btn btn-default custom_active"><input type="radio" name="filter" value="upcomming" id="upcomming" />Upcomming</label>
+								<label class="btn btn-default custom_active"><input type="radio" name="filter" value="past" id="past" />Past</label>
+								<label class="btn btn-default custom_active"><input type="radio" name="filter" value="approved" id="approved" />Approved</label>
+								<label class="btn btn-default custom_active"><input type="radio" name="filter" value="declined" id="declined" />Declined</label>
+								<label class="btn btn-default custom_active"><input type="radio" name="filter" value="cancel" id="cancel" />Cancel</label>
+								<label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending" id="pending" />Pending</label>
+								<!--label class="btn btn-default custom_active"><input type="radio" name="filter" value="pending_gm" id="pending_gm" />Pending GM</label-->
+							</div>
 						</div>
 					</div>
 					<input type="hidden" name="filter_val" id="filter_val" value="all">

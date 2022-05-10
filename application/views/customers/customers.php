@@ -31,10 +31,14 @@
                     <?php if( is_admin_or_manager() || is_teamleader() ){ ?>
                     <a class="btn btn-primary float-end" href="<?php echo site_url("customers/add"); ?>" title="Add Customer"><i class="fa-solid fa-plus"></i> Add customer</a>
                     <?php  } ?>
-                    
+                   
                     <!-- Show hide filter button -->
                     <button  class="btn float-end me-2 p-2" title="Filter Customers" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
                         <i class="fa-solid fa-filter fs-5"></i>
+                    </button>
+
+                    <button class="btn btn-danger float-end me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                        <i class="fa-solid fa-plus"></i> Add Customer
                     </button>
                 </div>
             </div>
@@ -53,20 +57,6 @@
             ?>  
 
             <div class="portlet-body">
-                <!-- Begin Offcanvas -->
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">offcanvas 1</button>
-
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-                    <div class="offcanvas-header">
-                        <h5 id="offcanvasTopLabel">Offcanvas top</h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. In reprehenderit facilis ex quod cupiditate nisi non, aspernatur sint accusantium fugiat vel itaque minima accusamus! Adipisci obcaecati neque enim distinctio vero tempora, minima quae perferendis voluptate qui? Eius autem dignissimos quia placeat adipisci sequi officiis commodi illo nulla voluptate, accusantium magni!</strong>
-                    </div>
-                </div>
-                <!-- End Offcanvas -->
-
                 <!-- Begin filter_collapse Section -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                     <!--sort by agent -->
@@ -224,18 +214,14 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="d-flex justify-content-between px-1 w-100">
                                                 <div class="requirment">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">#121500</p>
-                                                    <div title="Working on lead" class="badge bg-success mb-1 me-2">
-                                                        <strong class="white">working</strong> 
-                                                    </div>
-                                                    <div title="Holiday Type" class="fs-8 me-2 text-danger">
-                                                        <strong class="" title="Lead Status
-                                                            ">Declined</strong> 
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#121500</p>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
+                                                        <strong class="" title="Lead Status ">Verified</strong> 
                                                     </div>
                                                 </div>
                                                 <div class="ms-2">
                                                     <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong class="d-block mb-1">SANDEEP THORAT</strong>
+                                                        <strong class="d-block mb-1 uppercase">Sandeep Thorat</strong>
                                                         <span title="Leads From" class="text-primary">Google Ads</span>
                                                     </p>
                                                 </div>
@@ -247,13 +233,15 @@
                                                 </div>
                                                 <div class="flex-grow-1 ms-2">
                                                     <div class="my-1">
-                                                        <span class="d-block fs-7 mb-2">8219227004</span>
+                                                        <span class="d-block fs-7 mb-2"> 
+                                                            <i class="fa-solid fa-phone text-primary"></i> 8219227004
+                                                        </span>
                                                     </div>
                                                     <div>
-                                                        <span title="sent 2 times" class="bg-info fs-8 px-2 rounded-3 text-white">2</span>
-                                                    <span>
-                                                    <i class="fa-envelope fa-solid text-primary" title="sandeepthorat4547@gmail.com"></i>
-                                                    </span>
+                                                        <span class="tooltip_right">
+                                                            <i class="fa-envelope fa-solid text-primary"></i>
+                                                            <span class="tooltip_right_text">sandeepthorat457@gmail.com</span>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -263,33 +251,27 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="px-2">
                                                 <div class="mb-2">
-                                                    <strong class="d-block fs-7">Himahal Pradesh </strong> 
-                                                        <span class="badge bg-yellow-haze mt-2">
-                                                    <strong class="">Fixed Departure</strong>
-                                                    </span>
-                                                </div>
-                                                <div class="package-title">
-                                                    <span class="text-secondary fs-7">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
+                                                    <strong class="d-block fs-7 mb-1">Gujrat </strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
                                                 </div>
                                             </div>
                                             <div class="bg-light p-1 w-100">
-                                                <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
-                                                <span class="badge fs-7 pb-0 text-dark" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
-                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
-                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
+                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
+                                                <div title="Working on lead" class="badge bg-success">
+                                                    <strong class="white">working...</strong> 
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="mb-2 px-2">
-                                                <p class="fw-bold m-0">01-Jan-2022</p>
-                                                <span class="fs-8 text-secondary">Till 06-Jan (5N / 6D)</span>
+                                                <p class="fw-bold m-0">04-Feb-2022</p>
+                                                <span class="fs-8 text-secondary">assigned on</span>
                                             </div>
                                             <div class="bg-light p-1 w-100">
                                                 <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
                                                 <a class="text-primary fw-bold" href="" title="View Agent">Devender Verma</a>
-                                                <button class="btn btn-secondary btn-sm ms-2"><i class="fa-solid fa-repeat"></i> Reassign</button>
                                             </div>
                                         </div>
                                     </td>
@@ -297,10 +279,10 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="mb-2 px-2">
                                                 <p class="fs-7 m-0">
-                                                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                                                    <strong> 1,35,000/-</strong>
+                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
+                                                    <strong> 2 </strong>
                                                 </p>
-                                                <span class="fs-8 text-secondary">Total</span>
+                                                <span class="fs-8 text-secondary">Total calls</span>
                                             </div>
                                             <div class="bg-light p-1 w-100">
                                                 <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
@@ -326,15 +308,15 @@
                                         <div class="dropdown">
                                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                            <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
-                                            </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </td>
@@ -344,36 +326,34 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="d-flex justify-content-between px-1 w-100">
                                                 <div class="requirment">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">#121500</p>
-                                                    <div title="Holiday Type" class="badge bg-danger mb-1 me-2">
-                                                        <strong class="white">Not Process</strong> 
-                                                    </div>
-                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
-                                                        <strong class="" title="Lead Status
-                                                            ">Verified</strong> 
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#4578</p>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-danger">
+                                                        <strong class="" title="Lead Status ">not processed</strong> 
                                                     </div>
                                                 </div>
                                                 <div class="ms-2">
                                                     <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong class="d-block mb-1 uppercase">Amit Soni</strong>
-                                                        <span title="Leads From" class="text-primary">Reference</span>
+                                                        <strong class="d-block mb-1 uppercase">Anup Soni</strong>
+                                                        <span title="Leads From" class="text-primary">Travel Partner</span>
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="bg-light d-flex justify-content-between p-1 w-100">
                                                 <div class="border-end flex-grow-1">
                                                     <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-                                                    <div class="badge bg-warning"><strong>warm</strong></div>
+                                                    <div class="badge bg-secondary"><strong>Undifined</strong></div>
                                                 </div>
                                                 <div class="flex-grow-1 ms-2">
                                                     <div class="my-1">
-                                                        <span class="d-block fs-7 mb-2">8988225521</span>
+                                                        <span class="d-block fs-7 mb-2"> 
+                                                            <i class="fa-solid fa-phone text-primary"></i> 8654785471
+                                                        </span>
                                                     </div>
                                                     <div>
-                                                        <span title="sent 2 times" class="bg-info fs-8 px-2 rounded-3 text-white">2</span>
-                                                    <span>
-                                                    <i class="fa-envelope fa-solid text-primary" title="sandeepthorat4547@gmail.com"></i>
-                                                    </span>
+                                                        <span class="tooltip_right">
+                                                            <i class="fa-envelope fa-solid text-primary"></i>
+                                                            <span class="tooltip_right_text">anupsoni457@gmail.com</span>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -383,32 +363,30 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="px-2">
                                                 <div class="mb-2">
-                                                    <strong class="d-block fs-7">Kerala </strong> 
-                                                        <span class="badge bg-dark-purpule mt-2">
-                                                    <strong class="">Group Tour</strong>
-                                                    </span>
-                                                </div>
-                                                <div class="package-title">
-                                                    <span class="text-secondary fs-7">Charming Shimla &amp; Exotic Manali Holidays Tour</span>
+                                                    <strong class="d-block fs-7 mb-1">Andhra Pradesh</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
                                                 </div>
                                             </div>
                                             <div class="bg-light p-1 w-100">
-                                                <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
-                                                <span class="badge fs-7 pb-0 text-dark" title="Adult"> 6 <i class="fa-solid fa-user text-black-50"></i> </span>
-                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> 3  <i class="fa-solid fa-child text-black-50"></i></span>
-                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> 3 <i class="fa-solid fa-baby text-black-50"></i> </span>
+                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
+                                                <span title="Working on lead" class="badge bg-yellow-casablanca">
+                                                    <strong class="white">Not Process</strong> 
+                                                </span>
+                                                <button class="btn btn-sm btn-secondary btn-x-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
+                                                    <i class="fa-solid fa-repeat"></i> Reassign
+                                                </button>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="mb-2 px-2">
-                                                <p class="fw-bold m-0">01-Jan-2022</p>
-                                                <span class="fs-8 text-secondary">Till 06-Jan (5N / 6D)</span>
+                                                <p class="fw-bold m-0">05-Feb-2022</p>
+                                                <span class="fs-8 text-secondary">assigned on</span>
                                             </div>
                                             <div class="bg-light p-1 w-100">
                                                 <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
-                                                <a class="text-primary fw-bold" href="" title="View Agent">Devender Verma</a>
+                                                <a class="text-primary fw-bold" href="" title="View Agent">Digvijay Negi</a>
                                             </div>
                                         </div>
                                     </td>
@@ -416,10 +394,10 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="mb-2 px-2">
                                                 <p class="fs-7 m-0">
-                                                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                                                    <strong> 1,35,000/-</strong>
+                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
+                                                    <strong> 0 </strong>
                                                 </p>
-                                                <span class="fs-8 text-secondary">Total</span>
+                                                <span class="fs-8 text-secondary">Total calls</span>
                                             </div>
                                             <div class="bg-light p-1 w-100">
                                                 <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
@@ -430,13 +408,15 @@
                                     <td>
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="mb-2 px-2">
-                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span> <span>28-Feb</span></p>
-                                                <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
+                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span></p>
+                                                <p class="my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> not sheduled
+                                                </p>
                                             </div>
                                             <div class="bg-light p-1 w-100">
                                                 <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
                                                 <p class="fs-7 fs-8 my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb 06:00 PM
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> no calls yet !
                                                 </p>
                                             </div>
                                         </div>
@@ -445,15 +425,356 @@
                                         <div class="dropdown">
                                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                            <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
-                                            </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="d-flex justify-content-between px-1 w-100">
+                                                <div class="requirment">
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#09754</p>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-danger">
+                                                        <strong class="" title="Lead Status ">Declined</strong> 
+                                                    </div>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <p class="fs-7 mb-2 mt-0 ">
+                                                        <strong class="d-block mb-1 uppercase">Mutu Swami Ayer</strong>
+                                                        <span title="Leads From" class="text-primary">Facebook</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                                <div class="border-end flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
+                                                    <div class="badge bg-info"><strong>Cold</strong></div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2">
+                                                    <div class="my-1">
+                                                        <span class="d-block fs-7 mb-2"> 
+                                                            <i class="fa-solid fa-phone text-primary"></i> 8452154784
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="tooltip_right">
+                                                            <i class="fa-envelope fa-solid text-primary"></i>
+                                                            <span class="tooltip_right_text">mutuswamiayer56@gmail.com</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="px-2">
+                                                <div class="mb-2">
+                                                    <strong class="d-block fs-7 mb-1">Andhra Pradesh</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
+                                                <span title="Working on lead" class="badge bg-danger">
+                                                    <strong class="white">Declined</strong> 
+                                                </span>
+                                                <button class="btn btn-sm btn-success btn-x-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#reopenLead" aria-controls="offcanvasTop">
+                                                <i class="fa-solid fa-rotate-right"></i> Reopen
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fw-bold m-0">06-Feb-2022</p>
+                                                <span class="fs-8 text-secondary">assigned on</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+                                                <a class="text-primary fw-bold" href="" title="View Agent">Jitender Chauhan</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fs-7 m-0">
+                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
+                                                    <strong> 6 </strong>
+                                                </p>
+                                                <span class="fs-8 text-secondary">Total calls</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+                                                <p class="fs-8 fw-400 m-0 text-dark">06-Feb-2022</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span></p>
+                                                <p class="my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> not sheduled
+                                                </p>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
+                                                <p class="fs-7 fs-8 my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> 09-Feb 01:05 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="d-flex justify-content-between px-1 w-100">
+                                                <div class="requirment">
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#054</p>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
+                                                        <strong class="" title="Lead Status ">Verified</strong> 
+                                                    </div>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <p class="fs-7 mb-2 mt-0 ">
+                                                        <strong class="d-block mb-1 uppercase">vikaram Gahlot</strong>
+                                                        <span title="Leads From" class="text-primary">Google Ads</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                                <div class="border-end flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
+                                                    <div class="badge bg-danger"><strong>Hot</strong></div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2">
+                                                    <div class="my-1">
+                                                        <span class="d-block fs-7 mb-2"> 
+                                                            <i class="fa-solid fa-phone text-primary"></i> 8219227004
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="tooltip_right">
+                                                            <i class="fa-envelope fa-solid text-primary"></i>
+                                                            <span class="tooltip_right_text">gahlotvikram48@gmail.com</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="px-2">
+                                                <div class="mb-2">
+                                                    <strong class="d-block fs-7 mb-1">Gujrat </strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
+                                                <div title="Working on lead" class="badge bg-success">
+                                                    <strong class="white">working...</strong> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fw-bold m-0">06-Feb-2022</p>
+                                                <span class="fs-8 text-secondary">assigned on</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+                                                <a class="text-primary fw-bold" href="" title="View Agent">Ayushi Chauhan</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fs-7 m-0">
+                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
+                                                    <strong> 8 </strong>
+                                                </p>
+                                                <span class="fs-8 text-secondary">Total calls</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+                                                <p class="fs-8 fw-400 m-0 text-dark">05-Feb-2022</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span> <span>12-Feb</span></p>
+                                                <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
+                                                <p class="fs-7 fs-8 my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> 06-Feb 03:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="d-flex justify-content-between px-1 w-100">
+                                                <div class="requirment">
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#054</p>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
+                                                        <strong class="" title="Lead Status ">Verified</strong> 
+                                                    </div>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <p class="fs-7 mb-2 mt-0 ">
+                                                        <strong class="d-block mb-1 uppercase">Lokesh giri</strong>
+                                                        <span title="Leads From" class="text-primary">Onwards</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                                <div class="border-end flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
+                                                    <div class="badge bg-warning"><strong>Warm</strong></div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2">
+                                                    <div class="my-1">
+                                                        <span class="d-block fs-7 mb-2"> 
+                                                            <i class="fa-solid fa-phone text-primary"></i> 8541247845
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="tooltip_right">
+                                                            <i class="fa-envelope fa-solid text-primary"></i>
+                                                            <span class="tooltip_right_text">lokeshgiri545@gmail.com</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="px-2">
+                                                <div class="mb-2">
+                                                    <strong class="d-block fs-7 mb-1">Maharashtra </strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
+                                                <div title="Working on lead" class="badge bg-success">
+                                                    <strong class="white">working...</strong> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fw-bold m-0">08-Feb-2022</p>
+                                                <span class="fs-8 text-secondary">assigned on</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+                                                <a class="text-primary fw-bold" href="" title="View Agent">Ayushi Chauhan</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fs-7 m-0">
+                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
+                                                    <strong> 12 </strong>
+                                                </p>
+                                                <span class="fs-8 text-secondary">Total calls</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+                                                <p class="fs-8 fw-400 m-0 text-dark">08-Feb-2022</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span> <span>10-Feb</span></p>
+                                                <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> 11:00 AM</p>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
+                                                <p class="fs-7 fs-8 my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i> 09-Feb 03:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </td>
@@ -567,8 +888,221 @@
     </div>
     <!-- End page-content-wrapper -->
 </div>
+</div>
 <!-- End page-container -->
 </div>
+
+
+<!-- Begin Offcanvas-end for Reassign Customer -->
+<div class="bg_fade">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEnd">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasTopLabel">Reassign Customer</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <table class="table table-bordered table_details">
+                <tbody>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Customer Type</th>
+                    </tr>
+                    <tr>
+                        <td>Akash Dhiman</td>
+                        <td>Travel Partner</td>
+                    </tr>
+                    <tr>
+                        <th>quotation Type</th>
+                        <th>Agent</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Holidays</td>
+                        <td>sahil Hans</td>
+                    </tr>                   
+                </tbody>
+            </table>
+        <form action="">
+            <div class="row">
+                <div class="col-12 my-2">
+                    <div class="form-group">
+                        <label for="" class="control-label">Customer Name <sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control" placeholder="Customer Name">
+                    </div>
+                </div>
+                <div class="col-12 my-2">
+                    <div class="form-group">
+                        <label for="" class="control-label">Customer Email <sup class="text-danger">*</sup></label>
+                        <input type="email" class="form-control" placeholder="Customer Email">
+                    </div>
+                </div>
+                <div class="col-12 my-2">
+                    <div class="form-group">
+                        <label for="" class="control-label">Customer Contact <sup class="text-danger">*</sup></label>
+                        <input type="number" class="form-control" placeholder="Customer Contact">
+                    </div>
+                </div>
+                <div class="col-12 my-2">
+                    <div class="form-group">
+                        <label for="" class="control-label">Reassign To <sup class="text-danger">*</sup></label>
+                        <select name="" id="" class="form-control form-select" required>
+                            <option value="" disabled selected>Select Sales Team Agents</option>
+                            <option value="sales1">Sales1</option>
+                            <option value="sales2">Sales2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12 my-3">
+                    <button class="btn btn-primary">Save Customer</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<!-- End Offcanvas for Reassign Customer-->
+
+<!-- Begin offcanvas-top for add customer -->
+<div class="bg_fade">
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasTopLabel">Offcanvas top</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End offcanvas-top for add customer -->
+
+<!-- Begin offcanvas-top for Reopen Lead -->
+<div class="bg_fade">
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="reopenLead" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasTopLabel">Offcanvas top</h5>
+            <div>
+                <a href="" class="btn btn-sm btn-warning me-2 text-white"><i class="fa-solid fa-eye"></i> View Customer</a>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="offcanvas-body">
+           <!-- <table class="table table-bordered table-sm table_details">
+               <tr>
+                   <th>Customer Name</th>
+                   <td>Mutu Swami Ayer</td>
+                   <th>Customer Email</th>
+                   <td> ayermutuswami@gmail.com </td>
+                   <th>Customer Type</th>
+                   <td>Phone</td>
+               </tr>
+               <tr>
+                   <th>Customer ID</th>
+                   <td>4539</td>
+                   <th>Destination</th>
+                   <td>Shimla Manali</td>
+                   <th>Customer Contact</th>
+                   <td>9951116572</td>
+               </tr>
+               <tr>
+                   <th>Whatsapp Number</th>
+                   <td>9951116572</td>
+                   <th>Adults</th>
+                   <td>2</td>
+                   <th>Child</th>
+                   <td>N/A</td>
+               </tr>
+               <tr>
+                   <th>Child Age</th>
+                   <td>N/A</td>
+                   <th>Package Type</th>
+                   <td>Holidays</td>
+                   <th>Total Rooms</th>
+                   <td>1</td>
+               </tr>
+               <tr>
+                   <th>Travel Date</th>
+                   <td>10 May, 2022</td>
+                   <th>Pick Up Point</th>
+                   <td>Delhi</td>
+                   <th>Dropping Point</th>
+                   <td>Delhi</td>
+               </tr>
+               <tr>
+                   <th>Package By</th>
+                   <td>Volvo</td>
+                   <th>Meal Plan</th>
+                   <td>Breakfast & Dinner</td>
+                   <th>Honeymoon Kit</th>
+                   <td>Candle Night Dinner</td>
+               </tr>
+               <tr>
+                   <th>Car Type for sightseeing</th>
+                   <td>Alto/Similar Hatchback</td>
+                   <th>Hotel Category</th>
+                   <td>Deluxe</td>
+                   <th>Budget Approx</th>
+                   <td>5001-15000</td>
+               </tr>
+               <tr>
+                   <th>Country</th>
+                   <td>India</td>
+                   <th>State</th>
+                   <td>Andhra Pradesh</td>
+                   <th>Customer Assign To</th>
+                   <td>Jyoti Panwar</td>
+               </tr>
+               <tr>
+                   <th>Customer Assign By</th>
+                   <td>Manager</td>
+               </tr>
+           </table> -->
+           <form action="">
+               <div class="row">
+                   <div class="col-md-6 my-2">
+                       <div class="form-group">
+                           <label for="" class="control-label">Assign To</label>
+                           <select name="" id="" class="form-control form-select">
+                               <option value="" disabled selected>Select Sales Team Agent</option>
+                               <option value="sales1">Sales1</option>
+                               <option value="sales2">Sales2</option>
+                           </select>
+                           <span class="text-danger fs-7">Note: if you reopen this lead all related itineraries and followup will be deleted.</span>
+                       </div>
+                   </div>
+                   <div class="col-md-6 my-2">
+                       <div class="bg-light m-0 ps-4 py-2">
+                            <p class="m-0">Query Decline By Customer</p>
+                       </div>
+                       <div class="ps-4">
+                           <p class="my-1 fs-7"><strong>Reason:</strong> Package is Too Costly !</p>
+                           <p class="my-1 fs-7"><strong>Comment</strong> Client Budget is 12K</p>
+                       </div>
+                   </div>
+                   <div class="col-md-12 my-2">
+                       <button class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i> Reopen Lead</button>
+                   </div>
+               </div>
+           </form>
+        </div>
+    </div>
+</div>
+<!-- End offcanvas-top for Reopen Lead -->
 
 
 <!-- package Modal -->

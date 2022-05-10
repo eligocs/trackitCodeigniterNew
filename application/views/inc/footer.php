@@ -217,9 +217,9 @@ jQuery(document).ready(function($) {
 	        <i class="icon-arrow-up"></i>
 	    </div>
 		
-		<div class="tool_tip">Hover over me
-  <span class="tooltiptext">Tooltip text</span>
-</div>
+		<div class="tool_tipTop">Hover over me
+  			<span class="tooltip_top_text">Tooltip text</span>
+		</div>
 	</div>
 	<!-- END FOOTER -->
 	<?php 

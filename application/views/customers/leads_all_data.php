@@ -1533,32 +1533,33 @@ div#quotation_type_section,
                                                     <i class='fa fa-clock-o'></i>
                                                 </div>
                                                 <div class='list-todo-item green-meadow'>
-                                                    <a class='list-toggle-container' data-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task_iti-{$count}' aria-expanded='false'>
+                                                    <a class='list-toggle-container' data-bs-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task_iti-{$count}' aria-expanded='false'>
                                                         <div class='list-toggle done uppercase'>
                                                             <div class='list-toggle-title bold'>Call Time: {$call_time_i}</div>
                         
                                                         </div>
                                                     </a>
                                                     <div class='note note-success'>
-                                                            <div class='list-toggle-title '>{$view_btn_i  }<span></span><span><b>  Iti Id: </b></span>{$iti_follow->iti_id}<span><b>  Status: </b></span>{$callType_status}
-                                                                </div>
-                        
+                                                        <div class='list-toggle-title '>{$view_btn_i  }<span></span><span><b>  Iti Id: </b></span>{$iti_follow->iti_id}<span><b>  Status: </b></span>{$callType_status}
                                                         </div>
-                                                    <div class='task-list panel-collapse collapse' id='task_iti-{$count}'>
+                                                    </div>
+                                                    <div class='task-list accordion-collapse collapse show' id='task_iti-{$count}'>
                                                         <ul>
                                                             <li class='task-list-item done'>
-                                                                <div class='task-icon'><a href='javascript:;'><i class='fa fa-phone'></i></a></div>
+                                                                <div class='task-icon'>
+                                                                    <a href='javascript:;'><i class='fa fa-phone'></i></a>
+                                                                </div>
                         
                                                                 <div class='task-content'>
                                                                     <h4 class='uppercase bold'>
                                                                         <a href='javascript:;'>{$callType_status}</a>
                                                                     </h4>
-                                                        <p><strong>Itinerary Id:</strong>{$iti_follow->iti_id}</p>
-                                                            <p><strong>{$callType_status}</strong></p>
-                                                            <p><strong>Call summary:{$iti_follow->callSummary}</p>
-                                                            <p><strong>Next Call Time:</strong>{$iti_follow->nextCallDate}</p>
-                                                            <p><strong>Comment: {$iti_follow->comment}</strong></p>
-                                                            <p><strong>{$iti_follow->itiProspect}</strong></p>
+                                                                    <p><strong>Itinerary Id:</strong>{$iti_follow->iti_id}</p>
+                                                                    <p><strong>{$callType_status}</strong></p>
+                                                                    <p><strong>Call summary:{$iti_follow->callSummary}</p>
+                                                                    <p><strong>Next Call Time:</strong>{$iti_follow->nextCallDate}</p>
+                                                                    <p><strong>Comment: {$iti_follow->comment}</strong></p>
+                                                                    <p><strong>{$iti_follow->itiProspect}</strong></p>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -1594,25 +1595,25 @@ div#quotation_type_section,
                             $cus_html .= "<div class='col-md-12 col-lg-12'>
                                         <div class='mt-element-list'>			 
                                             <div class='mt-list-container list-todo' id='accordion1' role='tablist' aria-multiselectable='true'>
-                                        <div class='list-todo-line'></div>
+                                            <div class='list-todo-line'></div>
                                         <ul>
                                             <li class='mt-list-item'>
                                                 <div class='list-todo-icon bg-white font-green-meadow'>
                                                     <i class='fa fa-clock-o'></i>
                                                 </div>
                                                 <div class='list-todo-item green-meadow'>
-                                                    <a class='list-toggle-container' data-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task-{$count}' aria-expanded='false'>
+                                                    <a class='list-toggle-container' data-bs-toggle='collapse' data-parent='#accordion1' onclick=' ' href='#task-{$count}' aria-expanded='false'>
                                                         <div class='list-toggle done uppercase'>
                                                             <div class='list-toggle-title bold '>Call Time: {$call_time} <br>
                                                             </div>
                                                         </div>
                                                     </a>";
                                                     
-                                                if(!empty($cus_follow->nextCallDate)){
-                                                    $cus_html .=	"<div class='note note-success'><p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p></div>";
-                                                }
-                                                $cus_html .= "
-                                                    <div class='task-list panel-collapse collapse' id='task-{$count}'>
+                                                        if(!empty($cus_follow->nextCallDate)){
+                                                            $cus_html .=	"<div class='note note-success'><p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p></div>";
+                                                        }
+                                                        $cus_html .= "
+                                                    <div class='task-list accordion-collapse collapse show' id='task-{$count}'>
                                                         <ul>
                                                             <li class='task-list-item done'>
                                                                 <div class='task-icon'><a href='javascript:;'><i class='fa fa-phone'></i></a></div>
@@ -1621,11 +1622,11 @@ div#quotation_type_section,
                                                                     <h4 class='uppercase bold'>
                                                                         <a href='javascript:;'>{$callType_status}</a>
                                                                     </h4>
-                                                            <p><strong>Call summary: </strong> {$cus_follow->callSummary}</p>
-                                                            <p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p>
-                                                            <p><strong>Comment: </strong> {$cus_follow->comment}</p>
-                                                            <p><strong>{$cus_follow->customer_prospect}</strong></p>
-                                                            <p><strong>{$view_btn}</strong></p>
+                                                                    <p><strong>Call summary: </strong> {$cus_follow->callSummary}</p>
+                                                                    <p><strong>Next Call Time: </strong> {$cus_follow->nextCallDate}</p>
+                                                                    <p><strong>Comment: </strong> {$cus_follow->comment}</p>
+                                                                    <p><strong>{$cus_follow->customer_prospect}</strong></p>
+                                                                    <p><strong>{$view_btn}</strong></p>
                                                                 </div>
                                                             </li>
                                                         </ul>
