@@ -85,7 +85,8 @@ label.btn.btn-default.custom_active {
 }
 
 label.btn.btn-default.custom_active.active {
-	background: #d2356a;color: #fff;
+	background: #0d6efd;
+	color: #fff;
 }
 /* ------ End Buttons Css ------ */
 
@@ -148,6 +149,9 @@ label.btn.btn-default.custom_active.active {
 	display: none;
 }
 
+.w-30 {
+    width: 30%;
+}
 /* -------- dropdown-menu -------- */
 .dropdown-menu {
 	padding: 0;
@@ -672,6 +676,10 @@ span.target {
 	margin: 15px 0;
 }
 
+.table td,
+.table th {
+    font-size: 14px;
+}
 table.table.table_details th,
 table.table.table_details td {
 	border: 1px solid #e9e9e9 !important;
@@ -714,7 +722,7 @@ table.data-table-large.table tr:nth-child(even) td {
 }
 
 table.data-table-large.table tr td div.bg-light {
-	min-height: 55px;
+	min-height: 60px;
 	margin-top: 5px;
 }
 
@@ -978,13 +986,13 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 992px) {
-	table.table.table-bordered.table-sm tr.text-nowrap {
+	table.table.table-bordered.table-sm tr {
 		display: flex;
 		flex-wrap: wrap;
 	}
 
-	table.table.table-bordered.table-sm tr.text-nowrap th,
-	table.table.table-bordered.table-sm tr.text-nowrap td {
+	table.table.table-bordered.table-sm tr th,
+	table.table.table-bordered.table-sm tr td {
 		flex: 0 0 50%;
 	}
 

@@ -1,10 +1,13 @@
+<!-- Begin page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
    <div class="page-content-wrapper">
+	   <!-- Begin page-content -->
       <div class="page-content">
          <!-- BEGIN SAMPLE TABLE PORTLET-->
          <?php $message = $this->session->flashdata('success'); 
             if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>';}
-            ?>
+			?>
          <div class="portlet box blue">
             <div class="portlet-title">
                <div class="caption">
@@ -13,6 +16,307 @@
                <a class="btn btn-primary float-end" href="<?php echo site_url("accounts/create_receipt"); ?>" title="Create New Invoice"><i class="fa-solid fa-plus"></i> Generate New Receipt</a>
             </div>
          </div>
+
+		 <!-- Begin demo table design -->
+		 <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+			<div class="table-responsive">
+				<table class="table data-table-large">
+					<tbody>
+						<tr>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="px-1 w-100 text-nowrap">
+										<div class="requirment d-flex justify-content-between">
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">#4537</strong> 
+												<span class="fs-8 fw-500 text-secondary">Lead ID</span>
+										 	</p>
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">BR-172</strong> 
+												<span class="fs-8 fw-500 text-secondary">Voucher No</span>
+										 	</p>
+										</div>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<div class="p-1">
+											<p class="fs-7 mb-2 mt-0 text-secondary">Sent Status </p>
+											<div>
+												<span class="fs-7"> 
+													<i class="fa-solid fa-envelope-circle-check text-primary"></i> 
+													sent 1 Time 
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="d-flex justify-content-between w-100">
+										<div class="px-2">
+											<p class="fs-7 mb-2 mt-0 ">
+												<strong class="d-block mb-1">Dave Rajan HiteshKumar</strong>
+												<span class="fs-8 fw-500 text-secondary">Customer Name</span>
+											</p>
+										</div>
+										<div class="px-2">
+											<p class="fs-7 mb-2 mt-0 ">
+												<strong class="d-block mb-1">Bank</strong>
+												<span class="fs-8 fw-500 text-secondary">Recipt Type</span>
+											</p>
+										</div>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<span class="d-block mb-2 fs-7 ms-1">
+											<i class="fa-solid fa-phone text-primary me-1"></i> 9404995141 
+										</span>
+										<span class="d-block fs-7 ms-1">
+											<i class="fa-solid fa-envelope text-primary me-1"></i> davrajan4785@gmail.com 
+										</span>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+									<div class="px-2 mb-2">
+										<strong class="d-block fs-7 mb-1">UPI/207381399354</strong> 
+										<span class="fs-8 fw-500 text-secondary">Transfer Ref.</span>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<span class="d-block fs-7 mb-2 text-muted">Agent</span>
+										<a class="text-primary fw-bold" href="" title="View Agent">Mukesh Sharma</a>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="px-2 mb-2">
+									<strong class="d-block"> <i class="fa-solid fa-indian-rupee-sign"></i> 3000.00	</strong> 
+										<span class="fs-8 fw-500 text-secondary">Amount</span>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<button class="btn btn-sm btn-success ms-2 mt-2">
+											<i class="fa-solid fa-eye"></i> Clinet View
+										</button>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="dropdown">
+									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+										</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="px-1 w-100 text-nowrap">
+										<div class="requirment d-flex justify-content-between">
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">#7854</strong> 
+												<span class="fs-8 fw-500 text-secondary">Lead ID</span>
+										 	</p>
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">BR-159</strong> 
+												<span class="fs-8 fw-500 text-secondary">Voucher No</span>
+										 	</p>
+										</div>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<div class="p-1">
+											<p class="fs-7 mb-2 mt-0 text-secondary">Sent Status </p>
+											<div>
+												<span class="fs-7"> 
+													<i class="fa-solid fa-envelope-circle-check text-primary"></i> 
+													sent 0 Time 
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="d-flex justify-content-between w-100">
+										<div class="px-2">
+											<p class="fs-7 mb-2 mt-0 ">
+												<strong class="d-block mb-1">Paras Atre</strong>
+												<span class="fs-8 fw-500 text-secondary">Customer Name</span>
+											</p>
+										</div>
+										<div class="px-2">
+											<p class="fs-7 mb-2 mt-0 ">
+												<strong class="d-block mb-1">Bank</strong>
+												<span class="fs-8 fw-500 text-secondary">Recipt Type</span>
+											</p>
+										</div>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<span class="d-block mb-2 fs-7 ms-1">
+											<i class="fa-solid fa-phone text-primary me-1"></i> 8754578457 
+										</span>
+										<span class="d-block fs-7 ms-1">
+											<i class="fa-solid fa-envelope text-primary me-1"></i> parasatree47@gmail.com 
+										</span>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+									<div class="px-2 mb-2">
+										<strong class="d-block fs-7 mb-1">MMT/IMPS/207021614325</strong> 
+										<span class="fs-8 fw-500 text-secondary">Transfer Ref.</span>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<span class="d-block fs-7 mb-2 text-muted">Agent</span>
+										<a class="text-primary fw-bold" href="" title="View Agent">Mukesh Sharma</a>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="px-2 mb-2">
+									<strong class="d-block"> <i class="fa-solid fa-indian-rupee-sign"></i> 5000.00	</strong> 
+										<span class="fs-8 fw-500 text-secondary">Amount</span>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<button class="btn btn-sm btn-success ms-2 mt-2">
+											<i class="fa-solid fa-eye"></i> Clinet View
+										</button>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="dropdown">
+									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+										</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="px-1 w-100 text-nowrap">
+										<div class="requirment d-flex justify-content-between">
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">#4511</strong> 
+												<span class="fs-8 fw-500 text-secondary">Lead ID</span>
+										 	</p>
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">BR-167</strong> 
+												<span class="fs-8 fw-500 text-secondary">Voucher No</span>
+										 	</p>
+										</div>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<div class="p-1">
+											<p class="fs-7 mb-2 mt-0 text-secondary">Sent Status </p>
+											<div>
+												<span class="fs-7"> 
+													<i class="fa-solid fa-envelope-circle-check text-primary"></i> 
+													sent 3 Time 
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="d-flex justify-content-between w-100">
+										<div class="px-2">
+											<p class="fs-7 mb-2 mt-0 ">
+												<strong class="d-block mb-1">Pravin Subhash Tayade</strong>
+												<span class="fs-8 fw-500 text-secondary">Customer Name</span>
+											</p>
+										</div>
+										<div class="px-2">
+											<p class="fs-7 mb-2 mt-0 ">
+												<strong class="d-block mb-1">Bank</strong>
+												<span class="fs-8 fw-500 text-secondary">Recipt Type</span>
+											</p>
+										</div>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<span class="d-block mb-2 fs-7 ms-1">
+											<i class="fa-solid fa-phone text-primary me-1"></i> 816992984 
+										</span>
+										<span class="d-block fs-7 ms-1">
+											<i class="fa-solid fa-envelope text-primary me-1"></i> praveentybe54@gmail.com 
+										</span>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+									<div class="px-2 mb-2">
+										<strong class="d-block fs-7 mb-1">MMT/IMPS/206717296906</strong> 
+										<span class="fs-8 fw-500 text-secondary">Transfer Ref.</span>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<span class="d-block fs-7 mb-2 text-muted">Agent</span>
+										<a class="text-primary fw-bold" href="" title="View Agent">Mukesh Sharma</a>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+									<div class="px-2 mb-2">
+									<strong class="d-block"> <i class="fa-solid fa-indian-rupee-sign"></i> 13000.00</strong> 
+										<span class="fs-8 fw-500 text-secondary">Amount</span>
+									</div>
+									<div class="bg-light p-1 w-100">
+										<button class="btn btn-sm btn-success ms-2 mt-2">
+											<i class="fa-solid fa-eye"></i> Clinet View
+										</button>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="dropdown">
+									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+										</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>            
+		<!-- End end demo table design -->
+
+		 <!-- Begin portlet-body -->
          <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
             <div class="table-responsive">
                <table class="table table-striped display white_space_fix">
@@ -80,10 +384,14 @@
                </table>
             </div>
          </div>
+		 <!-- End portlet body -->
       </div>
+	  <!-- End page-content -->
    </div>
-   <!-- END CONTENT BODY -->
+   <!-- End page-content-wrapper -->
 </div>
+<!-- End page-container -->
+
 <!-- Modal -->
 <script type="text/javascript">
    jQuery(document).ready(function($){

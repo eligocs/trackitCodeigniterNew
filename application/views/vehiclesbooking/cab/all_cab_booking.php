@@ -51,10 +51,329 @@
 			</div>
 			<!-- End filter section -->
 			
+			<!-- Begin demo table design -->
+			<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+				<div class="table-responsive">
+					<table class="table data-table-large">
+							<tbody>
+								<tr>
+									<td class="w-30">
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="d-flex justify-content-between px-1 w-100">
+												<div class="requirment">
+													<p class="fs-7 fw-bold mb-2 mt-0"> Booking ID : #545 </p>
+													<p class="fs-7 fw-bold mb-1 mt-0"> Iti ID : #5708 </p>
+												</div>
+												<div class="ms-2">
+													<p class="fs-7 mb-2 mt-0 ">
+														<strong class="d-block mb-1">Akash Dhiman</strong>
+														<span class="fs-8 fw-500 text-secondary">Transporter Name</span>
+													</p>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<div class="">
+												<p class="fs-7 mb-2 mt-0 text-secondary">Sent Status </p>
+												<div>
+													<span class="me-3"> 
+														<i class="fa-envelope fa-solid text-primary"></i> sent 1 Time 
+													</span>
+												</div>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="">
+												<div class="px-2 mb-2">
+													<strong class="d-block fs-7 mb-1">Innova</strong> 
+													<span class="fs-8 fw-500 text-secondary">Cab Category</span>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<p class="fs-7 m-0 mb-2 text-dark"><strong>04</strong></p>
+												<p class="fs-8 fw-400 m-0 text-dark">Total Cabs</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fw-bold m-0 fs-7">04-Feb-2022</p>
+												<span class="fs-8 text-secondary">Till 08-Feb (4N/5D)</span>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-muted">Agent</span>
+												<a class="text-primary fw-bold" href="" title="View Agent">Bookings Team</a>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fw-bold m-0 fs-7">
+												<i class="fa-solid fa-indian-rupee-sign"></i> 35,000/-
+												</p>
+												<span class="fs-8 text-secondary">Total Cost</span>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-secondary">Booking Date </span>
+												<p class="fs-8 fw-400 m-0 text-dark">26-Jan-2022</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fs-7 mb-2 mt-0 text-secondary">Booking Status </p>
+												<!-- <div class="badge bg-success">
+													<strong> <i class="fa-solid fa-thumbs-up"></i> Approved</strong>
+												</div> -->
+												<div>
+													<button class="btn btn-sm btn-success" title="Approve Booking">
+														<i class="fa-solid fa-check"></i>
+														Approve
+													</button>
+													<button class="btn btn-sm btn-danger" title="Decline Booking">
+														<i class="fa-solid fa-xmark"></i>
+														Decline
+													</button>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-secondary">Booking on Hold</span>
+												<p class="m-0 fs-8">Please Approve or Decline the Booking.</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="dropdown">
+											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+												</li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="w-30">
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="d-flex justify-content-between px-1 w-100">
+												<div class="requirment">
+													<p class="fs-7 fw-bold mb-2 mt-0"> Booking ID : #457 </p>
+													<p class="fs-7 fw-bold mb-1 mt-0"> Iti ID : #004 </p>
+												</div>
+												<div class="ms-2">
+													<p class="fs-7 mb-2 mt-0 ">
+														<strong class="d-block mb-1">Akash Dhiman</strong>
+														<span class="fs-8 fw-500 text-secondary">Transporter Name</span>
+													</p>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<div class="">
+												<p class="fs-7 mb-2 mt-0 text-secondary">Sent Status </p>
+												<div>
+													<span class="me-3"> 
+														<i class="fa-envelope fa-solid text-primary"></i> sent 2 Time 
+													</span>
+													<!-- <button class="btn btn-primary btn-x-sm"> Mail View</button> -->
+												</div>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="">
+												<div class="px-2 mb-2">
+													<strong class="d-block fs-7 mb-1">Sedan</strong> 
+													<span class="fs-8 fw-500 text-secondary">Cab Category</span>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<p class="fs-7 m-0 mb-2 text-dark"><strong>09</strong></p>
+												<p class="fs-8 fw-400 m-0 text-dark">Total Cabs</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fw-bold m-0 fs-7">06-Feb-2022</p>
+												<span class="fs-8 text-secondary">Till 10-Feb (4N/5D)</span>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-muted">Agent</span>
+												<a class="text-primary fw-bold" href="" title="View Agent">Service Team1</a>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fw-bold m-0 fs-7">
+												<i class="fa-solid fa-indian-rupee-sign"></i> 80,000/-
+												</p>
+												<span class="fs-8 text-secondary">Total Cost</span>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-secondary">Booking Date </span>
+												<p class="fs-8 fw-400 m-0 text-dark">02-Feb-2022</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fs-7 mb-2 mt-0 text-secondary">Booking Status </p>
+												<div class="badge bg-danger">
+													<strong title="Booking Declined"> <i class="fa-solid fa-xmark"></i> Declined</strong>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-secondary">Declined Comment</span>
+												<p class="fs-7 fw-bold m-0">Tour Canceled</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="dropdown">
+											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+												</li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="w-30">
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="d-flex justify-content-between px-1 w-100">
+												<div class="requirment">
+													<p class="fs-7 fw-bold mb-2 mt-0"> Booking ID : #5004 </p>
+													<p class="fs-7 fw-bold mb-1 mt-0"> Iti ID : #82457 </p>
+												</div>
+												<div class="ms-2">
+													<p class="fs-7 mb-2 mt-0 ">
+														<strong class="d-block mb-1">Kapil Dev Chauhan</strong>
+														<span class="fs-8 fw-500 text-secondary">Transporter Name</span>
+													</p>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<div class="">
+												<p class="fs-7 mb-2 mt-0 text-secondary">Sent Status </p>
+												<div>
+													<span class="me-3"> 
+														<i class="fa-envelope fa-solid text-primary"></i> sent 4 Times 
+													</span>
+													<!-- <button class="btn btn-primary btn-x-sm"> Mail View</button> -->
+												</div>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="">
+												<div class="px-2 mb-2">
+													<strong class="d-block fs-7 mb-1">Tempo Traveler</strong> 
+													<span class="fs-8 fw-500 text-secondary">Cab Category</span>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<p class="fs-7 m-0 mb-2 text-dark"><strong>02</strong></p>
+												<p class="fs-8 fw-400 m-0 text-dark">Total Cabs</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fw-bold m-0 fs-7">06-Feb-2022</p>
+												<span class="fs-8 text-secondary">Till 15-Feb (4N/5D)</span>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-muted">Agent</span>
+												<a class="text-primary fw-bold" href="" title="View Agent">Service Team1</a>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fw-bold m-0 fs-7">
+												<i class="fa-solid fa-indian-rupee-sign"></i> 35,000/-
+												</p>
+												<span class="fs-8 text-secondary">Total Cost</span>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-secondary">Booking Date </span>
+												<p class="fs-8 fw-400 m-0 text-dark">04-Feb-2022</p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="mb-2 px-2">
+												<p class="fs-7 mb-2 mt-0 text-secondary">Booking Status </p>
+												<div class="badge bg-success">
+													<strong title="Booking Approved"> <i class="fa-solid fa-thumbs-up"></i> Approved</strong>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-secondary">Other Options</span>
+												<button class="btn btn-sm btn-primary">
+													<i class="fa-solid fa-pen-to-square"></i> update Cab Details
+												</button>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="dropdown">
+											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+												</li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+					</table>
+				</div>
+			</div>            
+			<!-- End end demo table design -->
+
 			<!-- Begin Portlet-body -->
 			<div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">
-					<table id= "vehicles_booking" class="table table-striped display">
+					<table id= "vehicles_booking" class="table table-striped display white_space_fix">
 						<thead>
 							<tr>
 								<th> # </th>
