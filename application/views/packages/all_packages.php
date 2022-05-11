@@ -67,6 +67,181 @@
 			</div>
 			<!-- End filter section -->
 
+			<!-- Begin demo table design -->
+			<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+				<div class="table-responsive">
+					<table class="table data-table-large">
+						<tbody>
+							<tr>
+								<td class="tour_thumbnail">
+									<div>
+										<img src="./site/images/tour_thumbnail.jpg" class="img-thumbnail">
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+										<div class="px-1 w-100 ">
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">Shimla and Manali Group Tour</strong> 
+												<span class="fs-8 fw-500 text-secondary">Package Name</span>
+											</p>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<div class="p-1">
+												<p class="fs-7 mb-1 mt-0 text-secondary"> Category </p>
+												<div>
+													<strong class="fs-7">Honeymoon Package by Volvo</strong>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+										<div class="px-1 w-100">
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">Andhra Pradesh</strong> 
+												<span class="fs-8 fw-500 text-secondary">Package State</span>
+											</p>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<span class="d-block fs-7 mb-2 text-muted">Puplish Status</span>
+											<span class="badge bg-danger">
+												<strong>Draft</strong>
+											</span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+										<div class="px-2 mb-2">
+											<strong class="d-block fs-7 mb-1">Abhishek Sharma</strong> 
+											<span class="fs-8 fw-500 text-secondary">Created by</span>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<span class="d-block fs-7 mb-2 text-muted">Created On</span>
+											<span class="fs-7"><strong>02-May-2022 11:48 PM</strong></span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+										<div class="px-2 mb-2">
+										<strong class="d-block"> <i class="fa-solid fa-indian-rupee-sign"></i> 3000.00	</strong> 
+											<span class="fs-8 fw-500 text-secondary">Package Cost</span>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<button class="btn btn-sm btn-success ms-2 mt-2">
+												<i class="fa-solid fa-file-pdf"></i> PDF
+											</button>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="dropdown">
+										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+											<li>
+												<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+											</li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="tour_thumbnail">
+									<div>
+										<img src="./site/images/logo1651577144.png" class="img-thumbnail">
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+										<div class="px-1 w-100 ">
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">Golden Himachal Tour With Amritsar</strong> 
+												<span class="fs-8 fw-500 text-secondary">Package Name</span>
+											</p>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<div class="p-1">
+												<p class="fs-7 mb-1 mt-0 text-secondary"> Category </p>
+												<div>
+													<strong class="fs-7">Honeymoon Package by Cab</strong>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+										<div class="px-1 w-100">
+											<p class="fs-7 mb-2 mt-0"> 
+												<strong class="d-block">Himachlal Pradesh</strong> 
+												<span class="fs-8 fw-500 text-secondary">Package State</span>
+											</p>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<span class="d-block fs-7 mb-2 text-muted">Puplish Status</span>
+											<span class="badge bg-success">
+												<strong>Published</strong>
+											</span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+										<div class="px-2 mb-2">
+											<strong class="d-block fs-7 mb-1">Mr.Admin</strong> 
+											<span class="fs-8 fw-500 text-secondary">Created by</span>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<span class="d-block fs-7 mb-2 text-muted">Created On</span>
+											<span class="fs-7"><strong>05-May-2022 03:26 PM</strong></span>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+										<div class="px-2 mb-2">
+										<strong class="d-block"> <i class="fa-solid fa-indian-rupee-sign"></i> 25000.00	</strong> 
+											<span class="fs-8 fw-500 text-secondary">Package Cost</span>
+										</div>
+										<div class="bg-light p-1 w-100">
+											<button class="btn btn-sm btn-success ms-2 mt-2">
+												<i class="fa-solid fa-file-pdf"></i> PDF
+											</button>
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="dropdown">
+										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+											<li>
+												<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+											</li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>            
+			<!-- End end demo table design -->
+
 			<!-- Begin data-table section -->
 			<div class="bg-white p-3 rounded-4 shadow-sm">
 				<div class="table-responsive">

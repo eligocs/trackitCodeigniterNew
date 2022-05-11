@@ -18,6 +18,9 @@
 	background-color: var(--dark-purpule-color);
 }
 
+.bg-default {
+    background: #e1e5ec !important
+}
 
 
 
@@ -756,7 +759,22 @@ table.iti-data.table td {
 	padding: 0;
 	border-right: 1px solid #f8f9fa;
 }
+/* ----- Begin All Packages Table ----- */
+.data-table-large .tour_thumbnail img {width: 250px;height: 150px;}
 
+.data-table-large .tour_thumbnail {width: 250px;padding-top: 0;}
+
+.data-table-large .user_thumbnail img{
+	height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.users-table .form-check-input:checked {
+    background-color: #198754;
+    border-color: #198754;
+}
 /* .package-title {white-space: nowrap;max-width: 200px;overflow: hidden;display: block;position: relative;} */
 /* ---- End table-responsive and table css ---- */
 
@@ -840,6 +858,9 @@ input[type="checkbox"] {
 	color: var(--green-color);
 }
 
+input[type="checkbox"] {
+	cursor: pointer;
+}
 /*------- End Forms (lables and inputs) ------ */
 
 

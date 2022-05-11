@@ -207,7 +207,7 @@ class Agents extends CI_Controller {
 					$u_status = $agent->user_status;
 					$inSliderBtn = $u_status;
 					if( $u_status == "active" || $u_status == "inactive" ){
-						$inSliderBtn = $u_status == "active" ? "<label class='mt-checkbox' title='Active/inactive'> <input type='checkbox' title='Active/inactive' value='active' data-id ={$id} id='inSlider' class='form-control' checked><span></span></label>" : "<label class='mt-checkbox' title='Active/inactive'> <input  title='Active/inactive'  type='checkbox' value='inactive' data-id ={$id} id='inSlider' class='form-control'> <span></span></label>";
+						$inSliderBtn = $u_status == "active" ? "<label class='' title='Active/inactive'> <input type='checkbox' title='Active/inactive' value='active' data-id ={$id} id='inSlider' class='form-check-input' checked><span></span></label>" : "<label class='' title='Active/inactive'> <input  title='Active/inactive'  type='checkbox' value='inactive' data-id ={$id} id='inSlider' class='form-check-input'> <span></span></label>";
 					}
 					
 					$row1="";

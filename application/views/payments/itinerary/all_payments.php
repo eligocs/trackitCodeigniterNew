@@ -78,6 +78,289 @@
             </div>
             <!--End filter form-->
 
+            <!-- Begin demo table design -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <div class="table-responsive">
+                    <table class="table data-table-large">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-1 w-100 text-nowrap">
+                                            <div class="requirment d-flex justify-content-between">
+                                                <p class="fs-7 mb-2 mt-0"> 
+                                                    <strong class="d-block mb-1">#4537</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Iti ID</span>
+                                                </p>
+                                                <p class="fs-7 mb-1 mt-0"> 
+                                                    <strong class="d-block mb-1 text-success">Holiday</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Tour Type</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <span class="d-block fs-7 fw-bold mb-1 ms-1"> 9404995141 </span>
+                                            <span class="d-block fs-7 ms-1 text-muted"> customer contact </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="px-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1">Kadayya Hiremath</strong>
+                                                    <span class="fs-8 fw-500 text-secondary">Customer Name</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1">
+                                                        <i class="fa-solid fa-indian-rupee-sign"></i> 45,500 /-
+                                                    </strong>
+                                                    <span class="fs-8 fw-500 text-secondary">Package Cost</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <p class="fs-7 mb-1 mt-0 text-secondary">Status </p>
+                                            <div>
+                                                <span class="badge bg-primary"><strong>processing...</strong></span>
+                                                <!-- <i class="fa-solid fa-spinner fa-spin"></i> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+                                        <div class="px-2 mb-2">
+                                            <strong class="d-block fs-7 mb-1"> 
+                                                <i class="fa-solid fa-indian-rupee-sign"></i> 20,499 /-	
+                                            </strong> 
+                                            <span class="fs-8 fw-500 text-secondary">Balance</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <strong class="d-block fs-7 mb-1 text-dark">2022-02-10</strong>
+                                            <span class="fs-7 text-secondary">next due date</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-2 mb-2">
+                                            <strong class="d-block fs-7 mb-1"> 
+                                                2022-02-07	
+                                            </strong> 
+                                            <span class="fs-8 fw-500 text-secondary">Transection date</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <p class="m-0 mb-1 text-success">
+                                                <strong> 
+                                                    <i class="fa-solid fa-check"></i> Confirmed	
+                                                </strong> 
+                                            </p>
+                                            <span class="fs-7 text-secondary d-block">Pay. Confirm Status</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-1 w-100 text-nowrap">
+                                            <div class="requirment d-flex justify-content-between">
+                                                <p class="fs-7 mb-2 mt-0"> 
+                                                    <strong class="d-block mb-1">#585</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Iti ID</span>
+                                                </p>
+                                                <p class="fs-7 mb-1 mt-0"> 
+                                                    <strong class="d-block mb-1 text-danger">Accommodation</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Tour Type</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <span class="d-block fs-7 fw-bold mb-1 ms-1"> 7977940942 </span>
+                                            <span class="d-block fs-7 ms-1 text-muted"> customer contact </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="px-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1">Ganesh Talreja</strong>
+                                                    <span class="fs-8 fw-500 text-secondary">Customer Name</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1">
+                                                        <i class="fa-solid fa-indian-rupee-sign"></i> 32,550 /-
+                                                    </strong>
+                                                    <span class="fs-8 fw-500 text-secondary">Package Cost</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <p class="fs-7 mb-1 mt-0 text-secondary">Status </p>
+                                            <div>
+                                                <span class="badge bg-primary"><strong>processing...</strong></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+                                        <div class="px-2 mb-2">
+                                            <strong class="d-block fs-7 mb-1"> 
+                                                <i class="fa-solid fa-indian-rupee-sign"></i> 22,550 /-	
+                                            </strong> 
+                                            <span class="fs-8 fw-500 text-secondary">Balance</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <strong class="d-block fs-7 mb-1 text-dark">2021-12-15</strong>
+                                            <span class="fs-7 text-secondary">next due date</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-2 mb-2">
+                                            <strong class="d-block fs-7 mb-1"> 
+                                                2022-05-20	
+                                            </strong> 
+                                            <span class="fs-8 fw-500 text-secondary">Transection date</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <div class="mb-1">
+                                                <input type="checkbox" class="form-check-input">
+                                                <i class="fa-solid fa-spin fa-spinner fs-8 ms-1"></i>
+                                            </div>
+                                            <span class="fs-7 text-secondary d-block">Pay. Confirm Status</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-1 w-100 text-nowrap">
+                                            <div class="requirment d-flex justify-content-between">
+                                                <p class="fs-7 mb-2 mt-0"> 
+                                                    <strong class="d-block mb-1">#521</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Iti ID</span>
+                                                </p>
+                                                <p class="fs-7 mb-1 mt-0"> 
+                                                    <strong class="d-block mb-1 text-success">Holiday</strong> 
+                                                    <span class="fs-8 fw-500 text-secondary">Tour Type</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <span class="d-block fs-7 fw-bold mb-1 ms-1"> 9986693208</span>
+                                            <span class="d-block fs-7 ms-1 text-muted"> customer contact </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="px-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1">K.R Varun</strong>
+                                                    <span class="fs-8 fw-500 text-secondary">Customer Name</span>
+                                                </p>
+                                            </div>
+                                            <div class="px-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1">
+                                                        <i class="fa-solid fa-indian-rupee-sign"></i> 15,000 /-
+                                                    </strong>
+                                                    <span class="fs-8 fw-500 text-secondary">Package Cost</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <p class="fs-7 mb-1 mt-0 text-secondary">Status </p>
+                                            <div>
+                                                <span class="badge bg-success">
+                                                    <strong> <!-- <i class="fa-solid fa-check"></i>  --> Completed </strong>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100 text-nowrap">
+                                        <div class="px-2 mb-2">
+                                            <strong class="d-block fs-7 mb-1"> 
+                                                <i class="fa-solid fa-indian-rupee-sign"></i> Nil	
+                                            </strong> 
+                                            <span class="fs-8 fw-500 text-secondary">Balance</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <strong class="d-block fs-7 mb-1 text-dark">N/A</strong>
+                                            <span class="fs-7 text-secondary">next due date</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-2 mb-2">
+                                            <strong class="d-block fs-7 mb-1"> 
+                                                2022-06-02	
+                                            </strong> 
+                                            <span class="fs-8 fw-500 text-secondary">Transection date</span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <p class="m-0 mb-1 text-success">
+                                                <strong> 
+                                                    <i class="fa-solid fa-check"></i> Confirmed	
+                                                </strong> 
+                                            </p>
+                                            <span class="fs-7 text-secondary d-block">Pay. Confirm Status</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                            <li>
+                                                <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>            
+            <!-- End end demo table design -->
+
             <!-- Begin portlet-body -->
             <div class="portlet-body">
                 <div class="bg-white rounded-4 p-3 shadow-sm">

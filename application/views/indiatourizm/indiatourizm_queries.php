@@ -1,5 +1,8 @@
+<!-- Begin page-container -->
 <div class="page-container">
+	<!-- Begin page-content-wrapper -->
 	<div class="page-content-wrapper">
+		<!-- Begin page-content -->
 		<div class="page-content">
 			<div class="portlet box blue">
 				<div class="portlet-title">
@@ -14,9 +17,11 @@
 			<?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
+
+			<!-- Begin portlet-body -->
 			<div class="portlet-body">
 				<div class="bg-white p-3 rounded-4 shadow-sm table-responsive">
-					<table id="sliders" class="table table-striped display">
+					<table id="sliders" class="table table-striped display white_space_fix">
 						<thead>
 							<tr>
 								<th> # </th>
@@ -39,17 +44,21 @@
 					</table>
 				</div>
 			</div>
+			<!-- End portlet-body -->
 		</div>
+		<!-- End page-content -->
 	</div>
+	<!-- End page-content-wrapper -->
 </div>
-<!-- END page-container -->
+<!-- End page-container -->
 <style>
-#pakcageModal, #teamleader_modal{top: 10%; z-index: 999999999; }
-strong.btn.btn-success.assign_btn {
-    left: 20%;
-    position: absolute;
-}
+	#pakcageModal, #teamleader_modal{top: 10%; z-index: 999999999; }
+	strong.btn.btn-success.assign_btn {
+		left: 20%;
+		position: absolute;
+	}
 </style>
+
 <!-- Modal -->
 <div id="pakcageModal" class="modal" role="dialog">
 	<div class="modal-dialog">
@@ -196,9 +205,9 @@ strong.btn.btn-success.assign_btn {
 	</div>
 </div>
 
-</div>
+
 <script type="text/javascript">
-jQuery(document).ready(function($){
+	jQuery(document).ready(function($){
 	//show div on change assign_to
 	$(".assign_to").change(function(){
 		if ($("#assing_agent").is(":checked")) {
@@ -350,8 +359,8 @@ jQuery(document).ready(function($){
 });
 </script>
 <script type="text/javascript">
-var table;
-$(document).ready(function() {
+	var table;
+	$(document).ready(function() {
 	//multi_assign
     $(document).on("click", ".assign_btn", function(){
 		var q_ids = [];

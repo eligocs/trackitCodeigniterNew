@@ -5,10 +5,10 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-users"></i>
-                        <strong>User Name: <span class="text-white"><?php echo $agent->user_name; ?></span></strong>
-                        <strong>Last Login: <span class="text-white"><?php  $newDate = date("d-m-Y", strtotime($agent->last_login));  
-                                                            echo $newDate; ?></span></strong>
-                        <strong>Last Login Ip: <span class="text-white"><?php echo $agent->login_ip; ?></span></strong>
+                        <strong class="me-3">User Name: <span ><?php echo $agent->user_name; ?></span></strong>
+                        <strong class="me-3">Last Login: <span ><?php  $newDate = date("d-m-Y", strtotime($agent->last_login));  
+                        echo $newDate; ?></span></strong>
+                        <strong class="me-3">Last Login Ip: <span ><?php echo $agent->login_ip; ?></span></strong>
                     </div>
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
