@@ -62,7 +62,8 @@ div#quotation_type_section,
     <div class="page-content-wrapper">
         <!-- Begin page-content -->
         <div class="page-content">
-            <?php if( isset($customer[0]) && !empty($customer[0])) {
+            <?php
+             if( isset($customer[0]) && !empty($customer[0])) {
             $customer = $customer[0];
             ?>
             <input id="sId" type="hidden" value="<?php echo $customer->customer_id; ?>">
@@ -1715,7 +1716,8 @@ div#quotation_type_section,
             </div>
             <div class="modal-footer"></div>
         </div>
-        <?php }else{ ?>
+        <?php }
+        else{ ?>
         <div class="marginBottom text-center custom_card">
             <!--start filter section-->
             <form id="search_customer_data" class="form-horizontal">

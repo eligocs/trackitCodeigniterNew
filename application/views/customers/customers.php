@@ -206,8 +206,14 @@
                 
                 <!-- Begin demo table design -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                    <div class="table-responsive customersData">
+     
+                    </div>
+                </div>  
+                 
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="table-responsive">
-                        <table class="table data-table-large">
+                       <table class="table data-table-large">
                             <tbody>
                                 <tr>
                                     <td>
@@ -782,7 +788,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>            
+                </div>             
                 <!-- End end demo table design -->
 
                 <!-- Table Section -->
@@ -823,14 +829,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!-- <a href="javscript:void(0)" class="btn btn-danger pull-right export_btn"><i
-                                    class="fa fa-file-excel"></i> Export</a>
-                            <a href="<?php// echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>"
-                                class="btn btn-info pull-right"><i class="fa fa-phone"></i> Today Call Not Picked</a>
-                            <a href="<?php// echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>"
-                                class="btn btn-success pull-right"><i class="fa fa-phone"></i> Today Call Picked</a>
-                            <a href="<?php// echo site_url("customers") . "/?todayStatus={$todAy}"; ?>"
-                                class="btn btn-info pull-right"><i class="fa fa-users"></i> Today's Lead</a> -->
+                          
                         </div>
                         
                     </div>
@@ -854,11 +853,11 @@
                         </div>
                     </div>
                     <?php } ?>
-                    <div class="table-responsive">
+                    <!-- <div class="table-responsive">
                         <table id="customers" class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <!-- <th> # </th> -->
+                               
                                     <th> Lead ID </th>
                                     <?php if( is_admin_or_manager() ){  ?>
                                     <th> Type </th>
@@ -877,10 +876,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!--DataTable goes here-->
+                           
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -1002,76 +1001,6 @@
             </div>
         </div>
         <div class="offcanvas-body">
-           <!-- <table class="table table-bordered table-sm table_details">
-               <tr>
-                   <th>Customer Name</th>
-                   <td>Mutu Swami Ayer</td>
-                   <th>Customer Email</th>
-                   <td> ayermutuswami@gmail.com </td>
-                   <th>Customer Type</th>
-                   <td>Phone</td>
-               </tr>
-               <tr>
-                   <th>Customer ID</th>
-                   <td>4539</td>
-                   <th>Destination</th>
-                   <td>Shimla Manali</td>
-                   <th>Customer Contact</th>
-                   <td>9951116572</td>
-               </tr>
-               <tr>
-                   <th>Whatsapp Number</th>
-                   <td>9951116572</td>
-                   <th>Adults</th>
-                   <td>2</td>
-                   <th>Child</th>
-                   <td>N/A</td>
-               </tr>
-               <tr>
-                   <th>Child Age</th>
-                   <td>N/A</td>
-                   <th>Package Type</th>
-                   <td>Holidays</td>
-                   <th>Total Rooms</th>
-                   <td>1</td>
-               </tr>
-               <tr>
-                   <th>Travel Date</th>
-                   <td>10 May, 2022</td>
-                   <th>Pick Up Point</th>
-                   <td>Delhi</td>
-                   <th>Dropping Point</th>
-                   <td>Delhi</td>
-               </tr>
-               <tr>
-                   <th>Package By</th>
-                   <td>Volvo</td>
-                   <th>Meal Plan</th>
-                   <td>Breakfast & Dinner</td>
-                   <th>Honeymoon Kit</th>
-                   <td>Candle Night Dinner</td>
-               </tr>
-               <tr>
-                   <th>Car Type for sightseeing</th>
-                   <td>Alto/Similar Hatchback</td>
-                   <th>Hotel Category</th>
-                   <td>Deluxe</td>
-                   <th>Budget Approx</th>
-                   <td>5001-15000</td>
-               </tr>
-               <tr>
-                   <th>Country</th>
-                   <td>India</td>
-                   <th>State</th>
-                   <td>Andhra Pradesh</td>
-                   <th>Customer Assign To</th>
-                   <td>Jyoti Panwar</td>
-               </tr>
-               <tr>
-                   <th>Customer Assign By</th>
-                   <td>Manager</td>
-               </tr>
-           </table> -->
            <form action="">
                <div class="row">
                    <div class="col-md-6 my-2">
@@ -1168,6 +1097,22 @@
 </div>
 
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        // _this.parent().append(
+        //     '<p class="bef_send"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+        $.ajax({
+            type: "GET",
+            "url": "<?php echo site_url('customers/ajax_customers_list')?>",
+        }).done(function(data) {
+            $(".customersData").html(data);
+
+        }).error(function() {
+            $(".bef_send").hide();
+            $(".customersData").html("Error! Please try again later!");
+        });
+    });
+
     jQuery(document).ready(function($) {
     //export btn click
     $(document).on("click", ".export_btn", function(e) {

@@ -3535,7 +3535,53 @@ if($cus_id){
 		$res = '';
 	}
 	return $res;
+	
 }
+}
+
+
+function get_leads_next_followup($cus_id){
+	$customer_next_followup_time = '';
+	$ci =& get_instance();
+	if(!empty($cus_id)){
+		$where_follow		 = array( "customer_id" => $cus_id );
+		$customer_followup 	= $ci->global_model->getdata("customer_followup", $where_follow);
+		$customer_next_followup_time = !empty($customer_followup ) ? $customer_followup[array_key_last($customer_followup)]->nextCallDate : '';
+		return $customer_next_followup_time;
+	}else{
+		return $customer_next_followup_time;
+
+	}
+	
+}
+
+function get_leads_last_call_followup($cus_id){
+	$customer_last_followup_time = '';
+	$ci =& get_instance();
+	if(!empty($cus_id)){
+		$where_follow		 = array( "customer_id" => $cus_id );
+		$customer_followup 	= $ci->global_model->getdata("customer_followup", $where_follow);
+		$customer_last_followup_time = !empty($customer_followup ) ? $customer_followup[array_key_last($customer_followup)]->currentCallTime : '';
+		return $customer_last_followup_time;
+	}else{
+		return $customer_last_followup_time;
+
+	}
+	
+}
+
+function count_total_no_of_call($cus_id){
+	$Count_customer_followup = '';
+	$ci =& get_instance();
+	if(!empty($cus_id)){
+		$where_follow		 = array( "customer_id" => $cus_id );
+		$Count_customer_followup 	= $ci->global_model->count_all("customer_followup", $where_follow);
+		return $Count_customer_followup;
+	}else{
+		return $Count_customer_followup;
+
+	}
+
 }
 
 

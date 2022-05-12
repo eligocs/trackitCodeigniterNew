@@ -26,17 +26,20 @@
                      }	?>
                     </div>
                     <?php if( $user_role != 97 ){ ?>
-                    <a class="btn btn-primary float-end" href="<?php echo site_url("customers"); ?>" title="add Itineraries"><i class="fa-solid fa-plus"></i> Add
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("customers"); ?>"
+                        title="add Itineraries"><i class="fa-solid fa-plus"></i> Add
                         Itinerary</a>
                     <?php } ?>
-                    
+
                     <!-- Show hide filter button -->
-                    <button  class="btn float-end me-2 p-2 " title="Filter Itineraries" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                    <button class="btn float-end me-2 p-2 " title="Filter Itineraries" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false"
+                        aria-controls="filter_collapse">
                         <i class="fa-solid fa-filter fs-5"></i>
                     </button>
                 </div>
             </div>
-           
+
             <!-- Begin Filter Section -->
             <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
                 <?php
@@ -58,7 +61,8 @@
                             <!--Calender-->
                             <div class="col-md-3 my-2">
                                 <label for="" class="control-label"><strong>Filter: </strong></label>
-                                <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+                                <input type="text" autocomplete="off" class="form-control" id="daterange"
+                                    name="dateRange" value="" required />
                             </div>
                             <!--End-->
                             <div class="col-md-3 my-2">
@@ -77,7 +81,7 @@
                                     <option name="filter" value="revised" id="revised">Revised</option>
                                     <option name="filter" value="travel_date" id="travel_date">TD</option>
                                 </select>
-                                
+
                                 <input type="hidden" name="date_from" id="date_from"
                                     data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
                                     value="">
@@ -103,9 +107,10 @@
                     <div class="actions custom_filter">
                         <div class="row">
                             <!--Calender-->
-                            <div class="col-md-3"> 
+                            <div class="col-md-3">
                                 <label class="control-label">Filter: </label>
-                                <input type="text" autocomplete="off" class="form-control" id="daterange" name="dateRange" value="" required />
+                                <input type="text" autocomplete="off" class="form-control" id="daterange"
+                                    name="dateRange" value="" required />
                             </div>
                             <!--End-->
                             <div class="col-md-3">
@@ -195,7 +200,7 @@
             <!-- End Filter Section -->
 
             <!-- Begin demo table design -->
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+            <!-- <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="table-responsive">
                     <table class="table data-table-large">
                         <tbody>
@@ -734,10 +739,21 @@
                         </tbody>
                     </table>
                 </div>
-            </div>            
+            </div>    -->
             <!-- End end demo table design -->
 
-            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+
+
+            <!-- Begin demo table design -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <div class="table-responsive itineraryData">
+
+
+                </div>
+            </div>
+            <!-- End end demo table design -->
+
+            <!--  <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <?php if( is_admin_or_manager() ){ ?>
                 <div class="row ">
                     <div class="col-md-4">
@@ -758,15 +774,15 @@
                         <div class="dropdown float-end">
                             <button class="btn btn_blue_outline dropdown-toggle" type="button" data-bs-toggle="dropdown">Action</button>
                             <ul class="dropdown-menu">
-                                <!-- dropdown-item -->
+                                
                                 <li>
                                     <a href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=QsentPast&quotation=true"; ?>"><i class="fa fa-envelope"></i> Today Revised Quotation Sent</a>
                                 </li>
-                                <!-- dropdown-item -->
+                          
                                 <li>
                                     <a href="<?php echo site_url("itineraries"). "/?todayStatus={$todAy}&leadStatus=Qsent&quotation=true"; ?>"><i class="fa fa-envelope"></i> Today Sent Quotation</a>
                                 </li>
-                                <!-- dropdown-item -->
+                               
                             </ul>
                         </div>
                     </div>
@@ -791,28 +807,7 @@
                     </div>
                 </div>
                 <?php } ?>
-
-                <div class="table-responsive">
-                    <table id="itinerary2" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <!-- <th> Ser .No</th> -->
-                                <th> Iti Info </th>
-                                <th> Travellers </th>
-                                <th> Package Name </th>                             
-                                <th> Travel Date</th>
-                                <th> Sent Status</th>                                
-                                <th>Created on </th>
-                                <th> Action </th>
-                            </tr>                          
-                        </thead>
-                        <tbody>
-                            <div class="loader"></div>
-                            <div id="res"></div>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            </div>-->
         </div>
         <!-- End page-content -->
     </div>
@@ -981,58 +976,97 @@ jQuery(document).ready(function($) {
         jQuery("#myModal").fadeOut();
     });
 });
+
 //update iti del status
 jQuery(document).ready(function($) {
     $(document).on("click", ".ajax_delete_iti", function() {
         var id = $(this).attr("data-id");
-        if (confirm("Are you sure?")) {
-            $.ajax({
-                url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_delete_iti?id=" + id,
-                type: "GET",
-                data: id,
-                dataType: 'json',
-                cache: false,
-                success: function(r) {
-                    if (r.status = true) {
-                        location.reload();
-                        //console.log("ok" + r.msg);
-                        //console.log(r.msg);
-                    } else {
-                        alert("Error! Please try again.");
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                // if (confirm("Are you sure?")) {
+                $.ajax({
+                    url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_delete_iti?id=" +
+                        id,
+                    type: "GET",
+                    data: id,
+                    dataType: 'json',
+                    cache: false,
+                    success: function(r) {
+                        if (r.status = true) {
+                            if (willDelete) {
+                                swal("Poof! Your imaginary file has been deleted!", {
+                                    icon: "success",
+                                });
+                            } else {
+                                swal("Your imaginary file is safe!");
+                            }
+                            location.reload();
+                            //console.log("ok" + r.msg);
+                            //console.log(r.msg);
+                        } else {
+                            alert("Error! Please try again.");
+                        }
                     }
-                }
-            });
-        }
+                });
+                // }
+
+            })
     });
     //delete permanently Draft Itineraries
     $(document).on("click", ".delete_iti_permanent", function() {
         var id = $(this).attr("data-id");
-        if (confirm("Are you sure?")) {
-            $.ajax({
-                url: "<?php echo base_url(); ?>" + "itineraries/delete_iti_permanently?id=" +
-                    id,
-                type: "GET",
-                data: id,
-                dataType: 'json',
-                cache: false,
-                success: function(r) {
-                    if (r.status = true) {
-                        location.reload();
-                        //console.log("ok" + r.msg);
-                        //console.log(r.msg);
-                    } else {
-                        alert("Error! Please try again.");
-                    }
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>" +
+                            "itineraries/delete_iti_permanently?id=" +
+                            id,
+                        type: "GET",
+                        data: id,
+                        dataType: 'json',
+                        cache: false,
+                        success: function(r) {
+                            if (r.status = true) {
+                                swal("Poof! Your imaginary file has been deleted!", {
+                                    icon: "success",
+                                });
+                                setTimeout((function() {
+                                    window.location.reload();
+                                }), 3000);
+                                //console.log("ok" + r.msg);
+                                //console.log(r.msg);
+                            } else {
+                                alert("Error! Please try again.");
+                            }
+                        }
+                    });
+                } else {
+                    swal("Your imaginary file is safe!");
+                    setTimeout((function() {
+                        window.location.reload();
+                    }), 3000);
                 }
-            });
-        }
+            })
     });
 });
 </script>
 
 <script type="text/javascript">
-    var table;
-    $(document).ready(function() {
+var table;
+$(document).ready(function() {
     var table;
     var tableFilter;
     //Custom Filter
@@ -1077,57 +1111,74 @@ jQuery(document).ready(function($) {
    		} */
 
     //datatables
-    table = $('#itinerary2').DataTable({
-        "aLengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, 'All']
-        ],
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
-        "createdRow": function(row, data, dataIndex) {
-            //console.log( dataIndex );
-            var iti_status = data.slice(-1)[0];
+    /*   table = $('#itinerary2').DataTable({
+           "aLengthMenu": [
+               [10, 25, 50, 100, -1],
+               [10, 25, 50, 100, 'All']
+           ],
+           "processing": true, //Feature control the processing indicator.
+           "serverSide": true, //Feature control DataTables' server-side processing mode.
+           "order": [], //Initial no order.
+           "createdRow": function(row, data, dataIndex) {
+               //console.log( dataIndex );
+               var iti_status = data.slice(-1)[0];
 
-            if (iti_status == 'NOT PROCESS')
-                $(row).addClass('yellow_row');
-            else if (iti_status == 'APPROVED')
-                $(row).addClass('green_row');
-            else if (iti_status == 'DECLINED')
-                $(row).addClass('red_row');
-            if (iti_status == 'ON HOLD')
-                $(row).addClass('hold_row');
-        },
+               if (iti_status == 'NOT PROCESS')
+                   $(row).addClass('yellow_row');
+               else if (iti_status == 'APPROVED')
+                   $(row).addClass('green_row');
+               else if (iti_status == 'DECLINED')
+                   $(row).addClass('red_row');
+               if (iti_status == 'ON HOLD')
+                   $(row).addClass('hold_row');
+           },
 
-        language: {
-            search: "<strong>Search By Itinerary Id/Customer:</strong>",
-            searchPlaceholder: "Search..."
-        },
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('itineraries/ajax_itinerary_list')?>",
-            "type": "POST",
-            "data": function(data) {
-                data.filter = $("#filter_val").val();
-                data.from = $("#date_from").attr("data-date_from");
-                data.end = $("#date_to").attr("data-date_to");
-                data.todayStatus = $("#todayStatus").val();
-                data.quotation = $("#quotation").val();
-                data.agent_id = $("#sales_user_id").val();
-                data.iti_type = $("#iti_type").val();
-            },
-        },
-        //Set column definition initialisation properties.
-        "columnDefs": [{
-            "targets": [0], //first column / numbering column
-            "orderable": false, //set not orderable
-        }, ],
+           language: {
+               search: "<strong>Search By Itinerary Id/Customer:</strong>",
+               searchPlaceholder: "Search..."
+           },
+           // Load data for the table's content from an Ajax source
+           "ajax": {
+               "url": "<?php echo site_url('itineraries/ajax_itinerary_list')?>",
+               "type": "POST",
+               "data": function(data) {
+                   data.filter = $("#filter_val").val();
+                   data.from = $("#date_from").attr("data-date_from");
+                   data.end = $("#date_to").attr("data-date_to");
+                   data.todayStatus = $("#todayStatus").val();
+                   data.quotation = $("#quotation").val();
+                   data.agent_id = $("#sales_user_id").val();
+                   data.iti_type = $("#iti_type").val();
+               },
+           },
+           //Set column definition initialisation properties.
+           "columnDefs": [{
+               "targets": [0], //first column / numbering column
+               "orderable": false, //set not orderable
+           }, ],
+       });*/
+
+});
+
+
+$(document).ready(function() {
+    // _this.parent().append(
+    //     '<p class="bef_send"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+    $.ajax({
+        type: "GET",
+        "url": "<?php echo site_url('itineraries/ajax_itinerary_list')?>",
+    }).done(function(data) {
+        $(".itineraryData").html(data);
+
+    }).error(function() {
+        $(".bef_send").hide();
+        $(".hotelForRates").html("Error! Please try again later!");
     });
 });
 </script>
 
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
+jQuery(document).ready(function($) {
     //btn toggle
     $(document).on("click", ".optionToggleBtn", function(e) {
         e.preventDefault();
@@ -1234,7 +1285,7 @@ jQuery(document).ready(function($) {
 </script>
 
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
+jQuery(document).ready(function($) {
     //open modal on duplicate iti btn click
     $(document).on("click", ".duplicateItiBtn", function(e) {
         e.preventDefault();
@@ -1344,7 +1395,7 @@ jQuery(document).ready(function($) {
         return confirm('Are you sure to create duplicate itinerary ?');
     });
 
-   
+
 
 });
 </script>

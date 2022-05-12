@@ -357,9 +357,200 @@ class Customers extends CI_Controller {
 			redirect("dashboard");
 		}
 	}	
+
+	public function ajax_customers_list(){
+		ob_start();
+		$user = $this->session->userdata('logged_in');
+		$u_id = $user['user_id'];
+		$role = $user['role'];
+		$custom_where = "";
+		$where ='';
+		$list = $this->customer_model->get_datatables($where, $custom_where);
+		$data = array();
+		$no = $_POST['start'];
+		if( !empty($list) ){
+		?>
+	<table class="table data-table-large">
+		<tbody>
+			<?php
+				foreach ($list as $customer) {
+					// dump($customer);
+					$cust_id = $customer->customer_id;
+					//Lead Prospect Hot/Warm/Cold
+					$cus_pro_status = get_cus_prospect($customer->customer_id);
+					if( $cus_pro_status == "Warm" ){
+						$l_class = '`"green"`';
+					}else if( $cus_pro_status == "Hot" ){
+						$l_class = '<div class="badge bg-danger"><strong>Hot</strong></div>';
+					}else if( $cus_pro_status == "Cold" ){
+						$l_class = '<div class="badge bg-info"><strong>Cold</strong></div>';
+					}else{
+						$l_class = "";
+					}
+
+					//Check customer status 9=approved,8=decline,0=working
+					switch( $customer->cus_status ){
+						case 9:
+							//Check for iti status
+							$iti_status = $customer->iti_status;
+							if( isset( $customer->booking_status ) && $customer->booking_status != 0 ){
+								$iti_s = isset( $customer->booking_status ) && $customer->booking_status == 0 ? "APPROVED" : "ON HOLD";
+							}else if( $iti_status == 9 ){
+								$iti_s = "APPROVED";
+							}else if( $iti_status == 7 ){
+								$iti_s = "DECLINED";
+							}else if( $iti_status == 6 ){
+								$iti_s = "REJECTED";
+							}else{
+								$iti_s = empty( $customer->followup_id ) ? "NOT PROCESS" : "WORKING";
+							}
+							
+							$decUserStatus = "<strong class='btn btn-success'>Lead Approved</strong>";
+							$add_iti = '<div title="Holiday Type" class="fs-8 me-2 text-success">
+											<strong class="" title="Lead Status ">Verified</strong> 
+										</div>';
+							break;
+						case 8:
+							$add_iti = '<div title="Holiday Type" class="fs-8 me-2 text-danger">
+											<strong class="" title="Lead Status ">Declined</strong> 
+										</div>';
+							$decUserStatus = "<strong class='badge_danger_pill'> Declined</strong>";
+							$iti_s = "DECLINED";
+							break;
+						default:
+							$add_iti = "<div title='Holiday Type' class='fs-8 me-2 text-danger'>
+											<strong class='' title='Lead Status'>not processed</strong> 
+										</div>";
+							$decUserStatus = "<strong class='btn btn-success'>Working...</strong>";
+							$iti_s = empty( $customer->followup_id ) ? "NOT PROCESS" : "WORKING";
+							break;
+					}
+					?>
+			<tr>
+				<td>
+					<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+						<div class="d-flex justify-content-between px-1 w-100">
+							<div class="requirment">
+								<p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#<?= $customer->customer_id ?></p>
+								<div title="Holiday Type" class="fs-8 me-2 text-success">
+									<strong class="" title="Lead Status "><?= $add_iti ?></strong>
+								</div>
+							</div>
+							<div class="ms-2">
+								<p class="fs-7 mb-2 mt-0 ">
+									<strong class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : '' ?></strong>
+									<span title="Leads From" class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
+								</p>
+							</div>
+						</div>
+						<div class="bg-light d-flex justify-content-between p-1 w-100">
+							<div class="border-end flex-grow-1">
+								<p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
+								<div class="badge bg-info"><strong><?= $l_class ?></strong></div>
+							</div>
+							<div class="flex-grow-1 ms-2">
+								<div class="my-1">
+									<span class="d-block fs-7 mb-2">
+										<i class="fa-solid fa-phone text-primary"></i> <?= !empty($customer->customer_contact) ? $customer->customer_contact : '' ?>
+									</span>
+								</div>
+								<div>
+									<span class="tooltip_right">
+										<i class="fa-envelope fa-solid text-primary"></i>
+										<span class="tooltip_right_text"><?= !empty($customer->customer_email) ? $customer->customer_email : '' ?> </span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+						<div class="px-2">
+							<div class="mb-2">
+								<strong class="d-block fs-7 mb-1"><?= !empty(get_state_name($customer->state_id)) ? get_state_name($customer->state_id) : 'Not Available' ?> </strong>
+								<span class="fs-8 fw-500 text-secondary">Guest City</span>
+							</div>
+						</div>
+						<div class="bg-light p-1 w-100">
+							<p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
+							<div title="Working on lead" class="badge bg-success">
+								<strong class="white"><?= $iti_s ?>...</strong>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+						<div class="mb-2 px-2">
+							<p class="fw-bold m-0">04-Feb-2022</p>
+							<span class="fs-8 text-secondary">assigned on</span>
+						</div>
+						<div class="bg-light p-1 w-100">
+							<span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+							<a class="text-primary fw-bold" href="" title="View Agent"><?= ucFirst(get_user_name( $customer->agent_id )) ?></a>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+						<div class="mb-2 px-2">
+							<p class="fs-7 m-0">
+								<i class="fa-solid fa-phone-volume fs-8"></i>
+								<strong> <?= count_total_no_of_call($cust_id) ?> </strong>
+							</p>
+							<span class="fs-8 text-secondary">Total calls</span>
+						</div>
+						<div class="bg-light p-1 w-100">
+							<span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+							<p class="fs-8 fw-400 m-0 text-dark"><?=  date("d-F-Y", strtotime( $customer->created )); ?></p>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+						<div class="mb-2 px-2">
+							<p class="my-1 fs-7 text-secondary"><span>Next Call</span> <span><?= !empty(get_leads_next_followup($cust_id)) ?  date("d-F",  strtotime( get_leads_next_followup($cust_id) )) : ''?></span></p>
+							<p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i> <?= !empty(get_leads_next_followup($cust_id)) ? date("h:i A",  strtotime( get_leads_next_followup($cust_id) )) : 'Not sheduled'?></p>
+						</div>
+						<div class="bg-light p-1 w-100">
+							<span class="d-block fs-7 mb-2 text-secondary">last call on</span>
+							<p class="fs-7 fs-8 my-1 text-dark">
+								<i class="text-success fa-solid fa-phone-volume"></i> <?= !empty(get_leads_last_call_followup($cust_id)) ? date("d-F-Y h:i A",  strtotime( get_leads_last_call_followup($cust_id) )) : ' Not sheduled' ?>
+							</p>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="dropdown">
+						<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+							aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+							<li>
+								<a class="dropdown-item" href="<?= site_url("customers/edit/$customer->customer_id") ?>"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>" ><i class="fa-solid fa-eye"></i> View</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+							</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<?php }?>
+		</tbody>
+	</table>
+	<?php
+		}
+	$contents = ob_get_clean();
+	echo $contents;
+	die;
+	}
 	
 	/* data table get all Customers */
-	public function ajax_customers_list(){
+	public function ajax_customers_list1(){
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
 		$role = $user['role'];
