@@ -378,14 +378,15 @@ class Customers extends CI_Controller {
 					$cust_id = $customer->customer_id;
 					//Lead Prospect Hot/Warm/Cold
 					$cus_pro_status = get_cus_prospect($customer->customer_id);
+					// dump($cus_pro_status);diel;
 					if( $cus_pro_status == "Warm" ){
-						$l_class = '`"green"`';
+						$l_class = '<div class="badge bg-warning"><strong>Warm</strong></div>';
 					}else if( $cus_pro_status == "Hot" ){
 						$l_class = '<div class="badge bg-danger"><strong>Hot</strong></div>';
 					}else if( $cus_pro_status == "Cold" ){
 						$l_class = '<div class="badge bg-info"><strong>Cold</strong></div>';
 					}else{
-						$l_class = "";
+						$l_class = '<div class="badge bg-secondary"><strong>Undifined</strong></div>';
 					}
 
 					//Check customer status 9=approved,8=decline,0=working
@@ -415,14 +416,20 @@ class Customers extends CI_Controller {
 											<strong class="" title="Lead Status ">Declined</strong> 
 										</div>';
 							$decUserStatus = "<strong class='badge_danger_pill'> Declined</strong>";
-							$iti_s = "DECLINED";
+							$iti_s = '<span title="Working on lead" class="badge bg-danger">
+										<strong class="white">Declined</strong> 
+									  </span>';
 							break;
 						default:
 							$add_iti = "<div title='Holiday Type' class='fs-8 me-2 text-danger'>
 											<strong class='' title='Lead Status'>not processed</strong> 
 										</div>";
 							$decUserStatus = "<strong class='btn btn-success'>Working...</strong>";
-							$iti_s = empty( $customer->followup_id ) ? "NOT PROCESS" : "WORKING";
+							$iti_s = empty( $customer->followup_id ) ? ' <span title="Working on lead" class="badge bg-yellow-casablanca">
+							<strong class="white">Not Process</strong> 
+								</span>' : ' <div title="Working on lead" class="badge bg-success">
+								<strong class="white">working...</strong> 
+							</div>';
 							break;
 					}
 					?>
@@ -446,7 +453,7 @@ class Customers extends CI_Controller {
 						<div class="bg-light d-flex justify-content-between p-1 w-100">
 							<div class="border-end flex-grow-1">
 								<p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-								<div class="badge bg-info"><strong><?= $l_class ?></strong></div>
+								<?= $l_class ?>
 							</div>
 							<div class="flex-grow-1 ms-2">
 								<div class="my-1">
@@ -474,9 +481,7 @@ class Customers extends CI_Controller {
 						</div>
 						<div class="bg-light p-1 w-100">
 							<p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
-							<div title="Working on lead" class="badge bg-success">
-								<strong class="white"><?= $iti_s ?>...</strong>
-							</div>
+							<?= $iti_s ?>
 						</div>
 					</div>
 				</td>

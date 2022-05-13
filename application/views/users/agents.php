@@ -326,11 +326,19 @@
                         </tbody>
                     </table>
                 </div>
-            </div>            
+            </div>     
+            
+            
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                <div class="table-responsive userData">
+     
+                </div>
+            </div>  
             <!-- End end demo table design -->
 
+
             <!-- Begin portlet-body -->
-            <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
+           <!-- <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
                 <div class="table-responsive">
                     <table class="table table-striped display white_space_fix" id="table" cellspacing="0" width="100%">
                         <thead>
@@ -348,11 +356,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!--Data table -->
+                    
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>-->
             <!-- End portlet-body -->
         </div>
         <!-- End page-content -->
@@ -363,6 +371,22 @@
 
 <!-- Modal -->
 <script type="text/javascript">
+
+       $(document).ready(function() {
+        // _this.parent().append(
+        //     '<p class="bef_send"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+        $.ajax({
+            type: "GET",
+            "url": "<?php echo site_url('agents/ajax_list')?>",
+        }).done(function(data) {
+            $(".userData").html(data);
+
+        }).error(function() {
+            $(".bef_send").hide();
+            $(".userData").html("Error! Please try again later!");
+        });
+    });
+
 jQuery(document).ready(function($) {
     $(document).on("click", ".ajax_delete_user", function() {
         var user_id = $(this).attr("data-id");
