@@ -498,23 +498,37 @@ jQuery(document).ready(function($) {
             })
             .then((willDelete) => {
                 if (willDelete) {
-            $.ajax({
-                url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_deleteUser?id=" + user_id,
-                type: "GET",
-                data: user_id,
-                dataType: "json",
-                cache: false,
-                success: function(r) {
-                    if (r.status = true) {
-                        swal("Poof! Your imaginary file has been deleted!", {
-                                    icon: "success",
-                                });
-                    } else {
-                        alert("Error! Please try again.");
-                    }
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_deleteUser?id=" + user_id,
+                        type: "GET",
+                        data: user_id,
+                        dataType: "json",
+                        cache: false,
+                        success: function(r) {
+                            if (r.status = true) {
+                                swal("Poof! Your imaginary file has been deleted!", {
+                                            icon: "success",
+                                        });
+                                setTimeout((function() {
+                                    window.location.reload();
+                                }), 3000);
+
+                            } else {
+                                swal("Error! Please try again.");
+                                setTimeout((function() {
+                                    window.location.reload();
+                                }), 3000);
+                            }
+                        }
+                    });
+                } else {
+                    swal("Your imaginary file is safe!");
+                    setTimeout((function() {
+                         window.location.reload();
+                    }), 3000);
                 }
             });
-        }
+        
     });
 });
 </script>
@@ -614,9 +628,12 @@ jQuery(document).ready(function($) {
             cache: false,
             success: function(r) {
                 if (r.status = true) {
-                    location.reload();
-                    console.log("ok" + r.msg);
-                    //console.log(r.msg);
+                    swal(r.msg, {
+                            icon: "success",
+                        });
+                    setTimeout((function() {
+                        window.location.reload();
+                    }), 3000);
                 } else {
                     alert("Error! Please try again.");
                 }

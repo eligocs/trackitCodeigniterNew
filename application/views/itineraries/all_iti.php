@@ -990,6 +990,7 @@ jQuery(document).ready(function($) {
             })
             .then((willDelete) => {
                 // if (confirm("Are you sure?")) {
+                    if (willDelete) {
                 $.ajax({
                     url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_delete_iti?id=" +
                         id,
@@ -999,13 +1000,10 @@ jQuery(document).ready(function($) {
                     cache: false,
                     success: function(r) {
                         if (r.status = true) {
-                            if (willDelete) {
                                 swal("Poof! Your imaginary file has been deleted!", {
                                     icon: "success",
                                 });
-                            } else {
-                                swal("Your imaginary file is safe!");
-                            }
+                          
                             location.reload();
                             //console.log("ok" + r.msg);
                             //console.log(r.msg);
@@ -1014,6 +1012,9 @@ jQuery(document).ready(function($) {
                         }
                     }
                 });
+            } else {
+                            swal("Your imaginary file is safe!");
+                        }
                 // }
 
             })
