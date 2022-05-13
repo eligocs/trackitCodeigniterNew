@@ -7,12 +7,14 @@
             <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption">
-                    <i class="fa-solid fa-users"></i> All Users
+                        <i class="fa-solid fa-users"></i> All Users
                     </div>
-                    <a class="btn btn-primary float-end" href="<?php echo site_url("agents/addagent"); ?>" title="add agent"><i class="fa-solid fa-plus"></i> Add User</a>
-                    
+                    <a class="btn btn-primary float-end" href="<?php echo site_url("agents/addagent"); ?>"
+                        title="add agent"><i class="fa-solid fa-plus"></i> Add User</a>
+
                     <!-- Show hide filter button -->
-                    <button  class="btn float-end me-2 p-2" title="Filter Users" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                    <button class="btn float-end me-2 p-2" title="Filter Users" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
                         <i class="fa-solid fa-filter fs-5"></i>
                     </button>
                 </div>
@@ -35,7 +37,7 @@
                             <input type="hidden" id="ustatus" value="<?php echo $ustatus; ?>">
                             <div class="col-md-4 my-2">
                                 <label class="control-label"><strong>Select User By Status:</strong></label>
-                                <select name = "userStatus" class='form-control mfilter'>
+                                <select name="userStatus" class='form-control mfilter'>
                                     <option value="">All Users</option>
                                     <option value="active">Active User</option>
                                     <option value="inactive">Inactive User</option>
@@ -67,7 +69,7 @@
             <!-- End filter_collapse -->
 
             <!-- Begin demo table design -->
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+            <!-- <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="table-responsive">
                     <table class="table data-table-large users-table">
                         <tbody>
@@ -326,42 +328,139 @@
                         </tbody>
                     </table>
                 </div>
-            </div>     
-            
-            
+            </div>      -->
+
+
             <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="table-responsive userData">
-     
-                </div>
-            </div>  
-            <!-- End end demo table design -->
-
-
-            <!-- Begin portlet-body -->
-           <!-- <div class="portlet-body bg-white p-3 rounded-4 shadow-sm">
-                <div class="table-responsive">
-                    <table class="table table-striped display white_space_fix" id="table" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th> Name </th>
-                                <th> User Name </th>
-                                <th> User Role </th>
-                                <th> Email </th>
-                                <th> Mobile </th>
-                                <th> User Status </th>
-                                <th> Action </th>
-                                <th> Update Status </th>
-                                <th> Last Login </th>
-                            </tr>
-                        </thead>
+                    <?php
+                if( !empty($list) ){
+                ?>
+                    <table class="table data-table-large users-table">
                         <tbody>
-                    
+                            <?php
+                        foreach ($list as $agent) {
+                            //Get online offline status
+                            $check_online_status = get_user_online_status( $agent->user_id );
+                            $online_offline_status = !empty( $check_online_status ) ? 
+                            '<i class="fa-solid fa-circle text-success fs-8"></i>' 
+                            : '<i class="fa-solid fa-circle text-danger fs-8"></i>';
+                            if($agent->user_type == 99){
+                                $agent_type = "Administrator";
+                            }elseif($agent->user_type == 98){
+                                $agent_type = get_manager_type( $agent->is_super_manager );
+                            }else{
+                                $agent_type = get_role_name($agent->user_type);
+                            }
+                            ?>
+                            <tr>
+                                <td class="w-25">
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="px-1 w-100 d-flex">
+                                            <div class="user_thumbnail">
+                                                <img src="<?php echo site_url() . 'site/images/userprofile/' . $agent->user_pic; ?>" alt="User Profile">
+                                            </div>
+                                            <p class="fs-7 mb-2 mt-0 ms-3">
+                                                <strong class="d-block mb-1">
+                                                    <?= $agent->first_name . " " . $agent->last_name; ?>
+                                                    <?= $online_offline_status ?>
+                                                </strong>
+                                                <span class="fs-8 fw-500 text-secondary">Name</span>
+                                            </p>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <span class="d-block fw-500 mb-1 fs-7 ms-1">
+                                                <?= $agent->mobile ?>
+                                            </span>
+                                            <span class="d-block fw-500 fs-7 ms-1">
+                                                <?= $agent->email ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                        <div class="w-100">
+                                            <div class="px-2">
+                                                <p class="fs-7 mb-2 mt-0 ">
+                                                    <strong class="d-block mb-1"><?= $agent->user_name ?></strong>
+                                                    <span class="fs-8 fw-500 text-secondary">User Name</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <strong class="d-block fs-7 mb-1 text-dark"><?= $agent_type ?>m</strong>
+                                            <span class="fs-7 text-secondary">user role</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="align-bottom align-content-between d-flex flex-wrap h-100 ">
+                                        <div class="px-2 mb-2">
+                                            <strong class="d-block fs-7 mb-1">
+                                                <?= date("d-F-Y h:i:s a", strtotime($agent->last_login)); ?>
+                                            </strong>
+                                            <span class="fs-8 fw-500 text-secondary"> Last Login </span>
+                                        </div>
+                                        <div class="bg-light p-1 w-100">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <p class="fs-7 mb-1 mt-0 text-secondary ms-1">User Status </p>
+                                                    <span
+                                                        class="badge bg-success ms-1"><strong><?= ucfirst($agent->user_status) ?></strong></span>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="fs-7 mb-1 mt-0 text-secondary ms-1">Update User Status
+                                                    </p>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input inSlider"  data-id ="<?= $agent->user_id ?>" type="checkbox" id="user1"
+                                                        <?=$agent->user_status == "active" ? 'checked' : '' ?> >
+                                                        <label class="form-check-label mt-1" for="user1">
+                                                            <!-- Active/Inactive -->
+                                                            <?= ucfirst($agent->user_status) ?>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-bs-toggle="dropdown" aria-expanded="false"> <i
+                                                class="fa-solid fa-ellipsis-vertical"></i></a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                            <li>
+                                                <a class="dropdown-item"
+                                                    href="<?= site_url("agents/view/$agent->user_id")?>"><i
+                                                        class="fa-solid fa-eye"></i> View</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item"
+                                                    href="<?=site_url("agents/editagent/$agent->user_id")  ?>"><i
+                                                        class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item ajax_delete_user"   data-id ="<?= $agent->user_id ?>" href="#"><i class="fa-solid fa-trash-can"></i>
+                                                    Delete</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
+		                	}
+			                ?>
                         </tbody>
                     </table>
+                    <p><?php echo $links; ?></p>
+                    <?php
+                    }
+                    ?>
                 </div>
-            </div>-->
-            <!-- End portlet-body -->
+            </div>
+            <!-- End end demo table design -->
         </div>
         <!-- End page-content -->
     </div>
@@ -371,27 +470,34 @@
 
 <!-- Modal -->
 <script type="text/javascript">
+//    $(document).ready(function() {
+//     // _this.parent().append(
+//     //     '<p class="bef_send"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+//     $.ajax({
+//         type: "GET",
+//         "url": "<?php echo site_url('agents/ajax_list')?>",
+//     }).done(function(data) {
+//         $(".userData").html(data);
 
-       $(document).ready(function() {
-        // _this.parent().append(
-        //     '<p class="bef_send"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
-        $.ajax({
-            type: "GET",
-            "url": "<?php echo site_url('agents/ajax_list')?>",
-        }).done(function(data) {
-            $(".userData").html(data);
-
-        }).error(function() {
-            $(".bef_send").hide();
-            $(".userData").html("Error! Please try again later!");
-        });
-    });
+//     }).error(function() {
+//         $(".bef_send").hide();
+//         $(".userData").html("Error! Please try again later!");
+//     });
+// });
 
 jQuery(document).ready(function($) {
     $(document).on("click", ".ajax_delete_user", function() {
         var user_id = $(this).attr("data-id");
         //alert(user_id);
-        if (confirm("Are you sure?")) {
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
             $.ajax({
                 url: "<?php echo base_url(); ?>" + "AjaxRequest/ajax_deleteUser?id=" + user_id,
                 type: "GET",
@@ -400,8 +506,9 @@ jQuery(document).ready(function($) {
                 cache: false,
                 success: function(r) {
                     if (r.status = true) {
-                        location.reload();
-                        console.log("ok" + r.msg);
+                        swal("Poof! Your imaginary file has been deleted!", {
+                                    icon: "success",
+                                });
                     } else {
                         alert("Error! Please try again.");
                     }
@@ -415,12 +522,12 @@ jQuery(document).ready(function($) {
 var table;
 $(document).ready(function() {
     //on change filter
-   //  $(document).on('change', ".mfilter", function() {
-   //      var val = $(this).find(":selected").val();
-   //      $("#filter_val").val(val);
-   //      console.log(val);
-   //      //console.log(val);
-   //  });
+    //  $(document).on('change', ".mfilter", function() {
+    //      var val = $(this).find(":selected").val();
+    //      $("#filter_val").val(val);
+    //      console.log(val);
+    //      //console.log(val);
+    //  });
     $(document).on("change", 'select[name=userFilter]', function() {
         var filter_val = $(this).val();
         $("#filter_val").val(filter_val);
@@ -433,19 +540,6 @@ $(document).ready(function() {
         console.log(userStatus);
     });
 
-
-
-     //Custom Filter
-   //   $("#form-filter").validate({
-   //      rules: {
-   //          filter: {
-   //              required: true
-   //          },
-   //          dateRange: {
-   //              required: true
-   //          },
-   //      },
-   //  });
 
     $("#form-filter").submit(function(e) {
         e.preventDefault();
@@ -470,15 +564,15 @@ $(document).ready(function() {
         },
         // Load data for the table's content from an Ajax source
         "ajax": {
-         "url": "<?php echo site_url('agents/ajax_list')?>",
+            "url": "<?php echo site_url('agents/ajax_list')?>",
             "type": "POST",
             "data": function(data) {
                 data.filter = $("#filter_val").val();
                 data.userStatus = $("#userStatus").val();
-               //  data.from = $("#date_from").attr("data-date_from");
-               //  data.end = $("#date_to").attr("data-date_to");
-               //  data.todayStatus = $("#todayStatus").val();
-               //  data.agent_id = $("#sales_user_id").val();
+                //  data.from = $("#date_from").attr("data-date_from");
+                //  data.end = $("#date_to").attr("data-date_to");
+                //  data.todayStatus = $("#todayStatus").val();
+                //  data.agent_id = $("#sales_user_id").val();
             },
         },
         //Set column definition initialisation properties.
@@ -489,38 +583,11 @@ $(document).ready(function() {
 
     });
 
-    //datatables
-   //  table = $('#table').DataTable({
-   //      "aLengthMenu": [
-   //          [10, 25, 50, 100, -1],
-   //          [10, 25, 50, 100, 'All']
-   //      ],
-   //      "processing": true, //Feature control the processing indicator.
-   //      "serverSide": true, //Feature control DataTables' server-side processing mode.
-   //      "order": [], //Initial no order
-   //      language: {
-   //          search: "<strong>Search By User name/Email Id:</strong>",
-   //          searchPlaceholder: "Search..."
-   //      },
-   //      // Load data for the table's content from an Ajax source
-   //      "ajax": {
-   //          "url": "<?php echo site_url('agents/ajax_list')?>",
-   //          "type": "POST"
-   //      },
-
-   //      //Set column definition initialisation properties.
-   //      "columnDefs": [{
-   //          "targets": [0], //first column / numbering column
-   //          "orderable": false, //set not orderable
-   //      }, ],
-
-   //  });
-
 });
 </script>
 <script>
 jQuery(document).ready(function($) {
-    $(document).on("click", '#inSlider', function() {
+    $(document).on("click", '.inSlider', function() {
         var ajaxReq;
         //get review status
         if (!$(this).is(':checked')) {

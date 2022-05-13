@@ -245,12 +245,23 @@ class Login_Model extends CI_Model{
 			return true;
 		}
 	}
+
+	
+    public function get_count() 
+	{
+        return $this->db->count_all("users");
+    }
+
+    // public function get_students($limit, $start) 
+	// {
+    //     $this->db->limit($limit, $start);
+    //     $query = $this->db->get("student");
+    //     return $query->result();
+    // }
+
 	//Query for datatable 
 	private function _get_datatables_query($where = array()){
 		
-// 		if( !empty($where) ){
-// 			$this->db->where_in( "user_type", $where );
-// 		}
 		
 		if( !empty($where['user_type'])){
 			$this->db->where_in( "user_type", $where['user_type'] );
@@ -295,10 +306,11 @@ class Login_Model extends CI_Model{
 		}
 	}
 
-	function get_datatables($where = array()){
+	function get_datatables($where = array(), $limit, $start){
 		$this->_get_datatables_query($where);
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
+		$this->db->limit($limit, $start);
 		$query = $this->db->get();
 		return $query->result();
 	}

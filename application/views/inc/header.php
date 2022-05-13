@@ -27,6 +27,7 @@
       <link href="<?php echo base_url();?>site/assets/css/sweetalert.min.css" rel="stylesheet" type="text/css" />
       <link href="<?php echo base_url();?>site/assets/css/fullcalendar.min.css" rel="stylesheet" type="text/css" />
       <link href="<?php echo base_url();?>site/assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+      
 
       <!--User Theme Style -->
       <?php $theme_style =  get_user_theme_style(); 
