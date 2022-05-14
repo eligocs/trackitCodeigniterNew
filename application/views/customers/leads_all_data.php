@@ -1060,25 +1060,25 @@ div#quotation_type_section,
                                                         </label>
                                                         <div class="add_requirements">
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" value="" id="hotel">
+                                                                <input class="form-check-input" name="requirements_meta[requirements_hotel]" type="checkbox" value="hotel" id="hotel">
                                                                 <label class="control-label ms-2" for="hotel">
                                                                     <i class="fa-solid fa-hotel"></i> Hotel
                                                                 </label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" value="" id="cab">
+                                                                <input class="form-check-input" name="requirements_meta[requirements_cab]" type="checkbox" value="cab" id="cab">
                                                                 <label class="control-label ms-2" for="cab">
                                                                 <i class="fa-solid fa-taxi"></i> Cab
                                                                 </label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" value="" id="train">
+                                                                <input class="form-check-input" name="requirements_meta[requirements_train]" type="checkbox" value="train" id="train">
                                                                 <label class="control-label ms-2" for="train">
                                                                 <i class="fa-solid fa-train"></i> Train
                                                                 </label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flight">
+                                                                <input class="form-check-input" name="requirements_meta[requirements_flight]" type="checkbox" value="flight" id="flight">
                                                                 <label class="control-label ms-2" for="flight">
                                                                 <i class="fa-solid fa-plane-departure"></i> Flight
                                                                 </label>

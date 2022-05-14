@@ -869,7 +869,7 @@ class Customers extends CI_Controller {
 	
 	//ajax request to update Customer followup
 	public function updateCustomerFollowup(){
-		// dump($this->input->post());die;
+	
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
 		$role = $user['role'];
@@ -888,7 +888,8 @@ class Customers extends CI_Controller {
 		$book_query 			= strip_tags($this->input->post("book_query", TRUE));
 		$comment 				= strip_tags($this->input->post("comment", TRUE));
 		$meal_plan_type				= strip_tags($this->input->post("meal_plan_type"));
-		
+		$requirements_meta				= serialize($this->input->post("requirements_meta"));
+
 		//get customer data
 		$get_d = $this->global_model->getdata("customers_inquery", array( "customer_id" => $customer_id ) );
 		if( !isset( $get_d[0] ) ){
@@ -970,6 +971,7 @@ class Customers extends CI_Controller {
 				$state_id				= strip_tags($this->input->post("state"));
 				$country_id				= strip_tags($this->input->post("country"));
 				$meal_plan_type				= strip_tags($this->input->post("meal_plan_type"));
+				$requirements_meta				= serialize($this->input->post("requirements_meta"));
 				
 				//update Data
 				$u_data = array(
@@ -997,8 +999,10 @@ class Customers extends CI_Controller {
 					"state_id" 					=> $state_id,
 					"country_id" 				=> $country_id,
 					"meal_plan_type" 				=> $meal_plan_type,
+					"requirements_meta" 				=> $requirements_meta,
 					
 				);
+					// dump($u_data);die;
 				$where_c = array( "customer_id" => $customer_id );
 				$update_data = $this->global_model->update_data("customers_inquery", $where_c, $u_data );
 				$callType = "9";

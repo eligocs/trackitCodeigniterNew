@@ -14,7 +14,7 @@ class Agents extends CI_Controller {
 		$config = array();
         $config["base_url"] = base_url() . "agents/index";
         $config["total_rows"] = $this->login_model->get_count();
-        $config["per_page"] = 5;
+        $config["per_page"] = 10;
         $config["uri_segment"] = 3;
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;

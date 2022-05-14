@@ -108,6 +108,7 @@ class Itineraries extends CI_Controller {
 				//get customer data  
 				$where = array("customer_id" => $customer_id,"temp_key" => $temp_key, 'del_status' => 0);
 				$get_cus = $this->customer_model->getdata( "customers_inquery", $where );
+
 				
 				//if customer exists
 				if( $get_cus ){
@@ -128,6 +129,7 @@ class Itineraries extends CI_Controller {
 						'lead_created' 		=> isset($get_cus[0]->created) ? $get_cus[0]->created : date('Y-m-d'),
 						'temp_key' 			=> $unique_key,
 						'iti_type' 			=> 1, // 1 = holidays
+						'requirements_meta' 			=> isset($get_cus[0]->requirements_meta) ? $get_cus[0]->requirements_meta : "",
 					);
 					
 					$insert_iti = $this->global_model->insert_data('itinerary', $insert_data);
