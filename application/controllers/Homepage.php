@@ -1,12 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Homepage extends CI_Controller {
+	public function __Construct(){
+	 parent::__Construct();
+	//  $this->load->library("google-api-php-client/src/Google_Client.php");
+	//  $this->load->library("google-api-php-client/src/contrib/Google_DriveService.php");
+	}
 	
 
 	public function index(){
 		$data['info'] = $this->global_model->getdata('homepage_setting');
 		$this->load->view('homepage/commingsoon',$data);
-		//$this->load->view('homepage/homepage',$data);
 	}
 	
 	public function update_Info(){
@@ -36,32 +40,9 @@ class Homepage extends CI_Controller {
 	
 		}
 	}
-		//$NEW SLIDE Images
-	// public function do_upload(){
-	// $data = $_POST['image'];
-	
-	// list($type, $data) = explode(';', $data);
-	// list(, $data)      = explode(',', $data);
-	
-	
-	// $data = base64_decode($data);
-	// $imageName = 'logo'.time().'.png';
-	// file_put_contents('site/images/'.$imageName, $data);
-	// $data = array( "logo_url" => $imageName );
-	// $id=1;
-	// $where = array("id"=>$id);	
-	// $result = $this->global_model->update_data("homepage_setting", $where, $data);			
-	// if( $result ){
-	// 	echo 'success';
-	// }else{
-	// 	echo "error";
-	// 	} 
-	// 			die();
-	// }	
 
 
 	public function do_upload(){
-		// dump($_POST);die;
 		if(isset($_POST['type'])){
 			$data = $_POST['image'];		
 			list($type, $data) = explode(';', $data);
@@ -134,7 +115,7 @@ class Homepage extends CI_Controller {
 				list(, $data)      = explode(',', $data);
 				
 				$data = base64_decode($data);
-				$imageName = 'pdf_img'.time().'.png';
+				$imageName = 'pdf_img'.time().'.png';				
 				file_put_contents('site/images/'.$imageName, $data);
 				$data = array( "pdf_img" => $imageName );
 				$id=$_POST['cus_id'];

@@ -2315,10 +2315,10 @@
                                             $rate_comment = isset( $iti->rate_comment ) && $iti->pending_price == 2 && $iti->discount_rate_request == 0 ? $iti->rate_comment : "";
                                             $approved_price_date = isset($iti->approved_price_date) && $iti->approved_price_date ? date("d.m.Y h:i A", strtotime( $iti->approved_price_date )) : '';
                                             if( $approved_price_date && $iti->pending_price != 0 &&  $iti->pending_price != 1 ){
-                                                echo "<tr><td colspan=5><p class='green margin_zero'><strong>Price updated on: </strong>{$approved_price_date} </td></tr>";
+                                                echo "<tr><td colspan=5><p class='green margin_zero'><strong>Price updated on: </p></strong>{$approved_price_date} </td></tr>";
                                             }
                                             
-                                            echo "<tr><td colspan=5><p class='red margin_zero'><strong>Note: </strong>{$rate_comment} </td></tr>";
+                                            echo "<tr><td colspan=5><p class='red margin_zero'><strong>Note: </strong>{$rate_comment}</p> </td></tr>";
                                             echo "<tr><td colspan=5><p class='red margin_zero'><strong>Final Package Cost: </strong>{$f_cost} </td></tr>";
                                         } ?>
                                     </tbody>
@@ -2642,18 +2642,19 @@
                     <a href="<?php echo site_url("itineraries"); ?>" class="btn btn-outline-primary iti_back float-end"
                         title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                     <!-- Request For Update Price -->
-                    <?php if( ($user_role == 96 || $user_role == 99) && !empty( $get_rate_meta ) && $iti->email_count > 0 && $iti->discount_rate_request == 0 && $iti->iti_status == 0 && $countPrice < 6 ){ ?>
-                    <span class="btn btn-green reqPrice_update" title="Request For Update Price">Request Manager To
-                        Update Price</span>
+                    <?php if( ($user_role == 96 || $user_role == 99) && !empty( $get_rate_meta ) && $iti->email_count > 0 && $iti->discount_rate_request == 0 && $iti->iti_status == 0 && $countPrice < 6 ) { 
+                        ?>  
+                 <?= !is_admin() ? '<span class="btn btn-green reqPrice_update" title="Request For Update Price">Request Manager To
+                        Update Price</span>' : ' '?>
                     <?php 
                     if($iti->discount_rate_request ==  0){
-                        if(check_agent_discount_price_set($iti->iti_id) == true){
+                        if(check_agent_discount_price_set($iti->iti_id) == false || is_admin()){
                             ?>
-                        <span class="btn btn-green self_update_error" title="Request For Update Price">Self Update Price</span>
+                        <span class="btn btn-green self_update" title="Request For Update Price">Self Update Price</span>
                         <?php
                         }else{
                             ?>
-                        <span class="btn btn-green self_update" title="Request For Update Price">Self Update Price</span>
+                            <span class="btn btn-green self_update_error" title="Request For Update Price">Self Update Price</span>
                             <?php
                         }
                     }
@@ -2727,28 +2728,30 @@
                         </div>
                     </div>
                     <div class="modal fade" id="update_self" role="dialog">
-                        <div class="modal-dialog modal-lg2">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Discount price Self Update % </h4>
                                 </div>
                                 <div class="modal-body">
+                                    <?php
+                                    if(!is_admin()){
+                                        ?>
                                     <form id="selfPriceForm">
-                                    <?=   !empty(get_agent_discount_price($iti->iti_id)) ? '<strong>Old Discount% : </strong>'. get_agent_discount_price($iti->iti_id) : ''; ?>
+                                    <?=   !empty(get_agent_discount_price($iti->iti_id)) ? '<strong>Old Discount% : </strong>'. get_agent_discount_price($iti->iti_id) : ''; 
+                                    ?>
                                             <select  name="agent_discount_Value" class="form-control">
                                                 <option value="">Select</option>
                                                 <?php 
-                                                // if(check_agent_discount_price_set( $iti->iti_id)){
-                                                //     $disc_per = check_agent_discount_price_set( $iti->iti_id);
-                                                // }else{
+                                           
                                                     $disc_per = !empty(agentDiscount()) ? agentDiscount() : '';
-                                                // }
                                                     for( $i=1 ; $i <= $disc_per ; $i++ ){
                                                         echo "<option value='{$i}'>{$i}%</option>";
                                                     }
                                                 ?>
                                             </select>
+                                           
                                         <input type="hidden" name="self_update" value="1">
                                         <input type="hidden" name="iti_id" value="<?php echo $iti->iti_id; ?>">
                                         <input type="hidden" name="temp_key" value="<?php echo $iti->temp_key; ?>">
@@ -2756,6 +2759,210 @@
                                         <button type="submit" id="reqDis_btn" class="btn btn-primary my-2">Submit</button>
                                         <div id="priceRes"></div>
                                     </form>
+
+                                     <?php }else{
+                                            ?>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover">
+                                                <thead class="thead-default">
+                                                    <tr>
+                                                        <p class="text-center margin-bottom-10 margin-top-10"><strong
+                                                                style="color: red; font-size: 22px;">Old Price</strong></p>
+                                                    </tr>
+                                                    <tr>
+                                                        <th> <?= totalHotelCategory()[0]->hotel_category_name ?></th>
+                                                        <th> <?= totalHotelCategory()[1]->hotel_category_name ?></th>
+                                                        <th> <?= totalHotelCategory()[2]->hotel_category_name ?></th>
+                                                        <th><?= totalHotelCategory()[3]->hotel_category_name ?></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><?php echo isset($get_rate_meta["standard_rates"]) && !empty($get_rate_meta["standard_rates"]) ? number_format($get_rate_meta["standard_rates"]) . "/- {$inc_gst} <br> {$s_pp}<br> {$child_s_pp}" : ''; ?>
+                                                        </td>
+                                                        <td><?php echo isset($get_rate_meta["deluxe_rates"]) && !empty($get_rate_meta["deluxe_rates"]) ? number_format($get_rate_meta["deluxe_rates"]). "/- {$inc_gst}<br> {$d_pp}<br> {$child_d_pp}" : ''; ?>
+                                                        </td>
+                                                        <td><?php echo isset($get_rate_meta["super_deluxe_rates"]) && !empty($get_rate_meta["super_deluxe_rates"]) ? number_format($get_rate_meta["super_deluxe_rates"]). "/- {$inc_gst}<br> {$sd_pp}<br> {$child_sd_pp}" : ''; ?>
+                                                        </td>
+                                                        <td><?php echo isset($get_rate_meta["luxury_rates"]) && !empty($get_rate_meta["luxury_rates"]) ?  number_format($get_rate_meta["luxury_rates"]). "/- {$inc_gst} <br> {$l_pp}<br> {$child_l_pp}" : ''; ?>
+                                                        </td>
+                                                        <!--get last price/agent margin-->
+                                                        <?php
+                                                    $last_s_price = isset($get_rate_meta["standard_rates"]) ? $get_rate_meta["standard_rates"] : 0;
+                                                    $last_d_price = isset($get_rate_meta["deluxe_rates"]) ? $get_rate_meta["deluxe_rates"] : 0;
+                                                    $last_sd_price = isset($get_rate_meta["super_deluxe_rates"]) ? $get_rate_meta["super_deluxe_rates"] : 0;
+                                                    $last_l_price = isset($get_rate_meta["luxury_rates"]) ? $get_rate_meta["luxury_rates"] : 0;
+                                                    $last_person_ratemeta 	= $iti->per_person_ratemeta;
+                                                    $last_agent_margin = $iti->agent_price;
+                                                    ?>
+                                                    </tr>
+                                                    <?php if( !empty( $discountPriceData ) ){
+                                                foreach( $discountPriceData as $price ){
+                                                    //get per person price
+                                                    $per_person_ratemeta 	= unserialize($price->per_person_ratemeta);
+                                                    
+                                                    //$inc_gst = isset( $per_person_ratemeta["inc_gst"] ) && $per_person_ratemeta["inc_gst"] == 1 ? "(GST Inc.)" : "(GST Extra)";
+                                                    $inc_gst = "";
+                                                    $s_pp = isset( $per_person_ratemeta["standard_rates"] ) && !empty($per_person_ratemeta["standard_rates"] ) ? "RS. " . number_format($per_person_ratemeta["standard_rates"]) . "/- Per Person" : "";
+                                                    $d_pp = isset( $per_person_ratemeta["deluxe_rates"] ) && !empty($per_person_ratemeta["deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["deluxe_rates"]) . "/- Per Person" : "";
+                                                    $sd_pp = isset( $per_person_ratemeta["super_deluxe_rates"] ) && !empty($per_person_ratemeta["super_deluxe_rates"]) ? "RS. " . number_format($per_person_ratemeta["super_deluxe_rates"]) . "/- Per Person" : "";
+                                                    $l_pp = isset( $per_person_ratemeta["luxury_rates"] ) && !empty($per_person_ratemeta["luxury_rates"]) ? "RS. " . number_format($per_person_ratemeta["luxury_rates"]) . "/- Per Person" : "";
+                                                        
+                                                    //child rates
+                                                    $child_s_pp = isset( $per_person_ratemeta["child_standard_rates"] ) && !empty($per_person_ratemeta["child_standard_rates"]) ? "RS. " . $per_person_ratemeta["child_standard_rates"] . "/- Per Child" : "";
+                                                    $child_d_pp = isset( $per_person_ratemeta["child_deluxe_rates"] ) && !empty($per_person_ratemeta["child_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_deluxe_rates"] . "/- Per Child" : "";
+                                                    $child_sd_pp = isset( $per_person_ratemeta["child_super_deluxe_rates"] ) && !empty($per_person_ratemeta["child_super_deluxe_rates"]) ? "RS. " . $per_person_ratemeta["child_super_deluxe_rates"] . "/- Per Child" : "";
+                                                    $child_l_pp = isset( $per_person_ratemeta["child_luxury_rates"] ) && !empty($per_person_ratemeta["child_luxury_rates"]) ? "RS. " . $per_person_ratemeta["child_luxury_rates"] . "/- Per Child" : "";
+                                                
+                                                    $s_price = !empty( $price->standard_rates ) ? number_format($price->standard_rates) . "/-" : "<strong class='red'>N/A</strong>";
+                                                    $d_price = !empty( $price->deluxe_rates) ? number_format($price->deluxe_rates) . "/-" : "<strong class='red'>N/A</strong>";
+                                                    $sd_price = !empty( $price->super_deluxe_rates) ? number_format($price->super_deluxe_rates) . "/-"  : "<strong class='red'>N/A</strong>";
+                                                    $l_price = !empty( $price->luxury_rates) ? number_format($price->luxury_rates) . "/-"  : "<strong class='red'>N/A</strong>";
+                                                    
+                                                    echo "<tr class=''><td><strong>" . $s_price . "</strong> {$inc_gst} <br> {$s_pp} <br>{$child_s_pp} </td>";
+                                                    echo "<td><strong>" . $d_price . "</strong> {$inc_gst} <br> {$d_pp}<br>{$child_d_pp}</td>";
+                                                    echo "<td><strong>" . $sd_price . "</strong> {$inc_gst} <br> {$sd_pp}<br>{$child_sd_pp}</td>";
+                                                    echo "<td><strong>" . $l_price . "</strong> {$inc_gst} <br> {$l_pp}<br>{$child_l_pp}</td></tr>";
+                                                    
+                                                    //STORE LAST ROW DATA
+                                                    $last_s_price = isset($price->standard_rates) ? $price->standard_rates : 0;
+                                                    $last_d_price = isset($price->deluxe_rates) ? $price->deluxe_rates : 0;
+                                                    $last_sd_price = isset($price->super_deluxe_rates) ? $price->super_deluxe_rates : 0;
+                                                    $last_l_price = isset($price->luxury_rates) ? $price->luxury_rates : 0;
+                                                    $last_person_ratemeta 	= $price->per_person_ratemeta;
+                                                }
+                                                } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                         <!--Discount Price form -->
+                                        <?php if( !empty( $dis_hotel_category_a ) && $iti->iti_status == 0 ){ ?>
+                                        <form id="frmDiscountRates">                                        
+                                            <div class='update_price_customprice'>
+                                                <div class="row">
+                                                    <div class='standard  form-group col-md-2 my-2'>
+                                                        <label class="control-label"><strong><?= totalHotelCategory()[0]->hotel_category_name ?>:</strong></label>
+                                                        <input name="standard_rates" type="number"
+                                                           
+                                                            class='form-control'>
+                                                    </div>
+                                                    <div class='deluxe form-group col-md-2 my-2'>
+                                                        <label class="control-label"><strong><?= totalHotelCategory()[1]->hotel_category_name ?>:</strong></label>
+                                                        <input
+                                                           
+                                                            name="deluxe_rates" type="number" class='form-control'>
+                                                    </div>
+                                                    <div class='super_deluxe form-group col-md-2 my-2'>
+                                                        <label class="control-label"><strong><?= totalHotelCategory()[2]->hotel_category_name ?>:</strong></label>
+                                                        <input
+                                                           
+                                                            name="super_deluxe_rates" type="number" class='form-control'>
+                                                    </div>
+                                                    <div class='luxury form-group col-md-2 my-2'>
+                                                        <label class="control-label"><strong><?= totalHotelCategory()[3]->hotel_category_name ?>:</strong></label>
+                                                        <input
+                                                            name="luxury_rates" type="number" class='form-control'>
+                                                    </div>
+                                                    
+                                                    <div class='form-group col-md-2 my-2'>
+                                                        <?php 
+                                                        $below_base_price = isset( $per_person_ratemeta["below_base_price"] ) && $per_person_ratemeta["below_base_price"] == 1 ? 1 : 0; ?>
+                                                        <label class="control-label d-block"><strong>Below Base Price.:</strong></label>
+                                                        <input type="checkbox" <?php echo !empty($below_base_price) ? "checked='checked'" : "" ; ?>
+                                                            value="<?php echo $below_base_price; ?>" title="Check if price is below Base Price"
+                                                            class='form-check-input' id="below_bp">
+                                                        <input name="per_person_ratemeta[below_base_price]" type="hidden"
+                                                            value="<?php echo $below_base_price; ?>" class='form-control below_bp'>
+                                                    </div>
+                                                    <input name="per_person_ratemeta[inc_gst]" type="hidden" value="1" class='form-control incgst'>
+                                                    <div class='form-group col-md-2 my-2'>
+                                                        <label class="control-label d-block"><strong>Add Per/Person Rate:</strong></label>
+                                                        <!--inc_gst 1 = true -->
+                                                        <input type="checkbox" class='form-check-input' id="per_person_rate">
+                                                    </div>
+                                                </div>
+                                                <!--perperson rate meta -->
+                                                <div class="perperson_section" style="display: none;">
+                                                    <div class="row">
+                                                        <div class='standard  form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong>Deluxe (Per/Person):</strong></label>
+                                                            <input name="per_person_ratemeta[standard_rates]" type="number"  
+                                                                class='form-control' placeholder="Deluxe Per/Person Cost">
+                                                        </div>
+                                                        <div class='deluxe form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong>Super Deluxe (Per/Person):</strong></label>
+                                                            <input name="per_person_ratemeta[deluxe_rates]" type="number"
+                                                                class='form-control' placeholder="Super Deluxe Per/Person Cost">
+                                                        </div>
+                                                        <div class='super_deluxe form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong>Luxury (Per/Person):</strong></label>
+                                                            <input name="per_person_ratemeta[super_deluxe_rates]" type="number"
+                                                                class='form-control' placeholder="Luxury Per/Person Cost">
+                                                        </div>
+                                                        <div class='luxury form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong>Super Luxury (Per/Person):</strong></label>
+                                                            <input name="per_person_ratemeta[luxury_rates]" type="number"
+                                                                class='form-control' placeholder="Super Deluxe Per/Person Cost">
+                                                        </div>
+                                                        
+                                                        <!--child rate-->
+                                                        <div class='standard  form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong class="red">Deluxe (Per/child):</strong><span
+                                                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                                            <input
+                                                                name="per_person_ratemeta[child_standard_rates]" type="number" class='form-control'
+                                                                placeholder="Deluxe Per/child Cost">
+                                                        </div>
+                                                        <div class='deluxe form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong class="red">Super Deluxe (Per/child):</strong><span
+                                                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                                            <input
+                                                                name="per_person_ratemeta[child_deluxe_rates]" type="number" class='form-control'
+                                                                placeholder="Super Deluxe Per/child Cost">
+                                                        </div>
+                                                        <div class='super_deluxe form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong class="red">Luxury (Per/child):</strong><span
+                                                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                                            <input
+                                                                name="per_person_ratemeta[child_super_deluxe_rates]" type="number" class='form-control'
+                                                                placeholder="Luxury Per/child Cost">
+                                                        </div>
+                                                        <div class='luxury form-group col-md-3 my-2'>
+                                                            <label class="control-label"><strong class="red">Super Luxury (Per/child):</strong><span
+                                                                    style="font-size:10px; color: red;"> ( Leave empty if not exists)</span></label>
+                                                            <input
+                                                                name="per_person_ratemeta[child_luxury_rates]" type="number" class='form-control'
+                                                                placeholder="Super Deluxe Per/child Cost">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end perperson rate meta -->
+                                            </div>
+                                            <!--CUSTOM DISCOUNT PRICE-->
+                                            
+                                            <div class='luxury form-group w-25 my-2'>
+                                                <label class="control-label"><strong>Rate Comments*</strong><span class="red" style="font-size: 12px;"> Note: This comment
+                                                        is also visible for client.</span></label>
+                                                <textarea required name="rate_comment" class='form-control'></textarea>
+                                            </div>
+                                            
+                                            <hr>
+                                            <div class='form-group col-md-4'>
+                                                <input type="hidden" value="<?php echo $iti->iti_id; ?>" name="iti_id">
+                                                <input type="hidden" value="<?php echo $iti->temp_key; ?>" name="temp_key">
+                                                <input type="hidden" value="<?php echo $iti->agent_id; ?>" name="user_id">
+                                                <input type="hidden" value="<?php echo $iti->agent_id; ?>" name="agent_id">
+                                                <input type="hidden" value="<?php echo $iti->customer_id; ?>" name="customer_id">                                              
+                                            </div>
+                                            
+                                            <div id="response_div"></div>
+                                            <button type="submit" id="reqDis_btn" class="btn btn-primary my-2">Update</button>
+                                        </form>
+                                        <?php } 
+                                     }
+                                        ?>
+                          
+                                    <!-- row -->
                                 </div>
                                 <!--div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

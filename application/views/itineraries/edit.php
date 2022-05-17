@@ -2184,14 +2184,15 @@ ul.attachments {
                                 <div class="margin-top-10 clearfix"></div>
                                 <hr>
                                 <div class="margin-top-10">
-                                    <input type="hidden" id="avatar_user_id" name="user_id"
-                                        value="<?php echo $u_data->user_id;?>" />
+                                    <input type="hidden" id="cus_id" name="user_id"
+                                        value="<?php echo $iti->customer_id;?>" />
                                     <button type="submit" class="btn green uppercase upload-result">Update
                                         Profile</button>
                                 </div>
                             </form>
                         </div>
                     </div>
+                
                     <div id="imgLibrary" class="container tab-pane fade"><br>
                         <h3>Library </h3>
 
@@ -3029,6 +3030,7 @@ $('#profile_pic').on('change', function() {
 $('.upload-result').on('click', function(ev) {
     ev.preventDefault();
     var id = $("#cus_id").val()
+    console.log(id);
     // var res = $("#changePicRes");
     // if ($('#profile_pic').val() == '') {
     //     res.html(

@@ -363,7 +363,7 @@ if (!empty($itinerary)) {
                             </legend>
                             <ul style="line-height: 30px;">
                                 <?php
-                                $count_inc = count($inclusion);
+                                $count_inc = !empty($inclusion) ? count($inclusion) : '';
                                 if ($count_inc > 0) {
                                     for ($i = 0; $i < $count_inc; $i++) {
                                 ?>
@@ -391,7 +391,7 @@ if (!empty($itinerary)) {
                         <ul style="line-height: 30px;">
                             <?php
                             $exclusion = unserialize($iti->exc_meta);
-                            $count_exc = count($exclusion);
+                            $count_exc = !empty($exclusion) ? count($exclusion): '';
                             if ($count_exc > 0) {
                                 for ($i = 0; $i < $count_exc; $i++) {
                             ?>
