@@ -35,7 +35,7 @@ class Hotels extends CI_Controller {
 	/* Add Hotel Ajax Request */
 	function ajax_add_hotel(){  
 		if( isset($_POST["state"]) && !empty($_POST['name'])  ){
-			$country			= strip_tags($this->input->post('country'));
+			$country			= !empty($this->input->post('country')) ? strip_tags($this->input->post('country')) : '101';
 			$state				= strip_tags($this->input->post('state'));
 			$city				= strip_tags($this->input->post('city'));
 			$category			= strip_tags($this->input->post('category'));

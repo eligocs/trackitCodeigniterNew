@@ -1,120 +1,171 @@
-<!-- Begin page-container -->
 <div class="page-container">
-    <!-- Begin page-content-wrapper -->
     <div class="page-content-wrapper">
-        <!-- Begin page-content -->
         <div class="page-content">
             <?php if( $itinerary ){
-			$iti = $itinerary[0];	
+			$iti = $itinerary[0];
+          
 			
 			$approved_hotel_cat = $iti->approved_package_category;	
 			$total_tra = $iti->adults . " Adults"; 
 			$total_tra = "Adults: " . $iti->adults; 
 			$total_tra .= !empty($iti->child) ? " Child: {$iti->child} ( Age: {$iti->child_age} )" : ""; ?>
 
-            <div class="portlet box blue">
+            <div class="portlet box blue mb0">
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-hotel"></i>Book Hotel &nbsp; [ Iti ID:
-                        <?php echo $iti->iti_id; ?> ]
-                    </div>
-                    <a class="btn btn-outline-primary float-end" href="<?php echo site_url("hotelbooking"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
+                        <?php echo $iti->iti_id; ?> ]</div>
+                    <a class="btn btn-success" href="<?php echo site_url("hotelbooking"); ?>" title="Back">Back</a>
                 </div>
             </div>
             <?php $message = $this->session->flashdata('success'); 
 				if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
 			?>
 
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+            <div class="tour_info text-left clearfix custom_card">
                 <h4 class="text-center">Tour Info</h4>
-                <div class="row">
-                    <div class="col-md-4 ">
-                        <div class="note note-success">
-                            <?php echo "<strong>Book Hotel Category: </strong> " . $approved_hotel_cat ; ?></div>
+                <div class="col-md-4 ">
+                    <div class="note note-success">
+                        <?php echo "<strong>Book Hotel Category: </strong> " . $approved_hotel_cat ; ?></div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="note note-success"><?php echo "<strong>Itinerary ID: </strong> " . $iti->iti_id; ?>
                     </div>
-                    <div class="col-md-4 ">
-                        <div class="note note-success"><?php echo "<strong>Itinerary ID: </strong> " . $iti->iti_id; ?>
-                        </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="note note-success">
+                        <?php echo "<strong>Customer Name: </strong> " . get_customer_name($iti->customer_id); ?></div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="note note-success"><?php echo "<strong>Total Travellers:</strong> " . $total_tra ; ?>
                     </div>
-                    <div class="col-md-4 ">
-                        <div class="note note-success">
-                            <?php echo "<strong>Customer Name: </strong> " . get_customer_name($iti->customer_id); ?></div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="note note-success">
+                        <?php echo "<strong>Package Routing: </strong> " . $iti->package_routing ; ?></div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="note">
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"> View Booked Hotel
+                        </button>
                     </div>
-                    <div class="col-md-4 ">
-                        <div class="note note-success"><?php echo "<strong>Total Travellers:</strong> " . $total_tra ; ?>
-                        </div>
+                </div>
+                <div id="demo" class="collapse">
+                    <?php
+                $hotel_meta = unserialize($iti->hotel_meta);             
+                if( !empty( $hotel_meta ) ){
+                     	$count_hotel = count( $hotel_meta ); ?>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-default">
+                                <tr class="thead-inverse">
+                                    <th> Hotel Location</th>
+                                    <?= ($iti->approved_package_category) == '2 Star' ? '<th> 2 Star</th>' : ' '?>
+                                    <?= ($iti->approved_package_category) == '3 Star' ? '<th> 3 Star</th>' : ''?>
+                                    <?= ($iti->approved_package_category) == '4 Star' ? '<th> 4 Star </th>' : ''?>
+                                    <?= ($iti->approved_package_category) == '5 Star' ? '<th> 5 Star </th>' : ''?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                              /* print_r( $hotel_meta ); */
+                              if( $count_hotel > 0 ){
+                              	for ( $i = 0; $i < $count_hotel; $i++ ) {
+                              		echo "<tr><td><strong>" .$hotel_meta[$i]["hotel_location"] . "</strong></td>";
+                                      echo  ($iti->approved_package_category) == '2 Star' ?   '<td>' : '';
+                              			$hotel_standard =  $hotel_meta[$i]["hotel_standard"];
+                                          echo  ($iti->approved_package_category) == '2 Star' ? $hotel_standard : '';
+
+                              		echo "</td>";
+                                      echo  ($iti->approved_package_category) == '3 Star' ?  "<td>" : '';
+                              			$hotel_deluxe =  $hotel_meta[$i]["hotel_deluxe"];
+                              			echo  ($iti->approved_package_category) == '3 Star' ? $hotel_deluxe : '';
+                              		echo "</td>";
+                                      echo  ($iti->approved_package_category) == '4 Star' ? "<td>" : '';
+                              			$hotel_super_deluxe =  $hotel_meta[$i]["hotel_super_deluxe"];
+                              			// echo $hotel_super_deluxe;
+                                          echo  ($iti->approved_package_category) == '4 Star' ? $hotel_super_deluxe : '';
+                              		echo "</td>";
+                                      echo  ($iti->approved_package_category) == '5 Star' ? "<td>" : '';
+                              			$hotel_luxury =  $hotel_meta[$i]["hotel_luxury"];
+                                          echo  ($iti->approved_package_category) == '5 Star' ? $hotel_luxury : '';
+                              			// echo $hotel_luxury;
+                              		echo "</td></tr>";
+                              	} 	
+                              	//Rate meta
+                              	$rate_meta 	  = unserialize($iti->rates_meta);
+                              	$strike_class = !empty( $discountPriceData ) ? "strikeLine" : " ";
+                              	//print_r( $rate_meta );
+                              	$iti_close_status = $iti->iti_close_status;
+                              } ?>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-md-4 ">
-                        <div class="note note-success">
-                            <?php echo "<strong>Package Routing: </strong> " . $iti->package_routing ; ?></div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div class="note note-success">
-                            <?php echo "<strong>Tour Date:</strong>  " . $iti->travel_date . " - " . $iti->travel_end_date; ?>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
 
             <!--Show hotel booking if any-->
             <?php if( $existing_bookings ){  ?>
-            <div class="portlet box blue mt-5">
+            <div class="portlet box blue">
                 <div class="portlet-title">
                     <div class="caption"><i class="fa fa-calendar"></i>Existing Hotel Booking Against This Itinerary
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead class="thead-default">
-                            <tr>
-                                <th> City </th>
-                                <th> Hotel Name </th>
-                                <th> Sent Status </th>
-                                <th> Status </th>
-                                <th> Action </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach( $existing_bookings as $h_book ){
-                                //Get hotel booking status-->
-                                if( $h_book->booking_status == 9 ){
-                                    $status = "<span class='green'>BOOKED</span>";
-                                }else if($h_book->booking_status == 8){
-                                    $status = "<span class='red'>Declined</span>";
-                                }else if( $h_book->booking_status == 7 ){
-                                    $status = "<strong class='red'><i class='fa fa-window-close' aria-hidden='true'></i> &nbsp;Canceled</strong>";
-                                }else{
-                                    $status = "<span class='blue'>Processing</span>";
-                                }
-                                ?>
-                            <tr>
-                                <td><?php echo get_city_name($h_book->city_id); ?></td>
-                                <td><?php echo get_hotel_name($h_book->hotel_id); ?></td>
-                                <td><?php echo $h_book->email_count . " Time Sent"; ?></td>
-                                <td><?php echo $status; ?></td>
-                                <td><a title='View'
-                                        href="<?php echo site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}"); ?>"
-                                        class='btn_eye'><i class='fa-solid fa-eye' aria-hidden='true'></i></a></td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive custom_card">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-default">
+                        <tr>
+                            <th> City </th>
+                            <th> Hotel Name </th>
+                            <th> Sent Status </th>
+                            <th> Status </th>
+                            <th> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach( $existing_bookings as $h_book ){
+							//Get hotel booking status-->
+							if( $h_book->booking_status == 9 ){
+								$status = "<span class='green'>BOOKED</span>";
+							}else if($h_book->booking_status == 8){
+								$status = "<span class='red'>Declined</span>";
+							}else if( $h_book->booking_status == 7 ){
+								$status = "<strong class='red'><i class='fa fa-window-close' aria-hidden='true'></i> &nbsp;Canceled</strong>";
+							}else{
+								$status = "<span class='blue'>Processing</span>";
+							}
+							?>
+                        <tr>
+                            <td><?php echo get_city_name($h_book->city_id); ?></td>
+                            <td><?php echo get_hotel_name($h_book->hotel_id); ?></td>
+                            <td><?php echo $h_book->email_count . " Time Sent"; ?></td>
+                            <td><?php echo $status; ?></td>
+                            <td><a title='View'
+                                    href="<?php echo site_url("hotelbooking/view/{$h_book->id}/{$h_book->iti_id}"); ?>"
+                                    class='btn_eye'><i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
             <?php } ?>
             <!--End hotel booking if any-->
-             <!--form #addHotelRoomRate Start -->
+
+
+
+
             <form class="form-horizontal" role="form" id="addHotelRoomRate">
+
                 <!--HOTEL Details SECTION-->
-                <div class="portlet box blue mt-5">
+                <div class="portlet box blue">
                     <div class="portlet-title">
                         <div class="custom_title"><i class="fa fa-calendar"></i> Hotel Details</div>
                     </div>
                 </div>
                 <?php $hotel_meta = unserialize($iti->hotel_meta); 
-                if( !empty( $hotel_meta ) && $iti->iti_status == 1 ){
-                $count_hotel = count( $hotel_meta ); ?>
+                        if( !empty( $hotel_meta ) && $iti->iti_status == 1 ){
+                            $count_hotel = count( $hotel_meta ); ?>
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -129,26 +180,28 @@
                         </thead>
                         <tbody>
                             <?php 
-                            /* print_r( $hotel_meta ); */
-                            for ( $i = 0; $i < $count_hotel; $i++ ) {
-                                echo "<tr><td><strong>" .$hotel_meta[$i]["hotel_location"] . "</strong></td><td>";
-                                    $hotel_standard =  $hotel_meta[$i]["hotel_standard"];
-                                    echo $hotel_standard;
-                                echo "</td><td>";
-                                    $hotel_deluxe =  $hotel_meta[$i]["hotel_deluxe"];
-                                    echo $hotel_deluxe;
-                                echo "</td><td>";
-                                    $hotel_super_deluxe =  $hotel_meta[$i]["hotel_super_deluxe"];
-                                    echo $hotel_super_deluxe;
-                                echo "</td><td>";
-                                    $hotel_luxury =  $hotel_meta[$i]["hotel_luxury"];
-                                    echo $hotel_luxury;
-                                echo "</td></tr>";
-                            }
-                            ?>
+                                        /* print_r( $hotel_meta ); */
+                                        for ( $i = 0; $i < $count_hotel; $i++ ) {
+                                            echo "<tr><td><strong>" .$hotel_meta[$i]["hotel_location"] . "</strong></td><td>";
+                                                $hotel_standard =  $hotel_meta[$i]["hotel_standard"];
+                                                echo $hotel_standard;
+                                            echo "</td><td>";
+                                                $hotel_deluxe =  $hotel_meta[$i]["hotel_deluxe"];
+                                                echo $hotel_deluxe;
+                                            echo "</td><td>";
+                                                $hotel_super_deluxe =  $hotel_meta[$i]["hotel_super_deluxe"];
+                                                echo $hotel_super_deluxe;
+                                            echo "</td><td>";
+                                                $hotel_luxury =  $hotel_meta[$i]["hotel_luxury"];
+                                                echo $hotel_luxury;
+                                            echo "</td></tr>";
+                                        }
+                                        ?>
                         </tbody>
                     </table>
                 </div>
+
+
                 <?php }else if( $iti->iti_type == 2 && !empty( $hotel_meta ) ){ ?>
                 <?php
 					$hotel_meta = unserialize($iti->hotel_meta); 
@@ -164,416 +217,580 @@
 					$deluxe_html = "";
 					$super_deluxe_html = "";
 					$luxury_html = "";
-                        /* echo "<pre>";
-                            print_r( $all_hotel_cats );
-                        echo "</pre>"; */
-                        
-                        $is_standard	= !empty($all_hotel_cats) && in_array("Standard", $all_hotel_cats) ? TRUE : FALSE;
-                        $is_deluxe		= !empty($all_hotel_cats) && in_array("Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
-                        $is_s_deluxe 	= !empty($all_hotel_cats) && in_array("Super Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
-                        $is_luxury 		= !empty($all_hotel_cats) && in_array("Luxury", $all_hotel_cats ) ? TRUE : FALSE;
-                        $count_hotel = count( $hotel_meta ); 
-                        /* print_r( $hotel_meta ); */
-                        if( $count_hotel > 0 ){
-                            for ( $i = 0; $i < $count_hotel; $i++ ) {
-                                
-                                $hotel_location = $hotel_meta[$i]["hotel_location"];
-                                $check_in 		= $hotel_meta[$i]["check_in"];
-                                $check_out 		= $hotel_meta[$i]["check_out"];
-                                $total_room 	= $hotel_meta[$i]["total_room"];
-                                $total_nights 	= $hotel_meta[$i]["total_nights"];
-                                $extra_bed 		= !empty( $hotel_meta[$i]['extra_bed'] ) ? " + <strong>" . $hotel_meta[$i]['extra_bed'] . " </strong> Extra Bed" : "";
-                                
-                                $hotel_inner_meta = $hotel_meta[$i]["hotel_inner_meta"];
-                                //Fetch hotel inner meta
-                                $count_innermeta = count( $hotel_inner_meta );
-                                //print_r($hotel_inner_meta);
-                                
-                                if( !empty( $count_innermeta ) ){
-                                    for( $ii = 0 ; $ii < $count_innermeta ; $ii++ ){
-                                        $hotel_category	= $hotel_inner_meta[$ii]["hotel_category"];
-                                        $room_category 	= $hotel_inner_meta[$ii]["room_category"];
-                                        $hotel_name 	= $hotel_inner_meta[$ii]["hotel_name"];
-                                        $meal_plan 		= $hotel_inner_meta[$ii]["meal_plan"];
-                                        
-                                        //hotel details html category wise
-                                        switch( $hotel_category ){
-                                            case "Standard":
-                                                $standard_html .= "<tr>
-                                                    <td>{$hotel_location}</td>
-                                                    <td>{$hotel_category}</td>
-                                                    <td>{$check_in}</td>
-                                                    <td>{$check_out}</td>
-                                                    <td>{$hotel_name}</td>
-                                                    <td>{$room_category}</td>
-                                                    <td>{$meal_plan}</td>
-                                                    <td>{$total_room}{$extra_bed}</td>
-                                                    <td>{$total_nights}</td>
-                                                </tr>";
-                                            break;
-                                            case "Deluxe":
-                                                $deluxe_html .= "<tr>
-                                                    <td>{$hotel_location}</td>
-                                                    <td>{$hotel_category}</td>
-                                                    <td>{$check_in}</td>
-                                                    <td>{$check_out}</td>
-                                                    <td>{$hotel_name}</td>
-                                                    <td>{$room_category}</td>
-                                                    <td>{$meal_plan}</td>
-                                                    <td>{$total_room}{$extra_bed}</td>
-                                                    <td>{$total_nights}</td>
-                                                </tr>";
-                                            break;
-                                            case "Super Deluxe":
-                                                $super_deluxe_html .= "<tr>
-                                                    <td>{$hotel_location}</td>
-                                                    <td>{$hotel_category}</td>
-                                                    <td>{$check_in}</td>
-                                                    <td>{$check_out}</td>
-                                                    <td>{$hotel_name}</td>
-                                                    <td>{$room_category}</td>
-                                                    <td>{$meal_plan}</td>
-                                                    <td>{$total_room}{$extra_bed}</td>
-                                                    <td>{$total_nights}</td>
-                                                </tr>";
-                                            break;
-                                            case "Luxury":
-                                                $luxury_html .= "<tr>
-                                                    <td>{$hotel_location}</td>
-                                                    <td>{$hotel_category}</td>
-                                                    <td>{$check_in}</td>
-                                                    <td>{$check_out}</td>
-                                                    <td>{$hotel_name}</td>
-                                                    <td>{$room_category}</td>
-                                                    <td>{$meal_plan}</td>
-                                                    <td>{$total_room}{$extra_bed}</td>
-                                                    <td>{$total_nights}</td>
-                                                </tr>";
-                                            break;
-                                            default:
-                                                continue2;
-                                            break;
-                                        }
-                                    }
-                                }
-                                
-                                
-                            }
-                            if( $is_standard ) {
-                                echo"<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Standard</h3></div>";
-                                echo "<div class='portlet-body'><table class='table table-bordered'><tr>
-                                    <th>City</th>
-                                    <th>Hotel Category</th>
-                                    <th>Check In</th>
-                                    <th>Check Out</th>
-                                    <th>Hotel</th>
-                                    <th>Room Category</th>
-                                    <th>Plan</th>
-                                    <th>Room</th>
-                                    <th>N/T</th>
-                                </tr>";
-                                echo $standard_html . "</table></div></div>";
-                            }
-                            if( $is_deluxe ){
-                                echo "<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Deluxe</h3></div>";
-                                echo "<div class='portlet-body'><table class='table table-bordered'><tr>
-                                    <th>City</th>
-                                    <th>Hotel Category</th>
-                                    <th>Check In</th>
-                                    <th>Check Out</th>
-                                    <th>Hotel</th>
-                                    <th>Room Category</th>
-                                    <th>Plan</th>
-                                    <th>Room</th>
-                                    <th>N/T</th>
-                                </tr>";
-                                echo $deluxe_html . "</table></div></div>";
-                            }
-                            if( $is_s_deluxe ){
-                                echo "<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Super Deluxe</h3></div>";
-                                echo "<div class='portlet-body'><table class='table table-bordered'><tr>
-                                    <th>City</th>
-                                    <th>Hotel Category</th>
-                                    <th>Check In</th>
-                                    <th>Check Out</th>
-                                    <th>Hotel</th>
-                                    <th>Room Category</th>
-                                    <th>Plan</th>
-                                    <th>Room</th>
-                                    <th>N/T</th>
-                                </tr>";
-                                echo $super_deluxe_html . "</table></div></div>";
-                            }
-                            if( $is_luxury ){
-                                echo "<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Luxury</h3></div>";
-                                echo "<div class='portlet-body'><table class='table table-bordered'><tr>
-                                    <th>City</th>
-                                    <th>Hotel Category</th>
-                                    <th>Check In</th>
-                                    <th>Check Out</th>
-                                    <th>Hotel</th>
-                                    <th>Room Category</th>
-                                    <th>Plan</th>
-                                    <th>Room</th>
-                                    <th>N/T</th>
-                                </tr>";
-                                echo $luxury_html . "</table></div></div>";
-                            }
-                        } ?>
+				/* echo "<pre>";
+					print_r( $all_hotel_cats );
+				echo "</pre>"; */
+				
+				$is_standard	= !empty($all_hotel_cats) && in_array("Standard", $all_hotel_cats) ? TRUE : FALSE;
+				$is_deluxe		= !empty($all_hotel_cats) && in_array("Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
+				$is_s_deluxe 	= !empty($all_hotel_cats) && in_array("Super Deluxe",  $all_hotel_cats) ? TRUE : FALSE;
+				$is_luxury 		= !empty($all_hotel_cats) && in_array("Luxury", $all_hotel_cats ) ? TRUE : FALSE;
+						$count_hotel = count( $hotel_meta ); 
+							/* print_r( $hotel_meta ); */
+							if( $count_hotel > 0 ){
+								for ( $i = 0; $i < $count_hotel; $i++ ) {
+									
+									$hotel_location = $hotel_meta[$i]["hotel_location"];
+									$check_in 		= $hotel_meta[$i]["check_in"];
+									$check_out 		= $hotel_meta[$i]["check_out"];
+									$total_room 	= $hotel_meta[$i]["total_room"];
+									$total_nights 	= $hotel_meta[$i]["total_nights"];
+									$extra_bed 		= !empty( $hotel_meta[$i]['extra_bed'] ) ? " + <strong>" . $hotel_meta[$i]['extra_bed'] . " </strong> Extra Bed" : "";
+									
+									$hotel_inner_meta = $hotel_meta[$i]["hotel_inner_meta"];
+									//Fetch hotel inner meta
+									$count_innermeta = count( $hotel_inner_meta );
+									//print_r($hotel_inner_meta);
+									
+									if( !empty( $count_innermeta ) ){
+										for( $ii = 0 ; $ii < $count_innermeta ; $ii++ ){
+											$hotel_category	= $hotel_inner_meta[$ii]["hotel_category"];
+											$room_category 	= $hotel_inner_meta[$ii]["room_category"];
+											$hotel_name 	= $hotel_inner_meta[$ii]["hotel_name"];
+											$meal_plan 		= $hotel_inner_meta[$ii]["meal_plan"];
+											
+											//hotel details html category wise
+											switch( $hotel_category ){
+												case "Standard":
+													$standard_html .= "<tr>
+														<td>{$hotel_location}</td>
+														<td>{$hotel_category}</td>
+														<td>{$check_in}</td>
+														<td>{$check_out}</td>
+														<td>{$hotel_name}</td>
+														<td>{$room_category}</td>
+														<td>{$meal_plan}</td>
+														<td>{$total_room}{$extra_bed}</td>
+														<td>{$total_nights}</td>
+													</tr>";
+												break;
+												case "Deluxe":
+													$deluxe_html .= "<tr>
+														<td>{$hotel_location}</td>
+														<td>{$hotel_category}</td>
+														<td>{$check_in}</td>
+														<td>{$check_out}</td>
+														<td>{$hotel_name}</td>
+														<td>{$room_category}</td>
+														<td>{$meal_plan}</td>
+														<td>{$total_room}{$extra_bed}</td>
+														<td>{$total_nights}</td>
+													</tr>";
+												break;
+												case "Super Deluxe":
+													$super_deluxe_html .= "<tr>
+														<td>{$hotel_location}</td>
+														<td>{$hotel_category}</td>
+														<td>{$check_in}</td>
+														<td>{$check_out}</td>
+														<td>{$hotel_name}</td>
+														<td>{$room_category}</td>
+														<td>{$meal_plan}</td>
+														<td>{$total_room}{$extra_bed}</td>
+														<td>{$total_nights}</td>
+													</tr>";
+												break;
+												case "Luxury":
+													$luxury_html .= "<tr>
+														<td>{$hotel_location}</td>
+														<td>{$hotel_category}</td>
+														<td>{$check_in}</td>
+														<td>{$check_out}</td>
+														<td>{$hotel_name}</td>
+														<td>{$room_category}</td>
+														<td>{$meal_plan}</td>
+														<td>{$total_room}{$extra_bed}</td>
+														<td>{$total_nights}</td>
+													</tr>";
+												break;
+												default:
+													continue2;
+												break;
+											}
+										}
+									}
+									
+									
+								}
+								if( $is_standard ) {
+									echo"<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Standard</h3></div>";
+									echo "<div class='portlet-body'><table class='table table-bordered'><tr>
+										<th>City</th>
+										<th>Hotel Category</th>
+										<th>Check In</th>
+										<th>Check Out</th>
+										<th>Hotel</th>
+										<th>Room Category</th>
+										<th>Plan</th>
+										<th>Room</th>
+										<th>N/T</th>
+									</tr>";
+									echo $standard_html . "</table></div></div>";
+								}
+								if( $is_deluxe ){
+									echo "<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Deluxe</h3></div>";
+									echo "<div class='portlet-body'><table class='table table-bordered'><tr>
+										<th>City</th>
+										<th>Hotel Category</th>
+										<th>Check In</th>
+										<th>Check Out</th>
+										<th>Hotel</th>
+										<th>Room Category</th>
+										<th>Plan</th>
+										<th>Room</th>
+										<th>N/T</th>
+									</tr>";
+									echo $deluxe_html . "</table></div></div>";
+								}
+								if( $is_s_deluxe ){
+									echo "<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Super Deluxe</h3></div>";
+									echo "<div class='portlet-body'><table class='table table-bordered'><tr>
+										<th>City</th>
+										<th>Hotel Category</th>
+										<th>Check In</th>
+										<th>Check Out</th>
+										<th>Hotel</th>
+										<th>Room Category</th>
+										<th>Plan</th>
+										<th>Room</th>
+										<th>N/T</th>
+									</tr>";
+									echo $super_deluxe_html . "</table></div></div>";
+								}
+								if( $is_luxury ){
+									echo "<div class='portlet box blue'><div class='portlet-title'><h3 class='custom_title'>Luxury</h3></div>";
+									echo "<div class='portlet-body'><table class='table table-bordered'><tr>
+										<th>City</th>
+										<th>Hotel Category</th>
+										<th>Check In</th>
+										<th>Check Out</th>
+										<th>Hotel</th>
+										<th>Room Category</th>
+										<th>Plan</th>
+										<th>Room</th>
+										<th>N/T</th>
+									</tr>";
+									echo $luxury_html . "</table></div></div>";
+								}
+							} ?>
                 <?php } ?>
+                <hr>
                 <!--END HOTEL Details SECTION-->
-
-				<div class="bg-white p-3 rounded-4 shadow-sm">
+                <div class="clearfix"></div>
+                <!--div class="col-md-3">
+				<div class="form-group2 select_city_err">
+					<label class="">Select City*</label>
+					<input type="text" required id="hotelcity" class="form-control"  name="hotelcity" value="">
+				</div>
+			</div-->
+                <div class="custom_card">
                     <h3 class="text-center"> Hotel Booking Form </h3>
-                    <div class="row">
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class="control-label">Select State*</label>
-                                <select required name="state_id" class="form-control form-select state" id='state'>
-                                    <option value="">Select state</option>
-                                    <?php $state_list = get_indian_state_list(); 
-                                    if( $state_list ){
-                                        foreach($state_list as $state){
-                                            echo '<option value="'.$state->id.'">'.$state->name.'</option>';
-                                        }
-                                    } ?>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class="control-label">Select City*</label>
-                                <select required name="hotelcity" class="form-control form-select city">
-                                    <option value="">Select City</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class="control-label">Select Hotel*</label>
-                                <select required name="hotel" class="form-control form-select" id="hotels_list">
-                                    <option value="">Select Hotel</option>
-                                </select>
-                            </div>
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label>Select State*</label>
+                            <select required name="state_id" class="form-control state" id='state'>
+                                <option value="">Select state</option>
+                                <?php $state_list = get_indian_state_list(); 
+					if( $state_list ){
+						foreach($state_list as $state){
+							echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+						}
+					} ?>
+                            </select>
                         </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class="control-label">Room Category*</label>
-                                <select required name="room_type" class="form-control form-select">
-                                    <option value="">Select Category</option>
-                                    <?php $roomcat = get_room_categories();
-                                        if($roomcat){
-                                            foreach( $roomcat as $rcat ){
-                                                echo '<option value="'. $rcat->room_cat_id . '">' . $rcat->room_cat_name . '</option>';
-                                            }
-                                        }else{
-                                            echo '<option value="">No category found! Contact your admin.</option>';
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                    
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class=" control-label" title="Mention Your Invoice Id">Invoice Id*: </label>
-                                <input type="text" class="form-control" required name="invoice_id" value="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class=" control-label">Total Guest*: </label>
-                                <input type="text" id="total_tral" class="form-control" required name="total_travellers" value="<?php echo $total_tra; ?>">
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class=" control-label">Booking Date*: </label>
-                                <div class="input-group input-daterange">
-                                    <input readonly required type="text" class="form-control" name="check_in" value="" id="check_in">
-                                    <span class="input-group-addon hotel_addon"> to </span>
-                                    <input readonly required type="text" class="form-control" name="check_out" value="" id="check_out">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class=" control-label"><strong>Total Nights:</strong></label>
-                                <input readonly type="text" id="total_nights" class="form-control" value="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class=" control-label">Meal Plan *</label>
-                                <?php $mealPlans = get_all_mealplans();
-                                if($mealPlans){ ?>
-                                <select name="meal_plan" required class="form-control form-select">
-                                    <option value="">Choose Meal Plan</option>
-                                    <?php foreach( $mealPlans as $mp ){
-                                        echo '<option value="'. $mp->id . '">' . $mp->name . '</option>';
-                                    } ?>
-                                </select>
-                                <?php }else{ ?>
-                                <input type="text" required readonly class="form-control" placeholder="You need to add meal plan to proceed." value="">
-                                <a href="<?php echo base_url("hotels/addmealplan"); ?>" title="Add Meal Plan">Click here to add Meal Plan</a>
-                                <?php } ?>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class="control-label">Inclusion: </label>
-                                <textarea type="text" name="inclusion" placeholder="Inclusion" class="form-control"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class="  control-label">Room Rate(Per/room)*: </label>
-                                <input type="number" required placeholder="Room Rate" name="room_rates"
-                                    class="form-control room_rates clearfield price_input" value="" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class="control-label">Total Rooms*: </label>
-                                <select required name="total_rooms" class="form-control form-select total_rooms clearfield">
-                                    <option value=''>Select Rooms</option>
-                                    <?php for( $i=1 ; $i<=15; $i++ ){
-                                    echo '<option value=' . $i . '> '. $i . '</option>';
-                                } ?>
-                                </select>
-                                <div class="mt-checkbox-list form-check">
-                                    <label for="extra_bed_check" class="mt-checkbox mt-checkbox-outline control-label">
-                                        <input class="form-check-input" type="checkbox" id="extra_bed_check" name="extra_bed_check" value="Yes">Click
-                                        Here to Add extra bed.
-                                        <span></span>
-                                    </label>
-
-                                    <label for="without_extra_bed_check" class="mt-checkbox mt-checkbox-outline control-label">
-                                        <input class="form-check-input" type="checkbox" id="without_extra_bed_check" value="Yes"> Click Here to Without
-                                        extra bed.
-                                        <span></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <label class="control-label">Total Room Cost for 1 Night*: </label>
-                            <div class="form-group">
-                                <input class="form-control total_room_rates clearfield" readonly required type="text" name="total_room_rates" value="0" id="total_room_rates">
-                            </div>
-                        </div>
-
-                        <!--Extra bed cost section-->
-                        
-                        <div class="extra_bed_section">
-                            <div class="row">
-                                <div class="col-md-4 my-2">
-                                    <label class="control-label">Extra Bed Rate (Per/bed)*: </label>
-                                    <input required type="number" id="extra_bed_rate" name="extra_bed_rate" placeholder="Extra Bed Charges" class="form-control extra_bed_rate clearfield price_input" value="" />
-                                </div>
-
-                                <div class="col-md-4 my-2">
-                                    <label class=" control-label ">Extra Bed*: </label>
-                                    <select required name="extra_bed" class="form-control form-select extra_bed clearfield">
-                                        <option value="">Select Rooms First</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-4 my-2">
-                                    <label class="control-label">Total Bed Cost for 1 Night*: </label>
-                                    <div class="form-group">
-                                        <input class="form-control clearfield" type="text" name="total_ex_bed_rate" value="0" id="total_ex_bed_rate" readonly />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Extra bed cost section-->
-                        
-
-                        <!--Without Extra bed cost section-->
-                        <div class="without_extra_bed_section">
-                            <div class="row">
-                                <div class="col-md-4 my-2">
-                                    <label class=" control-label">Without Extra Bed Cost (Per/without extra bed)*: </label>
-                                    <input required type="number" id="without_extra_bed_rate" name="without_extra_bed_cost" placeholder="Without Extra Bed Charges" class="form-control without_extra_bed_rate clearfield price_input" value="0" />
-                                </div>
-
-                                <div class="col-md-4 my-2">
-                                    <label class=" control-label">Without Extra Bed*: </label>
-                                    <select required name="without_extra_bed" class="form-control form-select withour_extra_bed clearfield">
-                                        <option value="">Select</option>
-                                        <?php for( $we = 1 ; $we <= 20 ; $we++ ){
-                                            echo "<option value={$we}> {$we} </option>";
-                                            }	
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-4 my-2">
-                                    <label class="control-label">Total Without Extra Bed Cost per/night*: </label>
-                                    <div class="form-group">
-                                        <input class="form-control clearfield" type="text" name="total_without_ex_bed_rate" value="0" id="total_without_ex_bed_rate" readonly />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Without Extra bed cost section-->
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class=" control-label"><strong>Inclusion Charges:</strong></label>
-                                <input class="form-control price_input" id="extra_charges" type="number" placeholder="eg: 100" name="extra_charges" value="" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <div class="form-group">
-                                <label class=" control-label "><strong>Hotel Tax:</strong></label>
-                                <input class="form-control price_input" id="hotel_tax" type="number" placeholder="eg: 100" name="hotel_tax" value="0" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-xl-3 my-2">
-                            <label class=" control-label"><strong>Total Cost:</strong></label>
-                            <a href="javascript: void(0)" id="calculate_cost">Calculate</a>
-                            <input readonly class="form-control clearfield price_input" id="total_cost" type="number" name="total_cost" value="">
-                        </div>
-                    
-                        <input type="hidden" name="customer_id" value="<?php echo $iti->customer_id; ?>">
-                        <input type="hidden" name="iti_id" id="iti_id" value="<?php echo $iti->iti_id; ?>">
-                        <input type="hidden" name="agent_id" value="<?php echo $agent_id; ?>">
-                        <input type="hidden" id="submit_type" value="9">
-                        <div class="col-md-12 my-2">
-                            <button type="submit" data-click_val="9" class="btn green uppercase add_hotel bookbtn">
-                                Save and Exit
-                            </button>
-                            <button type="submit" data-click_val="8" class="btn green uppercase save_and_continue bookbtn">
-                                Save and Continue
-                            </button>
-                        </div>
-                        <div id="addresEd"></div>
                     </div>
-                </div>				
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label>Select City*</label>
+                            <select required name="hotelcity" class="form-control city" id="city">
+                                <option value="">Select City</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label>Select Hotel* <a href="javascript:;" class="addHotelModelBtm"> Add Hotel</a></label>
+                            <select required name="hotel" class="form-control" id="hotels_list">
+                                <option value="">Select Hotel</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label>Room Category*</label>
+                            <select required name="room_type" class="form-control">
+                                <option value="">Select Category</option>
+                                <?php $roomcat = get_room_categories();
+					if($roomcat){
+						foreach( $roomcat as $rcat ){
+							echo '<option value="'. $rcat->room_cat_id . '">' . $rcat->room_cat_name . '</option>';
+						}
+					}else{
+						echo '<option value="">No category found! Contact your admin.</option>';
+					}
+					?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-2">
+                        <div class="form-group2">
+                            <label class="" title="Mention Your Invoice Id">Invoice Id*: </label>
+                            <div class="clearfix"></div>
+                            <input type="text" class="form-control" required name="invoice_id" value="">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="">
+                            <label class="">Total Guest*: </label>
+                            <div class="clearfix"></div>
+                            <input type="text" id="total_tral" class="form-control" required name="total_travellers"
+                                value="<?php echo $total_tra; ?>">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label class="">Booking Date*: </label>
+                            <div class="clearfix"></div>
+                            <div class="input-group input-daterange">
+                                <input readonly required type="text" class="form-control" name="check_in" value=""
+                                    id="check_in">
+                                <span class="input-group-addon hotel_addon"> to </span>
+                                <input readonly required type="text" class="form-control" name="check_out" value=""
+                                    id="check_out">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label class=""><strong>Total Nights:</strong></label>
+                        <input readonly type="text" id="total_nights" class="form-control" value="">
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group2">
+                            <label class="">Meal Plan *</label>
+                            <?php $mealPlans = get_all_mealplans();
+				            if($mealPlans){ ?>
+                            <select name="meal_plan" required class="form-control">
+                                <option value="">Choose Meal Plan</option>
+                                <?php foreach( $mealPlans as $mp ){
+								echo '<option value="'. $mp->id . '">' . $mp->name . '</option>';
+							} ?>
+                            </select>
+                            <?php }else{ ?>
+                            <input type="text" required readonly class="form-control"
+                                placeholder="You need to add meal plan to proceed." value="">
+                            <a href="<?php echo base_url("hotels/addmealplan"); ?>" title="Add Meal Plan">Click here to
+                                add
+                                Meal Plan</a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group2">
+                            <label>Inclusion: </label>
+                            <textarea type="text" name="inclusion" placeholder="Inclusion"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label class=" ">Room Rate(Per/room)*: </label>
+                            <input type="number" required placeholder="Room Rate" name="room_rates"
+                                class="form-control room_rates clearfield price_input" value="" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <div class="form-group2">
+                            <label>Total Rooms*: </label>
+                            <select required name="total_rooms" class="form-control total_rooms clearfield">
+                                <option value=''>Select Rooms</option>
+                                <?php for( $i=1 ; $i<=15; $i++ ){
+							echo '<option value=' . $i . '> '. $i . '</option>';
+						} ?>
+                            </select>
+                            <div class="mt-checkbox-list">
+                                <label for="extra_bed_check" class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" id="extra_bed_check" name="extra_bed_check" value="Yes">Click
+                                    Here to Add extra bed.
+                                    <span></span>
+                                </label>
+
+                                <label for="without_extra_bed_check" class="mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" id="without_extra_bed_check" value="Yes"> Click Here to
+                                    Without
+                                    extra bed.
+                                    <span></span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Total Room Cost for 1 Night*: </label>
+                        <div class="form-group2">
+                            <input class="form-control total_room_rates clearfield" readonly required type="text"
+                                name="total_room_rates" value="0" id="total_room_rates">
+                        </div>
+                    </div>
+
+                    <!--Extra bed cost section-->
+                    <div class="clearfix"></div>
+                    <div class="extra_bed_section">
+                        <div class="col-md-4">
+                            <label class=" ">Extra Bed Rate (Per/bed)*: </label>
+                            <input required type="number" id="extra_bed_rate" name="extra_bed_rate"
+                                placeholder="Extra Bed Charges"
+                                class="form-control extra_bed_rate clearfield price_input" value="" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class=" ">Extra Bed*: </label>
+                            <select required name="extra_bed" class="form-control extra_bed clearfield">
+                                <option value="">Select Rooms First</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <label>Total Bed Cost for 1 Night*: </label>
+                            <div class="form-group2">
+                                <input class="form-control clearfield" type="text" name="total_ex_bed_rate" value="0"
+                                    id="total_ex_bed_rate" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Extra bed cost section-->
+                    <div class="clearfix"></div>
+
+                    <!--Without Extra bed cost section-->
+                    <div class="without_extra_bed_section">
+
+                        <div class="col-md-4">
+                            <label class=" ">Without Extra Bed Cost (Per/without extra bed)*: </label>
+                            <input required type="number" id="without_extra_bed_rate" name="without_extra_bed_cost"
+                                placeholder="Without Extra Bed Charges"
+                                class="form-control without_extra_bed_rate clearfield price_input" value="0" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class=" ">Without Extra Bed*: </label>
+                            <select required name="without_extra_bed" class="form-control withour_extra_bed clearfield">
+                                <option value="">Select</option>
+                                <?php for( $we = 1 ; $we <= 20 ; $we++ ){
+								echo "<option value={$we}> {$we} </option>";
+							}	
+							?>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Total Without Extra Bed Cost per/night*: </label>
+                            <div class="form-group2">
+                                <input class="form-control clearfield" type="text" name="total_without_ex_bed_rate"
+                                    value="0" id="total_without_ex_bed_rate" readonly />
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--End Without Extra bed cost section-->
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label class=" "><strong>Inclusion Charges:</strong></label>
+                            <input class="form-control price_input" id="extra_charges" type="number"
+                                placeholder="eg: 100" name="extra_charges" value="" />
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-3">
+                        <div class="form-group2">
+                            <label class=" "><strong>Hotel Tax:</strong></label>
+                            <input class="form-control price_input" id="hotel_tax" type="number" placeholder="eg: 100"
+                                name="hotel_tax" value="0" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class=""><strong>Total Cost:</strong></label>
+                        <a href="javascript: void(0)" id="calculate_cost">Calculate</a>
+                        <input readonly class="form-control clearfield price_input" id="total_cost" type="number"
+                            name="total_cost" value="">
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                    <input type="hidden" name="customer_id" value="<?php echo $iti->customer_id; ?>">
+                    <input type="hidden" name="iti_id" id="iti_id" value="<?php echo $iti->iti_id; ?>">
+                    <input type="hidden" name="agent_id" value="<?php echo $agent_id; ?>">
+                    <input type="hidden" id="submit_type" value="9">
+                    <div class="margiv-top-10 col-md-12 text-right">
+                        <button type="submit" data-click_val="9" class="btn green uppercase add_hotel bookbtn">Save and
+                            Exit</button>
+                        <button type="submit" data-click_val="8"
+                            class="btn green uppercase save_and_continue bookbtn">Save
+                            and Continue</button>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div id="addresEd"></div>
+                </div>
+
             </form>
-            <!-- End form #addHotelRoomRate Start -->
         </div>
-        <!-- End page-content -->
         <?php } ?>
         <!-- END CONTENT BODY -->
     </div>
-    <!-- End page-content-wrapper -->
 </div>
-<!-- End page-container -->
+
+<div class="modal fade" id="addHotel" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Hotel</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="addHotelform" enctype="multipart/form-data">
+
+                    <div class="portlet-body second_custom_card">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Select state*</label>
+                                    <select required name="state" class="form-control state_add" id='state_add'>
+                                <option value="">Select state</option>
+                                <?php $state_list = get_indian_state_list(); 
+                                if( $state_list ){
+                                    foreach($state_list as $state){
+                                        echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+                                    }
+                                } ?>
+                            </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="city_list">
+                                    <div class='form-group'><label>City*:</label><select name='city'
+                                            class='form-control city_add' id="city_add">
+                                            <option value="">Select City</option>
+                                        </select></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Hotel Category*</label>
+                                    <select name="category" class="form-control cat">
+                                        <option value="">Choose Category</option>
+                                        <?php $hotels_cat = hotel_categories();
+                                    if($hotels_cat){
+                                            foreach( $hotels_cat as $cat ){
+                                                echo '<option value="'. $cat->star_id . '">' . $cat->name . '</option>';
+                                            }
+                                        }
+                                        ?>
+
+                                    </select>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Hotel Name*</label>
+                                    <input type="text" placeholder="Hotel Name" autocomplete="off" name="name" class="form-control"
+                                        value="" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Hotel Email*</label>
+                                    <input type="text"
+                                        placeholder="Email for multi email.eg: hotel@test.com,hotel2@test.com"
+                                        id="email" name="email" autocomplete="off" class="form-control" value="" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Hotel Address*</label>
+                                    <textarea name="address" class="form-control"
+                                        placeholder="Hotel Full Address" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Hotel Contact Number*</label>
+                                    <input type="text" placeholder="Hotel Phone Number" autocomplete="off" name="contact"
+                                        class="form-control" value="" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Hotel Website</label>
+                                    <input type="text" placeholder="Website Link" name="website" autocomplete="off" class="form-control"
+                                        value="" />
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-4">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img alt="" class="img-responsive" src="" />
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail"
+                                        style="max-width: 200px; max-height: 150px;"> </div>
+                                    <div>
+                                        <span class="btn default btn-file">
+                                            <span class="fileinput-newa"> Click here to upload hotel image </span>
+                                            <span class="fileinput-existss"> </span>
+                                            <input id="image_url" type="file" name="image_url"> </span>
+                                        <a href="javascript:;" class="btn default fileinput-exists"
+                                            data-dismiss="fileinput"> Remove </a>
+                                    </div>
+                                </div>
+                                <div class="clearfix margin-top-10">
+                                    <span class="label label-danger">NOTE! </span>&nbsp;&nbsp;&nbsp;
+                                    <span class='red'> Image size not bigger then 2 MB and dimensions(650px X
+                                        250px).</span>
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+
+                        <hr>
+                        <div class="col-md-12 text-left">
+                            <div class="margiv-top-10">
+                                <button type="submit" class="btn green uppercase add_hotel">Add Hotel</button>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="addresEd1" class="sam_res"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
 /* Calculate Total Cost for Hotel Booking */
 jQuery(document).ready(function($) {
@@ -812,7 +1029,7 @@ jQuery(document).ready(function($) {
                     $(".fullpage_loader").show();
                     resp.html(
                         '<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>'
-                        );
+                    );
                 },
                 success: function(res) {
                     $(".fullpage_loader").hide();
@@ -843,7 +1060,7 @@ jQuery(document).ready(function($) {
                     //console.log(e);
                     resp.html(
                         '<div class="alert alert-danger"><strong>Error!</strong> Please Try again later! </div>'
-                        );
+                    );
                 }
             });
             return false;
@@ -911,7 +1128,8 @@ jQuery(document).ready(function($) {
                         var ex = res.extra_bed;
                         if (typeof(rr) === "undefined" && typeof(ex) === "undefined") {
                             alert(
-                                "Select other hotel/room category or Contact Administrator/Manager.Because Room Rate Not Found!.");
+                                "Select other hotel/room category or Contact Administrator/Manager.Because Room Rate Not Found!."
+                            );
                             $(".total_rooms").attr("disabled", "disabled");
                             $("#extra_bed_check").attr("disabled", "disabled");
                             $(".extra_bed").attr("disabled", "disabled");
@@ -929,13 +1147,15 @@ jQuery(document).ready(function($) {
                     } else {
                         //console.log( "error" );
                         alert(
-                            "Select other hotel/room category or Contact Administrator/Manager.");
+                            "Select other hotel/room category or Contact Administrator/Manager."
+                        );
                     }
                 },
                 error: function() {
                     //console.log( "error 1 " );
                     alert(
-                        "Before you proceed please add room rate! or Contact Administrator/Manager.");
+                        "Before you proceed please add room rate! or Contact Administrator/Manager."
+                    );
                 }
             });
         }
@@ -961,6 +1181,7 @@ jQuery(document).ready(function($) {
         }).done(function(data) {
             $(".bef_send").hide();
             $(".city").html(data);
+            $(".city_add").html(data);
             $("#hotels_list").html("<option vlaue=''>select hotel</option>");
         }).error(function() {
             $("#city_list").html("Error! Please try again later!");
@@ -985,5 +1206,119 @@ jQuery(document).ready(function($) {
             $("#hotels_list").html("Error! Please try again later!");
         });
     });
+
+
+
+/************************************************************************************************/
+    $(document).on('change', 'select.state_add', function() {
+        var selectState = $(".state_add option:selected").val();
+        var _this = $(this);
+        _this.parent().append(
+            '<p class="bef_send"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('AjaxRequest/hotelCityData'); ?>",
+            data: {
+                state: selectState
+            }
+        }).done(function(data) {
+            $(".bef_send").hide();
+            $(".city_add").html(data);
+        }).error(function() {
+            $("#city_list").html("Error! Please try again later!");
+        });
+    });
+
+
+    $(".addHotelModelBtm").click(function() {
+        var state_id_get = $('#state').val().length != '' ?  $('#state').val() : '';
+        var city_id_get = $('#city').val().length != '' ?  $('#city').val() : '';
+        $('#state_add').val(state_id_get);
+        $('#city_add').val(city_id_get);
+        $("#addHotel").modal('show');
+    });
+
+
+    var ajaxReq;
+    var form = $("#addHotelform");
+    $("#addHotelform").validate({
+        rules: {
+            // country: {
+            //     required: true
+            // },
+            state: {
+                required: true
+            },
+            city: {
+                required: true
+            },
+            category: {
+                required: true
+            },
+            name: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            contact: {
+                required: true
+            },
+            email: {
+                required: true,
+                multiemail: true
+            },
+        },
+    });
+    $(document).on("submit", '#addHotelform', function(e) {
+        e.preventDefault();
+
+        var resp = $("#addresEd1");
+        var formData = $("#addHotelform").serializeArray();
+        //console.log(formData);
+        if (ajaxReq) {
+            ajaxReq.abort();
+        }
+        ajaxReq = $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('hotels/ajax_add_hotel'); ?>",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+                resp.html('<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+            },
+            success: function(data) {
+                console.log(data);
+                if (data == "success") {
+                    resp.html(
+                        '<div class="alert alert-success"><strong>Success: </strong> Hotel add successfully!</div>'
+                    );
+                    $("select.city").trigger('change');
+                    $("#addHotelform")[0].reset();
+                    setTimeout(function(){ 
+                        $("#addHotel").modal('hide');
+                     }, 3000);
+                    
+                } else {
+                    resp.html(data);
+                }
+            },
+            error: function(e) {
+                //console.log(e);
+                resp.html(
+                    '<div class="alert alert-danger"><strong>Error!</strong>Please Try again later! </div>'
+                );
+            }
+        });
+        return false;
+
+    });
 });
+
+
+
+
+
 </script>

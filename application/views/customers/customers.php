@@ -421,7 +421,7 @@
                     </div>
                 </div>
 
-             <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+            <!-- <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="table-responsive">
                         <table class="table data-table-large">
                             <tbody>
