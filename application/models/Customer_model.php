@@ -12,6 +12,11 @@ class Customer_Model extends CI_Model{
 		validate_login();
 	}
 	
+	public function get_count() 
+	{
+		return $this->db->count_all("customers_inquery");
+	}
+
 	public function insert_customer($tablename, $data_array) {
         if ($this->db->insert($tablename, $data_array)) {
             $result = $this->db->insert_id();
@@ -20,6 +25,8 @@ class Customer_Model extends CI_Model{
         }
         return $result;
     }
+
+
 	
 	public function getdata($tablename, $where = array(), $getCol = '') {
         $table = $tablename;
@@ -35,6 +42,30 @@ class Customer_Model extends CI_Model{
         $q = $this->db->get();
 		/* $this->output->enable_profiler(TRUE); */
 		$res = $q->result();
+		/*  echo $this->db->last_query();*/
+        if ($res) {
+            $result = $res;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+
+	public function getSingeldata($tablename, $where = array(), $getCol = '') {
+        $table = $tablename;
+		if (!empty($getCol)) {
+            $this->db->select($getCol);
+        }
+	    if (!empty($where)) {
+			foreach($where as $key => $value){
+				$this->db->where( $key, $value );
+			}
+        }
+		$this->db->from($table);
+        $q = $this->db->get();
+		
+		/* $this->output->enable_profiler(TRUE); */
+		$res = $q->row();
 		/*  echo $this->db->last_query();*/
         if ($res) {
             $result = $res;
@@ -306,7 +337,7 @@ class Customer_Model extends CI_Model{
 		$this->db->group_by( "customers_inquery.customer_id" );
 	}
 
-	function get_datatables( $where = array(), $custom_where = NULL ){
+	function get_datatables( $where = array(), $custom_where = NULL,  $limit, $start){
 		$this->_get_datatables_query($where, $count = NULL , $custom_where);
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
@@ -316,6 +347,7 @@ class Customer_Model extends CI_Model{
 			$order = $this->order;
 			$this->db->order_by(key($order), $order[key($order)]);
 		}
+		$this->db->limit($limit, $start);
 		$query = $this->db->get();
 		return $query->result();
 	}

@@ -8,16 +8,26 @@ class Customers extends CI_Controller {
 		$this->load->model("search_model");
 		$this->load->model("itinerary_model");
 		$this->load->library('form_validation');
+		$this->load->library('pagination');
 	}
+
+	
 	
 	public function index(){
 		$user = $this->session->userdata('logged_in');
 		$user_id = $user['user_id'];
 		$data['user_id'] = $user_id;
 		$data['user_role'] = $user['role'];
-
 		$u_id = $user['user_id'];
 		$role = $user['role'];
+		$config = array();
+        $config["base_url"] = base_url() . "customers/index";
+        $config["total_rows"] = $this->customer_model->get_count();
+        $config["per_page"] = 10;
+        $config["uri_segment"] = 3;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+		
 		
 
 		//get filter parameters
@@ -62,7 +72,8 @@ class Customers extends CI_Controller {
 			}
 		} 
 		
-		$data['list'] = $this->customer_model->get_datatables($where, $custom_where);
+		$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["per_page"], $page);
+		$data["links"] = $this->pagination->create_links();
 		
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' || $user['role'] == '95') {
 			$this->load->view('inc/header');
@@ -90,7 +101,7 @@ class Customers extends CI_Controller {
 			$data['agent_id'] = $user['user_id'];
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
-			$this->load->view('customers/addcustomer', $data);
+			$this->load->view('customers/addcustomer_old', $data);
 			$this->load->view('inc/footer');
 		}else{
 			redirect("customers");
@@ -1310,5 +1321,31 @@ class Customers extends CI_Controller {
 			die( json_encode($res) );
 		}
 	}
+
+
+
+	/* show model*/
+	public function renderModel(){
+		$user = $this->session->userdata('logged_in');
+		$user_id = $user['user_id'];
+			if( $user['role'] == '99' || $user['role'] == '98' ){
+				if(!empty($_POST['id'])){
+					$request_id = $_POST['id'];
+				$where = array("customer_id" => $request_id);
+				$data['customer'] = $this->customer_model->getSingeldata( "customers_inquery", $where );		 
+			}
+			$response = $this->load->view('customers/addcustomer', $data, TRUE);
+			echo $response;
+		}
+			
+		}
+
+		public function test(){
+			$this->load->view('inc/header');
+			$this->load->view('inc/sidebar');
+			$this->load->view('customers/test');
+			$this->load->view('inc/footer');
+			
+		}
 }	
 ?>

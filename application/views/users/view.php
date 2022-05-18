@@ -4,12 +4,12 @@
         <div class="page-content">
             <div class="portlet box blue">
                 <div class="portlet-title">
-                    <div class="caption"><i class="fa fa-users"></i>
-                        <strong class="me-3">User Name: <span ><?php echo $agent->user_name; ?></span></strong>
-                        <strong class="me-3">Last Login: <span ><?php  $newDate = date("d-m-Y", strtotime($agent->last_login));  
-                        echo $newDate; ?></span></strong>
-                        <strong class="me-3">Last Login Ip: <span ><?php echo $agent->login_ip; ?></span></strong>
-                    </div>
+                    <!-- <div class="caption"><i class="fa fa-users"></i>
+                            <strong class="me-3">User Name: <span ><?php echo $agent->user_name; ?></span></strong>
+                            <strong class="me-3">Last Login: <span ><?php  $newDate = date("d-m-Y", strtotime($agent->last_login));  
+                            echo $newDate; ?></span></strong>
+                            <strong class="me-3">Last Login Ip: <span ><?php echo $agent->login_ip; ?></span></strong>
+                    </div> -->
                     <a class="btn btn-outline-primary float-end" href="<?php echo site_url("agents"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
                 </div>
             </div>
@@ -20,9 +20,26 @@
                 <?php
 				$check_online_status = get_user_online_status( $agent->user_id );
 				$online_offline_status = !empty( $check_online_status ) ? 
-					'<i title="Online" class="fa fa-circle" style="font-size:16px;color:green"> Online </i> ' 
-					: '<i title="Offline" class="fa fa-circle" style="font-size:16px;color:red"> Offline</i>';
+					'<i title="Online" class="fa fa-circle online" style="color:green"></i> Online  ' 
+					: '<i title="Offline" class="fa fa-circle offline" style="color:red"></i> Offline';
 					?>
+                    <?php	
+                            if($agent->user_type == 99){
+                                $agent_type = "Administrator";
+                            }elseif($agent->user_type == 98){
+                                $agent_type = get_manager_type( $agent->is_super_manager );
+                                /* 	if(   $agent->is_super_manager == 1 ){
+                                        $agent_type = "Super Manager";
+                                    }else if( $agent->is_super_manager == 2 ){
+                                        $agent_type = "Leads Manager";
+                                    }else{
+                                        $agent_type = get_role_name($agent->user_type);
+                                    } */
+                            }else{
+                                $agent_type = get_role_name($agent->user_type);
+                            }
+                            
+                            ?>
 
                 <div class="portlet-body">
                     <h3 class="mb-3">User Details <?php echo $online_offline_status; ?></h3>
@@ -46,6 +63,22 @@
                             </tr>
                             <tr>
                                 <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>User Name:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php echo $agent->user_name; ?></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>User Role:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr green"><strong><?php echo $agent_type; ?></strong></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
                                     <div class="col-mdd-2 form_vl border_right_none"><strong>Email: </strong></div>
                                 </td>
                                 <td>
@@ -58,7 +91,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <?php echo $agent->in_time;?><strong> To </strong><?php echo $agent->out_time;?>
+                                    <?php
+                                    $loginTime_Av = $agent->in_time . ' ' . ' To '. ' ' . $agent->out_time ;
+                                    $loginTime_not = '00:00' . ' ' .'To'.  ' ' . '00:00' ;
+                                    ?>
+                                    <?= !empty( $agent->in_time && $agent->out_time) ? $loginTime_Av : $loginTime_not;?>
+        
                    
                                 </td>
                             </tr>
@@ -67,7 +105,7 @@
                                     <div class="col-mdd-2 form_vl border_right_none"><strong>Mobile Number:</strong></div>
                                 </td>
                                 <td>
-                                    <div class="col-mdd-10 form_vr"><?php echo $agent->mobile; ?></div>
+                                    <div class="col-mdd-10 form_vr"><?= !empty($agent->mobile) ? $agent->mobile : 'N/A'; ?></div>
                                 </td>
                             </tr>
                             <tr>
@@ -76,7 +114,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="col-mdd-10 form_vr"><strong><?php echo $agent->mobile_otp; ?></strong></div>
+                                    <div class="col-mdd-10 form_vr"><strong><?= !empty($agent->mobile_otp) ? $agent->mobile_otp : 'N/A'; ?></strong></div>
                                 </td>
                             </tr>
                             <tr>
@@ -167,20 +205,13 @@
                                 </td>
                             </tr>
                             <?php } ?>
-                            <tr>
-                                <td width="20%">
-                                    <div class="col-mdd-2 form_vl border_right_none"><strong>User Role:</strong></div>
-                                </td>
-                                <td>
-                                    <div class="col-mdd-10 form_vr green"><strong><?php echo $agent_type; ?></strong></div>
-                                </td>
-                            </tr>
+                           
                             <tr>
                                 <td width="20%">
                                     <div class="col-mdd-2 form_vl border_right_none"><strong>Added By:</strong></div>
                                 </td>
                                 <td>
-                                    <div class="col-mdd-10 form_vr"><?php echo get_user_name($agent->added_by); ?></div>
+                                    <div class="col-mdd-10 form_vr"><?php echo !empty(get_user_name($agent->added_by)) ? get_user_name($agent->added_by) : 'N/A'; ?></div>
                                 </td>
                             </tr>
                             <tr>
@@ -196,7 +227,24 @@
                                     <div class="col-mdd-2 form_vl border_right_none"><strong>Website:</strong></div>
                                 </td>
                                 <td>
-                                    <div class="col-mdd-10 form_vr"><?php echo $agent->website; ?></div>
+                                    <div class="col-mdd-10 form_vr"><?php echo !empty($agent->website) ? $agent->website : 'N/A'; ?></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Last Login:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php  $newDate = date("d-m-Y", strtotime($agent->last_login));  
+                            echo $newDate; ?></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="20%">
+                                    <div class="col-mdd-2 form_vl border_right_none"><strong>Last Login Ip:</strong></div>
+                                </td>
+                                <td>
+                                    <div class="col-mdd-10 form_vr"><?php echo $agent->login_ip; ?></div>
                                 </td>
                             </tr>
                         </table>

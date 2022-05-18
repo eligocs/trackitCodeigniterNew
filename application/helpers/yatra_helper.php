@@ -3613,6 +3613,39 @@ function get_iti_last_call_followup($cus_id){
 		return $customer_last_followup_time;
 
 	}
+}
+
+/* ***Miss Call Status****/
+function missLeadsCallFollowup($cus_id){
+	$customer_next_followup_time = '';
+	$ci =& get_instance();
+	if(!empty($cus_id)){
+		$ci->db->select('*'); 
+		$ci->db->from('customers_inquery'); 
+		$ci->db->where('cus_status', '0','9' ); 
+		$ci->db->where('customer_id', $cus_id ); 
+		$q = $ci->db->get();
+		$customerDetail = $q->row(); 
+		if(!empty($customerDetail)){
+			$where_follow		 = array( "customer_id" => $cus_id );
+			$customer_followup_miss 	= $ci->global_model->getdata("customer_followup", $where_follow);
+			$customer_mis_next_followup_time = !empty($customer_followup_miss ) ? $customer_followup_miss[array_key_last($customer_followup_miss)]->nextCallDate : '';
+			if($customer_mis_next_followup_time){
+			$date_now = new DateTime();
+			$date2    = $customer_mis_next_followup_time;
+			if ($date_now > $date2) {
+				return "Miss";
+			}
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}else{
+		return $customer_next_followup_time;
+
+	}
 	
 }
 

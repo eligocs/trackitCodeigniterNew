@@ -1,85 +1,77 @@
-<div class="page-container customer_content">
-   <div class="page-content-wrapper">
-      <div class="page-content">
-         <?php echo validation_errors('<span class="help-block help-block-error1">', '</span>'); ?>
-         <?php $message = $this->session->flashdata('error'); 
-            if($message){ echo '<span class="help-block help-block-error1 red">'.$message.'</span>';}
-            ?>
-         <div class="portlet box blue">
-            <div class="portlet-title">
-               <div class="caption"><i class="fa fa-users"></i>Add Customer</div>
-               <a class="btn btn-outline-primary float-end" href="<?php echo site_url("customers"); ?>" title="Back"><i class="fa-solid fa-reply"></i> Back</a>
-            </div>
-         </div>
-         <div class="bg-white p-3 rounded-4 shadow-sm">
-            <?php //echo form_open('customers/savecustomer', array("id" => "customer_form")); ?>
-            <form class="mb-0" id="customer_form" action="<?php echo base_url(); ?>customers/savecustomer" method="post">
-               <div class="row">
-                  <input type="hidden" name="inp[temp_key]" value="<?php echo getTokenKey(15); ?>">
-                  <div class="col-md-4 col-sm-6 my-2">
-                     <div class="form-group">
-                        <label class="control-label">Customer Name <sup class="text-danger">*</sup></label>
-                        <input required type="text" placeholder="eg. Mr. Prem Thakur" name="inp[customer_name]" class="form-control textfield" value="<?php if(isset($customer_name)){ echo $customer_name; }else{ echo set_value('inp[customer_name]'); } ?>"/> 
-                     </div>
-                  </div>
+<?php
+$customer_name = $customer->customer_name;
+$customer_email = $customer->customer_email;
+$customer_contact = $customer->customer_contact;
+$customer_type = $customer->customer_type;
+$customer_name = $customer->customer_name;
+$reference_name = $customer->reference_name;
+$reference_contact_number = $customer->reference_contact_number;
+$customer_address = $customer->customer_address;
+$agent_id = $customer->agent_id;
+// dump($customer);die;
 
-                  <div class="col-md-4 col-sm-6 my-2">
-                     <div class="form-group">
-                        <label class="control-label">Email <sup class="text-danger">*</sup></label>
-                        <input required type="email" placeholder="eg: your-name@domain.com" name="inp[customer_email]" class="form-control" value="<?php if(isset($customer_email)){ echo $customer_email; }else{ echo set_value('inp[customer_email]'); } ?>"/> 
-                     </div>
-                  </div>
-
-                  <div class="col-md-4 col-sm-6 my-2">
-                     <div class="form-group">
-                        <label class="control-label">Contact Number <sup class="text-danger">*</sup></label>
-                        <input required type="number" placeholder="eg: 9816098160" name="inp[customer_contact]" class="form-control numberfield" value="<?php if(isset($customer_contact)){ echo $customer_contact; }else{ echo set_value('inp[customer_contact]'); } ?>"/> 
-                     </div>
-                  </div>
-
-                  <div class="col-md-4 col-sm-6 my-2">
-                     <?php $get_cus_type = get_customer_type(); ?>
-                     <div class="form-group">
-                        <label class="control-label">Customer Type <sup class="text-danger">*</sup></label>
-                        <select required name="inp[customer_type]" class="form-control form-select" id="cus_type" required>
-                           <option value="" selected disabled>Select Customer Type</option>
-                           <!--<option value="0">Direct Customer</option>-->
-                           <?php if( !empty( $get_cus_type ) ){
+?>
+<form class="mb-0 needs-validation" id="customer_form" method="post" novalidate>
+    <input type="hidden" name="inp[temp_key]" value="<?php echo getTokenKey(15); ?>">
+    <div class="mb-3">
+        <label class="control-label">Customer Name</label>
+        <input type="text" placeholder="eg. Mr. Hem Singh" name="inp[customer_name]" class="form-control textfield"
+            value="<?php if(isset($customer_name)){ echo $customer_name; }else{ echo set_value('inp[customer_name]'); } ?>" />
+    </div>
+    <div class="mb-3">
+        <label class="control-label">Email</label>
+        <input type="email" placeholder="eg: your-name@domain.com" name="inp[customer_email]" class="form-control"
+            value="<?php if(isset($customer_email)){ echo $customer_email; }else{ echo set_value('inp[customer_email]'); } ?>" />
+    </div>
+    <div class="mb-3">
+        <label class="control-label">Contact Number <sup class="text-danger">*</sup></label>
+        <input required type="number" placeholder="eg: 8988225521" name="inp[customer_contact]"
+            class="form-control numberfield"
+            value="<?php if(isset($customer_contact)){ echo $customer_contact; }else{ echo set_value('inp[customer_contact]'); } ?>" />
+        <div class="invalid-feedback">
+            This field is required.
+        </div>
+    </div>
+    <?php $get_cus_type = get_customer_type(); ?>
+    <div class="mb-3">
+        <label class="control-label">Customer Type <sup class="text-danger">*</sup></label>
+        <select required name="inp[customer_type]" class="form-control form-select" id="cus_type" required>
+            <option value="" selected disabled>Select Customer Type</option>
+            <?php if( !empty( $get_cus_type ) ){
                               foreach( $get_cus_type as $type ){
-                                 echo "<option value='{$type->id}'>{$type->name}";
+                                  ?>
+            <option value='<?= isset($customer_type ) ? $customer_type  : $type->id ?>'
+                <?= isset($customer_type )  && ($customer_type == $type->id ) ?  'selected' : '' ?>><?= $type->name ?>
+            </option>
+            <?php
                               }
                               } ?>
-                           <!--option value="1">Travel Partner</option>
-                              <option value="2">Reference</option-->
-                        </select>
-                     </div>
-                  </div>
-
-                  <div id="reference_section" style="display: none;">
-                     <div class="row">
-                        <div class="col-md-4 col-sm-6 my-2">
-                           <div class="form-group">
-                              <label class="control-label">Reference Name <sup class="text-danger">*</sup></label>
-                              <input required type="text" placeholder="eg. Reference Name" name="inp[reference_name]" class="form-control textfield" value=""/> 
-                           </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 my-2">
-                           <div class="form-group">
-                              <label class="control-label">Reference Contact Number <sup class="text-danger">*</sup></label>
-                              <input required type="number" placeholder="Reference Phone Number" name="inp[reference_contact_number]" class="form-control numberfield" value=""/> 
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="col-md-4 col-sm-6 my-2">
-                     <div class="form-group">
-                        <label class="control-label">Assign To <sup class="text-danger">*</sup></label>
-                        <select  name="inp[agent_id]" class="form-control form-select" required>
-                           <option  value="" selected disabled>Select Sales Team Agents</option>
-                           <?php if( is_admin_or_manager() ){
-                           //   $agents = get_all_sales_team_agents();
+        </select>
+        <div class="invalid-feedback">
+            This field is required.
+        </div>
+    </div>
+    <div class="mb-3 reference_section_div"
+        style="<?= isset($customer_type ) && ($customer_type == '2')  ? 'display: block' : 'display: none'; ?>">
+        <label class="control-label">Reference Name <sup class="text-danger">*</sup></label>
+        <input type="text" placeholder="eg. Reference Name" name="inp[reference_name]"
+            class="form-control textfield reference_section_field"
+            value="<?php if(isset($reference_name)){ echo $reference_name; }else{ echo set_value('inp[reference_name]'); } ?>" />
+    </div>
+    <div class="mb-3 reference_section_div"
+        style="<?= isset($customer_type ) && ($customer_type == '2')  ? 'display: block' : 'display: none';?>">
+        <label class="control-label">Reference Contact Number <sup class="text-danger">*</sup></label>
+        <input type="number" placeholder="Reference Contact Number" name="inp[reference_contact_number]"
+            class="form-control numberfield reference_section_field"
+            value="<?php if(isset($reference_contact_number)){ echo $reference_contact_number; }else{ echo set_value('inp[reference_contact_number]'); } ?>" />
+    </div>
+    <div class="mb-3">
+        <label class="control-label">Assign To <sup class="text-danger">*</sup></label>
+        <select name="inp[agent_id]" class="form-control form-select" required>
+            <option value="" selected disabled>Select Sales Team Agents</option>
+            <?php if( is_admin_or_manager() ){
+                            //  $agentsAll = get_all_sales_team_agents();
+                            //  $agents = get_all_sales_team_agents();
                               // var_dump($agent);die;
                            $agents = get_all_sales_team_loggedin_today();
                               if($agents){
@@ -98,8 +90,9 @@
                                        $teamL .= "<option value='{$a->user_id}'>{$a->user_name} ( {$agent_full_name} ) {$count_leads} {$team_na}  </option>";	
                                     }else{
                                        $count_leads = get_assigned_leads_today( $a->user_id );
+                                       $selected = isset($customer_type) ? 'selected' : ''; 
                                        $count_leads = !empty( $count_leads ) ? "( {$count_leads} )" : "";
-                                       $teamM .= "<option value='{$a->user_id}'>{$a->user_name} ( {$agent_full_name} ) {$count_leads} </option>";	
+                                       $teamM .= "<option value='{$a->user_id}' {$selected}>{$a->user_name} ( {$agent_full_name} ) {$count_leads} </option>";	
                                     }
                                  }
                                  echo $teamL . $teamM;
@@ -122,84 +115,21 @@
                               echo '<option value="">No Loggedin Agent Found!</option>';
                               }	
                               ?>
-                        </select>
-                     </div>
-                  </div>
-
-                  <hr class="my-3">
-                  
-                  <div class="col-md-12 my-2">
-                     <div class="form-group">
-                        <label for="address" class="control-label">Address</label>
-                        <textarea name="" id="" cols="30" rows="3" class="form-control h-auto"></textarea>
-                        <span class="bg-light d-inline-block fs-7 mt-0 text-muted">Note : <em>Required only for Invoice.</em></span>
-                     </div>
-                  </div>
-
-                  <div class="col-md-12 my-2">
-                     <button type="submit" class="btn green uppercase add_Customer">Add Customer</button>
-                  </div>
-               </div>
-            </form>
-         </div>
-         <div id="res"></div>
-      </div>
-      <!-- END CONTENT BODY -->
-   </div>
-   <!-- Modal -->
-</div>
-
-<script type="text/javascript">
-   jQuery(document).ready(function($){
-   	$("#customer_form").validate({
-   		submitHandler: function(form){
-   			console.log("submit");
-   			checkBeforeSubmit();
-   			form.submit();	
-   		}
-   	});
-   	
-   	//Prevent click
-   	var wasSubmitted = false;    
-   	function checkBeforeSubmit(){
-   	  if(!wasSubmitted) {
-   		wasSubmitted = true;
-   		return wasSubmitted;
-   	  }
-   	  return false;
-   	}  
-   	
-   	/* jQuery.validator.addMethod("lettersonly", function(value, element) {
-   	  return this.optional(element) || /^[a-z]+$/i.test(value);
-   	}, "Letters only please"); 
-   	//validate textfield
-   	jQuery.validator.addClassRules('textfield', {
-           required: true ,
-   		lettersonly: true
-       }); */
-   	
-   	//Show reference_section
-   	var ref_section = $("#reference_section");
-   	$("#cus_type").change(function(){
-   		var _this_val = $(this).val();
-   		if( _this_val == 2 ){
-   			ref_section.show();
-   		}else{
-   			ref_section.hide();
-   			$("#reference_section input").val('');
-   		}
-   	});
-   	
-   }); 
-</script>
-<script type="text/javascript">
-   /*
-   	var wasSubmitted = false;    
-       function checkBeforeSubmit(){
-         if(!wasSubmitted) {
-           wasSubmitted = true;
-           return wasSubmitted;
-         }
-         return false;
-       }    */
-</script>
+        </select>
+        <div class="invalid-feedback">
+            This field is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="address" class="control-label">Address</label>
+        <textarea name="customer_address" id="" cols="30" rows="3"
+            class="form-control h-auto"><?= isset($customer_address) ? $customer_address :  set_value('inp[customer_address]')?></textarea>
+        <span class="bg-light d-inline-block fs-7 mt-0 text-muted">Note : <em>Required only for
+                Invoice.</em></span>
+    </div>
+    <div class="col-md-12 my-2">
+        <button type="submit" class="btn green uppercase add_Customer">Add Customer</button>
+    </div>
+    <div id="customerRes" class="sam_res"></div>                                     
+</form>
+<script src="<?php echo base_url();?>site/assets/js/btvalidation.js" type="text/javascript"></script>

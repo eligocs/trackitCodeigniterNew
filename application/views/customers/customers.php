@@ -7,7 +7,8 @@
     top: 20%;
 }
 </style>
-<?php $todAy = date("Y-m-d"); ?>
+<?php $todAy = date("Y-m-d"); 
+?>
 
 <!-- Begin page-container -->
 <div class="page-container">
@@ -29,28 +30,21 @@
                         <i class="fa fa-users"></i>All Customers
                     </div>
                     <?php if( is_admin_or_manager() || is_teamleader() ){ ?>
-                    <!-- <a class="btn btn-primary float-end" href="<?php echo site_url("customers/add"); ?>"
-                        title="Add Customer"><i class="fa-solid fa-plus"></i> Add customer</a> -->
+                    <button class="btn btn-primary float-end me-2 add-edit-customer" type="button"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" data-id="" aria-controls="offcanvasTop">
+                        <i class="fa-solid fa-plus"></i> Add Customer
+                    </button>
                     <?php  } ?>
-
                     <!-- Show hide filter button -->
                     <button class="btn float-end me-2 p-2" title="Filter Customers" type="button"
                         data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false"
                         aria-controls="filter_collapse">
                         <i class="fa-solid fa-filter fs-5"></i>
                     </button>
-                    <?php if( is_admin_or_manager() || is_teamleader() ){ ?>
-                        <button class="btn btn-danger float-end me-2" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                            <i class="fa-solid fa-plus"></i> Add Customer
-                        </button>
-                    <?php  } ?>
                 </div>
             </div>
 
             <?php
-                //Hide filter
-                //$hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
                 $hideClass = "";
                 if( isset( $todayStatus ) ){	
                     $first_day_this_month = $todayStatus; 
@@ -156,7 +150,7 @@
                                         <option value="8">Declined</option>
                                         <option value="amendment">Amendment</option>
                                     </select>
-                                  
+
                                     <input type="hidden" name="date_from" id="date_from"
                                         data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
                                         value="">
@@ -188,9 +182,9 @@
                         <?php
                         if(!empty($list)){ 
                             ?>
-                            <table class="table data-table-large">
-                                <tbody>
-                                    <?php
+                        <table class="table data-table-large">
+                            <tbody>
+                                <?php
                                 foreach ($list as $customer) {
                                     // dump($customer);
                                     $cust_id = $customer->customer_id;
@@ -232,12 +226,12 @@
                                                     </div>';
                                                 }                                            
                                             $decUserStatus = "<strong class='btn btn-success'>Lead Approved</strong>";
-                                            $add_iti = '<div title="Holiday Type" class="fs-8 me-2 text-success">
+                                            $add_iti = '<div title="Holiday Type" class="fs-8  text-success">
                                                             <strong class="" title="Lead Status ">Verified</strong> 
                                                         </div>';
                                             break;
                                         case 8:
-                                            $add_iti = '<div title="Holiday Type" class="fs-8 me-2 text-danger">
+                                            $add_iti = '<div title="Holiday Type" class="fs-8  text-danger">
                                                             <strong class="" title="Lead Status ">Declined</strong> 
                                                         </div>';
                                             $decUserStatus = "<strong class='badge_danger_pill'> Declined</strong>";
@@ -246,7 +240,7 @@
                                                     </span>';
                                             break;
                                         default:
-                                            $add_iti = "<div title='Holiday Type' class='fs-8 me-2 text-danger'>
+                                            $add_iti = "<div title='Holiday Type' class='fs-8  text-danger'>
                                                             <strong class='' title='Lead Status'>Not Processed</strong> 
                                                         </div>";
                                             $decUserStatus = "<strong class='btn btn-success'>Working...</strong>";
@@ -258,807 +252,180 @@
                                             break;
                                     }
                                     ?>
-                                    <tr>
-                                        <td>
-                                            <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                                <div class="d-flex justify-content-between px-1 w-100">
-                                                    <div class="requirment">
-                                                        <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
-                                                            #<?= $customer->customer_id ?></p>
-                                                        <div title="Holiday Type" class="fs-8 me-2 text-success">
-                                                            <strong class="" title="Lead Status "><?= $add_iti ?></strong>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ms-2">
-                                                        <p class="fs-7 mb-2 mt-0 ">
-                                                            <strong
-                                                                class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'Not Available' ?></strong>
-                                                            <span title="Leads From"
-                                                                class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
-                                                        </p>
+                                <tr>
+                                    <td class="w-30">
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="d-flex justify-content-between px-1 w-100">
+                                                <div class="requirment flex-grow-1">
+                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
+                                                        #<?= $customer->customer_id ?></p>
+                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
+                                                        <strong class="" title="Lead Status "><?= $add_iti ?></strong>
                                                     </div>
                                                 </div>
-                                                <div class="bg-light d-flex justify-content-between p-1 w-100">
-                                                    <div class="border-end flex-grow-1">
-                                                        <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-                                                        <?= $l_class ?>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-2">
-                                                        <div class="my-1">
-                                                            <span class="d-block fs-7 mb-2">
-                                                                <i class="fa-solid fa-phone text-primary"></i>
-                                                                <?= !empty($customer->customer_contact) ? $customer->customer_contact : '' ?>
-                                                            </span>
-                                                        </div>
-                                                        <div>
-                                                            <span class="tooltip_right">
-                                                                <i class="fa-envelope fa-solid text-primary"></i>
-                                                                <span class="email_text">
-                                                                <?= !empty($customer->customer_email) ? $customer->customer_email : 'Not Available' ?>
-                                                                </span>
-                                                                
-                                                                <span
-                                                                    class="tooltip_right_text"><?= !empty($customer->customer_email) ? $customer->customer_email : 'Not Available' ?>
-                                                                </span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                                <div class="px-2">
-                                                    <div class="mb-2">
+                                                <div class="flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 ">
                                                         <strong
-                                                            class="d-block fs-7 mb-1"><?= !empty(get_state_name($customer->state_id)) ? get_state_name($customer->state_id) : 'Not Available' ?>
-                                                        </strong>
-                                                        <span class="fs-8 fw-500 text-secondary">Guest City</span>
+                                                            class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?></strong>
+                                                        <span title="Leads From"
+                                                            class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                                <div class="border-end flex-grow-1">
+                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
+                                                    <?= $l_class ?>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2">
+                                                    <div class="my-1">
+                                                        <span class="d-block fs-7 mb-2">
+                                                            <i class="fa-solid fa-phone text-primary"></i>
+                                                            <?= !empty($customer->customer_contact) ? $customer->customer_contact : '' ?>
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="tooltip_right">
+                                                            <i class="fa-envelope fa-solid text-primary"></i>
+                                                            <span class="email_text">
+                                                                <?= !empty($customer->customer_email) ? $customer->customer_email : 'Not Available' ?>
+                                                            </span>
+
+                                                            <span
+                                                                class="tooltip_right_text"><?= !empty($customer->customer_email) ? $customer->customer_email : 'Not Available' ?>
+                                                            </span>
+                                                        </span>
                                                     </div>
                                                 </div>
-                                                <div class="bg-light p-1 w-100">
-                                                    <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
-                                                    <?= $iti_s ?>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="px-2">
+                                                <div class="mb-2">
+                                                    <strong
+                                                        class="d-block fs-7 mb-1"><?= !empty(get_state_name($customer->state_id)) ? get_state_name($customer->state_id) : 'Not Available' ?>
+                                                    </strong>
+                                                    <span class="fs-8 fw-500 text-secondary">Pick Up Point</span>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                                <div class="mb-2 px-2">
-                                                    <p class="fw-bold m-0"><?= !empty($customer->assigned_date) ? date("d-F-y",  strtotime( $customer->assigned_date)) : ''?></p>
-                                                    <span class="fs-8 text-secondary">Assigned on</span>
-                                                </div>
-                                                <div class="bg-light p-1 w-100">
-                                                    <span class="d-block fs-7 mb-2 text-muted">Assigned to</span>
-                                                    <a class="text-primary fw-bold" href=""
-                                                        title="View Agent"><?= ucFirst(get_user_name( $customer->agent_id )) ?></a>
-                                                </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">Itinerary Stage</p>
+                                                <?= $iti_s ?>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                                <div class="mb-2 px-2">
-                                                    <p class="fs-7 m-0">
-                                                        <i class="fa-solid fa-phone-volume fs-8"></i>
-                                                        <strong> <?= count_total_no_of_call($cust_id) ?> </strong>
-                                                    </p>
-                                                    <span class="fs-8 text-secondary">Total calls</span>
-                                                </div>
-                                                <div class="bg-light p-1 w-100">
-                                                    <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
-                                                    <p class="fs-8 fw-400 m-0 text-dark">
-                                                        <?=  date("d-F-Y", strtotime( $customer->created )); ?></p>
-                                                </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fw-bold m-0">
+                                                    <?= !empty($customer->assigned_date) ? date("d-F-y",  strtotime( $customer->assigned_date)) : ''?>
+                                                </p>
+                                                <span class="fs-8 text-secondary">Assigned on</span>
                                             </div>
-                                        </td>
-                                        <?php if(get_iti_next_followup($cust_id) || (get_iti_last_call_followup($cust_id))){}
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-muted">Assigned to</span>
+                                                <a class="text-primary fw-bold"   target="_blank" href="<?= site_url("agents/view/$customer->agent_id")?>"
+                                                    title="View Agent"><?= ucFirst(get_user_name( $customer->agent_id )) ?></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="fs-7 m-0">
+                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
+                                                    <strong> <?= count_total_no_of_call($cust_id) ?> </strong>
+                                                </p>
+                                                <span class="fs-8 text-secondary">Total calls</span>
+                                            </div>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
+                                                <p class="fs-8 fw-400 m-0 text-dark">
+                                                    <?=  date("d-F-Y", strtotime( $customer->created )); ?></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <?php if(get_iti_next_followup($cust_id) || (get_iti_last_call_followup($cust_id))){}
                                         ?>
-                                        <td>
-                                            <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                                <div class="mb-2 px-2">
-                                                    <p class="my-1 fs-7 text-secondary"><span>Next Call</span>
+                                    <td>
+                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
+                                            <div class="mb-2 px-2">
+                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span>
                                                     <?php if(get_iti_next_followup($cust_id) || (get_iti_last_call_followup($cust_id))){
                                         ?>
-                                                        <span><?= !empty(get_iti_next_followup($cust_id)) ?  date("d-F",  strtotime( get_iti_next_followup($cust_id) )) : '' ?></span>
-                                                     <?php } else{
+                                                    <span><?= !empty(get_iti_next_followup($cust_id)) ?  date("d-F",  strtotime( get_iti_next_followup($cust_id) )) : '' ?></span>
+                                                    <?php } else{
                                                          ?>
-                                                        <span><?= !empty(get_leads_next_followup($cust_id)) ?  date("d-F",  strtotime( get_leads_next_followup($cust_id) )) : '' ?></span>
-                                                         <?php
+                                                    <span><?= !empty(get_leads_next_followup($cust_id)) ?  date("d-F",  strtotime( get_leads_next_followup($cust_id) )) : '' ?></span>
+                                                    <?php
                                                      }  ?>
-                                                    </p>
-                                                    <p class="my-1 text-dark"><i
-                                                            class="text-success fa-solid fa-phone-volume"></i>
-                                                            <?php if(get_iti_next_followup($cust_id) || (get_iti_last_call_followup($cust_id))){
-                                                            echo !empty(get_leads_next_followup($cust_id)) ? date("h:i A",  strtotime( get_leads_next_followup($cust_id) )) : 'Not sheduled';
+                                                </p>
+                                                <p class="my-1 text-dark"><i
+                                                        class="<?= (missLeadsCallFollowup($cust_id) == 'Miss') ?
+                                                            'text-danger': 'text-success'; ?> fa-solid fa-phone-volume"></i>
+                                                    <?php if(get_iti_next_followup($cust_id) || (get_iti_last_call_followup($cust_id))){
+                                                            echo !empty(get_iti_last_call_followup($cust_id)) ? date("h:i A",  strtotime( get_iti_last_call_followup($cust_id) )) : 'Not sheduled';
                                                             }else{
-                                                                echo !empty(get_iti_last_call_followup($cust_id)) ? date("h:i A",  strtotime( get_iti_last_call_followup($cust_id) )) : 'Not sheduled';
+                                                                if(missLeadsCallFollowup($cust_id) == 'Miss') {
+                                                                 $misCalTime = !empty(get_leads_next_followup($cust_id)) ? date("h:i A",  strtotime( get_leads_next_followup($cust_id) )) : '' ; 
+                                                                   echo "<strong class='text-danger' title='{$misCalTime}'>   Call Missed</strong>";
+                                                                } else{
+                                                                    echo !empty(get_leads_next_followup($cust_id)) ? date("h:i A",  strtotime( get_leads_next_followup($cust_id) )) : 'Not sheduled' ;
+                                                                }
                                                             }?>
-                                                    </p>
-                                                </div>
-                                                <div class="bg-light p-1 w-100">
-                                                    <span class="d-block fs-7 mb-2 text-secondary">Last Call On</span>
-                                                    <p class="fs-7 fs-8 my-1 text-dark">
-                                                        <i class="text-success fa-solid fa-phone-volume"></i>
-                                                        <?= !empty(get_leads_last_call_followup($cust_id)) ? date("d-F-Y h:i A",  strtotime( get_leads_last_call_followup($cust_id) )) : ' Not sheduled' ?>
-                                                    </p>
-                                                </div>
+                                                </p>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                    data-bs-toggle="dropdown" aria-expanded="false"> <i
-                                                        class="fa-solid fa-ellipsis-vertical"></i></a>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                                    <li>
-                                                        <a class="dropdown-item"
-                                                            href="<?= site_url("customers/edit/$customer->customer_id") ?>"><i
-                                                                class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item"
-                                                            href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>"><i
-                                                                class="fa-solid fa-eye"></i> View</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#"><i
-                                                                class="fa-solid fa-trash-can"></i> Delete</a>
-                                                    </li>
-                                                </ul>
+                                            <div class="bg-light p-1 w-100">
+                                                <span class="d-block fs-7 mb-2 text-secondary">Last Call On</span>
+                                                <p class="fs-7 fs-8 my-1 text-dark">
+                                                    <i class="text-success fa-solid fa-phone-volume"></i>
+                                                    <?= !empty(get_leads_last_call_followup($cust_id)) ? date("d-F h:i A",  strtotime( get_leads_last_call_followup($cust_id) )) : ' Not sheduled' ?>
+                                                </p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <?php }?>
-                                </tbody>
-                            </table>
-                            <?php }else{
-                                ?>
-                                Data Not Found
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                data-bs-toggle="dropdown" aria-expanded="false"> <i
+                                                    class="fa-solid fa-ellipsis-vertical"></i></a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+                                                <li>
+                                                    <!-- <?= site_url("customers/edit/$customer->customer_id") ?> -->
+                                                    <a class="dropdown-item add-edit-customer" href="#" data-bs-toggle="offcanvas"
+                                                        data-id="<?= $customer->customer_id ?>"
+                                                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i
+                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
 
-                                <?php
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                        href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>"><i
+                                                            class="fa-solid fa-eye"></i> View</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item ajax_delete_customer" data-id="$customer->customer_id" href="javascript:;"><i
+                                                            class="fa-solid fa-trash-can"></i> Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php }?>
+                            </tbody>
+                        </table>
+                        <p><?php echo $links; ?></p>
+                        <?php }else{
+                                ?>
+                        Data Not Found..............
+
+                        <?php
                             }?>
 
                     </div>
                 </div>
-
-            <!-- <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                    <div class="table-responsive">
-                        <table class="table data-table-large">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="d-flex justify-content-between px-1 w-100">
-                                                <div class="requirment">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
-                                                        #121500</p>
-                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
-                                                        <strong class="" title="Lead Status ">Verified</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="ms-2">
-                                                    <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong class="d-block mb-1 uppercase">Sandeep Thorat</strong>
-                                                        <span title="Leads From" class="text-primary">Google Ads</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
-                                                <div class="border-end flex-grow-1">
-                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-                                                    <div class="badge bg-info"><strong>Cold</strong></div>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2">
-                                                    <div class="my-1">
-                                                        <span class="d-block fs-7 mb-2">
-                                                            <i class="fa-solid fa-phone text-primary"></i> 8219227004
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="tooltip_right">
-                                                            <i class="fa-envelope fa-solid text-primary"></i>
-                                                            <span
-                                                                class="tooltip_right_text">sandeepthorat457@gmail.com</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="px-2">
-                                                <div class="mb-2">
-                                                    <strong class="d-block fs-7 mb-1">Gujrat </strong>
-                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
-                                                <div title="Working on lead" class="badge bg-success">
-                                                    <strong class="white">working...</strong>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fw-bold m-0">04-Feb-2022</p>
-                                                <span class="fs-8 text-secondary">assigned on</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
-                                                <a class="text-primary fw-bold" href="" title="View Agent">Devender
-                                                    Verma</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fs-7 m-0">
-                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
-                                                    <strong> 2 </strong>
-                                                </p>
-                                                <span class="fs-8 text-secondary">Total calls</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
-                                                <p class="fs-8 fw-400 m-0 text-dark">04-Feb-2022</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span>
-                                                    <span>28-Feb</span>
-                                                </p>
-                                                <p class="my-1 text-dark"><i
-                                                        class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
-                                                <p class="fs-7 fs-8 my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> 25-Feb 06:00
-                                                    PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-bs-toggle="dropdown" aria-expanded="false"> <i
-                                                    class="fa-solid fa-ellipsis-vertical"></i></a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i>
-                                                        View</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-trash-can"></i> Delete</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="d-flex justify-content-between px-1 w-100">
-                                                <div class="requirment">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
-                                                        #4578</p>
-                                                    <div title="Holiday Type" class="fs-8 me-2 text-danger">
-                                                        <strong class="" title="Lead Status ">not processed</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="ms-2">
-                                                    <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong class="d-block mb-1 uppercase">Anup Soni</strong>
-                                                        <span title="Leads From" class="text-primary">Travel
-                                                            Partner</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
-                                                <div class="border-end flex-grow-1">
-                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-                                                    <div class="badge bg-secondary"><strong>Undifined</strong></div>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2">
-                                                    <div class="my-1">
-                                                        <span class="d-block fs-7 mb-2">
-                                                            <i class="fa-solid fa-phone text-primary"></i> 8654785471
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="tooltip_right">
-                                                            <i class="fa-envelope fa-solid text-primary"></i>
-                                                            <span
-                                                                class="tooltip_right_text">anupsoni457@gmail.com</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="px-2">
-                                                <div class="mb-2">
-                                                    <strong class="d-block fs-7 mb-1">Andhra Pradesh</strong>
-                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
-                                                <span title="Working on lead" class="badge bg-yellow-casablanca">
-                                                    <strong class="white">Not Process</strong>
-                                                </span>
-                                                <button class="btn btn-sm btn-secondary btn-x-sm" type="button"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"
-                                                    aria-controls="offcanvasEnd">
-                                                    <i class="fa-solid fa-repeat"></i> Reassign
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fw-bold m-0">05-Feb-2022</p>
-                                                <span class="fs-8 text-secondary">assigned on</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
-                                                <a class="text-primary fw-bold" href="" title="View Agent">Digvijay
-                                                    Negi</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fs-7 m-0">
-                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
-                                                    <strong> 0 </strong>
-                                                </p>
-                                                <span class="fs-8 text-secondary">Total calls</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
-                                                <p class="fs-8 fw-400 m-0 text-dark">04-Feb-2022</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span></p>
-                                                <p class="my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> not sheduled
-                                                </p>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
-                                                <p class="fs-7 fs-8 my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> no calls yet !
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-bs-toggle="dropdown" aria-expanded="false"> <i
-                                                    class="fa-solid fa-ellipsis-vertical"></i></a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i>
-                                                        View</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-trash-can"></i> Delete</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="d-flex justify-content-between px-1 w-100">
-                                                <div class="requirment">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
-                                                        #09754</p>
-                                                    <div title="Holiday Type" class="fs-8 me-2 text-danger">
-                                                        <strong class="" title="Lead Status ">Declined</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="ms-2">
-                                                    <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong class="d-block mb-1 uppercase">Mutu Swami Ayer</strong>
-                                                        <span title="Leads From" class="text-primary">Facebook</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
-                                                <div class="border-end flex-grow-1">
-                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-                                                    <div class="badge bg-info"><strong>Cold</strong></div>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2">
-                                                    <div class="my-1">
-                                                        <span class="d-block fs-7 mb-2">
-                                                            <i class="fa-solid fa-phone text-primary"></i> 8452154784
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="tooltip_right">
-                                                            <i class="fa-envelope fa-solid text-primary"></i>
-                                                            <span
-                                                                class="tooltip_right_text">mutuswamiayer56@gmail.com</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="px-2">
-                                                <div class="mb-2">
-                                                    <strong class="d-block fs-7 mb-1">Andhra Pradesh</strong>
-                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
-                                                <span title="Working on lead" class="badge bg-danger">
-                                                    <strong class="white">Declined</strong>
-                                                </span>
-                                                <button class="btn btn-sm btn-success btn-x-sm" type="button"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#reopenLead"
-                                                    aria-controls="offcanvasTop">
-                                                    <i class="fa-solid fa-rotate-right"></i> Reopen
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fw-bold m-0">06-Feb-2022</p>
-                                                <span class="fs-8 text-secondary">assigned on</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
-                                                <a class="text-primary fw-bold" href="" title="View Agent">Jitender
-                                                    Chauhan</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fs-7 m-0">
-                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
-                                                    <strong> 6 </strong>
-                                                </p>
-                                                <span class="fs-8 text-secondary">Total calls</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
-                                                <p class="fs-8 fw-400 m-0 text-dark">06-Feb-2022</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span></p>
-                                                <p class="my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> not sheduled
-                                                </p>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
-                                                <p class="fs-7 fs-8 my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> 09-Feb 01:05
-                                                    PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-bs-toggle="dropdown" aria-expanded="false"> <i
-                                                    class="fa-solid fa-ellipsis-vertical"></i></a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i>
-                                                        View</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-trash-can"></i> Delete</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="d-flex justify-content-between px-1 w-100">
-                                                <div class="requirment">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#054
-                                                    </p>
-                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
-                                                        <strong class="" title="Lead Status ">Verified</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="ms-2">
-                                                    <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong class="d-block mb-1 uppercase">vikaram Gahlot</strong>
-                                                        <span title="Leads From" class="text-primary">Google Ads</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
-                                                <div class="border-end flex-grow-1">
-                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-                                                    <div class="badge bg-danger"><strong>Hot</strong></div>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2">
-                                                    <div class="my-1">
-                                                        <span class="d-block fs-7 mb-2">
-                                                            <i class="fa-solid fa-phone text-primary"></i> 8219227004
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="tooltip_right">
-                                                            <i class="fa-envelope fa-solid text-primary"></i>
-                                                            <span
-                                                                class="tooltip_right_text">gahlotvikram48@gmail.com</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="px-2">
-                                                <div class="mb-2">
-                                                    <strong class="d-block fs-7 mb-1">Gujrat </strong>
-                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
-                                                <div title="Working on lead" class="badge bg-success">
-                                                    <strong class="white">working...</strong>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fw-bold m-0">06-Feb-2022</p>
-                                                <span class="fs-8 text-secondary">assigned on</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
-                                                <a class="text-primary fw-bold" href="" title="View Agent">Ayushi
-                                                    Chauhan</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fs-7 m-0">
-                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
-                                                    <strong> 8 </strong>
-                                                </p>
-                                                <span class="fs-8 text-secondary">Total calls</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
-                                                <p class="fs-8 fw-400 m-0 text-dark">05-Feb-2022</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span>
-                                                    <span>12-Feb</span>
-                                                </p>
-                                                <p class="my-1 text-dark"><i
-                                                        class="text-success fa-solid fa-phone-volume"></i> 06:00 PM</p>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
-                                                <p class="fs-7 fs-8 my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> 06-Feb 03:00
-                                                    PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-bs-toggle="dropdown" aria-expanded="false"> <i
-                                                    class="fa-solid fa-ellipsis-vertical"></i></a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i>
-                                                        View</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-trash-can"></i> Delete</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="d-flex justify-content-between px-1 w-100">
-                                                <div class="requirment">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">#054
-                                                    </p>
-                                                    <div title="Holiday Type" class="fs-8 me-2 text-success">
-                                                        <strong class="" title="Lead Status ">Verified</strong>
-                                                    </div>
-                                                </div>
-                                                <div class="ms-2">
-                                                    <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong class="d-block mb-1 uppercase">Lokesh giri</strong>
-                                                        <span title="Leads From" class="text-primary">Onwards</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light d-flex justify-content-between p-1 w-100">
-                                                <div class="border-end flex-grow-1">
-                                                    <p class="fs-7 mb-2 mt-0 text-secondary">Lead Status </p>
-                                                    <div class="badge bg-warning"><strong>Warm</strong></div>
-                                                </div>
-                                                <div class="flex-grow-1 ms-2">
-                                                    <div class="my-1">
-                                                        <span class="d-block fs-7 mb-2">
-                                                            <i class="fa-solid fa-phone text-primary"></i> 8541247845
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <span class="tooltip_right">
-                                                            <i class="fa-envelope fa-solid text-primary"></i>
-                                                            <span
-                                                                class="tooltip_right_text">lokeshgiri545@gmail.com</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="px-2">
-                                                <div class="mb-2">
-                                                    <strong class="d-block fs-7 mb-1">Maharashtra </strong>
-                                                    <span class="fs-8 fw-500 text-secondary">Guest City</span>
-                                                </div>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <p class="fs-7 m-0 mb-2 text-secondary">Lead Stage</p>
-                                                <div title="Working on lead" class="badge bg-success">
-                                                    <strong class="white">working...</strong>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fw-bold m-0">08-Feb-2022</p>
-                                                <span class="fs-8 text-secondary">assigned on</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
-                                                <a class="text-primary fw-bold" href="" title="View Agent">Ayushi
-                                                    Chauhan</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="fs-7 m-0">
-                                                    <i class="fa-solid fa-phone-volume fs-8"></i>
-                                                    <strong> 12 </strong>
-                                                </p>
-                                                <span class="fs-8 text-secondary">Total calls</span>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">Created on </span>
-                                                <p class="fs-8 fw-400 m-0 text-dark">08-Feb-2022</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="align-bottom align-content-between d-flex flex-wrap h-100">
-                                            <div class="mb-2 px-2">
-                                                <p class="my-1 fs-7 text-secondary"><span>Next Call</span>
-                                                    <span>10-Feb</span>
-                                                </p>
-                                                <p class="my-1 text-dark"><i
-                                                        class="text-success fa-solid fa-phone-volume"></i> 11:00 AM</p>
-                                            </div>
-                                            <div class="bg-light p-1 w-100">
-                                                <span class="d-block fs-7 mb-2 text-secondary">last call on</span>
-                                                <p class="fs-7 fs-8 my-1 text-dark">
-                                                    <i class="text-success fa-solid fa-phone-volume"></i> 09-Feb 03:00
-                                                    PM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-bs-toggle="dropdown" aria-expanded="false"> <i
-                                                    class="fa-solid fa-ellipsis-vertical"></i></a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i>
-                                                        View</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#"><i
-                                                            class="fa-solid fa-trash-can"></i> Delete</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
-                <!-- End end demo table design -->
-
                 <!-- Table Section -->
                 <div class="bg-white p-3 rounded-4 shadow-sm">
                     <?php if( is_admin_or_manager() ){ ?>
@@ -1143,6 +510,30 @@
 </div>
 
 
+
+<!------------------------------------- offcanvas Start ------------------------ -->
+<!-- Begin offcanvas-top for add customer -->
+<div class="bg_fade">
+    <div class="offcanvas offcanvas-end offcanvasTop" tabindex="-1" id="offcanvasTop"
+        aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+                <h5 id="offcanvasTopLabel">
+                <p class="headerData"></p></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="edit-add-cust">
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End offcanvas-top for add customer -->
+
+
+
+
 <!-- Begin Offcanvas-end for Reassign Customer -->
 <div class="bg_fade">
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEnd">
@@ -1212,123 +603,6 @@
     </div>
 </div>
 <!-- End Offcanvas for Reassign Customer-->
-
-<!-- Begin offcanvas-top for add customer -->
-<div class="bg_fade">
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-        <div class="offcanvas-header">
-            <h5 id="offcanvasTopLabel">Add Customer</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <form class="mb-0" id="customer_form"
-                method="post">
-                <input type="hidden" name="inp[temp_key]" value="<?php echo getTokenKey(15); ?>">
-                <div class="mb-3">
-                    <label class="control-label">Customer Name</label>
-                    <input type="text" placeholder="eg. Mr. Prem Thakur" name="inp[customer_name]"
-                        class="form-control textfield"
-                        value="<?php if(isset($customer_name)){ echo $customer_name; }else{ echo set_value('inp[customer_name]'); } ?>" />
-                </div>
-                <div class="mb-3">
-                    <label class="control-label">Email</label>
-                    <input type="email" placeholder="eg: your-name@domain.com" name="inp[customer_email]"
-                        class="form-control"
-                        value="<?php if(isset($customer_email)){ echo $customer_email; }else{ echo set_value('inp[customer_email]'); } ?>" />
-                </div>
-                <div class="mb-3">
-                    <label class="control-label">Contact Number <sup class="text-danger">*</sup></label>
-                    <input required type="number" placeholder="eg: 9816098160" name="inp[customer_contact]"
-                        class="form-control numberfield"
-                        value="<?php if(isset($customer_contact)){ echo $customer_contact; }else{ echo set_value('inp[customer_contact]'); } ?>" />
-                </div>
-                <?php $get_cus_type = get_customer_type(); ?>
-                <div class="mb-3">
-                    <label class="control-label">Customer Type <sup class="text-danger">*</sup></label>
-                    <select required name="inp[customer_type]" class="form-control form-select" id="cus_type" required>
-                        <option value="" selected disabled>Select Customer Type</option>
-                        <?php if( !empty( $get_cus_type ) ){
-                              foreach( $get_cus_type as $type ){
-                                 echo "<option value='{$type->id}'>{$type->name}";
-                              }
-                              } ?>
-                    </select>
-                </div>
-                <div class="mb-3 reference_section" style="display: none;">
-                    <label class="control-label">Reference Name <sup class="text-danger">*</sup></label>
-                    <input  type="text" placeholder="eg. Reference Name" name="inp[reference_name]"
-                        class="form-control textfield reference_section_inp" value="" />
-                </div>
-                <div class="mb-3 reference_section" style="display: none;">
-                    <label class="control-label">Reference Contact Number <sup class="text-danger">*</sup></label>
-                    <input  type="number" placeholder="inp[Reference Phone Number]"
-                        name="reference_contact_number reference_section_inp" class="form-control numberfield" value="" />
-                </div>
-                <div class="mb-3">
-                    <label class="control-label">Assign To <sup class="text-danger">*</sup></label>
-                    <select name="inp[agent_id]" class="form-control form-select" required>
-                        <option value="" selected disabled>Select Sales Team Agents</option>
-                        <?php if( is_admin_or_manager() ){
-                           //   $agents = get_all_sales_team_agents();
-                              // var_dump($agent);die;
-                           $agents = get_all_sales_team_loggedin_today();
-                              if($agents){
-                                 $teamL = "";
-                                 $teamM = "";
-                                 foreach( $agents as $a ){
-                                    //remove teamleader
-                                    //if( is_teamleader( $a->user_id ) ) continue; 		
-                                    $agent_full_name = $a->first_name . ' ' . $a->last_name;
-                                    //echo '<option value="'. $a->user_id . '">' . $a->user_name .' ( '. $agent_full_name . ' ) '. $count_leads .' </option>';
-                                    if( is_teamleader( $a->user_id ) ){
-                                       $count_leads = get_assigned_leads_to_team_today( $a->user_id );
-                                       $count_leads = !empty( $count_leads ) ? "( {$count_leads} )" : "";
-                                       
-                                       $team_na = "<strong style='color: red;' > ( TEAM LEADER ) </strong>";
-                                       $teamL .= "<option value='{$a->user_id}'>{$a->user_name} ( {$agent_full_name} ) {$count_leads} {$team_na}  </option>";	
-                                    }else{
-                                       $count_leads = get_assigned_leads_today( $a->user_id );
-                                       $count_leads = !empty( $count_leads ) ? "( {$count_leads} )" : "";
-                                       $teamM .= "<option value='{$a->user_id}'>{$a->user_name} ( {$agent_full_name} ) {$count_leads} </option>";	
-                                    }
-                                 }
-                                 echo $teamL . $teamM;
-                              }else{
-                                 echo '<option value="">No Loggedin Agent Found!</option>';
-                              }
-                              }else if( is_teamleader() ) {
-                              $logedin_agents = is_teamleader();
-                              if( $logedin_agents ){
-                                 foreach( $logedin_agents as $agent ){
-                                    //if( !is_agent_login_today( $agent ) ) continue;
-                                    $count_leads = get_assigned_leads_today($agent);
-                                    $count_leads = !empty( $count_leads ) ? "( {$count_leads} )" : "";
-                                    echo '<option value="'. $agent . '">' . get_user_name($agent) . $count_leads .' </option>';
-                                 }
-                              }else{
-                                 echo '<option value="">No Loggedin Agent Found!</option>';
-                              }	
-                              }else{
-                              echo '<option value="">No Loggedin Agent Found!</option>';
-                              }	
-                              ?>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="address" class="control-label">Address</label>
-                    <textarea name="address" id="" cols="30" rows="3" class="form-control h-auto"></textarea>
-                    <span class="bg-light d-inline-block fs-7 mt-0 text-muted">Note : <em>Required only for
-                            Invoice.</em></span>
-                </div>
-                <div class="col-md-12 my-2">
-                     <button type="submit" class="btn green uppercase add_Customer">Add Customer</button>
-                  </div>
-                  <div id="customerRes" class="sam_res"></div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End offcanvas-top for add customer -->
 
 <!-- Begin offcanvas-top for Reopen Lead -->
 <div class="bg_fade">
@@ -1436,4 +710,5 @@
         </div>
     </div>
 </div>
+<div class="addCustomerFormres"></div>
 <script src="<?php echo base_url();?>site/assets/customjs/customers.js" type="text/javascript"></script>
