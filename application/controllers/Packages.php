@@ -9,10 +9,20 @@ class Packages extends CI_Controller {
 	public function index(){
 		$user = $this->session->userdata('logged_in');
 		$user_id = $user["user_id"];
+		$role = $user['role'];
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' ){
+			$where = array("del_status" => 0 );
+			//if state filter exists
+			if( isset( $_POST['state_id'] ) && !empty($_POST['state_id']) )
+				$where['state_id'] = $_POST['state_id'];
+			//if cat_id filter exists
+			if( isset( $_POST['cat_id'] ) && !empty($_POST['cat_id']) )
+				$where['p_cat_id'] = $_POST['cat_id'];
+			
+			$data['list'] = $this->packages_model->get_datatables($where);
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
-			$this->load->view('packages/all_packages');
+			$this->load->view('packages/all_packages', $data);
 			$this->load->view('inc/footer'); 
 		}else{
 			redirect(404);
@@ -24,6 +34,8 @@ class Packages extends CI_Controller {
 		$user = $this->session->userdata('logged_in');
 		$data["user_id"] = $user['user_id'];
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' ){
+			$where = '';
+			$data['libraryOfPdfImgs']= $this->global_model->getdata( 'packages', $where);
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('packages/add_package', $data);
@@ -304,13 +316,10 @@ class Packages extends CI_Controller {
 			$get_data = $this->global_model->getdata("packages", $where_key);
 			$package_id = $get_data[0]->package_id;
 			$temp_key = $get_data[0]->temp_key;
-			
 			$data = array(
 				'publish_status' => "publish",
-			);
-			
-			$update_data = $this->global_model->update_data("packages", $where_key, $data );
-			
+			);	
+			$update_data = $this->global_model->update_data("packages", $where_key, $data );			
 			if( $update_data ){
 				$res = array('status' => true, 'msg' => "Package added successfully!", 'package_id' => $package_id, 'temp_key' => $temp_key );
 			}else{
@@ -321,6 +330,7 @@ class Packages extends CI_Controller {
 		}
 		die(json_encode($res));
 	}
+
 	//Package Ajax for save value step by step
 	//add Package
 	public function ajax_savedata_stepwise(){
@@ -342,6 +352,8 @@ class Packages extends CI_Controller {
 					$package_duration 	= strip_tags($_POST['package_duration']);
 					$cab_category 		= strip_tags($_POST['cab_category']);
 					$agent_id 			= strip_tags($_POST['agent_id']);
+					$pakage_starting_cost 			= strip_tags($_POST['pakage_starting_cost']);
+					
 					
 					$step_data = array(
 						'state_id' 			=> $state_id,
@@ -355,6 +367,7 @@ class Packages extends CI_Controller {
 						'child_age'			=> $child_age,
 						'duration'			=> $package_duration,
 						'agent_id'			=> $agent_id,
+						'pakage_starting_cost'			=> $pakage_starting_cost,
 					);
 				break;
 				case 2:
@@ -377,14 +390,32 @@ class Packages extends CI_Controller {
 					$currentDate = date("Y-m-d");
 					$hotel_meta				= serialize($this->input->post('hotel_meta'));
 					$hotel_note_meta		= serialize($this->input->post('hotel_note_meta'));
+					if(!empty($_POST['package_pdf_img'])){
+						$data = $_POST['package_pdf_img'];	
+						list($type, $data) = explode(';', $data);	
+						list(, $data)      = explode(',', $data);
+						
+						$data = base64_decode($data);
+						$imageName = 'package_pdf_img'.time().'.png';				
+						file_put_contents('site/images/package_pdf/'.$imageName, $data);
+						/* *
+						 * tour thumbnail image*****
+						 * */
+						$thumbName = 'tour_thumbnail'.time().'.png';
+						$newIamge = resize_image($data, 250, 150);
+						if(!empty($newIamge)){
+							file_put_contents('site/images/tour_thumbnail/'. $thumbName, $newIamge);
+						}
+					}
 					
 					$step_data = array(
 						'hotel_meta'			=> $hotel_meta,
 						'hotel_note_meta'		=> $hotel_note_meta,
+						'package_pdf_img'			=> $imageName,
+						'thumbimg'			=> $thumbName,
 					);
 				break;
 			}
-			// dump($_POST);die;
 			//update data
 			$where = array('temp_key' => $unique_id );
 			$get_data = $this->global_model->getdata("packages", $where);
@@ -526,6 +557,21 @@ class Packages extends CI_Controller {
 			$this->load->view('packages/state_list', $data);
 			$this->load->view('inc/footer'); 
 		}
+	}
+
+	public function getImageName(){
+		$user = $this->session->userdata('logged_in');
+		$user_id = $user["user_id"];
+		$role = $user['role'];
+		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' ){
+			$where = $_POST['takedataImg'];	
+			$data = $this->global_model->getDataSearch('packages', $where);
+			$resData = array('data' => $data, 'status' => true );
+			echo json_encode($resData);
+		}else{
+			redirect(404);
+		}
+
 	}
 }	
 ?>

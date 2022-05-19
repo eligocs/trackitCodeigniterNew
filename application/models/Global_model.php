@@ -914,8 +914,40 @@ class Global_Model extends CI_Model
 		}
 		return $res;
 	}
-	
 
+
+	
+  // Fetch records
+  public function getDataSearch($dbName, $rowno="null", $rowperpage="", $search="") {
+    $this->db->select('package_pdf_img');
+    $this->db->from($dbName);
+    if($search != ''){
+      $this->db->like('package_pdf_img', $search);
+    }
+	if($rowperpage != ''  && $rowno != ''){
+		$this->db->limit($rowperpage, $rowno); 
+	}
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  // Select total records
+//   public function getrecordCount($search = '') {
+
+//     $this->db->select('count(*) as allcount');
+//     $this->db->from('posts');
+ 
+//     if($search != ''){
+//       $this->db->like('title', $search);
+//       $this->db->or_like('content', $search);
+//     }
+
+//     $query = $this->db->get();
+//     $result = $query->result_array();
+ 
+//     return $result[0]['allcount'];
+//   }
 
 }
+
 ?>

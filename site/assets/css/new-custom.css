@@ -1180,6 +1180,8 @@ input[type="checkbox"] {
     min-height: 250px;
     background-position: center center;
     position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .upload-img {

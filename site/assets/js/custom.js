@@ -161,10 +161,14 @@ jQuery(document).ready(function() {
 
 
 
+
+
 /**********
  * 
  * **
  * clculateMargin
+ * 
+ * hem js
  * *******
  * *********************
  * ********************* */
@@ -297,4 +301,89 @@ $(document).on("click", '.editMargin', function(e) {
     });
     $('.margianModel').modal('show');
     $('.iti_id').val(id);
+});
+
+
+/**********
+ * ******
+ * ****
+ * ****
+ * **
+ * *****
+ * *******Crope js 
+ * package a
+ * nd iti featuredImg js*****
+ * ***
+ * ********
+ * **********
+ * ********
+ * **/
+
+$uploadCrop = $('.upload-img-hs').croppie({
+    enableExif: true,
+    viewport: {
+        width: 339,
+        height: 370,
+        type: 'rectangle'
+    },
+    boundary: {
+        width: 450,
+        height: 400,
+    }
+});
+
+$('.package-iti-pic').on('change', function() {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function() {
+            console.log('jQuery bind complete');
+        });
+
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+
+
+
+$('.upload-result').on('click', function(ev) {
+    ev.preventDefault();
+    var id = $("#cus_id").val()
+    console.log(id);
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: { width: 779, height: 740 }
+    }).then(function(resp) {
+        $.ajax({
+            url: "<?php echo base_url('homepage/do_upload'); ?>",
+            type: "POST",
+            data: {
+                "pdf_img": resp,
+                'cus_id': id
+            },
+            beforeSend: function() {
+                $(".fullpage_loader").show();
+                resp.html(
+                    '<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>'
+                );
+            },
+            success: function(data) {
+                $(".fullpage_loader").hide();
+                if (data == "success") {
+                    resp.html(
+                        '<div class="alert alert-success"><strong>Success !</strong> ' +
+                        res.msg + '</div>');
+                } else {}
+            },
+            error: function(e) {
+                $(".fullpage_loader").hide();
+                //console.log(e);
+                res.html(
+                    '<div class="alert alert-danger"><strong>Error!</strong>Please Try again later! </div>'
+                );
+            }
+        });
+    });
 });
