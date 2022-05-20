@@ -283,9 +283,10 @@ jQuery(document).ready(function($) {
 	<?php } ?>
 
 	<script src="<?php echo base_url();?>site/assets/js/custom.js" type="text/javascript"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	<script src="<?php echo base_url();?>site/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-	</script>
+	</script> -->
 	<!-- END THEME LAYOUT SCRIPTS -->
 
 

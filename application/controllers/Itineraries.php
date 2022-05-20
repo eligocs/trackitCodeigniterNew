@@ -45,6 +45,9 @@ class Itineraries extends CI_Controller {
 		$data['user_role'] 	= $user['role'];
 		$data['user_id'] 	= $user['user_id'];
 		if( $user['role'] == 99 || $user['role'] == 98 || $user['role'] == 97 || $user['role'] == 96 ){
+			$custom_where = "";
+		// if( $role == '99' || $role == '98' ){
+		$data['list'] = $this->itinerary_model->get_datatables($custom_where );
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('itineraries/all_iti', $data);

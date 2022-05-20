@@ -3668,8 +3668,8 @@ function missLeadsCallFollowup($cus_id){
 		  $newheight = $h;
 	  } else {
 		  if ($w/$h > $r) {
-			  $newwidth = $h*$r;
-			//   dump($width);die;
+			//   $newwidth = $h*$r;
+			  $newwidth = $w;
 			$newheight = $h;
 		  } else {
 			$newheight = $w/$r;

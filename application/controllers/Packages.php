@@ -36,10 +36,22 @@ class Packages extends CI_Controller {
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' ){
 			$where = '';
 			$data['libraryOfPdfImgs']= $this->global_model->getdata( 'packages', $where);
-			$this->load->view('inc/header');
-			$this->load->view('inc/sidebar');
-			$this->load->view('packages/add_package', $data);
-			$this->load->view('inc/footer');
+			$temp_key = trim($this->uri->segment(4));
+			$package_id = trim($this->uri->segment(3));
+			if( !empty( $package_id ) && !empty( $temp_key ) ){
+				$data["user_role"] = $user['role']; 
+				$where = array("del_status" => 0, "package_id" => $package_id, "temp_key" => $temp_key );
+				$data['itinerary'] = $this->global_model->getdata( "packages", $where );
+					$this->load->view('inc/header');
+					$this->load->view('inc/sidebar');
+					$this->load->view('packages/add_package', $data);
+					$this->load->view('inc/footer');
+			}else{
+				$this->load->view('inc/header');
+				$this->load->view('inc/sidebar');
+				$this->load->view('packages/add_package', $data);
+				$this->load->view('inc/footer');
+			}
 		}else{
 			redirect("dashboard");
 		}
@@ -66,27 +78,28 @@ class Packages extends CI_Controller {
 		}	
 	}
 	/* Edit Package */
-	public function edit(){
-		$user = $this->session->userdata('logged_in');
-		$user_id = $user['user_id'];
-		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96'){
-			$temp_key = trim($this->uri->segment(4));
-			$package_id = trim($this->uri->segment(3));
-			if( !empty( $package_id ) && !empty( $temp_key ) ){
-				$data["user_role"] = $user['role']; 
-				$where = array("del_status" => 0, "package_id" => $package_id, "temp_key" => $temp_key );
-				$data['itinerary'] = $this->global_model->getdata( "packages", $where );
-				$this->load->view('inc/header');
-				$this->load->view('inc/sidebar');
-				$this->load->view('packages/edit', $data);
-				$this->load->view('inc/footer');
-			}else{
-				redirect(404);
-			}	 
-		}else{
-			redirect("dashboard");
-		}	
-	}
+	// public function edit(){
+	// 	dump("dsfds;fk");die;
+	// 	$user = $this->session->userdata('logged_in');
+	// 	$user_id = $user['user_id'];
+	// 	if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96'){
+	// 		$temp_key = trim($this->uri->segment(4));
+	// 		$package_id = trim($this->uri->segment(3));
+	// 		if( !empty( $package_id ) && !empty( $temp_key ) ){
+	// 			$data["user_role"] = $user['role']; 
+	// 			$where = array("del_status" => 0, "package_id" => $package_id, "temp_key" => $temp_key );
+	// 			$data['itinerary'] = $this->global_model->getdata( "packages", $where );
+	// 			$this->load->view('inc/header');
+	// 			$this->load->view('inc/sidebar');
+	// 			$this->load->view('packages/edit', $data);
+	// 			$this->load->view('inc/footer');
+	// 		}else{
+	// 			redirect(404);
+	// 		}	 
+	// 	}else{
+	// 		redirect("dashboard");
+	// 	}	
+	// }
 	
 	
 	/*****Add Package Category*****/
@@ -310,7 +323,7 @@ class Packages extends CI_Controller {
 		$tour_meta 	= $this->input->post('tour_meta');
 		$h_meta = $this->input->post('hotel_meta');
 		if( isset($_POST["package_name"]) && !empty( $inc_meta ) && !empty( $tour_meta ) && !empty( $h_meta ) ){
-			//Update data 
+							//Update data 
 			$unique_id = trim( $_POST['temp_key'] );
 			$where_key = array('temp_key' => $unique_id );
 			$get_data = $this->global_model->getdata("packages", $where_key);
@@ -334,12 +347,30 @@ class Packages extends CI_Controller {
 	//Package Ajax for save value step by step
 	//add Package
 	public function ajax_savedata_stepwise(){
+		// dump($_POST['package_pdf_img']);die;
 		$user = $this->session->userdata('logged_in');
 		$role = $user['role'];
-		
 		if( isset($_POST["temp_key"]) ){
 			$unique_id = trim( $_POST['temp_key'] );
 			$step 	= $_POST['step'];
+			if(!empty($_POST['package_pdf_img'])){
+				$data = $_POST['package_pdf_img'];	
+				list($type, $data) = explode(';', $data);	
+				list(, $data)      = explode(',', $data);
+				
+				$data = base64_decode($data);
+				$imageName = 'package_pdf_img'.time()."-".rand(1000, 9999)."-".'.png';				
+				file_put_contents('site/images/package_pdf/'.$imageName, $data);					
+				/* *
+				 * tour thumbnail image*****
+				 * */
+				$thumbName = 'tour_thumbnail'.time()."-".rand(1000, 9999)."-".'.png';
+				$newIamge = resize_image($data, 250, 150);
+				if(!empty($newIamge)){
+					file_put_contents('site/images/tour_thumbnail/'. $thumbName, $newIamge);
+				}
+			}
+
 			switch( $step ){
 				case 1:  
 					$state_id 			= strip_tags($_POST['state']);
@@ -353,8 +384,7 @@ class Packages extends CI_Controller {
 					$cab_category 		= strip_tags($_POST['cab_category']);
 					$agent_id 			= strip_tags($_POST['agent_id']);
 					$pakage_starting_cost 			= strip_tags($_POST['pakage_starting_cost']);
-					
-					
+				
 					$step_data = array(
 						'state_id' 			=> $state_id,
 						'p_cat_id' 			=> $package_cat_id,
@@ -369,12 +399,20 @@ class Packages extends CI_Controller {
 						'agent_id'			=> $agent_id,
 						'pakage_starting_cost'			=> $pakage_starting_cost,
 					);
+					if(!empty($_POST['package_pdf_img'])){
+						$step_data['package_pdf_img'] =  $imageName;
+						$step_data['thumbimg'] =  $thumbName;
+					}
 				break;
 				case 2:
 					$daywise_meta 		= serialize($this->input->post('tour_meta'));
 					$step_data = array(
 						'daywise_meta' 		=> $daywise_meta,
 					);
+					if(!empty($_POST['package_pdf_img'])){
+						$step_data['package_pdf_img'] =  $imageName;
+						$step_data['thumbimg'] =  $thumbName;
+					}
 				break;
 				case 3:
 					$inc_meta					= serialize($this->input->post('inc_meta'));
@@ -385,35 +423,23 @@ class Packages extends CI_Controller {
 						'exc_meta'					=> $exc_meta,
 						'special_inc_meta'			=> $special_inc_meta,
 					);
+					if(!empty($_POST['package_pdf_img'])){
+						$step_data['package_pdf_img'] =  $imageName;
+						$step_data['thumbimg'] =  $thumbName;
+					}
 				break;
 				case 4:
 					$currentDate = date("Y-m-d");
 					$hotel_meta				= serialize($this->input->post('hotel_meta'));
-					$hotel_note_meta		= serialize($this->input->post('hotel_note_meta'));
-					if(!empty($_POST['package_pdf_img'])){
-						$data = $_POST['package_pdf_img'];	
-						list($type, $data) = explode(';', $data);	
-						list(, $data)      = explode(',', $data);
-						
-						$data = base64_decode($data);
-						$imageName = 'package_pdf_img'.time().'.png';				
-						file_put_contents('site/images/package_pdf/'.$imageName, $data);
-						/* *
-						 * tour thumbnail image*****
-						 * */
-						$thumbName = 'tour_thumbnail'.time().'.png';
-						$newIamge = resize_image($data, 250, 150);
-						if(!empty($newIamge)){
-							file_put_contents('site/images/tour_thumbnail/'. $thumbName, $newIamge);
-						}
-					}
-					
+					$hotel_note_meta		= serialize($this->input->post('hotel_note_meta'));					
 					$step_data = array(
 						'hotel_meta'			=> $hotel_meta,
 						'hotel_note_meta'		=> $hotel_note_meta,
-						'package_pdf_img'			=> $imageName,
-						'thumbimg'			=> $thumbName,
 					);
+					if(!empty($_POST['package_pdf_img'])){
+						$step_data['package_pdf_img'] =  $imageName;
+						$step_data['thumbimg'] =  $thumbName;
+					}
 				break;
 			}
 			//update data
@@ -423,6 +449,21 @@ class Packages extends CI_Controller {
 				//insert if data not get
 				$insert_data = $this->global_model->insert_data("packages", $step_data );
 				if( $insert_data ){
+					$where_key = array('id', $insert_data);
+					if(!empty($_POST['package_pdf_img'])){
+						$getImgName = $this->global_model->getdata( "packages", $where_key);
+						if($getImgName){ 
+							foreach( $getImgName as $imgName){
+								$path_pdf = 'site/images/package_pdf/' . $imgName->package_pdf_img;
+								$path_thumbnail ='site/images/tour_thumbnail/' . $imgName->thumbimg;
+								if (file_exists($path_pdf || $path_thumbnail)) 
+								{
+									unlink($path_pdf);
+									unlink($path_thumbnail);
+								} 
+							}
+						}
+					}
 					$res = array('status' => true, 'msg' => "Data save.");
 				}else{
 					$res = array('status' => false, 'msg' => "Error! Data not save.");
@@ -430,6 +471,17 @@ class Packages extends CI_Controller {
 			}else{
 				//Update data 
 				$where_key = array('temp_key' => $unique_id ); 
+				if(!empty($_POST['package_pdf_img'])){
+				$getImgName = $this->global_model->getdata( "packages", $where_key);
+					 if($getImgName){ 
+						 foreach( $getImgName as $imgName){
+							 $path_pdf = 'site/images/package_pdf/' . $imgName->package_pdf_img;
+							 $path_thumbnail ='site/images/tour_thumbnail/' . $imgName->thumbimg;
+							 unlink($path_pdf);
+							 unlink($path_thumbnail);
+						 }
+					 }
+				}
 				$update_data = $this->global_model->update_data("packages", $where_key, $step_data );
 				if( $update_data ){
 					$res = array('status' => true, 'msg' => "Data save.");
@@ -437,9 +489,11 @@ class Packages extends CI_Controller {
 					$res = array('status' => false, 'msg' => "Error! Data not save.");
 				}
 			}
+		// }
 		}else{
 			$res = array('status' => false, 'msg' => "Failed! Invalid request try again.");
 		}
+	// }
 		die(json_encode($res));
 	}
 	
@@ -564,9 +618,15 @@ class Packages extends CI_Controller {
 		$user_id = $user["user_id"];
 		$role = $user['role'];
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' ){
-			$where = $_POST['takedataImg'];	
-			$data = $this->global_model->getDataSearch('packages', $where);
-			$resData = array('data' => $data, 'status' => true );
+			$search = $_POST['takedataImg'];	
+			$rowno = '';
+			$rowperpage = '';
+			$result = $this->global_model->getDataSearch('packages', $rowno, $rowperpage, $search);
+			if(!empty($result)){
+				$resData = array('data' => $result, 'status' => true, 'msg' => "Data Found" );
+			}else{
+				$resData = array('data' => [ ] , 'status' => true, 'msg' => "No Data Found");
+			}
 			echo json_encode($resData);
 		}else{
 			redirect(404);

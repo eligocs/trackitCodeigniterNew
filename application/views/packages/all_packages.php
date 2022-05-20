@@ -153,8 +153,8 @@
                                     <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                         <div class="px-2 mb-2">
                                             <strong class="d-block"> <i class="fa-solid fa-indian-rupee-sign"></i>
-                                                3000.00 </strong>
-                                            <span class="fs-8 fw-500 text-secondary">Package Cost</span>
+                                               <?= $package->pakage_starting_cost ?> </strong>
+                                            <span class="fs-8 fw-500 text-secondary">Package Starting Cost(PP)</span>
                                         </div>
                                         <div class="bg-light p-1 w-100">
                                             <button class="btn btn-sm btn-success ms-2 mt-2">

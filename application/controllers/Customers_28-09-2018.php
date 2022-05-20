@@ -660,7 +660,7 @@ class Customers extends CI_Controller {
 		$temp_key = !empty($get_d) ? $get_d[0]->temp_key : "";
 		$agent_id = !empty($get_d) ? $get_d[0]->agent_id : "";
 		
-		$currentDate = current_datetime();
+		$currentDate = _datetime();
 		
 		if( !empty($customer_id) && !empty($callType)){
 			if( $callType == "Picked call" ){

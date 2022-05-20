@@ -915,6 +915,14 @@ class Global_Model extends CI_Model
 		return $res;
 	}
 
+	/* get last Reccord*/
+
+	public function get_last_record(){
+		$this->db->select('*');
+		$this->db->from('packages');
+		$this->db->order_by('created', 'DESC'); // 'created_at' is the column name of the date on which the record has stored in the database.
+		return $this->db->get()->row();
+   }
 
 	
   // Fetch records

@@ -322,13 +322,13 @@ $(document).on("click", '.editMargin', function(e) {
 $uploadCrop = $('.upload-img-hs').croppie({
     enableExif: true,
     viewport: {
-        width: 339,
-        height: 370,
+        width: 250,
+        height: 281,
         type: 'rectangle'
     },
     boundary: {
-        width: 450,
-        height: 400,
+        width: 270,
+        height: 290,
     }
 });
 
