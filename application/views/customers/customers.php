@@ -270,8 +270,9 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="d-flex justify-content-between px-1 w-100">
                                                 <div class="requirment flex-grow-1">
-                                                    <p title="Iti Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
-                                                        #<?= $customer->customer_id ?></p>
+                                                    <p title="Lead Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
+                                                    <a class="dropdown-item"
+                                                        href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>">#<?= $customer->customer_id ?></a></p>
                                                     <div title="Holiday Type" class="fs-8 me-2 text-success">
                                                         <strong class="" title="Lead Status "><?= $add_iti ?></strong>
                                                     </div>
