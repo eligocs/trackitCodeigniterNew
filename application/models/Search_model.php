@@ -22,9 +22,24 @@ class Search_model extends CI_Model{
 		$this->db->order_by("customer_id", "DESC");
         return $this->db->get('customers_inquery')->result_array();
     }
+
+	public function getDataSearch($dbName, $rowno="null", $rowperpage="", $search="", $fields="", $agent_id="" ) {
+		$this->db->select('*');
+		$this->db->from($dbName);
+		if($search != ''){
+			$like_conditions = $this->_multi_like_conditions($fields, $search);
+		$this->db->where($like_conditions);
+		}
+		if($rowperpage != ''  && $rowno != ''){
+			$this->db->limit($rowperpage, $rowno); 
+		}
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 	
 	//multiple like or
-	private function _multi_like_conditions (array $fields, $search_text) {
+	// private function _multi_like_conditions (array $fields, $search_text) {
+	private function _multi_like_conditions ($fields, $search_text) {
 		$likes = array();
 		foreach ($fields as $field) {
 			$likes[] = "$field LIKE '%$search_text%'";

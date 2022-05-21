@@ -175,7 +175,20 @@
                     <?php } ?>
                 </div>
                 <!-- End filter_collapse -->
-
+                <form id="search_customer_data" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="customer_id">Enter Customer
+                                ID/name/contact:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="customer_id" required maxlength="20" name="keyword"
+                                    value="<?php echo $customer->customer_id; ?>" class="form-control"
+                                    placeholder="Type Lead Id or Customer Name or Contact Number"
+                                    title="Type Lead Id or Customer Name or Contact Number" />
+                                <ul class="dropdown-menu txtcustomer" style="margin-left:20px;margin-right:0px;"
+                                    role="menu" aria-labelledby="dropdownMenu" id="DropdownCusInfo"></ul>
+                            </div>
+                        </div>
+                    </form>
                 <!-- Begin demo table design -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="table-responsive min-h-300 customersData">

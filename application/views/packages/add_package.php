@@ -1,7 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css" />\
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.js"></script>
-<link rel="stylesheet" href="<?php echo base_url(); ?>site/assets/css/croppie.css">
-<script src="<?php echo base_url(); ?>site/assets/js/croppie.js"></script>
+
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">

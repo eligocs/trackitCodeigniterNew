@@ -375,4 +375,53 @@ jQuery(document).ready(function($) {
     });
 
 
+    $("#customer_id").on("keyup", function() {
+        $('#DropdownCusInfo').show();
+        var resp = $(".response"),
+            ajaxReq;
+        //console.log( $(this).val() );
+        $.ajax({
+            type: "POST",
+            url: BASE_URL + 'customers/index',
+            data: {
+                keyword: $(this).val()
+            },
+            dataType: "json",
+            beforeSend: function() {
+                resp.html(
+                    '<p class="alert alert-info"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>'
+                );
+            },
+            success: function(data) {
+                $("#sId").val("");
+                resp.html('');
+                //console.log(data);
+                if (data.length > 0) {
+                    $('#DropdownCusInfo').empty();
+                    //$('#customer_id').attr("data-toggle", "dropdown");
+                    //$('#DropdownCusInfo').dropdown('toggle');
+                    $('#DropdownCusInfo').show();
+                } else if (data.length == 0) {
+                    $('#DropdownCusInfo').html("");
+                    $('#DropdownCusInfo').append(
+                        '<li role="displaycuslist" ><a role="menuitem dropdowncusli" data-customer_id = "" class="dropdownlivalue"><strong>No Data Found</strong></a></li>'
+                    );
+                    $('#customer_id').attr("data-toggle", "");
+                }
+                $.each(data, function(key, value) {
+                    if (data.length >= 0) {
+                        $('#DropdownCusInfo').append(
+                            '<li role="displaycuslist" ><a role="menuitem dropdowncusli" data-customer_id = ' +
+                            value['customer_id'] +
+                            ' class="dropdownlivalue"><strong>' + value[
+                                'customer_id'] + '</strong> - ' + value[
+                                'customer_name'] + ' - ' + value[
+                                'customer_contact'] + ' </a></li>');
+                    }
+                });
+            }
+        });
+    });
+
+
 });

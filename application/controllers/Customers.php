@@ -20,6 +20,8 @@ class Customers extends CI_Controller {
 		$data['user_role'] = $user['role'];
 		$u_id = $user['user_id'];
 		$role = $user['role'];
+
+
 		$config = array();
         $config["base_url"] = base_url() . "customers/index";
         $config["total_rows"] = $this->customer_model->get_count();
@@ -27,7 +29,6 @@ class Customers extends CI_Controller {
         $config["uri_segment"] = 3;
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
-		
 		
 
 		//get filter parameters
@@ -47,6 +48,7 @@ class Customers extends CI_Controller {
 		if( isset( $_GET["leadsType"]   ) ){
 			$data["leadsType"] 	= $_GET["leadsType"];
 		}
+
 
 		/* get customer */
 		$custom_where = "";
@@ -72,9 +74,22 @@ class Customers extends CI_Controller {
 			}
 		} 
 		
-		$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["per_page"], $page);
-		$data["links"] = $this->pagination->create_links();
-		
+		//Get Working Leads
+		if( isset( $_POST['keyword'] ) ){
+			$keyword	= $_POST['keyword'];
+			$dbName = 'customers_inquery';
+			$fields = array('customer_id','customer_name','customer_contact');
+			$rowno = '';
+			$rowperpage = '';
+			$rowperpage = '';
+			//if sales team show result by agent_id
+			$agent_id = $user['role'] == '96' ? $user_id : "";
+			$data['list']=$this->search_model->getDataSearch($dbName, $rowno, $rowperpage, $keyword, $fields, $agent_id); 
+			$data["links"] = $this->pagination->create_links();       
+		}else{
+			$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["per_page"], $page);
+			$data["links"] = $this->pagination->create_links();
+		}
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' || $user['role'] == '95') {
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
