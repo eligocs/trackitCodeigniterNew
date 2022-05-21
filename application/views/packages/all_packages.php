@@ -158,7 +158,9 @@
                                         </div>
                                         <div class="bg-light p-1 w-100">
                                             <button class="btn btn-sm btn-success ms-2 mt-2">
-                                                <i class="fa-solid fa-file-pdf"></i> PDF
+                                            <a class="package_pdf" target='_blank'
+                                            href="<?=site_url("packages/pdf/$package_id/$key") ?>">
+                                                <i class="fa-solid fa-file-pdf"></i> PDF</a>
                                             </button>
                                         </div>
                                     </div>

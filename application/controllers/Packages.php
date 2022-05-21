@@ -633,5 +633,61 @@ class Packages extends CI_Controller {
 		}
 
 	}
+
+	public function pdf(){
+		$package_id = trim($this->uri->segment(3));
+		$temp_key = trim($this->uri->segment(4));
+		if( !empty( $package_id ) && !empty($temp_key) ){
+			$user = $this->session->userdata('logged_in');
+			$user_id = $user['user_id'];
+			//Get itinerary 
+			$where_i = array("del_status" => 0, "package_id" => $package_id, "temp_key" => $temp_key);
+			$get_package = $this->global_model->getdata( 'packages', $where_i );
+			//get view folder
+			$view_file = !empty( $get_package ) ? "packages/package_pdf" : "";
+			if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '97'){
+				$where = array("del_status" => 0, "package_id" => $package_id, "temp_key" => $temp_key);
+				$data['packages'] 	= $this->global_model->getdata( 'packages', $where );
+								
+				$this->load->view($view_file, $data);
+				$html = $this->output->get_output();
+				// Load pdf library
+				$this->load->library('pdf');
+				$this->pdf->loadHtml($html);
+				$this->pdf->setPaper('A4', 'Portrait');
+				$this->pdf->render();
+				
+				$pacpackage_data = $data['packages'];
+				$packageGet = $pacpackage_data[0];
+				$pdf_name = $packageGet->package_name;
+				$this->pdf->stream($pdf_name . ".pdf", array("Attachment"=> 0));	
+			}elseif($user['role'] == '96'){
+				$where = array("del_status" => 0, "agent_id" => $user_id, "iti_id" => $iti_id, "temp_key" => $temp_key );
+				$data['itinerary'] 		= $this->global_model->getdata( 'itinerary', $where );
+				$this->load->view($view_file, $data);
+				$html = $this->output->get_output();
+						// Load pdf library
+				$this->load->library('pdf');
+				$this->pdf->loadHtml($html);
+				$this->pdf->setPaper('A4', 'Portrait');
+				$this->pdf->render();
+
+
+				$itidata = $data['itinerary'];
+				$iti = $itidata[0];
+				$get_customer_info = get_customer($iti->customer_id);
+				$cust = $get_customer_info[0];
+				$customer_name         = !empty($get_customer_info) ? $cust->customer_name  : "";
+				$pdf_name = 'itinerary_' . $iti->iti_id . '_' . str_replace(' ', '_', $customer_name);
+				// Output the generated PDF (1 = download and 0 = preview)
+				$this->pdf->stream($pdf_name .".pdf", array("Attachment"=> 0));
+			}else{
+				redirect("dashboard");
+			}	 
+		}else{
+			redirect(404);
+		}	
+
+	}
 }	
 ?>
