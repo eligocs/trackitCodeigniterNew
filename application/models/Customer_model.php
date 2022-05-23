@@ -90,7 +90,7 @@ class Customer_Model extends CI_Model{
 	}
 	
 	//datatable view all customers
-	private function _get_datatables_query( $where , $q_type = null , $custom_where =NULL ){
+	private function _get_datatables_query( $where , $q_type = null , $custom_where =NULL , $filter_data_get){
 		ini_set('max_execution_time', 10000);
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
@@ -109,10 +109,14 @@ class Customer_Model extends CI_Model{
 		->join('iti_payment_details as pay', 'customers_inquery.customer_id = pay.customer_id', 'LEFT');
 		
 		//add custom filter with Date Range
-		if( isset( $_POST['filter'] ) && isset( $_POST['from'] ) && isset( $_POST['end'] ) ){
-			$filter_data = trim($this->input->post('filter'));
-			$date_from 	 = $this->input->post('from');
-			$date_end 	 = $this->input->post('end');
+		// if( isset( $_POST['filter'] ) && isset( $_POST['from'] ) && isset( $_POST['end'] ) ){
+			if( isset( $filter_data_get) ){
+				// $filter_data = trim($this->input->post('filter'));
+				// $date_from 	 = $this->input->post('from');
+				// $date_end 	 = $this->input->post('end');
+				$filter_data = trim($filter_data_get['leadstatus']);
+				$date_from 	 = $filter_data_get['leadfrom'];
+				$date_end 	 = $filter_data_get['leadto'];
 			if( isset( $_POST['todayStatus'] ) && !empty( $_POST['todayStatus'] ) ){
 				$date = $_POST['todayStatus'];
 				//date can be month or day format eg: Y-m or Y-m-d
@@ -187,8 +191,6 @@ class Customer_Model extends CI_Model{
 					case "all":
 						$this->db->like( "customers_inquery.created", $todayDate );
 						break;
-				// 	default:
-				// 		continue2;
 				} 
 			}else if( !empty($filter_data) && !empty($date_from) && !empty($date_end) ){
 				$d_from 	= date('Y-m-d', strtotime($date_from));
@@ -196,9 +198,6 @@ class Customer_Model extends CI_Model{
 				$_month	 	= date('Y-m', strtotime($date_from));
 				switch( $filter_data ){
 					case "9":
-						//$this->db->where( "customers_inquery.cus_status", "9" );
-						//$this->db->where("customers_inquery.lead_last_followup_date >=", $d_from );
-						//$this->db->where("customers_inquery.lead_last_followup_date <=", $d_to );
 						$this->db->where( "itinerary.iti_status", "9" );
 						$this->db->where("itinerary.iti_decline_approved_date >=", $d_from );
 						$this->db->where("itinerary.iti_decline_approved_date <=", $d_to );
@@ -226,6 +225,7 @@ class Customer_Model extends CI_Model{
 						$this->db->where("customers_inquery.created <=", $d_to ); 
 						break;
 					case "notwork": //not work if folloup not take
+						// dump($d_from);die;
 						$this->db->where( array( "customers_inquery.cus_status" => "0" ) );
 						$this->db->where("cf.customer_id IS NULL");
 						$this->db->where("customers_inquery.created >=", $d_from );
@@ -292,8 +292,8 @@ class Customer_Model extends CI_Model{
 			}
         }
 		
-		if( isset( $_POST["iti_type"] ) && !empty( $_POST["iti_type"] ) ){
-			$this->db->where( "itinerary.iti_type", $_POST['iti_type'] );
+		if( isset( $filter_data_get['leadsType'] ) && !empty( $filter_data_get['leadsType'] ) ){
+			$this->db->where( "x.iti_type", $filter_data_get['leadsType'] );
 		}	
 		//$where["itinerary.iti_type"] = $_POST['iti_type'];
 		
@@ -337,8 +337,8 @@ class Customer_Model extends CI_Model{
 		$this->db->group_by( "customers_inquery.customer_id" );
 	}
 
-	function get_datatables( $where = array(), $custom_where = NULL,  $limit, $start){
-		$this->_get_datatables_query($where, $count = NULL , $custom_where);
+	function get_datatables( $where = array(), $custom_where = NULL,  $limit, $start, $filter_data){
+		$this->_get_datatables_query($where, $count = NULL , $custom_where, $filter_data);
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
 		if(isset($_POST['order'])){
@@ -349,6 +349,7 @@ class Customer_Model extends CI_Model{
 		}
 		$this->db->limit($limit, $start);
 		$query = $this->db->get();
+		// dump($this->db->last_query());die;
 		return $query->result();
 	}
 	

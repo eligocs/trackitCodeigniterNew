@@ -281,13 +281,19 @@ jQuery(document).ready(function($) {
 	<?php if (isset( $_SERVER['REMOTE_ADDR']) && ($_SERVER['REMOTE_ADDR'] != '182.75.81.2' && $_SERVER['REMOTE_ADDR'] != '117.247.236.178' )){ ?>
 	<script src="<?php echo base_url();?>site/assets/js/notifications.js" type="text/javascript"></script>
 	<?php } ?>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css" />\
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.js"></script>
-<link rel="stylesheet" href="<?php echo base_url(); ?>site/assets/css/croppie.css">
-<script src="<?php echo base_url(); ?>site/assets/js/croppie.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>site/assets/css/croppie.css">
+	<script src="<?php echo base_url(); ?>site/assets/js/croppie.js"></script>
 	<script src="<?php echo base_url();?>site/assets/js/custom.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>site/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-	
+
+
+	    <!-- Select2 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+	<!-- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> -->
+
 	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 	</script> -->

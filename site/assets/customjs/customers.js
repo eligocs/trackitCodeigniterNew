@@ -27,9 +27,9 @@ jQuery(document).ready(function($) {
     //Date range
     $("#daterange").daterangepicker({
             locale: {
-                format: 'YYYY-MM-DD'
+                format: 'YYYY/MM/DD'
             },
-            autoUpdateInput: false,
+            // autoUpdateInput: false,
             showDropdowns: true,
             minDate: new Date(2016, 10 - 1, 25),
             //singleDatePicker: true,
@@ -55,86 +55,86 @@ jQuery(document).ready(function($) {
         });
 
 
-    var table;
-    var tableFilter;
-    //Custom Filter
-    $("#form-filter").validate({
-        rules: {
-            filter: {
-                required: true
-            },
-            dateRange: {
-                required: true
-            },
-        },
-    });
-    $("#form-filter").submit(function(e) {
-        e.preventDefault();
-        table.ajax.reload(null, true);
-    });
+    // var table;
+    // var tableFilter;
+    // //Custom Filter
+    // $("#form-filter").validate({
+    //     rules: {
+    //         filter: {
+    //             required: true
+    //         },
+    //         dateRange: {
+    //             required: true
+    //         },
+    //     },
+    // });
+    // $("#form-filter").submit(function(e) {
+    //     e.preventDefault();
+    //     table.ajax.reload(null, true);
+    // });
 
-    $(document).on("change", 'select[name=filterselcted]', function() {
-        var filter_val = $(this).val();
-        $("#filter_val").val(filter_val);
-        console.log(filter_val);
-    });
+    // $(document).on("change", 'select[name=filterselcted]', function() {
+    //     var filter_val = $(this).val();
+    //     $("#filter_val").val(filter_val);
+    //     console.log(filter_val);
+    // });
 
-    //Get all itineraries by agent 
-    $(document).on("change", '#sales_user_id', function() {
-        table.ajax.reload(null, true);
-    });
+    // //Get all itineraries by agent 
+    // $(document).on("change", '#sales_user_id', function() {
+    //     table.ajax.reload(null, true);
+    // });
 
-    //On page loaddatatables
-    table = $('#customers').DataTable({
-        "aLengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, 'All']
-        ],
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
-        "createdRow": function(row, data, dataIndex) {
-            //console.log( dataIndex );
-            var iti_status = data.slice(-1)[0];
+    // //On page loaddatatables
+    // table = $('#customers').DataTable({
+    //     "aLengthMenu": [
+    //         [10, 25, 50, 100, -1],
+    //         [10, 25, 50, 100, 'All']
+    //     ],
+    //     "processing": true, //Feature control the processing indicator.
+    //     "serverSide": true, //Feature control DataTables' server-side processing mode.
+    //     "order": [], //Initial no order.
+    //     "createdRow": function(row, data, dataIndex) {
+    //         //console.log( dataIndex );
+    //         var iti_status = data.slice(-1)[0];
 
-            if (iti_status == 'NOT PROCESS')
-                $(row).addClass('yellow_row');
-            else if (iti_status == 'APPROVED')
-                $(row).addClass('green_row');
-            else if (iti_status == 'DECLINED')
-                $(row).addClass('red_row');
-            if (iti_status == 'ON HOLD')
-                $(row).addClass('hold_row');
-        },
-        language: {
-            search: "<strong>Search By Lead/ITI ID:</strong>",
-            searchPlaceholder: "Search..."
-        },
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('customers/ajax_customers_list')?>",
-            "type": "POST",
-            "data": function(data) {
+    //         if (iti_status == 'NOT PROCESS')
+    //             $(row).addClass('yellow_row');
+    //         else if (iti_status == 'APPROVED')
+    //             $(row).addClass('green_row');
+    //         else if (iti_status == 'DECLINED')
+    //             $(row).addClass('red_row');
+    //         if (iti_status == 'ON HOLD')
+    //             $(row).addClass('hold_row');
+    //     },
+    //     language: {
+    //         search: "<strong>Search By Lead/ITI ID:</strong>",
+    //         searchPlaceholder: "Search..."
+    //     },
+    //     // Load data for the table's content from an Ajax source
+    //     "ajax": {
+    //         "url": "<?php echo site_url('customers/ajax_customers_list')?>",
+    //         "type": "POST",
+    //         "data": function(data) {
 
-                data.filter = $("#filter_val").val();
-                data.from = $("#date_from").attr("data-date_from");
-                data.end = $("#date_to").attr("data-date_to");
-                data.todayStatus = $("#todayStatus").val();
-                data.quotation = $("#quotation").val();
-                data.agent_id = $("#sales_user_id").val();
-                data.iti_type = $("#iti_type").val();
-            },
-            beforeSend: function() {
-                console.log("sending....");
-            }
-        },
-        //Set column definition initialisation properties.
-        "columnDefs": [{
-            "targets": [0], //first column / numbering column
-            "orderable": false, //set not orderable
-        }, ],
+    //             data.filter = $("#filter_val").val();
+    //             data.from = $("#date_from").attr("data-date_from");
+    //             data.end = $("#date_to").attr("data-date_to");
+    //             data.todayStatus = $("#todayStatus").val();
+    //             data.quotation = $("#quotation").val();
+    //             data.agent_id = $("#sales_user_id").val();
+    //             data.iti_type = $("#iti_type").val();
+    //         },
+    //         beforeSend: function() {
+    //             console.log("sending....");
+    //         }
+    //     },
+    //     //Set column definition initialisation properties.
+    //     "columnDefs": [{
+    //         "targets": [0], //first column / numbering column
+    //         "orderable": false, //set not orderable
+    //     }, ],
 
-    });
+    // });
 
     var ajaxReq;
     var resp = $("#pack_response");
@@ -321,6 +321,10 @@ jQuery(document).ready(function($) {
     });
 
     /*****************************************/
+    $(".customer_name_text").text(function() {
+        return $(this).text().length > 75 ? $(this).text().substr(0, 75) + '...' : $(this).text();
+    });
+
     $(".email_text").text(function() {
         return $(this).text().length > 75 ? $(this).text().substr(0, 75) + '...' : $(this).text();
     });

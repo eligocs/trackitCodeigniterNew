@@ -44,6 +44,9 @@
       <link href="<?php echo base_url();?>site/assets/css/track-scratch.css" rel="stylesheet" type="text/css" /> 
       <link href="<?php echo base_url();?>site/assets/css/new-custom.css" rel="stylesheet" type="text/css" /> 
 
+    <!-- Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
    </head>
    <!-- END HEAD -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white <?php echo $theme_css; ?>">

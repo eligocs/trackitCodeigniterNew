@@ -1291,3 +1291,11 @@ ul.attachments {
     color: #f7fdff;
     text-decoration: none;
 }
+
+
+
+.datepicker td,th{
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+}

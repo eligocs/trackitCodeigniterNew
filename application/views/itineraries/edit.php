@@ -95,6 +95,55 @@
             <div class="portlet light bordered" id="form_wizard_1">
                 <div class="portlet-body form">
                     <form id="itiForm_Frm">
+                        <!-- Begin add_requirements -->
+                        <div class="col-md-12 my-2 required_set">
+                            <label class="control-label d-block" for="">
+                                <strong>Requirements</strong>
+                                <sup class="text-danger">*</sup>
+                            </label>
+                            <div class="add_requirements">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input add_requirements_hotel"
+                                        name="requirements_meta[requirements_hotel]" type="checkbox" value="hotel"
+                                        id="hotel">
+                                    <label class="control-label ms-2" for="hotel">
+                                        <i class="fa-solid fa-hotel"></i> Hotel
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input add_requirements_cab"
+                                        name="requirements_meta[requirements_cab]" type="checkbox" value="cab" id="cab">
+                                    <label class="control-label ms-2" for="cab">
+                                        <i class="fa-solid fa-taxi"></i> Cab
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input add_requirements_check"
+                                        name="requirements_meta[requirements_train]" type="checkbox" value="train"
+                                        id="train">
+                                    <label class="control-label ms-2" for="train">
+                                        <i class="fa-solid fa-train"></i> Train
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input add_requirements_check"
+                                        name="requirements_meta[requirements_flight]" type="checkbox" value="flight"
+                                        id="flight">
+                                    <label class="control-label ms-2" for="flight">
+                                        <i class="fa-solid fa-plane-departure"></i> Flight
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input add_requirements_check"
+                                        name="requirements_meta[requirements_volvo]" type="checkbox" value="flight"
+                                        id="flight">
+                                    <label class="control-label ms-2" for="flight">
+                                        <i class="fa-solid fa-bus-simple"></i> Bus/Volvo
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End add_requirements -->
                         <div class="form-horizontal over" id="itiForm_form">
                             <h3 class="package-details-heading m-0 mb-2 package-details-heading position-static">Package
                                 details</h3>
@@ -177,74 +226,6 @@
                                     </tr>
                                 </table>
                             </div>
-                            <!-- <section class="well bg_white overflow_visible section_customer_details row">
-                        <label class="col-md-2 border_right_none">Customer Name:</label>
-                        <div class="col-md-2 border_right_none">
-                           <strong><?php if (isset($cust->customer_name)) {
-                              echo $cust->customer_name;
-                              } ?></strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Contact:</label>
-                        <div class="col-md-2 border_right_none">
-                           <strong><?php if (isset($cust->customer_contact)) {
-                              echo $cust->customer_contact;
-                              } ?></strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Customer Email:</label>
-                        <div class="col-md-2">
-                           <strong><?php if (isset($cust->customer_email)) {
-                              echo $cust->customer_email;
-                              } ?>
-                           </strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Travel Date:</label>
-                        <div class="col-md-2 border_right_none">
-                           <strong>
-                              <?php if (isset($cust->travel_date)) {
-                              echo $cust->travel_date;
-                              } ?>
-                           </strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Package Type:</label>
-                        <?php
-                           $pkBy =    $cust->package_type;
-                           $pack_T = $pkBy == "Other" ? $cust->package_type_other : $pkBy;
-                        ?>
-                        <div class="col-md-6 col-lg-2 border_right_none">
-                           <strong><?php echo $pack_T; ?></strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Destination:</label>
-                        <div class="col-md-2">
-                           <strong><?php if (isset($cust->destination)) {
-                              echo $cust->destination;
-                              } ?> </strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Meal Plan:</label>
-                        <div class="col-md-2 border_right_none">
-                           <strong><?php if (isset($cust->meal_plan)) {
-                              echo $cust->meal_plan;
-                              } ?></strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Hotel Category:</label>
-                        <div class="col-md-2 border_right_none">
-                           <strong><?php if (isset($cust->hotel_category)) {
-                              echo $cust->hotel_category;
-                              } ?></strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Budget Approx:</label>
-                        <div class="col-md-2">
-                           <strong><?php if (isset($cust->budget)) {
-                              echo $cust->budget;
-                              } ?> </strong>
-                        </div>
-                        <label class="col-md-2 border_right_none">Total Travellers:</label>
-                        <div class="col-md-2">
-                           <strong>Adults: 
-                              <?php if (isset($cust->adults)) { echo $cust->adults; } ?>
-                              </strong>
-                           <strong><?php if (isset($cust->child)) { echo "Child: " . $cust->child . "( " . $cust->child_age . " )"; } ?></strong>
-                        </div>
-                     </section> -->
 
                             <?php } ?>
                             <!--end Section Customer Section-->
@@ -321,21 +302,28 @@
                                                         <label class="control-label">Routing
                                                             <span class="required"> * </span>
                                                         </label>
-                                                        <input type="text" value="<?php if (isset($iti->package_routing)) { echo $iti->package_routing; } ?>" class="form-control" name="package_routing" placeholder="Enter Package Routing." />
+                                                        <input type="text"
+                                                            value="<?php if (isset($iti->package_routing)) { echo $iti->package_routing; } ?>"
+                                                            class="form-control" name="package_routing"
+                                                            placeholder="Enter Package Routing." />
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-md-6 my-2">
                                                     <div class="form-group">
                                                         <label class="control-label">Duration <span class="required"> *
                                                             </span> </label>
-                                                        <input type="text" class="form-control" id="package_duration" name="package_duration" placeholder="Enter Package Duration eg. 3 Nights and 4 days." value="<?php if (isset($iti->duration)) { echo $iti->duration; } ?>" />
+                                                        <input type="text" class="form-control" id="package_duration"
+                                                            name="package_duration"
+                                                            placeholder="Enter Package Duration eg. 3 Nights and 4 days."
+                                                            value="<?php if (isset($iti->duration)) { echo $iti->duration; } ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-md-6 my-2">
                                                     <div class="form-group">
                                                         <label class="control-label">Cab <span class="required"> *
                                                             </span> </label>
-                                                        <select required name="cab_category" class="form-control form-select">
+                                                        <select required name="cab_category"
+                                                            class="form-control form-select">
                                                             <option value="">Choose Car Category</option>
                                                             <?php $cars = get_car_categories(); if ($cars) { foreach ($cars as $car) { ?>
                                                             <option <?php if ($iti->cab_category == $car->id) { ?>
@@ -367,7 +355,8 @@
                                                         <label class="control-label">Package Type <span
                                                                 class="required"> * </span> </label>
                                                         <!-- <input type="text"  value="<?= $cust->package_type ?>" readonly class="form-control"> -->
-                                                        <select required name="iti_package_type" class="form-control form-select">
+                                                        <select required name="iti_package_type"
+                                                            class="form-control form-select">
                                                             <option value="">Choose Package Type</option>
                                                             <option
                                                                 <?php echo isset($iti->iti_package_type) && $iti->iti_package_type == 'Honeymoon Package' ? 'selected' : isset($cust->package_type) && $cust->package_type == 'Honeymoon Package' ? 'selected' : ''?>
@@ -404,11 +393,13 @@
                                                                     value="<?php if (isset($iti->child)) { echo $iti->child; } ?>"
                                                                     placeholder="Total child" />
                                                             </div>
+
                                                             <div class="col-md-4">
-                                                                <label for="" class="control-label">Child Age</label>
-                                                                <input type="text" class="form-control" name="child_age"
-                                                                    value="<?php if (isset($iti->child_age)) { echo $iti->child_age; } ?>"
-                                                                    placeholder="child age: eg. 12,15,18." />
+                                                                <label for="" class="control-label">Infant</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="Infainfantt"
+                                                                    value="<?php if (isset($iti->infant)) { echo $iti->infant; } ?>"
+                                                                    placeholder="Infant" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -430,9 +421,13 @@
                                                             <div class="col-md-6 mb-3 mb-md-0">
                                                                 <label class="control-label">Room Category <span
                                                                         class="required"> * </span> </label>
-                                                                <select title="Select Room Category" required name="rooms_meta[room_category]" class="form-control form-select">
+                                                                <select title="Select Room Category" required
+                                                                    name="rooms_meta[room_category]"
+                                                                    class="form-control form-select">
                                                                     <option value="">Select Room Category</option>
-                                                                    <option value="00" <?php if ($room_category == "00") { echo "selected='selected'"; } ?>> 0 </option>
+                                                                    <option value="00"
+                                                                        <?php if ($room_category == "00") { echo "selected='selected'"; } ?>>
+                                                                        0 </option>
                                                                     <?php $room_cats = get_room_categories();
                                                                         if ($room_cats) {
                                                                             foreach ($room_cats as $cat) {
@@ -451,7 +446,7 @@
                                                                 <label class="control-label">No. of Rooms </label>
                                                                 <input type="number" value="<?= $cust->total_rooms ?>"
                                                                     redonly class="form-control">
-                                                                                    <!-- <select title="Select Total Rooms" required
+                                                                <!-- <select title="Select Total Rooms" required
                                                                     name="rooms_meta[total_rooms]" class="form-control form-select">
                                                                     <option value="">No. of Rooms</option>
                                                                     <option value="00" <?php if ($total_rooms == "00") {
@@ -477,14 +472,16 @@
                                                             bed</label>
                                                         <div class="row">
                                                             <div class="col-md-6 mb-3 mb-md-0">
-                                                                <select title="Select with extra bed" name="rooms_meta[with_extra_bed]" class="form-control form-select">
+                                                                <select title="Select with extra bed"
+                                                                    name="rooms_meta[with_extra_bed]"
+                                                                    class="form-control form-select">
                                                                     <option value="">Select Extra Bed</option>
                                                                     <option value="00" <?php if ($with_extra_bed == "00") {
                                                                         echo "selected='selected'";
                                                                         } ?>>
-                                                                                            0
-                                                                                        </option>
-                                                                                        <?php
+                                                                        0
+                                                                    </option>
+                                                                    <?php
                                                                         for ($eb = 1; $eb <= 60; $eb++) {
                                                                             $sele_wr = $with_extra_bed == $eb ? "selected='selected'" : "";
                                                                             echo '<option ' . $sele_wr . ' value = "' . $eb . '" >' . $eb . '</option>';
@@ -518,27 +515,50 @@
                                             <hr class="my-4">
                                             <!-- Begin flight and train accordion -->
                                             <div class="accordion" id="accordionExample">
+                                                <?php
+                                                $requirements_meta = !empty($iti->requirements_meta) ? unserialize($iti->requirements_meta) : '' ; 
+                                                if(!empty($requirements_meta['requirements_flight']) && isset($requirements_meta['requirements_flight'])){
+                                                
+                                                ?>
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        <i class="fa-solid fa-plane-departure me-2"></i> Flight Details
-                                                    </button>
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <i class="fa-solid fa-plane-departure me-2"></i> Flight
+                                                            Details
+                                                        </button>
                                                     </h2>
-                                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                         <div class="accordion-body">
-                                                        <!-- Begin Flight Section-->
+                                                            <!-- Begin Flight Section-->
                                                             <?php $flight = !empty($flight_details[0]) ? $flight_details[0] : ''; ?>
-                                                            <section class="overflow_visible bg_white position_relative mt-5 px-3 pb-3 border details-package" id="flight_section" <?php if (isset($iti->is_flight) && $iti->is_flight  == 1) { echo "style='display: block;'"; } ?>>
+                                                            <section
+                                                                class="overflow_visible bg_white position_relative mt-5 px-3 pb-3 border details-package"
+                                                                id="flight_section"
+                                                                <?php if (isset($iti->is_flight) && $iti->is_flight  == 1) { echo "style='display: block;'"; } ?>>
                                                                 <div>
                                                                     <h4 class="custom_title">Flight Details</h4>
                                                                 </div>
                                                                 <div class="text-center form_ft_btns mb-4">
-                                                                    <div class="btn-group flight_train_btns" data-toggle="buttons"> 
-                                                                        <label class="mx-2 btn btn-default  custom_active <?php if (isset($flight->trip_type) && $flight->trip_type  == "oneway" || empty($flight)) { echo "active"; } ?> ">
-                                                                            <input <?php if (isset($flight->trip_type) && $flight->trip_type  == "oneway" || empty($flight)) { echo "checked"; } ?> type="radio" name="trip_r" class="trip_r" value="oneway" required />One Way
+                                                                    <div class="btn-group flight_train_btns"
+                                                                        data-toggle="buttons">
+                                                                        <label
+                                                                            class="mx-2 btn btn-default  custom_active <?php if (isset($flight->trip_type) && $flight->trip_type  == "oneway" || empty($flight)) { echo "active"; } ?> ">
+                                                                            <input
+                                                                                <?php if (isset($flight->trip_type) && $flight->trip_type  == "oneway" || empty($flight)) { echo "checked"; } ?>
+                                                                                type="radio" name="trip_r"
+                                                                                class="trip_r" value="oneway"
+                                                                                required />One Way
                                                                         </label>
-                                                                        <label class="mx-2 btn btn-default  custom_active <?php if (isset($flight->trip_type) && $flight->trip_type  == "round") { echo "active"; } ?>">
-                                                                            <input <?php if (isset($flight->trip_type) && $flight->trip_type  == "round") { echo "checked"; } ?> required type="radio" name="trip_r" class="trip_r" value="round" />Round Trip
+                                                                        <label
+                                                                            class="mx-2 btn btn-default  custom_active <?php if (isset($flight->trip_type) && $flight->trip_type  == "round") { echo "active"; } ?>">
+                                                                            <input
+                                                                                <?php if (isset($flight->trip_type) && $flight->trip_type  == "round") { echo "checked"; } ?>
+                                                                                required type="radio" name="trip_r"
+                                                                                class="trip_r" value="round" />Round
+                                                                            Trip
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -546,51 +566,69 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12 col-lg-6">
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Flight Name <sup class="text-danger">*</sup> 
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Flight Name <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($flight->flight_name)) { echo $flight->flight_name; } ?>" name="flight_name" placeholder="Jet Airways,SpiceJet etc" />
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($flight->flight_name)) { echo $flight->flight_name; } ?>"
+                                                                                    name="flight_name"
+                                                                                    placeholder="Jet Airways,SpiceJet etc" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                No. of Passengers <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                No. of Passengers <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control"
+                                                                                <input required
+                                                                                    class="input-group form-control"
                                                                                     size="16" type="text"
                                                                                     value="<?php if (isset($flight->total_passengers)) { echo $flight->total_passengers; } ?>"
                                                                                     name="passengers" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Departure City <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Departure City <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control"
-                                                                                    placeholder="Mumbai,Shimla etc" size="16"
-                                                                                    type="text"
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    placeholder="Mumbai,Shimla etc"
+                                                                                    size="16" type="text"
                                                                                     value="<?php if (isset($flight->dep_city)) { echo $flight->dep_city; } ?>"
                                                                                     name="dep_city" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Arrival city <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Arrival city <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control"
-                                                                                    placeholder="Mumbai,Shimla etc" size="16"
-                                                                                    type="text"
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    placeholder="Mumbai,Shimla etc"
+                                                                                    size="16" type="text"
                                                                                     value="<?php if (isset($flight->arr_city)) { echo $flight->arr_city; } ?>"
                                                                                     name="arr_city" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Departure Date & Time  <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Departure Date & Time <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
                                                                                 <input required readonly
@@ -601,35 +639,55 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Arrival Date & Time <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Arrival Date & Time <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required readonly class="input-group form-control flight_dateTime" size="16" type="text" value="<?php if (isset($flight->arr_time)) { echo $flight->arr_time; } ?>" name="arr_time" />
+                                                                                <input required readonly
+                                                                                    class="input-group form-control flight_dateTime"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($flight->arr_time)) { echo $flight->arr_time; } ?>"
+                                                                                    name="arr_time" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
                                                                                 Class <sup class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <select required name="f_class" class="form-control form-select">
-                                                                                    <option value="">Choose Class</option>
-                                                                                    <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Economy") { echo "selected"; } ?> value="Economy">Economy</option>
-                                                                                    <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Premium Economy") { echo "selected"; } ?> value="Premium Economy">Premium Economy </option>
-                                                                                    <option <?php if (isset($flight->flight_class) && $flight->flight_class  == "Business") { echo "selected"; } ?> value="Business">Business</option>
+                                                                                <select required name="f_class"
+                                                                                    class="form-control form-select">
+                                                                                    <option value="">Choose Class
+                                                                                    </option>
+                                                                                    <option
+                                                                                        <?php if (isset($flight->flight_class) && $flight->flight_class  == "Economy") { echo "selected"; } ?>
+                                                                                        value="Economy">Economy</option>
+                                                                                    <option
+                                                                                        <?php if (isset($flight->flight_class) && $flight->flight_class  == "Premium Economy") { echo "selected"; } ?>
+                                                                                        value="Premium Economy">Premium
+                                                                                        Economy </option>
+                                                                                    <option
+                                                                                        <?php if (isset($flight->flight_class) && $flight->flight_class  == "Business") { echo "selected"; } ?>
+                                                                                        value="Business">Business
+                                                                                    </option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12 col-lg-6">
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
                                                                                 Price <sup class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control"
-                                                                                    size="16" placeholder="10000 etc." type="number"
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    size="16" placeholder="10000 etc."
+                                                                                    type="number"
                                                                                     value="<?php if (isset($flight->flight_price)) { echo $flight->flight_price; } ?>"
                                                                                     name="flight_cost" />
                                                                             </div>
@@ -637,19 +695,28 @@
                                                                         <div class="form-group mb-4 return_flight_name"
                                                                             style="<?php if (isset ($flight->return_flight_name)) { ?> display:block <?php } ?>">
                                                                             <div class="row">
-                                                                                <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                    Return Flight Name <sup class="text-danger">*</sup>
+                                                                                <label
+                                                                                    class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                    Return Flight Name <sup
+                                                                                        class="text-danger">*</sup>
                                                                                 </label>
                                                                                 <div class="col-md-8 col-sm-8">
-                                                                                    <input class="input-group form-control" type="text" id="return_f_name" value="<?php if (isset($flight->return_flight_name)) {  echo $flight->return_flight_name; } ?>" name="return_flight_name" placeholder="Jet Airways,SpiceJet etc" />
+                                                                                    <input
+                                                                                        class="input-group form-control"
+                                                                                        type="text" id="return_f_name"
+                                                                                        value="<?php if (isset($flight->return_flight_name)) {  echo $flight->return_flight_name; } ?>"
+                                                                                        name="return_flight_name"
+                                                                                        placeholder="Jet Airways,SpiceJet etc" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group mb-4 f_h_return_date"
                                                                             style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
                                                                             <div class="row">
-                                                                                <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                    Return Date & Time <sup class="text-danger">*</sup>
+                                                                                <label
+                                                                                    class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                    Return Date & Time <sup
+                                                                                        class="text-danger">*</sup>
                                                                                 </label>
                                                                                 <div class="col-md-8 col-sm-8">
                                                                                     <!--<input readonly-->
@@ -659,16 +726,22 @@
                                                                                     <!--    size="16" type="text"-->
                                                                                     <!--    value="<?php if (isset($flight->return_date)) { echo $flight->return_date; } ?>"-->
                                                                                     <!--    name="return_date" id="return_date" />-->
-                                                                                    <input class="input-group form-control flight_dateTime" size="16" type="text" value="<?php if (isset($flight->return_date)) { echo $flight->return_date; } ?>" name="return_date" id="return_date" />
+                                                                                    <input
+                                                                                        class="input-group form-control flight_dateTime"
+                                                                                        size="16" type="text"
+                                                                                        value="<?php if (isset($flight->return_date)) { echo $flight->return_date; } ?>"
+                                                                                        name="return_date"
+                                                                                        id="return_date" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group mb-4 f_h_return_arr_date"
                                                                             style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
                                                                             <div class="row">
-                                                                                <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                    Return Arrival Date & Time 
-                                                                                    <sup class="text-danger">*</sup> 
+                                                                                <label
+                                                                                    class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                    Return Arrival Date & Time
+                                                                                    <sup class="text-danger">*</sup>
                                                                                 </label>
                                                                                 <div class="col-md-8 col-sm-8">
                                                                                     <input <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
@@ -676,7 +749,8 @@
                                                                                     } ?> class="input-group form-control flight_dateTime
                                                                                     size=" 16" type="text" value="<?php if (isset($flight->return_arr_date)) {
                                                                                     echo $flight->return_arr_date;
-                                                                                    } ?>" name="return_arr_date" id="return_arr_date" />
+                                                                                    } ?>" name="return_arr_date"
+                                                                                        id="return_arr_date" />
                                                                                     <!--<input readonly-->
                                                                                     <!--    <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
                                                                                     echo "disabled";
@@ -693,11 +767,13 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Other Details 
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Other Details
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <textarea required class="input-group form-control"
+                                                                                <textarea required
+                                                                                    class="input-group form-control"
                                                                                     name="flight_other_details"><?php if (isset($flight->flight_other_details)) { echo $flight->flight_other_details; } ?></textarea>
                                                                             </div>
                                                                         </div>
@@ -709,29 +785,49 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php
+                                                }
+                                                if(!empty($requirements_meta['requirements_train']) && isset($requirements_meta['requirements_train'])){
+                                                    ?>
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <i class="fa-solid fa-train-subway"></i> Train Details
-                                                    </button>
+                                                        <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                            aria-expanded="false" aria-controls="collapseTwo">
+                                                            <i class="fa-solid fa-train-subway"></i> Train Details
+                                                        </button>
                                                     </h2>
-                                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                         <div class="accordion-body">
 
                                                             <!-- Begin Train Section-->
                                                             <?php $train =  !empty($train_details[0]) ?  $train_details[0] : ''; ?>
-                                                            <section class="px-3 pb-3 border bg_white details-package position_relative mt-5 overflow_visible" id="train_section" <?php if (isset($iti->is_train) && $iti->is_train  == 1) { echo "style='display: block;'"; } ?>>
+                                                            <section
+                                                                class="px-3 pb-3 border bg_white details-package position_relative mt-5 overflow_visible"
+                                                                id="train_section"
+                                                                <?php if (isset($iti->is_train) && $iti->is_train  == 1) { echo "style='display: block;'"; } ?>>
                                                                 <div>
                                                                     <h4 class="custom_title">Train Details</h4>
                                                                 </div>
                                                                 <div class="text-center form_ft_btns mb-4">
                                                                     <div class="btn-group flight_train_btns"
                                                                         data-toggle="buttons">
-                                                                        <label class="mx-2 btn btn-default custom_active <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "oneway" || empty($train)) { echo "active"; } ?> "> 
-                                                                            <input <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "oneway" || empty($train)) { echo "checked"; } ?> type="radio" name="t_trip_r" class="t_trip_r" value="oneway" required />One Way
+                                                                        <label
+                                                                            class="mx-2 btn btn-default custom_active <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "oneway" || empty($train)) { echo "active"; } ?> ">
+                                                                            <input
+                                                                                <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "oneway" || empty($train)) { echo "checked"; } ?>
+                                                                                type="radio" name="t_trip_r"
+                                                                                class="t_trip_r" value="oneway"
+                                                                                required />One Way
                                                                         </label>
-                                                                        <label class="mx-2 btn btn-default  custom_active <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "round") { echo "active"; } ?>">
-                                                                            <input <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "round") { echo "checked"; } ?> required type="radio" name="t_trip_r" class="t_trip_r" value="round" />Round Trip
+                                                                        <label
+                                                                            class="mx-2 btn btn-default  custom_active <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "round") { echo "active"; } ?>">
+                                                                            <input
+                                                                                <?php if (isset($train->t_trip_type) && $train->t_trip_type  == "round") { echo "checked"; } ?>
+                                                                                required type="radio" name="t_trip_r"
+                                                                                class="t_trip_r" value="round" />Round
+                                                                            Trip
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -739,125 +835,214 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12 col-lg-6">
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Train Name <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Train Name <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($train->train_name)) { echo $train->train_name; } ?>" name="train_name" placeholder="Adi Duronto Express, Arunachal Express etc" />
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($train->train_name)) { echo $train->train_name; } ?>"
+                                                                                    name="train_name"
+                                                                                    placeholder="Adi Duronto Express, Arunachal Express etc" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Train Number <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Train Number <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($train->train_number)) { echo $train->train_number; } ?>" name="train_number" placeholder="11050, 11052 etc" />
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($train->train_number)) { echo $train->train_number; } ?>"
+                                                                                    name="train_number"
+                                                                                    placeholder="11050, 11052 etc" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                No. of Passengers <sup class="text-danger">*</sup> 
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                No. of Passengers <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control" size="16" type="text" value="<?php if (isset($train->t_passengers)) { echo $train->t_passengers; } ?>" name="t_passengers" />
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($train->t_passengers)) { echo $train->t_passengers; } ?>"
+                                                                                    name="t_passengers" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Departure City <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Departure City <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control" placeholder="Mumbai,Shimla etc" size="16" type="text" value="<?php if (isset($train->t_dep_city)) { echo $train->t_dep_city; } ?>" name="t_dep_city" />
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    placeholder="Mumbai,Shimla etc"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($train->t_dep_city)) { echo $train->t_dep_city; } ?>"
+                                                                                    name="t_dep_city" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Arrival city <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Arrival city <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control" placeholder="Mumbai,Shimla etc" size="16" type="text" value="<?php if (isset($train->t_arr_city)) { echo $train->t_arr_city; } ?>" name="t_arr_city" />
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    placeholder="Mumbai,Shimla etc"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($train->t_arr_city)) { echo $train->t_arr_city; } ?>"
+                                                                                    name="t_arr_city" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Departure Date & Time <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Departure Date & Time <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required readonly class="input-group form-control train_dateTime" size="16" type="text" value="<?php if (isset($train->t_dep_date)) { echo $train->t_dep_date; } ?>" name="t_dep_date" />
+                                                                                <input required readonly
+                                                                                    class="input-group form-control train_dateTime"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($train->t_dep_date)) { echo $train->t_dep_date; } ?>"
+                                                                                    name="t_dep_date" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                Arrival Time & Time <sup class="text-danger">*</sup>
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                Arrival Time & Time <sup
+                                                                                    class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required readonly class="input-group form-control train_dateTime" size="16" type="text" value="<?php if (isset($train->t_arr_time)) { echo $train->t_arr_time; } ?>" name="t_arr_time" />
+                                                                                <input required readonly
+                                                                                    class="input-group form-control train_dateTime"
+                                                                                    size="16" type="text"
+                                                                                    value="<?php if (isset($train->t_arr_time)) { echo $train->t_arr_time; } ?>"
+                                                                                    name="t_arr_time" />
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12 col-lg-6">
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
                                                                                 Class <sup class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <select required name="t_class" class="form-control form-select">
-                                                                                    <option value="">Choose Class</option>
-                                                                                    <option <?php if (isset($train->train_class) && $train->train_class  == "1AC") { echo "selected"; } ?> value="1AC">1AC</option>
-                                                                                    <option <?php if (isset($train->train_class) && $train->train_class  == "2AC") { echo "selected"; } ?> value="2AC">2AC</option>
-                                                                                    <option <?php if (isset($train->train_class) && $train->train_class  == "3AC") { echo "selected"; } ?> value="3AC">3AC</option>
-                                                                                    <option <?php if (isset($train->train_class) && $train->train_class  == "Sleeper class") { echo "selected"; } ?> value="Sleeper class">Sleeper class </option>
+                                                                                <select required name="t_class"
+                                                                                    class="form-control form-select">
+                                                                                    <option value="">Choose Class
+                                                                                    </option>
+                                                                                    <option
+                                                                                        <?php if (isset($train->train_class) && $train->train_class  == "1AC") { echo "selected"; } ?>
+                                                                                        value="1AC">1AC</option>
+                                                                                    <option
+                                                                                        <?php if (isset($train->train_class) && $train->train_class  == "2AC") { echo "selected"; } ?>
+                                                                                        value="2AC">2AC</option>
+                                                                                    <option
+                                                                                        <?php if (isset($train->train_class) && $train->train_class  == "3AC") { echo "selected"; } ?>
+                                                                                        value="3AC">3AC</option>
+                                                                                    <option
+                                                                                        <?php if (isset($train->train_class) && $train->train_class  == "Sleeper class") { echo "selected"; } ?>
+                                                                                        value="Sleeper class">Sleeper
+                                                                                        class </option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
                                                                                 Price <sup class="text-danger">*</sup>
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <input required class="input-group form-control" size="16" placeholder="10000 etc." type="number" value="<?php if (isset($train->t_cost)) { echo $train->t_cost; } ?>" name="t_cost" />
+                                                                                <input required
+                                                                                    class="input-group form-control"
+                                                                                    size="16" placeholder="10000 etc."
+                                                                                    type="number"
+                                                                                    value="<?php if (isset($train->t_cost)) { echo $train->t_cost; } ?>"
+                                                                                    name="t_cost" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group mb-4 return return_train_name"
                                                                             style="<?php if (isset($train->return_train_name)) { ?> display:block <?php } ?>">
                                                                             <div class="row">
-                                                                                <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                    Return Train Name <sup class="text-danger">*</sup>
+                                                                                <label
+                                                                                    class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                    Return Train Name <sup
+                                                                                        class="text-danger">*</sup>
                                                                                 </label>
                                                                                 <div class="col-md-8 col-sm-8">
-                                                                                    <input class="input-group form-control" size="16" type="text" id="return_t_name" value="<?php if (isset($train->return_train_name)) { echo $train->return_train_name; } ?>" name="return_train_name" placeholder="Adi Duronto Express, Arunachal Express etc" />
+                                                                                    <input
+                                                                                        class="input-group form-control"
+                                                                                        size="16" type="text"
+                                                                                        id="return_t_name"
+                                                                                        value="<?php if (isset($train->return_train_name)) { echo $train->return_train_name; } ?>"
+                                                                                        name="return_train_name"
+                                                                                        placeholder="Adi Duronto Express, Arunachal Express etc" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group mb-4 t_return_date"
                                                                             style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
                                                                             <div class="row">
-                                                                                <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                    Return Date & Time <sup class="text-danger">*</sup>
+                                                                                <label
+                                                                                    class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                    Return Date & Time <sup
+                                                                                        class="text-danger">*</sup>
                                                                                 </label>
                                                                                 <div class="col-md-8 col-sm-8">
-                                                                                    <input <?php if (isset($train->t_return_date) && empty($train->t_return_date)) { echo "disabled"; } ?> class="input-group form-control train_dateTime" size="16" type="text" value="<?php if (isset($train->t_return_date)) { echo $train->t_return_date; } ?>" name="t_return_date" id="t_return_date" />
+                                                                                    <input
+                                                                                        <?php if (isset($train->t_return_date) && empty($train->t_return_date)) { echo "disabled"; } ?>
+                                                                                        class="input-group form-control train_dateTime"
+                                                                                        size="16" type="text"
+                                                                                        value="<?php if (isset($train->t_return_date)) { echo $train->t_return_date; } ?>"
+                                                                                        name="t_return_date"
+                                                                                        id="t_return_date" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class=" form-group mb-4 t_return_arr_date"
                                                                             style="<?php if (isset($flight->return_date)) { ?> display:block <?php } ?>">
                                                                             <div class="row">
-                                                                                <label class="control-label col-md-4 col-sm-4 text-sm-end">
-                                                                                    Return Arrival Date & Time 
+                                                                                <label
+                                                                                    class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                                    Return Arrival Date & Time
                                                                                     <sup class="text-danger">*</sup>
                                                                                 </label>
                                                                                 <div class="col-md-8 col-sm-8">
-                                                                                    <input <?php if (isset($train->t_return_arr_date) && empty($train->t_return_arr_date)) { echo "disabled"; } ?> class="input-group form-control train_dateTime" size="16" type="text" value="<?php if (isset($train->t_return_arr_date)) { echo $train->t_return_arr_date; } ?>" name="t_return_arr_date" id="t_return_arr_date" />
+                                                                                    <input
+                                                                                        <?php if (isset($train->t_return_arr_date) && empty($train->t_return_arr_date)) { echo "disabled"; } ?>
+                                                                                        class="input-group form-control train_dateTime"
+                                                                                        size="16" type="text"
+                                                                                        value="<?php if (isset($train->t_return_arr_date)) { echo $train->t_return_arr_date; } ?>"
+                                                                                        name="t_return_arr_date"
+                                                                                        id="t_return_arr_date" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group mb-4">
-                                                                            <label class="control-label col-md-4 col-sm-4 text-sm-end">
+                                                                            <label
+                                                                                class="control-label col-md-4 col-sm-4 text-sm-end">
                                                                                 Other Details
                                                                             </label>
                                                                             <div class="col-md-8 col-sm-8">
-                                                                                <textarea required class="input-group form-control"
+                                                                                <textarea required
+                                                                                    class="input-group form-control"
                                                                                     name="train_other_details" />
                                                                                 <?php if (isset($train->train_other_details)) { echo $train->train_other_details; } ?>
                                                                                 </textarea>
@@ -871,9 +1056,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?Php
+                                                }
+                                                    ?>
                                             </div>
                                             <!-- End flight and train accordion -->
-                                                    
+
 
                                             <!-- Begin flight and train booking section -->
                                             <!-- <div class="row mt-5">
@@ -1039,14 +1227,14 @@
                                                                     echo $flight->return_arr_date;
                                                                     } ?>" name="return_arr_date" id="return_arr_date" />
                                                                     <!--<input readonly-->
-                                                                    <!--    <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
+                                            <!--    <?php if (isset($flight->return_arr_date) && empty($flight->return_arr_date)) {
                                                                     echo "disabled";
                                                                     } ?>-->
-                                                                    <!--    class="input-group form-control <?php if (isset($flight->return_arr_date) && !empty($flight->return_arr_date)) {
+                                            <!--    class="input-group form-control <?php if (isset($flight->return_arr_date) && !empty($flight->return_arr_date)) {
                                                                     echo "flight_dateTime";
                                                                     } ?>"-->
-                                                                    <!--    size="16" type="text"-->
-                                                                    <!--    value="<?php if (isset($flight->return_arr_date)) {
+                                            <!--    size="16" type="text"-->
+                                            <!--    value="<?php if (isset($flight->return_arr_date)) {
                                                                     echo $flight->return_arr_date;
                                                                     } ?>"
                                                                   
@@ -1593,7 +1781,7 @@
                                         <div class="tab-pane removeMargin" id="tab4">
                                             <h3 class="block">Hotel Details</h3>
                                             <div class="mt-repeater-hotel tour_field_repeater">
-                                              
+
                                                 <div data-repeater-list="hotel_meta">
                                                     <?php
                                                 $hotel_meta = isset($iti->hotel_meta) ? unserialize($iti->hotel_meta) : "";
@@ -1930,14 +2118,20 @@
                                                     if (!empty($hotel_note_meta)) {
                                                         $count_hotel_meta = count($hotel_note_meta);
                                                         for ($i = 0; $i < $count_hotel_meta; $i++) { ?>
-                                                    <div data-repeater-item class="mt-repeater-hotel-note-item form-group">
+                                                    <div data-repeater-item
+                                                        class="mt-repeater-hotel-note-item form-group">
                                                         <!-- jQuery Repeater Container -->
                                                         <div class="row mb-3">
-                                                            <div class="mt-repeater-hotel-note-input col-sm-12 position-relative">
+                                                            <div
+                                                                class="mt-repeater-hotel-note-input col-sm-12 position-relative">
                                                                 <div class="mt-repeater-hotel-note-input">
-                                                                    <input required type="text" name="hotel_note" class="form-control" value="<?php echo isset($hotel_note_meta[$i]["hotel_note"]) ? trim($hotel_note_meta[$i]["hotel_note"]) : ""; ?>" />
+                                                                    <input required type="text" name="hotel_note"
+                                                                        class="form-control"
+                                                                        value="<?php echo isset($hotel_note_meta[$i]["hotel_note"]) ? trim($hotel_note_meta[$i]["hotel_note"]) : ""; ?>" />
                                                                     <div class="mt-repeater-hotel-note-input">
-                                                                        <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i> </a>
+                                                                        <a href="javascript:;" data-repeater-delete
+                                                                            class="btn btn-danger mt-repeater-delete delete_repeater">
+                                                                            <i class="fa-solid fa-trash-can"></i> </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1945,18 +2139,24 @@
                                                     </div>
                                                     <?php }
                                                         } else { ?>
-                                                        <?php $count_hotel_notes =  !empty($hotel_notes) ? count($hotel_notes) : 1;
+                                                    <?php $count_hotel_notes =  !empty($hotel_notes) ? count($hotel_notes) : 1;
                                                         for ($i = 0; $i < $count_hotel_notes; $i++) { 
                                                             ?>
                                                     <div data-repeater-item
                                                         class="mt-repeater-hotel-note-item form-group">
                                                         <!-- jQuery Repeater Container -->
                                                         <div class="row mb-3">
-                                                            <div class="mt-repeater-hotel-note-input col-sm-12 position-relative">
+                                                            <div
+                                                                class="mt-repeater-hotel-note-input col-sm-12 position-relative">
                                                                 <div class="mt-repeater-hotel-note-input">
-                                                                    <input required type="text" name="hotel_note_meta[<?php echo $i; ?>][hotel_note]" class="form-control" value="<?php echo isset($hotel_notes[$i]["hotel_notes"]) ? $hotel_notes[$i]["hotel_notes"] : ""; ?>" />
+                                                                    <input required type="text"
+                                                                        name="hotel_note_meta[<?php echo $i; ?>][hotel_note]"
+                                                                        class="form-control"
+                                                                        value="<?php echo isset($hotel_notes[$i]["hotel_notes"]) ? $hotel_notes[$i]["hotel_notes"] : ""; ?>" />
                                                                     <div class="mt-repeater-hotel-note-input">
-                                                                        <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete delete_repeater"> <i class="fa-solid fa-trash-can"></i></a>
+                                                                        <a href="javascript:;" data-repeater-delete
+                                                                            class="btn btn-danger mt-repeater-delete delete_repeater">
+                                                                            <i class="fa-solid fa-trash-can"></i></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -2056,7 +2256,7 @@
                                             </span>
                                             <span>&nbsp; &nbsp; Image size not
                                                 bigger then 1 MB and size (779 X
-                                                                        740).</span>
+                                                740).</span>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -2080,7 +2280,7 @@
                             </form>
                         </div>
                     </div>
-                
+
                     <div id="imgLibrary" class="container tab-pane fade"><br>
                         <h3>Library </h3>
 
@@ -2925,33 +3125,36 @@ $('.upload-result').on('click', function(ev) {
     //         '<div class="alert alert-danger"><strong>Error! </strong>Please Select the file! </div>'
     //     );
     // } else {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: { width: 779, height: 740 }
-        }).then(function(resp) {
-            $.ajax({
-                url: "<?php echo base_url('homepage/do_upload'); ?>",
-                type: "POST",
-                data: {
-                    "pdf_img": resp,
-                    'cus_id': id
-                },
-                success: function(data) {
-                    if (data == "success") {
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: {
+            width: 779,
+            height: 740
+        }
+    }).then(function(resp) {
+        $.ajax({
+            url: "<?php echo base_url('homepage/do_upload'); ?>",
+            type: "POST",
+            data: {
+                "pdf_img": resp,
+                'cus_id': id
+            },
+            success: function(data) {
+                if (data == "success") {
 
-                    
-                    } else {
-                        
-                    }
-                },
-                error: function(e) {
-                    //console.log(e);
-                    res.html(
-                        '<div class="alert alert-danger"><strong>Error!</strong>Please Try again later! </div>'
-                    );
+
+                } else {
+
                 }
-            });
+            },
+            error: function(e) {
+                //console.log(e);
+                res.html(
+                    '<div class="alert alert-danger"><strong>Error!</strong>Please Try again later! </div>'
+                );
+            }
         });
+    });
     // }
 });
 </script>

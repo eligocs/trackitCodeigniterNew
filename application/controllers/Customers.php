@@ -31,28 +31,28 @@ class Customers extends CI_Controller {
 		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
 		
 
-		//get filter parameters
-		if( isset( $_GET["leadfrom"] ) && isset( $_GET["leadto"]   ) ){
-			$data["leadfrom"] 		= $_GET["leadfrom"];
-			$data["leadto"] 		= $_GET["leadto"];
-		}
-		if( isset( $_GET["leadStatus"]   ) ){
-			$data["leadstatus"] = $_GET["leadStatus"];
-		}
-		//Get todays Data
-		if( isset( $_GET["todayStatus"]   ) ){
-			$data["todayStatus"] 	= $_GET["todayStatus"];
-		}
-		
-		//Get Working Leads
-		if( isset( $_GET["leadsType"]   ) ){
-			$data["leadsType"] 	= $_GET["leadsType"];
+		if(!empty($_GET['search'])){	
+			//get filter parameters
+			if( isset( $_GET['dateRange'] ) ){
+				$daterage = explode('-' , $_GET['dateRange']);
+				$filter_data["leadfrom"] 		= $daterage[0];
+				$filter_data["leadto"] 		= $daterage[1];
+			}
+			
+			if( isset( $_GET["leadStatus"]   ) ){
+				$filter_data["leadstatus"] = $_GET["leadStatus"];
+			}
+			
+			//Get Working Leads
+			if( isset( $_GET["quotation_type"]   ) ){
+				$filter_data["quotation_type"] 	= $_GET["quotation_type"];
+			}
 		}
 
 
 		/* get customer */
-		$custom_where = "";
 		if( $role == '99' || $role == '98' || $role == '95' ){
+		$custom_where = "";
 			$where = array("customers_inquery.del_status" => 0);
 			//get customers by agent
 			if( isset( $_POST['agent_id'] ) && !empty( $_POST['agent_id'] ) ){
@@ -87,9 +87,10 @@ class Customers extends CI_Controller {
 			$data['list']=$this->search_model->getDataSearch($dbName, $rowno, $rowperpage, $keyword, $fields, $agent_id); 
 			$data["links"] = $this->pagination->create_links();       
 		}else{
-			$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["per_page"], $page);
+			$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["per_page"], $page , $filter_data);
 			$data["links"] = $this->pagination->create_links();
 		}
+		// dump($data);die;
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' || $user['role'] == '95') {
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
@@ -753,6 +754,7 @@ class Customers extends CI_Controller {
 		$comment 				= strip_tags($this->input->post("comment", TRUE));
 		$meal_plan_type				= strip_tags($this->input->post("meal_plan_type"));
 		$requirements_meta				= serialize($this->input->post("requirements_meta"));
+		$Infant				= strip_tags($this->input->post("Infant"));
 
 		//get customer data
 		$get_d = $this->global_model->getdata("customers_inquery", array( "customer_id" => $customer_id ) );
@@ -836,6 +838,7 @@ class Customers extends CI_Controller {
 				$country_id				= strip_tags($this->input->post("country"));
 				$meal_plan_type				= strip_tags($this->input->post("meal_plan_type"));
 				$requirements_meta				= serialize($this->input->post("requirements_meta"));
+				$Infant				= strip_tags($this->input->post("Infant"));
 				
 				//update Data
 				$u_data = array(
@@ -864,6 +867,7 @@ class Customers extends CI_Controller {
 					"country_id" 				=> $country_id,
 					"meal_plan_type" 				=> $meal_plan_type,
 					"requirements_meta" 				=> $requirements_meta,
+					"infant" 				=> $Infant,
 					
 				);
 					// dump($u_data);die;

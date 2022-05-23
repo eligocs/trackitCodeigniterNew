@@ -31,7 +31,8 @@
                     </div>
                     <?php if( is_admin_or_manager() || is_teamleader() ){ ?>
                     <button class="btn btn-primary float-end me-2 add-edit-customer" type="button"
-                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" data-id="" aria-controls="offcanvasTop">
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" data-id=""
+                        aria-controls="offcanvasTop">
                         <i class="fa-solid fa-plus"></i> Add Customer
                     </button>
                     <?php  } ?>
@@ -57,10 +58,9 @@
 
             <div class="portlet-body">
                 <!-- Begin filter_collapse Section -->
-                <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse <?= !empty($_GET['search']) ? 'show' : '' ?>" id="filter_collapse">
                     <!--sort by agent -->
                     <?php
-                        //$hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
                         if( isset( $_GET["todayStatus"] ) ){	
                             $first_day_this_month = $_GET["todayStatus"];
                             $last_day_this_month  = $_GET["todayStatus"];
@@ -82,9 +82,9 @@
                                 <!--End-->
                                 <div class="col-md-3 my-2">
                                     <label class="control-label">Itinerary Type: </label>
-                                    <select name="iti_type" class="form-control form-select" id="iti_type" required>
+                                    <select name="quotation_type" class="form-control form-select" id="quotation_type" required>
                                         <option value="" selected disabled>All</option>
-                                        <option value="1">Holidays</option>
+                                        <option value="1" <?= ($_GET['quotation_type'] == 1) ? 'selected' : '' ?>>Holidays</option>
                                         <option value="2">Accommodation</option>
                                     </select>
                                 </div>
@@ -118,7 +118,7 @@
                         </div>
                     </form>
                     <?php }else{ ?>
-                    <form id="form-filter" class="form-horizontal margin_bottom_0  <?php echo $hideClass; ?>">
+                    <form id="form-filter" class="form-horizontal margin_bottom_0  <?php echo $hideClass; ?>" action="<?php echo base_url(); ?>customers/index">
                         <div class="actions">
                             <div class="row">
                                 <!--Calender-->
@@ -130,7 +130,7 @@
                                 <!--End-->
                                 <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Type:</label>
-                                    <select name="iti_type" class="form-control form-select" id="iti_type" required>
+                                    <select name="quotation_type" class="form-control form-select" id="leadsType" required>
                                         <option value="" selected disabled>All</option>
                                         <option value="1">Holidays</option>
                                         <option value="2">Accommodation</option>
@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Status:</label>
-                                    <select name="filterselcted" id="" class="form-control form-select" required>
+                                    <select name="leadStatus" id="" class="form-control form-select" required>
                                         <option value="" selected disabled>Select Iti Status</option>
                                         <option value="all">All</option>
                                         <option value="draft">Draft</option>
@@ -150,8 +150,9 @@
                                         <option value="8">Declined</option>
                                         <option value="amendment">Amendment</option>
                                     </select>
+                                    <input type="hidden" name="search" value="True">
 
-                                    <input type="hidden" name="date_from" id="date_from"
+                                    <!-- <input type="hidden" name="date_from" id="date_from"
                                         data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
                                         value="">
                                     <input type="hidden" name="date_to" id="date_to"
@@ -162,7 +163,7 @@
                                     <input type="hidden" id="quotation"
                                         value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false";} ?>" />
                                     <input type="hidden" name="todayStatus" id="todayStatus"
-                                        value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>" />
+                                        value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>" /> -->
 
                                 </div>
                                 <div class="col-md-3 d-flex align-items-center mt-md-3">
@@ -176,19 +177,19 @@
                 </div>
                 <!-- End filter_collapse -->
                 <form id="search_customer_data" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-4" for="customer_id">Enter Customer
-                                ID/name/contact:</label>
-                            <div class="col-sm-4">
-                                <input type="text" id="customer_id" required maxlength="20" name="keyword"
-                                    value="<?php echo $customer->customer_id; ?>" class="form-control"
-                                    placeholder="Type Lead Id or Customer Name or Contact Number"
-                                    title="Type Lead Id or Customer Name or Contact Number" />
-                                <ul class="dropdown-menu txtcustomer" style="margin-left:20px;margin-right:0px;"
-                                    role="menu" aria-labelledby="dropdownMenu" id="DropdownCusInfo"></ul>
-                            </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="customer_id">Enter Customer
+                            ID/name/contact:</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="customer_id" required maxlength="20" name="keyword"
+                                value="<?php echo $customer->customer_id; ?>" class="form-control"
+                                placeholder="Type Lead Id or Customer Name or Contact Number"
+                                title="Type Lead Id or Customer Name or Contact Number" />
+                            <ul class="dropdown-menu txtcustomer" style="margin-left:20px;margin-right:0px;" role="menu"
+                                aria-labelledby="dropdownMenu" id="DropdownCusInfo"></ul>
                         </div>
-                    </form>
+                    </div>
+                </form>
                 <!-- Begin demo table design -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                     <div class="table-responsive min-h-300 customersData">
@@ -271,16 +272,23 @@
                                             <div class="d-flex justify-content-between px-1 w-100">
                                                 <div class="requirment flex-grow-1">
                                                     <p title="Lead Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
-                                                    <a class="dropdown-item"
-                                                        href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>">#<?= $customer->customer_id ?></a></p>
+                                                        <a class="dropdown-item"
+                                                            href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>">#<?= $customer->customer_id ?></a>
+                                                    </p>
                                                     <div title="Holiday Type" class="fs-8 me-2 text-success">
                                                         <strong class="" title="Lead Status "><?= $add_iti ?></strong>
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="fs-7 mb-2 mt-0 ">
-                                                        <strong
-                                                            class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?></strong>
+                                                    <span class="tooltip_right d-block">
+                                                        <span class="customer_name_text">
+                                                            <strong
+                                                                class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?></strong></span>
+                                                                <span
+                                                                class="tooltip_right_text"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
+                                                            </span>
+                                                        </span>
                                                         <span title="Leads From"
                                                             class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
                                                     </p>
@@ -340,7 +348,8 @@
                                             </div>
                                             <div class="bg-light p-1 w-100">
                                                 <span class="d-block fs-7 mb-2 text-muted">Assigned to</span>
-                                                <a class="text-primary fw-bold"   target="_blank" href="<?= site_url("agents/view/$customer->agent_id")?>"
+                                                <a class="text-primary fw-bold" target="_blank"
+                                                    href="<?= site_url("agents/view/$customer->agent_id")?>"
                                                     title="View Agent"><?= ucFirst(get_user_name( $customer->agent_id )) ?></a>
                                             </div>
                                         </div>
@@ -408,7 +417,8 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
                                                 <li>
                                                     <!-- <?= site_url("customers/edit/$customer->customer_id") ?> -->
-                                                    <a class="dropdown-item add-edit-customer" href="#" data-bs-toggle="offcanvas"
+                                                    <a class="dropdown-item add-edit-customer" href="#"
+                                                        data-bs-toggle="offcanvas"
                                                         data-id="<?= $customer->customer_id ?>"
                                                         data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i
                                                             class="fa-solid fa-pen-to-square"></i> Edit</a>
@@ -420,7 +430,8 @@
                                                             class="fa-solid fa-eye"></i> View</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item ajax_delete_customer" data-id="$customer->customer_id" href="javascript:;"><i
+                                                    <a class="dropdown-item ajax_delete_customer"
+                                                        data-id="$customer->customer_id" href="javascript:;"><i
                                                             class="fa-solid fa-trash-can"></i> Delete</a>
                                                 </li>
                                             </ul>
@@ -531,13 +542,14 @@
     <div class="offcanvas offcanvas-end offcanvasTop" tabindex="-1" id="offcanvasTop"
         aria-labelledby="offcanvasTopLabel">
         <div class="offcanvas-header">
-                <h5 id="offcanvasTopLabel">
-                <p class="headerData"></p></h5>
+            <h5 id="offcanvasTopLabel">
+                <p class="headerData"></p>
+            </h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div class="edit-add-cust">
-                
+
 
             </div>
         </div>
