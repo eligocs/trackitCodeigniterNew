@@ -270,14 +270,17 @@
                                         </p>
                                     </div>
                                 </div>
+                                <?php
+                                $requirements_meta = !empty($iti->requirements_meta) ? unserialize($iti->requirements_meta) : '' ; 
+                                ?>
                                 <div class="bg-light d-flex justify-content-between p-1 w-100">
                                     <div class="border-end flex-grow-1">
                                         <p class="fs-7 mb-2 mt-0 text-secondary">requirement </p>
                                         <div>
-                                            <i class="me-2 fa-solid fa-plane-departure text-primary"></i>
-                                            <i class="me-2 fa-solid fa-hotel text-muted"></i>
-                                            <i class="me-2 fa-solid fa-taxi text-primary"></i>
-                                            <i class="me-2 fa-solid fa-train-subway text-muted"></i>
+                                            <i class="me-2 fa-solid fa-plane-departure <?= isset($requirements_meta['requirements_flight']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                            <i class="me-2 fa-solid fa-hotel <?= isset($requirements_meta['requirements_hotel']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                            <i class="me-2 fa-solid fa-taxi  <?= isset($requirements_meta['requirements_cab']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                            <i class="me-2 fa-solid fa-train-subway  <?= isset($requirements_meta['requirements_train']) ? 'text-primary' : 'text-muted' ?>"></i>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-2">
@@ -1629,13 +1632,13 @@ jQuery(document).ready(function($) {
     });
 
 
-    /*****************************************/
+    // /*****************************************/
     $(".customer_name_text").text(function() {
-        return $(this).text().length > 50 ? $(this).text().substr(0, 60) + '...' : $(this).text();
+        return $(this).text().length > 75 ? $(this).text().substr(0,  75) + '...' : $(this).text();
     });
 
     $(".email_text").text(function() {
-        return $(this).text().length > 50 ? $(this).text().substr(0, 60) + '...' : $(this).text();
+        return $(this).text().length >  75 ? $(this).text().substr(0,  75) + '...' : $(this).text();
     });
 
     $(".package_name").text(function() {
