@@ -478,8 +478,8 @@
                                                     <div class="mt-repeater-input del_rep">
                                                         <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete my-3" style="position:relative;"> <i class="fa-solid fa-trash-can"></i></a>
                                                     </div>
+                                                    <?php } ?>
                                                 </div>
-                                                <?php } ?>
                                             </div>
                                             <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-add addrep"> <i class="fa-solid fa-plus"></i></a>
                                         </div>
@@ -864,17 +864,13 @@
                                                         <div class="mt-repeater-hotel-input col-md-1 my-2">
                                                             <label for=""
                                                                 class="control-label d-none d-xxl-block">&nbsp;</label>
-                                                            <a href="javascript:;" data-repeater-delete
-                                                                class="btn btn-danger mt-repeater-delete">
-                                                                <i class="fa-solid fa-trash-can"></i></a>
+                                                            <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete"> <i class="fa-solid fa-trash-can"></i></a>
                                                         </div>
                                                     </div> <!-- row -->
                                                 </div>
                                                 <?php } ?>
                                             </div>
-                                            <a href="javascript:;" data-repeater-create
-                                                class="btn btn-primary mt-repeater-hotel-add"> <i
-                                                    class="fa-solid fa-plus"></i> Add Hotel</a>
+                                            <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-hotel-add"> <i class="fa-solid fa-plus"></i> Add Hotel</a>
                                             <hr>
                                         </div>
 
@@ -951,17 +947,14 @@
                                                 <?php } ?>
                                                 <?php } ?>
                                             </div>
-                                            <a href="javascript:;" data-repeater-create
-                                                class="btn btn-primary mt-repeater-hotel-note"> <i
-                                                    class="fa-solid fa-plus"></i> Add Note</a>
+                                            <a href="javascript:;" data-repeater-create class="btn btn-primary mt-repeater-hotel-note"> <i class="fa-solid fa-plus"></i> Add Note</a>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- End  Hotel Details-->
                                 <div class="tab-pane" id="tab7">
                                     <div class="verify_msg">
-                                        <p>You can review your inputs by clicking on Back Button. To save this
-                                            itinerary Click on Submit Button.</p>
+                                        <p>You can review your inputs by clicking on Back Button. To save this itinerary Click on Submit Button.</p>
                                     </div>
 
                                 </div>  

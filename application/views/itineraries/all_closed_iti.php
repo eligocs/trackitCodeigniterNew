@@ -15,6 +15,8 @@
 			  <!-- Begin demo table design -->
 			  <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="table-responsive itineraryData">
+                <table class="table data-table-large">
+                        <tbody>
                     <?php     if( !empty($list) ){
                     foreach ($list as $iti) {
                         // dump($iti);
@@ -87,8 +89,7 @@
                         // dump($itineary_followup);
 
                     ?>
-                    <table class="table data-table-large">
-                        <tbody>
+
                             <tr>
                                 <td>
                                     <div class="align-bottom align-content-between d-flex flex-wrap h-100">
@@ -294,8 +295,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                      
                     <?php
                     }
                     }else{?>      
@@ -304,7 +304,9 @@
                     </div> 
                     <?php
                     }
-                    ?>                             
+                    ?> 
+                      </tbody>
+                    </table>                            
                 </div>
             </div>
             <!-- End end demo table design -->

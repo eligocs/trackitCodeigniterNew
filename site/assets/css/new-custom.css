@@ -613,7 +613,13 @@ span.target {
     transition: all ease 1.5s;
     margin-top: 10px;
     background: #f5f6f8;
-    min-height: 600px;
+    /* min-height: 600px; */
+    min-height: 80vh !important;
+}
+
+.data-table-container{
+    min-height: 75vh;
+    overflow: scroll;
 }
 
 
