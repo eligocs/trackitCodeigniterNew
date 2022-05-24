@@ -139,40 +139,6 @@
                                             AM>=20%</option>
                                     </select>
                                 </div>
-                                <!-- <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-primary custom_active"><input type="radio"
-                                            name="filter" value="all" id="all" />All</label>
-                                    <label class="btn btn-primary custom_active"><input type="radio"
-                                            name="filter" value="draft" id="declined" />Draft</label>
-                                    <label class="btn btn-primary custom_active"
-                                        style="background-color: pink !important; color: black;"><input
-                                            type="radio" name="filter" value="hold" id="hold" />Hold</label>
-                                    <label class="btn btn-primary custom_active"><input type="radio"
-                                            name="filter" value="pending" id="pending" />Working</label>
-                                    <label class="btn btn-primary custom_active"
-                                        style="background-color: yellow !important; color: black;"><input
-                                            type="radio" name="filter" value="notwork" id="notwork" />Not
-                                        Process</label>
-                                    <label class="btn btn-primary custom_active"><input type="radio"
-                                            name="filter" value="7" id="declined" />Declined</label>
-                                    <label class="btn btn-primary custom_active"
-                                        style="background-color: green !important; color: white;"><input
-                                            type="radio" name="filter" value="9"
-                                            id="approved" />Approved</label>
-                                    <label title="Travel Date" class="btn btn-primary custom_active"><input
-                                            type="radio" name="filter" value="travel_date"
-                                            id="travel_date" />TD</label>
-                                    <label title="Temp. Travel Date" class="btn btn-primary custom_active"
-                                        style="background-color: gray !important; color: white;"><input
-                                            type="radio" name="filter" value="temp_travel_date"
-                                            id="temp_travel_date" />TTD</label>
-                                    <label class="btn btn-primary custom_active"><input type="radio"
-                                            name="filter" value="revised" id="amendment" />Amendment</label>
-                                    <label style="background-color: green !important; color: white;"
-                                        title="Agent Margin Greater than 20%"
-                                        class="btn btn-primary custom_active"><input type="radio" name="filter"
-                                            value="agent_margen_20" id="agent_margen_20" />AM>=20%</label>
-                                </div> -->
                                 <input type="hidden" name="date_from" id="date_from"
                                     data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
                                     value="">
@@ -295,8 +261,10 @@
                                     </div>
                                     <div class="ms-2">
                                         <p class="fs-7 mb-2 mt-0 ">
+                                        <span class="customer_name_text d-block">
                                             <strong
-                                                class="d-block mb-1"><?= !empty($iti->customer_name) ? $iti->customer_name : '' ?></strong>
+                                            class="d-block mb-1"><?= !empty($iti->customer_name) ? $iti->customer_name : '' ?></strong>
+                                        </span>
                                             <span title="Leads From"
                                                 class="text-primary"><?= get_customer_type_name($customerDetail['0']->customer_type) ?></span>
                                         </p>
@@ -318,12 +286,14 @@
                                                 class="d-block fs-7 mb-2"><?= !empty($iti->customer_contact) ? $iti->customer_contact : '' ?></span>
                                         </div>
                                         <div>
-                                            <span title="sent 2 times"
-                                                class="bg-info fs-8 px-2 rounded-3 text-white">2</span>
+                                            <span title="<?= !empty($iti->email_count) ? 'sent' .  $iti->email_count . 'times' :  'NOT SENT' ; ?>"
+                                                class="bg-info fs-8 px-2 rounded-3 text-white"><?= !empty($iti->email_count) ? $iti->email_count : 'N/S' ; ?></span>
                                             <span class="tooltip_right">
                                                 <i class="fa-envelope fa-solid text-primary"></i>
+                                                 <span class="email_text">
+                                                    <?= !empty($iti->customer_email)  ? $iti->customer_email : 'N/A'?></span>
                                                 <span
-                                                    class="tooltip_right_text"><?= !empty($iti->customer_email)  ? $iti->customer_email : ''?></span>
+                                                    class="tooltip_right_text"><?= !empty($iti->customer_email)  ? $iti->customer_email : 'N/A'?></span>
                                             </span>
                                         </div>
                                     </div>
@@ -338,7 +308,7 @@
                                         <?= $packageType ?>
                                     </div>
                                     <div class="package-title">
-                                        <span class="text-secondary fs-7"><?= $iti->package_name ?></span>
+                                        <span class="text-secondary fs-7 package_name"><?= $iti->package_name ?></span>
                                     </div>
                                 </div>
                                 <div class="bg-light p-1 w-100">
@@ -1654,10 +1624,24 @@ jQuery(document).ready(function($) {
         }
     });
 
-
     $(document).on("click", '.child_clone', function() {
         return confirm('Are you sure to create duplicate itinerary ?');
     });
+
+
+    /*****************************************/
+    $(".customer_name_text").text(function() {
+        return $(this).text().length > 50 ? $(this).text().substr(0, 60) + '...' : $(this).text();
+    });
+
+    $(".email_text").text(function() {
+        return $(this).text().length > 50 ? $(this).text().substr(0, 60) + '...' : $(this).text();
+    });
+
+    $(".package_name").text(function() {
+        return $(this).text().length > 5 ? $(this).text().substr(0, 5) + '...' : $(this).text();
+    });
+
 
 
 
