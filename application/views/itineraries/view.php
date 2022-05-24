@@ -1977,7 +1977,7 @@
                                     <tbody>
                                         <?php //$day_wise = $iti->daywise_meta; 
                                         $tourData = unserialize($iti->daywise_meta);
-                                        $count_day = count( $tourData );
+                                        $count_day = !empty($tourData) ? count( $tourData ) : '';
                                         if( $count_day > 0 ){
                                             //print_r( $tourData );
                                             for ( $i = 0; $i < $count_day; $i++ ) {
@@ -2025,9 +2025,9 @@
                                     <tbody>
                                         <?php 
                                         $inclusion = unserialize($iti->inc_meta); 
-                                        $count_inc = count( $inclusion );
+                                        $count_inc = !empty($inclusion) ? count( $inclusion ) : '';
                                         $exclusion = unserialize($iti->exc_meta); 
-                                        $count_exc = count( $exclusion );
+                                        $count_exc = !empty($exclusion) ? count( $exclusion ) : '';
                                         echo "<tr><td><ul>";
                                         if( $count_inc > 0 ){
                                             for ( $i = 0; $i < $count_inc; $i++ ) {

@@ -111,7 +111,6 @@ class Itineraries extends CI_Controller {
 				//get customer data  
 				$where = array("customer_id" => $customer_id,"temp_key" => $temp_key, 'del_status' => 0);
 				$get_cus = $this->customer_model->getdata( "customers_inquery", $where );
-
 				
 				//if customer exists
 				if( $get_cus ){
@@ -133,6 +132,7 @@ class Itineraries extends CI_Controller {
 						'temp_key' 			=> $unique_key,
 						'iti_type' 			=> 1, // 1 = holidays
 						'requirements_meta' 			=> isset($get_cus[0]->requirements_meta) ? $get_cus[0]->requirements_meta : "",
+						'infant' 			=> isset($get_cus[0]->infant) ? $get_cus[0]->infant : "",
 					);
 					
 					$insert_iti = $this->global_model->insert_data('itinerary', $insert_data);
@@ -439,6 +439,8 @@ class Itineraries extends CI_Controller {
 			$data["user_role"] = $user['role']; 
 			$data['flight_details'] = $this->global_model->getdata( "flight_details", array("iti_id" => $iti_id) );
 			$data['train_details'] = $this->global_model->getdata( "train_details", array("iti_id" => $iti_id) );
+			$where = '';
+			$data['libraryOfPdfImgs']= $this->global_model->getdata( 'itinerary', $where);
 			
 			//Get itinerary 
 			$where_i = array("del_status" => 0, "iti_id" => $iti_id, "temp_key" => $temp_key);
@@ -1754,6 +1756,19 @@ class Itineraries extends CI_Controller {
 		if( isset($_POST["temp_key"]) && isset( $_POST['step'] ) ){
 			$unique_id = trim( $_POST['temp_key'] );
 			$step 	= trim($_POST['step']);
+			$customer_id 		= strip_tags($_POST['customer_id']);
+			$package_name 		= strip_tags($_POST['package_name']);
+
+			if(!empty($_POST['pdf_img_iti'])){
+				$data = $_POST['pdf_img_iti'];	
+				list($type, $data) = explode(';', $data);	
+				list(, $data)      = explode(',', $data);
+				
+				$data = base64_decode($data);
+				$name_set = str_replace(' ', '_', $package_name);
+				$imageName = $name_set . $customer_id."-".'.png';		;	
+				file_put_contents('site/images/iti_pdf_img/'.$imageName, $data);					
+			}
 			switch( $step ){
 				case 1:  
 					$iti_type 			= strip_tags($_POST['iti_type']);
@@ -1790,6 +1805,9 @@ class Itineraries extends CI_Controller {
 						'customer_id'		=> $customer_id,
 						'rooms_meta'		=> $rooms_meta,
 					);
+					if(!empty($_POST['pdf_img_iti'])){
+						$step_data['pdf_img'] =  $imageName;
+					}
 				break;
 				case 2:
 					$day_wise = $this->input->post('tour_meta', TRUE);
@@ -1809,6 +1827,9 @@ class Itineraries extends CI_Controller {
 						't_end_date' 	=> $t_end_date,
 						'daywise_meta' 	=> $daywise_meta,
 					);
+					if(!empty($_POST['pdf_img_iti'])){
+						$step_data['pdf_img'] =  $imageName;
+					}
 				break;
 				case 3:
 					$inc_meta					= serialize($this->input->post('inc_meta', TRUE));
@@ -1821,6 +1842,9 @@ class Itineraries extends CI_Controller {
 						'special_inc_meta'			=> $special_inc_meta,
 						'booking_benefits_meta'		=> $booking_benefits_meta,
 					);
+					if(!empty($_POST['pdf_img_iti'])){
+						$step_data['pdf_img'] =  $imageName;
+					}
 				break;
 				case 4:
 					$hotel_meta				= serialize( $this->input->post('hotel_meta', TRUE) );
@@ -1850,6 +1874,9 @@ class Itineraries extends CI_Controller {
 							'hotel_note_meta'		=> $hotel_note_meta,
 						);
 					}	
+					if(!empty($_POST['pdf_img_iti'])){
+						$step_data['pdf_img'] =  $imageName;
+					}
 				break;
 			}
 			
@@ -1857,12 +1884,24 @@ class Itineraries extends CI_Controller {
 			
 			$where = array('temp_key' => $unique_id );
 			$get_data = $this->global_model->getdata("itinerary", $where);
+
 			if( empty( $get_data ) ){
 				//insert if data not get
 				//push lead created date 
 				$step_data['lead_created'] = $this->input->post("lead_created", true);
 				$insert_data = $this->global_model->insert_data("itinerary", $step_data );
 				if( $insert_data ){
+					$where_key = array('id', $insert_data);
+					$getImgName = $this->global_model->getdata( "packages", $where_key);
+						if($getImgName){ 
+							foreach( $getImgName as $imgName){
+								$path_pdf = 'site/images/iti_pdf_img/' . $imgName->pdf_img;
+								if (file_exists($path_pdf)) 
+								{
+									unlink($path_pdf);
+								} 
+							}
+						}
 					$res = array('status' => true, 'msg' => "Data save.");
 				}else{
 					$res = array('status' => false, 'msg' => "Error! Data not save.");
@@ -1872,7 +1911,17 @@ class Itineraries extends CI_Controller {
 				$where_key = array('temp_key' => $unique_id ); 
 				$update_data = $this->global_model->update_data("itinerary", $where_key, $step_data );
 				//  dump($update_data);die;
-				if( $update_data ){
+				if( $update_data ){	
+					$getImgName = $this->global_model->getdata( "packages", $where_key);
+					 if($getImgName){ 
+						 foreach( $getImgName as $imgName){
+							 $path_pdf = 'site/images/iti_pdf_img/' . $imgName->pdf_img;
+							 if (file_exists($path_pdf)) 
+								{
+							 unlink($path_pdf);
+								}
+						 }
+					 }
 					$res = array('status' => true, 'msg' => "Data save.");
 				}else{
 					$res = array('status' => false, 'msg' => "Error! Data not save.");

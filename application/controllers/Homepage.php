@@ -82,7 +82,7 @@ class Homepage extends CI_Controller {
 			} 
 			die();
 			}
-			else if( isset($_POST['pdf_img']) && !empty($_POST['pdf_img']) ){
+			// else if( isset($_POST['pdf_img']) && !empty($_POST['pdf_img']) ){
 				// $name = $_FILES["file"]["name"];
 				// $n = str_replace(' ', '_', $name);
 				// $file_name = time() . "_" . $n; 
@@ -110,24 +110,24 @@ class Homepage extends CI_Controller {
 				// 		 echo json_encode( $res );
 				// 	}
 				// unset($config);
-				$data = $_POST['pdf_img'];	
-				list($type, $data) = explode(';', $data);	
-				list(, $data)      = explode(',', $data);
+				// $data = $_POST['pdf_img'];	
+				// list($type, $data) = explode(';', $data);	
+				// list(, $data)      = explode(',', $data);
 				
-				$data = base64_decode($data);
-				$imageName = 'pdf_img'.time().'.png';				
-				file_put_contents('site/images/'.$imageName, $data);
-				$data = array( "pdf_img" => $imageName );
-				$id=$_POST['cus_id'];
-				$where = array("customer_id"=>$id);	
-				$data = array( "pdf_img" => $imageName );
-				$result = $this->global_model->update_data("itinerary", $where, $data);
-				if( $result ){
-					echo 'success';
-				}else{
-					echo "error";
-				} 
-				die();	
+				// $data = base64_decode($data);
+				// $imageName = 'pdf_img'.time().'.png';				
+				// file_put_contents('site/images/'.$imageName, $data);
+				// $data = array( "pdf_img" => $imageName );
+				// $id=$_POST['cus_id'];
+				// $where = array("customer_id"=>$id);	
+				// $data = array( "pdf_img" => $imageName );
+				// $result = $this->global_model->update_data("itinerary", $where, $data);
+				// if( $result ){
+				// 	echo 'success';
+				// }else{
+				// 	echo "error";
+				// } 
+				// die();	
 			}
 		}
 	

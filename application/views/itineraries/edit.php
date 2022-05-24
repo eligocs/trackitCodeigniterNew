@@ -7,6 +7,9 @@
    $rates_dates_notes     = isset($terms[0]->rates_dates_notes) ? unserialize($terms[0]->rates_dates_notes) : "";
    
    $iti_close_status = isset($iti->iti_close_status) ? $iti->iti_close_status : 0;
+   $feature_edit_img = !empty($iti->pdf_img) ? site_url() . 'site/images/iti_pdf_img/' . $iti->pdf_img : ''; 
+
+   
    ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css" />\
@@ -28,11 +31,11 @@
             </div>
 
             <div class="featured-img"
-                style="background-image:url(https://images.unsplash.com/photo-1469474968028-56623f02e42e)">
-                <div class="package-title position-absolute bg-blue-ebonyclay-opacity">
-                    Shimla Manali Via Rohtang 5 Days 4 Nights
+                style="<?= !empty($feature_edit_img) ? 'background-image:url(' . $feature_edit_img . ')' : 'background-image:url(https://images.unsplash.com/photo-1469474968028-56623f02e42e)' ;?>">
+                <div class="package-title position-absolute bg-blue-ebonyclay-opacity package_name_set">
+                    <!-- Shimla Manali Via Rohtang 5 Days 4 Nights -->
                 </div>
-
+                <!--------------------featuredImg image Btn ----------------------------->
                 <div class="upload-img position-absolute bg-blue-ebonyclay-opacity">
                     <a title="Edit" href="" data-bs-toggle="modal" data-bs-target="#featuredImg"><i
                             class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Change featured photo</a>
@@ -85,13 +88,10 @@
                         </svg>
                     </a>
                 </div>
-
-
-
             </div> <!-- featured-img close-->
-
-
-
+            <?php
+                $requirements_meta = !empty($iti->requirements_meta) ? unserialize($iti->requirements_meta) : '' ; 
+                ?>
             <div class="portlet light bordered" id="form_wizard_1">
                 <div class="portlet-body form">
                     <form id="itiForm_Frm">
@@ -105,44 +105,50 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input add_requirements_hotel"
                                         name="requirements_meta[requirements_hotel]" type="checkbox" value="hotel"
-                                        id="hotel">
+                                        id="hotel"
+                                        <?= isset($requirements_meta['requirements_hotel']) ? 'checked' :'' ?>>
                                     <label class="control-label ms-2" for="hotel">
                                         <i class="fa-solid fa-hotel"></i> Hotel
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input add_requirements_cab"
-                                        name="requirements_meta[requirements_cab]" type="checkbox" value="cab" id="cab">
+                                        name="requirements_meta[requirements_cab]" type="checkbox" value="cab" id="cab"
+                                        <?= isset($requirements_meta['requirements_cab']) ? 'checked' :'' ?>>
                                     <label class="control-label ms-2" for="cab">
                                         <i class="fa-solid fa-taxi"></i> Cab
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input add_requirements_check"
+                                    <input class="form-check-input add_requirements_train"
                                         name="requirements_meta[requirements_train]" type="checkbox" value="train"
-                                        id="train">
+                                        id="train"
+                                        <?= isset($requirements_meta['requirements_train']) ? 'checked' :'' ?>>
                                     <label class="control-label ms-2" for="train">
                                         <i class="fa-solid fa-train"></i> Train
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input add_requirements_check"
+                                    <input class="form-check-input add_requirements_flight"
                                         name="requirements_meta[requirements_flight]" type="checkbox" value="flight"
-                                        id="flight">
+                                        id="flight"
+                                        <?= isset($requirements_meta['requirements_flight']) ? 'checked' :'' ?>>
                                     <label class="control-label ms-2" for="flight">
                                         <i class="fa-solid fa-plane-departure"></i> Flight
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input add_requirements_check"
-                                        name="requirements_meta[requirements_volvo]" type="checkbox" value="flight"
-                                        id="flight">
-                                    <label class="control-label ms-2" for="flight">
+                                    <input class="form-check-input add_requirements_volvo"
+                                        name="requirements_meta[requirements_volvo]" type="checkbox" value="volvo"
+                                        id="volvo"
+                                        <?= isset($requirements_meta['requirements_volvo']) ? 'checked' :'' ?>>
+                                    <label class="control-label ms-2" for="volvo">
                                         <i class="fa-solid fa-bus-simple"></i> Bus/Volvo
                                     </label>
                                 </div>
                             </div>
                         </div>
+                        <input class="" id="imge_pdf_top" type="hidden" name="pdf_img_iti">
                         <!-- End add_requirements -->
                         <div class="form-horizontal over" id="itiForm_form">
                             <h3 class="package-details-heading m-0 mb-2 package-details-heading position-static">Package
@@ -258,7 +264,7 @@
                                                     <i class="fa fa-check"></i> Inclusion & Exclusion </span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li class="hotel_section">
                                             <a href="#tab4" data-toggle="tab" class="step">
                                                 <span class="number"> 4 </span>
                                                 <span class="desc">
@@ -318,12 +324,12 @@
                                                             value="<?php if (isset($iti->duration)) { echo $iti->duration; } ?>" />
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-4 col-md-6 my-2">
+                                                <div class="col-xl-4 col-md-6 my-2 cab_section">
                                                     <div class="form-group">
                                                         <label class="control-label">Cab <span class="required"> *
                                                             </span> </label>
                                                         <select required name="cab_category"
-                                                            class="form-control form-select">
+                                                            class="form-control form-select cab_category">
                                                             <option value="">Choose Car Category</option>
                                                             <?php $cars = get_car_categories(); if ($cars) { foreach ($cars as $car) { ?>
                                                             <option <?php if ($iti->cab_category == $car->id) { ?>
@@ -520,7 +526,7 @@
                                                 if(!empty($requirements_meta['requirements_flight']) && isset($requirements_meta['requirements_flight'])){
                                                 
                                                 ?>
-                                                <div class="accordion-item">
+                                                <div class="accordion-item  flight_section">
                                                     <h2 class="accordion-header" id="headingOne">
                                                         <button class="accordion-button collapsed" type="button"
                                                             data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -789,7 +795,7 @@
                                                 }
                                                 if(!empty($requirements_meta['requirements_train']) && isset($requirements_meta['requirements_train'])){
                                                     ?>
-                                                <div class="accordion-item">
+                                                <div class="accordion-item train_section">
                                                     <h2 class="accordion-header" id="headingTwo">
                                                         <button class="accordion-button collapsed" type="button"
                                                             data-bs-toggle="collapse" data-bs-target="#collapseTwo"
@@ -1779,6 +1785,7 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane removeMargin" id="tab4">
+                                            <div class="hotel_section"> 
                                             <h3 class="block">Hotel Details</h3>
                                             <div class="mt-repeater-hotel tour_field_repeater">
 
@@ -2170,6 +2177,7 @@
                                                     <i class="fa-solid fa-plus"></i> Add Note</a>
                                             </div>
                                         </div>
+                                        </div>
                                         <div class="tab-pane" id="tab7">
                                             <div class="verify_msg">
                                                 <p>You can review your inputs by clicking on Back Button. To save this
@@ -2211,7 +2219,9 @@
     </div>
 </div>
 </div>
-<div class="modal" id="featuredImg">
+
+<!--------------------featuredImg model start------------------->
+<div class="modal featuredImg" id="featuredImg">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
@@ -2244,12 +2254,12 @@
                             <form class="mb-0" role="form" id="changePic" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col">
-                                        <div id="upload-demo" style="width:400px;">
+                                        <div class="upload-img-hs" style="width:400px;">
                                         </div>
                                         <div class="file-drop-area">
                                             <span class="fake-btn">Choose files</span>
                                             <span class="file-msg">or drag and drop files here</span>
-                                            <input class="file-input" type="file" id="profile_pic" multiple>
+                                            <input class="file-input package-iti-pic" type="file" accept="image/*">
                                         </div>
                                         <div class="margin-top-10 clearfix">
                                             <span class="label label-danger">NOTE!
@@ -2261,10 +2271,10 @@
                                     </div>
                                     <div class="col">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                                            <div class="fileinput-new thumbnail" style="width: 350px; height: 200px;">
+                                            <!-- <div class="fileinput-new thumbnail" style="width: 350px; height: 200px;">
                                                 <img alt="" class="img-responsive"
                                                     src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                     </div>
@@ -2274,8 +2284,10 @@
                                 <div class="margin-top-10">
                                     <input type="hidden" id="cus_id" name="user_id"
                                         value="<?php echo $iti->customer_id;?>" />
-                                    <button type="submit" class="btn green uppercase upload-result">Update
-                                        Profile</button>
+                                    <button type="submit" class="btn green uppercase upload-result-iti">Add Featured
+                                        Image
+                                    </button>
+                                    <div id="imgres"></div>
                                 </div>
                             </form>
                         </div>
@@ -2283,75 +2295,36 @@
 
                     <div id="imgLibrary" class="container tab-pane fade"><br>
                         <h3>Library </h3>
-
                         <ul class="attachments">
+                            <?php
+							if(!empty($libraryOfPdfImgs)){
+								foreach ($libraryOfPdfImgs as $libraryOfPdfImg){
+                                    if(!empty($libraryOfPdfImg->pdf_img)){
+									?>
                             <li>
-
                                 <div class="thumbnail">
-
-                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Tips-to-enhance-Website-visibility--300x201.jpg"
-                                        class="img-responsive img-thumbnail">
-
-                                </div>
-
+                                    <img src="<?= site_url() . 'site/images/iti_pdf_img/' . $libraryOfPdfImg->pdf_img; ?>"
+                                        class="img-responsive img-thumbnail images-library"
+                                        data-id="<?= site_url() . 'site/images/iti_pdf_img/' . $libraryOfPdfImg->pdf_img; ?>"></button>
                             </li>
-                            <li>
+                            <?php
+                                    }
 
-                                <div class="thumbnail">
+								}
 
-                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Play-Keywords-Smartly-300x201.jpg"
-                                        class="img-responsive img-thumbnail">
-
-                                </div>
-
-
-                            </li>
-                            <li>
-
-                                <div class="thumbnail">
-
-                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Content-is-the-King-300x214.jpg"
-                                        draggable class="img-responsive img-thumbnail">
-
-                                </div>
-                            </li>
-                            <li>
-
-                                <div class="thumbnail">
-
-                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Mobile-friendly-Website-300x201.jpg"
-                                        draggable class="img-responsive img-thumbnail">
-                                </div>
-                            </li>
-                            <li>
-
-                                <div class="thumbnail">
-
-                                    <img src="https://www.eligocs.com/wp-content/uploads/2022/03/Sitemap-to-Increase-Visibility-300x201.jpg"
-                                        draggable class="img-responsive img-thumbnail">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="attachment-preview js--select-attachment type-image subtype-png landscape">
-                                    <div class="thumbnail">
-
-                                        <img src="https://www.eligocs.com/wp-content/uploads/2021/11/Bell-Alarm_1.png"
-                                            draggable class="img-responsive img-thumbnail">
-                                    </div>
-                            </li>
-
+							}
+							?>
                         </ul>
                     </div>
-
-
                     <div id="searchImg" class="container tab-pane fade"><br>
                         <h3>Search</h3>
                         <form action="/action_page.php">
                             <div class="mb-3 mt-3">
                                 <label for="search">Search:</label>
-                                <input type="search" class="form-control" id="ImgSearch"
+                                <input type="search" class="form-control ImgSearchInput" id="ImgSearch"
                                     placeholder="Search uploaded Images" name="imgsearch">
                             </div>
+                            <div id="searchres"></div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -2366,6 +2339,7 @@
         </div>
     </div>
 </div>
+<!-----------------------end model--------------->
 <script type="text/javascript">
 $(document).on("click",
     "#per_person_rate",
@@ -2400,9 +2374,8 @@ jQuery(document).ready(function($) {
                 data: formData,
                 dataType: "json",
                 beforeSend: function() {
-                    resp.html(
-                        ' < div class="alert alert-info"> <i class = "fa fa-spinner fa-spin" ></i> Please wait...</div > '
-                    );
+                    $(".fullpage_loader").show();
+                    resp.html('<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
                 },
                 success: function(res) {
                     if (res.status == true) {
@@ -2410,6 +2383,7 @@ jQuery(document).ready(function($) {
                             '<div class="alert alert-success"><strong>Success! </strong>' +
                             res.msg + '</div>');
                         //console.log("done");
+                        $(".fullpage_loader").hide();
                         $('#itiForm_Frm')[0].reset();
                         //console.log(res.msg);
                         window.location.href =
@@ -2420,6 +2394,7 @@ jQuery(document).ready(function($) {
                         resp.html(
                             '<div class="alert alert-danger"><strong>Error! </strong>' +
                             res.msg + '</div>');
+                            $(".fullpage_loader").hide();
                         //console.log("error");
                     }
                 },
@@ -2639,7 +2614,7 @@ var FormWizard = function() {
                         data: formData,
                         dataType: "json",
                         beforeSend: function() {
-                            //response.html('<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+                            // response.html('<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
                         },
                         success: function(res) {
                             if (res.status == true) {
@@ -2647,8 +2622,7 @@ var FormWizard = function() {
                                 console.log("save");
                                 //response.html("");
                             } else {
-                                //response.html('<div class="alert alert-danger"><strong>Error! </strong>'+res.msg+'</div>');
-                                console.log("error" + res.msg);
+                                response.html('<div class="alert alert-danger"><strong>Error! </strong>'+res.msg+'</div>');
                             }
                         },
                         error: function(e) {
@@ -2996,135 +2970,11 @@ $fileInput.on('change', function() {
 });
 
 
-/* Dropzone.autoDiscover = false;
- var uploadedDocumentMap = {};
- window.onload = function() {
-     //var drop = $('#dz-preview-template').html();
 
-      var dropzoneOptions = {
-         items: '.dz-preview',
-         cursor: 'move',
-         opacity: 0.5,
-         containment: "parent",
-         distance: 20,
-         tolerance: 'pointer',
-         update: function(e, ui) {
-             // do what you want
-         },
-         dictDefaultMessage: 'Select Only one Recipe Images And Not More Than 2 MB',
-         paramName: "file",
-         maxFilesize: 2, // MB
-         maxFiles: 1,
-         addRemoveLinks: true,
-         acceptedFiles: ".jpeg,.jpg,.png,.gif",
-
-         //previewsContainer: '.visualizacao',
-         //
-         //previewTemplate: '<div class="dz-preview dz-file-preview"> <div class="row"> <div class="col-md-4"> <div class="dz-image"> <img //data-dz-thumbnail/> </div></div><div class="col-md-8"> <textarea class="form-control des" row="3" ></textarea></div></div>',
-         thumbnail: function(file, dataUrl) {
-             if (file.previewElement) {
-                 file.previewElement.classList.remove("dz-file-preview");
-                 var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
-                 for (var i = 0; i < images.length; i++) {
-                     var thumbnailElement = images[i];
-                     thumbnailElement.alt = file.name;
-                     thumbnailElement.src = dataUrl;
-                 }
-                 setTimeout(function() {
-                     file.previewElement.classList.add("dz-image-preview");
-                 }, 1);
-             }
-         },
-         // url: "<?php echo base_url('homepage/do_upload'); ?>",
-         
-         init: function() {
-
-             this.on("addedfile", function() {
-                 //Do something before the file gets processed.
-             })
-             this.on("sending", function(file, xhr, formData){
-                 //Do something when the file gets processed.
-                 //This is a good time to append additional information to the formData. It's where I add tags to make the image searchable.
-                 formData.append('cus_id', $("#cus_id").val())
-             }),
-             this.on("success", function(file, res) {
-                 if( res.status == false){
-                 alert(res.msg);
-                }else{
-                 alert(res.msg);
-                }
-                 //Do something after the file has been successfully processed e.g. remove classes and make things go back to normal. 
-             }),
-             this.on("error", function(file, errorMessage, xhr) {
-                 //Do something if there is an error.
-                 //This is where I like to alert to the user what the error was and reload the page after. 
-                 alert(errorMessage);
-
-             })
-             // this.on("success", function(file, res){
-             //    if( res.status == false){
-             //     alert(res.msg);
-             //    }else{
-             //     alert(res.msg);
-             //    }
-
-             //      $('#recipe_img').append('<input type="hidden" name="images" value="' + file.name + '">');
-             //     uploadedDocumentMap[file.name] = file.name
-
-
-             //     $(file.previewTemplate).find('.des').attr('data-id', res.id);
-             // });
-             this.on("error", function(file, data) {
-               
-             });
-
-         }
-     };
-
-     var dropzone = new Dropzone('#profile_pic', dropzoneOptions);
-
-     dropzone.removeAllFiles();
-     
-     dropzone.processQueue();
- }*/
-
-$uploadCrop = $('#upload-demo').croppie({
-    enableExif: true,
-    viewport: {
-        width: 339,
-        height: 370,
-        type: 'rectangle'
-    },
-    boundary: {
-        width: 450,
-        height: 400,
-    }
-});
-
-$('#profile_pic').on('change', function() {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        $uploadCrop.croppie('bind', {
-            url: e.target.result
-        }).then(function() {
-            console.log('jQuery bind complete');
-        });
-
-    }
-    reader.readAsDataURL(this.files[0]);
-});
-
-
-$('.upload-result').on('click', function(ev) {
+/********************hem js uplode packaage images ***********/
+$('.upload-result-iti').on('click', function(ev) {
     ev.preventDefault();
     var id = $("#cus_id").val()
-    console.log(id);
-    // var res = $("#changePicRes");
-    // if ($('#profile_pic').val() == '') {
-    //     res.html(
-    //         '<div class="alert alert-danger"><strong>Error! </strong>Please Select the file! </div>'
-    //     );
-    // } else {
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: {
@@ -3132,31 +2982,131 @@ $('.upload-result').on('click', function(ev) {
             height: 740
         }
     }).then(function(resp) {
-        $.ajax({
-            url: "<?php echo base_url('homepage/do_upload'); ?>",
-            type: "POST",
-            data: {
-                "pdf_img": resp,
-                'cus_id': id
-            },
-            success: function(data) {
-                if (data == "success") {
+        $("#imge_pdf_top").val(resp);
+        $('.featured-img').css({
+            'background-image': 'url(' + resp + ')'
+        });
+        $("#imgres").html(
+            '<div class="alert alert-success"><strong>Success !</strong></div>'
+        );
+        setTimeout(function() {
+            $('#featuredImg').modal().hide();
+        }, 3000);
 
+    });
+});
+
+/*************image library js***********/
+$('.images-library').on('click', function(ev) {
+    ev.preventDefault();
+    var imageval = $(this).data("id");
+    $("#imge_pdf_top").val(imageval);
+    $('.featured-img').css({
+        'background-image': 'url(' + imageval + ')'
+    });
+    setTimeout(function() {
+        $('#featuredImg').modal().hide();
+    }, 2000);
+})
+
+/******add package name on top *****/
+$('.package_name_get').on('keyup', function(ev) {
+    ev.preventDefault();
+    var takedata = $('.package_name_get').val()
+    $('.package_name_set').html(takedata);
+})
+
+/*********search image***********/
+$('.ImgSearchInput').on('keyup', function(ev) {
+    ev.preventDefault();
+    var takedataImg = $('.ImgSearchInput').val().length;
+    var takedataImgval = $('.ImgSearchInput').val();
+    if (takedataImg > 4) {
+        ajaxReq = $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('packages/getImageName'); ?>",
+            data: {
+                takedataImg: takedataImgval
+            },
+            dataType: "json",
+            beforeSend: function() {
+                $("#searchres").html('<p><i class="fa fa-spinner fa-spin"></i> Please wait...</p>');
+            },
+            success: function(res) {
+                if (res.status == true) {
+                    console.log(res);
 
                 } else {
+                    $("#searchres").html(
+                        '<div class="alert alert-danger"><strong>Error! </strong>Please try again.</div>'
+                    );
 
+                    console.log("error" + res.msg);
                 }
             },
             error: function(e) {
-                //console.log(e);
-                res.html(
-                    '<div class="alert alert-danger"><strong>Error!</strong>Please Try again later! </div>'
+                $("#searchres").html(
+                    '<div class="alert alert-danger"><strong>Error! </strong>Please try again.</div>'
                 );
+                console.log("error");
             }
         });
-    });
-    // }
+    }
+
 });
+
+
+
+/***********************************/
+    $(document).on('click', '.add_requirements_hotel', function() {
+        var sThisVal = (this.checked ? $(this).val() : "");
+        if (sThisVal == 'hotel') {
+            $(".hotel_section").show();
+        } else {
+            $(".hotel_section").hide();
+        }
+    });
+
+    $(document).on('click', '.add_requirements_flight', function() {
+        var sThisVal = (this.checked ? $(this).val() : "");
+        if (sThisVal == 'flight') {
+            $(".flight_section").show();
+        } else {
+            $(".flight_section").hide();
+        }
+    });
+
+    $(document).on('click', '.add_requirements_train', function() {
+        var sThisVal = (this.checked ? $(this).val() : "");
+        if (sThisVal == 'train') {
+            $(".train_section").show();
+        } else {
+            $(".train_section").hide();
+        }
+    });
+
+    $(document).on('click', '.add_requirements_cab', function() {
+        var sThisVal = (this.checked ? $(this).val() : "");
+        if (sThisVal == 'cab') {
+            $(".cab_section").add();
+        } else {
+            $(".cab_section").remove();
+            $('.cab_category option:selected').remove();
+
+        }
+    });
+
+    $(document).on('click', '.add_requirements_cab', function() {
+        var sThisVal = (this.checked ? $(this).val() : "");
+        if (sThisVal == 'cab') {
+            $(".cab_section").show();
+            $(".car_type_sightseen").attr("required", "required");
+            $(".droppingPoint").attr("required", "required");
+            $(".pick_point").attr("required", "required");
+        } else {
+            $(".cab_section").hide();
+        }
+    });
 </script>
 <?php } else {
    redirect("itineraries");

@@ -70,7 +70,7 @@ if (!empty($itinerary)) {
     $hotel_data = file_get_contents($hotelPath);
     $hotel_base64 = 'data:image/' . $hotel_type . ';base64,' . base64_encode($hotel_data);
 
-    $img = !empty(pdf_img($iti->customer_id)->pdf_img) ? base_url() . 'site/images/' . pdf_img($iti->customer_id)->pdf_img  :    $path = base_url() . 'site/assets/bg_banner.jpg'; 
+    $img = !empty($iti->pdf_img) ? base_url() . 'site/images/iti_pdf_img/' . $iti->pdf_img  :    $path = base_url() . 'site/assets/bg_banner.jpg'; 
     $pdfImgPath = $img;
     $pdfImagtype = pathinfo($pdfImgPath, PATHINFO_EXTENSION);
     $pdfData = file_get_contents($pdfImgPath);
