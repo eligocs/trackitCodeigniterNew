@@ -29,7 +29,7 @@
 }
 
 /** layout.min.css **/
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600&display=swap'); */
 
 body,
 h1,
@@ -39,7 +39,8 @@ h4,
 h5,
 h6,
 p {
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    font-family: 'Mulish', sans-serif;
 }
 
 html {
@@ -369,6 +370,12 @@ span.target {
     margin-right: 10px;
 }
 
+.header_right_part .top-menu{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;   
+}
+
 .page-header-inner {
     flex: 0 0 240px;
     height: 50px;
@@ -491,7 +498,7 @@ span.target {
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a,
 .page-sidebar .page-sidebar-menu>li>a {
     color: #1c2974;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 
@@ -503,7 +510,7 @@ span.target {
 .page-sidebar .page-sidebar-menu>li.active.open>a {
     background: var(--white-color);
     color: #e53270;
-    font-weight: 400;
+    font-weight: 600;
 }
 /* ------------- sub-menu ----------------- */
 
@@ -525,6 +532,8 @@ span.target {
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li>a>i,
 .page-sidebar .page-sidebar-menu .sub-menu>li>a>i {
     color: var(--black-color);
+    margin-right: 8px;
+    display: none;
 }
 
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li>a,
@@ -533,7 +542,8 @@ span.target {
     border-bottom: 1px dashed #f3f3f3;
     white-space: nowrap;
     font-size: 12px;
-    font-weight: 300;
+    font-weight: 500;
+    padding-left: 30px;
 }
 
 .page-sidebar .nav-item:hover a {
@@ -662,9 +672,10 @@ span.target {
 .portlet>.portlet-title>.caption {
     /* float: left; */
     display: inline-block;
-    /* font-size: 18px; */
+    font-size: 18px  !important;
     line-height: 18px;
-    padding: 10px 0
+    padding: 10px 0;
+    font-weight: 600;
 }
 
 .portlet>.portlet-title>.caption>i {
@@ -722,6 +733,23 @@ table.table.table_details td {
     background: #f9f9f9;
 }
 
+.table-responsive table td {
+    border-right: none;
+    border-left: none;
+}
+
+.table-responsive table td {
+    /* border: 1px solid #e4e7ed; */
+    border-left-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+
+.table tr td {
+    vertical-align: middle !important;
+}
+
 
 /* Table Icons */
 
@@ -731,10 +759,30 @@ table.table.table_details td {
 }
 
 /* tables pagination */
-.table-responsive .page-item.active .page-link{
-    line-height: 18px;
+.table-responsive .pagination{
+    justify-content: flex-end;
 }
 
+.table-responsive .pagination li.page-item{
+    margin-left: 8px;
+}
+
+.table-responsive .page-item.active .page-link{
+    line-height: 18px;
+    background-color: var(--dark-purpule-color);
+    border-color: var(--dark-purpule-color);
+    padding: 6px 11px !important;
+}
+
+.table-responsive .pagination li.page-item .page-link {
+    border-radius: 100%;
+    padding: 0;
+}
+
+.table-responsive .pagination li.page-item .page-link a {
+    padding: 6px 12px;
+    display: block;
+}
 
 /* ----- Begin Itinerary Table ---- */
 table.data-table-large.table {
@@ -792,7 +840,6 @@ table.iti-data.table td {
     padding: 0;
     border-right: 1px solid #f8f9fa;
 }
-
 
 /* ----- Begin All Packages Table ----- */
 .data-table-large .tour_thumbnail img {
@@ -912,6 +959,20 @@ input[type="checkbox"] {
 }
 /*------- End Forms (lables and inputs) ------ */
 
+
+/*--- User profile page --- */
+.profile_left_sec .profile-userpic {
+    margin-top: 15px;
+}
+
+.profile_left_sec {
+    max-height: 350px;
+}
+
+.profile_details {
+    margin-top: 20px;
+    line-height: 28px;
+}
 
 
 /* ------------------------------------------------------------------------------ */
@@ -1087,6 +1148,7 @@ input[type="checkbox"] {
 /* ---------------- End Media Query Css ---------------------- */
 
 
+
 /* hem singh css ******************/
 .f_h_return_date,
 .f_h_return_arr_date,
@@ -1221,8 +1283,6 @@ ul.attachments {
     color: #f7fdff;
     text-decoration: none;
 }
-
-
 
 .datepicker td, th {
     text-align: center;

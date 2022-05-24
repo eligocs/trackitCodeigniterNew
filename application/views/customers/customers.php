@@ -256,7 +256,7 @@
                                             $iti_s = empty( $customer->followup_id ) ? ' <span title="Working on lead" class="badge bg-yellow-casablanca">
                                             <strong class="white">Not Process</strong> 
                                                 </span>' : '<div title="Working on lead" class="badge badge-primary">
-                                                <strong class="white">Working...</strong> 
+                                                <strong>Working...</strong> 
                                             </div>';
                                             break;
                                     }
@@ -266,8 +266,8 @@
                                         <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                             <div class="d-flex justify-content-between px-1 w-100">
                                                 <div class="requirment flex-grow-1">
-                                                    <p title="Lead Id" class="fs-7 fw-bold mb-1 mt-0 d-inline-block">
-                                                        <a class="dropdown-item"
+                                                    <p title="Lead Id" class="fs-7 fw_700 mb-1 mt-0 d-inline-block">
+                                                        <a class="text-dark"
                                                             href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>">#<?= $customer->customer_id ?></a>
                                                     </p>
                                                     <div title="Holiday Type" class="fs-8 me-2 text-success">
@@ -277,7 +277,7 @@
                                                 <div class="flex-grow-1">
                                                     <p class="fs-7 mb-2 mt-0 ">
                                                     <span class="tooltip_right d-block">
-                                                        <span class="customer_name_text">
+                                                        <span class="customer_name_text fw_700">
                                                             <strong
                                                                 class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
                                                             </strong>
@@ -285,8 +285,8 @@
                                                         <span
                                                             class="tooltip_right_text"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
                                                         </span>
-                                                        </span>
-                                                        <span title="Leads From" class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
+                                                    </span>
+                                                    <span title="Leads From" class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
                                                     </p>
                                                 </div>
                                             </div>
