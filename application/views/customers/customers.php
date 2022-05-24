@@ -79,14 +79,14 @@
                                         id="daterange" name="dateRange" value="" required />
                                 </div>
                                 <!--End-->
-                                <div class="col-md-3 my-2">
+                                <!-- <div class="col-md-3 my-2">
                                     <label class="control-label">Itinerary Type: </label>
                                     <select name="quotation_type" class="form-control form-select" id="quotation_type" required>
                                         <option value="" selected disabled>All</option>
                                         <option value="1" <?= ($_GET['quotation_type'] == 1) ? 'selected' : '' ?>>Holidays</option>
                                         <option value="2">Accommodation</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="col-md-6 my-2">
                                     <label class="control-label">&nbsp; </label>
                                     <div class="btn-group" data-toggle="buttons">
@@ -124,54 +124,44 @@
                                 <div class="col-md-3 my-2">
                                     <label class="control-label">Filter: </label>
                                     <input placeholder="Select Date" type="text" autocomplete="off" class="form-control"
-                                        id="daterange" name="dateRange" value="" required />
+                                        id="daterange" name="dateRange" value="<?= !empty($_GET['dateRange']) ?  $_GET['dateRange'] : '' ?>" required />
                                 </div>
                                 <!--End-->
-                                <div class="col-md-3 my-2">
+                                <!-- <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Type:</label>
                                     <select name="quotation_type" class="form-control form-select" id="leadsType" required>
                                         <option value="" selected disabled>All</option>
                                         <option value="1">Holidays</option>
                                         <option value="2">Accommodation</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Status:</label>
                                     <select name="leadStatus" id="" class="form-control form-select" required>
                                         <option value="" selected disabled>Select Iti Status</option>
-                                        <option value="all">All</option>
-                                        <option value="draft">Draft</option>
-                                        <option value="hold">Hold</option>
-                                        <option value="pending">Working</option>
-                                        <option value="notwork">Not Process</option>
-                                        <option value="travel_date">Travel Date</option>
-                                        <option value="9">Approved</option>
-                                        <option value="8">Declined</option>
-                                        <option value="amendment">Amendment</option>
+                                        <option value="all" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'all'?  "selected" : '' ?>>All</option>
+                                        <option value="draft" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'draft'?  "selected" : '' ?>>Draft</option>
+                                        <option value="hold" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'hold'?  "selected" : '' ?>>Hold</option>
+                                        <option value="pending" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'pending'?  "selected" : '' ?>>Working</option>
+                                        <option value="notwork" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'notwork'?  "selected" : '' ?>>Not Process</option>
+                                        <option value="travel_date" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'travel_date'?  "selected" : '' ?>>Travel Date</option>
+                                        <option value="9" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == '9'?  "selected" : '' ?>>Approved </option>
+                                        <option value="8" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == '8'?  "selected" : '' ?>>Declined</option>
+                                        <option value="amendment" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'amendment'?  "selected" : '' ?>>Amendment</option>
                                     </select>
                                     <input type="hidden" name="search" value="True">
-
-                                    <!-- <input type="hidden" name="date_from" id="date_from"
-                                        data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
-                                        value="">
-                                    <input type="hidden" name="date_to" id="date_to"
-                                        data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"]; } else{ echo $last_day_this_month; }  ?>"
-                                        value="">
-                                    <input type="hidden" name="filter_val" id="filter_val"
-                                        value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "all"; } ?>" />
-                                    <input type="hidden" id="quotation"
-                                        value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false";} ?>" />
-                                    <input type="hidden" name="todayStatus" id="todayStatus"
-                                        value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>" /> -->
-
                                 </div>
                                 <div class="col-md-3 d-flex align-items-center mt-md-3">
                                     <input type="submit" class="btn btn-success d-block mt-2" value="Filter">
                                 </div>
+                                
                             </div>
                             <!-- row -->
                         </div>
                     </form>
+                    <div class="col-md-3 d-flex align-items-center mt-md-3">
+                        <input type="submit" class="btn btn-success d-block mt-2" value="Reset">
+                    </div>
                     <?php } ?>
                 </div>
                 <!-- End filter_collapse -->

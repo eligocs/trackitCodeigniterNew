@@ -196,6 +196,7 @@ class Customer_Model extends CI_Model{
 				$d_from 	= date('Y-m-d', strtotime($date_from));
 				$d_to	 	= date('Y-m-d H:i:s', strtotime($date_end . "23:59:59"));
 				$_month	 	= date('Y-m', strtotime($date_from));
+			
 				switch( $filter_data ){
 					case "9":
 						$this->db->where( "itinerary.iti_status", "9" );
@@ -225,11 +226,11 @@ class Customer_Model extends CI_Model{
 						$this->db->where("customers_inquery.created <=", $d_to ); 
 						break;
 					case "notwork": //not work if folloup not take
-						// dump($d_from);die;
+						// dump($d_to);
 						$this->db->where( array( "customers_inquery.cus_status" => "0" ) );
 						$this->db->where("cf.customer_id IS NULL");
 						$this->db->where("customers_inquery.created >=", $d_from );
-						$this->db->where("customers_inquery.created <=", $d_to ); 
+						// $this->db->where("customers_inquery.created <=", $d_to ); 
 					break;
 					case "revDeclineLeadsMonth":
 						$this->db->where( "customers_inquery.cus_status", "8" );
@@ -246,6 +247,7 @@ class Customer_Model extends CI_Model{
 						$this->db->where("customers_inquery.created <=", $d_to ); 
 						break;
 					case "hold":
+						
 						//$this->db->where( array( "itinerary.iti_status" => "9", "itinerary.publish_status" => "publish" ) );
 						$this->db->where( array( "itinerary.publish_status" => "publish" ) );
 						$this->db->where("pay.iti_booking_status !=", 0 );
@@ -292,9 +294,9 @@ class Customer_Model extends CI_Model{
 			}
         }
 		
-		if( isset( $filter_data_get['leadsType'] ) && !empty( $filter_data_get['leadsType'] ) ){
-			$this->db->where( "x.iti_type", $filter_data_get['leadsType'] );
-		}	
+		// if( isset( $filter_data_get['leadsType'] ) && !empty( $filter_data_get['leadsType'] ) ){
+		// 	$this->db->where( "iti.iti_type", $filter_data_get['leadsType'] );
+		// }	
 		//$where["itinerary.iti_type"] = $_POST['iti_type'];
 		
 		if (!empty($custom_where)) {
@@ -349,7 +351,6 @@ class Customer_Model extends CI_Model{
 		}
 		$this->db->limit($limit, $start);
 		$query = $this->db->get();
-		// dump($this->db->last_query());die;
 		return $query->result();
 	}
 	

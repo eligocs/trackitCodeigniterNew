@@ -899,7 +899,6 @@ class Vehiclesbooking extends CI_Controller {
 	//update_vtf_tickets
 	public function update_vtf_tickets(){
 		$booking_id = $this->uri->segment(3);
-		dump($booking_id);die;
 		$user = $this->session->userdata('logged_in');
 		$user_id = $user['user_id'];
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '97' ){

@@ -1,5 +1,4 @@
 <?php 
-dump($travel_booking);die;
 if( $travel_booking ){
 	$tra_book = $travel_booking[0];	
 	$booking_type = $tra_book->booking_type;

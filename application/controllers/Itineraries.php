@@ -5141,6 +5141,19 @@ class Itineraries extends CI_Controller {
 		$user_id = $user["user_id"];
 		$data['user_role'] 	= $user['role'];
 		if( $user['role'] == 99 || $user['role'] == 98 || $user['role'] == 96 ){
+			if( $user['role'] == 99 || $user['role'] == 98 ){
+				$where = array( "itinerary.iti_status" => 9, "itinerary.del_status" => 0 );
+				//$where = array("itinerary.publish_status !=" => "draft" , "itinerary.parent_iti_id" => 0, "itinerary.del_status" => 0);
+				//get itineraries by agent
+				if( isset( $_POST['agent_id'] ) && !empty( $_POST['agent_id'] ) ){
+					$where["itinerary.agent_id"] = $_POST['agent_id'];
+				}
+				
+			}else if( $user['role'] == 96 ){
+				$where = array( "itinerary.iti_status" => 9, "itinerary.agent_id" => $user_id );
+			}
+			
+			$data['list'] = $this->itinerary_model->get_datatables($where);
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('itineraries/all_booked_iti', $data);
@@ -5246,6 +5259,8 @@ class Itineraries extends CI_Controller {
 		$data['user_role'] 	= $user['role'];
 		
 		if( $user['role'] == 99 || $user['role'] == 98 || $user['role'] == 93 ){
+			$where 	= array( "itinerary.iti_status" => 9, "itinerary.iti_close_status" => 1 );
+			$data['list']	= $this->itinerary_model->get_datatables( $where );
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('itineraries/all_closed_iti', $data);
