@@ -55,7 +55,6 @@
                     $last_day_this_month  = "";
                 }
             ?>
-
             <div class="portlet-body">
                 <!-- Begin filter_collapse Section -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse <?= !empty($_GET['search']) ? 'show' : '' ?>" id="filter_collapse">
@@ -176,26 +175,22 @@
                     <?php } ?>
                 </div>
                 <!-- End filter_collapse -->
-                <form id="search_customer_data" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="control-label col-sm-4" for="customer_id">Enter Customer
-                            ID/name/contact:</label>
-                        <div class="col-sm-4">
-                            <input type="text" id="customer_id" required maxlength="20" name="keyword"
-                                value="<?php echo $customer->customer_id; ?>" class="form-control"
-                                placeholder="Type Lead Id or Customer Name or Contact Number"
-                                title="Type Lead Id or Customer Name or Contact Number" />
-                            <ul class="dropdown-menu txtcustomer" style="margin-left:20px;margin-right:0px;" role="menu"
-                                aria-labelledby="dropdownMenu" id="DropdownCusInfo"></ul>
-                        </div>
-                    </div>
-                </form>
+
                 <!-- Begin demo table design -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+                    <form id="search_customer_data" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="customer_id">Enter Customer ID/name/contact:</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="customer_id" required maxlength="20" name="keyword" value="<?php echo $customer->customer_id; ?>" class="form-control" placeholder="Type Lead Id or Customer Name or Contact Number" title="Type Lead Id or Customer Name or Contact Number" />
+                                <ul class="dropdown-menu txtcustomer" style="margin-left:20px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu" id="DropdownCusInfo"></ul>
+                            </div>
+                        </div>
+                    </form>
                     <div class="table-responsive min-h-300 customersData">
                         <?php
                         if(!empty($list)){ 
-                            ?>
+                        ?>
                         <table class="table data-table-large">
                             <tbody>
                                 <?php
@@ -284,13 +279,14 @@
                                                     <span class="tooltip_right d-block">
                                                         <span class="customer_name_text">
                                                             <strong
-                                                                class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?></strong></span>
-                                                                <span
-                                                                class="tooltip_right_text"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
-                                                            </span>
+                                                                class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
+                                                            </strong>
                                                         </span>
-                                                        <span title="Leads From"
-                                                            class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
+                                                        <span
+                                                            class="tooltip_right_text"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
+                                                        </span>
+                                                        </span>
+                                                        <span title="Leads From" class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -417,22 +413,13 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
                                                 <li>
                                                     <!-- <?= site_url("customers/edit/$customer->customer_id") ?> -->
-                                                    <a class="dropdown-item add-edit-customer" href="#"
-                                                        data-bs-toggle="offcanvas"
-                                                        data-id="<?= $customer->customer_id ?>"
-                                                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i
-                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
-
+                                                    <a class="dropdown-item add-edit-customer" href="#" data-bs-toggle="offcanvas" data-id="<?= $customer->customer_id ?>" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item"
-                                                        href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>"><i
-                                                            class="fa-solid fa-eye"></i> View</a>
+                                                    <a class="dropdown-item" href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>"><i class="fa-solid fa-eye"></i> View</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item ajax_delete_customer"
-                                                        data-id="$customer->customer_id" href="javascript:;"><i
-                                                            class="fa-solid fa-trash-can"></i> Delete</a>
+                                                    <a class="dropdown-item ajax_delete_customer" data-id="$customer->customer_id" href="javascript:;"><i class="fa-solid fa-trash-can"></i> Delete</a>
                                                 </li>
                                             </ul>
                                         </div>
