@@ -128,7 +128,7 @@ class Homepage extends CI_Controller {
 				// 	echo "error";
 				// } 
 				// die();	
-			}
+			// }
 		}
 	
 } 
