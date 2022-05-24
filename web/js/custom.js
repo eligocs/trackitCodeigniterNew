@@ -1,16 +1,16 @@
  // Sets interval...what is transition slide speed?
-    $('#carousel-images').carousel({
-    interval: 3000
-	});
-	
-	$('#carousel-testimonials').carousel({
-    interval: 5000
-	});
-	
-	
-	
-	
-	/*
+ $('#carousel-images').carousel({
+     interval: 3000
+ });
+
+ $('#carousel-testimonials').carousel({
+     interval: 5000
+ });
+
+
+
+
+ /*
 	
 	$('#carousel-images').carousel({
     interval: 4000
@@ -34,21 +34,19 @@ $('#carousel-images').on('slid', function (e) {
   $('[id=carousel-selector-'+id+']').addClass('selected');
 });
 */
-$('#myCarousel').carousel({
-  interval: 40000
-});
-$('.videoCarousel .carousel .item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-}
-next.children(':first-child').clone().appendTo($(this));
-  if (next.next().length>0) {
-    next.next().children(':first-child').clone().appendTo($(this)).addClass('rightest');
-  }
-  else {
-      $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-     
-  }
-});
+ $('#myCarousel').carousel({
+     interval: 40000
+ });
+ $('.videoCarousel .carousel .item').each(function() {
+     var next = $(this).next();
+     if (!next.length) {
+         next = $(this).siblings(':first');
+     }
+     next.children(':first-child').clone().appendTo($(this));
+     if (next.next().length > 0) {
+         next.next().children(':first-child').clone().appendTo($(this)).addClass('rightest');
+     } else {
+         $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
 
+     }
+ });
