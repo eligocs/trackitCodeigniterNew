@@ -20,19 +20,9 @@ class Customers extends CI_Controller {
 		$data['user_role'] = $user['role'];
 		$u_id = $user['user_id'];
 		$role = $user['role'];
+	if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' || $user['role'] == '95') {
 
-		/*pagination */
-		$config = array();
-        $config["base_url"] = base_url() . "customers/index";
-        $config["total_rows"] = $this->customer_model->get_count();
-		$config['next_link'] = 'Next';
-		$config['prev_link'] = 'Previous';
-        $config["per_page"] = 10;
-        $config["uri_segment"] = 3;
-		$this->pagination->initialize($config);
-		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
-		
-
+		/****filters****/
 		if(!empty($_GET['search'])){	
 			//get filter parameters
 			if( isset( $_GET['dateRange'] ) ){
@@ -77,36 +67,48 @@ class Customers extends CI_Controller {
 		} 
 		
 		//Get Working Leads
-		if( isset( $_POST['keyword'] ) ){
-			$keyword	= $_POST['keyword'];
+		if( isset( $_GET['keyword'] ) ){
+			/*pagination */
+			$config = array();
+			$config["base_url"] = base_url() . "customers/index";
+			$config['next_link'] = 'Next';
+			$config['prev_link'] = 'Previous';
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+			
+			
+			$keyword	= $_GET['keyword'];
 			$dbName = 'customers_inquery';
 			$fields = array('customer_id','customer_name','customer_contact');
-			$rowno = '';
-			$rowperpage = '';
-			$rowperpage = '';
 			//if sales team show result by agent_id
 			$agent_id = $user['role'] == '96' ? $user_id : "";
-			$data['list']=$this->search_model->getDataSearch($dbName, $rowno, $rowperpage, $keyword, $fields, $agent_id); 
-			$data["links"] = $this->pagination->create_links();       
+			$config["total_rows"] = $this->search_model->get_count($dbName, $keyword, $fields);
+			dump($config["total_rows"] );die;
+			$data['list']=$this->search_model->getDataSearch($dbName,$keyword, $config["per_page"], $page , $fields, $agent_id); 
+			$data["links"] = $this->pagination->create_links();     	  
 		}else{
+
+			/*pagination */
+			$config = array();
+			$config["base_url"] = base_url() . "customers/index";
+			$config["total_rows"] = $this->customer_model->get_count();
+			$config['next_link'] = 'Next';
+			$config['prev_link'] = 'Previous';
+			$config["per_page"] = 10;
+			$config["uri_segment"] = 3;
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;	
 			$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["per_page"], $page , $filter_data);
 			$data["links"] = $this->pagination->create_links();
+
 		}
-		// dump($data);die;
-		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' || $user['role'] == '95') {
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('customers/customers', $data);
 			$this->load->view('inc/footer');
-		}
-		
-		/* elseif( $user['role'] == '95' ){
-			$this->load->view('inc/header');
-			$this->load->view('inc/sidebar');
-			$this->load->view('customers/declined_customers', $data);
-			$this->load->view('inc/footer'); 
-		} */
-		
+		}	
 		else{
 			redirect("dashboard");
 		}

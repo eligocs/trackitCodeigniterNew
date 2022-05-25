@@ -99,19 +99,6 @@
                                         <label class="btn btn-default btn-danger custom_active"><input type="radio"
                                                 name="filter" value="travel_date" id="travel_date" />Travel Date</label>
                                     </div>
-                                    <input type="hidden" name="date_from" id="date_from"
-                                        data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"] ; }  else { echo $first_day_this_month; } ?>"
-                                        value="">
-                                    <input type="hidden" name="date_to" id="date_to"
-                                        data-date_to="<?php if( isset( $_GET["leadto"] ) ){ echo $_GET["leadto"] ; } else{ echo $last_day_this_month; }  ?>"
-                                        value="">
-                                    <input type="hidden" name="filter_val" id="filter_val"
-                                        value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>">
-                                    <input type="hidden" id="quotation"
-                                        value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false"; } ?>">
-                                    <input type="hidden" name="todayStatus" id="todayStatus"
-                                        value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
-                                    <input type="submit" class="btn btn-success" value="Filter">
                                 </div>
                             </div>
                         </div>
@@ -160,7 +147,7 @@
                         </div>
                     </form>
                     <div class="col-md-3 d-flex align-items-center mt-md-3">
-                        <input type="submit" class="btn btn-success d-block mt-2" value="Reset">
+                        <input type="submit" class="btn btn-success d-block mt-2" id="filterReset" value="Reset">
                     </div>
                     <?php } ?>
                 </div>
@@ -168,7 +155,7 @@
 
                 <!-- Begin demo table design -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                    <form id="search_customer_data" class="form-horizontal">
+                    <form id="search_customer_data" class="form-horizontal" action="<?php echo base_url(); ?>customers/index">
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="customer_id">Enter Customer ID/name/contact:</label>
                             <div class="col-sm-4">
