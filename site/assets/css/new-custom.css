@@ -613,15 +613,8 @@ span.target {
     transition: all ease 1.5s;
     margin-top: 10px;
     background: #f5f6f8;
-    /* min-height: 600px; */
-    min-height: 80vh !important;
+    min-height: 600px;
 }
-
-.data-table-container{
-    min-height: 75vh;
-    overflow: scroll;
-}
-
 
 /* Bar Chart trigger */
 .quick-nav-chart {
@@ -897,6 +890,7 @@ label.control-label {
     margin-bottom: 3px;
     color: #797070;
     font-weight: 500;
+    margin-top: 3px;
 }
 
 .form-control::placeholder {
@@ -937,6 +931,15 @@ input[type="checkbox"] {
 /*--- select2 ---*/
 .select2 {
     width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff !important;
+    border: 1px solid #cbc9c9 !important;
+    border-radius: 4px !important;
+    height: 36px !important;
+    padding: 2px;
+    font-size: 14px;
 }
 
 .input-group-addon {
@@ -1294,4 +1297,9 @@ ul.attachments {
     text-align: center;
     padding: 8px 12px;
     font-size: 14px;
+}
+
+.table-ver-scroll{
+    max-height: 80vh;
+    overflow-y: scroll;
 }

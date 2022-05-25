@@ -37078,13 +37078,6 @@ table.dataTable.display tbody tr:hover {
     display: none
 }
 
-.select2-container--default .select2-selection--single {
-    background-color: #fff !important;
-    border: 1px solid #ccc !important;
-    border-radius: 4px !important;
-    height: 40px !important;
-    padding: 5px;
-}
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     top: 7px !important;

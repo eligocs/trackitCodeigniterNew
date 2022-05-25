@@ -768,16 +768,13 @@ div#quotation_type_section,
                                                             </label>
                                                         </div>
                                                         <!--Quotation Type Holidays/Accommodation/Cab-->
-                                                        <div id="quotation_type_section">
-                                                            <label class="radio-inline" for="holidays"><input
-                                                                    id="holidays" class="quotation_type"
-                                                                    name="quotation_type" required type="radio"
-                                                                    value="holidays"> Holidays </label>
-                                                            <label class="radio-inline" for="accommodation"><input
-                                                                    id="accommodation" class="quotation_type"
-                                                                    name="quotation_type" required type="radio"
-                                                                    value="accommodation"> Accommodation </label>
-                                                            <!--label class="radio-inline" for="cab_b"><input id="cab_b" class="quotation_type" name="quotation_type" required type="radio" value="cab"> Cab Booking </label-->
+                                                        <div id="quotation_type_section" class="mb-2">
+                                                            <label class="radio-inline me-3" for="holidays">
+                                                                <input id="holidays" class="quotation_type form-check-input" name="quotation_type" required type="radio" value="holidays"> Holidays 
+                                                            </label>
+                                                            <label class="radio-inline" for="accommodation">
+                                                                <input id="accommodation" class="quotation_type form-check-input" name="quotation_type" required type="radio" value="accommodation"> Accommodation 
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -892,7 +889,7 @@ div#quotation_type_section,
                                                             <input class="form-check-input add_requirements_hotel"
                                                                 name="requirements_meta[requirements_hotel]"
                                                                 type="checkbox" value="hotel" id="hotel">
-                                                            <label class="control-label ms-2" for="hotel">
+                                                            <label class="control-label" for="hotel">
                                                                 <i class="fa-solid fa-hotel"></i> Hotel
                                                             </label>
                                                         </div>
@@ -900,7 +897,7 @@ div#quotation_type_section,
                                                             <input class="form-check-input add_requirements_cab"
                                                                 name="requirements_meta[requirements_cab]"
                                                                 type="checkbox" value="cab" id="cab">
-                                                            <label class="control-label ms-2" for="cab">
+                                                            <label class="control-label" for="cab">
                                                                 <i class="fa-solid fa-taxi"></i> Cab
                                                             </label>
                                                         </div>
@@ -908,7 +905,7 @@ div#quotation_type_section,
                                                             <input class="form-check-input add_requirements_check"
                                                                 name="requirements_meta[requirements_train]"
                                                                 type="checkbox" value="train" id="train">
-                                                            <label class="control-label ms-2" for="train">
+                                                            <label class="control-label" for="train">
                                                                 <i class="fa-solid fa-train"></i> Train
                                                             </label>
                                                         </div>
@@ -916,7 +913,7 @@ div#quotation_type_section,
                                                             <input class="form-check-input add_requirements_check"
                                                                 name="requirements_meta[requirements_flight]"
                                                                 type="checkbox" value="flight" id="flight">
-                                                            <label class="control-label ms-2" for="flight">
+                                                            <label class="control-label" for="flight">
                                                                 <i class="fa-solid fa-plane-departure"></i> Flight
                                                             </label>
                                                         </div>
@@ -924,7 +921,7 @@ div#quotation_type_section,
                                                             <input class="form-check-input add_requirements_check"
                                                                 name="requirements_meta[requirements_volvo]"
                                                                 type="checkbox" value="flight" id="flight">
-                                                            <label class="control-label ms-2" for="flight">
+                                                            <label class="control-label" for="flight">
                                                                 <i class="fa-solid fa-bus-simple"></i> Bus/Volvo
                                                             </label>
                                                         </div>
@@ -932,58 +929,57 @@ div#quotation_type_section,
                                                 </div>
                                                 <!-- End add_requirements -->
                                                 <div class="row mt-3">
-                                                    
-                                                    <hr>
-                                                    General
-                                                    <hr>
+                                                    <div class="col-md-12">
+                                                        <h4>General</h4>
+                                                    </div>
                                                     <input type="hidden" id="samAsCall" value="<?= $customer->customer_contact ?>" 
                                                     ?>
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
-                                                            <label class="control-label" for="">Whatsapp Number:  <input class="form-check-input whatappSmCall"
-                                                            name="whatappSmCall" type="checkbox">
-                                                        <label class="control-label ms-2" for="flight">
-                                                            Same As Calling No
-                                                        </label></label>
-                                                            <input type="text" class="form-control WhatsappNumber"
-                                                                placeholder="Whatsapp Number" name="whatsapp_number"
-                                                                value="">
+                                                            <label class="control-label" for="">Whatsapp Number:  
+                                                                <input class="form-check-input whatappSmCall mt-1 ms-3" name="whatappSmCall" type="checkbox">
+                                                                <label class="control-label" for="">
+                                                                    Same As Calling No
+                                                                </label>
+                                                            </label>
+                                                            <input type="text" class="form-control WhatsappNumber" placeholder="Whatsapp Number" name="whatsapp_number" value="">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6 col-md-6 d-flex my-2">
-                                                        <div class="form-group col-4">
-                                                            <label class="control-label" for="">Adults *: Age 12
-                                                                +</label>
+                                                        <div class="form-group col-4 px-1">
+                                                            <label class="control-label" for="">Adults 
+                                                                <sup class="text-danger">*</sup>: Age 12 +
+                                                            </label>
                                                             <input required type="text" class="form-control"
                                                                 placeholder="No. of Adults" name="adults" value="">
                                                         </div>
-                                                        <div class="form-group col-4">
+                                                        <div class="form-group col-4 px-1">
                                                             <label class="control-label" for="">Child: 5 - 12</label>
-                                                            <input type="text" class="form-control"
-                                                                placeholder="No. of child" name="child" value="">
+                                                            <input type="text" class="form-control" placeholder="No. of child" name="child" value="">
                                                         </div>
-                                                        <div class="form-group col-4">
-                                                            <label class="control-label" for="">Infant: <span>
-                                                                    < 5 </span></label>
-                                                            <input type="text" class="form-control"
-                                                                placeholder="No. of child" name="Infant" value="">
+                                                        <div class="form-group col-4 px-1">
+                                                            <label class="control-label" for="">Infant: 
+                                                                <span> < 5 </span>
+                                                            </label>
+                                                            <input type="text" class="form-control" placeholder="No. of child" name="Infant" value="">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
-                                                            <label class="control-label" for="">Travel Date <sup
-                                                                    class="text-danger">*</sup>:</label>
-                                                            <input required type="text" class="form-control" readonly
-                                                                id="travel_date" name="travel_date" value="">
+                                                            <label class="control-label" for="">Travel Date 
+                                                                <sup class="text-danger">*</sup>:
+                                                            </label>
+                                                            <input required type="text" class="form-control" readonly id="travel_date" name="travel_date" value="">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
-                                                            <label class="control-label" for="">Destination *:</label>
-                                                            <input required type="text" class="form-control"
-                                                                name="destination" value="">
+                                                            <label class="control-label" for="">Destination 
+                                                                <sup class="text-danger">*</sup>:
+                                                            </label>
+                                                            <input required type="text" class="form-control" name="destination" value="">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 my-2">
@@ -1065,9 +1061,7 @@ div#quotation_type_section,
                                                                     <div class="col-sm-6">
                                                                         <label class="control-label"
                                                                             for="">&nbsp;</label>
-                                                                        <input type="text" required class="form-control"
-                                                                            name="package_type_other"
-                                                                            id="pack_type_other">
+                                                                        <input type="text" required class="form-control" name="package_type_other" id="pack_type_other">
                                                                     </div>
                                                                 </div>
                                                             </div>

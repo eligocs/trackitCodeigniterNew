@@ -167,7 +167,7 @@
 
             <!-- Begin demo table design -->
             <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                <div class="table-responsive itineraryData">
+                <div class="table-responsive itineraryData table-ver-scroll">
                 <table class="table data-table-large">
                         <tbody>
                             <?php     if( !empty($list) ){
