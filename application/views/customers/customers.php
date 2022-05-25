@@ -429,7 +429,7 @@
                     </div>
                 </div>
                 <!-- Table Section -->
-                <div class="bg-white p-3 rounded-4 shadow-sm">
+                <!-- <div class="bg-white p-3 rounded-4 shadow-sm">
                     <?php if( is_admin_or_manager() ){ ?>
                     <div class="row">
                         <div class="col-md-3">
@@ -446,7 +446,7 @@
                                 </select>
                             </div>
                         </div>
-                        <!--export button for admin and manager-->
+                       
                         <div class="col-md-9">
                             <label class="control-label d-block" for="">&nbsp;</label>
                             <div class="dropdown float-end action_menu">
@@ -454,19 +454,19 @@
                                     id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Action
                                     <span class="caret"></span></a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <!-- dropdown-item -->
+                                   
                                     <li>
                                         <a class="dropdown-item"
                                             href="<?php echo site_url("customers") . "/?todayStatus={$todAy}"; ?>"><i
                                                 class="fa fa-users"></i> Today's Lead</a>
                                     </li>
-                                    <!-- dropdown-item -->
+                              
                                     <li>
                                         <a class="dropdown-item"
                                             href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callpicked"; ?>"><i
                                                 class="fa fa-phone"></i> Today Call Picked</a>
                                     </li>
-                                    <!-- dropdown-item -->
+                                  
                                     <li>
                                         <a class="dropdown-item"
                                             href="<?php echo site_url("customers") . "/?todayStatus={$todAy}&leadStatus=callnotpicked"; ?>"><i
@@ -500,7 +500,7 @@
                     </div>
                     <?php } ?>
 
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- End page-content -->
@@ -533,6 +533,8 @@
     </div>
 </div>
 <!-- End offcanvas-top for add customer -->
+
+
 
 
 

@@ -21,10 +21,12 @@ class Customers extends CI_Controller {
 		$u_id = $user['user_id'];
 		$role = $user['role'];
 
-
+		/*pagination */
 		$config = array();
         $config["base_url"] = base_url() . "customers/index";
         $config["total_rows"] = $this->customer_model->get_count();
+		$config['next_link'] = 'Next';
+		$config['prev_link'] = 'Previous';
         $config["per_page"] = 10;
         $config["uri_segment"] = 3;
 		$this->pagination->initialize($config);
