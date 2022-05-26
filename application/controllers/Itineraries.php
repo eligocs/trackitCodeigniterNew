@@ -9,37 +9,6 @@ class Itineraries extends CI_Controller {
 		$this->load->library('pagination');
 	}
 	
-	//update itineraries temp date
-	/* public function update_temp_date(){
-		ini_set('max_execution_time', 10000);
-		$all_iti = $this->global_model->getdata("itinerary", array( "iti_type" => 1, "del_status" => 0, "daywise_meta !=" => "" , "iti_id >=" => 15000 ) );
-		//$all_iti = $this->global_model->getdata("itinerary", array( "iti_type" => 1, "del_status" => 0, "daywise_meta !=" => "" , "iti_id >=" => 10500, "iti_id <=" => 15000 ) );
-		
-		//dump( $all_iti ); die;
-		
-		foreach( $all_iti as $iti ){
-			$iti_id = $iti->iti_id;
-			$day_wise_meta = !empty( $iti->daywise_meta ) ? unserialize($iti->daywise_meta) : "";
-			//$temp_t_d = !empty( $day_wise_meta ) && isset( $day_wise_meta[0]['tour_date'] ) ? $day_wise_meta[0]['tour_date'] : "";
-			
-			$temp_t_d = "";
-			if(!empty( $day_wise_meta ) && isset( $day_wise_meta[0]['tour_date'] ) ){
-				$end_d = end($day_wise_meta);
-				$temp_t_d  = $end_d['tour_date'];
-			} 
-			
-			if( !empty( $temp_t_d ) ){
-				$this->db->where('iti_id', $iti_id);
-				$this->db->update('itinerary',["t_end_date" => $temp_t_d]);				
-			}
-			
-			echo "ITI_ID " . $iti_id . "\n";
-			echo "Temp_date " . $temp_t_d . "    ";
-			echo "Temp Date " . $iti->t_end_date . "<br>";
-		}
-	} */
-	
-	
 
 	public function index(){
 		$user = $this->session->userdata('logged_in');
@@ -61,7 +30,7 @@ class Itineraries extends CI_Controller {
 		$config['reuse_query_string'] = true;
 		$config['enable_query_strings'] = TRUE;
 		// $config['page_query_string'] = TRUE;
-		
+
 		// $config['use_page_numbers'] = TRUE;
 		$config["base_url"] = base_url() . "itineraries/index";
 		$config["total_rows"] = $this->search_model->get_count('itinerary', $fields, $keyword);
