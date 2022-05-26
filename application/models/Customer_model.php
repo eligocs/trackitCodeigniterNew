@@ -190,15 +190,13 @@ class Customer_Model extends CI_Model{
 						break;
 				} 
 			}else if( !empty($filter_data) && !empty($date_from) && !empty($date_end) ){
-				$d_fro	= date_create($date_from);
-				$d_from 	=  date_format($d_fro,"Y-m-d");
-				// dump($d_fro);die;
-
+				$d_from	 	= date('Y-m-d', strtotime($date_from));
 				$d_to	 	= date('Y-m-d H:i:s', strtotime($date_end . "23:59:59"));
 				$_month	 	= date('Y-m', strtotime($date_from));
+				// dump($d_to);die;
 				switch( $filter_data ){
 					case "9":
-						$this->db->where( "itinerary.iti_status", "9" );
+						// $this->db->where( "itinerary.iti_status", "9" );
 						$this->db->where("itinerary.iti_decline_approved_date >=", $d_from );
 						$this->db->where("itinerary.iti_decline_approved_date <=", $d_to );
 						break;

@@ -36,8 +36,8 @@ class Customers extends CI_Controller {
 		$config = array();
 		$config['reuse_query_string'] = true;
 		$config['enable_query_strings'] = TRUE;
-		$config['page_query_string'] = TRUE;
-		$config['use_page_numbers'] = TRUE;
+		// $config['page_query_string'] = TRUE;
+		// $config['use_page_numbers'] = TRUE;
 		$config["base_url"] = base_url() . "customers/index";
 		$config["total_rows"] = $this->search_model->get_count('customers_inquery', $fields, $keyword);
 		$config['next_link'] = 'Next';
@@ -52,8 +52,8 @@ class Customers extends CI_Controller {
 			//get filter parameters
 			if( isset( $_GET['dateRange'] ) ){
 				$daterage = explode('-' , $_GET['dateRange']);
-				$filter_data["leadfrom"] 		= trim($daterage[0]);
-				$filter_data["leadto"] 		= trim($daterage[1]);
+				$filter_data["leadfrom"] 		= trim($_GET['date_from']);
+				$filter_data["leadto"] 		= trim($_GET['date_to']);
 			}
 			
 			if( isset( $_GET["leadStatus"]   ) ){

@@ -55,7 +55,7 @@
                 <?php if( $user_role == 97 ){
                     $hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
                 ?>
-                <form id="form-filter" class=" form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
+                <form id="form-filter" class=" form-horizontal margin_bottom_0 <?php echo $hideClass; ?>" action="<?php echo base_url(); ?>itineraries/index">
                     <div class="actions custom_filter">
                         <div class="row">
                             <!--Calender-->
@@ -103,7 +103,7 @@
                     </div>
                 </form>
                 <?php }else{ ?>
-                <form id="form-filter" class="form-horizontal margin_bottom_0 <?php echo $hideClass; ?>">
+                <form id="form-filter" class="form-horizontal margin_bottom_0 <?php echo $hideClass; ?>" action="<?php echo base_url(); ?>itineraries/index">
                     <div class="actions custom_filter">
                         <div class="row">
                             <!--Calender-->
@@ -177,6 +177,7 @@
                                 $iti_id = $iti->iti_id;
                                 $key = $iti->temp_key;
                                 $iti_status = $iti->iti_status;
+                                // dump($iti_status);die;
                                 if( $pub_status == "publish" ){
                                     $p_status = "<strong>" . ucfirst($pub_status) . "</strong>";
                                 }elseif( $pub_status == "price pending" ){
@@ -184,6 +185,37 @@
                                 }else{
                                     $p_status = "<strong class='red'>" . ucfirst($pub_status) . "</strong>";
                                 }
+
+
+
+                                //if itinerary status is publish
+                                if( $pub_status == "publish" || $pub_status == "price pending" ){
+                                    //delete itinerary button only for admin
+                                    if( is_admin_or_manager() && empty( $countChildIti ) ){ 
+                                        $row_delete = "<a data-id={$iti_id} title='Delete Itinerary' href='javascript:void(0)' class='btn_trash ajax_delete_iti'><i class='fa-solid fa-trash-can' aria-hidden='true'></i></a>";
+                                    }
+                                    //Check for iti status
+                                    if( isset( $iti->booking_status ) && $iti->booking_status != 0 ){
+                                        $it_status = "<a title='itinerary booked' class='btn btn-green' title='Itinerary Booked'>Hold</a>";
+                                        $st = "On Hold";
+                                        $iti_s = isset( $iti->booking_status ) && $iti->booking_status == 0 ? "APPROVED" : "ON HOLD";
+                                    }else if( $iti_status == 9 ){
+                                        $it_status ="";
+                                        $st = "<i title='itinerary booked' class='fa fa-check-circle-o' aria-hidden='true'></i>";
+                                        $iti_s = "APPROVED";
+                                    }else if( $iti_status == 7 ){
+                                        $it_status = "<a title='itinerary declined' class='btn btn-danger'><i class='fa fa-ban' aria-hidden='true'></i></a>";
+                                        $st = "<i title='itinerary declined' class='fa fa-ban' aria-hidden='true'></i>";
+                                        $iti_s = "DECLINED";
+                                    }else if( $iti_status == 6 ){
+                                        $it_status ="";
+                                        $st = "<span title='Itinerary Rejected' class='badge_danger_pill'>Rejected</span>";
+                                        $iti_s = "REJECTED";
+                                    }else{
+                                        $iti_s = empty( is_iti_followup_exists( $iti->iti_id ) ) ? "NOT PROCESS" : "WORKING";
+                                    }
+                                }
+
 
                                 //Lead Prospect Hot/Warm/Cold
                                 $cus_pro_status = get_iti_prospect($iti->iti_id);
@@ -248,11 +280,11 @@
                                     <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                         <div class="d-flex justify-content-between px-1 w-100">
                                             <div class="requirment">
-                                                <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">
+                                                <p title="Lead Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">
                                                     #<?= $iti->customer_id ?>
                                                 </p>
                                                 <span>/</span>
-                                                <p title="Lead Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">
+                                                <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">
                                                     #<?= $iti->iti_id ?></p>
                                                 <div title="Tour Type" class="badge bg-danger mb-1 me-2">
                                                     <strong class="white"><?= $iti_type ?></strong>
@@ -458,7 +490,8 @@
                                 }
                                 ?>
                         </tbody>
-                    </table>                         
+                    </table>   
+                    <p><?php echo $links; ?></p>                      
                 </div>
             </div>
             <!-- End end demo table design -->
@@ -782,20 +815,20 @@ $(document).ready(function() {
     var table;
     var tableFilter;
     //Custom Filter
-    $("#form-filter").validate({
-        rules: {
-            filter: {
-                required: true
-            },
-            dateRange: {
-                required: true
-            },
-        },
-    });
-    $("#form-filter").submit(function(e) {
-        e.preventDefault();
-        table.ajax.reload(null, true);
-    });
+    // $("#form-filter").validate({
+    //     rules: {
+    //         filter: {
+    //             required: true
+    //         },
+    //         dateRange: {
+    //             required: true
+    //         },
+    //     },
+    // });
+    // $("#form-filter").submit(function(e) {
+    //     e.preventDefault();
+    //     table.ajax.reload(null, true);
+    // });
 
     $(document).on("change", 'select[name=filtername]', function() {
         var filter_val = $(this).val();
@@ -804,9 +837,9 @@ $(document).ready(function() {
     });
 
     //Get all itineraries by agent 
-    $(document).on("change", '#sales_user_id', function() {
-        table.ajax.reload(null, true);
-    });
+    // $(document).on("change", '#sales_user_id', function() {
+    //     table.ajax.reload(null, true);
+    // });
 
     //Export Data filter
     $("#export-filter").validate();
@@ -924,8 +957,8 @@ jQuery(document).ready(function($) {
             //$('#daterange').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             $("#ex_date_from").val(start.format('YYYY-MM-DD'));
             $("#ex_date_to").val(end.format('YYYY-MM-DD'));
-            $("#date_range_export").attr("data-date_from", start.format('YYYY-MM-DD'));
-            $("#date_range_export").attr("data-date_to", end.format('YYYY-MM-DD'));
+            $("#date_range_export").val(start.format('YYYY-MM-DD'));
+            $("#date_range_export").val(end.format('YYYY-MM-DD'));
             console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format(
                 'YYYY-MM-DD'));
         });
@@ -961,8 +994,8 @@ jQuery(document).ready(function($) {
         function(start, end, label) {
             $('#daterange').val(start.format('D MMMM, YYYY') + ' to ' + end.format('D MMMM, YYYY'));
             //$('#daterange').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-            $("#date_from").attr("data-date_from", start.format('YYYY-MM-DD'));
-            $("#date_to").attr("data-date_to", end.format('YYYY-MM-DD'));
+            $("#date_from").val(start.format('YYYY-MM-DD'));
+            $("#date_to").val(end.format('YYYY-MM-DD'));
             $("#todayStatus").val("");
             console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format(
                 'YYYY-MM-DD'));

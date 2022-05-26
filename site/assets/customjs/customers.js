@@ -129,7 +129,8 @@ jQuery(document).ready(function($) {
         function(start, end, label) {
             $('#daterange').val(start.format('D MMMM, YYYY') + ' to ' + end.format('D MMMM, YYYY'));
             $("#date_from").val(start.format('YYYY-MM-DD'));
-            $("#date_to").attr(end.format('YYYY-MM-DD'));
+            $("#date_to").val(end.format('YYYY-MM-DD'));
+            // $("#date_to").val(end.format('YYYY-MM-DD'));
             $("#todayStatus").val("");
             console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format(
                 'YYYY-MM-DD'));

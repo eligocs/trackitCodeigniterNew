@@ -120,7 +120,8 @@
                                 <!-- <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Type:</label>
                                     <select name="quotation_type" class="form-control form-select" id="leadsType" required>
-                                        <option value="" selected disabled>All</option>
+                                        <opti
+                                        on value="" selected disabled>All</option>
                                         <option value="1">Holidays</option>
                                         <option value="2">Accommodation</option>
                                     </select>

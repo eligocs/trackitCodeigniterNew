@@ -115,7 +115,7 @@ class Itinerary_model extends CI_Model{
 	} 
 	
 	//datatable view all Itinerary
-	private function _get_datatables_query($where, $q_type = "" , $custom_where = NULL){
+	private function _get_datatables_query($where, $q_type = "" , $custom_where = NULL, $filter_data_get){
 		ini_set('max_execution_time', 10000);
 		//$this->db->query("SET SESSION sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'");
 		
@@ -159,12 +159,16 @@ class Itinerary_model extends CI_Model{
 		if( $role == 93 ){
 			$this->db->where("pay.iti_booking_status", 0 );
 		}
-		
 		//add custom filter with Date Range revised
-		if( isset( $_POST['filter'] ) && isset( $_POST['from'] ) && isset( $_POST['end'] ) ){
-			$filter_data = trim($this->input->post('filter'));
-			$date_from 	= $this->input->post('from');
-			$date_end = $this->input->post('end');
+		// if( isset( $_POST['filter'] ) && isset( $_POST['from'] ) && isset( $_POST['end'] ) ){
+		// 	$filter_data = trim($this->input->post('filter'));
+		// 	$date_from 	= $this->input->post('from');
+		// 	$date_end = $this->input->post('end');
+		
+		if( isset( $filter_data_get) ){
+			$filter_data = $filter_data_get['filter'];
+			$date_from 	 = $filter_data_get['from'];
+			$date_end 	 = $filter_data_get['to'];
 			
 			//For Today's Stat
 			if( isset( $_POST['todayStatus'] ) && !empty( $_POST['todayStatus'] ) ){
@@ -369,8 +373,8 @@ class Itinerary_model extends CI_Model{
 		$this->db->group_by( "itinerary.iti_id" );
 	}
 
-	function get_datatables( $where = array(), $custom_where = NULL ){
-		$this->_get_datatables_query($where, NULL, $custom_where );
+	function get_datatables( $where = array(), $custom_where = NULL, $limit, $start, $filter_data=null ){
+		$this->_get_datatables_query($where, NULL, $custom_where, $filter_data );
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
 	
@@ -380,14 +384,8 @@ class Itinerary_model extends CI_Model{
 			$order = $this->order;
 			$this->db->order_by(key($order), $order[key($order)]);
 		} 
-	
+		$this->db->limit($limit, $start);
 		$query = $this->db->get();
-		
-		//Last query
-		//$lq = $this->db->last_query();
-		//echo $lq; 
-		//die();
-		
 		return $query->result();
 	}
 	

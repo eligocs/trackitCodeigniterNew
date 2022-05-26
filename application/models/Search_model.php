@@ -39,13 +39,13 @@ class Search_model extends CI_Model{
 	/* count ***/
 	public function get_count($dbName, $fields="", $search="") 
 	{
-		$where = array("customers_inquery.del_status" => 0);
+		// $where = array("customers_inquery.del_status" => 0);
 		$this->db->from($dbName);
 		if($search != ''){
 			$like_conditions = $this->_multi_like_conditions($fields, $search);
 			$this->db->where($like_conditions);
 		}
-		$this->db->where($where);
+		// $this->db->where($where);
 		$query = $this->db->count_all_results();
 		return $query;
 
