@@ -197,7 +197,7 @@
                             </div>
                         </div>
                     </form>
-                    <div class="table-responsive min-h-300 customersData">
+                    <div class="table-responsive min-h-300 customersData table-ver-scroll">
                         <?php
                         if(!empty($list)){ 
                         ?>
@@ -682,6 +682,7 @@
     </div>
 </div>
 <!-- End offcanvas-top for Reopen Lead -->
+
 <!-- package Modal -->
 <div id="pakcageModal" class="modal" role="dialog">
     <div class="modal-dialog">

@@ -132,9 +132,6 @@
                               <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                  <div class="mb-2 px-2">
                                        <p class="fs-7 mb-2 mt-0 text-secondary">Booking Status </p>
-                                       <!-- <div class="badge bg-success">
-                                          <strong> <i class="fa-solid fa-thumbs-up"></i> Approved</strong>
-                                       </div> -->
                                        <div>
                                           <button class="btn btn-sm btn-success">
                                              <i class="fa-solid fa-check"></i>

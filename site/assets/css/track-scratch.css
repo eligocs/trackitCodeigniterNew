@@ -1117,10 +1117,6 @@
         height: auto !important
     }
 
-    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li.open>.sub-menu,
-    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li>.sub-menu {
-        display: none !important
-    }
 
 
     .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover>a>.badge {

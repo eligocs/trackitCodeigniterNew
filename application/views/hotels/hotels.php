@@ -9,6 +9,9 @@
 					<div class="caption"> <i class="fa-solid fa-hotel"></i> All Hotels </div>
 					<a class="btn btn-primary float-end" href="<?php echo site_url("hotels/add"); ?>" title="add hotel"><i class="fa-solid fa-plus"></i> Add Hotel</a>
 					
+					<!-- add-hotel offcanvas btn -->
+					<button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Add Hotel offcanvas btn</button>
+
 					<!-- Show hide filter button -->
                     <button  class="btn float-end me-2 p-2" title="Filter" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
                         <i class="fa-solid fa-filter fs-5"></i>
@@ -73,186 +76,186 @@
 				<!-- End filter_collapse -->
 
 				<!-- Begin demo table design -->
-			<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-				<div class="table-responsive">
-					<table class="table data-table-large">
-						<tbody>
-							<tr>
-								<td class="tour_thumbnail">
-									<div>
-										<a href="#" title="wwww.SnowPeakRetreatCottagesManali">
-											<img src="./site/images/snowpeakresort.jpg" class="img-thumbnail">
-										</a>
-									</div>
-								</td>
-								<td>
-									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
-										<div class="px-1 w-100 ">
-											<p class="fs-7 mb-2 mt-0"> 
-												<strong class="d-block mb-1">Snow Peak Retreat & Cottages Manali</strong> 
-												<span class="fs-8 fw-500 text-secondary">Hotel Name</span>
-											</p>
+				<div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+					<div class="table-responsive">
+						<table class="table data-table-large">
+							<tbody>
+								<tr>
+									<td class="tour_thumbnail">
+										<div>
+											<a href="#" title="wwww.SnowPeakRetreatCottagesManali">
+												<img src="./site/images/snowpeakresort.jpg" class="img-thumbnail">
+											</a>
 										</div>
-										<div class="bg-light p-1 w-100">
-											<div class="p-1">
-												<p class="fs-7 mb-2 mt-0 text-secondary">Hotel Category</p>
-												<div class="badge bg-dark-purpule">
-													<strong>3 <i class="fa-solid fa-star"></i></strong>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="px-1 w-100 ">
+												<p class="fs-7 mb-2 mt-0"> 
+													<strong class="d-block mb-1">Snow Peak Retreat & Cottages Manali</strong> 
+													<span class="fs-8 fw-500 text-secondary">Hotel Name</span>
+												</p>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<div class="p-1">
+													<p class="fs-7 mb-2 mt-0 text-secondary">Hotel Category</p>
+													<div class="badge bg-dark-purpule">
+														<strong>3 <i class="fa-solid fa-star"></i></strong>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-								</td>
-								<td>
-									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
-										<div class="w-100 d-flex justify-content-between">
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="w-100 d-flex justify-content-between">
+												<div class="px-2">
+													<p class="fs-7 mb-2 mt-0 ">
+														<strong class="d-block mb-1">Himachal Pradesh</strong>
+														<span class="fs-8 fw-500 text-secondary">Hotel State</span>
+													</p>
+												</div>
+												<div class="px-2">
+													<p class="fs-7 mb-2 mt-0 ">
+														<strong class="d-block mb-1">Manali</strong>
+														<span class="fs-8 fw-500 text-secondary">Hotel City</span>
+													</p>
+												</div>
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block mb-2 fs-7 ms-1">
+													<i class="fa-solid fa-phone text-primary me-1"></i> 08988225521 
+												</span>
+												<span class="d-block fs-7 ms-1">
+													<i class="fa-solid fa-envelope text-primary me-1"></i> info@snowpeakretreatmanali.com 
+												</span>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100 ">
 											<div class="px-2">
-												<p class="fs-7 mb-2 mt-0 ">
-													<strong class="d-block mb-1">Himachal Pradesh</strong>
-													<span class="fs-8 fw-500 text-secondary">Hotel State</span>
+												<address class="fs-7 mb-1 mt-0 fw-bold">
+													Near Hadimba Devi Temple Nasogi village, road, Manali, Himachal Pradesh 175131
+												</address>
+												<!-- <span class="fs-8 fw-500 text-secondary">Hotel City</span> -->
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-muted">Rooms Categories</span>
+												<span class="badge bg-info"><strong>Deluxe</strong></span>
+												<span class="badge bg-yellow-soft"><strong>Super Deluxe</strong></span>
+												<span class="badge bg-yellow-gold"><strong>Luxury</strong></span>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="dropdown">
+											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+												</li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="tour_thumbnail">
+										<div>
+											<a href="#" title="wwww.holidayheavenmanali">
+												<img src="./site/images/holidayheavenmanali.jpg" class="img-thumbnail">
+											</a>
+										</div>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="px-1 w-100 ">
+												<p class="fs-7 mb-2 mt-0"> 
+													<strong class="d-block mb-1">Hotel Holiday Heaven Manali</strong> 
+													<span class="fs-8 fw-500 text-secondary">Hotel Name</span>
 												</p>
 											</div>
-											<div class="px-2">
-												<p class="fs-7 mb-2 mt-0 ">
-													<strong class="d-block mb-1">Manali</strong>
-													<span class="fs-8 fw-500 text-secondary">Hotel City</span>
-												</p>
-											</div>
-										</div>
-										<div class="bg-light p-1 w-100">
-											<span class="d-block mb-2 fs-7 ms-1">
-												<i class="fa-solid fa-phone text-primary me-1"></i> 08988225521 
-											</span>
-											<span class="d-block fs-7 ms-1">
-												<i class="fa-solid fa-envelope text-primary me-1"></i> info@snowpeakretreatmanali.com 
-											</span>
-										</div>
-									</div>
-								</td>
-								<td>
-									<div class="align-bottom align-content-between d-flex flex-wrap h-100 ">
-										<div class="px-2">
-											<address class="fs-7 mb-1 mt-0 fw-bold">
-												Near Hadimba Devi Temple Nasogi village, road, Manali, Himachal Pradesh 175131
-											</address>
-											<!-- <span class="fs-8 fw-500 text-secondary">Hotel City</span> -->
-										</div>
-										<div class="bg-light p-1 w-100">
-											<span class="d-block fs-7 mb-2 text-muted">Rooms Categories</span>
-											<span class="badge bg-info"><strong>Deluxe</strong></span>
-											<span class="badge bg-yellow-soft"><strong>Super Deluxe</strong></span>
-											<span class="badge bg-yellow-gold"><strong>Luxury</strong></span>
-										</div>
-									</div>
-								</td>
-								<td>
-									<div class="dropdown">
-										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
-										<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-											<li>
-												<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-											</li>
-											<li>
-												<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
-											</li>
-											<li>
-												<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="tour_thumbnail">
-									<div>
-										<a href="#" title="wwww.holidayheavenmanali">
-											<img src="./site/images/holidayheavenmanali.jpg" class="img-thumbnail">
-										</a>
-									</div>
-								</td>
-								<td>
-									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
-										<div class="px-1 w-100 ">
-											<p class="fs-7 mb-2 mt-0"> 
-												<strong class="d-block mb-1">Hotel Holiday Heaven Manali</strong> 
-												<span class="fs-8 fw-500 text-secondary">Hotel Name</span>
-											</p>
-										</div>
-										<div class="bg-light p-1 w-100">
-											<div class="p-1">
-												<p class="fs-7 mb-2 mt-0 text-secondary">Hotel Category</p>
-												<div class="badge bg-dark-purpule">
-													<strong>4 <i class="fa-solid fa-star"></i></strong>
+											<div class="bg-light p-1 w-100">
+												<div class="p-1">
+													<p class="fs-7 mb-2 mt-0 text-secondary">Hotel Category</p>
+													<div class="badge bg-dark-purpule">
+														<strong>4 <i class="fa-solid fa-star"></i></strong>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-								</td>
-								<td>
-									<div class="align-bottom align-content-between d-flex flex-wrap h-100">
-										<div class="w-100 d-flex justify-content-between">
-											<div class="px-2">
-												<p class="fs-7 mb-2 mt-0 ">
-													<strong class="d-block mb-1">Himachal Pradesh</strong>
-													<span class="fs-8 fw-500 text-secondary">Hotel State</span>
-												</p>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100">
+											<div class="w-100 d-flex justify-content-between">
+												<div class="px-2">
+													<p class="fs-7 mb-2 mt-0 ">
+														<strong class="d-block mb-1">Himachal Pradesh</strong>
+														<span class="fs-8 fw-500 text-secondary">Hotel State</span>
+													</p>
+												</div>
+												<div class="px-2">
+													<p class="fs-7 mb-2 mt-0 ">
+														<strong class="d-block mb-1">Manali</strong>
+														<span class="fs-8 fw-500 text-secondary">Hotel City</span>
+													</p>
+												</div>
 											</div>
-											<div class="px-2">
-												<p class="fs-7 mb-2 mt-0 ">
-													<strong class="d-block mb-1">Manali</strong>
-													<span class="fs-8 fw-500 text-secondary">Hotel City</span>
-												</p>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block mb-2 fs-7 ms-1">
+													<i class="fa-solid fa-phone text-primary me-1"></i> 7018207025 
+												</span>
+												<span class="d-block fs-7 ms-1">
+													<i class="fa-solid fa-envelope text-primary me-1"></i> info@hotelholidayheavenmanali.com 
+												</span>
 											</div>
 										</div>
-										<div class="bg-light p-1 w-100">
-											<span class="d-block mb-2 fs-7 ms-1">
-												<i class="fa-solid fa-phone text-primary me-1"></i> 7018207025 
-											</span>
-											<span class="d-block fs-7 ms-1">
-												<i class="fa-solid fa-envelope text-primary me-1"></i> info@hotelholidayheavenmanali.com 
-											</span>
+									</td>
+									<td>
+										<div class="align-bottom align-content-between d-flex flex-wrap h-100 ">
+											<div class="px-2">
+												<address class="fs-7 mb-1 mt-0 fw-bold">
+													Near Club House Gulaba Nasogi village, road, Manali, Himachal Pradesh 177845
+												</address>
+												<!-- <span class="fs-8 fw-500 text-secondary">Hotel City</span> -->
+											</div>
+											<div class="bg-light p-1 w-100">
+												<span class="d-block fs-7 mb-2 text-muted">Rooms Categories</span>
+												<span class="badge bg-danger"><strong>Standard</strong></span>
+												<span class="badge bg-info"><strong>Deluxe</strong></span>
+												<span class="badge bg-yellow-gold"><strong>Luxury</strong></span>
+												<span class="badge bg-dark-purpule"><strong>Super Luxury</strong></span>
+											</div>
 										</div>
-									</div>
-								</td>
-								<td>
-									<div class="align-bottom align-content-between d-flex flex-wrap h-100 ">
-										<div class="px-2">
-											<address class="fs-7 mb-1 mt-0 fw-bold">
-												Near Club House Gulaba Nasogi village, road, Manali, Himachal Pradesh 177845
-											</address>
-											<!-- <span class="fs-8 fw-500 text-secondary">Hotel City</span> -->
+									</td>
+									<td>
+										<div class="dropdown">
+											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
+												</li>
+											</ul>
 										</div>
-										<div class="bg-light p-1 w-100">
-											<span class="d-block fs-7 mb-2 text-muted">Rooms Categories</span>
-											<span class="badge bg-danger"><strong>Standard</strong></span>
-											<span class="badge bg-info"><strong>Deluxe</strong></span>
-											<span class="badge bg-yellow-gold"><strong>Luxury</strong></span>
-											<span class="badge bg-dark-purpule"><strong>Super Luxury</strong></span>
-										</div>
-									</div>
-								</td>
-								<td>
-									<div class="dropdown">
-										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-ellipsis-vertical"></i></a>
-										<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
-											<li>
-												<a class="dropdown-item" href="#"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-											</li>
-											<li>
-												<a class="dropdown-item" href="#"><i class="fa-solid fa-eye"></i> View</a>
-											</li>
-											<li>
-												<a class="dropdown-item" href="#"><i class="fa-solid fa-trash-can"></i> Delete</a>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>            
-			<!-- End end demo table design -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>            
+				<!-- End end demo table design -->
 
 				<!-- Begin data-table section -->
 				<div class="table-responsive bg-white p-3 rounded-4 shadow-sm">
@@ -287,9 +290,21 @@
 <!-- END page-container -->
 
 
+<!-- Begin offcanvas-top for add hotel form -->
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+	<div class="offcanvas-header">
+		<h5 id="offcanvasTopLabel"><i class="fa-solid fa-hotel"></i> Add Hotel</h5>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed nostrum ab sequi voluptatem, eaque cumque aliquid exercitationem dolorem sunt, dicta quis in magni. Libero perferendis incidunt facere tenetur, voluptatum maxime, facilis ducimus ullam tempora eum veniam necessitatibus fugiat soluta odio quam aspernatur praesentium molestias. Recusandae explicabo nemo necessitatibus deserunt tempore.</p>
+	</div>
+</div>
+<!-- End offcanvas-top for add hotel form -->
+
 
 <!-- Modal -->
- <script type="text/javascript">
+<script type="text/javascript">
  jQuery(document).ready(function($){
 	/*get cities from state*/
 	$(document).on('change', 'select.state', function() {
@@ -310,9 +325,10 @@
     });
   });
 	
- </script>
+</script>
+
 <script type="text/javascript">
-jQuery(document).ready(function($){
+	jQuery(document).ready(function($){
 	$(document).on("click", ".ajax_delete_hotel", function(){
 		var hotel_id = $(this).attr("data-id");
 		if (confirm("Are you sure?")) {
@@ -333,10 +349,10 @@ jQuery(document).ready(function($){
 			});	
 		}   
 	});
-});
+	});
 </script>
 <script type="text/javascript">
-$(document).ready(function() {
+	$(document).ready(function() {
 	var table;
 	
 	//on change city
@@ -398,5 +414,5 @@ $(document).ready(function() {
         ],
 
     });
-});
+	});
 </script>

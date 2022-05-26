@@ -57,7 +57,6 @@ body.default:before {
 /* ------------------------- */
 /* --- Begin Buttons Css --- */
 /* ------------------------- */
-
 .btn-outline-warning:hover {
     color: var(--white-color) !important;
 }
@@ -282,8 +281,6 @@ label.btn.btn-default.custom_active.active {
     background-color: #0078c7;
 }
 
-
-
 .page-container ::-webkit-scrollbar {
     width: 4px;
     background-color: #ffffff;
@@ -307,8 +304,8 @@ label.btn.btn-default.custom_active.active {
     -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
     background-color: #ea3c77 !important;
 }
-
 /* ----- End utility Css ----- */
+
 
 
 /* ----------------------------------- */
@@ -520,14 +517,16 @@ span.target {
     position: fixed;
     overflow: scroll !important;
     height: 100vh !important;
-    padding-bottom: 50px;
+    padding-bottom: 50px !important;
     z-index: 999;
     background: #fff;
+    width: 238px;
+    padding: 5px 9px;
 }
 
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu,
 .page-sidebar .page-sidebar-menu {
-    padding: 5px 9px;
+    padding: 0;
     transition: all ease .5s;
 }
 
@@ -838,7 +837,6 @@ table.table.table_details td {
 
 
 /* Table Icons */
-
 .table tr td a i {
     margin: 3px 5px;
     font-size: 14px;
@@ -847,6 +845,7 @@ table.table.table_details td {
 /* tables pagination */
 .table-responsive .pagination {
     justify-content: flex-end;
+    padding-right: 10px;
 }
 
 .table-responsive .pagination li.page-item {
@@ -1404,10 +1403,6 @@ input.cr-slider {
         width: 100%;
     }
 
-    .page-sidebar-closed .page-sidebar,
-    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {
-        padding: 0 9px;
-    }
 
     .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover {
         width: 256px !important;
@@ -1433,6 +1428,16 @@ input.cr-slider {
 
     .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover>a>i {
         margin-right: 10px;
+    }
+
+    /* sidebar collapsed show hide on hover */
+    .page-sidebar-closed .page-sidebar.navbar-collapse.collapse {
+        width: 66px;
+        padding-left: 15px;
+    }
+
+    .page-sidebar-closed .page-sidebar.navbar-collapse.collapse:hover {
+        width: 256px !important;
     }
 
 }
@@ -1476,5 +1481,4 @@ input.cr-slider {
     }
 
 }
-
 /* ---------------- End Media Query Css ---------------------- */
