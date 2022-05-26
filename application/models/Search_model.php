@@ -24,26 +24,28 @@ class Search_model extends CI_Model{
     }
 
 
-	public function getDataSearch($dbName, $search="", $fields="", $agent_id="" ) {
+	public function getDataSearch($dbName, $search="", $fields="", $limit, $start , $agent_id="" ) {
 		$this->db->select('*');
 		$this->db->from($dbName);
 		if($search != ''){
 			$like_conditions = $this->_multi_like_conditions($fields, $search);
 		$this->db->where($like_conditions);
 		}
+		$this->db->limit($limit, $start);
 		$query = $this->db->get();
 		return $query->result();
 	}
 
-	public function get_count($dbName, $search, $fields="") 
+	/* count ***/
+	public function get_count($dbName, $fields="", $search="") 
 	{
-
-		$this->db->select('*');
+		$where = array("customers_inquery.del_status" => 0);
 		$this->db->from($dbName);
 		if($search != ''){
 			$like_conditions = $this->_multi_like_conditions($fields, $search);
-		$this->db->where($like_conditions);
+			$this->db->where($like_conditions);
 		}
+		$this->db->where($where);
 		$query = $this->db->count_all_results();
 		return $query;
 

@@ -18,123 +18,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    var date_from = $("#date_from").attr("data-date_from");
-    if (date_from != "") {
-        $('#daterange').val($("#date_from").attr("data-date_from") + '-' + $("#date_to").attr("data-date_to"));
-    } else {
-        $('#daterange').val("");
-    }
-    //Date range
-    $("#daterange").daterangepicker({
-            locale: {
-                format: 'YYYY/MM/DD'
-            },
-            // autoUpdateInput: false,
-            showDropdowns: true,
-            minDate: new Date(2016, 10 - 1, 25),
-            //singleDatePicker: true,
-            ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Tomorrow': [moment().add(1, 'days'), moment().add(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ]
-            },
-        },
-        function(start, end, label) {
-            $('#daterange').val(start.format('D MMMM, YYYY') + ' to ' + end.format('D MMMM, YYYY'));
-            $("#date_from").attr("data-date_from", start.format('YYYY-MM-DD'));
-            $("#date_to").attr("data-date_to", end.format('YYYY-MM-DD'));
-            $("#todayStatus").val("");
-            console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format(
-                'YYYY-MM-DD'));
-        });
 
-
-    // var table;
-    // var tableFilter;
-    // //Custom Filter
-    // $("#form-filter").validate({
-    //     rules: {
-    //         filter: {
-    //             required: true
-    //         },
-    //         dateRange: {
-    //             required: true
-    //         },
-    //     },
-    // });
-    // $("#form-filter").submit(function(e) {
-    //     e.preventDefault();
-    //     table.ajax.reload(null, true);
-    // });
-
-    // $(document).on("change", 'select[name=filterselcted]', function() {
-    //     var filter_val = $(this).val();
-    //     $("#filter_val").val(filter_val);
-    //     console.log(filter_val);
-    // });
-
-    // //Get all itineraries by agent 
-    // $(document).on("change", '#sales_user_id', function() {
-    //     table.ajax.reload(null, true);
-    // });
-
-    // //On page loaddatatables
-    // table = $('#customers').DataTable({
-    //     "aLengthMenu": [
-    //         [10, 25, 50, 100, -1],
-    //         [10, 25, 50, 100, 'All']
-    //     ],
-    //     "processing": true, //Feature control the processing indicator.
-    //     "serverSide": true, //Feature control DataTables' server-side processing mode.
-    //     "order": [], //Initial no order.
-    //     "createdRow": function(row, data, dataIndex) {
-    //         //console.log( dataIndex );
-    //         var iti_status = data.slice(-1)[0];
-
-    //         if (iti_status == 'NOT PROCESS')
-    //             $(row).addClass('yellow_row');
-    //         else if (iti_status == 'APPROVED')
-    //             $(row).addClass('green_row');
-    //         else if (iti_status == 'DECLINED')
-    //             $(row).addClass('red_row');
-    //         if (iti_status == 'ON HOLD')
-    //             $(row).addClass('hold_row');
-    //     },
-    //     language: {
-    //         search: "<strong>Search By Lead/ITI ID:</strong>",
-    //         searchPlaceholder: "Search..."
-    //     },
-    //     // Load data for the table's content from an Ajax source
-    //     "ajax": {
-    //         "url": "<?php echo site_url('customers/ajax_customers_list')?>",
-    //         "type": "POST",
-    //         "data": function(data) {
-
-    //             data.filter = $("#filter_val").val();
-    //             data.from = $("#date_from").attr("data-date_from");
-    //             data.end = $("#date_to").attr("data-date_to");
-    //             data.todayStatus = $("#todayStatus").val();
-    //             data.quotation = $("#quotation").val();
-    //             data.agent_id = $("#sales_user_id").val();
-    //             data.iti_type = $("#iti_type").val();
-    //         },
-    //         beforeSend: function() {
-    //             console.log("sending....");
-    //         }
-    //     },
-    //     //Set column definition initialisation properties.
-    //     "columnDefs": [{
-    //         "targets": [0], //first column / numbering column
-    //         "orderable": false, //set not orderable
-    //     }, ],
-
-    // });
 
     var ajaxReq;
     var resp = $("#pack_response");
@@ -215,18 +99,53 @@ jQuery(document).ready(function($) {
         $("#state_id").removeAttr("disabled");
     });
 
+    var date_from = $("#date_from").attr("data-date_from");
+    if (date_from != "") {
+        $('#daterange').val($("#date_from").attr("data-date_from") + '-' + $("#date_to").attr("data-date_to"));
+    } else {
+        $('#daterange').val("");
+    }
+    //Date range
+    $("#daterange").daterangepicker({
+            locale: {
+                format: 'DD/MM/YYYY'
+            },
+            // autoUpdateInput: false,
+            showDropdowns: true,
+            minDate: new Date(2016, 10 - 1, 25),
+            //singleDatePicker: true,
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Tomorrow': [moment().add(1, 'days'), moment().add(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
+                    .endOf('month')
+                ]
+            },
+        },
+        function(start, end, label) {
+            $('#daterange').val(start.format('D MMMM, YYYY') + ' to ' + end.format('D MMMM, YYYY'));
+            $("#date_from").val(start.format('YYYY-MM-DD'));
+            $("#date_to").attr(end.format('YYYY-MM-DD'));
+            $("#todayStatus").val("");
+            console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format(
+                'YYYY-MM-DD'));
+        });
 
 
+    // $(function() {
+    //     $('input[name="dateFilter"]').on('apply.daterangepicker', function(ev, picker) {
+    //         $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    //     });
 
+    //     $('input[name="dateFilter"]').on('cancel.daterangepicker', function(ev, picker) {
+    //         $(this).val('');
+    //     });
 
-
-
-
-
-
-
-
-
+    // });
 
     /************************************show customer offcanvas***************************************/
     $(document).on("click", '.add-edit-customer', function(e) {
@@ -379,59 +298,12 @@ jQuery(document).ready(function($) {
     });
 
 
-    $("#customer_id").on("keyup", function() {
+    $("#customer_id").on("blur", function() {
         var url = window.location.href;
         var value = $(this).val();
         if (value.length > 4) {
             $('#search_customer_data').submit();
-            // var new_url = url + '/index' + '?' +
-            //     'keyword' +
-            //     '?' + value;
-            // console.log(new_url);
         }
-
-
-        // var resp = $(".response"),
-        //     ajaxReq;
-        //console.log( $(this).val() );
-        // $.ajax({
-        //     type: "POST",
-        //     url: BASE_URL + 'customers/index',
-        //     data: {
-        //         keyword: $(this).val()
-        //     },
-        //     dataType: "json",
-        //     beforeSend: function() {
-        //         resp.html(
-        //             '<p class="alert alert-info"><i class="fa fa-spinner fa-spin"></i> Please wait...</p>'
-        //         );
-        //     },
-        //     success: function(data) {
-        //         console.log(data);
-        //         if (data.length > 0) {
-        //             $('#DropdownCusInfo').empty();
-
-        //             $('#DropdownCusInfo').show();
-        //         } else if (data.length == 0) {
-        //             $('#DropdownCusInfo').html("");
-        //             $('#DropdownCusInfo').append(
-        //                 '<li role="displaycuslist" ><a role="menuitem dropdowncusli" data-customer_id = "" class="dropdownlivalue"><strong>No Data Found</strong></a></li>'
-        //             );
-        //             $('#customer_id').attr("data-toggle", "");
-        //         }
-        //         $.each(data, function(key, value) {
-        //             if (data.length >= 0) {
-        //                 $('#DropdownCusInfo').append(
-        //                     '<li role="displaycuslist" ><a role="menuitem dropdowncusli" data-customer_id = ' +
-        //                     value['customer_id'] +
-        //                     ' class="dropdownlivalue"><strong>' + value[
-        //                         'customer_id'] + '</strong> - ' + value[
-        //                         'customer_name'] + ' - ' + value[
-        //                         'customer_contact'] + ' </a></li>');
-        //             }
-        //         });
-        //     }
-        // });
     });
 
     $("#filterReset").click(function() {

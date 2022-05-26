@@ -82,7 +82,7 @@
                         </a>
                     </li>
                     <!--li class="nav-item  ">
-                                <a href="<?php echo site_url("indiatourizm/instant_call"); ?>" class="nav-link ">
+                                <a href="<?php echo site_url("inourizm/instant_call"); ?>" class="nav-link ">
                                     <i class="fa fa-headphones" aria-hidden="true"></i>
                                     <span class="title">Instant Call</span>
                                 </a>

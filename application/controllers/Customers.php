@@ -20,15 +20,40 @@ class Customers extends CI_Controller {
 		$data['user_role'] = $user['role'];
 		$u_id = $user['user_id'];
 		$role = $user['role'];
-	if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' || $user['role'] == '95') {
 
+	if( in_array($user['role'], [99,98,96,95]) ) {
+		/*pagination */
+		$keyword	= "";	
+		$fields = '';
+		if( isset( $_GET['keyword'] ) ){
+			$keyword	= $_GET['keyword'];
+			$fields = array('customer_id','customer_name','customer_contact');
+		}
+		// if( isset( $_GET['search'] ) ){
+		// 	$keyword	= $_GET['keyword'];
+		// 	$fields = array('customer_id','customer_name','customer_contact');
+		// }
+		$config = array();
+		$config['reuse_query_string'] = true;
+		$config['enable_query_strings'] = TRUE;
+		$config['page_query_string'] = TRUE;
+		$config['use_page_numbers'] = TRUE;
+		$config["base_url"] = base_url() . "customers/index";
+		$config["total_rows"] = $this->search_model->get_count('customers_inquery', $fields, $keyword);
+		$config['next_link'] = 'Next';
+		$config['prev_link'] = 'Previous';
+		$config["page"] = 10;
+		$config["uri_segment"] = 3;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+			
 		/****filters****/
 		if(!empty($_GET['search'])){	
 			//get filter parameters
 			if( isset( $_GET['dateRange'] ) ){
 				$daterage = explode('-' , $_GET['dateRange']);
-				$filter_data["leadfrom"] 		= $daterage[0];
-				$filter_data["leadto"] 		= $daterage[1];
+				$filter_data["leadfrom"] 		= trim($daterage[0]);
+				$filter_data["leadto"] 		= trim($daterage[1]);
 			}
 			
 			if( isset( $_GET["leadStatus"]   ) ){
@@ -40,7 +65,6 @@ class Customers extends CI_Controller {
 				$filter_data["quotation_type"] 	= $_GET["quotation_type"];
 			}
 		}
-
 
 		/* get customer */
 		if( $role == '99' || $role == '98' || $role == '95' ){
@@ -58,52 +82,14 @@ class Customers extends CI_Controller {
 				$custom_where = "(customers_inquery.agent_id = {$u_id} OR customers_inquery.agent_id IN ({$where_in}))";
 			}else{
 				$where = array("customers_inquery.del_status" => 0, "customers_inquery.agent_id" => $u_id);
-			}
-			
+			}	
 			//get customers by agent
 			if( isset( $_POST['agent_id'] ) && !empty( $_POST['agent_id'] ) ){
 				$where["customers_inquery.agent_id"] = $_POST['agent_id'];
 			}
-		} 
-		
-		//Get Working Leads
-		if( isset( $_GET['keyword'] ) ){
-			/*pagination */
-			$config = array();
-			$config["base_url"] = base_url() . "customers/index";
-			$config['next_link'] = 'Next';
-			$config['prev_link'] = 'Previous';
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
-			
-			
-			$keyword	= $_GET['keyword'];
-			$dbName = 'customers_inquery';
-			$fields = array('customer_id','customer_name','customer_contact');
-			//if sales team show result by agent_id
-			$agent_id = $user['role'] == '96' ? $user_id : "";
-			$config["total_rows"] = $this->search_model->get_count($dbName, $keyword, $fields);
-			dump($config["total_rows"] );die;
-			$data['list']=$this->search_model->getDataSearch($dbName,$keyword, $config["per_page"], $page , $fields, $agent_id); 
-			$data["links"] = $this->pagination->create_links();     	  
-		}else{
-
-			/*pagination */
-			$config = array();
-			$config["base_url"] = base_url() . "customers/index";
-			$config["total_rows"] = $this->customer_model->get_count();
-			$config['next_link'] = 'Next';
-			$config['prev_link'] = 'Previous';
-			$config["per_page"] = 10;
-			$config["uri_segment"] = 3;
-			$this->pagination->initialize($config);
-			$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;	
-			$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["per_page"], $page , $filter_data);
-			$data["links"] = $this->pagination->create_links();
-
-		}
+		} 	
+		$data["links"] = $this->pagination->create_links();
+		$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["page"], $page , $filter_data,  $keyword);
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('customers/customers', $data);

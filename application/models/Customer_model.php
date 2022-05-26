@@ -12,10 +12,11 @@ class Customer_Model extends CI_Model{
 		validate_login();
 	}
 	
-	public function get_count() 
-	{
-		return $this->db->count_all("customers_inquery");
-	}
+	// public function get_count() 
+	// {
+
+	// 	return $this->db->count_all("customers_inquery");
+	// }
 
 	public function insert_customer($tablename, $data_array) {
         if ($this->db->insert($tablename, $data_array)) {
@@ -90,7 +91,7 @@ class Customer_Model extends CI_Model{
 	}
 	
 	//datatable view all customers
-	private function _get_datatables_query( $where , $q_type = null , $custom_where =NULL , $filter_data_get){
+	private function _get_datatables_query( $where , $q_type = null , $custom_where =NULL , $filter_data_get, $search){
 		ini_set('max_execution_time', 10000);
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
@@ -109,23 +110,19 @@ class Customer_Model extends CI_Model{
 		->join('iti_payment_details as pay', 'customers_inquery.customer_id = pay.customer_id', 'LEFT');
 		
 		//add custom filter with Date Range
-		// if( isset( $_POST['filter'] ) && isset( $_POST['from'] ) && isset( $_POST['end'] ) ){
 			if( isset( $filter_data_get) ){
-				// $filter_data = trim($this->input->post('filter'));
-				// $date_from 	 = $this->input->post('from');
-				// $date_end 	 = $this->input->post('end');
 				$filter_data = trim($filter_data_get['leadstatus']);
 				$date_from 	 = $filter_data_get['leadfrom'];
 				$date_end 	 = $filter_data_get['leadto'];
+
 			if( isset( $_POST['todayStatus'] ) && !empty( $_POST['todayStatus'] ) ){
 				$date = $_POST['todayStatus'];
 				//date can be month or day format eg: Y-m or Y-m-d
 				$todayDate = $date;
 				//$todayDate = date('Y-m-d', strtotime($today));
+			
 				switch( $filter_data ){
 					case "9":
-						//$this->db->where( "customers_inquery.cus_status", "9" );
-						//$this->db->like( "customers_inquery.lead_last_followup_date", $todayDate );
 						$this->db->where( "itinerary.iti_status", "9" );
 						$this->db->like( array(  "itinerary.iti_decline_approved_date" => $todayDate, "itinerary.lead_created" => $todayDate ) );
 						break;
@@ -193,10 +190,12 @@ class Customer_Model extends CI_Model{
 						break;
 				} 
 			}else if( !empty($filter_data) && !empty($date_from) && !empty($date_end) ){
-				$d_from 	= date('Y-m-d', strtotime($date_from));
+				$d_fro	= date_create($date_from);
+				$d_from 	=  date_format($d_fro,"Y-m-d");
+				// dump($d_fro);die;
+
 				$d_to	 	= date('Y-m-d H:i:s', strtotime($date_end . "23:59:59"));
 				$_month	 	= date('Y-m', strtotime($date_from));
-			
 				switch( $filter_data ){
 					case "9":
 						$this->db->where( "itinerary.iti_status", "9" );
@@ -293,54 +292,32 @@ class Customer_Model extends CI_Model{
 				$this->db->where( $key, $value );
 			}
         }
-		
-		// if( isset( $filter_data_get['leadsType'] ) && !empty( $filter_data_get['leadsType'] ) ){
-		// 	$this->db->where( "iti.iti_type", $filter_data_get['leadsType'] );
-		// }	
-		//$where["itinerary.iti_type"] = $_POST['iti_type'];
-		
+			
 		if (!empty($custom_where)) {
 			$this->db->where($custom_where);
         }
 		
-		//check if agent_id
-		/* if( $role == 96 ){
-			//$check_temaleader = is_teamleader();
-			if( is_teamleader(  ) ){
-				
-				//$team_mem = !empty($teammem[0]->assigned_members) ? array_map('trim',explode(",", $teammem[0]->assigned_members )) : $u_id;
-				//$team_mem = !empty($teammem[0]->assigned_members) ? $teammem[0]->assigned_members : $u_id;
-				
-				$this->db->where("(customers_inquery.agent_id = {$u_id})");
-				
-				//dump($team_mem); die;
-				//$where = array("customers_inquery.agent_id" => $u_id, "customers_inquery.del_status" => 0);		
-			}else{
-				$this->db->where("customers_inquery.agent_id" , $u_id);
-			}
-		}  */
-		
 		//$this->db->from($this->table);
 		$i = 0;
 		foreach ($this->column_search as $item){
-			if(  isset($_POST['search']['value'])){
+			if(  isset($search)){
+				// dump($search);die;
 				if($i===0){
 					$this->db->group_start();
-					$this->db->like($item, $_POST['search']['value']);
+					$this->db->like($item, $search);
 				}else{
-					$this->db->or_like($item, $_POST['search']['value']);
+					$this->db->or_like($item, $search);
 				}
 				if(count($this->column_search) - 1 == $i) //last loop
 					$this->db->group_end(); //close bracket select
 			}
 			$i++;
 		}
-		
 		$this->db->group_by( "customers_inquery.customer_id" );
 	}
 
-	function get_datatables( $where = array(), $custom_where = NULL,  $limit, $start, $filter_data){
-		$this->_get_datatables_query($where, $count = NULL , $custom_where, $filter_data);
+	function get_datatables( $where = array(), $custom_where = NULL,  $limit, $start, $filter_data='',  $search=''){
+		$this->_get_datatables_query($where, $count = NULL , $custom_where, $filter_data, $search);
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
 		if(isset($_POST['order'])){
@@ -358,7 +335,7 @@ class Customer_Model extends CI_Model{
 		//$this->_get_datatables_query($where);
 		$this->_get_datatables_query( $where , "count", $custom_where);
 		$query = $this->db->get();
-		return $query->num_rows();
+		 $query->num_rows();
 	}
 
 	public function count_all( $where = array(),  $custom_where = NULL ){

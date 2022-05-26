@@ -57,7 +57,8 @@
             ?>
             <div class="portlet-body">
                 <!-- Begin filter_collapse Section -->
-                <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse <?= !empty($_GET['search']) ? 'show' : '' ?>" id="filter_collapse">
+                <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse <?= !empty($_GET['search']) ? 'show' : '' ?>"
+                    id="filter_collapse">
                     <!--sort by agent -->
                     <?php
                         if( isset( $_GET["todayStatus"] ) ){	
@@ -104,14 +105,16 @@
                         </div>
                     </form>
                     <?php }else{ ?>
-                    <form id="form-filter" class="form-horizontal margin_bottom_0  <?php echo $hideClass; ?>" action="<?php echo base_url(); ?>customers/index">
+                    <form id="form-filter" class="form-horizontal margin_bottom_0  <?php echo $hideClass; ?>"
+                        action="<?php echo base_url(); ?>customers/index">
                         <div class="actions">
                             <div class="row">
                                 <!--Calender-->
                                 <div class="col-md-3 my-2">
                                     <label class="control-label">Filter: </label>
                                     <input placeholder="Select Date" type="text" autocomplete="off" class="form-control"
-                                        id="daterange" name="dateRange" value="<?= !empty($_GET['dateRange']) ?  $_GET['dateRange'] : '' ?>" required />
+                                        id="daterange" name="dateRange"
+                                        value="<?= !empty($_GET['dateRange']) ?  $_GET['dateRange'] : '' ?>" required />
                                 </div>
                                 <!--End-->
                                 <!-- <div class="col-md-3 my-2">
@@ -122,26 +125,52 @@
                                         <option value="2">Accommodation</option>
                                     </select>
                                 </div> -->
+                                <input type="hidden" name="date_from" id="date_from" value="">
+                                <input type="hidden" name="date_to" id="date_to" value="">
+                                <input type="hidden" name="filter_val" id="filter_val"
+                                    value="<?php if( isset( $_GET["leadStatus"] ) ){ echo $_GET["leadStatus"]; }else{ echo "";	} ?>">
+                                <input type="hidden" id="quotation"
+                                    value="<?php if( isset( $_GET['quotation'] ) ){ echo "true"; }else{ echo "false"; } ?>">
+                                <input type="hidden" name="todayStatus" id="todayStatus"
+                                    value="<?php if( isset( $_GET["todayStatus"] ) ){ echo $_GET["todayStatus"]; } ?>">
                                 <div class="col-md-3 my-2">
                                     <label class="control-label" for="">Itinerary Status:</label>
                                     <select name="leadStatus" id="" class="form-control form-select" required>
                                         <option value="" selected disabled>Select Iti Status</option>
-                                        <option value="all" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'all'?  "selected" : '' ?>>All</option>
-                                        <option value="draft" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'draft'?  "selected" : '' ?>>Draft</option>
-                                        <option value="hold" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'hold'?  "selected" : '' ?>>Hold</option>
-                                        <option value="pending" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'pending'?  "selected" : '' ?>>Working</option>
-                                        <option value="notwork" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'notwork'?  "selected" : '' ?>>Not Process</option>
-                                        <option value="travel_date" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'travel_date'?  "selected" : '' ?>>Travel Date</option>
-                                        <option value="9" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == '9'?  "selected" : '' ?>>Approved </option>
-                                        <option value="8" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == '8'?  "selected" : '' ?>>Declined</option>
-                                        <option value="amendment" <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'amendment'?  "selected" : '' ?>>Amendment</option>
+                                        <option value="all"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'all'?  "selected" : '' ?>>
+                                            All</option>
+                                        <option value="draft"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'draft'?  "selected" : '' ?>>
+                                            Draft</option>
+                                        <option value="hold"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'hold'?  "selected" : '' ?>>
+                                            Hold</option>
+                                        <option value="pending"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'pending'?  "selected" : '' ?>>
+                                            Working</option>
+                                        <option value="notwork"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'notwork'?  "selected" : '' ?>>
+                                            Not Process</option>
+                                        <option value="travel_date"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'travel_date'?  "selected" : '' ?>>
+                                            Travel Date</option>
+                                        <option value="9"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == '9'?  "selected" : '' ?>>
+                                            Approved </option>
+                                        <option value="8"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == '8'?  "selected" : '' ?>>
+                                            Declined</option>
+                                        <option value="amendment"
+                                            <?= !empty($_GET['leadStatus']) &&  $_GET['leadStatus'] == 'amendment'?  "selected" : '' ?>>
+                                            Amendment</option>
                                     </select>
                                     <input type="hidden" name="search" value="True">
                                 </div>
                                 <div class="col-md-3 d-flex align-items-center mt-md-3">
                                     <input type="submit" class="btn btn-success d-block mt-2" value="Filter">
                                 </div>
-                                
+
                             </div>
                             <!-- row -->
                         </div>
@@ -155,12 +184,18 @@
 
                 <!-- Begin demo table design -->
                 <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
-                    <form id="search_customer_data" class="form-horizontal" action="<?php echo base_url(); ?>customers/index">
+                    <form id="search_customer_data" class="form-horizontal"
+                        action="<?php echo base_url(); ?>customers/index">
                         <div class="form-group">
-                            <label class="control-label col-sm-4" for="customer_id">Enter Customer ID/name/contact:</label>
+                            <label class="control-label col-sm-4" for="customer_id">Enter Customer
+                                ID/name/contact:</label>
                             <div class="col-sm-4">
-                                <input type="text" id="customer_id" required maxlength="20" name="keyword" value="<?php echo $customer->customer_id; ?>" class="form-control" placeholder="Type Lead Id or Customer Name or Contact Number" title="Type Lead Id or Customer Name or Contact Number" />
-                                <ul class="dropdown-menu txtcustomer" style="margin-left:20px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu" id="DropdownCusInfo"></ul>
+                                <input type="text" id="customer_id" required maxlength="20" name="keyword"
+                                    value="<?= isset($_GET['keyword'])  ? $_GET['keyword'] : ''; ?>"
+                                    class="form-control" placeholder="Type Lead Id or Customer Name or Contact Number"
+                                    title="Type Lead Id or Customer Name or Contact Number" />
+                                <ul class="dropdown-menu txtcustomer" style="margin-left:20px;margin-right:0px;"
+                                    role="menu" aria-labelledby="dropdownMenu" id="DropdownCusInfo"></ul>
                             </div>
                         </div>
                     </form>
@@ -172,7 +207,6 @@
                             <tbody>
                                 <?php
                                 foreach ($list as $customer) {
-                                    // dump($customer);
                                     $cust_id = $customer->customer_id;
                                     //Lead Prospect Hot/Warm/Cold
                                     $cus_pro_status = get_cus_prospect($customer->customer_id);
@@ -253,17 +287,18 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="fs-7 mb-2 mt-0 ">
-                                                    <span class="tooltip_right d-block">
-                                                        <span class="customer_name_text fw_700">
-                                                            <strong
-                                                                class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
-                                                            </strong>
+                                                        <span class="tooltip_right d-block">
+                                                            <span class="customer_name_text fw_700">
+                                                                <strong
+                                                                    class="d-block mb-1 uppercase"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
+                                                                </strong>
+                                                            </span>
+                                                            <span
+                                                                class="tooltip_right_text"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
+                                                            </span>
                                                         </span>
-                                                        <span
-                                                            class="tooltip_right_text"><?= !empty($customer->customer_name) ? ucFirst($customer->customer_name) : 'N/A' ?>
-                                                        </span>
-                                                    </span>
-                                                    <span title="Leads From" class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
+                                                        <span title="Leads From"
+                                                            class="text-primary"><?= get_customer_type_name($customer->customer_type) ?></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -390,13 +425,21 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="">
                                                 <li>
                                                     <!-- <?= site_url("customers/edit/$customer->customer_id") ?> -->
-                                                    <a class="dropdown-item add-edit-customer" href="#" data-bs-toggle="offcanvas" data-id="<?= $customer->customer_id ?>" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                                    <a class="dropdown-item add-edit-customer" href="#"
+                                                        data-bs-toggle="offcanvas"
+                                                        data-id="<?= $customer->customer_id ?>"
+                                                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i
+                                                            class="fa-solid fa-pen-to-square"></i> Edit</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item" href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>"><i class="fa-solid fa-eye"></i> View</a>
+                                                    <a class="dropdown-item"
+                                                        href="<?= site_url("customers/view_lead/") . $customer->customer_id ?>"><i
+                                                            class="fa-solid fa-eye"></i> View</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item ajax_delete_customer" data-id="$customer->customer_id" href="javascript:;"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                                                    <a class="dropdown-item ajax_delete_customer"
+                                                        data-id="$customer->customer_id" href="javascript:;"><i
+                                                            class="fa-solid fa-trash-can"></i> Delete</a>
                                                 </li>
                                             </ul>
                                         </div>
