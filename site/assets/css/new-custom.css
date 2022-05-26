@@ -564,7 +564,6 @@ span.target {
 }
 
 /* --- page-sidebar-menu active / open --- */
-
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active>a,
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active.open>a,
 .page-sidebar .page-sidebar-menu>li.active>a,
@@ -659,7 +658,7 @@ ul.page-sidebar-menu.page-header-fixed.page-sidebar-menu-closed .nav-item:hover 
 
 
 .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover>.sub-menu {
-    width: 210px;
+    /* width: 210px;
     position: absolute;
     z-index: 2000;
     left: 46px;
@@ -671,8 +670,9 @@ ul.page-sidebar-menu.page-header-fixed.page-sidebar-menu-closed .nav-item:hover 
     -ms-border-radius: 0 0 4px 4px;
     -o-border-radius: 0 0 4px 4px;
     border-radius: 0 0 4px 4px;
-    background: #f5f6f8;
+    background: #f5f6f8; */
 }
+
 
 /* ---- End page-sidebar-wrapper / page-sidebar ---- */
 
@@ -1405,10 +1405,10 @@ input.cr-slider {
 
 
     .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover {
-        width: 256px !important;
+        /* width: 256px !important;
         position: relative !important;
         z-index: 10000;
-        display: block !important
+        display: block !important */
     }
 
     .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li.open>.sub-menu,
@@ -1439,6 +1439,21 @@ input.cr-slider {
     .page-sidebar-closed .page-sidebar.navbar-collapse.collapse:hover {
         width: 256px !important;
     }
+    .page-sidebar-closed .page-sidebar ul li a > span {display: none;}
+    .page-sidebar-closed .page-sidebar ul li .sub-menu li a span {display: block;}
+    
+    .page-sidebar-closed .fullWidth.page-sidebar ul li a > span {display: inline-block !important;}
+
+    /* .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li>a>.arrow,
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li>a>.badge,
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li>a>.title {
+        display: none !important
+    }
+
+    
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li>a>.title {
+        display: block !important;
+    } */
 
 }
 

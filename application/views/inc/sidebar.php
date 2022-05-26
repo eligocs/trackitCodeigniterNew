@@ -61,11 +61,11 @@
                         <i class="fa-solid fa-user-plus"></i>
                             <span class="title">Call Records</span>
                         </a>
-                    </li>
-            <?php if( is_admin() ){ ?>
-            <div class='sidebar_heading'>
-                <span> Leads/Sales </span>
-            </div>
+                </li>
+                <?php if( is_admin() ){ ?>
+                <div class='sidebar_heading'>
+                    <span> Leads/Sales </span>
+                </div>
             <li
                 class="nav-item  <?php if( $menu_name == "indiatourizm" || $menu_name == "customers" || $menu_name == "search" ){ echo 'active'; }?>">
                 <a href="javascript:;" class="nav-link nav-toggle">

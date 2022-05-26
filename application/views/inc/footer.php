@@ -289,8 +289,8 @@ jQuery(document).ready(function($) {
 	<script src="<?php echo base_url();?>site/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
 
-	    <!-- Select2 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	<!-- Select2 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 	<!-- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> -->
 
@@ -301,45 +301,52 @@ jQuery(document).ready(function($) {
 
 
 	<script>
-function showTime() {
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var day = date.getDay(); // 0 - 6
-    var session = "AM";
+		// sidebar-menu Toggler JS
+		$(document).ready(function() {
+			$(".page-sidebar").hover(function() {
+				$(".navbar-collapse").toggleClass("fullWidth");
+			});
+		});
 
-    var weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
+		function showTime() {
+			var date = new Date();
+			var h = date.getHours(); // 0 - 23
+			var m = date.getMinutes(); // 0 - 59
+			var s = date.getSeconds(); // 0 - 59
+			var day = date.getDay(); // 0 - 6
+			var session = "AM";
+
+			var weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
 
 
-    if (h >= 12) session = "PM";
+			if (h >= 12) session = "PM";
 
-    if (h == 0) {
-        h = 12;
-    }
+			if (h == 0) {
+				h = 12;
+			}
 
-    if (h > 12) {
-        h = h - 12;
-    }
+			if (h > 12) {
+				h = h - 12;
+			}
 
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
+			h = (h < 10) ? "0" + h : h;
+			m = (m < 10) ? "0" + m : m;
+			s = (s < 10) ? "0" + s : s;
 
-    var time = weekday + "  " + h + ":" + m + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
+			var time = weekday + "  " + h + ":" + m + ":" + s + " " + session;
+			document.getElementById("MyClockDisplay").innerText = time;
+			document.getElementById("MyClockDisplay").textContent = time;
 
-    setTimeout(showTime, 1000);
+			setTimeout(showTime, 1000);
 
-}
-//    showTime();
-$(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-})
+		}
+		//    showTime();
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
 	</script>
 
 
 	</body>
 
-	</html>
+</html>
