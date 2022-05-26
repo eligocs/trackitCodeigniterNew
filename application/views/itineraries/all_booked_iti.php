@@ -15,13 +15,16 @@
                   if( !empty( $rev_link ) ){
                   ?>
                     <div class="pull-right">
-                        <button class="btn btn-primary float-end" onclick="copy_rev_link()"><i class="fa-solid fa-plus"></i> Copy Review Link</button>
+                        <button class="btn btn-primary float-end" onclick="copy_rev_link()"><i
+                                class="fa-solid fa-plus"></i> Copy Review Link</button>
                         <strong id="altPassTemp" class='hide'><?php echo $rev_link; ?></strong>
                     </div>
                     <?php } ?>
 
                     <!-- Show hide filter button -->
-                    <button  class="btn float-end me-2 p-2 " title="Filter Itineraries" type="button" data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false" aria-controls="filter_collapse">
+                    <button class="btn float-end me-2 p-2 " title="Filter Itineraries" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#filter_collapse" aria-expanded="false"
+                        aria-controls="filter_collapse">
                         <i class="fa-solid fa-filter fs-5"></i>
                     </button>
                 </div>
@@ -42,7 +45,7 @@
                 <!--start filter section-->
                 <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible mb-0">
                     <div class="row">
-                    <?php if( $user_role == 99 || $user_role == 98 ){ ?>
+                        <?php if( $user_role == 99 || $user_role == 98 ){ ?>
                         <div class="col-md-3 my-2">
                             <?php $sales_team_agents = get_all_sales_team_agents(); ?>
                             <div class="form-group">
@@ -81,10 +84,10 @@
                             <div class="filter_box">
                                 <label class="control-label" for="">&nbsp;</label>
                                 <select class="form-control" name="filtername" id="">
-                                    <option  value="9" id="all">All</option>
-                                    <option  value="9" id="approved">Approved</option>
-                                    <option  value="travel_date" id="travel_date">Travel Date</option>
-                                    <option  value="travel_end_date" id="travel_end_date">Checkout</option>
+                                    <option value="9" id="all">All</option>
+                                    <option value="9" id="approved">Approved</option>
+                                    <option value="travel_date" id="travel_date">Travel Date</option>
+                                    <option value="travel_end_date" id="travel_end_date">Checkout</option>
                                 </select>
                             </div>
                         </div>
@@ -92,9 +95,9 @@
                             <label class="control-label d-block" for="">&nbsp;</label>
                             <input type="submit" class="btn btn-success" value="Filter">
                             <?php if( $user_role == 99 || $user_role == 98 ){ ?>
-                                <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
-                                    class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
-                                    Export</a>
+                            <a href="<?php echo base_url("export/export_itinerary_fiter_data");?>"
+                                class="btn btn-danger export_btn"><i class="fa fa-file-excel"></i>
+                                Export</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -106,14 +109,15 @@
                 <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
                 <span class="sr-only">Loading...</span>
             </div>
-            
-          <!-- Begin demo table design -->
-          <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
+
+            <!-- Begin demo table design -->
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="table-responsive itineraryData">
-                <table class="table data-table-large">
+                    <table class="table data-table-large">
                         <tbody>
-                    <?php     if( !empty($list) ){
-                    foreach ($list as $iti) {
+                            <?php 
+                if( !empty($bookeditineraries) ){
+                    foreach ($bookeditineraries as $iti) {
                         // dump($iti);
                         $pub_status = $iti->publish_status;
                         $iti_id = $iti->iti_id;
@@ -184,7 +188,7 @@
                         // dump($itineary_followup);
 
                     ?>
-                   
+
                             <tr>
                                 <td>
                                     <div class="align-bottom align-content-between d-flex flex-wrap h-100">
@@ -206,10 +210,10 @@
                                             </div>
                                             <div class="ms-2">
                                                 <p class="fs-7 mb-2 mt-0 ">
-                                                <span class="customer_name_text d-block">
-                                                    <strong
-                                                    class="d-block mb-1"><?= !empty($iti->customer_name) ? $iti->customer_name : '' ?></strong>
-                                                </span>
+                                                    <span class="customer_name_text d-block">
+                                                        <strong
+                                                            class="d-block mb-1"><?= !empty($iti->customer_name) ? $iti->customer_name : '' ?></strong>
+                                                    </span>
                                                     <span title="Leads From"
                                                         class="text-primary"><?= get_customer_type_name($customerDetail['0']->customer_type) ?></span>
                                                 </p>
@@ -222,10 +226,14 @@
                                             <div class="border-end flex-grow-1">
                                                 <p class="fs-7 mb-2 mt-0 text-secondary">requirement </p>
                                                 <div>
-                                                    <i class="me-2 fa-solid fa-plane-departure <?= isset($requirements_meta['requirements_flight']) ? 'text-primary' : 'text-muted' ?>"></i>
-                                                    <i class="me-2 fa-solid fa-hotel <?= isset($requirements_meta['requirements_hotel']) ? 'text-primary' : 'text-muted' ?>"></i>
-                                                    <i class="me-2 fa-solid fa-taxi  <?= isset($requirements_meta['requirements_cab']) ? 'text-primary' : 'text-muted' ?>"></i>
-                                                    <i class="me-2 fa-solid fa-train-subway  <?= isset($requirements_meta['requirements_train']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-plane-departure <?= isset($requirements_meta['requirements_flight']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-hotel <?= isset($requirements_meta['requirements_hotel']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-taxi  <?= isset($requirements_meta['requirements_cab']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-train-subway  <?= isset($requirements_meta['requirements_train']) ? 'text-primary' : 'text-muted' ?>"></i>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 ms-2">
@@ -234,7 +242,8 @@
                                                         class="d-block fs-7 mb-2"><?= !empty($iti->customer_contact) ? $iti->customer_contact : '' ?></span>
                                                 </div>
                                                 <div>
-                                                    <span title="<?= !empty($iti->email_count) ? 'sent' .  $iti->email_count . 'times' :  'NOT SENT' ; ?>"
+                                                    <span
+                                                        title="<?= !empty($iti->email_count) ? 'sent' .  $iti->email_count . 'times' :  'NOT SENT' ; ?>"
                                                         class="bg-info fs-8 px-2 rounded-3 text-white"><?= !empty($iti->email_count) ? $iti->email_count : 'N/S' ; ?></span>
                                                     <span class="tooltip_right">
                                                         <i class="fa-envelope fa-solid text-primary"></i>
@@ -256,21 +265,24 @@
                                                 <?= $packageType ?>
                                             </div>
                                             <div class="">
-                                                <span class="text-secondary fs-7 package_name"><?= $iti->package_name ?></span>
+                                                <span
+                                                    class="text-secondary fs-7 package_name"><?= $iti->package_name ?></span>
                                             </div>
                                         </div>
                                         <div class="bg-light p-1 w-100">
                                             <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
-                                            <span class="badge fs-7 pb-0 text-dark" title="Adult"> <?= $iti->adults ?> <i
-                                                    class="fa-solid fa-user text-black-50"></i> </span>
+                                            <span class="badge fs-7 pb-0 text-dark" title="Adult"> <?= $iti->adults ?>
+                                                <i class="fa-solid fa-user text-black-50"></i> </span>
                                             <?php
                                                     if($iti->child != 00){
                                                         $totalTravel = $iti->adults + $iti->child;
                                                         ?>
-                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> <?= $iti->child ?> <i
+                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Children">
+                                                <?= $iti->child ?> <i
                                                     class="fa-solid fa-child text-black-50"></i></span>
-                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> <?= $totalTravel ?> <i
-                                                    class="fa-solid fa-baby text-black-50"></i> </span>
+                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby">
+                                                <?= $totalTravel ?> <i class="fa-solid fa-baby text-black-50"></i>
+                                            </span>
                                             <?php
                                                     }
                                                     ?>
@@ -333,15 +345,18 @@
                                             <p class="my-1 fs-7 text-secondary"><span>Next Call</span>
                                                 <span><?= date("d-F",  strtotime( $itineary_followup['0']->nextCallDate ))?></span>
                                             </p>
-                                            <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i>
-                                                <?= date("h:i A",  strtotime( $itineary_followup['0']->nextCallDate ))?></p>
+                                            <p class="my-1 text-dark"><i
+                                                    class="text-success fa-solid fa-phone-volume"></i>
+                                                <?= date("h:i A",  strtotime( $itineary_followup['0']->nextCallDate ))?>
+                                            </p>
                                         </div>
                                         <?php
                                         }else{
                                         ?>
                                         <div class="mb-2 px-2">
                                             <p class="my-1 fs-7 text-secondary"><span>Next Call</span></p>
-                                            <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i>
+                                            <p class="my-1 text-dark"><i
+                                                    class="text-success fa-solid fa-phone-volume"></i>
                                                 not sheduled</p>
                                         </div>
                                         <?php
@@ -390,18 +405,19 @@
                                     </div>
                                 </td>
                             </tr>
-                        
-                    <?php
+
+                            <?php
                     }
-                    }else{?>      
-                    <div>
-                        No Data Found....
-                    </div> 
-                    <?php
+                    }else{?>
+                            <div>
+                                No Data Found....
+                            </div>
+                            <?php
                     }
-                    ?> 
-                    </tbody>
-                    </table>                            
+                    ?>
+                        </tbody>
+                    </table>
+                    <?= $links ?>
                 </div>
             </div>
             <!-- End end demo table design -->
@@ -511,7 +527,6 @@ jQuery(document).ready(function($) {
 });
 </script>
 <script type="text/javascript">
-  
 //copy review link
 function copy_rev_link() {
     /* Get the text field */

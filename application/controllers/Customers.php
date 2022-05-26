@@ -33,19 +33,7 @@ class Customers extends CI_Controller {
 		// 	$keyword	= $_GET['keyword'];
 		// 	$fields = array('customer_id','customer_name','customer_contact');
 		// }
-		$config = array();
-		$config['reuse_query_string'] = true;
-		$config['enable_query_strings'] = TRUE;
-		// $config['page_query_string'] = TRUE;
-		// $config['use_page_numbers'] = TRUE;
-		$config["base_url"] = base_url() . "customers/index";
-		$config["total_rows"] = $this->search_model->get_count('customers_inquery', $fields, $keyword);
-		$config['next_link'] = 'Next';
-		$config['prev_link'] = 'Previous';
-		$config["page"] = 10;
-		$config["uri_segment"] = 3;
-		$this->pagination->initialize($config);
-		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+	
 			
 		/****filters****/
 		if(!empty($_GET['search'])){	
@@ -55,11 +43,9 @@ class Customers extends CI_Controller {
 				$filter_data["leadfrom"] 		= trim($_GET['date_from']);
 				$filter_data["leadto"] 		= trim($_GET['date_to']);
 			}
-			
 			if( isset( $_GET["leadStatus"]   ) ){
 				$filter_data["leadstatus"] = $_GET["leadStatus"];
 			}
-			
 			//Get Working Leads
 			if( isset( $_GET["quotation_type"]   ) ){
 				$filter_data["quotation_type"] 	= $_GET["quotation_type"];
@@ -88,6 +74,21 @@ class Customers extends CI_Controller {
 				$where["customers_inquery.agent_id"] = $_POST['agent_id'];
 			}
 		} 	
+
+		$config = array();
+		$config['reuse_query_string'] = true;
+		$config['enable_query_strings'] = TRUE;
+		// $config['page_query_string'] = TRUE;
+		// $config['use_page_numbers'] = TRUE;
+		$config["base_url"] = base_url() . "customers/index";
+		$config["total_rows"] = $this->customer_model->get_count($where, $keyword, $filter_data);
+		$config['next_link'] = 'Next';
+		$config['prev_link'] = 'Previous';
+		$config["page"] = 10;
+		$config["uri_segment"] = 3;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+
 		$data["links"] = $this->pagination->create_links();
 		$data['list'] = $this->customer_model->get_datatables($where, $custom_where, $config["page"], $page , $filter_data,  $keyword);
 			$this->load->view('inc/header');

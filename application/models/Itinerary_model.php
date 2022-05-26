@@ -113,6 +113,15 @@ class Itinerary_model extends CI_Model{
 		$this->db->update('itinerary',$data);
 		return true;
 	} 
+
+
+	/* count ***/
+	public function get_count( $where=array(), $search=null, $filter=NULL) 
+	{	
+		$this->_get_datatables_query( $where , "count", $custom_where =NULL, $filter , $search);
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
 	
 	//datatable view all Itinerary
 	private function _get_datatables_query($where, $q_type = "" , $custom_where = NULL, $filter_data_get){
@@ -248,8 +257,8 @@ class Itinerary_model extends CI_Model{
 						break;
 					case "7":
 						$this->db->where( "itinerary.iti_status", "7" );
-						$this->db->where("itinerary.iti_decline_approved_date >=", date('Y-m-d', strtotime($date_from)) );
-						$this->db->where("itinerary.iti_decline_approved_date <=", date('Y-m-d H:i:s', strtotime($date_end . "23:59:59")) );
+						// $this->db->where("itinerary.iti_decline_approved_date >=", date('Y-m-d', strtotime($date_from)) );
+						// $this->db->where("itinerary.iti_decline_approved_date <=", date('Y-m-d H:i:s', strtotime($date_end . "23:59:59")) );
 						break;
 					case "pending":
 						$this->db->where( array( "itinerary.iti_status" => "0", "itinerary.publish_status" => "publish" ) );
@@ -389,11 +398,11 @@ class Itinerary_model extends CI_Model{
 		return $query->result();
 	}
 	
-	function count_filtered($where = array(), $custom_where = NULL){
-		$this->_get_datatables_query( $where , "count", $custom_where);
-		$query = $this->db->get();
-		return $query->num_rows();
-	}
+	// function count_filtered($where = array(), $custom_where = NULL){
+	// 	$this->_get_datatables_query( $where , "count", $custom_where);
+	// 	$query = $this->db->get();
+	// 	return $query->num_rows();
+	// }
 
 	public function count_all( $where = array() , $custom_where = NULL){
 		if (!empty($where)) {

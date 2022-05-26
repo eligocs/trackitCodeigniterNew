@@ -9,14 +9,9 @@ class Customer_Model extends CI_Model{
 	
 	function __construct(){
         parent::__construct();
+		$this->load->model("search_model");
 		validate_login();
 	}
-	
-	// public function get_count() 
-	// {
-
-	// 	return $this->db->count_all("customers_inquery");
-	// }
 
 	public function insert_customer($tablename, $data_array) {
         if ($this->db->insert($tablename, $data_array)) {
@@ -27,8 +22,6 @@ class Customer_Model extends CI_Model{
         return $result;
     }
 
-
-	
 	public function getdata($tablename, $where = array(), $getCol = '') {
         $table = $tablename;
 		if (!empty($getCol)) {
@@ -89,6 +82,17 @@ class Customer_Model extends CI_Model{
 		$this->db->update($tablename,$data_array);
 		return true;
 	}
+
+
+	/* count ***/
+	public function get_count( $where=array(), $search=null, $filter=NULL) 
+	{	
+		$this->_get_datatables_query( $where , "count", $custom_where =NULL, $filter , $search);
+		$query = $this->db->get();
+		// dump($query->num_rows());die;
+	    return $query->num_rows();
+	}
+
 	
 	//datatable view all customers
 	private function _get_datatables_query( $where , $q_type = null , $custom_where =NULL , $filter_data_get, $search){
@@ -102,7 +106,6 @@ class Customer_Model extends CI_Model{
 		}else{
 			$this->db->select('customers_inquery.*,pay.travel_date,pay.iti_booking_status as booking_status, cf.customer_id as followup_id, itinerary.iti_status');
 		} 
-		
 		
         $this->db->from('customers_inquery AS customers_inquery');
 		$this->db->join('customer_followup AS cf', 'customers_inquery.customer_id = cf.customer_id', 'LEFT')
@@ -295,23 +298,22 @@ class Customer_Model extends CI_Model{
 			$this->db->where($custom_where);
         }
 		
-		//$this->db->from($this->table);
-		$i = 0;
-		foreach ($this->column_search as $item){
-			if(  isset($search)){
-				// dump($search);die;
-				if($i===0){
-					$this->db->group_start();
-					$this->db->like($item, $search);
-				}else{
-					$this->db->or_like($item, $search);
+			$i = 0;
+			foreach ($this->column_search as $item){
+				if(  isset($search)){
+					// dump($search);die;
+					if($i===0){
+						$this->db->group_start();
+						$this->db->like($item, $search);
+					}else{
+						$this->db->or_like($item, $search);
+					}
+					if(count($this->column_search) - 1 == $i) //last loop
+						$this->db->group_end(); //close bracket select
 				}
-				if(count($this->column_search) - 1 == $i) //last loop
-					$this->db->group_end(); //close bracket select
-			}
-			$i++;
-		}
-		$this->db->group_by( "customers_inquery.customer_id" );
+				$i++;
+			}		
+			$this->db->group_by( "customers_inquery.customer_id" );
 	}
 
 	function get_datatables( $where = array(), $custom_where = NULL,  $limit, $start, $filter_data='',  $search=''){

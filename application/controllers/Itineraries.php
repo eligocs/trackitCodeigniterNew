@@ -18,29 +18,10 @@ class Itineraries extends CI_Controller {
 		$role = $user['role'];
 		$u_id = $user['user_id'];
 
-		/*pagination */
 		$keyword	= "";	
-		$fields = '';
 		if( isset( $_GET['keyword'] ) ){
 			$keyword	= $_GET['keyword'];
-			$fields = array('customer_id','customer_name','customer_contact');
 		}
-
-		$config = array();
-		$config['reuse_query_string'] = true;
-		$config['enable_query_strings'] = TRUE;
-		// $config['page_query_string'] = TRUE;
-
-		// $config['use_page_numbers'] = TRUE;
-		$config["base_url"] = base_url() . "itineraries/index";
-		$config["total_rows"] = $this->search_model->get_count('itinerary', $fields, $keyword);
-		$config['next_link'] = 'Next';
-		$config['prev_link'] = 'Previous';
-		$config["page"] = 10;
-		$config["uri_segment"] = 3;
-		$this->pagination->initialize($config);
-		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
-
 
 		if( $user['role'] == 99 || $user['role'] == 98 || $user['role'] == 97 || $user['role'] == 96 ){
 
@@ -100,7 +81,23 @@ class Itineraries extends CI_Controller {
 				}
 			}
 
-		$data['list'] = $this->itinerary_model->get_datatables( $where, $custom_where, $config["page"], $page , $filter_data );
+		/*pagination */
+		$config = array();
+		$config['reuse_query_string'] = true;
+		$config['enable_query_strings'] = TRUE;
+		// $config['page_query_string'] = TRUE;
+
+		// $config['use_page_numbers'] = TRUE;
+		$config["base_url"] = base_url() . "itineraries/index";
+		$config["total_rows"] = $this->itinerary_model->get_count($where, $keyword, $filter_data);
+		$config['next_link'] = 'Next';
+		$config['prev_link'] = 'Previous';
+		$config["page"] = 10;
+		$config["uri_segment"] = 3;
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+
+		$data['allItinerarys'] = $this->itinerary_model->get_datatables( $where, $custom_where, $config["page"], $page , $filter_data );
 		$data["links"] = $this->pagination->create_links();
 		// dump($data);die;
 			$this->load->view('inc/header');
@@ -4928,8 +4925,30 @@ class Itineraries extends CI_Controller {
 			}else if( $user['role'] == 96 ){
 				$where = array( "itinerary.iti_status" => 9, "itinerary.agent_id" => $user_id );
 			}
+
+			$keyword	= "";	
+			if( isset( $_GET['keyword'] ) ){
+				$keyword	= $_GET['keyword'];
+			}
 			
-			$data['list'] = $this->itinerary_model->get_datatables($where);
+			/*pagination */
+			$config = array();
+			$config['reuse_query_string'] = true;
+			$config['enable_query_strings'] = TRUE;
+			// $config['page_query_string'] = TRUE;
+
+			// $config['use_page_numbers'] = TRUE;
+			$config["base_url"] = base_url() . "itineraries/bookeditineraries";
+			$config["total_rows"] = $this->itinerary_model->get_count($where, $keyword, $filter_data=NULL);
+			$config['next_link'] = 'Next';
+			$config['prev_link'] = 'Previous';
+			$config["page"] = 10;
+			$config["uri_segment"] = 3;
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+
+			$data['bookeditineraries'] = $this->itinerary_model->get_datatables( $where, $custom_where= NULL, $config["page"], $page , $filter_data );
+			$data["links"] = $this->pagination->create_links();
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('itineraries/all_booked_iti', $data);

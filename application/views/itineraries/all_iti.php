@@ -171,9 +171,10 @@
                 <div class="table-responsive itineraryData table-ver-scroll">
                     <table class="table data-table-large">
                         <tbody>
-                            <?php     if( !empty($list) ){
-                            foreach ($list as $iti) {
-                                // dump($iti);
+                            <?php 
+                        if( !empty($allItinerarys) ){
+                            foreach ($allItinerarys as $iti) {
+                                dump($iti);die;
                                 $pub_status = $iti->publish_status;
                                 $iti_id = $iti->iti_id;
                                 $key = $iti->temp_key;
@@ -304,7 +305,7 @@
                                                 <p class="fs-7 mb-2 mt-0 ">
                                                     <span class="customer_name_text d-block">
                                                         <strong
-                                                            class="d-block mb-1"><?= !empty($iti->customer_name) ? $iti->customer_name : 'N/A' ?></strong>
+                                                            class="d-block mb-1"><?= !empty($iti->customer_name) ? ucfirst($iti->customer_name) : 'N/A' ?></strong>
                                                     </span>
                                                     <span title="Leads From"
                                                         class="text-primary"><?= get_customer_type_name($customerDetail['0']->customer_type) ?></span>
@@ -316,7 +317,7 @@
                                         ?>
                                         <div class="bg-light d-flex justify-content-between p-1 w-100">
                                             <div class="border-end flex-grow-1">
-                                                <p class="fs-7 mb-2 mt-0 text-secondary">requirement </p>
+                                                <p class="fs-7 mb-2 mt-0 text-secondary">Requirement </p>
                                                 <div>
                                                     <i
                                                         class="me-2 fa-solid fa-plane-departure <?= isset($requirements_meta['requirements_flight']) ? 'text-primary' : 'text-muted' ?>"></i>
@@ -399,7 +400,7 @@
                                                 (<?=  $totalDayNight  ?>)</span>
                                         </div>
                                         <div class="bg-light p-1 w-100">
-                                            <span class="d-block fs-7 mb-2 text-muted">assigned to</span>
+                                            <span class="d-block fs-7 mb-2 text-muted">Assigned to</span>
                                             <a class="text-primary d-block fw-bold" href=""
                                                 title="View Agent"><?= ucFirst(get_user_name( $iti->agent_id )) ?></a>
                                         </div>
@@ -456,7 +457,7 @@
                                             <p class="my-1 fs-7 text-secondary"><span>Next Call</span></p>
                                             <p class="my-1 text-dark"><i
                                                     class="text-success fa-solid fa-phone-volume"></i>
-                                                not sheduled</p>
+                                                Not sheduled</p>
                                         </div>
                                         <?php
                                         }

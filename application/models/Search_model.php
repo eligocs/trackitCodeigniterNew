@@ -53,7 +53,14 @@ class Search_model extends CI_Model{
 	
 	//multiple like or
 	// private function _multi_like_conditions (array $fields, $search_text) {
-	private function _multi_like_conditions ($fields, $search_text) {
+	// private function _multi_like_conditions ($fields, $search_text) {
+	// 	$likes = array();
+	// 	foreach ($fields as $field) {
+	// 		$likes[] = "$field LIKE '%$search_text%'";
+	// 	}
+	// 	return '('.implode(' || ', $likes).')';
+	// }
+	public function _multi_like_conditions ($fields, $search_text) {
 		$likes = array();
 		foreach ($fields as $field) {
 			$likes[] = "$field LIKE '%$search_text%'";
