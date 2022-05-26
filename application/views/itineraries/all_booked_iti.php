@@ -31,7 +31,7 @@
             </div>
             <?php
             //Hide filter
-            $hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
+            $hideClass = isset( $_GET["user_id"] ) || isset( $_GET["dateRange"] ) ? "" : "show";
             if( isset( $_GET["todayStatus"] ) ){	
             	$first_day_this_month = $_GET["todayStatus"]; 
             	$last_day_this_month  = $_GET["todayStatus"];
@@ -39,11 +39,12 @@
             	$first_day_this_month = ""; 
             	$last_day_this_month  = "";
             }
+            // dump($_GET['user_id']);die;
             ?>
             <!--sort by agent -->
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse <?= !empty($_GET['dateRange']) ? 'show' : '' ?>" id="filter_collapse">
                 <!--start filter section-->
-                <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible mb-0">
+                <form id="form-filter" class="form-horizontal bg_white padding_zero overflow_visible mb-0" action="<?php echo base_url(); ?>itineraries/bookeditineraries">
                     <div class="row">
                         <?php if( $user_role == 99 || $user_role == 98 ){ ?>
                         <div class="col-md-3 my-2">
@@ -53,7 +54,8 @@
                                 <select required class="form-control" id='sales_user_id' name="user_id">
                                     <option value="">All Users</option>
                                     <?php foreach( $sales_team_agents as $user ){ ?>
-                                    <option value="<?php echo $user->user_id; ?>">
+                                    <option value="<?php echo $user->user_id; ?>" <?= !empty($_GET['user_id']) && ($_GET['user_id'] == $user->user_id) ? 'selected' : '' ?>
+                                    >
                                         <?php echo $user->user_name . " ( " . ucfirst( $user->first_name ) . " "  . ucfirst( $user->last_name) . " )"; ?>
                                     </option>
                                     <?php } ?>
@@ -61,12 +63,12 @@
                             </div>
                         </div>
                         <?php } ?>
-                        <div class="<?php echo $hideClass; ?> col-md-3 my-2">
+                        <div class="col-md-3 my-2">
                             <div class="actions custom_filter">
                                 <label class="control-label">Filter: </label>
                                 <!--Calender-->
                                 <input type="text" autocomplete="off" class="form-control d_block" id="daterange"
-                                    name="dateRange" value="" required />
+                                    name="dateRange" value="<?= !empty($_GET['date_from']) ? $_GET['date_from'] : '' ?>" required />
                                 <input type="hidden" name="date_from" id="date_from"
                                     data-date_from="<?php if( isset( $_GET["leadfrom"] ) ){ echo $_GET["leadfrom"]; }else { echo $first_day_this_month; } ?>"
                                     value="">
@@ -84,10 +86,8 @@
                             <div class="filter_box">
                                 <label class="control-label" for="">&nbsp;</label>
                                 <select class="form-control" name="filtername" id="">
-                                    <option value="9" id="all">All</option>
-                                    <option value="9" id="approved">Approved</option>
-                                    <option value="travel_date" id="travel_date">Travel Date</option>
-                                    <option value="travel_end_date" id="travel_end_date">Checkout</option>
+                                    <option value="9" id="all" <?= !empty($_GET['user_id']) && ($_GET['filter_val'] == '9') ? 'selected' : '' ?>>All</option>
+                                    <option value="travel_date" id="travel_date" <?= !empty($_GET['user_id']) && ($_GET['filter_val'] == 'travel_date') ? 'selected' : '' ?>>Travel Date</option>
                                 </select>
                             </div>
                         </div>
@@ -174,19 +174,15 @@
                             $night = $diff->d + 1;
                             $totalDayNight = $diff->d . 'D' . ' ' . '/' . ' ' .  $night . 'N' ;
                         }
-
-                        //Get itinerary type 1=itinerary , 2=accommodation
+                        
                         $iti_type = $iti->iti_type == 2 ? "<strong class='red'>Accommodation</strong>" : "<strong class='white'>Holiday</strong>";
 
                         /* customer Details */
                         $customerDetail = get_customer($iti->customer_id);
-                        // dump($customerDetail['0']);
 
                         /* get iti followup*/
                         $where_follow		 = array( "customer_id" => $iti->customer_id );
                         $itineary_followup 	= $this->global_model->getdata("iti_followup", $where_follow);
-                        // dump($itineary_followup);
-
                     ?>
 
                             <tr>
@@ -257,11 +253,14 @@
                                         </div>
                                     </div>
                                 </td>
+                                <?php
+                                $customer = get_customer($iti->customer_id);
+                                ?>
                                 <td>
                                     <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                         <div class="px-2 w-100">
                                             <div class="mb-2">
-                                                <strong class="d-block fs-7">Himahal Pradesh </strong>
+                                                <strong class="d-block fs-7"><?= !empty($customer[0]->destinationState) ?  get_state_name(ucfirst($customer[0]->destinationState)) : 'N/A'; ?> </strong>
                                                 <?= $packageType ?>
                                             </div>
                                             <div class="">
@@ -501,7 +500,7 @@ jQuery(document).ready(function($) {
             locale: {
                 format: 'YYYY-MM-DD'
             },
-            autoUpdateInput: false,
+            autoUpdateInput: false ,
             showDropdowns: true,
             minDate: new Date(2016, 10 - 1, 25),
             //singleDatePicker: true,
@@ -518,13 +517,14 @@ jQuery(document).ready(function($) {
         },
         function(start, end, label) {
             $('#daterange').val(start.format('D MMMM, YYYY') + ' to ' + end.format('D MMMM, YYYY'));
-            $("#date_from").attr("data-date_from", start.format('YYYY-MM-DD'));
-            $("#date_to").attr("data-date_to", end.format('YYYY-MM-DD'));
+            $("#date_from").val(start.format('YYYY-MM-DD'));
+            $("#date_to").val(end.format('YYYY-MM-DD'));
             $("#todayStatus").val("");
             console.log("A new date range was chosen: " + start.format('YYYY-MM-DD') + ' to ' + end.format(
                 'YYYY-MM-DD'));
         });
 });
+
 </script>
 <script type="text/javascript">
 //copy review link

@@ -13,6 +13,7 @@ class packages_model extends CI_Model{
 	
 	function __construct(){
         parent::__construct();
+		$this->load->library('pagination');
 	}
 	
 	//datatable view all packages
@@ -47,10 +48,11 @@ class packages_model extends CI_Model{
 		}
 	}
 
-	function get_datatables( $where = array() ){
+	function get_datatables( $where = array(), $limit, $start ){
 		$this->_get_datatables_query($where);
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
+		$this->db->limit($limit, $start);
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -123,6 +125,15 @@ class packages_model extends CI_Model{
 		return $this->db->insert_id();
 	}
 	
+
+		/* count ***/
+		public function get_count( $where=array()) 
+		{	
+			$this->_get_datatables_query( $where);
+			$query = $this->db->get();
+			return $query->num_rows();
+		}
+		
 	
 	// Package Category
 	

@@ -4930,6 +4930,18 @@ class Itineraries extends CI_Controller {
 			if( isset( $_GET['keyword'] ) ){
 				$keyword	= $_GET['keyword'];
 			}
+
+			if(!empty($_GET['dateRange'])){
+				$daterage = explode('-' , $_GET['dateRange']);
+				$filter_data["from"] 		= trim($_GET['date_from']);
+				$filter_data["to"] 		= trim($_GET['date_to']);
+			}
+
+			if(!empty($_GET['filtername'])){
+				$filter_data["filter"] 		= trim($_GET['filtername']);
+				// dump($filter_data["filter"] );die;
+			}
+			
 			
 			/*pagination */
 			$config = array();
@@ -4939,7 +4951,7 @@ class Itineraries extends CI_Controller {
 
 			// $config['use_page_numbers'] = TRUE;
 			$config["base_url"] = base_url() . "itineraries/bookeditineraries";
-			$config["total_rows"] = $this->itinerary_model->get_count($where, $keyword, $filter_data=NULL);
+			$config["total_rows"] = $this->itinerary_model->get_count($where, $keyword, $filter_data);
 			$config['next_link'] = 'Next';
 			$config['prev_link'] = 'Previous';
 			$config["page"] = 10;
@@ -5053,9 +5065,28 @@ class Itineraries extends CI_Controller {
 		$user_id = $user["user_id"];
 		$data['user_role'] 	= $user['role'];
 		
-		if( $user['role'] == 99 || $user['role'] == 98 || $user['role'] == 93 ){
+		if( $user['role'] == 99 || $user['role'] == 98 || $user['role'] == 93 ){			
 			$where 	= array( "itinerary.iti_status" => 9, "itinerary.iti_close_status" => 1 );
-			$data['list']	= $this->itinerary_model->get_datatables( $where );
+			$filter_data["filter"] 		= ''; 
+			$keyword = '';
+			/*pagination */
+			$config = array();
+			$config['reuse_query_string'] = true;
+			$config['enable_query_strings'] = TRUE;
+			// $config['page_query_string'] = TRUE;
+
+			// $config['use_page_numbers'] = TRUE;
+			$config["base_url"] = base_url() . "itineraries/bookeditineraries";
+			$config["total_rows"] = $this->itinerary_model->get_count($where, $keyword, $filter_data);
+			$config['next_link'] = 'Next';
+			$config['prev_link'] = 'Previous';
+			$config["page"] = 10;
+			$config["uri_segment"] = 3;
+			$this->pagination->initialize($config);
+			$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+
+			$data['bookeditineraries'] = $this->itinerary_model->get_datatables( $where, $custom_where= NULL, $config["page"], $page , $filter_data );
+			$data["links"] = $this->pagination->create_links();
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('itineraries/all_closed_iti', $data);

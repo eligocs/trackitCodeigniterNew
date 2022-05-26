@@ -26,18 +26,21 @@
             </div>
 
             <!--Begin filter section-->
-            <div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
-                <form class="mb-0" role="form" id="filter_frm" method="post">
+            <div class="cat_wise_filter bg-white p-3 rounded-4 shadow-sm mb-4 collapse <?= !empty($_GET['state_id'])  ? 'show' : '' ?>" id="filter_collapse">
+                <form id="form-filter" class="mb-0"
+                    action="<?php echo base_url(); ?>packages/index">
                     <div class="row">
                         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
                             <label class="control-label">State</label>
                             <div class="form-group">
-                                <select name='state' class='form-control' id='stateID'>
+                                <select name='state_id' class='form-control' id='stateID'>
                                     <option value="">All States</option>
                                     <?php $state_list = get_indian_state_list(); 
 									if( $state_list ){
 										foreach($state_list as $state){
-											echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+                                            ?>
+											<option value="<?= $state->id ?>" <?= !empty($_GET['state_id']) &&  $_GET['state_id'] == $state->id ?  "selected" : '' ?>><?= $state->name ?></option>
+                                            <?php
 										}
 									} ?>
                                 </select>
@@ -52,7 +55,9 @@
 									$cats = get_package_categories();
 									if( $cats ){
 									foreach($cats as $cat){
-										echo '<option value = "'.$cat->p_cat_id .'" >'.$cat->package_cat_name.'</option>';
+                                        ?>
+										<option value = "<?= $cat->p_cat_id ?>" <?= !empty($_GET['p_cat_id']) &&  $_GET['p_cat_id'] == $cat->p_cat_id ?  "selected" : '' ?>> <?= $cat->package_cat_name ?></option>
+                                        <?php 
 										}
 									}
 									?>
@@ -209,9 +214,14 @@
 							?>
                         </tbody>
                     </table>
+                    <?= $links ?>
                     <?php
-						}
+						}else{
 					?>
+                    no data 
+                    <?php
+                        }
+                        ?>
                 </div>
             </div>
             <!-- End table design -->

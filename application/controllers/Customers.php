@@ -725,6 +725,7 @@ class Customers extends CI_Controller {
 	
 	//ajax request to update Customer followup
 	public function updateCustomerFollowup(){
+		// dump();die;
 	
 		$user = $this->session->userdata('logged_in');
 		$u_id = $user['user_id'];
@@ -746,7 +747,11 @@ class Customers extends CI_Controller {
 		$meal_plan_type				= strip_tags($this->input->post("meal_plan_type"));
 		$requirements_meta				= serialize($this->input->post("requirements_meta"));
 		$Infant				= strip_tags($this->input->post("Infant"));
+		$destinationState				= strip_tags($this->input->post("destinationState"));
+		
 
+
+		
 		//get customer data
 		$get_d = $this->global_model->getdata("customers_inquery", array( "customer_id" => $customer_id ) );
 		if( !isset( $get_d[0] ) ){
@@ -830,6 +835,7 @@ class Customers extends CI_Controller {
 				$meal_plan_type				= strip_tags($this->input->post("meal_plan_type"));
 				$requirements_meta				= serialize($this->input->post("requirements_meta"));
 				$Infant				= strip_tags($this->input->post("Infant"));
+				$destinationState				= strip_tags($this->input->post("destinationState"));
 				
 				//update Data
 				$u_data = array(
@@ -859,6 +865,7 @@ class Customers extends CI_Controller {
 					"meal_plan_type" 				=> $meal_plan_type,
 					"requirements_meta" 				=> $requirements_meta,
 					"infant" 				=> $Infant,
+					"destinationState" 				=> $destinationState,
 					
 				);
 					// dump($u_data);die;

@@ -383,6 +383,7 @@ class Itinerary_model extends CI_Model{
 	}
 
 	function get_datatables( $where = array(), $custom_where = NULL, $limit, $start, $filter_data=null ){
+
 		$this->_get_datatables_query($where, NULL, $custom_where, $filter_data );
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);

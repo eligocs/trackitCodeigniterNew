@@ -174,7 +174,7 @@
                             <?php 
                         if( !empty($allItinerarys) ){
                             foreach ($allItinerarys as $iti) {
-                                dump($iti);die;
+                                // dump($iti);die;
                                 $pub_status = $iti->publish_status;
                                 $iti_id = $iti->iti_id;
                                 $key = $iti->temp_key;
@@ -350,11 +350,14 @@
                                         </div>
                                     </div>
                                 </td>
+                                <?php
+                                $customer = get_customer($iti->customer_id);
+                                ?>
                                 <td>
                                     <div class="align-bottom align-content-between d-flex flex-wrap h-100">
                                         <div class="px-2 w-100">
                                             <div class="mb-2">
-                                                <strong class="d-block fs-7">Himahal Pradesh </strong>
+                                                <strong class="d-block fs-7"><?= !empty($customer[0]->destinationState) ?  get_state_name(ucfirst($customer[0]->destinationState)) : 'N/A'; ?> </strong>
                                                 <?= $packageType ?>
                                             </div>
                                             <div class="">

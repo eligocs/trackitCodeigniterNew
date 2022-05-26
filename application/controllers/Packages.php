@@ -13,13 +13,47 @@ class Packages extends CI_Controller {
 		if( $user['role'] == '99' || $user['role'] == '98' || $user['role'] == '96' ){
 			$where = array("del_status" => 0 );
 			//if state filter exists
-			if( isset( $_POST['state_id'] ) && !empty($_POST['state_id']) )
-				$where['state_id'] = $_POST['state_id'];
+			if( isset( $_GET['state_id'] ) && !empty($_GET['state_id']) ){
+
+				$where['state_id'] = $_GET['state_id'];
+			}
 			//if cat_id filter exists
-			if( isset( $_POST['cat_id'] ) && !empty($_POST['cat_id']) )
-				$where['p_cat_id'] = $_POST['cat_id'];
+			if( isset( $_GET['p_cat_id'] ) && !empty($_GET['p_cat_id']) ){	
+				$where['p_cat_id'] = $_GET['p_cat_id'];
+			}
 			
-			$data['list'] = $this->packages_model->get_datatables($where);
+				$keyword	= "";	
+				if( isset( $_GET['keyword'] ) ){
+					$keyword	= $_GET['keyword'];
+				}
+			
+				if(!empty($_GET['dateRange'])){
+					$daterage = explode('-' , $_GET['dateRange']);
+					$filter_data["from"] 		= trim($_GET['date_from']);
+					$filter_data["to"] 		= trim($_GET['date_to']);
+				}
+				if(!empty($_GET['filtername'])){
+					$filter_data["filter"] 		= trim($_GET['filtername']);
+				}
+
+				/*pagination */
+				$config = array();
+				$config['reuse_query_string'] = true;
+				$config['enable_query_strings'] = TRUE;
+				// $config['page_query_string'] = TRUE;
+
+				// $config['use_page_numbers'] = TRUE;
+				$config["base_url"] = base_url() . "packages/index";
+				$config["total_rows"] = $this->packages_model->get_count($where, $keyword, $filter_data);
+				$config['next_link'] = 'Next';
+				$config['prev_link'] = 'Previous';
+				$config["page"] = 10;
+				$config["uri_segment"] = 3;
+				$this->pagination->initialize($config);
+				$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+			
+			$data['list'] = $this->packages_model->get_datatables($where, $config["page"], $page);
+			$data["links"] = $this->pagination->create_links();
 			$this->load->view('inc/header');
 			$this->load->view('inc/sidebar');
 			$this->load->view('packages/all_packages', $data);

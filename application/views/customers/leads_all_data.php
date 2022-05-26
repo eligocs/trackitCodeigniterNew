@@ -973,18 +973,9 @@ div#quotation_type_section,
                                                             <input required type="text" class="form-control" readonly id="travel_date" name="travel_date" value="">
                                                         </div>
                                                     </div>
-
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
-                                                            <label class="control-label" for="">Destination 
-                                                                <sup class="text-danger">*</sup>:
-                                                            </label>
-                                                            <input required type="text" class="form-control" name="destination" value="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6 my-2">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Select Country*</label>
+                                                            <label class="control-label">Traveler Country*</label>
                                                             <select required name="country"
                                                                 class="form-control country form-select">
                                                                 <option value="">Choose Country</option>
@@ -1005,7 +996,7 @@ div#quotation_type_section,
 
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
-                                                            <label class="control-label">Select State*</label>
+                                                            <label class="control-label">Traveler State*</label>
                                                             <select required name="state"
                                                                 class="form-control state form-select">
                                                                 <option value="">Choose State</option>
@@ -1023,7 +1014,7 @@ div#quotation_type_section,
                                                     <div class="col-lg-6 col-md-6 my-2">
                                                         <div class="form-group">
                                                             <label class="control-label" for="">Budget Approx *:</label>
-                                                            <select required name="budget"
+                                                            <select  name="budget"
                                                                 class="form-control form-select">
                                                                 <option value="">Choose Budget</option>
                                                                 <option value="0-5000">0-5000</option>
@@ -1036,6 +1027,35 @@ div#quotation_type_section,
                                                             </select>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Destination State*</label>
+                                                            <select required name="destinationState"
+                                                                class="form-control form-select">
+                                                                <option value="">Choose State</option>
+                                                                <?php $states = get_indian_state_list();
+                                                                if($states){
+                                                                    foreach( $states as $state ){
+                                                                        echo "<option {$selected} value={$state->id}>{$state->name}</option>";
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                    <div class="col-lg-6 col-md-6 my-2">
+                                                        <div class="form-group">
+                                                            <label class="control-label" for="">Destination  City*
+                                                                <sup class="text-danger">*</sup>:
+                                                            </label>
+                                                            <input required type="text" class="form-control" name="destination" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    
                                                     <div class="package__section">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 my-2">
