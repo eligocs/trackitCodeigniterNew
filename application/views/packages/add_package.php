@@ -1,4 +1,3 @@
-
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -38,9 +37,7 @@
                 </div>
 
                 <div class="pdf-preview position-absolute">
-                    <a target="_blank" title="Preview PDF"
-                        href="http://192.168.1.6/trackitCodeigniterNew/itineraries/pdf/23/1qiFfm4G_20220502_1651472182"
-                        class="">
+                    <a target="_blank" title="Preview PDF" href="http://192.168.1.6/trackitCodeigniterNew/itineraries/pdf/23/1qiFfm4G_20220502_1651472182" class="">
                         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56 56"
                             style="enable-background:new 0 0 56 56;" xml:space="preserve">
@@ -999,13 +996,9 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Upload Image</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <ul class="nav nav-tabs" role="tablist">
+            <div class="modal-header align-items-center">
+                <!-- <h4 class="modal-title">Upload Image</h4> -->
+                <ul class="nav nav-tabs mb-0" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#imgUpload">Upload</a>
                     </li>
@@ -1016,49 +1009,67 @@
                         <a class="nav-link" data-bs-toggle="tab" href="#searchImg">Search</a>
                     </li>
                 </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#imgUpload">Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#imgLibrary">Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#searchImg">Search</a>
+                    </li>
+                </ul> -->
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div id="imgUpload" class="container tab-pane active">
-                        <h3>Upload</h3>
                         <div>
                             <form class="mb-0" role="form" id="changePic" enctype="multipart/form-data">
-                                <div class="form-group row">
-                                    <div class="col">
-                                        <div class="upload-img-hs" style="width:400px;"></div>
-                                        <div class="file-drop-area">
-                                            <span class="fake-btn btn-purple"> Choose files</span>
-                                            <span class="file-msg">or drag and drop files here</span>
-                                            <input class="file-input package-iti-pic" type="file" accept="image/*">
-                                        </div>
-                                        <div>
-                                            <span class="label label-danger ms-4 me-2">NOTE! </span>
-                                            <span> Image size not bigger then 1 MB and size (779 X 740).</span>
-                                        </div>
-                                    </div>
-                                    <div class="col">
+                                <div class="row">
+                                    <!-- <div class="col">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                                            <!-- <div class="fileinput-new thumbnail" style="width: 350px; height: 200px;">
+                                            <div class="fileinput-new thumbnail" style="width: 350px; height: 200px;">
                                                 <img alt="" class="img-responsive"
-                                                    src="<?php echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
-                                            </div> -->
+                                                src="<?php// echo site_url() . 'site/images/userprofile/' . $usr_pic; ?>" />
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-6 align-content-between col-md-6 d-flex flex-wrap">
+                                        <div class="w-100">
+                                            <h3>Upload</h3>
+                                            <div class="position-relative">
+                                                <input class="file-input package-iti-pic" type="file" accept="image/*">
+                                                <span class="icon-upload"><i class="fa-solid fa-upload"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="w-100 pb-2">
+                                            <button type="submit" class="btn btn-primary upload-result-package disabled">
+                                                Add Featured Image
+                                            </button>
+                                            <div class="fs-8 mt-3">
+                                                <span class="badge bg-danger fs-8 me-2 me-2">NOTE! </span>
+                                                <span> Image size not bigger then 1 MB and size (779 X 740).</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr>
-                                <div class="mt-2 mb-3">
-                                    <input type="hidden" id="cus_id" name="user_id"
-                                        value="<?php echo $iti->customer_id;?>" />
-                                    <button type="submit" class="btn btn-primary upload-result-package">
-                                        Add Featured Image
-                                    </button>
-                                    <div id="imgres"></div>
+                                    <div class="mt-2 mb-3 col-md-6">
+                                        <div class="file-drop-area">
+                                            <div class="upload-img-hs" style="width:400px;"></div>
+                                        </div>
+                                        <input type="hidden" id="cus_id" name="user_id" value="<?php echo $iti->customer_id;?>" />
+                                        <div id="imgres"></div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
 
                     <div id="imgLibrary" class="container tab-pane fade">
-                        <h3>Library </h3>
+                        <h3 class="ms-2">Recent Pictures</h3>
                         <ul class="attachments">
                             <?php
                             if(!empty($libraryOfPdfImgs)){
