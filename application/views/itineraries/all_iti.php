@@ -6,7 +6,6 @@
     <div class="page-content-wrapper">
         <!-- Begin page-content -->
         <div class="page-content">
-            <!-- BEGIN SAMPLE TABLE PORTLET-->
             <?php $message = $this->session->flashdata('success'); 
             if($message){ echo '<span class="help-block help-block-success">'.$message.'</span>'; }
             ?>
@@ -262,7 +261,7 @@
                                 }
 
                                 //Get itinerary type 1=itinerary , 2=accommodation
-                                $iti_type = $iti->iti_type == 2 ? "<strong class='red'>Accommodation</strong>" : "<strong class='white'>Holiday</strong>";
+                                $iti_type = $iti->iti_type == 2 ? "Accommodation" : "Holiday";
 
                                 /* customer Details */
                                 $customerDetail = get_customer($iti->customer_id);
@@ -287,11 +286,10 @@
                                                 <p title="Iti Id" class="fs-7 fw-bold mb-2 mt-0 d-inline-block">
                                                     #<?= $iti->iti_id ?></p>
                                                 <div title="Tour Type" class="badge bg-danger mb-1 me-2">
-                                                    <strong class="white"><?= $iti_type ?></strong>
+                                                    <strong><?= $iti_type ?></strong>
                                                 </div>
                                                 <div class="fs-8 me-2 text-success">
-                                                    <strong class="" title="Iti Status
-                                                                "><?= $p_status ?>...</strong>
+                                                    <strong class="" title="Iti Status"><?= $p_status ?>...</strong>
                                                 </div>
                                             </div>
                                             <div class="ms-2">
@@ -349,21 +347,29 @@
                                                 <span class="text-secondary fs-7 package_name"><?= $iti->package_name ?></span>
                                             </div>
                                         </div>
-                                        <div class="bg-light p-1 w-100">
-                                            <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
-                                            <span class="badge fs-7 pb-0 text-dark" title="Adult"> <?= $iti->adults ?> <i
-                                                    class="fa-solid fa-user text-black-50"></i> </span>
-                                            <?php
-                                                    if($iti->child != 00){
-                                                        $totalTravel = $iti->adults + $iti->child;
+                                        <div class="bg-light d-flex justify-content-between p-1 w-100">
+                                            <div class="flex-grow-1 ms-2 border-end">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
+                                                <span class="badge fs-7 pb-0 text-dark" title="Adult"> <?= $iti->adults ?> <i
+                                                        class="fa-solid fa-user text-black-50"></i> </span>
+                                                <?php
+                                                        if($iti->child != 00){
+                                                            $totalTravel = $iti->adults + $iti->child;
+                                                            ?>
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> <?= $iti->child ?> <i
+                                                        class="fa-solid fa-child text-black-50"></i></span>
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> <?= $totalTravel ?> <i
+                                                        class="fa-solid fa-baby text-black-50"></i> </span>
+                                                <?php
+                                                        }
                                                         ?>
-                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> <?= $iti->child ?> <i
-                                                    class="fa-solid fa-child text-black-50"></i></span>
-                                            <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> <?= $totalTravel ?> <i
-                                                    class="fa-solid fa-baby text-black-50"></i> </span>
-                                            <?php
-                                                    }
-                                                    ?>
+                                            </div>
+                                            <div class="flex-grow-1 ms-2">
+                                                <p class="fs-7 m-0 mb-2 text-secondary">Iti Status</p>
+                                                <div title="iti-status" class="badge bg-danger mb-1 me-2">
+                                                    <strong>Decline</strong>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
