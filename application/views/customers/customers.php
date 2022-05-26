@@ -168,17 +168,14 @@
                                     </select>
                                     <input type="hidden" name="search" value="True">
                                 </div>
-                                <div class="col-md-3 d-flex align-items-center mt-md-3">
+                                <div class="col-md-2 mt-md-3 d-flex align-items-center">
                                     <input type="submit" class="btn btn-success d-block mt-2" value="Filter">
+                                    <input type="submit" class="btn btn-success d-block mt-2 ms-2" id="filterReset" value="Reset">
                                 </div>
-
                             </div>
                             <!-- row -->
                         </div>
                     </form>
-                    <div class="col-md-3 d-flex align-items-center mt-md-3">
-                        <input type="submit" class="btn btn-success d-block mt-2" id="filterReset" value="Reset">
-                    </div>
                     <?php } ?>
                 </div>
                 <!-- End filter_collapse -->

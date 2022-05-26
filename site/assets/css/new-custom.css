@@ -1,7 +1,3 @@
-/* ------------------------------------------ */
-/*-------------- utility Css --------------- */
-/* ------------------------------------------ */
-
 :root {
     /* --primary-color: #377dff; */
     --primary-color: #5e72e4;
@@ -13,8 +9,7 @@
     --dark-purpule-color: #7460ee;
 }
 
-
-/* -------- Colours --------------- */
+/* -------- Colours -------- */
 .bg-dark-purpule {
     background-color: var(--dark-purpule-color);
 }
@@ -28,8 +23,6 @@
     border-color: var(--dark-purpule-color);
     color: var(--white-color);
 }
-
-/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600&display=swap'); */
 
 body,
 h1,
@@ -622,17 +615,12 @@ span.target {
     font-weight: 700;
 }
 
-.page-sidebar .nav-item:hover a {
-    /* color: var(--primary-color); */
-}
-
-
 .page-sidebar .nav-item:hover>a {
     color: var(--primary-color);
 }
 
-/* ----------- Side-bar angle arrow ------------ */
 
+/* ----------- Side-bar angle arrow ------------ */
 .page-sidebar .page-sidebar-menu li>a>.arrow:before,
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li>a>.arrow:before {
     width: 20px;
@@ -662,23 +650,42 @@ span.target {
     font-size: 16px;
 }
 
-/* ---- End page-sidebar-wrapper / page-sidebar ---- */
-
-
-
-/* --------------------------- */
-/* --- main_page_container --- */
-/* --------------------------- */
-
-.main_page_container {
-    padding-left: 8px;
-    padding-right: 8px;
+.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover>a>.title {
+    display: inline-block !important;
 }
+
+ul.page-sidebar-menu.page-header-fixed.page-sidebar-menu-closed .nav-item:hover .sub-menu .nav-item {
+    border-bottom: 1px solid lightblue;
+}
+
+
+.page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover>.sub-menu {
+    width: 210px;
+    position: absolute;
+    z-index: 2000;
+    left: 46px;
+    margin-top: 0px;
+    top: 100%;
+    display: block !important;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    -ms-border-radius: 0 0 4px 4px;
+    -o-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+    background: #f5f6f8;
+}
+
+/* ---- End page-sidebar-wrapper / page-sidebar ---- */
 
 
 /* -------------------------------------------------- */
 /* --- Begin page-container / page-content-wraper --- */
 /* ---------------------------------------------------*/
+.main_page_container {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
 .page-container {
     margin: 0;
     padding: 0;
@@ -714,12 +721,10 @@ span.target {
     width: 40px;
 }
 
-
 /* dashboard tabs  */
 .panel-heading2 .nav-tabs li {
     margin: 0 10px !important;
 }
-
 
 /* portlet box blue / portlet light */
 .portlet.light {
@@ -741,7 +746,6 @@ span.target {
     background: #f5f6f8 !important;
     min-height: 40px;
 }
-
 
 /* protlet box Caption  */
 .portlet-title .caption {
@@ -1397,13 +1401,40 @@ input.cr-slider {
     }
 
     .page-sidebar-menu-closed li.nav-item {
-        width: fit-content;
+        width: 100%;
     }
 
     .page-sidebar-closed .page-sidebar,
     .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {
         padding: 0 9px;
     }
+
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover {
+        width: 256px !important;
+        position: relative !important;
+        z-index: 10000;
+        display: block !important
+    }
+
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li.open>.sub-menu,
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li>.sub-menu {
+        display: none !important;
+    }
+
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover>a {
+        -webkit-border-radius: 0 4px 0 0;
+        -moz-border-radius: 0 4px 0 0;
+        -ms-border-radius: 0 4px 0 0;
+        -o-border-radius: 0 4px 0 0;
+        border-radius: 0 4px 0 0;
+        background: #CDE4F7;
+        border-radius: 20px 0 0 20px !important;
+    }
+
+    .page-sidebar-closed .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed>li:hover>a>i {
+        margin-right: 10px;
+    }
+
 }
 
 

@@ -132,7 +132,9 @@
                      <div class="form-group">
                         <label for="address" class="control-label">Address</label>
                         <textarea name="" id="" cols="30" rows="3" class="form-control h-auto"></textarea>
-                        <span class="bg-light d-inline-block fs-7 mt-0 text-muted">Note : <em>Required only for Invoice.</em></span>
+                        <span class="bg-light d-inline-block fs-7 mt-1 text-muted">Note : 
+                           <em>Required only for Invoice.</em>
+                        </span>
                      </div>
                   </div>
 
