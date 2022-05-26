@@ -40,7 +40,7 @@
             </div>
 
             <!-- Begin Filter Section -->
-            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse" id="filter_collapse">
+            <div class="bg-white p-3 rounded-4 shadow-sm mb-4 collapse <?= !empty($_GET['dateRange']) ? 'show' : '' ?>" id="filter_collapse">
                 <?php
                     $hideClass = "";
                     if( isset( $_GET["todayStatus"] ) ){	
@@ -54,14 +54,15 @@
                 <?php if( $user_role == 97 ){
                     $hideClass = isset( $_GET["todayStatus"] ) || isset( $_GET["leadfrom"] ) ? "hideFilter" : "";
                 ?>
-                <form id="form-filter" class=" form-horizontal margin_bottom_0 <?php echo $hideClass; ?>" action="<?php echo base_url(); ?>itineraries/index">
+                <form id="form-filter" class=" form-horizontal margin_bottom_0 <?php echo $hideClass; ?>"
+                    action="<?php echo base_url(); ?>itineraries/index">
                     <div class="actions custom_filter">
                         <div class="row">
                             <!--Calender-->
                             <div class="col-md-3 my-2">
                                 <label for="" class="control-label"><strong>Filter: </strong></label>
                                 <input type="text" autocomplete="off" class="form-control" id="daterange"
-                                    name="dateRange" value="" required />
+                                    name="dateRange" value="<?= isset($_GET['dateRange']) ? $_GET['dateRange'] : '' ?>" required />
                             </div>
                             <!--End-->
                             <div class="col-md-3 my-2">
@@ -102,39 +103,40 @@
                     </div>
                 </form>
                 <?php }else{ ?>
-                <form id="form-filter" class="form-horizontal margin_bottom_0 <?php echo $hideClass; ?>" action="<?php echo base_url(); ?>itineraries/index">
+                <form id="form-filter" class="form-horizontal margin_bottom_0 <?php echo $hideClass; ?>"
+                    action="<?php echo base_url(); ?>itineraries/index">
                     <div class="actions custom_filter">
                         <div class="row">
                             <!--Calender-->
                             <div class="col-md-3">
                                 <label class="control-label">Filter: </label>
                                 <input type="text" autocomplete="off" class="form-control" id="daterange"
-                                    name="dateRange" value="" required />
+                                    name="dateRange" value="<?= isset($_GET['dateRange']) ? $_GET['dateRange'] : '' ?>" required />
                             </div>
                             <!--End-->
                             <div class="col-md-3">
                                 <label class="control-label">Itinerary Type: </label>
                                 <select name="iti_type" class="form-control form-select" id="iti_type">
                                     <option value="">All</option>
-                                    <option value="1">Holidays</option>
-                                    <option value="2">Accommodation</option>
+                                    <option value="1" <?= !empty($_GET['iti_type']) &&  $_GET['iti_type'] == '1'?  "selected" : '' ?>>Holidays</option>
+                                    <option value="2" <?= !empty($_GET['iti_type']) &&  $_GET['iti_type'] == '2'?  "selected" : '' ?>>Accommodation</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
                                 <div class="filter_box">
                                     <label class="control-label">&nbsp; </label>
                                     <select name="filtername" class="form-control form-select">
-                                        <option value="all">All</option>
-                                        <option value="draft">Draft</option>
-                                        <option value="hold">Hold</option>
-                                        <option value="pending">Working</option>
-                                        <option value="notwork">Not Process</option>
-                                        <option value="7">Declined</option>
-                                        <option value="9">Approved</option>
-                                        <option value="travel_date">TD</option>
-                                        <option value="temp_travel_date">TTD </option>
-                                        <option value="revised">Amendment</option>
-                                        <option value="agent_margen_20">
+                                        <option value="all"     <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'all'?  "selected" : '' ?>>All</option>
+                                        <option value="draft"   <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'draft'?  "selected" : '' ?>>Draft</option>
+                                        <option value="hold"    <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'hold'?  "selected" : '' ?>>Hold</option>
+                                        <option value="pending" <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'pending'?  "selected" : '' ?>>Working</option>
+                                        <option value="notwork" <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'notwork'?  "selected" : '' ?>>Not Process</option>
+                                        <option value="7"       <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == '7'?  "selected" : '' ?>>Declined</option>
+                                        <option value="9"       <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == '9'?  "selected" : '' ?>>Approved</option>
+                                        <option value="travel_date" <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'travel_date'?  "selected" : '' ?>>TD</option>
+                                        <option value="temp_travel_date" <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'temp_travel_date'?  "selected" : '' ?>>TTD </option>
+                                        <option value="revised" <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'revised'?  "selected" : '' ?>>Amendment</option>
+                                        <option value="agent_margen_20" <?= !empty($_GET['filtername']) &&  $_GET['filtername'] == 'agent_margen_20'?  "selected" : '' ?>>
                                             AM>=20%</option>
                                     </select>
                                 </div>
@@ -167,7 +169,7 @@
             <!-- Begin demo table design -->
             <div class="bg-white p-3 rounded-4 shadow-sm mb-4">
                 <div class="table-responsive itineraryData table-ver-scroll">
-                <table class="table data-table-large">
+                    <table class="table data-table-large">
                         <tbody>
                             <?php     if( !empty($list) ){
                             foreach ($list as $iti) {
@@ -195,23 +197,29 @@
                                     }
                                     //Check for iti status
                                     if( isset( $iti->booking_status ) && $iti->booking_status != 0 ){
-                                        $it_status = "<a title='itinerary booked' class='btn btn-green' title='Itinerary Booked'>Hold</a>";
-                                        $st = "On Hold";
-                                        $iti_s = isset( $iti->booking_status ) && $iti->booking_status == 0 ? "APPROVED" : "ON HOLD";
+                                        $iti_s = isset( $iti->booking_status ) && $iti->booking_status == 0 ? '<div title="iti-status" class="badge bg-danger mb-1 me-2">
+                                        <strong>APPROVED</strong>
+                                    </div>' : '<div title="iti-status" class="badge bg-dark-purpule mb-1 me-2">
+                                        <strong>ON HOLD</strong>
+                                    </div>';
                                     }else if( $iti_status == 9 ){
-                                        $it_status ="";
-                                        $st = "<i title='itinerary booked' class='fa fa-check-circle-o' aria-hidden='true'></i>";
-                                        $iti_s = "APPROVED";
+                                        $it_status = '<div title="iti-status" class="badge bg-success mb-1 me-2">
+                                            <strong>APPROVED</strong>
+                                        </div>';
                                     }else if( $iti_status == 7 ){
-                                        $it_status = "<a title='itinerary declined' class='btn btn-danger'><i class='fa fa-ban' aria-hidden='true'></i></a>";
-                                        $st = "<i title='itinerary declined' class='fa fa-ban' aria-hidden='true'></i>";
-                                        $iti_s = "DECLINED";
+                                        $it_status = '<div title="iti-status" class="badge bg-danger mb-1 me-2">
+                                            <strong>Decline</strong>
+                                        </div>';
                                     }else if( $iti_status == 6 ){
-                                        $it_status ="";
-                                        $st = "<span title='Itinerary Rejected' class='badge_danger_pill'>Rejected</span>";
-                                        $iti_s = "REJECTED";
+                                        $it_status = '<div title="iti-status" class="badge bg-danger mb-1 me-2">
+                                            <strong>REJECTED</strong>
+                                        </div>';
                                     }else{
-                                        $iti_s = empty( is_iti_followup_exists( $iti->iti_id ) ) ? "NOT PROCESS" : "WORKING";
+                                        $it_status = empty( is_iti_followup_exists( $iti->iti_id ) ) ? '<div title="iti-status" class="badge bg-yellow-casablanca mb-1 me-2">
+                                        <strong>NOT PROCESS</strong>
+                                    </div>' : '<div title="iti-status" class="badge bg-yellow-mint mb-1 me-2">
+                                    <strong>WORKING</strong>
+                                </div>';
                                     }
                                 }
 
@@ -273,7 +281,7 @@
                                 // dump($itineary_followup);
 
                             ?>
-                        
+
                             <tr>
                                 <td>
                                     <div class="align-bottom align-content-between d-flex flex-wrap h-100">
@@ -289,15 +297,15 @@
                                                     <strong><?= $iti_type ?></strong>
                                                 </div>
                                                 <div class="fs-8 me-2 text-success">
-                                                    <strong class="" title="Iti Status"><?= $p_status ?>...</strong>
+                                                    <strong class=""><?= $p_status ?>...</strong>
                                                 </div>
                                             </div>
                                             <div class="ms-2">
                                                 <p class="fs-7 mb-2 mt-0 ">
-                                                <span class="customer_name_text d-block">
-                                                    <strong
-                                                    class="d-block mb-1"><?= !empty($iti->customer_name) ? $iti->customer_name : '' ?></strong>
-                                                </span>
+                                                    <span class="customer_name_text d-block">
+                                                        <strong
+                                                            class="d-block mb-1"><?= !empty($iti->customer_name) ? $iti->customer_name : 'N/A' ?></strong>
+                                                    </span>
                                                     <span title="Leads From"
                                                         class="text-primary"><?= get_customer_type_name($customerDetail['0']->customer_type) ?></span>
                                                 </p>
@@ -310,10 +318,14 @@
                                             <div class="border-end flex-grow-1">
                                                 <p class="fs-7 mb-2 mt-0 text-secondary">requirement </p>
                                                 <div>
-                                                    <i class="me-2 fa-solid fa-plane-departure <?= isset($requirements_meta['requirements_flight']) ? 'text-primary' : 'text-muted' ?>"></i>
-                                                    <i class="me-2 fa-solid fa-hotel <?= isset($requirements_meta['requirements_hotel']) ? 'text-primary' : 'text-muted' ?>"></i>
-                                                    <i class="me-2 fa-solid fa-taxi  <?= isset($requirements_meta['requirements_cab']) ? 'text-primary' : 'text-muted' ?>"></i>
-                                                    <i class="me-2 fa-solid fa-train-subway  <?= isset($requirements_meta['requirements_train']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-plane-departure <?= isset($requirements_meta['requirements_flight']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-hotel <?= isset($requirements_meta['requirements_hotel']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-taxi  <?= isset($requirements_meta['requirements_cab']) ? 'text-primary' : 'text-muted' ?>"></i>
+                                                    <i
+                                                        class="me-2 fa-solid fa-train-subway  <?= isset($requirements_meta['requirements_train']) ? 'text-primary' : 'text-muted' ?>"></i>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1 ms-2">
@@ -322,7 +334,8 @@
                                                         class="d-block fs-7 mb-2"><?= !empty($iti->customer_contact) ? $iti->customer_contact : '' ?></span>
                                                 </div>
                                                 <div>
-                                                    <span title="<?= !empty($iti->email_count) ? 'sent' .  $iti->email_count . 'times' :  'NOT SENT' ; ?>"
+                                                    <span
+                                                        title="<?= !empty($iti->email_count) ? 'sent' .  $iti->email_count . 'times' :  'NOT SENT' ; ?>"
                                                         class="bg-info fs-8 px-2 rounded-3 text-white"><?= !empty($iti->email_count) ? $iti->email_count : 'N/S' ; ?></span>
                                                     <span class="tooltip_right">
                                                         <i class="fa-envelope fa-solid text-primary"></i>
@@ -344,31 +357,33 @@
                                                 <?= $packageType ?>
                                             </div>
                                             <div class="">
-                                                <span class="text-secondary fs-7 package_name"><?= $iti->package_name ?></span>
+                                                <span
+                                                    class="text-secondary fs-7 package_name"><?= $iti->package_name ?></span>
                                             </div>
                                         </div>
                                         <div class="bg-light d-flex justify-content-between p-1 w-100">
                                             <div class="flex-grow-1 ms-2 border-end">
                                                 <p class="fs-7 m-0 mb-2 text-secondary">travellers</p>
-                                                <span class="badge fs-7 pb-0 text-dark" title="Adult"> <?= $iti->adults ?> <i
-                                                        class="fa-solid fa-user text-black-50"></i> </span>
+                                                <span class="badge fs-7 pb-0 text-dark" title="Adult">
+                                                    <?= $iti->adults ?> <i class="fa-solid fa-user text-black-50"></i>
+                                                </span>
                                                 <?php
                                                         if($iti->child != 00){
                                                             $totalTravel = $iti->adults + $iti->child;
                                                             ?>
-                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Children"> <?= $iti->child ?> <i
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Children">
+                                                    <?= $iti->child ?> <i
                                                         class="fa-solid fa-child text-black-50"></i></span>
-                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby"> <?= $totalTravel ?> <i
-                                                        class="fa-solid fa-baby text-black-50"></i> </span>
+                                                <span class="badge fs-7 me-1 pb-0 text-dark" title="Baby">
+                                                    <?= $totalTravel ?> <i class="fa-solid fa-baby text-black-50"></i>
+                                                </span>
                                                 <?php
                                                         }
                                                         ?>
                                             </div>
                                             <div class="flex-grow-1 ms-2">
                                                 <p class="fs-7 m-0 mb-2 text-secondary">Iti Status</p>
-                                                <div title="iti-status" class="badge bg-danger mb-1 me-2">
-                                                    <strong>Decline</strong>
-                                                </div>
+                                                <?= $it_status ?>
                                             </div>
                                         </div>
                                     </div>
@@ -429,15 +444,18 @@
                                             <p class="my-1 fs-7 text-secondary"><span>Next Call</span>
                                                 <span><?= date("d-F",  strtotime( $itineary_followup['0']->nextCallDate ))?></span>
                                             </p>
-                                            <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i>
-                                                <?= date("h:i A",  strtotime( $itineary_followup['0']->nextCallDate ))?></p>
+                                            <p class="my-1 text-dark"><i
+                                                    class="text-success fa-solid fa-phone-volume"></i>
+                                                <?= date("h:i A",  strtotime( $itineary_followup['0']->nextCallDate ))?>
+                                            </p>
                                         </div>
                                         <?php
                                         }else{
                                         ?>
                                         <div class="mb-2 px-2">
                                             <p class="my-1 fs-7 text-secondary"><span>Next Call</span></p>
-                                            <p class="my-1 text-dark"><i class="text-success fa-solid fa-phone-volume"></i>
+                                            <p class="my-1 text-dark"><i
+                                                    class="text-success fa-solid fa-phone-volume"></i>
                                                 not sheduled</p>
                                         </div>
                                         <?php
@@ -486,18 +504,18 @@
                                     </div>
                                 </td>
                             </tr>
-                            
+
                             <?php
                                 }
                             } else{
-                                ?>  
-                                <span class="text-center">Data not found</span>
-                                <?php
+                                ?>
+                            <span class="text-center">Data not found</span>
+                            <?php
                                 }
                                 ?>
                         </tbody>
-                    </table>   
-                    <p><?php echo $links; ?></p>                      
+                    </table>
+                    <p><?php echo $links; ?></p>
                 </div>
             </div>
             <!-- End end demo table design -->
@@ -1131,12 +1149,12 @@ jQuery(document).ready(function($) {
 
 
     // /*****************************************/
-    $(".customer_name_text").text(function() {
-        return $(this).text().length > 75 ? $(this).text().substr(0,  75) + '...' : $(this).text();
-    });
+    // $(".customer_name_text").text(function() {
+    //     return $(this).text().length > 75 ? $(this).text().substr(0, 75) + '...' : $(this).text();
+    // });
 
     $(".email_text").text(function() {
-        return $(this).text().length >  75 ? $(this).text().substr(0,  75) + '...' : $(this).text();
+        return $(this).text().length > 75 ? $(this).text().substr(0, 75) + '...' : $(this).text();
     });
 
     // $(".package_name").text(function() {
